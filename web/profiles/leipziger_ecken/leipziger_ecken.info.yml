@@ -1,0 +1,62 @@
+name: Leipziger Ecken
+type: profile
+description: 'Stadtteilplattform für Leipzig'
+core: 8.x
+
+# Optional: Declare your installation profile as a distribution
+# This will make the installer auto-select this installation profile.
+# The distribution_name property is used in the installer and other places as
+# a label for the software being installed.
+distribution:
+  name: Leipziger Ecken
+  # To set your theme as the theme for the distribution installation uncomment the following:
+  #
+  # install:
+  #   theme: my_theme
+  langcode: de
+
+# Modules to install to support the profile.
+install:
+  - history
+  - block_content
+  - breakpoint
+  - color
+  - config
+  - comment
+  - contextual
+  - contact
+  - quickedit
+  - help
+  - image
+  - options
+  - path
+  - taxonomy
+  - dblog
+  - search
+  - shortcut
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - editor
+  - ckeditor
+
+# Required modules
+# Note that any dependencies of the modules listed here will be installed automatically.
+dependencies:
+  - node
+  - block
+  - views
+  - rest
+  - devel
+  - features
+
+# List any themes that should be installed as part of the profile installation.
+# Note that this will not set any theme as the default theme.
+themes:
+  - bartik
+  - seven
+  - stable
+  - classy
