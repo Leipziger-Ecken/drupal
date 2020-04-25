@@ -1,0 +1,62 @@
+{
+    "name": "weitzman/drupal-test-traits",
+    "description": "Traits for testing Drupal sites that have user content (versus unpopulated sites).",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moshe Weitzman",
+            "email": "weitzman@tejasa.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.8",
+        "behat/mink": "1.8.0 | 1.7.1 | 1.7.x-dev",
+        "behat/mink-goutte-driver": "^1.2",
+        "phpunit/phpunit": "^6.5 || ^7",
+        "webflo/drupal-finder": "^1.1"
+    },
+    "require-dev": {
+        "behat/mink-selenium2-driver": "1.4.0 | 1.3.1 | 1.3.x-dev",
+        "composer/installers": "^1.2",
+        "dmore/chrome-mink-driver": "^2.6",
+        "drupal-composer/drupal-scaffold": "2.3.0",
+        "drupal/core": "^8.8@alpha",
+        "drush/drush": "^9",
+        "squizlabs/php_codesniffer": "^3.2",
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "zaporylie/composer-drupal-optimizations": "^1.0"
+    },
+    "autoload": {
+        "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
+    },
+    "scripts": {
+        "si": [
+            "drush si -yv --db-url=mysql://circle:circle@db/circle --account-name=admin --account-pass=password standard"
+        ],
+        "cs": "phpcs -n --report-full",
+        "cbf": "phpcbf --standard=PSR2 -n src tests",
+        "lint": "parallel-lint src tests",
+        "unit": "phpunit --debug --colors --bootstrap=src/bootstrap-fast.php --printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter' --log-junit web/sites/simpletest/browser_output/junit.xml tests",
+        "test": [
+            "@lint",
+            "@cs",
+            "@unit"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "process-timeout": 9600
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": ["type:drupal-core"]
+        }
+    }
+}

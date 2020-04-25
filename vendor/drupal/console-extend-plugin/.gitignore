@@ -1,0 +1,14 @@
+# deprecation-detector
+/.rules
+
+# Composer
+composer.lock
+/vendor
+
+
+# Test
+/phpunit.xml
+
+# Project
+extend.config.yml
+extend.services.yml

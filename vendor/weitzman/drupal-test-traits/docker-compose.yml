@@ -1,0 +1,59 @@
+version: '3.1'
+
+# This file may be used for local development of DTT. It is also used by Gitlab CI.
+services:
+  drupal:
+    build: .
+    volumes:
+      # Non OSX users may want to set VOLUME_FLAGS via the .env file.
+      - .:/var/www/code:${VOLUME_FLAGS-cached}
+    environment:
+      - APACHE_DOCROOT=/var/www/code/web
+      - DTT_BASE_URL=http://drupal
+      - DTT_API_URL=http://chrome:9222
+      - COMPOSER_ALLOW_SUPERUSER=1
+      # @todo use firefox once https://github.com/minkphp/MinkSelenium2Driver/pull/289 is fixed.
+      - DTT_MINK_DRIVER_ARGS=["chrome", {"chromeOptions":{"w3c":false}}, "http://selenium:4444/wd/hub"]
+      - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
+      - XDEBUG_ENABLE
+      - XDEBUG_CONFIG
+      # Suggested by https://confluence.jetbrains.com/display/PhpStorm/Debugging+PHP+CLI+scripts+with+PhpStorm#DebuggingPHPCLIscriptswithPhpStorm-2.StarttheScriptwithDebuggerOptions
+      # Create a PHP Server in PHPStorm called 'dtt'. Then add path mappings during first debug session.
+      - PHP_IDE_CONFIG=serverName=dtt
+    working_dir: /var/www/code
+    ports:
+      #Expose port 81 by default since that collides less frequently.
+      #Define WEB_PORT in a .env file to change to a different port.
+      - '${WEB_PORT-81}:80'
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_USER: circle
+      MYSQL_PASSWORD: circle
+      MYSQL_DATABASE: circle
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+    command: --max_allowed_packet=32M --innodb_flush_method=O_DIRECT --tmp_table_size=16M --query_cache_size=16M --innodb-flush-log-at-trx-commit=2  --innodb_buffer_pool_size=500M --innodb_log_buffer_size=64M --skip-innodb_doublewrite --innodb_log_file_size=64M
+    ports:
+      - '3106:3306'
+    volumes:
+      - dtt-datavolume:/var/lib/mysql
+
+  # See https://github.com/previousnext/containers/tree/master/chrome-headless
+  chrome:
+    # Note: chrome 67/68 is giving errors so we pin to 65 for now.
+    image: previousnext/chrome-headless:65
+    ports:
+      - "${CHROMEDRIVER_PORT-9222}:9222"
+
+  # See https://github.com/SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
+  selenium:
+    # Pinned due to DOM failures with latest stable.
+    image: selenium/standalone-chrome
+    ports:
+      - "${SELENIUM2DRIVER_PORT-4444}:4444"
+
+#data volumes https://docs.docker.com/storage/volumes/
+volumes:
+  dtt-datavolume:
