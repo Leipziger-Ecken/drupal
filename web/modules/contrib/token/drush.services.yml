@@ -1,7 +1,0 @@
-services:
-  devel.command:
-    class: Drupal\token\Commands\TokenCommands
-    arguments:
-      - '@module_handler'
-    tags:
-      -  { name: drush.command }

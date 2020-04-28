@@ -86,12 +86,5 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
-    },
-    "require-dev": {
-        "consolidation/robo": "^2.0",
-        "dmore/chrome-mink-driver": "^2.7",
-        "drupal/coder": "^8.2",
-        "drush/drush": "^10.2",
-        "weitzman/drupal-test-traits": "^1.3"
     }
 }
