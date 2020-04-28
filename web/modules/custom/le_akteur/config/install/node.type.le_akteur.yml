@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Akteur
+type: le_akteur
+description: 'Organisationen, Personen und Vereine'
+help: ''
+new_revision: false
+preview_mode: 2
+display_submitted: true

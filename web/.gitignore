@@ -27,6 +27,7 @@ sites/*/private
 sites/default/files/*
 !sites/default/files/translations
 !sites/default/files/translations/drupal-8.9.0-beta2.de.po
+modules/*/contrib
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest

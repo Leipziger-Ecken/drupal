@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_is_barrier_free
+    - node.type.le_akteur
+id: node.le_akteur.field_le_akteur_is_barrier_free
+field_name: field_le_akteur_is_barrier_free
+entity_type: node
+bundle: le_akteur
+label: 'Barrierefrei?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

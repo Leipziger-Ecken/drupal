@@ -1,0 +1,36 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_akteur.field_le_akteur_description
+    - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_image
+    - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_name
+    - field.field.node.le_akteur.field_le_akteur_opening_times
+    - field.field.node.le_akteur.field_le_akteur_phone
+    - field.field.node.le_akteur.field_le_akteur_url
+    - node.type.le_akteur
+  module:
+    - user
+id: node.le_akteur.teaser
+targetEntityType: node
+bundle: le_akteur
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_le_akteur_description: true
+  field_le_akteur_email: true
+  field_le_akteur_image: true
+  field_le_akteur_is_barrier_free: true
+  field_le_akteur_name: true
+  field_le_akteur_opening_times: true
+  field_le_akteur_phone: true
+  field_le_akteur_url: true
+  langcode: true

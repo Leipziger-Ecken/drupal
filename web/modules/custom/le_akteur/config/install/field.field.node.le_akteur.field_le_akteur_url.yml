@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_url
+    - node.type.le_akteur
+  module:
+    - link
+id: node.le_akteur.field_le_akteur_url
+field_name: field_le_akteur_url
+entity_type: node
+bundle: le_akteur
+label: Website
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

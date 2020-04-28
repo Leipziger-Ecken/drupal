@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+id: node.le_akteur
+target_entity_type_id: node
+target_bundle: le_akteur
+default_langcode: site_default
+language_alterable: false
