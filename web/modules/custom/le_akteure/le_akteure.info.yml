@@ -1,0 +1,30 @@
+name: Akteure
+description: 'Inhaltstyp für Akteure (Vereine, Initiativen, Organisationen)'
+type: module
+core: 8.x
+dependencies:
+  - address
+  - comment
+  - features
+  - field
+  - file
+  - geocoder
+  - geocoder_field
+  - geofield
+  - geofield_map
+  - image
+  - jsonld
+  - language
+  - le_api
+  - leaflet
+  - link
+  - metatag
+  - node
+  - path
+  - rest
+  - serialization
+  - telephone
+  - text
+  - user
+  - views
+version: 8.x-0.1.1

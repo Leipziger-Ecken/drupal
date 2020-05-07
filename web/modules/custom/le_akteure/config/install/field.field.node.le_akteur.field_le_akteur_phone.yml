@@ -4,15 +4,17 @@ dependencies:
   config:
     - field.storage.node.field_le_akteur_phone
     - node.type.le_akteur
+  module:
+    - telephone
 id: node.le_akteur.field_le_akteur_phone
 field_name: field_le_akteur_phone
 entity_type: node
 bundle: le_akteur
 label: Telefonnummer
-description: ''
+description: 'Telefonnummer zur Kontaktaufnahme'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: telephone

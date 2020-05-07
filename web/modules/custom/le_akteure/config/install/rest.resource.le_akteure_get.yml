@@ -1,0 +1,19 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - le_api
+    - serialization
+    - user
+id: le_akteure_get
+plugin_id: le_akteure_get
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie

@@ -1,0 +1,21 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+id: node.le_akteur.sticky
+field_name: sticky
+entity_type: node
+bundle: le_akteur
+label: 'Oben in Listen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

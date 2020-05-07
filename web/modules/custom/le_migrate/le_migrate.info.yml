@@ -1,0 +1,5 @@
+name: Leipziger Ecken Migrate
+description: 'Migrates Drupal 7 raw SQL into Drupal 8 node-/content-type Akteur & Event'
+type: module
+core: 8.x
+package: Leipziger Ecken

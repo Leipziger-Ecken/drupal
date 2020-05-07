@@ -4,6 +4,8 @@
 
 Drupal 8 distribution that works "out of the box". This (mono-)repository defines all dependencies within composer.json, provides an installation profile, German translations files, and custom Leipziger Ecken modules & theme
 
+[Public padlet](https://padlet.com/matthias75/leipzigerecken)
+
 ---------------------
 
  * Introduction
@@ -33,14 +35,14 @@ INSTALLATION
 
 ### Installation
 
- * After having cloned this repository, ensure that all required services are running, including composer. 
+ * After having cloned this repository, ensure that all required services are running, including composer.
  * Create a database (utf8_general_ci), set up a virtual host (e.g. "drupal.localhost")
- * Navigate to the path of this repository. Run 
+ * Navigate to the path of this repository. Run
  ``` composer install ``` to install all dependencies
  * Open your browser and navigate to your drupal instance (e.g. "http://drupal.localhost"). Follow the instructions of the interactive install wizard ([walk-through](https://www.drupal.org/docs/user_guide/en/install-run.html)). You may also use the [installation routine](https://drupalconsole.com/docs/en/commands/site-install) of Drupal CLI
  * You should now be able to access and administer your Leipziger Ecken instance.
 
-**Issues & problems** 
+**Issues & problems**
 
 Prior to installation, Drupal may complain about missing folder or write access to *sites/default/files*. When googling does not help, try to execute:
 
@@ -51,7 +53,7 @@ $ [sudo] chmod 775 /path_to_drupal_repo/web/sites/default/files
 If write access to settings.php is a problem, try to execute:
 ```
 $ cp /path_to_repo/web/sites/default.settings.php /path_to_repo/web/sites/settings.php
-$ [sudo] chown apache:apache web/sites/default/settings.php 
+$ [sudo] chown apache:apache web/sites/default/settings.php
 ```
 On Linux systems, you may have to configure SELinux. Run:
 ```

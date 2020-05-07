@@ -11,7 +11,7 @@ field_name: field_le_akteur_url
 entity_type: node
 bundle: le_akteur
 label: Website
-description: ''
+description: 'Link zur eigenen Homepage'
 required: false
 translatable: false
 default_value: {  }

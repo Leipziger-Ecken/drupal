@@ -1,0 +1,85 @@
+<?php
+
+use Drupal\node\Entity\Node;
+
+require_once('slug_helper.php');
+
+/**
+ * Implements hook_install
+ */
+function le_migrate_install () {
+    le_migrate_akteure();
+}
+
+function le_migrate_akteure () {
+
+      $directory = 'public://le/';
+      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+
+      $database = \Drupal::database();
+      $query = $database->query("SELECT * FROM aae_data_akteur as ak JOIN aae_data_adresse as ad WHERE ad.ADID = ak.adresse");
+      $result = $query->fetchAll();
+
+      foreach ($result as $akteur) {
+
+        $created = time();
+        
+        if (!empty($akteur->created)) {  
+          $created = new DateTime($akteur->created);
+          $created = $created->getTimestamp();
+        }
+
+        $slug = slugify($akteur->name) . '-' . $akteur->plz;
+
+        $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
+        $image_name = basename($akteur->bild);
+        $file = null;
+
+        if (!empty(trim($akteur->bild))) {
+          // \Drupal::logger('le_migrate')->notice("https://leipziger-ecken.de{$akteur->bild}");
+          $image = file_get_contents("https://leipziger-ecken.de{$akteur->bild}");
+          $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
+        }
+
+        $node = array(
+            'nid' => $akteur->AID,
+            'type' => 'le_akteur',
+            'title' => $akteur->name,
+            'field_le_akteur_email' => $akteur->email,
+            'field_le_akteur_phone' => $akteur->telefon,
+            'field_le_akteur_url' => $valid_url ? $akteur->url : null,
+            'field_le_akteur_description' => [
+              'value' => $akteur->beschreibung,
+              'format' => 'full_html',
+            ],
+            'field_le_akteur_contactperson' => $akteur->ansprechpartner,
+            'field_le_akteur_contactperson_fn' => $akteur->funktion,
+            'field_le_akteur_opening_times' => $akteur->oeffnungszeiten,
+            'field_le_akteur_barrier_free' => $akteur->barrierefrei === 1,
+            'field_le_akteur_adresse' => [
+              'country_code' => 'DE',
+              'address_line1' => $akteur->strasse . (!empty($akteur->nr) ? ' ' . $akteur->nr : ''),
+              'address_line2' => $akteur->adresszusatz,
+              'postal_code' => $akteur->plz,
+              'locality' => 'Leipzig'
+            ],
+            'path' => [
+              'alias' => '/akteure/' . $slug,
+             // 'pathauto' => PathautoState::SKIP,
+            ],
+            'created' => $created,
+            // @todo uid
+          );
+
+          if ($file) {
+            $node['field_le_akteur_image'] = [
+                'target_id' => $file->id(),
+                'alt' => "Profilfoto Akteur ´{$akteur->name}´",
+                'title' => "Profilfoto Akteur ´{$akteur->name}´"
+            ];
+          }
+
+          $node = Node::create($node);
+          $node->save();
+    }
+}

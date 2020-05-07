@@ -6,5 +6,5 @@ type: le_akteur
 description: 'Organisationen, Personen und Vereine'
 help: ''
 new_revision: false
-preview_mode: 2
+preview_mode: 1
 display_submitted: true

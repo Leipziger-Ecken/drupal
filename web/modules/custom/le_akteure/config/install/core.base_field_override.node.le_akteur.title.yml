@@ -2,16 +2,15 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_name
     - node.type.le_akteur
-id: node.le_akteur.field_le_akteur_name
-field_name: field_le_akteur_name
+id: node.le_akteur.title
+field_name: title
 entity_type: node
 bundle: le_akteur
 label: Name
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

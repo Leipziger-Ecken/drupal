@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_le_akteur_phone
-field_name: field_le_akteur_phone
+id: node.field_le_akteur_contactperson
+field_name: field_le_akteur_contactperson
 entity_type: node
 type: string
 settings:

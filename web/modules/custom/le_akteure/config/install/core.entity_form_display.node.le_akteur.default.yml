@@ -2,20 +2,26 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.le_akteur.field_geofield
+    - field.field.node.le_akteur.field_le_akteur_adresse
+    - field.field.node.le_akteur.field_le_akteur_contactperson
+    - field.field.node.le_akteur.field_le_akteur_contactperson_fn
     - field.field.node.le_akteur.field_le_akteur_description
     - field.field.node.le_akteur.field_le_akteur_email
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
-    - field.field.node.le_akteur.field_le_akteur_name
     - field.field.node.le_akteur.field_le_akteur_opening_times
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
     - image.style.thumbnail
     - node.type.le_akteur
   module:
+    - address
+    - geofield
     - image
     - link
     - path
+    - telephone
     - text
 id: node.le_akteur.default
 targetEntityType: node
@@ -24,12 +30,41 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_geofield:
+    weight: 16
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+    type: geofield_latlon
+    region: content
+  field_le_akteur_adresse:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_le_akteur_contactperson:
+    weight: 29
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_le_akteur_contactperson_fn:
+    weight: 30
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_le_akteur_description:
-    weight: 8
+    weight: 1
     settings:
       rows: 5
       placeholder: ''
@@ -59,14 +94,6 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_le_akteur_name:
-    weight: 7
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_le_akteur_opening_times:
     weight: 14
     settings:
@@ -76,12 +103,11 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_phone:
-    weight: 10
+    weight: 26
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: telephone_default
     region: content
   field_le_akteur_url:
     weight: 11
@@ -93,41 +119,34 @@ content:
     region: content
   langcode:
     type: language_select
-    weight: 0
+    weight: 2
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 3
-    region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 5
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 15
+    weight: 0
     region: content
     settings:
       size: 60
@@ -135,7 +154,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -143,4 +162,5 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  promote: true

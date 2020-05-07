@@ -1,0 +1,186 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.le_akteur.field_geofield
+    - field.field.node.le_akteur.field_le_akteur_adresse
+    - field.field.node.le_akteur.field_le_akteur_contactperson
+    - field.field.node.le_akteur.field_le_akteur_contactperson_fn
+    - field.field.node.le_akteur.field_le_akteur_description
+    - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_image
+    - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_opening_times
+    - field.field.node.le_akteur.field_le_akteur_phone
+    - field.field.node.le_akteur.field_le_akteur_url
+    - node.type.le_akteur
+  module:
+    - address
+    - image
+    - leaflet
+    - link
+    - telephone
+    - text
+    - user
+id: node.le_akteur.default
+targetEntityType: node
+bundle: le_akteur
+mode: default
+content:
+  field_geofield:
+    weight: 11
+    label: above
+    settings:
+      multiple_map: 0
+      leaflet_map: 'OSM Mapnik'
+      height: 400
+      height_unit: px
+      hide_empty_map: 0
+      disable_wheel: 0
+      fullscreen_control: 1
+      gesture_handling: 0
+      reset_map:
+        control: 0
+        position: topright
+      popup: false
+      popup_content: ''
+      map_position:
+        force: 0
+        center:
+          lat: 0
+          lon: 0
+        zoom: 12
+        minZoom: 1
+        maxZoom: 18
+        zoomFiner: 0
+      icon:
+        iconType: marker
+        iconUrl: ''
+        iconSize:
+          x: null
+          'y': null
+        iconAnchor:
+          x: null
+          'y': null
+        shadowUrl: ''
+        shadowSize:
+          x: null
+          'y': null
+        shadowAnchor:
+          x: null
+          'y': null
+        popupAnchor:
+          x: null
+          'y': null
+        html: '<div></div>'
+        html_class: leaflet-map-divicon
+        circle_marker_options: '{"radius": 100, "color": "red", "fillColor": "#f03", "fillOpacity": 0.5}'
+      leaflet_markercluster:
+        control: 0
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds": false}'
+      path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
+      geocoder:
+        control: 0
+        settings:
+          position: topright
+          input_size: 25
+          providers: {  }
+          min_terms: 4
+          delay: 800
+          zoom: 16
+          popup: 0
+          options: ''
+    third_party_settings: {  }
+    type: leaflet_formatter_default
+    region: content
+  field_le_akteur_adresse:
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_le_akteur_contactperson:
+    weight: 12
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_le_akteur_contactperson_fn:
+    weight: 13
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_le_akteur_description:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_le_akteur_email:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_le_akteur_image:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_le_akteur_is_barrier_free:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_le_akteur_opening_times:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_le_akteur_phone:
+    weight: 9
+    label: above
+    settings:
+      title: ''
+    third_party_settings: {  }
+    type: telephone_link
+    region: content
+  field_le_akteur_url:
+    weight: 3
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

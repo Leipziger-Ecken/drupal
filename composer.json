@@ -1,6 +1,6 @@
 {
     "name": "drupal/recommended-project",
-    "description": "Project template for Drupal 8 projects with a relocated document root",
+    "description": "Project template for Drupal 8 projects with a relocated document root. Extended for Leipziger Ecken.",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://www.drupal.org/project/drupal",
@@ -16,14 +16,22 @@
     ],
     "require": {
         "composer/installers": "^1.2",
+        "drupal/address": "^1.8",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-project-message": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/devel": "^2.1",
+        "drupal/entityconnect": "^2.0@alpha",
         "drupal/features": "^3.8",
+        "drupal/geocoder": "^3.0",
+        "drupal/geofield": "^1.12",
+        "drupal/geofield_map": "^2.62",
+        "drupal/leaflet": "^1.36",
         "drupal/schema_metatag": "^1.4",
-        "drupal/token": "^1.6"
+        "drupal/token": "^1.6",
+        "drush/drush": "^10.2",
+        "geocoder-php/mapbox-provider": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
