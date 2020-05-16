@@ -4,7 +4,7 @@
 
 Drupal 8 distribution that works "out of the box". This (mono-)repository defines all dependencies within composer.json, provides an installation profile, German translations files, and custom Leipziger Ecken modules & theme
 
-[Public padlet](https://padlet.com/matthias75/leipzigerecken)
+* [Public padlet](https://padlet.com/matthias75/leipzigerecken)
 
 ---------------------
 
@@ -68,4 +68,4 @@ sudo chcon -R -t httpd_sys_content_rw_t path_to_repo/
 
 ### API
 
-@todo
+A *read-only* REST-API (JSON, XML, HAL) is provided for akteur- and event-data. Read more on our [official Postman documentation](https://documenter.getpostman.com/view/10395067/SzmY92H6).
