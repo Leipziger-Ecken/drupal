@@ -1,0 +1,23 @@
+langcode: de
+status: true
+dependencies: {  }
+id: node__le_event
+label: 'Content: Event'
+tags:
+  title: '[current-page:title]'
+  image_src: '[node:field_le_event_image:entity:url]'
+  geo_position: '[node:field_le_event_geofield:latlon]'
+  canonical_url: '[current-page:url]'
+  geo_region: DE
+  content_language: de
+  schema_event_name: '[node:title]'
+  schema_event_type: Event
+  schema_event_is_accessible_for_free: 'True'
+  schema_event_end_date: '[node:field_le_event_occurrences:end_date:html_datetime]'
+  schema_event_image: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:38:"[node:field_le_event_image:entity:url]";s:5:"width";s:33:"[node:field_le_event_image:width]";s:6:"height";s:34:"[node:field_le_event_image:height]";}'
+  schema_event_location: 'a:3:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:43:"[node:field_le_event_adresse:address_line1]";s:15:"addressLocality";s:38:"[node:field_le_event_adresse:locality]";s:10:"postalCode";s:41:"[node:field_le_event_adresse:postal_code]";s:14:"addressCountry";s:42:"[node:field_le_event_adresse:country_code]";}s:3:"geo";a:3:{s:5:"@type";s:14:"GeoCoordinates";s:8:"latitude";s:34:"[node:field_le_event_geofield:lat]";s:9:"longitude";s:34:"[node:field_le_event_geofield:lon]";}}'
+  schema_event_start_date: '[node:field_le_event_occurrences:start_date:html_datetime]'
+  schema_event_url: '[node:url]'
+  schema_event_performer: 'a:4:{s:5:"@type";s:12:"Organization";s:3:"@id";s:36:"[node:field_le_event_aid:entity:url]";s:4:"name";s:38:"[node:field_le_event_aid:entity:title]";s:3:"url";s:36:"[node:field_le_event_aid:entity:url]";}'
+  schema_event_id: '[node:url]'
+  schema_event_description: '[node:field_le_event_beschreibung]'

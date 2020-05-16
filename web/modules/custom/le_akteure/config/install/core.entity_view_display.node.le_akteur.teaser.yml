@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.le_akteur.field_geofield
     - field.field.node.le_akteur.field_le_akteur_adresse
+    - field.field.node.le_akteur.field_le_akteur_bezirk
     - field.field.node.le_akteur.field_le_akteur_contactperson
     - field.field.node.le_akteur.field_le_akteur_contactperson_fn
     - field.field.node.le_akteur.field_le_akteur_description
@@ -30,6 +31,7 @@ content:
 hidden:
   field_geofield: true
   field_le_akteur_adresse: true
+  field_le_akteur_bezirk: true
   field_le_akteur_contactperson: true
   field_le_akteur_contactperson_fn: true
   field_le_akteur_description: true

@@ -2,16 +2,16 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_r
-    - node.type.article
+    - field.storage.node.field_le_event_aid
     - node.type.le_akteur
-id: node.article.field_r
-field_name: field_r
+    - node.type.le_event
+id: node.le_event.field_le_event_aid
+field_name: field_le_event_aid
 entity_type: node
-bundle: article
-label: löschen
+bundle: le_event
+label: Akteur
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -21,7 +21,8 @@ settings:
     target_bundles:
       le_akteur: le_akteur
     sort:
-      field: _none
-    auto_create: true
+      field: title
+      direction: DESC
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

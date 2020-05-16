@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Bezirk
+vid: le_bezirk
+description: 'Liste an Bezirken'
+weight: 0

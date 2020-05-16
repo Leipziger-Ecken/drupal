@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
 
 require_once('slug_helper.php');
 
@@ -8,7 +9,9 @@ require_once('slug_helper.php');
  * Implements hook_install
  */
 function le_migrate_install () {
+    le_migrate_bezirke();
     le_migrate_akteure();
+    le_migrate_events();
 }
 
 function le_migrate_akteure () {
@@ -17,14 +20,23 @@ function le_migrate_akteure () {
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
       $database = \Drupal::database();
-      $query = $database->query("SELECT * FROM aae_data_akteur as ak JOIN aae_data_adresse as ad WHERE ad.ADID = ak.adresse");
+
+      $query = $database->query("
+        SELECT * FROM aae_data_akteur as ak
+        JOIN aae_data_adresse as ad
+        JOIN aae_data_bezirke as be
+        WHERE ad.ADID = ak.adresse
+          AND be.BID = ad.bezirk");
+
       $result = $query->fetchAll();
+
+      $c = 0;
 
       foreach ($result as $akteur) {
 
         $created = time();
-        
-        if (!empty($akteur->created)) {  
+
+        if (!empty($akteur->created)) {
           $created = new DateTime($akteur->created);
           $created = $created->getTimestamp();
         }
@@ -63,6 +75,7 @@ function le_migrate_akteure () {
               'postal_code' => $akteur->plz,
               'locality' => 'Leipzig'
             ],
+            'field_le_akteur_bezirk' => $akteur->BID,
             'path' => [
               'alias' => '/akteure/' . $slug,
              // 'pathauto' => PathautoState::SKIP,
@@ -81,5 +94,151 @@ function le_migrate_akteure () {
 
           $node = Node::create($node);
           $node->save();
+
+          $c++;
     }
+
+    drupal_set_message(t("Successfully imported ${c} Akteure"));
+}
+
+function le_migrate_bezirke () {
+
+      $database = \Drupal::database();
+      $query = $database->query("SELECT * FROM aae_data_bezirke");
+      $result = $query->fetchAll();
+
+      $c = 0;
+
+      foreach ($result as $bezirk) {
+
+        $slug = slugify($bezirk->bezirksname);
+
+        $term = Term::create(array(
+          'tid' => $bezirk->BID,
+          'parent' => array(),
+          'name' => $bezirk->bezirksname,
+          'vid' => 'le_bezirk',
+          'path' => [
+            'alias' => '/bezirke/' . $slug
+          ]
+        ))->save();
+
+        $c++;
+     }
+
+     drupal_set_message(t("Successfully imported ${c} bezirke"));
+}
+
+function le_migrate_events () {
+
+      $today = "2016-01-01 00:00:00"; // date("Y-m-d H:i:s");
+      $directory = 'public://le/';
+      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+
+      $database = \Drupal::database();
+
+      // @todo Not yet concrete enough:
+      $query = $database->query("
+        SELECT * FROM aae_data_event as ev
+        JOIN aae_data_adresse as ad
+        JOIN aae_data_bezirke as be
+        JOIN aae_data_akteur_hat_event as ahe
+        WHERE ad.ADID = ev.ort
+          AND be.BID = ad.bezirk
+          AND ahe.EID = ev.EID
+          AND ev.start_ts >= '${today}' && ev.parent_EID IS NULL");
+
+      $result = $query->fetchAll();
+
+      $c = 0;
+
+      foreach ($result as $event) {
+
+        $created = time();
+
+        if (!empty($event->created)) {
+          $created = new DateTime($event->created);
+          $created = $created->getTimestamp();
+        }
+
+        $slug = slugify($event->name) . ($event->plz ? '-' . $event->plz : '');
+
+        $valid_url = filter_var($event->url, FILTER_VALIDATE_URL);
+        $image_name = basename($event->bild);
+        $file = null;
+
+        if (!empty(trim($event->bild))) {
+          // \Drupal::logger('le_migrate')->notice("https://leipziger-ecken.de{$akteur->bild}");
+          $image = file_get_contents("https://leipziger-ecken.de{$event->bild}");
+          $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
+        }
+
+        $frequency = 0;
+
+        switch ($event->recurring_event_type) {
+          case 2:
+            $frequency = 'WEEKLY';
+          break;
+          case 3:
+            $frequency = 'WEEKLY;INTERVAL=2';
+            break;
+          case 4:
+            $frequency = 'MONTHLY';
+            break;
+          case 5:
+            $frequency = 'MONTHLY;INTERVAL=2';
+            break;
+        }
+
+        $start = str_replace(' ', 'T', $event->start_ts);
+        $ende = $event->ende_ts === '1000-01-01 00:00:00' ? $start : str_replace(' ', ' ', $event->ende_ts);
+
+        $node = array(
+            'field_le_event___eid' => $event->EID,
+            'type' => 'le_event',
+            'title' => $event->name,
+            'field_le_event_beschreibung' => [
+              'value' => $event->kurzbeschreibung,
+              'format' => 'full_html',
+            ],
+            'field_le_event_aid' => $event->AID,
+            'field_le_event_adresse' => [
+              'country_code' => 'DE',
+              'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
+              'address_line2' => $event->adresszusatz,
+              'postal_code' => $event->plz,
+              'locality' => 'Leipzig'
+            ],
+            'field_le_event_bezirk' => $event->BID,
+            'field_le_event_occurrences' => [
+              'value' => $start,
+              'end_value' => $ende,
+              'timezone' => 'Europe/Berlin',
+              'rrule' => $frequency ? "RRULE:FREQ=${frequency}" : null,
+              'infinite' => $frequency ? 1 : 0
+            ],
+            'path' => [
+              'alias' => '/events/' . $slug,
+             // 'pathauto' => PathautoState::SKIP,
+            ],
+            'created' => $created,
+            // @todo uid
+          );
+
+          if ($file) {
+            $node['field_le_event_image'] = [
+                'target_id' => $file->id(),
+                'alt' => "Bild Event ´{$event->name}´",
+                'title' => "Bild Event ´{$event->name}´"
+            ];
+          }
+
+          $node = Node::create($node);
+
+          $node->save();
+
+          $c++;
+    }
+
+    drupal_set_message(t("Successfully imported ${c} events"));
 }

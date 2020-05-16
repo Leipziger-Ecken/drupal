@@ -1,0 +1,61 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_adresse
+    - node.type.le_event
+  module:
+    - address
+id: node.le_event.field_le_event_adresse
+field_name: field_le_event_adresse
+entity_type: node
+bundle: le_event
+label: Adresse
+description: Veranstaltungsort
+required: true
+translatable: false
+default_value:
+  -
+    country_code: DE
+    langcode: ''
+    organization: ''
+    given_name: ''
+    family_name: ''
+    address_line1: ''
+    address_line2: ''
+    postal_code: ''
+    locality: ''
+    additional_name: null
+    sorting_code: null
+    dependent_locality: null
+    administrative_area: null
+default_value_callback: ''
+settings:
+  available_countries:
+    DE: DE
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: required
+    addressLine2:
+      override: optional
+    postalCode:
+      override: required
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: required
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

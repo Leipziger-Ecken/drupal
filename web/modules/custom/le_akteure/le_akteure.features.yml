@@ -1,1 +1,5 @@
+excluded:
+  - core.entity_view_display.node.article.default
+  - core.entity_view_display.node.article.rss
+  - core.entity_view_display.node.article.teaser
 required: true

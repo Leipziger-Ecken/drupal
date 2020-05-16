@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event___eid
+    - node.type.le_event
+id: node.le_event.field_le_event___eid
+field_name: field_le_event___eid
+entity_type: node
+bundle: le_event
+label: __EID
+description: 'Wird programmatisch gesetzt; Referenz zu EID aus "Altsystem".'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

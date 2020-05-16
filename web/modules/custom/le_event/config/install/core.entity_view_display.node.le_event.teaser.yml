@@ -1,0 +1,36 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_adresse
+    - field.field.node.le_event.field_le_event_aid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_bezirk
+    - field.field.node.le_event.field_le_event_geofield
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_occurrences
+    - node.type.le_event
+  module:
+    - user
+id: node.le_event.teaser
+targetEntityType: node
+bundle: le_event
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_le_event___eid: true
+  field_le_event_adresse: true
+  field_le_event_aid: true
+  field_le_event_beschreibung: true
+  field_le_event_bezirk: true
+  field_le_event_geofield: true
+  field_le_event_image: true
+  field_le_event_occurrences: true
+  langcode: true

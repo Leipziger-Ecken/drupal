@@ -1,0 +1,44 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_occurrences
+    - node.type.le_event
+  module:
+    - date_recur
+id: node.le_event.field_le_event_occurrences
+field_name: field_le_event_occurrences
+entity_type: node
+bundle: le_event
+label: Zeitraum
+description: "<b>Startdatum & -zeit, Enddatum & -zeit.</b> Wenn <b>wiederholend</b>, Feld \"Wiederholungsregel\" ausfüllen.\r\n\r\nWerte (wöchentlich; zwei-wöchentlich; monatlich; zwei-monatlich):\r\n<ul>\r\n<li>RRULE:FREQ=WEEKLY</li>\r\n<li>RRULE:FREQ=WEEKLY;INTERVAL=2</li>\r\n<li>RRULE:FREQ=MONTHLY</li>\r\n<li>RRULE:FREQ=MONTHLY;INTERVAL=2</li>\r\n</ul>"
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: now
+    default_end_date: now
+    default_date_time_zone: Europe/Berlin
+    default_time_zone: Europe/Berlin
+    default_rrule: ''
+default_value_callback: ''
+settings:
+  precreate: P2Y
+  parts:
+    all: false
+    frequencies:
+      SECONDLY: {  }
+      MINUTELY:
+        - '*'
+      HOURLY:
+        - '*'
+      DAILY:
+        - '*'
+      WEEKLY:
+        - '*'
+      MONTHLY:
+        - '*'
+      YEARLY: {  }
+field_type: date_recur

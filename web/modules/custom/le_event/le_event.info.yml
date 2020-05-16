@@ -1,0 +1,26 @@
+name: Event
+description: 'Events (Veranstaltungen, Workshop''s, Seminare)'
+type: module
+package: Leipziger Ecken
+core: 8.x
+dependencies:
+  - address
+  - date_recur
+  - datetime
+  - field
+  - file
+  - geocoder_field
+  - geofield
+  - image
+  - language
+  - leaflet
+  - metatag
+  - node
+  - path
+  - rest
+  - serialization
+  - taxonomy
+  - text
+  - user
+  - views
+version: 8.x-0.1

@@ -1,0 +1,38 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_geofield
+    - node.type.le_event
+  module:
+    - geocoder_field
+    - geofield
+third_party_settings:
+  geocoder_field:
+    method: geocode
+    weight: 0
+    skip_not_empty_value: 0
+    disabled: false
+    hidden: false
+    providers:
+      - mapbox
+    dumper: wkt
+    failure:
+      handling: preserve
+      status_message: true
+      log: true
+    field: field_le_event_adresse
+    delta_handling: default
+id: node.le_event.field_le_event_geofield
+field_name: field_le_event_geofield
+entity_type: node
+bundle: le_event
+label: Geofield
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield
