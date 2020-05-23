@@ -2,19 +2,24 @@
 
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\user\Entity\User;
 
 require_once('slug_helper.php');
 
 /**
  * Implements hook_install
  */
-function le_migrate_install () {
+function le_migrate_install ()
+{
+    // Let's play a game... infinite server timeout or you will die... decide in 3,2,1,...
+    le_migrate_users();
     le_migrate_bezirke();
     le_migrate_akteure();
     le_migrate_events();
 }
 
-function le_migrate_akteure () {
+function le_migrate_akteure ()
+{
 
       $directory = 'public://le/';
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
@@ -23,9 +28,11 @@ function le_migrate_akteure () {
 
       $query = $database->query("
         SELECT * FROM aae_data_akteur as ak
+        JOIN aae_data_akteur_hat_user as ahu
         JOIN aae_data_adresse as ad
         JOIN aae_data_bezirke as be
-        WHERE ad.ADID = ak.adresse
+        WHERE ahu.hat_AID = ak.AID
+          AND ad.ADID = ak.adresse
           AND be.BID = ad.bezirk");
 
       $result = $query->fetchAll();
@@ -41,14 +48,13 @@ function le_migrate_akteure () {
           $created = $created->getTimestamp();
         }
 
-        $slug = slugify($akteur->name) . '-' . $akteur->plz;
+        $slug = slugify($akteur->name) . ($akteur->plz ? '-' . $akteur->plz : '');
 
         $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
         $image_name = basename($akteur->bild);
         $file = null;
 
         if (!empty(trim($akteur->bild))) {
-          // \Drupal::logger('le_migrate')->notice("https://leipziger-ecken.de{$akteur->bild}");
           $image = file_get_contents("https://leipziger-ecken.de{$akteur->bild}");
           $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
         }
@@ -81,7 +87,7 @@ function le_migrate_akteure () {
              // 'pathauto' => PathautoState::SKIP,
             ],
             'created' => $created,
-            // @todo uid
+            'uid' => (int) $akteur->hat_UID // || $akteur->ersteller???
           );
 
           if ($file) {
@@ -101,7 +107,8 @@ function le_migrate_akteure () {
     drupal_set_message(t("Successfully imported ${c} Akteure"));
 }
 
-function le_migrate_bezirke () {
+function le_migrate_bezirke ()
+{
 
       $database = \Drupal::database();
       $query = $database->query("SELECT * FROM aae_data_bezirke");
@@ -129,9 +136,10 @@ function le_migrate_bezirke () {
      drupal_set_message(t("Successfully imported ${c} bezirke"));
 }
 
-function le_migrate_events () {
+function le_migrate_events ()
+{
 
-      $today = "2016-01-01 00:00:00"; // date("Y-m-d H:i:s");
+      $today = date("Y-m-d H:i:s");
       $directory = 'public://le/';
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
@@ -146,7 +154,8 @@ function le_migrate_events () {
         WHERE ad.ADID = ev.ort
           AND be.BID = ad.bezirk
           AND ahe.EID = ev.EID
-          AND ev.start_ts >= '${today}' && ev.parent_EID IS NULL");
+          AND ev.start_ts >= '${today}'
+          AND ev.parent_EID IS NULL");
 
       $result = $query->fetchAll();
 
@@ -222,7 +231,7 @@ function le_migrate_events () {
              // 'pathauto' => PathautoState::SKIP,
             ],
             'created' => $created,
-            // @todo uid
+            'uid' => (int) $event->ersteller
           );
 
           if ($file) {
@@ -241,4 +250,67 @@ function le_migrate_events () {
     }
 
     drupal_set_message(t("Successfully imported ${c} events"));
+}
+
+/**
+ * @thanks https://drupal.stackexchange.com/questions/209163/how-do-i-migrate-users-passwords
+ * (But could have used default Migration Manager as well, just a question of code consistency...
+ *  @see https://www.drupal.org/project/drupal/issues/2764287)
+ *
+ * Roles aae_data: 3 => Administrator; 4 => Redakteur; 5 => Akteur; 6 => Festival
+ */
+function le_migrate_users ()
+{
+
+        $database = \Drupal::database();
+        $query = $database->query("
+          SELECT * FROM aae_data_users as us
+          WHERE us.uid != 1
+            AND us.status = 1");
+        $users = $query->fetchAll();
+
+        $query = $database->query("SELECT * FROM aae_data_users_roles");
+        $roles = $query->fetchAll();
+
+        $c = 0;
+
+        foreach ($users as $user) {
+
+          $newuser = User::create([
+              'name' => $user->name,
+              'pass' => $user->pass,
+              'mail' => $user->mail,
+              'status' => $user->status,
+              'init' => $user->init,
+              'created' => $user->created,
+              'login' => $user->login,
+              'access' => $user->access,
+              'uid' => $user->uid,
+          ]);
+
+          $newuser->save();
+
+          // dirty overwrite re-hashed hash
+          $database->merge('users_field_data')
+            ->fields(['pass' => $user->pass])
+            ->keys(array('uid' => $user->uid))
+            ->execute();
+
+          $c++;
+      }
+
+      // Assign roles
+      foreach ($roles as $role) {
+
+        $user = User::load($role->uid);
+
+        if (!empty($user)) {
+          if ($role->rid === '4') {
+             $user->addRole('le_role_redakteur');
+             $user->save();
+          }
+        }
+      }
+
+      drupal_set_message(t("Successfully imported ${c} users"));
 }
