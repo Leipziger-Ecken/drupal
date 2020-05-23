@@ -28,6 +28,7 @@
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
+        "drupal/jsonld": "^1.0",
         "drupal/leaflet": "^1.36",
         "drupal/schema_metatag": "^1.4",
         "drupal/token": "^1.6",

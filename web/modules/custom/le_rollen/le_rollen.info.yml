@@ -1,0 +1,7 @@
+name: Rollen
+description: 'Alle Leipziger Ecken spezifischen Rollen (z.B. "Redakteur")'
+type: module
+core: 8.x
+dependencies:
+  - user
+version: 8.x-0.1

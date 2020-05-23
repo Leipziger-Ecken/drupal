@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+id: le_role_redakteur
+label: Redakteur
+weight: 3
+is_admin: null
