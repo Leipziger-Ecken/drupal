@@ -69,3 +69,4 @@ sudo chcon -R -t httpd_sys_content_rw_t path_to_repo/
 ### API
 
 A *read-only* REST-API (JSON, XML, HAL) is provided for akteur- and event-data. Read more on our [official Postman documentation](https://documenter.getpostman.com/view/10395067/SzmY92H6).
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/10395067/SzmY92H6)
