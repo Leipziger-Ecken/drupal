@@ -59,6 +59,10 @@ On Linux systems, you may have to configure SELinux. Run:
 ```
 sudo chcon -R -t httpd_sys_content_rw_t path_to_repo/
 ```
+On a mac system it could be possible, that CSS / javascript is not working probably after the installation of drupal 8. Therfore you have to make sure that the rights of the directory "/Applications/XAMPP/xamppfiles/htdocs/drupal/web/sites/default/files" are set to "read and write".
+After that navigate to Configuration (Konfigurationen) > Performance link (Leistung) and unchek "CSS-Dateien aggregieren" and 
+"JavaScript-Dateien aggregieren". 
+
 
 @see Official [detailed Drupal 8 installation guide](https://www.drupal.org/docs/8/install) (starting from "Step 2").
 
