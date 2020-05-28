@@ -64,6 +64,10 @@ After that navigate to Configuration (Konfigurationen) > Performance link (Leist
 "JavaScript-Dateien aggregieren". 
 
 
+zweiter teil meines problems, sorry, dass nicht alles auf einmal kam...
+Choose the directory /Applications/XAMPP/xamppfiles/htdocs/drupal/web/sites/default/files and creat the directory "tmp".
+Now go back to Drupal Configurations > Performance and "clear all caches" (alle Caches leeren). Afterwards check "CSS-Dateien aggregieren" and "JavaScript-Dateien aggregieren" and then "Save congigutations" (Konfiguration speichern).
+
 @see Official [detailed Drupal 8 installation guide](https://www.drupal.org/docs/8/install) (starting from "Step 2").
 
 ### Tests
