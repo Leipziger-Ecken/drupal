@@ -29,5 +29,6 @@ dependencies:
   - text
   - user
   - views
+  - le_bezirk
 version: 8.x-0.1.2
 core_incompatible: false
