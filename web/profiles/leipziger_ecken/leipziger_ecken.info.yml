@@ -9,11 +9,9 @@ core: 8.x
 # a label for the software being installed.
 distribution:
   name: Leipziger Ecken
-  # To set your theme as the theme for the distribution installation uncomment the following:
-  #
-  # install:
-  #   theme: my_theme
   langcode: de
+  install:
+    theme: swinger
 
 # Modules to install to support the profile.
 install:
