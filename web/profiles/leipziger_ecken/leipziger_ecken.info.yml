@@ -50,6 +50,14 @@ dependencies:
   - rest
   - devel
   - features
+  - features_ui
+  - menu_ui
+  - leaflet_views
+  - metatag_dc
+  - schema_organization
+  - schema_event
+  - schema_metatag
+  - schema_web_site
   - le_rollen
   - le_bezirk
   - le_api
