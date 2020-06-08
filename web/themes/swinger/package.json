@@ -2,7 +2,7 @@
   "name": "swinger",
   "version": "0.1.0",
   "author": "Felix Albroscheit",
-  "license": "Creative Commons Attribution 3.0 Unported",
+  "license": "CC-BY-3.0",
   "scripts": {
     "start": "grunt"
   },
