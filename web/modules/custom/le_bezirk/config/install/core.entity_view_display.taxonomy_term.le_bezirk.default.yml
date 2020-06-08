@@ -5,33 +5,26 @@ dependencies:
     - field.field.taxonomy_term.le_bezirk.field_le_bezirk_region
     - taxonomy.vocabulary.le_bezirk
   module:
-    - path
+    - text
 id: taxonomy_term.le_bezirk.default
 targetEntityType: taxonomy_term
 bundle: le_bezirk
 mode: default
 content:
-  field_le_bezirk_region:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  name:
-    type: string_textfield
+  description:
+    label: hidden
+    type: text_default
     weight: 0
     region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 1
-    region: content
     settings: {  }
     third_party_settings: {  }
+  field_le_bezirk_region:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
 hidden:
-  description: true
   langcode: true
-  status: true

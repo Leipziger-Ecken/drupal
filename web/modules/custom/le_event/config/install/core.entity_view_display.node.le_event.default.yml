@@ -40,7 +40,7 @@ content:
     type: entity_reference_label
     region: content
   field_le_event_beschreibung:
-    weight: 2
+    weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -121,7 +121,7 @@ content:
     type: leaflet_formatter_default
     region: content
   field_le_event_image:
-    weight: 1
+    weight: 0
     label: above
     settings:
       image_style: ''
@@ -145,7 +145,7 @@ content:
     type: date_recur_basic_formatter
     region: content
   links:
-    weight: 0
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Region
+vid: le_region
+description: 'Geogr. Kategoriseriung von Bezirken, z.B. "Osten" / "Norden"'
+weight: 0

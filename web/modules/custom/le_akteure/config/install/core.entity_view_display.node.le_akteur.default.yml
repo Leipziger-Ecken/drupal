@@ -29,7 +29,7 @@ bundle: le_akteur
 mode: default
 content:
   field_geofield:
-    weight: 11
+    weight: 9
     label: above
     settings:
       multiple_map: '0'
@@ -95,14 +95,14 @@ content:
     type: leaflet_formatter_default
     region: content
   field_le_akteur_adresse:
-    weight: 10
+    weight: 8
     label: above
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_le_akteur_bezirk:
-    weight: 14
+    weight: 12
     label: above
     settings:
       link: true
@@ -110,7 +110,7 @@ content:
     type: entity_reference_label
     region: content
   field_le_akteur_contactperson:
-    weight: 12
+    weight: 10
     label: above
     settings:
       link_to_entity: false
@@ -118,7 +118,7 @@ content:
     type: string
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 13
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -126,7 +126,7 @@ content:
     type: string
     region: content
   field_le_akteur_description:
-    weight: 0
+    weight: 1
     label: above
     settings: {  }
     third_party_settings: {  }
@@ -140,7 +140,7 @@ content:
     type: basic_string
     region: content
   field_le_akteur_image:
-    weight: 1
+    weight: 0
     label: above
     settings:
       image_style: ''
@@ -149,7 +149,7 @@ content:
     type: image
     region: content
   field_le_akteur_is_barrier_free:
-    weight: 8
+    weight: 6
     label: above
     settings:
       format: default
@@ -167,7 +167,7 @@ content:
     type: string
     region: content
   field_le_akteur_phone:
-    weight: 9
+    weight: 7
     label: above
     settings:
       title: ''

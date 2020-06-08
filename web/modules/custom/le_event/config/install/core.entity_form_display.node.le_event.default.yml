@@ -29,13 +29,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_le_event___eid:
-    weight: 14
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
-    region: content
   field_le_event_adresse:
     weight: 12
     settings: {  }
@@ -133,4 +126,5 @@ content:
     region: content
     third_party_settings: {  }
 hidden:
+  field_le_event___eid: true
   field_le_event_geofield: true

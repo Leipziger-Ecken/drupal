@@ -1,13 +1,17 @@
 name: Bezirk
 description: 'Bezirke-Taxonomie (verlinkt mit Akteur / Event)'
 type: module
-package: Leipziger Ecken
+package: 'Leipziger Ecken'
 core: 8.x
 dependencies:
+  - field
   - language
+  - le_region
   - node
   - path
   - taxonomy
+  - text
   - user
   - views
-version: 8.x-0.1
+version: 8.x-0.1.1
+core_incompatible: false

@@ -1,0 +1,28 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_le_bezirk_region
+    - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_region
+id: taxonomy_term.le_bezirk.field_le_bezirk_region
+field_name: field_le_bezirk_region
+entity_type: taxonomy_term
+bundle: le_bezirk
+label: Region
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_region: le_region
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -2,7 +2,7 @@ name: Akteure
 description: 'Inhaltstyp für Akteure (Vereine, Initiativen, Organisationen)'
 type: module
 core: 8.x
-package: Leipziger Ecken
+package: 'Leipziger Ecken'
 dependencies:
   - address
   - comment
@@ -17,6 +17,8 @@ dependencies:
   - jsonld
   - language
   - le_api
+  - le_bezirk
+  - le_region
   - leaflet
   - link
   - metatag
@@ -29,5 +31,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.2
+version: 8.x-0.1.3
 core_incompatible: false

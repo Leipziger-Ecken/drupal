@@ -2,21 +2,23 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.le_bezirk.field_le_bezirk_region
-    - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_region
   module:
     - path
-id: taxonomy_term.le_bezirk.default
+    - text
+id: taxonomy_term.le_region.default
 targetEntityType: taxonomy_term
-bundle: le_bezirk
+bundle: le_region
 mode: default
 content:
-  field_le_bezirk_region:
-    weight: 2
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
+  description:
+    type: text_textarea
+    weight: 1
     region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
   name:
     type: string_textfield
     weight: 0
@@ -27,11 +29,10 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  description: true
   langcode: true
   status: true

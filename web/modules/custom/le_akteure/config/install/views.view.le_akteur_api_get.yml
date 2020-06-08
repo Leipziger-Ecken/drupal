@@ -2,15 +2,19 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.storage.node.field_le_akteur_bezirk
     - field.storage.node.field_le_akteur_image
     - node.type.le_akteur
     - system.menu.main
+    - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_region
   module:
     - image
     - jsonld
     - node
     - rest
     - serialization
+    - taxonomy
 id: le_akteur_api_get
 label: Akteur
 module: views
@@ -188,14 +192,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_le_akteur_adresse_postal_code:
-          id: field_le_akteur_adresse_postal_code
-          table: node__field_le_akteur_adresse
-          field: field_le_akteur_adresse_postal_code
+        field_le_akteur_bezirk:
+          id: field_le_akteur_bezirk
+          table: node__field_le_akteur_bezirk
+          field: field_le_akteur_bezirk
           relationship: none
           group_type: group
           admin_label: ''
-          label: ''
+          label: Bezirk
           exclude: false
           alter:
             alter_text: false
@@ -228,7 +232,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -236,7 +240,21 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          plugin_id: standard
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
       filters:
         status:
           value: '1'
@@ -263,6 +281,7 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+          group: 1
         title:
           id: title
           table: node_field_data
@@ -306,6 +325,102 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
+        field_le_akteur_bezirk_target_id:
+          id: field_le_akteur_bezirk_target_id
+          table: node__field_le_akteur_bezirk
+          field: field_le_akteur_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_akteur_bezirk_target_id_op
+            label: Bezirk
+            description: ''
+            use_operator: false
+            operator: field_le_akteur_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_akteur_bezirk_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_le_akteur_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Region
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_bezirk_region_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         created:
           id: created
@@ -325,7 +440,16 @@ display:
       header: {  }
       footer: {  }
       empty: {  }
-      relationships: {  }
+      relationships:
+        field_le_akteur_bezirk:
+          id: field_le_akteur_bezirk
+          table: node__field_le_akteur_bezirk
+          field: field_le_akteur_bezirk
+          relationship: none
+          group_type: group
+          admin_label: 'field_le_akteur_bezirk: Taxonomy term'
+          required: false
+          plugin_id: standard
       arguments:
         nid:
           id: nid
@@ -366,6 +490,10 @@ display:
           plugin_id: node_nid
       display_extenders: {  }
       title: Akteure
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -374,8 +502,10 @@ display:
         - request_format
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
       tags:
+        - 'config:field.storage.node.field_le_akteur_bezirk'
         - 'config:field.storage.node.field_le_akteur_image'
   page_1:
     display_plugin: page
@@ -395,28 +525,16 @@ display:
         context: '0'
         menu_name: main
       style:
-        type: table
+        type: grid
         options:
           grouping: {  }
-          row_class: ''
-          default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            title: title
-          info:
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
+          columns: 3
+          automatic_width: true
+          alignment: horizontal
+          col_class_default: true
+          col_class_custom: ''
+          row_class_default: true
+          row_class_custom: ''
       defaults:
         style: false
         row: false
@@ -434,8 +552,10 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
       tags:
+        - 'config:field.storage.node.field_le_akteur_bezirk'
         - 'config:field.storage.node.field_le_akteur_image'
   rest_export_1:
     display_plugin: rest_export
@@ -485,6 +605,8 @@ display:
         - request_format
         - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
       tags:
+        - 'config:field.storage.node.field_le_akteur_bezirk'
         - 'config:field.storage.node.field_le_akteur_image'

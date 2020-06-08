@@ -5,12 +5,15 @@ dependencies:
     - field.storage.node.field_le_event_beschreibung
     - node.type.le_event
     - system.menu.main
+    - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_region
   module:
     - date_recur
     - datetime
     - node
     - rest
     - serialization
+    - taxonomy
     - text
     - user
 id: le_view_events
@@ -498,6 +501,243 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Schlagwortsuche
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_le_event_bezirk_target_id:
+          id: field_le_event_bezirk_target_id
+          table: node__field_le_event_bezirk
+          field: field_le_event_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_bezirk_target_id_op
+            label: Bezirk
+            description: ''
+            use_operator: false
+            operator: field_le_event_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_event_bezirk_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_le_event_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Region
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_bezirk_region_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_value_op
+            label: 'Start (ab...)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_event_occurrences_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-01'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_end_value_op
+            label: 'Ende (...bis)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_event_occurrences_end_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-02'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       sorts:
         field_le_event_occurrences_value:
           id: field_le_event_occurrences_value
@@ -527,14 +767,29 @@ display:
           required: false
           entity_type: node
           plugin_id: standard
+        field_le_event_bezirk:
+          id: field_le_event_bezirk
+          table: node__field_le_event_bezirk
+          field: field_le_event_bezirk
+          relationship: none
+          group_type: group
+          admin_label: 'field_le_event_bezirk: Taxonomy term'
+          required: false
+          plugin_id: standard
       arguments: {  }
       display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -561,7 +816,9 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -593,6 +850,8 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - request_format
+        - url
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

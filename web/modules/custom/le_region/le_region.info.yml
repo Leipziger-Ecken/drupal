@@ -1,0 +1,11 @@
+name: Regionen
+description: 'Stadtteile, z.B. "Osten" / "Norden"'
+type: module
+core: 8.x
+package: Leipziger Ecken
+dependencies:
+  - language
+  - path
+  - taxonomy
+  - text
+version: 8.x-0.1

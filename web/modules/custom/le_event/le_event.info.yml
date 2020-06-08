@@ -1,7 +1,7 @@
 name: Event
-description: 'Events (Veranstaltungen, Workshop''s, Seminare)'
+description: 'Events (Veranstaltungen, Workshops, Seminare)'
 type: module
-package: Leipziger Ecken
+package: 'Leipziger Ecken'
 core: 8.x
 dependencies:
   - address
@@ -13,6 +13,9 @@ dependencies:
   - geofield
   - image
   - language
+  - le_akteure
+  - le_bezirk
+  - le_region
   - leaflet
   - metatag
   - node
@@ -23,4 +26,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1
+version: 8.x-0.1.1
+core_incompatible: false
