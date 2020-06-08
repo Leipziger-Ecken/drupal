@@ -11,11 +11,12 @@ require_once('slug_helper.php');
  */
 function le_migrate_install ()
 {
-    // Let's play a game... infinite server timeout or you will die... decide in 3,2,1,...
+    // Let's play a game... infinite server timeout or you will die... 3,2,1,...
     le_migrate_users();
     le_migrate_bezirke();
     le_migrate_akteure();
     le_migrate_events();
+    le_migrate_regionen();
 }
 
 function le_migrate_akteure ()
@@ -314,3 +315,30 @@ function le_migrate_users ()
 
       drupal_set_message(t("Successfully imported ${c} users"));
 }
+
+/**
+ * Yet useless as regionen (i.e. Stadtteile) is a new concept
+ * that was attached to bezirke. Until complete, we will simply
+ * introduce two default regionen without linkage to bezirk
+ */
+function le_migrate_regionen ()
+{
+      $osten = Term::create(array(
+        'parent' => array(),
+        'name' => 'Osten',
+        'vid' => 'le_region',
+        'path' => [
+          'alias' => '/stadtteil/osten'
+        ]
+      ))->save();
+
+      $norden = Term::create(array(
+        'parent' => array(),
+        'name' => 'Norden',
+        'vid' => 'le_region',
+        'path' => [
+          'alias' => '/stadtteil/norden'
+        ]
+      ))->save();
+}
+
