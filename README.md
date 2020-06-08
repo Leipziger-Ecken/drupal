@@ -2,7 +2,9 @@
 
 **Eine Stadtteilplattform für Leipzig.**
 
-Drupal 8.8 distribution that works "out of the box". This (mono-)repository defines all dependencies within composer.json, provides an installation profile, German translations files, and custom Leipziger Ecken modules & theme.
+Drupal 8.9 distribution that works "out of the box". This (mono-)repository defines all dependencies within composer.json, provides an installation profile, German translations files, and custom Leipziger Ecken modules & theme.
+
+Drupal 9 support targeted. Check support by enabling shipped "upgrade_status" module.
 
 * [Public padlet](https://padlet.com/matthias75/leipzigerecken)
 

@@ -1,0 +1,18 @@
+// Akteure list
+.view-id-frontpage {
+    .view-content {
+        display: flex;
+        flex-flow: wrap;
+
+        .views-row {
+            width: 33%;
+            padding: 18px;
+
+            .node__content {
+                .field__label {
+                    display: none;
+                }
+            }
+        }
+    }
+}

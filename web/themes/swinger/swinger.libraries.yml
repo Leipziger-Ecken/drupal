@@ -1,0 +1,15 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/main.css: {}
+  js:
+    js/jquery.scrolly.min.js: {}
+    js/jquery.scrollex.min.js: {}
+    js/browser.min.js: {}
+    js/breakpoints.min.js: {}
+    js/util.js: {}
+    js/main.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

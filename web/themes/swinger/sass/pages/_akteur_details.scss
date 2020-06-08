@@ -1,0 +1,46 @@
+body.page-node-type-le-akteur {
+    .node__content {
+        display: table;
+
+        .field--name-field-le-akteur-image {
+            width: 65%;
+            height: auto;
+            float: left;
+
+            .field__label {
+                display: none;
+            }
+            img {
+                width: 100%;
+            }
+        }
+        .field--name-field-le-akteur-adresse,
+        .field--name-field-le-akteur-bezirk {
+            float: left;
+            width: 17%;
+            padding: 0 2%;
+        }
+
+        .field--name-field-le-akteur-description {
+            width: 100%;
+            padding-top: 25px;
+            display: table;
+
+            .field__label {
+                display: none;
+            }
+        }
+
+        .field--name-field-le-akteur-email,
+        .field--name-field-le-akteur-is-barrier-free,
+        .field--name-field-le-akteur-phone,
+        .field--name-field-le-akteur-contactperson,
+        .field--name-field-le-akteur-contactperson-fn,
+        .field--name-field-le-akteur-opening-times,
+        .field--name-field-le-akteur-url   {
+            width: 25%;
+            float: left;
+            padding: 30px 0;
+        }
+    }
+}
