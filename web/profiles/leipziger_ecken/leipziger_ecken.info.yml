@@ -59,6 +59,7 @@ dependencies:
   - schema_metatag
   - schema_web_site
   - le_rollen
+  - le_region
   - le_bezirk
   - le_api
   - le_akteure
@@ -70,5 +71,4 @@ themes:
   - swinger
   - bartik
   - seven
-  - stable
   - classy
