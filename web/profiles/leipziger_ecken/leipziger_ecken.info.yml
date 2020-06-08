@@ -10,8 +10,8 @@ core: 8.x
 distribution:
   name: Leipziger Ecken
   langcode: de
-  install:
-    theme: swinger
+#  install:
+#    theme: swinger
 
 # Modules to install to support the profile.
 install:
@@ -67,6 +67,7 @@ dependencies:
 # List any themes that should be installed as part of the profile installation.
 # Note that this will not set any theme as the default theme.
 themes:
+  - swinger
   - bartik
   - seven
   - stable

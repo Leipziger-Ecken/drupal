@@ -34,6 +34,7 @@ web/README.txt
 web/autoload.php
 web/example.gitignore
 web/index.php
+web/themes/.gitignore
 web/modules/README.txt
 web/modules/contrib/
 web/robots.txt
