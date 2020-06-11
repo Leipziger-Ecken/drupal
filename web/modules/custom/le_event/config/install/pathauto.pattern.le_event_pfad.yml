@@ -1,0 +1,21 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: le_event_pfad
+label: 'Event Pfad'
+type: 'canonical_entities:node'
+pattern: '/events/[node:title]-[node:field_le_event_adresse:postal_code]'
+selection_criteria:
+  8c060fa0-6066-4e10-b648-ea07fe5fb8d5:
+    id: node_type
+    bundles:
+      le_event: le_event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 8c060fa0-6066-4e10-b648-ea07fe5fb8d5
+selection_logic: and
+weight: -5
+relationships: {  }

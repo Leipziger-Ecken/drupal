@@ -2,12 +2,12 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_is_barrier_free
-    - node.type.le_akteur
-id: node.le_akteur.field_le_akteur_is_barrier_free
-field_name: field_le_akteur_is_barrier_free
+    - field.storage.node.field_le_event_is_barrier_free
+    - node.type.le_event
+id: node.le_event.field_le_event_is_barrier_free
+field_name: field_le_event_is_barrier_free
 entity_type: node
-bundle: le_akteur
+bundle: le_event
 label: 'Barrierefrei?'
 description: 'Besteht ein barrierefreier Zugang zu Räumen und WC?'
 required: false

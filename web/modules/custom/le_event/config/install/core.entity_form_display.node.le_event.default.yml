@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.le_event.field_le_event_bezirk
     - field.field.node.le_event.field_le_event_geofield
     - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
     - field.field.node.le_event.field_le_event_occurrences
     - image.style.thumbnail
     - node.type.le_event
@@ -66,6 +67,13 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_le_event_is_barrier_free:
+    weight: 26
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_le_event_occurrences:
     weight: 9

@@ -50,6 +50,7 @@ dependencies:
   - rest
   - devel
   - date_popup
+  - pathauto
   - features
   - features_ui
   - menu_ui

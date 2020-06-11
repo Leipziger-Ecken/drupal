@@ -303,12 +303,13 @@ display:
             operator_list: {  }
             identifier: title
             required: false
-            remember: false
+            remember: true
             multiple: false
             remember_roles:
+              anonymous: anonymous
               authenticated: authenticated
-              anonymous: '0'
               administrator: '0'
+              le_role_redakteur: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -346,11 +347,11 @@ display:
             operator_list: {  }
             identifier: field_le_akteur_bezirk_target_id
             required: false
-            remember: false
+            remember: true
             multiple: false
             remember_roles:
+              anonymous: anonymous
               authenticated: authenticated
-              anonymous: '0'
               administrator: '0'
               le_role_redakteur: '0'
             reduce: false
