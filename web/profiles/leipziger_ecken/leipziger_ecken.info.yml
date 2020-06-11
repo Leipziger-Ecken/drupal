@@ -49,6 +49,7 @@ dependencies:
   - views
   - rest
   - devel
+  - date_popup
   - features
   - features_ui
   - menu_ui

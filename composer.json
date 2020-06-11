@@ -21,6 +21,7 @@
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",
         "drupal/core-recommended": "^8.9",
+        "drupal/date_popup": "^1.1",
         "drupal/date_recur": "^2.0",
         "drupal/devel": "^2.1",
         "drupal/entityconnect": "^2.0@alpha",
