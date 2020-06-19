@@ -1,0 +1,93 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Called on UI-change event of $field_{le_entity_type}_kategorie_typ.
+ * Returns a renderable array that replaces the wrapper-container.
+ */
+function ajax_field_kategorie_typ_callback(&$form, FormStateInterface $form_state) {
+  return isset($form['field_le_akteur_kategorie_subtyp']) ? $form['field_le_akteur_kategorie_subtyp'] : $form['field_le_event_kategorie_subtyp'];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+
+  if (in_array($form_id, ['node_le_akteur_form','node_le_akteur_edit_form'])) {
+    set_kategorie_form_fields($form, $form_state, 'akteur');
+  }
+
+  if (in_array($form_id, ['node_le_event_form','node_le_event_edit_form'])) {
+    set_kategorie_form_fields($form, $form_state, 'event');
+  }
+}
+
+/**
+ * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
+ * ("Select one main category; select multiple second categories which are children of that main category")
+ */
+function set_kategorie_form_fields(&$form, FormStateInterface $form_state, $le_entity_type) {
+
+  $kategorie_typ_field = "field_le_${le_entity_type}_kategorie_typ";
+  $kategorie_subtyp_field = "field_le_${le_entity_type}_kategorie_subtyp";
+
+  // Get main category value based on context (default render || ajax request)
+  $full_entity = $form_state->getFormObject()->getEntity();
+
+  $field_kategorie_typ_default_value = $full_entity->get($kategorie_typ_field)->getValue();
+  $field_kategorie_typ_ajax_value = $form_state->getValue($kategorie_typ_field);
+
+  $field_kategorie_typ_value = null;
+
+  if (isset($field_kategorie_typ_default_value[0])) {
+    $field_kategorie_typ_value = (int) $field_kategorie_typ_default_value[0]['target_id'];
+  }
+
+  if (isset($field_kategorie_typ_ajax_value[0])) {
+    $field_kategorie_typ_value = (int) $field_kategorie_typ_ajax_value[0]['target_id'];
+  }
+
+  $kategorien = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('le_kategorie_typ');
+
+  // Set main category select options
+  $first_option_kategorien = [
+    '_none' => '- Nicht ausgewählt -'
+  ];
+
+  foreach ($kategorien as $kategorie) {
+    if ((int) $kategorie->parents[0] === 0) {
+      $first_option_kategorien[$kategorie->tid] = $kategorie->name;
+    }
+  }
+
+  $form[$kategorie_typ_field]['widget']['#options'] = $first_option_kategorien;
+  $form[$kategorie_typ_field]['widget']['#ajax'] = array(
+    'callback' => 'ajax_field_kategorie_typ_callback',
+    'wrapper' => 'field-kategorie-subtyp-wrapper',
+    'method' => 'replace',
+    // 'effect' => 'fade',
+  );
+
+  // Set sub-category select options based on $field_kategorie_typ_value
+  // @todo Eventually we wanna hide/disable this field completely as long as $field_kategorie_typ_value === NULL
+  $second_option_kategorien = [
+    '_none' => $field_kategorie_typ_value ? '- Nicht ausgewählt -' : '- Wähle zunächst Hauptkategorie -'
+  ];
+
+  if ($field_kategorie_typ_value) {
+    foreach ($kategorien as $kategorie) {
+      if ((int) $kategorie->parents[0] === $field_kategorie_typ_value) {
+        $second_option_kategorien[$kategorie->tid] = $kategorie->name;
+      }
+    }
+  }
+
+  $form[$kategorie_subtyp_field]['widget']['#options'] = $second_option_kategorien;
+
+  // Set wrapper in which output of ajax_field_kategorie_typ_callback() will be rendered into.
+  $form[$kategorie_subtyp_field]['widget']['#prefix'] = '<div id="field-kategorie-subtyp-wrapper">';
+  $form[$kategorie_subtyp_field]['widget']['#suffix'] = '</div>';
+}

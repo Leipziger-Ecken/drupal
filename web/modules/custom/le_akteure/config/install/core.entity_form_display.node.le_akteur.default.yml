@@ -11,6 +11,10 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_email
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
+    - field.field.node.le_akteur.field_le_akteur_kategorie_subtyp
+    - field.field.node.le_akteur.field_le_akteur_kategorie_tags
+    - field.field.node.le_akteur.field_le_akteur_kategorie_typ
     - field.field.node.le_akteur.field_le_akteur_opening_times
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
@@ -92,6 +96,34 @@ content:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  field_le_akteur_kategorie_gruppe:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_le_akteur_kategorie_subtyp:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_le_akteur_kategorie_tags:
+    weight: 29
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_le_akteur_kategorie_typ:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_le_akteur_opening_times:
     weight: 10

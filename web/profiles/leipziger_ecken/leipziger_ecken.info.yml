@@ -64,6 +64,7 @@ dependencies:
   - le_region
   - le_bezirk
   - le_api
+  - le_kategorien
   - le_akteure
   - le_event
 

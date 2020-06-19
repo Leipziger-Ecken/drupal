@@ -18,6 +18,7 @@ dependencies:
   - language
   - le_api
   - le_bezirk
+  - le_kategorien
   - le_region
   - leaflet
   - link
@@ -32,6 +33,5 @@ dependencies:
   - text
   - user
   - views
-  - le_bezirk
-version: 8.x-0.1.4
+version: 8.x-0.1.5
 core_incompatible: false

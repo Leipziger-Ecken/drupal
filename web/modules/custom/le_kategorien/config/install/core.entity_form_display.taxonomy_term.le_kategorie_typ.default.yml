@@ -1,0 +1,36 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_typ
+  module:
+    - path
+id: taxonomy_term.le_kategorie_typ.default
+targetEntityType: taxonomy_term
+bundle: le_kategorie_typ
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  status: true

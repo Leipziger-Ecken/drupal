@@ -1,0 +1,3 @@
+services:
+  le_core.slug_helper:
+    class: Drupal\le_core\Utils\SlugHelper

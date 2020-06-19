@@ -15,6 +15,7 @@ dependencies:
   - language
   - le_akteure
   - le_bezirk
+  - le_kategorien
   - le_region
   - leaflet
   - metatag
@@ -27,5 +28,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.2
+version: 8.x-0.1.3
 core_incompatible: false

@@ -4,14 +4,16 @@ type: module
 package: 'Leipziger Ecken'
 core: 8.x
 dependencies:
+  - ctools
   - field
   - language
   - le_region
   - node
   - path
+  - pathauto
   - taxonomy
   - text
   - user
   - views
-version: 8.x-0.1.1
+version: 8.x-0.1.2
 core_incompatible: false

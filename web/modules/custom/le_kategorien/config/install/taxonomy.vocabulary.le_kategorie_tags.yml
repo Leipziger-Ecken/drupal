@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: 'Kategorie: Tags'
+vid: le_kategorie_tags
+description: 'Allgemeine / Übergeordnete Schlagwörter'
+weight: 0

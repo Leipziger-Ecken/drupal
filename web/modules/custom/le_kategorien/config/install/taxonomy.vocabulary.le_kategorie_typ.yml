@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: 'Kategorie: Angebotstyp'
+vid: le_kategorie_typ
+description: 'Kategorisierung eines Akteurs / Events (1 Hauptkategorie - hat - n Unterkategorien)'
+weight: 0

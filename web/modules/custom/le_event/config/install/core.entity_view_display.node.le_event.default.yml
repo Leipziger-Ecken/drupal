@@ -11,6 +11,10 @@ dependencies:
     - field.field.node.le_event.field_le_event_geofield
     - field.field.node.le_event.field_le_event_image
     - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_subtyp
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
     - field.field.node.le_event.field_le_event_occurrences
     - node.type.le_event
   module:
@@ -139,6 +143,38 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_le_event_kategorie_gruppe:
+    weight: 11
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_subtyp:
+    weight: 10
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_tags:
+    weight: 12
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_typ:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   field_le_event_occurrences:
     weight: 5

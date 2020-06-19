@@ -1,0 +1,15 @@
+name: Kategorien
+description: 'Taxonomie-Typen für LE-spezifische Gliederungsebenen'
+type: module
+core: 8.x
+package: 'Leipziger Ecken'
+dependencies:
+  - comment
+  - field
+  - image
+  - language
+  - path
+  - taxonomy
+  - text
+  - user
+version: 8.x-0.1.1

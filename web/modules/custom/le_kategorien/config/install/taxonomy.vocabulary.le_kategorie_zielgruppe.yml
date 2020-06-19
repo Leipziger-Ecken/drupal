@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: 'Kategorie: Zielgruppe'
+vid: le_kategorie_zielgruppe
+description: 'z.B. "Kinder" / "Jugendliche" / "Erwachsene" / "Senioren"'
+weight: 0

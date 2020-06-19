@@ -3,8 +3,7 @@
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
-
-require_once('slug_helper.php');
+use Drupal\le_core\Utils\SlugHelper;
 
 /**
  * Implements hook_install
@@ -21,7 +20,6 @@ function le_migrate_install ()
 
 function le_migrate_akteure ()
 {
-
       $directory = 'public://le/';
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
@@ -49,7 +47,7 @@ function le_migrate_akteure ()
           $created = $created->getTimestamp();
         }
 
-        $slug = slugify($akteur->name) . ($akteur->plz ? '-' . $akteur->plz : '');
+        $slug = SlugHelper::slugify($akteur->name) . ($akteur->plz ? '-' . $akteur->plz : '');
 
         $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
         $image_name = basename($akteur->bild);
@@ -119,7 +117,7 @@ function le_migrate_bezirke ()
 
       foreach ($result as $bezirk) {
 
-        $slug = slugify($bezirk->bezirksname);
+        $slug = SlugHelper::slugify($bezirk->bezirksname);
 
         $term = Term::create(array(
           'tid' => $bezirk->BID,
@@ -171,7 +169,7 @@ function le_migrate_events ()
           $created = $created->getTimestamp();
         }
 
-        $slug = slugify($event->name) . ($event->plz ? '-' . $event->plz : '');
+        $slug = SlugHelper::slugify($event->name) . ($event->plz ? '-' . $event->plz : '');
 
         $valid_url = filter_var($event->url, FILTER_VALIDATE_URL);
         $image_name = basename($event->bild);

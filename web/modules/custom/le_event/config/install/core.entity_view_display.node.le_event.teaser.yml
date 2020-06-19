@@ -11,6 +11,10 @@ dependencies:
     - field.field.node.le_event.field_le_event_geofield
     - field.field.node.le_event.field_le_event_image
     - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_subtyp
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
     - field.field.node.le_event.field_le_event_occurrences
     - node.type.le_event
   module:
@@ -34,5 +38,9 @@ hidden:
   field_le_event_geofield: true
   field_le_event_image: true
   field_le_event_is_barrier_free: true
+  field_le_event_kategorie_gruppe: true
+  field_le_event_kategorie_subtyp: true
+  field_le_event_kategorie_tags: true
+  field_le_event_kategorie_typ: true
   field_le_event_occurrences: true
   langcode: true

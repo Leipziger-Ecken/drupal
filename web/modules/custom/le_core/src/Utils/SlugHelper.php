@@ -1,21 +1,30 @@
 <?php
-// Copyright: depot.social 2020
+
+namespace Drupal\le_core\Utils;
 
 /**
- * Calculate a slug with a maximum length for a string.
+ * Class SlugHelper.
  *
- * @param $string
- *   The string you want to calculate a slug for.
- * @param $length
- *   The maximum length the slug can have.
- * @return
- *   A string representing the slug
- *
- * @see https://stackoverflow.com/questions/2864785/drupal-standard-way-for-creating-a-slug-from-a-string
- *
+ * Helper class to generate unified URI-path's. Call via OOP or as global service, e.g.:
+ * \Drupal::service('le_core.slug_helper')->getMultisiteAlias();
  */
+class SlugHelper {
 
-function slugify($string, $replace_digits = true, $length = 120, $separator = '-') {
+  /**
+  * Calculate a slug with a maximum length for a string.
+  *
+  * @copyright depot.social
+  *
+  * @param $string
+  *   The string you want to calculate a slug for.
+  * @param $length
+  *   The maximum length the slug can have.
+  * @return
+  *   A string representing the slug
+  *
+  * @see https://stackoverflow.com/questions/2864785/drupal-standard-way-for-creating-a-slug-from-a-string
+  */
+  public function slugify($string, $replace_digits = true, $length = 120, $separator = '-') {
 
     // Remove disturbing words
     $noise_words = array(
@@ -35,10 +44,10 @@ function slugify($string, $replace_digits = true, $length = 120, $separator = '-
     );
 
     // transliterate
-    $string = str_replace('Ã¼','ue',$string);
-    $string = str_replace('Ã¤','ae',$string);
-    $string = str_replace('Ã¶','oe',$string);
-    $string = transliterate($string);
+    $string = str_replace('ü','ue',$string);
+    $string = str_replace('ä','ae',$string);
+    $string = str_replace('ö','oe',$string);
+    $string = self::transliterate($string);
 
     // lowercase
     $string = strtolower($string);
@@ -70,15 +79,19 @@ function slugify($string, $replace_digits = true, $length = 120, $separator = '-
     return $string;
   }
 
+  public function is_slug($str) {
+    return $str == slug($str);
+  }
+
   /**
-   * Transliterate a given string.
-   *
-   * @param $string
-   *   The string you want to transliterate.
-   * @return
-   *   A string representing the transliterated version of the input string.
-   */
-  function transliterate($string) {
+  * Transliterate a given string.
+  *
+  * @param $string
+  *   The string you want to transliterate.
+  * @return
+  *   A string representing the transliterated version of the input string.
+  */
+  private static function transliterate($string) {
     static $charmap;
     if (!$charmap) {
       $charmap = array(
@@ -184,7 +197,4 @@ function slugify($string, $replace_digits = true, $length = 120, $separator = '-
     // transliterate
     return strtr($string, $charmap);
   }
-
-  function is_slug($str) {
-    return $str == slug($str);
-  }
+}
