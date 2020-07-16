@@ -232,7 +232,7 @@ class DateRecurModularSierraModalOccurrencesForm extends FormBase {
 
     $form['occurrences'] = [
       '#type' => 'details',
-      '#title' => $this->t('Occurrences'),
+      '#title' => $this->t('Termine'),
       '#open' => TRUE,
     ];
 
@@ -436,11 +436,11 @@ class DateRecurModularSierraModalOccurrencesForm extends FormBase {
     $collection = $this->tempStoreFactory->get(DateRecurModularSierraWidget::COLLECTION_MODAL_STATE);
     $collection->set(DateRecurModularSierraWidget::COLLECTION_MODAL_STATE_KEY, implode("\n", $lines));
 
-    $refreshBtnName = sprintf('[name="%s"]', $collection->get(DateRecurModularSierraWidget::COLLECTION_MODAL_STATE_REFRESH_BUTTON));
-    $response
-      ->addCommand(new CloseDialogCommand())
+    // $refreshBtnName = sprintf('[name="%s"]', $collection->get(DateRecurModularSierraWidget::COLLECTION_MODAL_STATE_REFRESH_BUTTON));
+    //$response
+    //  ->addCommand(new CloseDialogCommand())
       // Transfers new lines to widget.
-      ->addCommand(new InvokeCommand($refreshBtnName, 'trigger', ['click']));
+    //  ->addCommand(new InvokeCommand($refreshBtnName, 'trigger', ['click']));
 
     return $response;
   }

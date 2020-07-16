@@ -1,13 +1,3 @@
-date_recur_modular_alpha_widget:
-  css:
-    theme:
-      css/date-recur-modular-alpha-widget.css: {}
-
-date_recur_modular_oscar_widget:
-  css:
-    theme:
-      css/date-recur-modular-oscar-widget.css: {}
-
 date_recur_modular_sierra_widget:
   css:
     theme:

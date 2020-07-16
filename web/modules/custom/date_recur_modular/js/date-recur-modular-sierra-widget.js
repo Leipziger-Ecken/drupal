@@ -2,6 +2,9 @@
  * Modified for Leipziger Ecken project (https://github.com/Leipziger-Ecken/drupal):
  * 
  * * OnDocumentReady: Load initial occurrences table list via AJAX
+ * * On[un]CheckOccurencesCheckbox: Disable other checkboxes till response returned
+ * 
+ * @todo Only (re-)load occurrencesContainer ("modal") when there IS a reccurrence selected
  */
 
 /**
@@ -13,6 +16,24 @@
     attach: function attach(context, settings) {
       // Lazily load initial occurrences table list via AJAX
       $(context).find('.date-recur-modular-sierra-widget-start-end').once().trigger('blur');
+
+      $(document).once()
+        .ajaxStart(function() {
+            // Prevent click events on occurrences-checkboxes
+            $(context).find("#occurrences-table input[type='checkbox']").prop("disabled", true);
+        })
+        .ajaxComplete(function() {
+            // Return to default state
+            $(context).find("#occurrences-table input[type='checkbox']").removeAttr("disabled");
+
+            // Flag parent row of checked input item for styling purposes
+            $(context).find('#occurrences-table tr.is-checked').removeClass('is-checked');
+
+            $(context)
+              .find("#occurrences-table input[type='checkbox']:checked")
+              .closest('tr')
+              .addClass('is-checked');
+        });
 
       var $recurrenceOptionDropdowns = $(context).find('.date-recur-modular-sierra-widget .date-recur-modular-sierra-widget-recurrence-option').once('date-recur-modular-sierra-widget-recurrence-option');
       $recurrenceOptionDropdowns.each(function () {

@@ -21,3 +21,7 @@
 .date-recur-modular-sierra-widget  .show-more-wrapper p {
   font-style: italic;
 }
+
+.date-recur-modular-sierra-widget tr.is-checked {
+  text-decoration: line-through;
+}

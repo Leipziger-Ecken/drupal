@@ -481,7 +481,7 @@ class DateRecurModularSierraWidget extends DateRecurModularWidgetBase {
     }
     // Map for onBlurInputField AJAX/UI procedure
     $ajaxRefreshOccurrences = [
-      'event' => 'blur',
+      'event' => 'blur', // @todo a delayed 'change' would be great! 
       'callback' => [$this, 'openOccurrencesModal'],
       'wrapper' => 'open-occurrences-wrapper', // div attached via #suffix at end of form, see below
       'method' => 'html', // @see https://api.drupal.org/api/drupal/core!core.api.php/group/ajax/8.2.x
@@ -512,7 +512,7 @@ class DateRecurModularSierraWidget extends DateRecurModularWidgetBase {
         'class' => ['date-recur-modular-sierra-widget-start-end'],
       ],
       '#date_date_format' => 'Y-m-d',
-      '#ajax' => $ajaxRefreshOccurrences,
+      '#ajax' => $ajaxRefreshOccurrences, // @todo really required?
     ];
 
     $isAllDayName = $this->getName($element, ['is_all_day']);
@@ -546,7 +546,7 @@ class DateRecurModularSierraWidget extends DateRecurModularWidgetBase {
         'step' => 1,
       ],
       '#default_value' => $item->end_date instanceof DrupalDateTime ? $item->end_date->format(static::HTML_TIME_FORMAT) : NULL,
-      '#ajax' => $ajaxRefreshOccurrences,
+      '#ajax' => $ajaxRefreshOccurrences, // @todo really required?
     ];
     $element['time_end']['#states']['visible'][0]['input[name="' . $isAllDayName . '"]'] = ['checked' => FALSE];
 

@@ -1,11 +1,3 @@
-field.widget.settings.date_recur_modular_oscar:
-  type: mapping
-  label: 'Oscar widget settings'
-  mapping:
-    all_day_toggle:
-      type: boolean
-      label: 'All day toggle enabled'
-
 field.widget.settings.date_recur_modular_sierra:
   type: mapping
   label: 'Sierra widget settings'
