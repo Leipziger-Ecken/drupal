@@ -1,0 +1,22 @@
+<div{{ attributes }}>
+  <div class="container-inline">
+    {{ widget.mode }}
+    {{ widget.daily_count }}
+  </div>
+  <div class="dates">
+    <div class="date">{{ widget.start }}</div>
+    <div class="date">{{ widget.end }}</div>
+    <div class="date">{{ widget.time_zone }}</div>
+  </div>
+  {{ widget.weekdays }}
+  {{ widget.ordinals }}
+  <div class="ends">
+    <div>
+      {{ widget.ends_mode }}
+    </div>
+    <div>
+      {{ widget.ends_count }}
+      {{ widget.ends_date }}
+    </div>
+  </div>
+</div>

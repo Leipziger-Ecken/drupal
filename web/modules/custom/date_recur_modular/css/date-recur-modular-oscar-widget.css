@@ -1,0 +1,107 @@
+.date-recur-modular-oscar-widget .dates {
+  display: flex;
+}
+.date-recur-modular-oscar-widget .dates > * {
+  padding: 0 1em;
+}
+.date-recur-modular-oscar-widget .dates > *:first-child {
+  padding-left: 0;
+}
+.date-recur-modular-oscar-widget .container-inline label:after,
+.date-recur-modular-oscar-widget .container-inline .label:after {
+  /* Normally a colon is placed after label, which is undesirable for inline
+     checkboxes */
+  content: '';
+}
+.date-recur-modular-oscar-widget .parts {
+  display: flex;
+  align-items: center;
+}
+.date-recur-modular-oscar-widget .parts--part {
+  padding: 0 .25em;
+}
+.date-recur-modular-oscar-widget .parts--daily-count input[type="number"] {
+  width: 3em;
+}
+.date-recur-modular-oscar-widget .parts--ordinals .form-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.date-recur-modular-oscar-widget .parts--ordinals .form-checkboxes > * {
+  flex-basis: 20%;
+  white-space: nowrap;
+  /** Fix excessive top and bottom margins from tr.odd .form-item */
+  margin: 0;
+}
+.date-recur-modular-oscar-widget .parts--weekdays .form-checkboxes {
+  display: flex;
+}
+.date-recur-modular-oscar-widget .parts--weekdays .form-checkboxes > * {
+  /** Make everything the same width */
+  flex: 1;
+  padding: 0 .375em;
+  text-align: center;
+}
+.date-recur-modular-oscar-widget .parts--weekdays .form-checkboxes label {
+  /** Push the checkbox for this label onto the next line */
+  display: block;
+}
+.date-recur-modular-oscar-widget .parts--times {
+  background-color: #fafafa;
+  border: 1px solid #fcfcfc;
+  border-radius: 3px;
+  padding: 0 .5em;
+  display: inline-block;
+}
+.date-recur-modular-oscar-widget .parts--times > * {
+  display: inline-block;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day .form-radios {
+  position: relative;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day .form-radios::after {
+  content: ' ';
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  pointer-events: none;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day .form-radios > * {
+  margin: 0;
+  display: inline-block;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day label {
+  display: inline-block;
+  padding: .375em 1em;
+  margin: 0;
+  align-items: center;
+  position: relative;
+  color: #333;
+  z-index: 100;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day input[type=radio] {
+  position: absolute;
+  left: -9999px;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day input[type=radio] + label {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  margin: 2px;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day input[type=radio]:hover:not(:checked) + label {
+  border-color: #007fff;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day input[type=radio]:checked + label {
+  color: #060606;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+  background-color: #f3f3f3;
+  border-color: #ccc;
+}
+.date-recur-modular-oscar-widget .parts--is-all-day input[type=radio]:focus + label {
+  border-color: #007fff;
+  background-color: rgb(191, 223, 255);
+}

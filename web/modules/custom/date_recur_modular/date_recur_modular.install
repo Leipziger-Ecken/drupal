@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for date_recur_modular module.
+ */
+
+declare(strict_types = 1);
+
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\date_recur\Entity\DateRecurInterpreter;
+
+/**
+ * Updates existing form displays with default interpreter.
+ */
+function date_recur_modular_update_8201(&$sandbox): void {
+  $interpreterId = 'default_interpreter';
+  if (!DateRecurInterpreter::load($interpreterId)) {
+    // If default interpreter doesnt exist then skip this update.
+    return;
+  }
+
+  /** @var \Drupal\Core\Entity\Display\EntityFormDisplayInterface[] $displays */
+  $displays = EntityFormDisplay::loadMultiple();
+  foreach ($displays as $display) {
+    $updated = FALSE;
+
+    $components = $display->getComponents();
+    foreach ($components as $component => $options) {
+      $type = $options['type'] ?? NULL;
+      if ($type === 'date_recur_modular_sierra' && ($options['settings']['interpreter'] ?? NULL) === NULL) {
+        // Adding this will automatically add dependency.
+        $options['settings']['interpreter'] = $interpreterId;
+        $updated = TRUE;
+        $display->setComponent($component, $options);
+      }
+    }
+
+    if ($updated) {
+      $display->save();
+    }
+  }
+}

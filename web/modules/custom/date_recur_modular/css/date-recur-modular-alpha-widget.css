@@ -1,0 +1,31 @@
+.date-recur-modular-alpha-widget .dates {
+  display: flex;
+}
+.date-recur-modular-alpha-widget .dates > * {
+  padding: 0 1em;
+}
+.date-recur-modular-alpha-widget .dates > *:last-child {
+  padding-right: 0;
+}
+.date-recur-modular-alpha-widget .dates > *:first-child {
+  padding-left: 0;
+}
+.date-recur-modular-alpha-widget .ends {
+  display: flex;
+  align-items: center;
+}
+.date-recur-modular-alpha-widget .ends > * {
+  padding: 0 1em;
+}
+.date-recur-modular-alpha-widget .ends > *:last-child {
+  padding-right: 0;
+}
+.date-recur-modular-alpha-widget .ends > *:first-child {
+  padding-left: 0;
+}
+.date-recur-modular-alpha-widget .container-inline label:after,
+.date-recur-modular-alpha-widget .container-inline .label:after {
+  /* Normally a colon is placed after label, which is undesirable for inline
+     checkboxes */
+  content: '';
+}

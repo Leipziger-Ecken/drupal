@@ -1,0 +1,18 @@
+<div{{ attributes }}>
+  <div class="date-recur-modular-sierra-widget-day">
+    {% spaceless %}
+    {{ widget.day_start }}
+    {{ widget.time_start }}
+    {{ ' to '|t }}
+    {{ widget.time_end }}
+    {{ widget.day_end }}
+    {{ widget.time_zone }}
+    {% endspaceless %}
+  </div>
+  <div class="date-recur-modular-sierra-widget-recurrences">
+    {{ widget.is_all_day }}
+    {{ widget.recurrence_option }}
+    {{ widget.occurrences }}
+  </div>
+  {{ widget.buttons }}
+</div>

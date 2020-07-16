@@ -1,0 +1,23 @@
+.date-recur-modular-sierra-widget .date-recur-modular-sierra-widget-day div,
+.date-recur-modular-sierra-widget .date-recur-modular-sierra-widget-day label,
+.date-recur-modular-sierra-widget .date-recur-modular-sierra-widget-recurrences div,
+.date-recur-modular-sierra-widget .date-recur-modular-sierra-widget-recurrences label {
+  display: inline-block;
+  padding: 0 .25em;
+}
+
+.date-recur-modular-sierra-widget  #occurrences-table {
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.date-recur-modular-sierra-widget  .show-more-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.date-recur-modular-sierra-widget  .show-more-wrapper p {
+  font-style: italic;
+}

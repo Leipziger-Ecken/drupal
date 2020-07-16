@@ -1,0 +1,33 @@
+/** Drupal doesnt have CSS for date/time fields in Seven. See form.css
+    https://www.drupal.org/project/drupal/issues/2976404
+    */
+.form-disabled input.form-date,
+.form-disabled input.form-time {
+  border-color: #d4d4d4;
+  background-color: hsla(0, 0%, 0%, 0.08);
+  box-shadow: none;
+}
+.date-recur-modular-sierra-modal input[name="interval"],
+.date-recur-modular-sierra-modal input[name="ends_count"] {
+  width: 6em;
+}
+
+.date-recur-modular-sierra-modal .ends {
+  display: flex;
+  flex-direction: column;
+}
+.date-recur-modular-sierra-modal .ends .ends-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.date-recur-modular-sierra-modal .ends .ends-row .ends-row-label {
+  width: 20%;
+}
+.date-recur-modular-sierra-modal .ends .ends-row .ends-row-field {
+  width: 80%;
+}
+.date-recur-modular-sierra-modal .container-inline.weekdays label:after {
+  content: '';
+}

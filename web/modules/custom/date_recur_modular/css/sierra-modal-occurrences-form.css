@@ -1,0 +1,8 @@
+.date-recur-modular-sierra-occurences-modal .show-more-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.date-recur-modular-sierra-occurences-modal .show-more-wrapper p {
+  font-style: italic;
+}

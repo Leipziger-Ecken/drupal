@@ -1,0 +1,32 @@
+date_recur_modular_alpha_widget:
+  css:
+    theme:
+      css/date-recur-modular-alpha-widget.css: {}
+
+date_recur_modular_oscar_widget:
+  css:
+    theme:
+      css/date-recur-modular-oscar-widget.css: {}
+
+date_recur_modular_sierra_widget:
+  css:
+    theme:
+      css/date-recur-modular-sierra-widget.css: {}
+  js:
+    js/date-recur-modular-sierra-widget.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - core/drupal.form
+
+date_recur_modular_sierra_widget_modal_form:
+  css:
+    theme:
+      css/date-recur-modular-sierra-widget-modal-form.css: {}
+
+sierra_modal_occurrences_form:
+  css:
+    theme:
+      css/sierra-modal-occurrences-form.css: {}

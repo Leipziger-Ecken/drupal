@@ -1,0 +1,17 @@
+{
+  "name": "drupal/date_recur_modular",
+  "type": "drupal-module",
+  "description": "Recurring Date Fields Modular Widgets",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/date_recur_modular",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/date_recur_modular",
+    "source": "http://cgit.drupalcode.org/date_recur_modular"
+  },
+  "require": {
+    "drupal/core": "^8.9",
+    "drupal/date_recur": "^2.0@beta"
+  }
+}
