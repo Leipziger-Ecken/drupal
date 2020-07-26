@@ -17,6 +17,7 @@
     "require": {
         "composer/installers": "^1.2",
         "drupal/address": "^1.8",
+        "drupal/avatar_field_formatter": "^1.2",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",
@@ -36,7 +37,8 @@
         "drupal/token": "^1.6",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
-        "geocoder-php/mapbox-provider": "^1.0"
+        "geocoder-php/mapbox-provider": "^1.0",
+        "laravolt/avatar": "^3.2"
     },
     "conflict": {
         "drupal/drupal": "*"
