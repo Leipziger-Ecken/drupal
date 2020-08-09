@@ -10,8 +10,8 @@ id: node.le_akteur.field_le_akteur_phone
 field_name: field_le_akteur_phone
 entity_type: node
 bundle: le_akteur
-label: Telefonnummer
-description: 'Telefonnummer zur Kontaktaufnahme'
+label: Telefon
+description: 'Öffentliche Telefonnummer zur Kontaktaufnahme'
 required: false
 translatable: false
 default_value: {  }

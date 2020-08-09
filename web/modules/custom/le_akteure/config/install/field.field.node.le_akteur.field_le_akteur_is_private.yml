@@ -2,14 +2,14 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_is_barrier_free
+    - field.storage.node.field_le_akteur_is_private
     - node.type.le_akteur
-id: node.le_akteur.field_le_akteur_is_barrier_free
-field_name: field_le_akteur_is_barrier_free
+id: node.le_akteur.field_le_akteur_is_private
+field_name: field_le_akteur_is_private
 entity_type: node
 bundle: le_akteur
-label: 'Barrierefreier Zugang?'
-description: 'Besteht ein barrierefreier Zugang zu den Räumlichkeiten?'
+label: 'Privat?'
+description: 'Mitglieder und Inhalte von privaten Gruppen sind nur für Mitglieder ersichtlich.'
 required: false
 translatable: false
 default_value:

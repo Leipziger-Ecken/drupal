@@ -3,13 +3,14 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_le_event_aid
-field_name: field_le_event_aid
+    - og
+id: node.og_audience
+field_name: og_audience
 entity_type: node
-type: entity_reference
+type: og_standard_reference
 settings:
   target_type: node
-module: core
+module: og
 locked: false
 cardinality: 1
 translatable: true

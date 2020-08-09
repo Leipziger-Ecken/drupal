@@ -1,0 +1,36 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - comment.type.le_comment_type_gespraeche
+    - field.field.comment.le_comment_type_gespraeche.comment_body
+  module:
+    - text
+id: comment.le_comment_type_gespraeche.default
+targetEntityType: comment
+bundle: le_comment_type_gespraeche
+mode: default
+content:
+  author:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  comment_body:
+    type: text_textarea
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  subject:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'z.B. "Vorbereitung nächstes Projekttreffen"'
+    third_party_settings: {  }
+hidden:
+  langcode: true

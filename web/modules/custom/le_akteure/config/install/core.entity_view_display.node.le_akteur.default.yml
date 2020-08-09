@@ -2,15 +2,18 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.le_comment_type_gespraeche.default
     - field.field.node.le_akteur.field_geofield
     - field.field.node.le_akteur.field_le_akteur_adresse
     - field.field.node.le_akteur.field_le_akteur_bezirk
+    - field.field.node.le_akteur.field_le_akteur_comments
     - field.field.node.le_akteur.field_le_akteur_contactperson
     - field.field.node.le_akteur.field_le_akteur_contactperson_fn
     - field.field.node.le_akteur.field_le_akteur_description
     - field.field.node.le_akteur.field_le_akteur_email
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_is_private
     - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
     - field.field.node.le_akteur.field_le_akteur_kategorie_subtyp
     - field.field.node.le_akteur.field_le_akteur_kategorie_tags
@@ -21,9 +24,11 @@ dependencies:
     - node.type.le_akteur
   module:
     - address
+    - comment
     - image
     - leaflet
     - link
+    - og
     - telephone
     - text
     - user
@@ -113,6 +118,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_le_akteur_comments:
+    weight: 19
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
   field_le_akteur_contactperson:
     weight: 10
     label: above
@@ -141,7 +155,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: basic_string
+    type: email_mailto
     region: content
   field_le_akteur_image:
     weight: 0
@@ -154,6 +168,16 @@ content:
     region: content
   field_le_akteur_is_barrier_free:
     weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_le_akteur_is_private:
+    weight: 20
     label: above
     settings:
       format: default
@@ -225,6 +249,13 @@ content:
   links:
     weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_group:
+    weight: 18
+    type: og_group_subscribe
+    region: content
+    label: above
     settings: {  }
     third_party_settings: {  }
 hidden:

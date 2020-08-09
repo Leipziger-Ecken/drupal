@@ -1,6 +1,13 @@
 langcode: de
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:views_view:views.le_akteur_api_get.page_1'
 name: Akteur
 type: le_akteur
 description: 'Organisationen, Personen und Vereine'

@@ -9,7 +9,7 @@ id: node.le_event.field_le_event_kategorie_typ
 field_name: field_le_event_kategorie_typ
 entity_type: node
 bundle: le_event
-label: Hauptkategorie
+label: Kategorien
 description: ''
 required: true
 translatable: false
