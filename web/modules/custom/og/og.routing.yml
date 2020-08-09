@@ -1,0 +1,45 @@
+# Routes for Organic groups.
+
+og.subscribe:
+  path: 'group/{entity_type_id}/{group}/subscribe/{membership_type}'
+  defaults:
+    _controller: '\Drupal\og\Controller\SubscriptionController::subscribe'
+    _title: 'Join Group'
+    membership_type: default
+  requirements:
+    # Only authenticated users can subscribe to group, but we do allow anonymous
+    # users to reach this route. They will be redirect to login page or be given
+    # the correct page by the controller.
+    _access: 'TRUE'
+  options:
+    parameters:
+      group:
+        type: entity:{entity_type_id}
+      membership_type:
+        type: entity:og_membership_type
+
+og.unsubscribe:
+  path: 'group/{entity_type_id}/{group}/unsubscribe'
+  defaults:
+    _controller: '\Drupal\og\Controller\SubscriptionController::unsubscribe'
+    _title: 'Leave Group'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      group:
+        type: entity:{entity_type_id}
+
+og.add_multiple_roles_confirm:
+  path: '/group/roles/add'
+  defaults:
+    _form: '\Drupal\og\Form\OgAddMultipleRolesForm'
+  requirements:
+    _custom_access: '\Drupal\og\Form\OgAddMultipleRolesForm::access'
+
+og.remove_multiple_roles_confirm:
+  path: '/group/roles/remove'
+  defaults:
+    _form: '\Drupal\og\Form\OgRemoveMultipleRolesForm'
+  requirements:
+    _custom_access: '\Drupal\og\Form\OgRemoveMultipleRolesForm::access'

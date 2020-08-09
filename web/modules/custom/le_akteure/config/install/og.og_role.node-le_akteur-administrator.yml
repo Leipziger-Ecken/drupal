@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+id: node-le_akteur-administrator
+label: Administrator
+weight: 2
+is_admin: true
+group_type: node
+group_bundle: le_akteur
+group_id: null
+permissions: {  }
+role_type: null

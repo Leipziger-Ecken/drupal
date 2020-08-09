@@ -1,0 +1,20 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - comment.type.le_comment_type_gespraeche
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.le_comment_type_gespraeche.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: le_comment_type_gespraeche
+label: Gespräch
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

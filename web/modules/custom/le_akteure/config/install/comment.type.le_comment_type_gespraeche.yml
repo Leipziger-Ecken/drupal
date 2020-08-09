@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+id: le_comment_type_gespraeche
+label: Gespräche
+target_entity_type_id: node
+description: 'Forum-ähnliches Diskussionsformat für Akteure.'

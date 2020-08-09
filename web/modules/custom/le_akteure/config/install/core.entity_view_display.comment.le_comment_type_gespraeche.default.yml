@@ -1,0 +1,27 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - comment.type.le_comment_type_gespraeche
+    - field.field.comment.le_comment_type_gespraeche.comment_body
+  module:
+    - text
+id: comment.le_comment_type_gespraeche.default
+targetEntityType: comment
+bundle: le_comment_type_gespraeche
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
