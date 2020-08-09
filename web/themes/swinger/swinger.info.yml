@@ -7,6 +7,8 @@ libraries:
   - swinger/global-styling
 regions:
   header: 'Header'
+  footer: 'Footer'
+  primary_tabs: 'Seitentabs'
   primary_menu: 'Primary menu'
   page_top: 'Page top'
   page_bottom: 'Page bottom'

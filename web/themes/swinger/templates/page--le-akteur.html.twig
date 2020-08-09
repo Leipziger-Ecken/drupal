@@ -43,26 +43,15 @@
  */
 #}
 <div id="wrapper">
-<div><!-- temp because of #wrapper > * > .inner -->
+<!--<div> temp because of #wrapper > * > .inner -->
   <div class="inner">
-
-  {% include '@swinger/parts/header.html.twig' %}
-
-  {{ page.secondary_menu }}
-
-  {{ page.breadcrumb }}
-
-  {{ page.highlighted }}
-
-  {{ page.help }}
+    {% include '@swinger/parts/header.html.twig' %}
+  </div>
+  
+  {{ page.content }}  
 
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-    <div class="layout-content">
-      {{ page.primary_tabs }}
-      {{ page.content }}
-    </div>{# /.layout-content #}
 
     {% if page.sidebar_first %}
       <aside class="layout-sidebar-first" role="complementary">
