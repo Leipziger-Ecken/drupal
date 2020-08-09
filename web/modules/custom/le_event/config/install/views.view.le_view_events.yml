@@ -2,6 +2,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.teaser
     - field.storage.node.field_le_event_beschreibung
     - node.type.le_event
     - system.menu.main
@@ -10,6 +11,7 @@ dependencies:
   module:
     - date_recur
     - datetime
+    - fullcalendar
     - node
     - rest
     - serialization
@@ -19,7 +21,7 @@ dependencies:
 id: le_view_events
 label: Events
 module: views
-description: ''
+description: 'Filterbare Eventsliste'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -56,12 +58,17 @@ display:
           sort_asc_label: Aufsteigend
           sort_desc_label: Absteigend
       pager:
-        type: mini
+        type: full
         options:
-          items_per_page: 20
+          items_per_page: 15
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Erste'
+            last: 'Letzte »'
           expose:
             items_per_page: false
             items_per_page_label: 'Elemente pro Seite'
@@ -70,74 +77,18 @@ display:
             items_per_page_options_all_label: '- Alle -'
             offset: false
             offset_label: Versatz
-          tags:
-            previous: ‹‹
-            next: ››
+          quantity: 9
       style:
-        type: table
+        type: default
         options:
-          grouping: {  }
-          row_class: ''
+          row_class: event-container
           default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            view_node: view_node
-            title: title
-            field_le_event_occurrences_value_1: field_le_event_occurrences_value_1
-            field_le_event_occurrences_value: field_le_event_occurrences_value
-            field_le_event_occurrences_end_value: field_le_event_occurrences_end_value
-            field_le_event_beschreibung: field_le_event_beschreibung
-          info:
-            view_node:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_le_event_occurrences_value_1:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_le_event_occurrences_value:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_le_event_occurrences_end_value:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_le_event_beschreibung:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          default: '-1'
-          empty_table: false
+          uses_fields: false
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
       fields:
         view_node:
           id: view_node
@@ -565,7 +516,7 @@ display:
             operator: field_le_event_bezirk_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_le_event_bezirk_target_id
+            identifier: bezirk_id
             required: false
             remember: false
             multiple: false
@@ -613,7 +564,7 @@ display:
             operator: field_le_bezirk_region_target_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_le_bezirk_region_target_id
+            identifier: stadtteil_id
             required: false
             remember: false
             multiple: false
@@ -665,7 +616,7 @@ display:
             operator: field_le_event_occurrences_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_le_event_occurrences_value
+            identifier: start
             required: false
             remember: false
             multiple: false
@@ -713,7 +664,7 @@ display:
             operator: field_le_event_occurrences_end_value_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: field_le_event_occurrences_end_value
+            identifier: ende
             required: false
             remember: false
             multiple: false
@@ -818,6 +769,76 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_le_event_beschreibung'
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: 'Kalender (NICHT kompatibel mit date_recur v2 :( )'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      path: events/kalender
+      style:
+        type: fullcalendar
+        options:
+          display:
+            defaultView: month
+            firstDay: '1'
+            weekMode: fixed
+          times:
+            default_date: false
+            date: ''
+          left: 'today prev,next'
+          center: title
+          right: 'month agendaWeek agendaDay'
+          timeformat: 'h:mm'
+          advanced: false
+          slotLabelFormat: 'h(:mm)a'
+          timeformatMonth: 'h:mm'
+          timeformatWeek: 'h:mm'
+          timeformatDay: 'h:mm'
+          titleformatMonth: 'MMMM YYYY'
+          titleformatWeek: 'MMM D YYYY'
+          titleformatDay: 'MMMM D YYYY'
+          columnformatMonth: ddd
+          columnformatWeek: 'ddd M/D'
+          columnformatDay: dddd
+          theme: false
+          sameWindow: false
+          modalWindow: false
+          contentHeight: 0
+          editable: false
+          fields:
+            title: false
+            title_field: title
+            url: false
+            url_field: title
+            date: false
+            date_field: {  }
+      defaults:
+        style: false
+        row: false
+        pager: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      pager:
+        type: none
+        options:
+          offset: 0
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
         - user
         - 'user.node_grants:view'
         - user.permissions

@@ -6,9 +6,11 @@ core: 8.x
 dependencies:
   - address
   - date_recur
+  - date_recur_modular
   - datetime
   - field
   - file
+  - fullcalendar
   - geocoder_field
   - geofield
   - image
@@ -18,8 +20,10 @@ dependencies:
   - le_kategorien
   - le_region
   - leaflet
+  - menu_ui
   - metatag
   - node
+  - og
   - path
   - pathauto
   - rest
@@ -28,5 +32,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.3
+version: 8.x-0.1.4
 core_incompatible: false

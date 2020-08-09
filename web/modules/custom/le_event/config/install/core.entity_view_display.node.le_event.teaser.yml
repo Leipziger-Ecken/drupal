@@ -2,10 +2,10 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.date_format.medium
     - core.entity_view_mode.node.teaser
     - field.field.node.le_event.field_le_event___eid
     - field.field.node.le_event.field_le_event_adresse
-    - field.field.node.le_event.field_le_event_aid
     - field.field.node.le_event.field_le_event_beschreibung
     - field.field.node.le_event.field_le_event_bezirk
     - field.field.node.le_event.field_le_event_geofield
@@ -16,24 +16,43 @@ dependencies:
     - field.field.node.le_event.field_le_event_kategorie_tags
     - field.field.node.le_event.field_le_event_kategorie_typ
     - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.og_audience
     - node.type.le_event
   module:
+    - date_recur
+    - text
     - user
 id: node.le_event.teaser
 targetEntityType: node
 bundle: le_event
 mode: teaser
 content:
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
+  field_le_event_beschreibung:
+    type: text_trimmed
+    weight: 0
     region: content
+    label: above
+    settings:
+      trim_length: 150
+    third_party_settings: {  }
+  field_le_event_occurrences:
+    type: date_recur_basic_formatter
+    weight: 1
+    region: content
+    label: above
+    settings:
+      format_type: medium
+      occurrence_format_type: medium
+      same_end_date_format_type: medium
+      separator: '-'
+      timezone_override: ''
+      interpreter: ''
+      show_next: 4
+      count_per_item: true
+    third_party_settings: {  }
 hidden:
   field_le_event___eid: true
   field_le_event_adresse: true
-  field_le_event_aid: true
-  field_le_event_beschreibung: true
   field_le_event_bezirk: true
   field_le_event_geofield: true
   field_le_event_image: true
@@ -42,5 +61,6 @@ hidden:
   field_le_event_kategorie_subtyp: true
   field_le_event_kategorie_tags: true
   field_le_event_kategorie_typ: true
-  field_le_event_occurrences: true
   langcode: true
+  links: true
+  og_audience: true

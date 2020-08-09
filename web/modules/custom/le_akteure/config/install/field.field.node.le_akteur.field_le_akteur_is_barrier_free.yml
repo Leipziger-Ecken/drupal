@@ -8,8 +8,8 @@ id: node.le_akteur.field_le_akteur_is_barrier_free
 field_name: field_le_akteur_is_barrier_free
 entity_type: node
 bundle: le_akteur
-label: 'Barrierefrei?'
-description: 'Besteht ein barrierefreier Zugang zu Räumen und WC?'
+label: 'Barrierefreier Zugang?'
+description: 'Besteht ein barrierefreier Zugang zu den Räumlichkeiten?'
 required: false
 translatable: false
 default_value:

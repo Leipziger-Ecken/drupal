@@ -12,7 +12,13 @@
 
  If you want to work on the CSS code, you will have to write SASS code which then is turned into "native" CSS by a parser. In *swinger*, all content from /sass-folder will become bundled into a single /css/main.css, meaning it will **overwrite** any changes offhand made in that file directly.
 
- To do bundling you can use any GUI-based SASS-tool available for your OS (e.g. [Koala](http://koala-app.com/)). The suggested way goes via npm, yet another command-line utility that you first have to [install](https://nodejs.org/en/download/). Then, in the terminal, first change into this theme-directory:
+ To do bundling you can use any SASS-tool available for your OS (e.g. [GUI-based Koala](http://koala-app.com/) or Prepros). If you prefer [SASS for CLI](https://sass-lang.com/install), simply run
+ 
+ ```console
+ sass --watch sass/main.scss css/main.css
+ ```
+
+ Another way goes via npm, yet another command-line utility that you first have to [install](https://nodejs.org/en/download/). Then, in the terminal, first change into this theme-directory:
  ```console
  cd /web/sites/themes/swinger
  ```

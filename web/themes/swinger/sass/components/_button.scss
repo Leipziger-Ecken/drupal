@@ -70,22 +70,23 @@
 			padding-right: 4.5em;
 			position: relative;
 
-			&:before, &:after {
+			&:after {
 				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
 				background-position: center right;
 				background-repeat: no-repeat;
 				background-size: 36px 24px;
-				content: '';
+				content: '→';
 				display: block;
 				height: 100%;
 				position: absolute;
-				right: 1.5em;
+				right: 1em;
 				top: 0;
 				vertical-align: middle;
 				width: 36px;
+				font-size: 2rem;
 			}
 
-			&:before {
+			/*&:before {
 				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(fg-bold)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
 			}
 
@@ -93,7 +94,7 @@
 				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36px" height="24px" viewBox="0 0 36 24" zoomAndPan="disable"><style>line { stroke: #{_palette(highlight)}; stroke-width: 2px; }</style><line x1="0" y1="12" x2="34" y2="12" /><line x1="25" y1="4" x2="34" y2="12.5" /><line x1="25" y1="20" x2="34" y2="11.5" /></svg>');
 				opacity: 0;
 				z-index: 1;
-			}
+			}*/
 
 			&:hover, &:active {
 				&:after {

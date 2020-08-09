@@ -9,8 +9,8 @@ id: node.le_akteur.field_le_akteur_kategorie_typ
 field_name: field_le_akteur_kategorie_typ
 entity_type: node
 bundle: le_akteur
-label: Hauptkategorie
-description: ''
+label: Kategorien
+description: 'Hauptkategorie des Akteurs'
 required: true
 translatable: false
 default_value: {  }

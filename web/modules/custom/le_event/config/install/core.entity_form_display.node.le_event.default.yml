@@ -2,9 +2,10 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.date_format.medium
+    - date_recur.interpreter.default_interpreter
     - field.field.node.le_event.field_le_event___eid
     - field.field.node.le_event.field_le_event_adresse
-    - field.field.node.le_event.field_le_event_aid
     - field.field.node.le_event.field_le_event_beschreibung
     - field.field.node.le_event.field_le_event_bezirk
     - field.field.node.le_event.field_le_event_geofield
@@ -15,12 +16,14 @@ dependencies:
     - field.field.node.le_event.field_le_event_kategorie_tags
     - field.field.node.le_event.field_le_event_kategorie_typ
     - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.og_audience
     - image.style.thumbnail
     - node.type.le_event
   module:
     - address
-    - date_recur
+    - date_recur_modular
     - image
+    - og
     - path
     - text
 id: node.le_event.default
@@ -39,16 +42,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: address_default
-    region: content
-  field_le_event_aid:
-    weight: 8
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
     region: content
   field_le_event_beschreibung:
     weight: 10
@@ -73,26 +66,26 @@ content:
     type: image_image
     region: content
   field_le_event_is_barrier_free:
-    weight: 26
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 29
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_le_event_kategorie_subtyp:
-    weight: 28
+    weight: 16
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_le_event_kategorie_tags:
-    weight: 30
+    weight: 18
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -102,16 +95,19 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_le_event_kategorie_typ:
-    weight: 27
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_le_event_occurrences:
     weight: 9
-    settings: {  }
+    settings:
+      interpreter: default_interpreter
+      date_format_type: medium
+      occurrences_modal: true
     third_party_settings: {  }
-    type: date_recur_basic_widget
+    type: date_recur_modular_sierra
     region: content
   langcode:
     type: language_select
@@ -120,6 +116,16 @@ content:
     settings:
       include_locked: true
     third_party_settings: {  }
+  og_audience:
+    type: og_complex
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      match_limit: 10
+      placeholder: ''
+    weight: 26
+    third_party_settings: {  }
+    region: content
   path:
     type: path
     weight: 2

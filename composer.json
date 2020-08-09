@@ -12,11 +12,24 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "fullcalendar/fullcalendar",
+                "version": "3.9.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/fullcalendar/fullcalendar/archive/v3.9.0.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
-        "composer/installers": "^1.2",
+        "composer/installers": "^1.9",
         "drupal/address": "^1.8",
+        "drupal/avatar_field_formatter": "^1.2",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",
@@ -26,6 +39,7 @@
         "drupal/devel": "^2.1",
         "drupal/entityconnect": "^2.0@alpha",
         "drupal/features": "^3.8",
+        "drupal/fullcalendar": "^1.0@alpha",
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
@@ -34,9 +48,12 @@
         "drupal/pathauto": "^1.8",
         "drupal/schema_metatag": "^1.4",
         "drupal/token": "^1.6",
+        "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
-        "geocoder-php/mapbox-provider": "^1.0"
+        "fullcalendar/fullcalendar": "^3.9.0",
+        "geocoder-php/mapbox-provider": "^1.0",
+        "laravolt/avatar": "^3.2"
     },
     "conflict": {
         "drupal/drupal": "*"
