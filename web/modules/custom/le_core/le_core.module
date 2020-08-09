@@ -2,6 +2,8 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\og\Og;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Called on UI-change event of $field_{le_entity_type}_kategorie_typ.
@@ -9,6 +11,12 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function ajax_field_kategorie_typ_callback(&$form, FormStateInterface $form_state) {
   return isset($form['field_le_akteur_kategorie_subtyp']) ? $form['field_le_akteur_kategorie_subtyp'] : $form['field_le_event_kategorie_subtyp'];
+}
+
+function le_core_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  if ($view->id() === 'le_view_user_has_akteure') {
+    // @todo Override link to Akteur by showing full Akteur name
+  }
 }
 
 /**
@@ -22,6 +30,39 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 
   if (in_array($form_id, ['node_le_event_form','node_le_event_edit_form'])) {
     set_kategorie_form_fields($form, $form_state, 'event');
+
+    // Get groups ("memberships") of active user; if none, redirect to "/events"
+    $user_id = \Drupal::currentUser()->id();
+
+    $membership_manager = \Drupal::service('og.membership_manager');
+    $user_memberships = $membership_manager->getMemberships($user_id);
+
+    if (!count($user_memberships)) {
+        drupal_set_message(t('Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können'), 'error');
+        $response = new RedirectResponse('/events');
+        $response->send();
+    }
+
+    // @todo Hide several fields when user is not drupal admin
+
+    // @todo Turn autocomplete into native select
+
+    // $form['og_audience']['widget'][0]['target_id']['#type'] = 'select';
+    // $form['og_audience']['widget'][0]['target_id']['#options'] = [
+    //   'a' => 'A',
+    //   'b' => 'B'
+    // ];
+
+    if (in_array($form_id, ['node_le_event_form'])) {
+        // Add event form: Set first akteur as default in select-list
+        $default_akteur = $user_memberships[key($user_memberships)]->entity_id->value;
+        $default_akteur = \Drupal\node\Entity\Node::load((int) $default_akteur);
+
+        if ($default_akteur) {
+          // @todo may be empty as memberships become not deleted on node.le_akteur delete :(
+          $form['og_audience']['widget'][0]['target_id']['#default_value'] = $default_akteur;
+        }
+    }
   }
 }
 
