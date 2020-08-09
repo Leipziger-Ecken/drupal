@@ -4,6 +4,7 @@ use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 use Drupal\le_core\Utils\SlugHelper;
+use Drupal\og\Entity\OgRole;
 
 /**
  * Implements hook_install
@@ -36,6 +37,10 @@ function le_migrate_akteure ()
 
       $result = $query->fetchAll();
 
+      $membership_manager = \Drupal::service('og.membership_manager');
+      $admin_role_id = 'node-le_akteur-administrator';
+      $admin_role = OgRole::load($admin_role_id);
+
       $c = 0;
 
       foreach ($result as $akteur) {
@@ -46,8 +51,6 @@ function le_migrate_akteure ()
           $created = new DateTime($akteur->created);
           $created = $created->getTimestamp();
         }
-
-        $slug = SlugHelper::slugify($akteur->name) . ($akteur->plz ? '-' . $akteur->plz : '');
 
         $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
         $image_name = basename($akteur->bild);
@@ -81,10 +84,6 @@ function le_migrate_akteure ()
               'locality' => 'Leipzig'
             ],
             'field_le_akteur_bezirk' => $akteur->BID,
-            'path' => [
-              'alias' => '/akteure/' . $slug,
-             // 'pathauto' => PathautoState::SKIP,
-            ],
             'created' => $created,
             'uid' => (int) $akteur->hat_UID // || $akteur->ersteller???
           );
@@ -99,6 +98,20 @@ function le_migrate_akteure ()
 
           $node = Node::create($node);
           $node->save();
+
+          // $user = \Drupal\user\Entity\User::load((int) $akteur->hat_UID);
+
+          try {
+            // Flag akteur-user as group administrator.
+            $membership = $membership_manager->getMembership($node, (int) $akteur->hat_UID);
+
+            if (!$membership->hasRole($admin_role_id)) {
+                $membership->addRole($admin_role)->save();
+            }
+
+          } catch (Exception $e) {
+            echo "Fehler: ",  $e->getMessage(), "\n";
+          }
 
           $c++;
     }
@@ -117,16 +130,16 @@ function le_migrate_bezirke ()
 
       foreach ($result as $bezirk) {
 
-        $slug = SlugHelper::slugify($bezirk->bezirksname);
+        // $slug = SlugHelper::slugify($bezirk->bezirksname);
 
         $term = Term::create(array(
           'tid' => $bezirk->BID,
           'parent' => array(),
           'name' => $bezirk->bezirksname,
           'vid' => 'le_bezirk',
-          'path' => [
-            'alias' => '/bezirke/' . $slug
-          ]
+          //'path' => [
+          //  'alias' => '/bezirke/' . $slug
+          //]
         ))->save();
 
         $c++;
@@ -169,8 +182,6 @@ function le_migrate_events ()
           $created = $created->getTimestamp();
         }
 
-        $slug = SlugHelper::slugify($event->name) . ($event->plz ? '-' . $event->plz : '');
-
         $valid_url = filter_var($event->url, FILTER_VALIDATE_URL);
         $image_name = basename($event->bild);
         $file = null;
@@ -199,7 +210,10 @@ function le_migrate_events ()
         }
 
         $start = str_replace(' ', 'T', $event->start_ts);
-        $ende = $event->ende_ts === '1000-01-01 00:00:00' ? $start : str_replace(' ', ' ', $event->ende_ts);
+        $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01')
+          ? $start : str_replace(' ', ' ', $event->ende_ts);
+
+        // @todo!!!! if ends 01 -> is recurring!
 
         $node = array(
             'field_le_event___eid' => $event->EID,
@@ -209,7 +223,8 @@ function le_migrate_events ()
               'value' => $event->kurzbeschreibung,
               'format' => 'full_html',
             ],
-            'field_le_event_aid' => $event->AID,
+            'og_audience' => $event->AID,
+            // 'field_le_event_aid' => $event->AID, @todo move to og_audience
             'field_le_event_adresse' => [
               'country_code' => 'DE',
               'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
@@ -224,10 +239,6 @@ function le_migrate_events ()
               'timezone' => 'Europe/Berlin',
               'rrule' => $frequency ? "RRULE:FREQ=${frequency}" : null,
               'infinite' => $frequency ? 1 : 0
-            ],
-            'path' => [
-              'alias' => '/events/' . $slug,
-             // 'pathauto' => PathautoState::SKIP,
             ],
             'created' => $created,
             'uid' => (int) $event->ersteller
