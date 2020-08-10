@@ -17,6 +17,7 @@ Drupal 9 support targeted. Check support by enabling shipped "upgrade_status" mo
  * Installation
  * Tests
  * API
+ * [Howto update](HOWTO_UPDATE.md)
 
 INTRODUCTION
 ---------------------
