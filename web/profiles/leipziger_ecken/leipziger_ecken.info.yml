@@ -60,6 +60,12 @@ dependencies:
   - schema_event
   - schema_metatag
   - schema_web_site
+  - og
+  - og_ui
+  - twig_tweak
+  - date_recur_modular
+  - avatar_field_formatter
+  - fullcalendar
   - le_rollen
   - le_region
   - le_bezirk
