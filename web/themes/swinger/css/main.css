@@ -1902,6 +1902,17 @@ button,
     .spotlights > section > .content {
       padding: 3em 1.5em 1em 1.5em ; } }
 
+.leaflet-popup-content strong {
+  color: #000; }
+
+.field--name-field-le-event-geofield,
+.field--name-field-geofield,
+.field--name-field-le-event-geofield .field__item,
+.field--name-field-geofield .field__item,
+.leaflet-container {
+  height: 100%;
+  width: 100%; }
+
 /* Header */
 @-moz-keyframes reveal-header {
   0% {
@@ -2281,9 +2292,6 @@ button,
 #contact {
   border-bottom: none;
   overflow-x: hidden; }
-  #contact #map-wrapper {
-    height: 100%;
-    width: 100%; }
   #contact > .row {
     display: -moz-flex;
     display: -webkit-flex;
@@ -2291,7 +2299,6 @@ button,
     display: flex;
     padding: 0 !important; }
     #contact > .row > :nth-child(2n - 1) {
-      padding: 0 !important;
       border-right: solid 1px rgba(212, 212, 255, 0.1);
       width: 60%;
       overflow: hidden; }
@@ -2536,12 +2543,10 @@ body.is-menu-visible #menu {
     }
 }*/
 /* views list pages */
-#views-exposed-form-le-view-events-page-1 .form--inline,
-#views-exposed-form-le-akteur-api-get-page-1 .form--inline {
+.view .form--inline {
   display: flex; }
 
-#views-exposed-form-le-view-events-page-1 #edit-actions,
-#views-exposed-form-le-akteur-api-get-page-1 #edit-actions {
+.view #edit-actions {
   display: flex;
   align-self: end; }
 
@@ -2642,10 +2647,12 @@ body.page-node-type-le-event,
   body.page-node-type-le-akteur .field--name-field-le-akteur-description .field__label,
   body.page-node-type-le-akteur .field--name-field-le-akteur-opening-times .field__label,
   body.page-node-type-le-akteur .field--name-field-le-akteur-adresse .field__label,
+  body.page-node-type-le-akteur .field--name-field-geofield .field__label,
   body.page-node-type-le-akteur .field--name-field-le-event-beschreibung .field__label,
   body.page-node-type-le-akteur .field--name-field-le-event-kategorie-subtyp .field__label,
   body.page-node-type-le-akteur .field--name-field-le-event-adresse .field__label,
   body.page-node-type-le-akteur .field--name-field-le-event-occurrences .field__label,
+  body.page-node-type-le-akteur .field--name-field-le-event-geofield .field__label,
   body.page-node-type-le-akteur .field--name-og-audience .field__label,
   body.page-node-type-le-akteur .field--name-og-group .field__label,
   body.page-node-type-le-event .field--name-field-le-akteur-kategorie-subtyp .field__label,
@@ -2653,10 +2660,12 @@ body.page-node-type-le-event,
   body.page-node-type-le-event .field--name-field-le-akteur-description .field__label,
   body.page-node-type-le-event .field--name-field-le-akteur-opening-times .field__label,
   body.page-node-type-le-event .field--name-field-le-akteur-adresse .field__label,
+  body.page-node-type-le-event .field--name-field-geofield .field__label,
   body.page-node-type-le-event .field--name-field-le-event-beschreibung .field__label,
   body.page-node-type-le-event .field--name-field-le-event-kategorie-subtyp .field__label,
   body.page-node-type-le-event .field--name-field-le-event-adresse .field__label,
   body.page-node-type-le-event .field--name-field-le-event-occurrences .field__label,
+  body.page-node-type-le-event .field--name-field-le-event-geofield .field__label,
   body.page-node-type-le-event .field--name-og-audience .field__label,
   body.page-node-type-le-event .field--name-og-group .field__label,
   .view-frontpage .content-container .field--name-field-le-akteur-kategorie-subtyp .field__label,
@@ -2664,10 +2673,12 @@ body.page-node-type-le-event,
   .view-frontpage .content-container .field--name-field-le-akteur-description .field__label,
   .view-frontpage .content-container .field--name-field-le-akteur-opening-times .field__label,
   .view-frontpage .content-container .field--name-field-le-akteur-adresse .field__label,
+  .view-frontpage .content-container .field--name-field-geofield .field__label,
   .view-frontpage .content-container .field--name-field-le-event-beschreibung .field__label,
   .view-frontpage .content-container .field--name-field-le-event-kategorie-subtyp .field__label,
   .view-frontpage .content-container .field--name-field-le-event-adresse .field__label,
   .view-frontpage .content-container .field--name-field-le-event-occurrences .field__label,
+  .view-frontpage .content-container .field--name-field-le-event-geofield .field__label,
   .view-frontpage .content-container .field--name-og-audience .field__label,
   .view-frontpage .content-container .field--name-og-group .field__label,
   .event-container .field--name-field-le-akteur-kategorie-subtyp .field__label,
@@ -2675,10 +2686,12 @@ body.page-node-type-le-event,
   .event-container .field--name-field-le-akteur-description .field__label,
   .event-container .field--name-field-le-akteur-opening-times .field__label,
   .event-container .field--name-field-le-akteur-adresse .field__label,
+  .event-container .field--name-field-geofield .field__label,
   .event-container .field--name-field-le-event-beschreibung .field__label,
   .event-container .field--name-field-le-event-kategorie-subtyp .field__label,
   .event-container .field--name-field-le-event-adresse .field__label,
   .event-container .field--name-field-le-event-occurrences .field__label,
+  .event-container .field--name-field-le-event-geofield .field__label,
   .event-container .field--name-og-audience .field__label,
   .event-container .field--name-og-group .field__label,
   .akteur-container .field--name-field-le-akteur-kategorie-subtyp .field__label,
@@ -2686,10 +2699,12 @@ body.page-node-type-le-event,
   .akteur-container .field--name-field-le-akteur-description .field__label,
   .akteur-container .field--name-field-le-akteur-opening-times .field__label,
   .akteur-container .field--name-field-le-akteur-adresse .field__label,
+  .akteur-container .field--name-field-geofield .field__label,
   .akteur-container .field--name-field-le-event-beschreibung .field__label,
   .akteur-container .field--name-field-le-event-kategorie-subtyp .field__label,
   .akteur-container .field--name-field-le-event-adresse .field__label,
   .akteur-container .field--name-field-le-event-occurrences .field__label,
+  .akteur-container .field--name-field-le-event-geofield .field__label,
   .akteur-container .field--name-og-audience .field__label,
   .akteur-container .field--name-og-group .field__label {
     display: none; }

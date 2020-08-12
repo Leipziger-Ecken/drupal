@@ -1,6 +1,5 @@
 /* views list pages */
-#views-exposed-form-le-view-events-page-1,
-#views-exposed-form-le-akteur-api-get-page-1 {
+.view {
     .form--inline {
         display: flex;
     }
@@ -10,7 +9,6 @@
         align-self: end;
     }
 }
- 
  
  /* DISTRICT FLAGS (Page header decoration) */
  .district-flags {
@@ -128,10 +126,12 @@ body.page-node-type-le-event,
     .field--name-field-le-akteur-description,
     .field--name-field-le-akteur-opening-times,
     .field--name-field-le-akteur-adresse,
+    .field--name-field-geofield,
     .field--name-field-le-event-beschreibung,
     .field--name-field-le-event-kategorie-subtyp,
     .field--name-field-le-event-adresse,
     .field--name-field-le-event-occurrences,
+    .field--name-field-le-event-geofield,
     .field--name-og-audience,
     .field--name-og-group {
         .field__label {

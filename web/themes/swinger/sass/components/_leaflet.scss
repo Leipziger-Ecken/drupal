@@ -1,0 +1,14 @@
+.leaflet-popup-content {
+	strong {
+		color: #000;
+	}
+}
+
+.field--name-field-le-event-geofield,
+.field--name-field-geofield,
+.field--name-field-le-event-geofield .field__item,
+.field--name-field-geofield .field__item,
+.leaflet-container {
+	height: 100%;
+	width: 100%;
+}

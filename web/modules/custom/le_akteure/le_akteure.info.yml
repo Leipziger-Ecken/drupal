@@ -21,6 +21,7 @@ dependencies:
   - le_kategorien
   - le_region
   - leaflet
+  - leaflet_views
   - link
   - menu_ui
   - metatag
@@ -35,5 +36,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.6
+version: 8.x-0.1.7
 core_incompatible: false
