@@ -60,6 +60,9 @@ dependencies:
   - schema_event
   - schema_metatag
   - schema_web_site
+  - geocoder
+  - geocoder_address
+  - geocode_field
   - og
   - og_ui
   - twig_tweak
@@ -78,6 +81,5 @@ dependencies:
 # Note that this will not set any theme as the default theme.
 themes:
   - swinger
-  - bartik
   - seven
   - classy
