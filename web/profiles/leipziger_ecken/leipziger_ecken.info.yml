@@ -66,6 +66,7 @@ dependencies:
   - og
   - og_ui
   - twig_tweak
+  - date_recur
   - date_recur_modular
   - avatar_field_formatter
   - fullcalendar

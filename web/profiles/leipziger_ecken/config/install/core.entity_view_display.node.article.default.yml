@@ -1,4 +1,4 @@
-langcode: en
+langcode: de
 status: true
 dependencies:
   config:
@@ -14,6 +14,8 @@ dependencies:
     - image
     - text
     - user
+_core:
+  default_config_hash: ChmU3AVqDKU32A_fyChG0W9dTRKmVBR58B6OClCLvZI
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -57,4 +59,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

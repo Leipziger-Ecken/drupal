@@ -9,7 +9,6 @@ dependencies:
   - image
   - language
   - le_akteure
-  - le_event
   - le_region
   - node
   - path
