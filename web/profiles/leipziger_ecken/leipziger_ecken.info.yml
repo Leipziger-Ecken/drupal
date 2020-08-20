@@ -62,7 +62,7 @@ dependencies:
   - schema_web_site
   - geocoder
   - geocoder_address
-  - geocode_field
+  - geocoder_field
   - og
   - og_ui
   - twig_tweak
