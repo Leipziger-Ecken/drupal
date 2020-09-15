@@ -28,6 +28,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "cweagans/composer-patches": "^1.6",
         "drupal/address": "^1.8",
         "drupal/avatar_field_formatter": "^1.2",
         "drupal/console": "~1.0",
@@ -43,6 +44,7 @@
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
+        "drupal/http_client_manager": "^2.4",
         "drupal/jsonld": "^1.0",
         "drupal/leaflet": "^1.36",
         "drupal/pathauto": "^1.8",
@@ -115,6 +117,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "geocoder-php/mapbox-provider": {
+                "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
+            }
         }
     }
 }
