@@ -8049,17 +8049,45 @@ hr.teaser-hr {
   border-radius: 0px;
 }
 
-#block-mainnavigation-menu {
-  display: none;
-}
-
+/* map teaser */
 .leaflet-container {
   box-shadow: 0px 0px 10px lightblue;
   height: 600px !important;
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
 }
 
+/*map akteurs seite*/
 .geo-map .field--name-field-geofield .leaflet-container {
   height: 200px !important;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/*map event seite*/
+.geo-map .field--name-field-le-event-geofield .leaflet-container {
+  height: 200px !important;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* teaser thumpnails */
+.teaser-thump .field--item .img-responsive {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #0064ff;
+  border-width: 1px;
+  overflow: hidden;
+  height: 82px;
+  width: 82px;
+  object-fit: cover;
+  margin: 5px;
+}
+
+/* "bild" laber auf teaser seite ausblenden */
+div.field--label {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
