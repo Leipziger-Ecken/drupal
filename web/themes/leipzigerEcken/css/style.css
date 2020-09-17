@@ -8053,4 +8053,13 @@ hr.teaser-hr {
   display: none;
 }
 
+.leaflet-container {
+  box-shadow: 0px 0px 10px lightblue;
+  height: 600px !important;
+}
+
+.geo-map .field--name-field-geofield .leaflet-container {
+  height: 200px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
