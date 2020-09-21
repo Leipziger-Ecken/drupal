@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_display.comment.le_comment_type_gespraeche.default
+    - field.field.node.le_akteur.field_adresse
+    - field.field.node.le_akteur.field_bezirk
     - field.field.node.le_akteur.field_geofield
-    - field.field.node.le_akteur.field_le_akteur_adresse
-    - field.field.node.le_akteur.field_le_akteur_bezirk
     - field.field.node.le_akteur.field_le_akteur_comments
     - field.field.node.le_akteur.field_le_akteur_contactperson
     - field.field.node.le_akteur.field_le_akteur_contactperson_fn
@@ -37,13 +37,28 @@ targetEntityType: node
 bundle: le_akteur
 mode: default
 content:
+  field_adresse:
+    weight: 22
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_bezirk:
+    weight: 21
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_geofield:
     weight: 9
     label: above
     settings:
       multiple_map: '0'
       popup: '1'
-      popup_content: "<strong>[node:title]</strong><br />\r\n[node:field_le_akteur_adresse:address_line1]\r\n[node:field_le_akteur_adresse:address_line2]\r\n[node:field_le_akteur_adresse:postal_code] [node:field_le_akteur_adresse:locality]"
+      popup_content: "<strong>[node:title]</strong><br />\r\n[node:field_adresse:address_line1]\r\n[node:field_adresse:address_line2]\r\n[node:field_adresse:postal_code] [node:field_adresse:locality]"
       leaflet_map: 'OSM Mapnik'
       height: '100'
       height_unit: '%'
@@ -82,6 +97,9 @@ content:
         popupAnchor:
           x: ''
           'y': ''
+      leaflet_markercluster:
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
+        control: 0
       path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
       geocoder:
         settings:
@@ -100,26 +118,8 @@ content:
       hide_empty_map: 0
       disable_wheel: 0
       gesture_handling: 0
-      leaflet_markercluster:
-        control: 0
-        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds": false}'
     third_party_settings: {  }
     type: leaflet_formatter_default
-    region: content
-  field_le_akteur_adresse:
-    weight: 8
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
-    region: content
-  field_le_akteur_bezirk:
-    weight: 12
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
     region: content
   field_le_akteur_comments:
     weight: 19

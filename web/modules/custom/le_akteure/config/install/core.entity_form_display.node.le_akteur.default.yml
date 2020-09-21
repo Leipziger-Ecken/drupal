@@ -2,9 +2,9 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.le_akteur.field_adresse
+    - field.field.node.le_akteur.field_bezirk
     - field.field.node.le_akteur.field_geofield
-    - field.field.node.le_akteur.field_le_akteur_adresse
-    - field.field.node.le_akteur.field_le_akteur_bezirk
     - field.field.node.le_akteur.field_le_akteur_comments
     - field.field.node.le_akteur.field_le_akteur_contactperson
     - field.field.node.le_akteur.field_le_akteur_contactperson_fn
@@ -41,17 +41,21 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_le_akteur_adresse:
-    weight: 11
+  field_adresse:
+    weight: 33
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
-  field_le_akteur_bezirk:
-    weight: 12
-    settings: {  }
+  field_bezirk:
+    weight: 32
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: options_select
+    type: entity_reference_autocomplete
     region: content
   field_le_akteur_comments:
     weight: 30

@@ -4,11 +4,11 @@ dependencies:
   config:
     - core.date_format.medium
     - core.entity_view_mode.node.teaser
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
     - field.field.node.le_event.field_le_event___eid
-    - field.field.node.le_event.field_le_event_adresse
     - field.field.node.le_event.field_le_event_beschreibung
-    - field.field.node.le_event.field_le_event_bezirk
-    - field.field.node.le_event.field_le_event_geofield
     - field.field.node.le_event.field_le_event_image
     - field.field.node.le_event.field_le_event_is_barrier_free
     - field.field.node.le_event.field_le_event_kategorie_gruppe
@@ -51,10 +51,10 @@ content:
       count_per_item: true
     third_party_settings: {  }
 hidden:
+  field_adresse: true
+  field_bezirk: true
+  field_geofield: true
   field_le_event___eid: true
-  field_le_event_adresse: true
-  field_le_event_bezirk: true
-  field_le_event_geofield: true
   field_le_event_image: true
   field_le_event_is_barrier_free: true
   field_le_event_kategorie_gruppe: true

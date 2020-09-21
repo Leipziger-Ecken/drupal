@@ -2,17 +2,17 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_bezirk
-    - node.type.le_akteur
+    - field.storage.node.field_bezirk
+    - node.type.le_event
     - taxonomy.vocabulary.le_bezirk
-id: node.le_akteur.field_le_akteur_bezirk
-field_name: field_le_akteur_bezirk
+id: node.le_event.field_bezirk
+field_name: field_bezirk
 entity_type: node
-bundle: le_akteur
+bundle: le_event
 label: Bezirk
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

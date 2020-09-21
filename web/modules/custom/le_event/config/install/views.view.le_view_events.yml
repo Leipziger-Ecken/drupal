@@ -4,7 +4,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.storage.node.field_le_event_beschreibung
-    - field.storage.node.field_le_event_geofield
     - node.type.le_event
     - system.menu.main
     - taxonomy.vocabulary.le_bezirk
@@ -13,7 +12,6 @@ dependencies:
     - date_recur
     - datetime
     - fullcalendar
-    - geofield
     - leaflet_views
     - node
     - rest
@@ -500,102 +498,6 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        field_le_event_bezirk_target_id:
-          id: field_le_event_bezirk_target_id
-          table: node__field_le_event_bezirk
-          field: field_le_event_bezirk_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_le_event_bezirk_target_id_op
-            label: Bezirk
-            description: ''
-            use_operator: false
-            operator: field_le_event_bezirk_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: bezirk_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              le_role_redakteur: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: le_bezirk
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_le_bezirk_region_target_id:
-          id: field_le_bezirk_region_target_id
-          table: taxonomy_term__field_le_bezirk_region
-          field: field_le_bezirk_region_target_id
-          relationship: field_le_event_bezirk
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_le_bezirk_region_target_id_op
-            label: Region
-            description: ''
-            use_operator: false
-            operator: field_le_bezirk_region_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: stadtteil_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              le_role_redakteur: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: le_region
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         field_le_event_occurrences_value:
           id: field_le_event_occurrences_value
           table: date_recur__node__field_le_event_occurrences
@@ -692,6 +594,102 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: datetime
+        field_bezirk_target_id:
+          id: field_bezirk_target_id
+          table: node__field_bezirk
+          field: field_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_bezirk_target_id_op
+            label: Bezirk
+            description: ''
+            use_operator: false
+            operator: field_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: bezirk_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Stadtteil
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: stadtteil_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
       sorts:
         field_le_event_occurrences_value:
           id: field_le_event_occurrences_value
@@ -721,13 +719,13 @@ display:
           required: false
           entity_type: node
           plugin_id: standard
-        field_le_event_bezirk:
-          id: field_le_event_bezirk
-          table: node__field_le_event_bezirk
-          field: field_le_event_bezirk
+        field_bezirk:
+          id: field_bezirk
+          table: node__field_bezirk
+          field: field_bezirk
           relationship: none
           group_type: group
-          admin_label: 'field_le_event_bezirk: Taxonomy term'
+          admin_label: 'field_bezirk: Taxonomy term'
           required: false
           plugin_id: standard
       arguments: {  }
@@ -1169,70 +1167,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_le_event_geofield:
-          id: field_le_event_geofield
-          table: node__field_le_event_geofield
-          field: field_le_event_geofield
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: geofield_default
-          settings:
-            output_format: wkt
-            output_escape: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
       pager:
         type: none
         options:
@@ -1252,7 +1186,6 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_le_event_beschreibung'
-        - 'config:field.storage.node.field_le_event_geofield'
   page_1:
     display_plugin: page
     id: page_1

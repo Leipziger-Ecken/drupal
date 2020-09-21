@@ -21,7 +21,7 @@ third_party_settings:
       handling: preserve
       status_message: true
       log: true
-    field: field_le_akteur_adresse
+    field: field_adresse
     delta_handling: default
 id: node.le_akteur.field_geofield
 field_name: field_geofield

@@ -2,33 +2,19 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_adresse
+    - field.storage.node.field_adresse
     - node.type.le_akteur
   module:
     - address
-id: node.le_akteur.field_le_akteur_adresse
-field_name: field_le_akteur_adresse
+id: node.le_akteur.field_adresse
+field_name: field_adresse
 entity_type: node
 bundle: le_akteur
 label: Adresse
 description: ''
 required: true
 translatable: false
-default_value:
-  -
-    langcode: ''
-    country_code: DE
-    administrative_area: null
-    locality: ''
-    dependent_locality: null
-    postal_code: ''
-    sorting_code: null
-    address_line1: ''
-    address_line2: null
-    organization: null
-    given_name: null
-    additional_name: null
-    family_name: null
+default_value: {  }
 default_value_callback: ''
 settings:
   available_countries:
