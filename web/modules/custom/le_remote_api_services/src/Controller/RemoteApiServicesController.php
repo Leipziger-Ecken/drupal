@@ -145,7 +145,7 @@ class RemoteApiServicesController extends ControllerBase {
         'lat' => $lat
       ]);
 
-      $node->set('field_le_rcds_geofield', $point);
+      $node->set('field_geofield', $point);
     }
 
     $node->save();

@@ -2999,7 +2999,7 @@ body.page-node-type-le-event .node__content {
     body.page-node-type-le-event .node__content .field--name-field-le-event-image img {
       width: 100%; }
   body.page-node-type-le-event .node__content .field--name-field-le-event-adresse,
-  body.page-node-type-le-event .node__content .field--name-field-le-event-bezirk,
+  body.page-node-type-le-event .node__content .field--name-field-bezirk,
   body.page-node-type-le-event .node__content .field--name-field-le-event-occurrences {
     float: left;
     width: 30%;
