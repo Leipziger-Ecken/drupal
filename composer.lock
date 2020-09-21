@@ -4486,7 +4486,9 @@
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 },
-                "patches_applied": []
+                "patches_applied": {
+                    "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
+                }
             },
             "autoload": {
                 "psr-4": {

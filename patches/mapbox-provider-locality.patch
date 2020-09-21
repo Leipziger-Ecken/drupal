@@ -12,7 +12,7 @@
       * @param HttpClient  $client        An HTTP adapter
       * @param string      $accessToken   Your Mapbox access token
       * @param string|null $country
-@@ -312,6 +317,11 @@
+@@ -312,6 +317,13 @@
              }
              $address = $address->withStreetName($builder->getValue('street_name'));
              $address = $address->withNeighborhood($builder->getValue('neighborhood'));
@@ -26,15 +26,14 @@
              $results[] = $address;
 
              if (count($results) >= $limit) {
-@@ -341,6 +351,9 @@
+@@ -341,6 +353,10 @@
                  break;
 
              case 'locality':
-+                if (NULL === $this->contextLocalityBuffer) {
++               if (NULL === $this->contextLocalityBuffer) {
 +                  // added via patch "mapbox-provider-locality.patch"
 +                  $this->contextLocalityBuffer = $value['text'];
 +                }
                  $builder->setLocality($value['text']);
 
                  break;
-
