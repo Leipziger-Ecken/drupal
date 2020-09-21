@@ -5,7 +5,7 @@
         <span class="image">
             {{ content.field_le_event_image }}
         </span>
-        
+
         <header class="major">
             {% if label %}
                 <h1>{{ label }}</h1>
@@ -34,11 +34,11 @@
     <section id="one">
         <div class="inner">
             {{ drupal_region('primary_tabs') }}
-            
+
             <header class="major">
                 <h2>Das Event</h2>
             </header>
-            
+
             {{ content.field_le_event_beschreibung }}
         </div>
     </section>
@@ -58,7 +58,7 @@
                     <header class="major" style="display:none;">
                         <h2>Akteur</h2>
                     </header>
-                    
+
                     {{ content.og_audience }}
                 </div>
             </div>
@@ -71,7 +71,7 @@
     <section id="contact">
         <div class="row">
             <section class="col-6">
-                {{ content.field_le_event_geofield }}
+                {{ content.field_geofield }}
             </section>
 
             <section class="col-6 split">
@@ -79,7 +79,7 @@
                     <div class="contact-method">
                         <span class="icon solid alt fa-home"></span>
                         <h3>Adresse</h3>
-                        {{ content.field_le_event_adresse }}
+                        {{ content.field_adresse }}
                         {{ content.field_le_event_is_barrier_free }}
                     </div>
                 </section>

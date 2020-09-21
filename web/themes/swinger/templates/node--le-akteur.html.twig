@@ -13,7 +13,7 @@
         <span class="image">
             {{ content.field_le_akteur_image }}
         </span>
-        
+
         <header class="major">
             {% if label %}
                 <h1>{{ label }}</h1>
@@ -116,7 +116,7 @@
                     <div class="contact-method">
                         <span class="icon solid alt fa-home"></span>
                         <h3>Adresse</h3>
-                        {{ content.field_le_akteur_adresse }}
+                        {{ content.field_adresse }}
                         {{ content.field_le_akteur_is_barrier_free }}
                     </div>
                 </section>
@@ -132,7 +132,7 @@
                         <span class="icon solid alt fa-users"></span>
                         Mitglieder
 
-                        <i class="badge">              
+                        <i class="badge">
                           {{ akteur_members_count }}
                         </i>
                     </h3>

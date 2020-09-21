@@ -1,0 +1,18 @@
+body.path-stadtteil {
+
+    .attachment-after {
+        display: flex;
+        justify-content: space-between;
+
+        .views-element-container {
+            width: 48%;
+
+            .view-header {
+                h3 {
+                    font-size: 3rem;
+                    padding-bottom: 50px;
+                }
+            }
+        }
+    }
+}
