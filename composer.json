@@ -31,6 +31,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal/address": "^1.8",
         "drupal/avatar_field_formatter": "^1.2",
+        "drupal/bootstrap": "^3.23",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",
