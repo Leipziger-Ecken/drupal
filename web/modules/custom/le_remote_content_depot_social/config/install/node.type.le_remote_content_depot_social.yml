@@ -1,0 +1,16 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Remote content (depot.social)'
+type: le_remote_content_depot_social
+description: 'Via "remote API" gespiegelte Daten aus der depot.social-Schnittstelle. Read-only.'
+help: 'Dieser Inhaltstyp ist als "Read-only" gekennzeichnet. Das manuelle Anlegen oder Ändern von Inhalten ist nicht empfohlen, da diese jederzeit wieder überschrieben werden könnten.'
+new_revision: false
+preview_mode: 0
+display_submitted: true

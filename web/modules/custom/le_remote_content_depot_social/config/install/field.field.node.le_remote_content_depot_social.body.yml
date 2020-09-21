@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.le_remote_content_depot_social
+  module:
+    - text
+id: node.le_remote_content_depot_social.body
+field_name: body
+entity_type: node
+bundle: le_remote_content_depot_social
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

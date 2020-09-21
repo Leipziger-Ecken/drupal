@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_id_external
+    - node.type.le_remote_content_depot_social
+id: node.le_remote_content_depot_social.field_le_rcds_id_external
+field_name: field_le_rcds_id_external
+entity_type: node
+bundle: le_remote_content_depot_social
+label: 'ID (extern)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

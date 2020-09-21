@@ -1,0 +1,10 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_depot_social
+id: node.le_remote_content_depot_social
+target_entity_type_id: node
+target_bundle: le_remote_content_depot_social
+default_langcode: site_default
+language_alterable: false

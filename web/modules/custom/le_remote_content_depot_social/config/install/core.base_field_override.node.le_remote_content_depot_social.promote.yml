@@ -1,0 +1,21 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_depot_social
+id: node.le_remote_content_depot_social.promote
+field_name: promote
+entity_type: node
+bundle: le_remote_content_depot_social
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean
