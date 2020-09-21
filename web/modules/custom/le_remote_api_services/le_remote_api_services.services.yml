@@ -1,0 +1,9 @@
+services:
+  example_api.http_client:
+    parent: http_client_manager.client_base
+    arguments: ['example_services']
+
+  le_remote_api_services_depot_social.subscriber:
+    class: Drupal\le_remote_api_services\EventSubscriber\HttpClientManagerDepotSocialSubscriber
+    tags:
+      - { name: event_subscriber }

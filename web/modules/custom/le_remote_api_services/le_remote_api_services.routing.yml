@@ -1,0 +1,7 @@
+le_remote_api_services.get_resources:
+  path: 'remote-api-services-get-resources'
+  defaults:
+    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesController::getRessourcen'
+    _title: 'Find posts'
+  requirements:
+    _permission: 'access content'

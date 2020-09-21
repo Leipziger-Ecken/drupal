@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains le_remote_api_services.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function le_remote_api_services_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the le_remote_api_services module.
+    case 'help.page.le_remote_api_services':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Client wrapper for the Content Services API') . '</p>';
+      return $output;
+
+    default:
+  }
+}

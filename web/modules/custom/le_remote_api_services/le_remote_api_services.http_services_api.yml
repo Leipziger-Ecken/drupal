@@ -1,0 +1,6 @@
+le_remote_api_services_depot_social.contents:
+  title: "depot.social Services API"
+  api_path: "src/api/depot_social_services.yml"
+  config:
+    base_uri: "https://leipzig.depot.social/bat/v2/"
+    debug: "/tmp/http.log"

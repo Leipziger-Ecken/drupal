@@ -1,0 +1,5 @@
+name: "depot.social - Content Services API"
+apiVersion: "1.0"
+description: "Client wrapper for the depot.social Services API."
+imports:
+  - "resources/depot_social.yml"

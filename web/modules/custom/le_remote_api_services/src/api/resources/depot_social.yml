@@ -1,0 +1,43 @@
+operations:
+  GetRessourcen:
+    httpMethod: "GET"
+    uri: "types"
+    summary: "Gets the available Ressourcen. It's possible to define a limit and a sorting order."
+    parameters:
+      limit:
+        location: "query"
+        description: "The number of posts to be retrieved."
+        type: "integer"
+        required: true
+        default: 5
+      sort:
+        location: "query"
+        description: "The sorting order."
+        type: "string"
+        required: true
+        default: "desc"
+    responseModel: "RessourcenList"
+
+models:
+  RessourcenList:
+    type: "array"
+    location: "json"
+    items:
+      "$ref": "Ressource"
+
+  Ressource:
+    type: "object"
+    location: "json"
+    properties:
+      userId:
+        location: "json"
+        type: "integer"
+      id:
+        location: "json"
+        type: "integer"
+      title:
+        location: "json"
+        type: "string"
+      text:
+        location: "json"
+        type: "string"
