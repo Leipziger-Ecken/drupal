@@ -74,14 +74,14 @@ function le_migrate_akteure() {
             'field_le_akteur_contactperson_fn' => $akteur->funktion,
             'field_le_akteur_opening_times' => $akteur->oeffnungszeiten,
             'field_le_akteur_barrier_free' => $akteur->barrierefrei === 1,
-            'field_le_akteur_adresse' => [
+            'field_adresse' => [
               'country_code' => 'DE',
               'address_line1' => $akteur->strasse . (!empty($akteur->nr) ? ' ' . $akteur->nr : ''),
               'address_line2' => $akteur->adresszusatz,
               'postal_code' => $akteur->plz,
               'locality' => 'Leipzig'
             ],
-            'field_le_akteur_bezirk' => $akteur->BID,
+            'field_bezirk' => $akteur->BID,
             'created' => $created,
             'uid' => (int) $akteur->hat_UID // || $akteur->ersteller???
           );
@@ -223,14 +223,14 @@ function le_migrate_events() {
             ],
             'og_audience' => $event->AID,
             // 'field_le_event_aid' => $event->AID, @todo move to og_audience
-            'field_le_event_adresse' => [
+            'field_adresse' => [
               'country_code' => 'DE',
               'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
               'address_line2' => $event->adresszusatz,
               'postal_code' => $event->plz,
               'locality' => 'Leipzig'
             ],
-            'field_le_event_bezirk' => $event->BID,
+            'field_bezirk' => $event->BID,
             'field_le_event_occurrences' => [
               'value' => $start,
               'end_value' => $ende,
