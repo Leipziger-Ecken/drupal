@@ -18,6 +18,7 @@ Drupal 9 support targeted. Check support by enabling shipped "upgrade_status" mo
  * Tests
  * API
  * [Howto update](HOWTO_UPDATE.md)
+ * Misc
 
 INTRODUCTION
 ---------------------
@@ -82,3 +83,7 @@ Now go back to Drupal Configurations > Performance and "clear all caches" (alle 
 A *read-only* REST-API (JSON, XML, HAL) is provided for akteur- and event-data. Read more on our [official Postman documentation](https://documenter.getpostman.com/view/10395067/SzmY92H6).
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/10395067/SzmY92H6)
+
+### Misc
+
+* During composer install, a patch is injected into geocoder-mapbox package which enforces a returned locality, if any given.
