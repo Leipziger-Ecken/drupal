@@ -1,0 +1,21 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: le_akteur_pfad
+label: 'Akteur Pfad'
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:title]-[node:field_le_akteur_adresse:postal_code]'
+selection_criteria:
+  d9ad056b-3ac6-4fa2-8c7c-d9c6588dd7a1:
+    id: node_type
+    bundles:
+      le_akteur: le_akteur
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d9ad056b-3ac6-4fa2-8c7c-d9c6588dd7a1
+selection_logic: and
+weight: -5
+relationships: {  }

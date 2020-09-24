@@ -5,6 +5,7 @@ dependencies:
     - field.storage.node.field_geofield
     - node.type.le_event
   module:
+    - geocoder_field
     - geofield
 third_party_settings:
   geocoder_field:

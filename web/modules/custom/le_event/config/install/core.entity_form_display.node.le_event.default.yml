@@ -21,7 +21,6 @@ dependencies:
     - node.type.le_event
   module:
     - address
-    - date_recur
     - date_recur_modular
     - image
     - og
