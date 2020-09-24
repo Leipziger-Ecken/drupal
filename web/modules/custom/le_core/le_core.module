@@ -33,14 +33,17 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 
     // Get groups ("memberships") of active user; if none, redirect to "/events"
     $user_id = \Drupal::currentUser()->id();
-
+    $full_user = \Drupal\user\Entity\User::load($user_id);
+    $user_is_admin = $full_user->hasRole('administrator') || $user_id == 1;
+    
     $membership_manager = \Drupal::service('og.membership_manager');
     $user_memberships = $membership_manager->getMemberships($user_id);
 
-    if (!count($user_memberships)) {
-        drupal_set_message(t('Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können'), 'error');
+    if (!count($user_memberships) && !$user_is_admin) {
+        \Drupal::messenger()->addError(t('Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können'));
         $response = new RedirectResponse('/events');
         $response->send();
+        return;
     }
 
     // @todo Hide several fields when user is not drupal admin
@@ -53,7 +56,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     //   'b' => 'B'
     // ];
 
-    if (in_array($form_id, ['node_le_event_form'])) {
+    if (in_array($form_id, ['node_le_event_form']) && count($user_memberships) >= 1) {
         // Add event form: Set first akteur as default in select-list
         $default_akteur = $user_memberships[key($user_memberships)]->entity_id->value;
         $default_akteur = \Drupal\node\Entity\Node::load((int) $default_akteur);
