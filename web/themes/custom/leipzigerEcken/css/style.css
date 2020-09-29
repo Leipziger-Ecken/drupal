@@ -8047,6 +8047,7 @@ hr.teaser-hr {
   border-color: white;
   border-bottom-color: #0064ff;
   border-radius: 0px;
+  border-bottom: 1px solid #0064ff;
 }
 
 /* map teaser */
@@ -8085,6 +8086,58 @@ hr.teaser-hr {
   margin: 5px;
 }
 
+.page-header-label {
+  text-align: center;
+}
+
 /* "bild" laber auf teaser seite ausblenden */
+/*  ______filter boxen______  */
+.form-text.form-control {
+  width: 80%;
+}
+
+.form-inline .select-wrapper {
+  width: 80% !important;
+}
+
+.form-inline .form-group {
+  margin-bottom: 10px;
+  font-weight: 200;
+}
+
+#edit-bezirk-id {
+  width: 80%;
+}
+
+#edit-end {
+  vertical-align: top;
+}
+
+.btn {
+  color: #0064ff;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 10px lightblue;
+  background: #0064ff;
+  color: white;
+}
+
+.filter-heading {
+  font-size: 20pt;
+}
+
+/* beschriftung der boxen drüber */
+.control-label {
+  font-weight: 400;
+}
+
+.page-header {
+  text-align: center;
+  border-bottom-color: #0064ff;
+  font-weight: 400;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -113,6 +113,7 @@ hr.teaser-hr {
     border-color: white;
     border-bottom-color: $hr-border;
     border-radius: 0px;
+    border-bottom: 1px solid #0064ff;
 }
 
 //#block-mainnavigation-menu {
@@ -144,7 +145,7 @@ hr.teaser-hr {
 .teaser-thump .field--item .img-responsive {
     border-radius: 50%;
     border-style: solid;
-    border-color: #0064ff;
+    border-color: $hr-border;
     border-width: 1px;
     overflow: hidden;
         height: 82px;
@@ -153,8 +154,72 @@ hr.teaser-hr {
     margin: 5px;
 }
 
+.page-header-label {
+    text-align: center;
+}
+
 /* "bild" laber auf teaser seite ausblenden */
 //div.field--label {
 //    display: none;
 //}
+
+
+/*  ______filter boxen______  */
+.form-text.form-control {
+    width: 80%;
+//    margin: 0px 10px 10px 0px;
+}
+
+.form-inline .select-wrapper {
+    width: 80% !important;
+//    margin: 0px 10px 10px 0px;
+}
+
+.form-inline .form-group {
+    margin-bottom: 10px;
+    font-weight: 200;
+//    border-bottom: 1px solid #0064ff;
+}
+
+#edit-bezirk-id {
+    width: 80%;
+}
+#edit-start {
+//    margin: 0px 10px 10px 0px;
+}
+#edit-end {
+    vertical-align: top;
+}
+
+.btn {
+    color: #0064ff;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 10px lightblue;
+    background: #0064ff;
+    color: white;
+}
+
+.filter-heading {
+    font-size: 20pt;
+}
+/* beschriftung der boxen drüber */
+.control-label {
+    font-weight: 400;
+}
+
+.page-header {
+    text-align: center;
+    border-bottom-color: $hr-border;
+    font-weight: 400;
+
+}
+
+
+
+
+
 
