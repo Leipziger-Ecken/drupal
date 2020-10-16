@@ -46,6 +46,30 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
         return;
     }
 
+    // As long as recurrencies widget UI is not completed: Hide fields "mode" and "timezone"
+    $field_occurrences_widget = &$form['field_le_event_occurrences']['widget'];
+
+    foreach($field_occurrences_widget as $key => $field_occurrence) {
+        if (!is_numeric($key)) continue;
+        $field_occurrences_widget[$key]['mode']['#attributes']['class'][] = 'hidden'; // #access = false would break JS behaviour :/
+        $field_occurrences_widget[$key]['time_zone']['#access'] = false;
+        $field_occurrences_widget[$key]['blakeks'] = [
+            '#type' => 'checkbox',
+            '#title' => 'blakeks',//$this->t('Whether to enable occurrences button'),
+            '#default_value' => 1,
+            '#description' => 'efw',
+            '#weight' => -1,
+          ];
+    }
+
+    $form['#attached']['library'][] = 'le_core/event-form';
+
+   /* $form['#attached'] = array(
+      'library' => array('openlayers/drupal-addlayer'),
+      'drupalSettings' => array(),
+    );*/
+
+
     // @todo Hide several fields when user is not drupal admin
 
     // @todo Turn autocomplete into native select

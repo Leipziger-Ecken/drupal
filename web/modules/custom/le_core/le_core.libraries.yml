@@ -1,0 +1,4 @@
+event-form:
+  version: 1.x
+  js:
+    js/event-form.js: {}
