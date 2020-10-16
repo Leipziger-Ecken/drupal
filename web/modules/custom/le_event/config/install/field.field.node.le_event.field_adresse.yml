@@ -14,7 +14,21 @@ label: Adresse
 description: Veranstaltungsort
 required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    country_code: DE
+    langcode: ''
+    address_line1: ''
+    address_line2: ''
+    postal_code: ''
+    locality: ''
+    given_name: null
+    additional_name: null
+    family_name: null
+    organization: null
+    sorting_code: null
+    dependent_locality: null
+    administrative_area: null
 default_value_callback: ''
 settings:
   available_countries:
@@ -32,7 +46,7 @@ settings:
     addressLine1:
       override: required
     addressLine2:
-      override: optional
+      override: hidden
     postalCode:
       override: required
     sortingCode:
