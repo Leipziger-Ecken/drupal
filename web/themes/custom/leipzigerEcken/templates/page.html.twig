@@ -62,9 +62,9 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
- <div class="row">
-        <div class="col-md-1"></div>
-     <div class="col-md-10">
+<div class="row"> 
+<div class="col-md-1"></div>
+    <div class="col-md-10">
     <header {{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
       {% if not navbar_attributes.hasClass(container) %}
         <div class="{{ container_test }}">
@@ -91,11 +91,13 @@
       {% if not navbar_attributes.hasClass(container) %}
         </div>
       {% endif %}
+        
     </header>
       {% endblock %}
          {% endif %}
-      </div>
- </div>
+    </div>
+</div>
+
 {# versucht mit row die navbar auf 10 spalten aufzuteilen #}
 
 {# Main #}

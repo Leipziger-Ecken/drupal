@@ -8003,6 +8003,7 @@ p:last-child,
 .adress-akteur {
   margin-top: 20px;
   font-size: 1.3em;
+  font-size: 1.4vw;
 }
 
 .teaser-list {
@@ -8139,5 +8140,25 @@ hr.teaser-hr {
   border-bottom-color: #0064ff;
   font-weight: 400;
 }
+
+/*_____login bereich_____*/
+#user-login-form {
+  margin: auto;
+  width: 50%;
+}
+
+#edit-name {
+  width: 50%;
+}
+
+#edit-pass {
+  width: 50%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/*____startseite_____*/
 
 /*# sourceMappingURL=style.css.map */

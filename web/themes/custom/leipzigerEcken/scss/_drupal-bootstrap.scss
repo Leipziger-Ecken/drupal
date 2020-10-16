@@ -70,6 +70,7 @@ p:last-child,
 .adress-akteur {
     margin-top: 20px;
     font-size: 1.3em;
+    font-size: 1.4vw;
 }
 
 .teaser-list{
@@ -165,6 +166,7 @@ hr.teaser-hr {
 
 
 /*  ______filter boxen______  */
+
 .form-text.form-control {
     width: 80%;
 //    margin: 0px 10px 10px 0px;
@@ -215,8 +217,26 @@ hr.teaser-hr {
     text-align: center;
     border-bottom-color: $hr-border;
     font-weight: 400;
-
 }
+
+
+/*_____login bereich_____*/
+
+#user-login-form{
+    margin: auto;
+    width: 50%;
+}
+#edit-name {
+    width: 50%;
+}
+
+#edit-pass {
+    width: 50%;
+}
+body {
+    overflow-x: hidden;
+}
+/*____startseite_____*/
 
 
 

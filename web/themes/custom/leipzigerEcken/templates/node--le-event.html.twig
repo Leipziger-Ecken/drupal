@@ -76,8 +76,6 @@
   ]
 %}
 
-<div class="akteur-label"><h1> {{ label }} </h1><hr></div>
-
 <div class="row"> 
     <div class="col-md-1"></div>
     <div class="col-md-2">
@@ -87,10 +85,15 @@
         {{ content.field_adresse }} 
         <div class="geo-map"> {{ content.field_geofield }} </div>
         <hr>
-        {{ content.og_audience }} 
-        {{ content.field_le_akteur_url }} 
+        {{ content.field_veranstalter }}
+        <hr>
+        {{ content.field_le_akteur_url }}
         <hr>
         {{ content.field_le_event_kategorie_tags }}
+        {{ content.field_le_event_is_barrier_free }}
+        <hr>
+        {{ content.field_le_event_kategorie_typ }}
+        <hr>
         </div> 
   </div>
     
