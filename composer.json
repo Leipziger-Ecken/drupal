@@ -38,6 +38,7 @@
         "drupal/core-recommended": "^8.9",
         "drupal/date_popup": "^1.1",
         "drupal/date_recur": "^2.0",
+        "drupal/date_recur_modular": "2.x-dev",
         "drupal/devel": "^2.1",
         "drupal/entityconnect": "^2.0@alpha",
         "drupal/features": "^3.8",

@@ -16,6 +16,8 @@ function le_migrate_install() {
     le_migrate_akteure();
     le_migrate_events();
     le_migrate_stadtteile();
+    le_migrate_zielgruppen();
+    le_migrate_kategorien();
 }
 
 function le_migrate_akteure() {
@@ -330,18 +332,57 @@ function le_migrate_stadtteile() {
         'parent' => array(),
         'name' => 'Osten',
         'vid' => 'le_region',
-        'path' => [
-          'alias' => '/stadtteil/osten'
-        ]
       ))->save();
 
       $norden = Term::create(array(
         'parent' => array(),
         'name' => 'Norden',
         'vid' => 'le_region',
-        'path' => [
-          'alias' => '/stadtteil/norden'
-        ]
       ))->save();
 }
 
+/**
+ * Add four default target groups
+ */
+function le_migrate_zielgruppen() {
+    $a = Term::create(array(
+      'parent' => array(),
+      'name' => 'Kinder',
+      'vid' => 'le_kategorie_zielgruppe',
+    ))->save();
+
+    $b = Term::create(array(
+      'parent' => array(),
+      'name' => 'Jugendliche',
+      'vid' => 'le_kategorie_zielgruppe',
+    ))->save();
+
+    $c = Term::create(array(
+      'parent' => array(),
+      'name' => 'Erwachsene',
+      'vid' => 'le_kategorie_zielgruppe',
+    ))->save();
+
+    $d = Term::create(array(
+      'parent' => array(),
+      'name' => 'Senioren',
+      'vid' => 'le_kategorie_zielgruppe',
+    ))->save();
+}
+
+/**
+ * Add some demo kategorien (un-nested)
+ */
+function le_migrate_kategorien() {
+    $a = Term::create(array(
+      'parent' => array(),
+      'name' => 'Kultur & Kreatives',
+      'vid' => 'le_kategorie_typ',
+    ))->save();
+
+    $b = Term::create(array(
+      'parent' => array(),
+      'name' => 'Sport',
+      'vid' => 'le_kategorie_typ',
+    ))->save();
+}
