@@ -62,7 +62,10 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
-    <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
+<div class="row"> 
+<div class="col-md-1"></div>
+    <div class="col-md-10">
+    <header {{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
       {% if not navbar_attributes.hasClass(container) %}
         <div class="{{ container_test }}">
       {% endif %}
@@ -88,19 +91,24 @@
       {% if not navbar_attributes.hasClass(container) %}
         </div>
       {% endif %}
+        
     </header>
-  {% endblock %}
-{% endif %}
+      {% endblock %}
+         {% endif %}
+    </div>
+</div>
+
+{# versucht mit row die navbar auf 10 spalten aufzuteilen #}
 
 {# Main #}
 {% block main %}
   <div role="main" class="main-container {{ container }} js-quickedit-main-content">
     <div class="row">
-        
+        <div class="col-md-1"></div>
       {# Header #}
       {% if page.header %}
         {% block header %}
-          <div class="col-sm-12" role="heading">
+          <div class="col-sm-10" role="heading">
             {{ page.header }}
           </div>
         {% endblock %}
