@@ -2,6 +2,8 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.date_format.medium
+    - date_recur.interpreter.default_interpreter
     - field.field.node.le_event.field_adresse
     - field.field.node.le_event.field_bezirk
     - field.field.node.le_event.field_geofield
@@ -104,9 +106,12 @@ content:
     region: content
   field_le_event_occurrences:
     weight: 8
-    settings: {  }
+    settings:
+      interpreter: default_interpreter
+      date_format_type: medium
+      occurrences_modal: true
     third_party_settings: {  }
-    type: date_recur_modular_alpha
+    type: date_recur_modular_sierra
     region: content
   langcode:
     type: language_select

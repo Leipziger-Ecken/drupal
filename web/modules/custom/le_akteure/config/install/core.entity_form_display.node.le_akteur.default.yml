@@ -42,13 +42,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_adresse:
-    weight: 33
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 32
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -58,13 +58,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_le_akteur_comments:
-    weight: 30
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: comment_default
     region: content
   field_le_akteur_contactperson:
-    weight: 14
+    weight: 12
     settings:
       size: 60
       placeholder: ''
@@ -72,7 +72,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 15
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -111,26 +111,14 @@ content:
     type: boolean_checkbox
     region: content
   field_le_akteur_is_private:
-    weight: 31
+    weight: 16
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_le_akteur_kategorie_gruppe:
-    weight: 28
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_le_akteur_kategorie_subtyp:
-    weight: 27
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
   field_le_akteur_kategorie_tags:
-    weight: 29
+    weight: 14
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -138,12 +126,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-    region: content
-  field_le_akteur_kategorie_typ:
-    weight: 26
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_le_akteur_opening_times:
     weight: 10
@@ -154,7 +136,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_phone:
-    weight: 13
+    weight: 11
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -201,6 +183,9 @@ content:
     third_party_settings: {  }
 hidden:
   field_geofield: true
+  field_le_akteur_kategorie_gruppe: true
+  field_le_akteur_kategorie_subtyp: true
+  field_le_akteur_kategorie_typ: true
   langcode: true
   promote: true
   sticky: true

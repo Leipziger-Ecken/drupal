@@ -98,19 +98,26 @@
         </div>
 </div>
         </div>
+    <div class="map-frontpage row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            {{ drupal_view('frontpage', 'block_1') }}
+            </div>
+    </div>
+    
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-3">
                     <h1>Akteure</h1>
-                    {# {{ page.content }} #}
+                     {{ drupal_view('frontpage', 'page_1') }}
         </div>
          <div class="col-md-3">
                     <h1>Events</h1>
-                    {# {{ page.content }} #}
+                    {{ drupal_view('frontpage', 'page_2') }}
         </div>
          <div class="col-md-3">
                     <h1>Journal</h1>
-                    {# {{ page.content }} #}
+                    {{ drupal_view('frontpage', 'page_3') }}
         </div>
     </div>
 </div>

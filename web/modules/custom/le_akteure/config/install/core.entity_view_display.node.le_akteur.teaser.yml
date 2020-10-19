@@ -23,7 +23,9 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_url
     - node.type.le_akteur
   module:
+    - address
     - image
+    - link
     - og
     - text
     - user
@@ -32,26 +34,48 @@ targetEntityType: node
 bundle: le_akteur
 mode: teaser
 content:
-  field_le_akteur_description:
-    type: text_trimmed
-    weight: 1
+  field_adresse:
+    type: address_default
+    weight: 6
     region: content
     label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_bezirk:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
     settings:
-      trim_length: 200
+      link: true
+    third_party_settings: {  }
+  field_le_akteur_description:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
   field_le_akteur_image:
     type: image
     weight: 0
     region: content
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
   field_le_akteur_kategorie_subtyp:
     type: entity_reference_label
-    weight: 6
+    weight: 7
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_le_akteur_kategorie_tags:
+    type: entity_reference_label
+    weight: 9
     region: content
     label: above
     settings:
@@ -65,21 +89,31 @@ content:
     settings:
       link: true
     third_party_settings: {  }
+  field_le_akteur_url:
+    type: link
+    weight: 8
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
   links:
     weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   og_group:
-    weight: 2
+    weight: 3
     type: og_group_subscribe
     region: content
     label: above
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_adresse: true
-  field_bezirk: true
   field_geofield: true
   field_le_akteur_comments: true
   field_le_akteur_contactperson: true
@@ -88,8 +122,6 @@ hidden:
   field_le_akteur_is_barrier_free: true
   field_le_akteur_is_private: true
   field_le_akteur_kategorie_gruppe: true
-  field_le_akteur_kategorie_tags: true
   field_le_akteur_opening_times: true
   field_le_akteur_phone: true
-  field_le_akteur_url: true
   langcode: true

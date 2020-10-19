@@ -27,13 +27,20 @@ targetEntityType: node
 bundle: le_event
 mode: teaser
 content:
-  field_le_event_beschreibung:
-    type: text_trimmed
-    weight: 0
+  field_bezirk:
+    type: entity_reference_label
+    weight: 2
     region: content
     label: above
     settings:
-      trim_length: 150
+      link: true
+    third_party_settings: {  }
+  field_le_event_beschreibung:
+    type: text_default
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
     third_party_settings: {  }
   field_le_event_occurrences:
     type: date_recur_basic_formatter
@@ -52,7 +59,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_adresse: true
-  field_bezirk: true
   field_geofield: true
   field_le_event___eid: true
   field_le_event_image: true

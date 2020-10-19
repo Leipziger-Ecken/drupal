@@ -59,7 +59,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 12
+          items_per_page: 5
           offset: 0
           id: 0
           total_pages: null
@@ -671,8 +671,8 @@ display:
           description_field: title
           view_mode: full
           leaflet_map: 'OSM Mapnik'
-          height: '400'
-          height_unit: px
+          height: ''
+          height_unit: '%'
           hide_empty_map: 1
           disable_wheel: 0
           fullscreen_control: 1
@@ -711,9 +711,6 @@ display:
             popupAnchor:
               x: ''
               'y': ''
-          leaflet_markercluster:
-            control: 0
-            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
           path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
           geocoder:
             control: 0
@@ -769,7 +766,7 @@ display:
         description: ''
         expanded: false
         parent: ''
-        weight: -50
+        weight: -49
         context: '0'
         menu_name: main
       style:

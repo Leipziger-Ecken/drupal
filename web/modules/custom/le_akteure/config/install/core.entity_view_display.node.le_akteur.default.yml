@@ -38,23 +38,23 @@ bundle: le_akteur
 mode: default
 content:
   field_adresse:
-    weight: 22
-    label: above
+    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 21
-    label: above
+    weight: 1
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_geofield:
-    weight: 9
-    label: above
+    weight: 2
+    label: hidden
     settings:
       multiple_map: '0'
       popup: '1'
@@ -122,7 +122,7 @@ content:
     type: leaflet_formatter_default
     region: content
   field_le_akteur_comments:
-    weight: 19
+    weight: 18
     label: above
     settings:
       view_mode: default
@@ -131,7 +131,7 @@ content:
     type: comment_default
     region: content
   field_le_akteur_contactperson:
-    weight: 10
+    weight: 12
     label: above
     settings:
       link_to_entity: false
@@ -139,7 +139,7 @@ content:
     type: string
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 11
+    weight: 13
     label: above
     settings:
       link_to_entity: false
@@ -147,22 +147,22 @@ content:
     type: string
     region: content
   field_le_akteur_description:
-    weight: 1
-    label: above
+    weight: 7
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_le_akteur_email:
-    weight: 2
-    label: above
+    weight: 4
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: email_mailto
     region: content
   field_le_akteur_image:
-    weight: 0
-    label: above
+    weight: 5
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -170,7 +170,7 @@ content:
     type: image
     region: content
   field_le_akteur_is_barrier_free:
-    weight: 6
+    weight: 10
     label: above
     settings:
       format: default
@@ -180,7 +180,7 @@ content:
     type: boolean
     region: content
   field_le_akteur_is_private:
-    weight: 20
+    weight: 19
     label: above
     settings:
       format: default
@@ -214,15 +214,15 @@ content:
     type: entity_reference_label
     region: content
   field_le_akteur_kategorie_typ:
-    weight: 13
-    label: above
+    weight: 6
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_le_akteur_opening_times:
-    weight: 4
+    weight: 8
     label: above
     settings:
       link_to_entity: false
@@ -230,7 +230,7 @@ content:
     type: string
     region: content
   field_le_akteur_phone:
-    weight: 7
+    weight: 11
     label: above
     settings:
       title: ''
@@ -239,7 +239,7 @@ content:
     region: content
   field_le_akteur_url:
     weight: 3
-    label: above
+    label: hidden
     settings:
       trim_length: 80
       url_only: false
@@ -250,12 +250,12 @@ content:
     type: link
     region: content
   links:
-    weight: 5
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   og_group:
-    weight: 18
+    weight: 17
     type: og_group_subscribe
     region: content
     label: above

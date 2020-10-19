@@ -74,26 +74,12 @@
     {% endif %}
         </div>
         
-        {% if attachment_before %}
         <div class="col-md-4">
             <div id="leaflet-map-view-le-view-akteure-attachment-1" 
                  class="attachment-before leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
                         {{ attachment_before }}
             </div>
         </div>
-        {% endif %}
-        
-        
-{#
-/** 
-*        {% if attachment_before %}
-*    <div class="attachment attachment-before">
-*      {{ attachment_before }}
-*    </div>
-*  {% endif %}
-*/
-#}
-
   
   {% elseif empty %}
     <div class="view-empty">

@@ -239,7 +239,23 @@ body {
 /*____startseite_____*/
 
 
+/*_______menü___  _*/
+
+.dropdown:hover {
+    .dropdown-menu{
+        display: block;
+    }
+}
 
 
+/*_____style für event page _____*/
+
+body.page-node-type-le-event {
+    .field--name-og-audience {
+        .teaser-thump, .field--name-field-bezirk, .teaser-hr {
+            display: none;
+        }
+    }
+}
 
 
