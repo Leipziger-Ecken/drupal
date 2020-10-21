@@ -8170,7 +8170,6 @@ body {
 body.page-node-type-le-event .field--name-og-audience .teaser-thump, body.page-node-type-le-event .field--name-og-audience .field--name-field-bezirk, body.page-node-type-le-event .field--name-og-audience .teaser-hr {
   display: none;
 }
-<<<<<<< HEAD
 
 @media (min-width: 768px) {
   .offset-branding-container {
@@ -8185,7 +8184,5 @@ body.page-node-type-le-event .field--name-og-audience .teaser-thump, body.page-n
 body.path-frontpage .region-header {
   display: none;
 }
-=======
->>>>>>> 749fefd4cb2b259b81c394ea435671dc4c4142f7
 
 /*# sourceMappingURL=style.css.map */
