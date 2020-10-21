@@ -5,7 +5,7 @@ dependencies:
     - node.type.le_akteur
 id: node-le_akteur-non-member
 label: Non-member
-weight: null
+weight: 4
 is_admin: null
 group_type: node
 group_bundle: le_akteur
