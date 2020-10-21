@@ -31,14 +31,14 @@ mode: default
 content:
   field_adresse:
     weight: 16
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
     weight: 15
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -46,7 +46,7 @@ content:
     region: content
   field_geofield:
     weight: 14
-    label: above
+    label: hidden
     settings:
       multiple_map: '0'
       popup: '1'
@@ -115,15 +115,14 @@ content:
     region: content
   field_le_event_beschreibung:
     weight: 1
-    label: above
-    settings:
-      trim_length: 200
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
-    type: text_trimmed
+    type: text_default
     region: content
   field_le_event_image:
     weight: 0
-    label: above
+    label: hidden
     settings:
       image_style: ''
       image_link: ''
@@ -193,7 +192,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   og_audience:
-    label: above
+    label: hidden
     type: entity_reference_entity_view
     settings:
       view_mode: teaser
