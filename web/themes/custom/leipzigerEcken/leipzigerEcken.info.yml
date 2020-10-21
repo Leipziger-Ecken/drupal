@@ -3,14 +3,15 @@ base theme: bootstrap
 core: 8.x
 core_version_requirement: ^8 || ^9
 
-name: 'leipzigerEcken'
-description: 'A Drupal Bootstrap 3 based sub-theme.'
+name: 'Leipziger Ecken'
+description: 'Bootstrap 3 basiertes Drupal-Theme.'
 package: 'Bootstrap'
 
 regions:
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   header: 'Top Bar'
+  branding: 'Branding'
   highlighted: 'Highlighted'
   help: 'Help'
   content: 'Content'

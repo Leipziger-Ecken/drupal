@@ -8115,12 +8115,13 @@ hr.teaser-hr {
 }
 
 .btn {
-  color: #0064ff;
   font-weight: 600;
   margin-top: 20px;
 }
-
-.btn:hover {
+.btn:not(.btn-primary) {
+  color: #0064ff;
+}
+.btn:not(.btn-primary):hover {
   box-shadow: 0px 0px 10px lightblue;
   background: #0064ff;
   color: white;
@@ -8160,5 +8161,28 @@ body {
 }
 
 /*____startseite_____*/
+/*_______menü___  _*/
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/*_____style für event page _____*/
+body.page-node-type-le-event .field--name-og-audience .teaser-thump, body.page-node-type-le-event .field--name-og-audience .field--name-field-bezirk, body.page-node-type-le-event .field--name-og-audience .teaser-hr {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .offset-branding-container {
+    position: absolute;
+    width: 90px;
+    margin-left: -110px;
+  }
+  .offset-branding-container img {
+    width: 100%;
+  }
+}
+body.path-frontpage .region-header {
+  display: none;
+}
 
 /*# sourceMappingURL=style.css.map */

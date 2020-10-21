@@ -53,61 +53,43 @@
     </div>
   {% endif %}
     
-    <div class="row">
-        <div class="col-md-1"></div>
-        
+    <div class="row">        
         <div class="col-md-2">
-  {% if exposed %}
-    <div class="view-filters form-group">
-      {{ exposed }}
-    </div>
-  {% endif %}
-     </div>
-        
-        <div class="col-md-4">
-            {% if rows %}
-    <div class="view-content">
-      {{ rows }}
-    </div>
-    {% if pager %}
-        {{ pager }}
-    {% endif %}
+            {% if exposed %}
+              <div class="view-filters form-group">
+                {{ exposed }}
+              </div>
+            {% endif %}
         </div>
         
-        {% if attachment_before %}
-        <div class="col-md-4">
-            <div id="leaflet-map-view-le-view-akteure-attachment-1" 
-                 class="attachment-before leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
-                        {{ attachment_before }}
+        <div class="col-md-5">
+            {% if rows %}
+            <div class="view-content">
+              {{ rows }}
+            </div>
+            {% if pager %}
+                {{ pager }}
+            {% endif %}
+        </div>
+        
+        <div class="col-md-5">
+            <div class="attachment-before leaflet-container">
+                {{ attachment_before }}
             </div>
         </div>
-        {% endif %}
-        
-        
-{#
-/** 
-*        {% if attachment_before %}
-*    <div class="attachment attachment-before">
-*      {{ attachment_before }}
-*    </div>
-*  {% endif %}
-*/
-#}
-
   
-  {% elseif empty %}
-    <div class="view-empty">
-      {{ empty }}
-    </div>
-  {% endif %}
-  
+        {% elseif empty %}
+        <div class="view-empty">
+          {{ empty }}
         </div>
+        {% endif %}
+    </div><!-- /.row -->
         
-  {% if attachment_after %}
-    <div class="attachment attachment-after">
-      {{ attachment_after }}
-    </div>
-  {% endif %}
+    {% if attachment_after %}
+      <div class="attachment attachment-after">
+        {{ attachment_after }}
+      </div>
+    {% endif %}
   {% if more %}
     {{ more }}
   {% endif %}
