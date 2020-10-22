@@ -65,8 +65,8 @@ ol, ul {
   }
   
   hr.teaser-hr {
-      color: blue !important;
-      height: 1px;
+//      color: $hr-border;
+//      height: 1px;
       margin-bottom: 5px;
       margin-top: 5px;
   }
@@ -99,32 +99,7 @@ ol, ul {
       border-radius: 0px;
       border-bottom: 1px solid #0064ff;
   }
-  
-  //#block-mainnavigation-menu {
-  //    display: none;
-  //}
-  
-  /* map teaser */
-  .leaflet-container {
-      box-shadow: 0px 0px 10px lightblue;
-      height: 600px !important;
-      position: -webkit-sticky; /* Safari */
-      position: sticky;
-  }
-  
-  /*map akteurs seite*/
-  .geo-map .field--name-field-geofield .leaflet-container{
-      height: 200px !important;
-      margin-bottom: 10px;
-      margin-top: 10px;
-  }
-  
-  /*map event seite*/
-  .geo-map .field--name-field-le-event-geofield .leaflet-container{
-      height: 200px !important;
-      margin-bottom: 10px;
-      margin-top: 10px;
-  }
+ 
    /* teaser thumpnails */
   .teaser-thump .field--item .img-responsive {
       border-radius: 50%;
@@ -141,90 +116,6 @@ ol, ul {
   .page-header-label {
       text-align: center;
   }
-  
-  /* "bild" laber auf teaser seite ausblenden */
-  //div.field--label {
-  //    display: none;
-  //}
-  
-  
-  /*  ______filter boxen______  */
-  
-  .form-text.form-control {
-      width: 80%;
-  //    margin: 0px 10px 10px 0px;
-  }
-  
-  .form-inline .select-wrapper {
-      width: 80% !important;
-  //    margin: 0px 10px 10px 0px;
-  }
-  
-  .form-inline .form-group {
-      margin-bottom: 10px;
-      font-weight: 200;
-  //    border-bottom: 1px solid #0064ff;
-  }
-  
-  #edit-bezirk-id {
-      width: 80%;
-  }
-  #edit-start {
-  //    margin: 0px 10px 10px 0px;
-  }
-  #edit-end {
-      vertical-align: top;
-  }
-  
-  // @todo Override btn-styles via variables
-  .btn {
-    font-weight: 600;
-    margin-top: 20px;
-      
-    &:not(.btn-primary) {
-      color: #0064ff;
-
-      &:hover {
-        box-shadow: 0px 0px 10px lightblue;
-        background: #0064ff;
-        color: white;
-      }
-    }
-  }
-  
-  .filter-heading {
-      font-size: 20pt;
-  }
-  /* beschriftung der boxen drüber */
-  .control-label {
-      font-weight: 400;
-  }
-  
-  .page-header {
-      text-align: center;
-      border-bottom-color: $hr-border;
-      font-weight: 400;
-  }
-  
-  
-  /*_____login bereich_____*/
-  
-  #user-login-form{
-      margin: auto;
-      width: 50%;
-  }
-  #edit-name {
-      width: 50%;
-  }
-  
-  #edit-pass {
-      width: 50%;
-  }
-  body {
-      overflow-x: hidden;
-  }
-  /*____startseite_____*/
-  
   
   /*_______menü___  _*/
   

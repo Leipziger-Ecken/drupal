@@ -1,0 +1,21 @@
+ /* map teaser */
+  .leaflet-container {
+//      box-shadow: 0px 0px 10px lightblue;
+      box-shadow: $map-box-shadow;
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+  }
+  
+  /*map akteurs seite*/
+  .geo-map .field--name-field-geofield .leaflet-container{
+      height: 200px !important;
+      margin-bottom: 10px;
+      margin-top: 10px;
+  }
+  
+  /*map event seite*/
+  .geo-map .field--name-field-le-event-geofield .leaflet-container{
+      height: 200px !important;
+      margin-bottom: 10px;
+      margin-top: 10px;
+  }

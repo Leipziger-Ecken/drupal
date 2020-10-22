@@ -21,13 +21,13 @@ $icon-font-path: '#{$theme-root}/bootstrap/assets/fonts/bootstrap/';
 
 
 
-
-
-
-/*__ †† copy of the _variables.scss ††__*/
+/*__ †† copy of the _variables.scss hier sind custom variables ††__*/
 
 
 $hr-border:             #0064ff !default;
+//$hr-height:             10px !default;
+
+$map-box-shadow:        0px 0px 10px #add8e6;
 
 
 $bootstrap-sass-asset-helper: false !default;
@@ -182,13 +182,20 @@ $table-border-color:            #ddd !default;
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-font-weight:                normal !default;
+//$btn-font-weight:                normal !default;
+$btn-font-weight:                600 !default;
 
-$btn-default-color:              #333 !default;
+/* $btn-default-color:              #333 !default; #0064ff */
+$btn-default-color:              #0064ff !default; 
+$btn-default-shadow-color:       #add8e6 !default; 
+
+
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
-$btn-primary-color:              #fff !default;
+//$btn-primary-color:              #fff !default;
+$btn-primary-color:              #0064ff !default;
+
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
 
