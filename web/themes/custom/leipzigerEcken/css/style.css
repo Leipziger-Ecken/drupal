@@ -7957,9 +7957,11 @@ body.toolbar-loading.toolbar {
   color: #fff;
 }
 
-ol, ul {
-  padding-left: 1.5em;
+*, h1, h2, h3, h4, h5, h5, div, p, button, ol, ul, li, img, table {
+  padding: 0;
+  margin: 0;
 }
+
 .popover ol:last-child, .popover ul:last-child {
   margin-bottom: 0;
 }
@@ -8025,12 +8027,6 @@ hr.teaser-hr {
   font-weight: 100;
 }
 
-#map-wrapper {
-  margin-top: 20px !important;
-  height: 600px !important;
-  box-shadow: 0px 0px 10px lightblue;
-}
-
 /* gesammt breite des inhalts ohne navbar */
 .main-container {
   width: 100%;
@@ -8040,14 +8036,6 @@ hr.teaser-hr {
 .header-container {
   width: 100%;
   background-color: white;
-}
-
-#navbar {
-  background-color: white;
-  border-color: white;
-  border-bottom-color: #0064ff;
-  border-radius: 0px;
-  border-bottom: 1px solid #0064ff;
 }
 
 /* teaser thumpnails */
@@ -8065,30 +8053,6 @@ hr.teaser-hr {
 
 .page-header-label {
   text-align: center;
-}
-
-/*_______menü___  _*/
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/*_____style für event page _____*/
-body.page-node-type-le-event .field--name-og-audience .teaser-thump, body.page-node-type-le-event .field--name-og-audience .field--name-field-bezirk, body.page-node-type-le-event .field--name-og-audience .teaser-hr {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .offset-branding-container {
-    position: absolute;
-    width: 90px;
-    margin-left: -110px;
-  }
-  .offset-branding-container img {
-    width: 100%;
-  }
-}
-body.path-frontpage .region-header {
-  display: none;
 }
 
 /*  ______filter boxen______  */
@@ -8155,17 +8119,18 @@ body {
 }
 
 /*map akteurs seite*/
+/*map event seite*/
+.geo-map .field--name-field-le-event-geofield .leaflet-container,
 .geo-map .field--name-field-geofield .leaflet-container {
   height: 200px !important;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-/*map event seite*/
-.geo-map .field--name-field-le-event-geofield .leaflet-container {
-  height: 200px !important;
-  margin-bottom: 10px;
-  margin-top: 10px;
+#map-wrapper {
+  margin-top: 20px !important;
+  height: 600px !important;
+  box-shadow: 0px 0px 10px lightblue;
 }
 
 .btn {
@@ -8487,6 +8452,42 @@ input[type=submit].btn-block,
 input[type=reset].btn-block,
 input[type=button].btn-block {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .offset-branding-container {
+    position: absolute;
+    width: 90px;
+    margin-left: -110px;
+  }
+  .offset-branding-container img {
+    width: 100%;
+  }
+}
+#navbar {
+  background-color: white;
+  border-color: white;
+  border-bottom-color: #0064ff;
+  border-radius: 0px;
+  border-bottom: 1px solid #0064ff;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+body.path-frontpage .region-header {
+  display: none;
+}
+body.path-frontpage .view-frontpage .item-list > ul {
+  list-style: none;
+}
+
+/* event details page */
+body.page-node-type-le-event .field--name-og-audience .teaser-thump,
+body.page-node-type-le-event .field--name-og-audience .field--name-field-bezirk,
+body.page-node-type-le-event .field--name-og-audience .teaser-hr {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

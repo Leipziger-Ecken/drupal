@@ -3,4 +3,9 @@ body.path-frontpage {
     .region-header {
         display: none; // Temporary hide upper headline as being empty
     }
+
+    .view-frontpage .item-list > ul {
+        // Unset styles attached by view
+        list-style: none;
+    }
 }
