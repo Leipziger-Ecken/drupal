@@ -83,7 +83,7 @@ a.btn {
   @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
 .btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant($btn-default-bg, $btn-primary-color, $btn-primary-border);
 }
 // Success appears as green
 .btn-success {
