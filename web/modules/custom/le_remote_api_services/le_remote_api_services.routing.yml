@@ -5,3 +5,10 @@ le_remote_api_services.get_resources:
     _title: 'Find posts'
   requirements:
     _permission: 'access content'
+le_remote_api_services.get_angebote:
+  path: 'remote-api-services-get-angebote'
+  defaults:
+    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesController::getAngebote'
+    _title: 'Find Angebote'
+  requirements:
+    _permission: 'access content'

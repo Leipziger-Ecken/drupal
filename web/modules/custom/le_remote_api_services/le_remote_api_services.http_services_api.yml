@@ -4,3 +4,9 @@ le_remote_api_services_depot_social.contents:
   config:
     base_uri: "https://leipzig.depot.social/bat/v2/"
     debug: "/tmp/http.log"
+le_remote_api_services_fwal.contents:
+  title: "depot.social Services API"
+  api_path: "src/api/fwal_services.yml"
+  config:
+    base_uri: "https://www.lachnit-software.de/query/api/"
+    debug: "/tmp/http.log"
