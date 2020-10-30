@@ -22,7 +22,7 @@ operations:
     responseModel: "angebotsliste"
 models:
   angebotsliste:
-    type: "array"
+    type: "object"
     location: "xml"
     items:
       "$ref": "angebot"
