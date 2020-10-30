@@ -85,9 +85,15 @@ hr.teaser-hr {
     font-weight: 100;
 }
 
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* gesammt breite des inhalts ohne navbar */ 
 .main-container {
     width: 100%;
+    padding-bottom: 50px;
 }
 /* gesammt breite der navbar */ 
 .header-container {

@@ -9,13 +9,19 @@
 /*map event seite*/
 .geo-map .field--name-field-le-event-geofield .leaflet-container,
 .geo-map .field--name-field-geofield .leaflet-container {
-    height: 200px !important;
+    // height: 200px !important;
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
-#map-wrapper {
-    margin-top: 20px !important;
-    height: 600px !important;
-    box-shadow: 0px 0px 10px lightblue;
+// #map-wrapper {
+//     margin-top: 20px;
+//     // height: 600px !important;
+//     box-shadow: 0px 0px 10px lightblue;
+// }
+
+.map-frontpage {
+    box-shadow: $map-box-shadow;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
