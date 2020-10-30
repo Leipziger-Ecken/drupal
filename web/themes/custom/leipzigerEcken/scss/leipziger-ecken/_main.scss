@@ -58,7 +58,7 @@ p:last-child,
 }
 
 /* self defined classes */
- p {
+ p, .field--name-field-le-akteur-description, .field--type-text-long {
   font-family: $font-family-serif;
 }
 
