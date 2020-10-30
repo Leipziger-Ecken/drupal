@@ -1,152 +1,126 @@
+// Global layout styles
+// Attention: Before overriding bootstrap-related elements (e.g. .container / .btn), ensure that
+// whatever you wanted to do could not be done by changing a variable btn), ensuure that
+// whatever you wanted to do could have not be done by changing a variable in _default-variables.scss
+
+*,h1,h2,h3,h4,h5,h5,div,p,button,ol,ul,li,img,table {
+  // (Un-)set global styles
+  padding: 0;
+  margin: 0;
+}
 
 ol, ul {
-    padding-left: 1.5em;
     .popover &:last-child {
       margin-bottom: 0;
-    }
   }
-  
-  // Page header.
-  .page-header {
+}
+
+// Page header.
+.page-header {
+  margin-top: 0;
+}
+
+// Footer.
+.footer {
+  margin-top: 45px;
+  padding-top: 35px;
+  padding-bottom: 36px;
+  border-top: 1px solid #E5E5E5;
+}
+
+// Paragraphs.
+p:last-child,
+.form-group:last-child,
+.panel:last-child {
+  margin-bottom: 0;
+}
+
+// Help region.
+.region-help {
+  > .glyphicon {
+    font-size: $font-size-large;
+    float: left;
+    margin: -0.05em 0.5em 0 0;
+  }
+  .block {
+    overflow: hidden;
+  }
+}
+
+.help-block, .control-group .help-inline {
+  color: $gray-light;
+  font-size: 12px;
+  margin: 5px 0 10px;
+  padding: 0;
+  &:first-child {
     margin-top: 0;
   }
-  
-  // Footer.
-  .footer {
-    margin-top: 45px;
-    padding-top: 35px;
-    padding-bottom: 36px;
-    border-top: 1px solid #E5E5E5;
-  }
-  
-  // Paragraphs.
-  p:last-child,
-  .form-group:last-child,
-  .panel:last-child {
-    margin-bottom: 0;
-  }
-  
-  // Help region.
-  .region-help {
-    > .glyphicon {
-      font-size: $font-size-large;
-      float: left;
-      margin: -0.05em 0.5em 0 0;
-    }
-    .block {
-      overflow: hidden;
-    }
-  }
-  
-  .help-block, .control-group .help-inline {
-    color: $gray-light;
-    font-size: 12px;
-    margin: 5px 0 10px;
-    padding: 0;
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-  
-  /* self defined classes */
-  
-  .adress-akteur {
-      margin-top: 20px;
-      font-size: 1.3em;
-      font-size: 1.4vw;
-  }
-  
-  .teaser-list{
-      margin: 1.5em;
-  }
-  
-  .teaser-label {
-      font-size: 17px;
-  }
-  
-  hr.teaser-hr {
+}
+
+/* self defined classes */
+
+.adress-akteur {
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-size: 1.4vw;
+}
+
+.teaser-list{
+    padding: 1.5em;
+}
+
+.teaser-label {
+    font-size: 17px;
+}
+
+hr.teaser-hr {
 //      color: $hr-border;
 //      height: 1px;
-      margin-bottom: 5px;
-      margin-top: 5px;
-  }
-  
-  .event-date {
-      font-size: 15px;
-      font-weight: 100;
-  }
-  
-  #map-wrapper {
-      margin-top: 20px !important;
-      height: 600px !important;
-      box-shadow: 0px 0px 10px lightblue;
-  }
-  
-  /* gesammt breite des inhalts ohne navbar */ 
-  .main-container {
-      width: 100%;
-  }
-  /* gesammt breite der navbar */ 
-  .header-container {
-      width: 100%;
-      background-color: white;
-  }
-  
-  #navbar {
-      background-color: white;
-      border-color: white;
-      border-bottom-color: $hr-border;
-      border-radius: 0px;
-      border-bottom: 1px solid #0064ff;
-  }
- 
-   /* teaser thumpnails */
-  .teaser-thump .field--item .img-responsive {
-      border-radius: 50%;
-      border-style: solid;
-      border-color: $hr-border;
-      border-width: 1px;
-      overflow: hidden;
-          height: 82px;
-      width: 82px;
-      object-fit: cover;
-      margin: 5px;
-  }
-  
-  .page-header-label {
-      text-align: center;
-  }
-  
-  /*_______menü___  _*/
-  
-  .dropdown:hover {
-      .dropdown-menu{
-          display: block;
-      }
-  }
-  
-  
-  /*_____style für event page _____*/
-  
-  body.page-node-type-le-event {
-      .field--name-og-audience {
-          .teaser-thump, .field--name-field-bezirk, .teaser-hr {
-              display: none;
-          }
-      }
-  }  
-
-// Navbar
-$branding-container-width: 90px;
-
-@media (min-width: $grid-float-breakpoint) {
-    .offset-branding-container {
-        position: absolute;
-        width: $branding-container-width;
-        margin-left: -($branding-container-width + 20);
-
-        img {
-            width: 100%;
-        }
-    }
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
+
+.event-date {
+    font-size: 15px;
+    font-weight: 100;
+}
+
+/* gesammt breite des inhalts ohne navbar */ 
+.main-container {
+    width: 100%;
+}
+/* gesammt breite der navbar */ 
+.header-container {
+    width: 100%;
+    background-color: white;
+}
+
+/* teaser thumpnails */
+.teaser-thump .field--item .img-responsive {
+    border-radius: 50%;
+    border-style: solid;
+    border-color: $hr-border;
+    border-width: 1px;
+    overflow: hidden;
+        height: 82px;
+    width: 82px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+.page-header-label {
+    text-align: center;
+}
+
+// @todo Import layouts
+
+// Import components
+@import "components/filter"; 
+@import "components/login"; 
+@import "components/map"; 
+@import "components/buttons";
+@import "components/navbar";
+
+// Import pages
+@import "pages/front"; 
+@import "pages/event-detail";

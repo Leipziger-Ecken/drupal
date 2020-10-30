@@ -1,0 +1,30 @@
+// Navbar
+
+// Left "branding" block w/ logo
+$branding-container-width: 90px;
+
+@media (min-width: $grid-float-breakpoint) {
+    .offset-branding-container {
+        position: absolute;
+        width: $branding-container-width;
+        margin-left: -($branding-container-width + 20);
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+#navbar {
+    background-color: white;
+    border-color: white;
+    border-bottom-color: $hr-border;
+    border-radius: 0px;
+    border-bottom: 1px solid #0064ff;
+}
+
+.dropdown:hover {
+    .dropdown-menu{
+        display: block;
+    }
+}
