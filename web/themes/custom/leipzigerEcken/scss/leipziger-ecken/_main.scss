@@ -58,36 +58,50 @@ p:last-child,
 }
 
 /* self defined classes */
+ p {
+  font-family: $font-family-serif;
+}
 
 .adress-akteur {
     margin-top: 20px;
-    font-size: 1.3em;
-    font-size: 1.4vw;
+    // font-size: $font-size-base;
+    // font-size: 1.4vw;
+    word-wrap:break-word;
 }
-
+.address {
+  font-family: $font-family-sans-serif;
+  color: $link-color;
+}
 .teaser-list{
     padding: 1.5em;
 }
 
 .teaser-label {
-    font-size: 17px;
+    // font-size: 17px;
 }
 
 hr.teaser-hr {
-//      color: $hr-border;
-//      height: 1px;
     margin-bottom: 5px;
     margin-top: 5px;
 }
 
 .event-date {
-    font-size: 15px;
-    font-weight: 100;
+    font-size: $font-size-small;
+    // font-weight: 100;
+}
+
+h1,h2,.control-label,.filter-heading  {
+  color: $brand-primary;
 }
 
 .inactiveLink {
   pointer-events: none;
   cursor: default;
+  // color: $text-color;
+}
+
+.inactiveLink .field--item a {
+  color: $text-color;
 }
 
 /* gesammt breite des inhalts ohne navbar */ 
