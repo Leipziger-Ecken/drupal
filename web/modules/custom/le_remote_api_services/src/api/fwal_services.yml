@@ -1,0 +1,5 @@
+name: "FwAL - Content Services API"
+apiVersion: "1.0"
+description: "Client wrapper for Freiwilligenagentur Leipzig Angebote API."
+imports:
+  - "resources/fwal.yml"

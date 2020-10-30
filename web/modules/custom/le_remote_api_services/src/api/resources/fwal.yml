@@ -1,0 +1,35 @@
+operations:
+  GetAngebote:
+    httpMethod: "GET"
+    uri: "MatchingServiceEndpoint.php"
+    summary: "Gets the available FWAL-Angebote as XML."
+    parameters:
+      agencyId:
+        location: "query"
+        description: "Freinet agency ID"
+        type: "integer"
+        required: true
+      accessKey:
+        location: "query"
+        description: "Secret access key"
+        type: "string"
+        required: true
+      limit:
+        location: "query"
+        description: "Limit results (default: 100)"
+        type: "integer"
+        required: false
+    responseModel: "angebotsliste"
+models:
+  angebotsliste:
+    type: "array"
+    location: "xml"
+    items:
+      "$ref": "angebot"
+  angebot:
+    type: "object"
+    location: "xml"
+    properties:
+      einrichtungsname:
+        location: "xml"
+        type: "string"

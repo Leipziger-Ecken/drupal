@@ -40,7 +40,8 @@ class RemoteApiServicesController extends ControllerBase {
    * @param \Drupal\geocoder\ProviderPluginManager $providerPluginManager
    */
   public function __construct(HttpClientManagerFactoryInterface $http_client_factory) {
-    $this->httpClient = $http_client_factory->get('le_remote_api_services_depot_social.contents');
+    //$this->httpClient = $http_client_factory->get('le_remote_api_services_depot_social.contents');
+    $this->httpClient = $http_client_factory->get('le_remote_api_services_fwal.contents');
     $this->geocoder = \Drupal::service('geocoder');
     $this->wktGenerator = \Drupal::service('geofield.wkt_generator');
 
@@ -211,6 +212,36 @@ class RemoteApiServicesController extends ControllerBase {
 
     return $build;
   }
+
+    /**
+    * GetRessourcen route callback.
+    *
+    * @param int $limit
+    *   The total number of posts we want to fetch.
+    * @param string $sort
+    *   The sorting order.
+    *
+    * @return array
+    *   A render array used to show the Posts list.
+    *
+    * @todo Add timestamp & page-params, sort by created/updated
+    */
+    public function getAngebote($limit = 1000) {
+
+      $response = $this->httpClient->call('GetAngebote', [
+        'agencyId' => 1,
+        'accessKey' => '',
+        'limit' => $limit,
+      ]);
+
+      var_dump($response);
+      // @todo Check for valid response
+      $response = $response->toArray();
+
+      echo 'huhu';
+      print_r($response);
+
+    }
 
 }
 
