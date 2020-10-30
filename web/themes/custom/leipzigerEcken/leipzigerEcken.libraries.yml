@@ -2,6 +2,16 @@ framework:
   css:
     theme:
       css/style.css: {}
+      
+lora:
+  css:
+    lora:
+      '//fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap': { external: true }
+
+publicsans:
+  css:
+    publicsans:
+      '//fonts.googleapis.com/css2?family=Public+Sans:wght@600&display=swap': { external: true }
 
 # Uncomment for LESS source JavaScript files.
 #  js:
