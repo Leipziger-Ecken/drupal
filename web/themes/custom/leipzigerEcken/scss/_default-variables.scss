@@ -24,9 +24,6 @@ $icon-font-path: '#{$theme-root}/bootstrap/assets/fonts/bootstrap/';
 /*__ †† copy of the _variables.scss hier sind custom variables ††__*/
 
 
-$hr-border:             #0064ff !default;
-//$hr-height:             10px !default;
-
 $map-box-shadow:        0px 0px 10px #add8e6;
 
 
@@ -48,7 +45,7 @@ $gray-light:             lighten($gray-base, 50.0%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 //$brand-primary:         darken(#0000FF, 6.5%) !default; // #337ab7, #428bca
-$brand-primary:     #0064ff !default;
+$brand-primary:     #0096FF !default;
 
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
@@ -63,11 +60,11 @@ $brand-danger:          #d9534f !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-light !default; // #0064ff !default;        
+$text-color:            $gray-light !default; // #0096FF !default;        
 
 //** Global textual link color.
 // $link-color:            $brand-primary !default;
-$link-color:             #0064ff !default;
+$link-color:             #0096FF !default;
 
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 15%) !default;
@@ -113,6 +110,9 @@ $headings-font-family:    inherit !default;
 $headings-font-weight:    600 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
+
+$hr-border-grey:        $gray-light !default;
+$hr-border:             $brand-primary !default;
 
 
 //== Iconography
@@ -193,8 +193,8 @@ $table-border-color:            #ddd !default;
 //$btn-font-weight:                normal !default;
 $btn-font-weight:                600 !default;
 
-/* $btn-default-color:              #333 !default; #0064ff */
-$btn-default-color:              #0064ff !default; 
+/* $btn-default-color:              #333 !default; #0096FF */
+$btn-default-color:              #0096FF !default; 
 $btn-default-shadow-color:       #add8e6 !default; 
 
 
@@ -202,7 +202,7 @@ $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
 //$btn-primary-color:              #fff !default;
-$btn-primary-color:              #0064ff !default;
+$btn-primary-color:              #0096FF !default;
 
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
@@ -428,7 +428,7 @@ $navbar-default-bg:                #f8f8f8 !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-default-link-color:                #0064ff !default;
+$navbar-default-link-color:                #0096FF !default;
 $navbar-default-link-hover-color:          #333 !default;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         #555 !default;

@@ -64,14 +64,17 @@ p:last-child,
 
 .adress-akteur {
     margin-top: 20px;
-    // font-size: $font-size-base;
-    // font-size: 1.4vw;
     word-wrap:break-word;
 }
+
 .address {
   font-family: $font-family-sans-serif;
-  color: $link-color;
 }
+
+.grey-hr {
+  border-color: $hr-border-grey;
+}
+
 .teaser-list{
     padding: 1.5em;
 }
@@ -86,8 +89,7 @@ hr.teaser-hr {
 }
 
 .event-date {
-    font-size: $font-size-small;
-    // font-weight: 100;
+    font-size: $font-size-base;
 }
 
 h1,h2,.control-label,.filter-heading  {
@@ -97,10 +99,11 @@ h1,h2,.control-label,.filter-heading  {
 .inactiveLink {
   pointer-events: none;
   cursor: default;
+  font-size: $font-size-small;
   // color: $text-color;
 }
 
-.inactiveLink .field--item a {
+.inactiveLink a {
   color: $text-color;
 }
 
