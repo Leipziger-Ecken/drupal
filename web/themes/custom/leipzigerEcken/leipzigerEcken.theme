@@ -4,7 +4,7 @@
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function leipzigerEcken_theme_suggestions_page_alter(array &$suggestions, array $variables) {
-    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node = \Drupal::routeMatch()->getParameter('node') && isset($node->bundle)) {
         // Suggest e.g. page--le-akteur.html.twig / page--le-event.html.twig
         $suggestions[] = 'page__' . $node->bundle();
     }
