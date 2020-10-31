@@ -73,6 +73,7 @@ p:last-child,
 
 .grey-hr {
   border-color: $hr-border-grey;
+  border: 2px solid;
 }
 
 .teaser-list{
@@ -83,9 +84,14 @@ p:last-child,
     // font-size: 17px;
 }
 
+.view-header {
+  margin-bottom: 20px;;
+}
+
 hr.teaser-hr {
     margin-bottom: 5px;
     margin-top: 5px;
+    border: 2px solid;
 }
 
 .event-date {

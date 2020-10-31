@@ -1571,7 +1571,7 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-size: 38px;
+  font-size: 27px;
 }
 
 h3, .h3 {
@@ -8018,15 +8018,21 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
 
 .grey-hr {
   border-color: gray;
+  border: 2px solid;
 }
 
 .teaser-list {
   padding: 1.5em;
 }
 
+.view-header {
+  margin-bottom: 20px;
+}
+
 hr.teaser-hr {
   margin-bottom: 5px;
   margin-top: 5px;
+  border: 2px solid;
 }
 
 .event-date {
