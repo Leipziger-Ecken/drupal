@@ -1,14 +1,14 @@
 le_remote_api_services.get_resources:
   path: 'remote-api-services-get-resources'
   defaults:
-    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesController::getRessourcen'
-    _title: 'Find posts'
+    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesDepotController::getRessourcen'
+    _title: 'Find resources'
   requirements:
     _permission: 'access content'
 le_remote_api_services.get_angebote:
   path: 'remote-api-services-get-angebote'
   defaults:
-    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesController::getAngebote'
+    _controller: '\Drupal\le_remote_api_services\Controller\RemoteApiServicesFwalController::getAngebote'
     _title: 'Find Angebote'
   requirements:
     _permission: 'access content'
