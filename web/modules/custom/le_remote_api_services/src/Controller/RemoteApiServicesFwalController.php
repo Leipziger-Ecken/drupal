@@ -5,7 +5,6 @@ namespace Drupal\le_remote_api_services\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\http_client_manager\HttpClientManagerFactoryInterface;
 use Drupal\node\Entity\Node;
-use GuzzleHttp\Cookie\CookieJar;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 // use Drupal\geofield\WktGenerator;
 use Drupal\Core\Site\Settings;
@@ -13,6 +12,7 @@ use Drupal\Core\Site\Settings;
 // @todo https://www.drupal.org/docs/8/modules/http-client-manager/the-handler-stack
 // @todo Better inject services instead of using global import
 // @see https://drupal.stackexchange.com/questions/263598/how-to-inject-dependencies-into-an-access-controller
+// @todo Author of added entities should be "cron", not admin
 
 /**
  * Class RemoteApiServicesFwalController.
@@ -40,12 +40,15 @@ class RemoteApiServicesFwalController extends ControllerBase {
    * @param \Drupal\geocoder\ProviderPluginManager $providerPluginManager
    */
   public function __construct(HttpClientManagerFactoryInterface $http_client_factory) {
-    $this->httpClient = \Drupal::httpClient(); // $http_client_factory->get('le_remote_api_services_fwal.contents');
+    $this->httpClient = \Drupal::httpClient();
     $this->geocoder = \Drupal::service('geocoder');
     $this->wktGenerator = \Drupal::service('geofield.wkt_generator');
 
     $this->providers = \Drupal::entityTypeManager()->getStorage('geocoder_provider')->loadMultiple(['mapbox']);
     $this->bezirke = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('le_bezirk');
+
+    $this->agencyId = Settings::get('le_remote_api_fwal_agency_id', null);
+    $this->accessKey = Settings::get('le_remove_api_fwal_access_key', null);
   }
 
   /**
@@ -88,15 +91,19 @@ class RemoteApiServicesFwalController extends ControllerBase {
     return null;
   }
 
+  /**
+   * Identify and return any akteur linked to $einrichtungsname
+   */
   private function resolveAkteurFromEinrichtungsname(string $einrichtungsname) {
+    $einrichtungsname = trim($einrichtungsname);
     $database = \Drupal::database();
     $query = $database->query("
-      SELECT * FROM node_field_data
-      WHERE type = :type
-      AND title LIKE :pattern",
+      SELECT * FROM node__field_le_akteur_einrichtungsname
+      WHERE bundle = :bundle
+      AND field_le_akteur_einrichtungsname_value = :pattern",
       array(
-        ':type' => 'le_akteur',
-        ':pattern' => "%${einrichtungsname}%"
+        ':bundle' => 'le_akteur',
+        ':pattern' => $einrichtungsname
       )
     );
 
@@ -104,6 +111,7 @@ class RemoteApiServicesFwalController extends ControllerBase {
   }
 
   private function mapAngebotToFields(\SimpleXMLElement $angebot, int $angebotsId): Array {
+    $agencyId = $this->agencyId;
     $lng = (float) $angebot->geo_laenge;
     $lat = (float) $angebot->geo_breite;
 
@@ -117,13 +125,13 @@ class RemoteApiServicesFwalController extends ControllerBase {
       'field_adresse' => [
         'country_code' => 'DE',
         'address_line1' => (string) $angebot->strasse,
-        // 'address_line2' => '',
         'postal_code' => (string) $angebot->plz,
         'locality' => (string) $angebot->ort,
       ],
       'field_le_rcds_id_external' => $angebotsId,
       'field_le_rcds_einrichtung_name' => (string) $angebot->einrichtungsname,
-      'field_le_rcds_offers_count' => (int) $angebot->anzahl_gesuche
+      'field_le_rcds_offers_count' => (int) $angebot->anzahl_gesuche,
+      'field_le_rcds_link' => "https://www.freinet-online.de/query/iframe/detail.php?agid=${agencyId}&styleid=1&frametyp=2&detail=${angebotsId}",
     ];
 
     if ($lng && $lat) {
@@ -181,7 +189,7 @@ class RemoteApiServicesFwalController extends ControllerBase {
       if (!empty($einrichtungsname)) {
         $akteur = $this->resolveAkteurFromEinrichtungsname($einrichtungsname);
         if (!empty($akteur)) {
-          $fields['og_audience'] = (int) $akteur['nid'];
+          $fields['og_audience'] = (int) $akteur['entity_id'];
         }
       }
 
@@ -216,10 +224,7 @@ class RemoteApiServicesFwalController extends ControllerBase {
    * @see https://freinet-online.de/api/api_angebot
    */
   public function getAngebote(): Array {
-    $agencyId = Settings::get('le_remote_api_fwal_agency_id', null);
-    $accessKey = Settings::get('le_remove_api_fwal_access_key', null);
-
-    if (!$agencyId || !$accessKey) {
+    if (!$this->agencyId || !$this->accessKey) {
       return [
         '#type' => 'markup',
         '#markup' => 'Error: No agencyID / API-key provided'
@@ -228,7 +233,7 @@ class RemoteApiServicesFwalController extends ControllerBase {
 
     $host = 'https://www.lachnit-software.de/';
     $operation = 'query/api/MatchingServiceEndpoint.php';
-    $params = "?agencyId=${agencyId}&accessKey=${accessKey}&limit=9999";
+    $params = '?agencyId='. $this->agencyId .'&accessKey=' . $this->accessKey . '&limit=9999';
 
     $request = $this->httpClient->request('GET', "${host}${operation}${params}");
     $response = new \SimpleXMLElement($request->getBody()->getContents());
@@ -237,11 +242,16 @@ class RemoteApiServicesFwalController extends ControllerBase {
 
     if (isset($response->angebot)) {
       foreach ($response->angebot as $angebot) {
+        if ((int) $angebot->anzahl_gesuche === 0) {
+          // Skip inactive offer
+          continue;
+        }
+    
         $processed_ids[] = $this->processAngebot($angebot);
       }
     }
 
-    // Identify and remove non-existing angebote
+    // Identify and remove Angebote that do not exist anymore/becamed inactive
     $this->identifyDeletedAngebote($processed_ids);
 
     return [

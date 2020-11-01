@@ -5,7 +5,6 @@ namespace Drupal\le_remote_api_services\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\http_client_manager\HttpClientManagerFactoryInterface;
 use Drupal\node\Entity\Node;
-use GuzzleHttp\Cookie\CookieJar;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 // use Drupal\geofield\WktGenerator;
 
@@ -58,16 +57,6 @@ class RemoteApiServicesDepotController extends ControllerBase {
   }
 
   /**
-   * Get Client.
-   *
-   * @return \Drupal\http_client_manager\HttpClientInterface
-   *   The Http Client instance.
-   */
-  public function getClient() {
-    return $this->httpClient;
-  }
-
-  /**
    * Resolve adress from geodata, match that address against local bezirke-taxonomy and return
    * its ID, if any.
    *
@@ -79,7 +68,7 @@ class RemoteApiServicesDepotController extends ControllerBase {
    * For further information:
    * The geocoder module has an extremely helpful README file ;)
    */
-  private function getBezirkIDFromGeodata(int $lng, int $lat) {
+  private function resolveBezirkIDFromGeodata(int $lng, int $lat): ?int {
 
     if (empty($lng) || empty($lat)) {
       return null;
@@ -99,7 +88,6 @@ class RemoteApiServicesDepotController extends ControllerBase {
       foreach ($this->bezirke as $bezirk) {
         if (strpos($bezirk->name, $needle) !== false) {
           // We found a match!
-          echo 'found' . $bezirk->name;
           return (int) $bezirk->tid;
         }
       }
@@ -108,71 +96,77 @@ class RemoteApiServicesDepotController extends ControllerBase {
     return null;
   }
 
-  /**
-   * @todo Rename mapRessourceToNode, return array only
-   * * create & save when new item
-   * * iterate / map onto given item & save
-   */
-  private function addNodeFromRessource($ressource) {
+  private function mapRessourceToFields(Array $ressource): Array {
 
-    $lng = $ressource['address_lng'];
-    $lat = $ressource['address_lat'];
+    $lng = (float) $ressource['address_lng'];
+    $lat = (float) $ressource['address_lat'];
 
-    $node = [
-      'title' => $ressource['name'],
+    $fields = [
+      'title' => (string) $ressource['name'],
       'type' => self::RESSOURCE_NODE_TYPE,
       'body'  => [
-        'value' => $ressource['desc'],
+        'value' => (string) $ressource['desc'],
         'format' => 'full_html',
       ],
       'field_le_rcds_id_external' => (int) $ressource['id'],
-      'field_le_rcds_link' => $ressource['uri_slug'],
+      'field_le_rcds_link' => (string) $ressource['uri_slug'],
       'field_le_rcds_resources_count' => (int) $ressource['resources_count'],
       'field_le_rcds_image' => 'https://leipzig.depot.social/sites/leipzig.depot.social/files/' . $ressource['image']['filename'],
-      'field_le_rcds_zip_code' => $ressource['address_zip_code'],
+      'field_le_rcds_zip_code' => (string) $ressource['address_zip_code'],
     ];
 
-    $node = Node::create($node);
-
     if ($lng && $lat) {
-
-      $node->set('field_bezirk', $this->getBezirkIDFromGeodata($lng, $lat));
-
-      $point = $this->wktGenerator->WktBuildPoint([
+      $wktPoint = $this->wktGenerator->WktBuildPoint([
         'lon' => $lng,
         'lat' => $lat
       ]);
 
-      $node->set('field_geofield', $point);
+      $fields['field_geofield'] = $wktPoint;
+      $fields['field_bezirk'] = $this->resolveBezirkIDFromGeodata($lng, $lat);
     }
 
-    $node->save();
-    return $node->id;
+    return $fields;
   }
 
-  private function readRessource($ressource) {
+  /**
+   * Add resource as new node or overwrite given node.
+   */
+  private function processRessource(Array $ressource): int {
     $node_id = null;
 
+    // Entity already existing locally?
     $node = \Drupal::entityQuery('node')
       ->condition('field_le_rcds_id_external', (int) $ressource['id'])
       ->condition('type', self::RESSOURCE_NODE_TYPE)
       ->execute();
+
+    $fields = $this->mapRessourceToFields($ressource);
 
     if (!empty($node)) {
       // Update/Patch node
       $node_id = $node[array_key_first($node)];
       $node = Node::load($node_id);
 
-      // @todo
+      foreach($fields as $key => $field) {
+        // Patch fields
+        $node->set($key, $field);
+      }
+
+      $node->save();
+
     } else {
-      // Add node
-      $node_id = $this->addNodeFromRessource($ressource);
+      // Add new node
+      // @todo Link with Akteur, if wished
+      $node = Node::create($fields);
+      $node->save();
+      $node_id = $node->id();
     }
 
-    return [
-      '#type' => 'markup',
-      '#markup' => '<p>Added/Updated node '. $node_id .'</p><br />'
-    ];
+    return $node_id;
+  }
+
+  private function identifyDeletedAngebote(Array $processed_ids): void {
+    // @todo implement
   }
 
   /**
@@ -198,15 +192,19 @@ class RemoteApiServicesDepotController extends ControllerBase {
     // @todo Check for valid response
     $response = $response->toArray();
 
-    $build = [];
+    $processed_ids = [];
 
     foreach ($response as $id => $ressource) {
-      $build[$id] = $this->readRessource($ressource);
+      $processed_ids[] = $this->processRessource($ressource);
     }
 
-    // @todo Save timestamp
+    // Identify and remove Angebote that do not exist anymore/becamed inactive
+    $this->identifyDeletedAngebote($processed_ids);
 
-    return $build;
+    return [
+      '#type' => 'markup',
+      '#markup' => 'Added/Updated ' . count($processed_ids) . ' nodes'
+    ];
   }
 }
 
