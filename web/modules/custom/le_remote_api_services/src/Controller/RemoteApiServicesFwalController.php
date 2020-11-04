@@ -3,24 +3,24 @@
 namespace Drupal\le_remote_api_services\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\http_client_manager\HttpClientManagerFactoryInterface;
-use Drupal\node\Entity\Node;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-// use Drupal\geofield\WktGenerator;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\geocoder\Geocoder;
+use Drupal\geofield\WktGenerator;
+use Drupal\node\Entity\Node;
 
-// @todo https://www.drupal.org/docs/8/modules/http-client-manager/the-handler-stack
-// @todo Better inject services instead of using global import
-// @see https://drupal.stackexchange.com/questions/263598/how-to-inject-dependencies-into-an-access-controller
-// @todo Author of added entities should be "cron", not admin
+use GuzzleHttp\Client;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class RemoteApiServicesFwalController.
- *
+ * 
+ * @todo Author of added entities should be "cron", not admin
+ * 
  * @package Drupal\le_remote_api_services\Controller
  */
-class RemoteApiServicesFwalController extends ControllerBase {
-
+class RemoteApiServicesFwalController extends ControllerBase
+{
   const ANGEBOT_NODE_TYPE = 'le_remote_content_fwal';
   const UPDATE_MODE = 'skip'; // (int) 'patch' || 'skip' 
 
@@ -30,22 +30,47 @@ class RemoteApiServicesFwalController extends ControllerBase {
   protected $httpClient;
 
   /**
-   * RemoteApiServicesFwalController constructor.
-   *
-   * @todo Fully functionalize/"Symfonize" params!
-   *
-   * @param \Drupal\http_client_manager\HttpClientManagerFactoryInterface $http_client_factory
-   *   The HTTP Client Manager Factory service.
-   * @param \Drupal\geocoder\Geocoder $geocoder
-   * @param \Drupal\geocoder\ProviderPluginManager $providerPluginManager
+   * @var \Drupal\geocoder\Geocoder
    */
-  public function __construct(HttpClientManagerFactoryInterface $http_client_factory) {
-    $this->httpClient = \Drupal::httpClient();
-    $this->geocoder = \Drupal::service('geocoder');
-    $this->wktGenerator = \Drupal::service('geofield.wkt_generator');
+  protected $geocoder;
 
-    $this->providers = \Drupal::entityTypeManager()->getStorage('geocoder_provider')->loadMultiple(['mapbox']);
-    $this->bezirke = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('le_bezirk');
+  /**
+   * @var \Drupal\geofield\WktGenerator
+   */
+  protected $wktGenerator;
+
+  /**
+   * @var Array
+   */
+  protected $providers;
+
+  /**
+   * @var Array
+   */
+  protected $bezirke;
+
+  /**
+   * @var integer
+   */
+  protected $agencyId;
+
+  /**
+   * @var string
+   */
+  protected $accessKey;
+  
+
+  /**
+   * RemoteApiServicesFwalController constructor.
+   */
+  public function __construct(Client $http_client, Geocoder $geocoder, WktGenerator $wktGenerator, EntityTypeManagerInterface $entity_type_manager)
+  {
+    $this->httpClient = $http_client;
+    $this->geocoder = $geocoder;
+    $this->wktGenerator = $wktGenerator;
+
+    $this->providers = $entity_type_manager->getStorage('geocoder_provider')->loadMultiple(['mapbox']);
+    $this->bezirke = $entity_type_manager->getStorage('taxonomy_term')->loadTree('le_bezirk');
 
     $this->agencyId = Settings::get('le_remote_api_fwal_agency_id', null);
     $this->accessKey = Settings::get('le_remove_api_fwal_access_key', null);
@@ -54,9 +79,13 @@ class RemoteApiServicesFwalController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container)
+  {
     return new static(
-      $container->get('http_client_manager.factory')
+      $container->get('http_client'),
+      $container->get('geocoder'),
+      $container->get('geofield.wkt_generator'),
+      $container->get('entity_type.manager'),
     );
   }
 
@@ -64,7 +93,8 @@ class RemoteApiServicesFwalController extends ControllerBase {
    * Resolve internal Bezirk-ID via geocoder provider
    * @todo Move into own trait
    */
-  private function resolveBezirkIDFromGeodata(float $lng, float $lat): ?int {
+  private function resolveBezirkIDFromGeodata(float $lng, float $lat): ?int
+  {
     if (empty($lng) || empty($lat)) {
       return null;
     }
@@ -94,7 +124,8 @@ class RemoteApiServicesFwalController extends ControllerBase {
   /**
    * Identify and return any akteur linked to $einrichtungsname
    */
-  private function resolveAkteurFromEinrichtungsname(string $einrichtungsname) {
+  private function resolveAkteurFromEinrichtungsname(string $einrichtungsname)
+  {
     $einrichtungsname = trim($einrichtungsname);
     $database = \Drupal::database();
     $query = $database->query("
@@ -110,7 +141,8 @@ class RemoteApiServicesFwalController extends ControllerBase {
     return $query->fetchAssoc();
   }
 
-  private function mapAngebotToFields(\SimpleXMLElement $angebot, int $angebotsId): Array {
+  private function mapAngebotToFields(\SimpleXMLElement $angebot, int $angebotsId): Array
+  {
     $agencyId = $this->agencyId;
     $lng = (float) $angebot->geo_laenge;
     $lat = (float) $angebot->geo_breite;
@@ -150,7 +182,8 @@ class RemoteApiServicesFwalController extends ControllerBase {
   /**
    * Add angebot as new node or overwrite given node.
    */
-  private function processAngebot(\SimpleXMLElement $angebot): int {
+  private function processAngebot(\SimpleXMLElement $angebot): int
+  {
     $node_id = null;
 
     $attr = $angebot->attributes();
@@ -211,19 +244,25 @@ class RemoteApiServicesFwalController extends ControllerBase {
    * been deleted there since last call -> compare response IDs with local 
    * items, remove those outside
    */
-  private function identifyDeletedAngebote(Array $processed_ids): void {
+  private function identifyDeletedAngebote(Array $processed_ids): void
+  {
     // @todo implement
   }
 
   /**
    * GetAngebote route callback.
+   * 
+   * Note that we use GuzzeHttp\Client to fetch data; not httpClientManager / Guzzle service descriptor
+   * as this came with troubles parsing the returned XML (and I was tired of injecting further
+   * middleware/toolkits).
    *
    * @return array
    *   A render array used to show the Angebote list.
    *
    * @see https://freinet-online.de/api/api_angebot
    */
-  public function getAngebote(): Array {
+  public function getAngebote(): Array
+  {
     if (!$this->agencyId || !$this->accessKey) {
       return [
         '#type' => 'markup',
