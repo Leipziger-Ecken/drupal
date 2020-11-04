@@ -1,1 +1,17 @@
-true
+required:
+  - views.view.le_akteur_has_fwal_angebote
+  - core.base_field_override.node.le_remote_content_fwal.title
+  - node.type.le_remote_content_fwal
+  - core.entity_view_display.node.le_remote_content_fwal.default
+  - core.entity_view_display.node.le_remote_content_fwal.teaser
+  - core.entity_form_display.node.le_remote_content_fwal.default
+  - field.field.node.le_remote_content_fwal.body
+  - field.field.node.le_remote_content_fwal.field_adresse
+  - field.field.node.le_remote_content_fwal.field_bezirk
+  - field.field.node.le_remote_content_fwal.field_geofield
+  - field.field.node.le_remote_content_fwal.field_le_rcds_einrichtung_name
+  - field.field.node.le_remote_content_fwal.field_le_rcds_id_external
+  - field.field.node.le_remote_content_fwal.field_le_rcds_link
+  - field.field.node.le_remote_content_fwal.field_le_rcds_offers_count
+  - field.field.node.le_remote_content_fwal.og_audience
+  - language.content_settings.node.le_remote_content_fwal
