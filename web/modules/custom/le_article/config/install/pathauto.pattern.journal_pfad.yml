@@ -1,0 +1,21 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: journal_pfad
+label: 'Journal Pfad'
+type: 'canonical_entities:node'
+pattern: 'journal/[node:title]'
+selection_criteria:
+  80ccd342-67d2-497c-be0d-ea945e645871:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 80ccd342-67d2-497c-be0d-ea945e645871
+selection_logic: and
+weight: -5
+relationships: {  }
