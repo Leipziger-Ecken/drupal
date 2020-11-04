@@ -68,7 +68,7 @@ class RemoteApiServicesDepotController extends ControllerBase
       $container->get('http_client_manager.factory'),
       $container->get('geocoder'),
       $container->get('geofield.wkt_generator'),
-      $container->get('entity_type.manager'),
+      $container->get('entity_type.manager')
     );
   }
 

@@ -85,7 +85,7 @@ class RemoteApiServicesFwalController extends ControllerBase
       $container->get('http_client'),
       $container->get('geocoder'),
       $container->get('geofield.wkt_generator'),
-      $container->get('entity_type.manager'),
+      $container->get('entity_type.manager')
     );
   }
 
