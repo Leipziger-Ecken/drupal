@@ -1,0 +1,11 @@
+name: Website
+description: 'Enthält alle Konfigurationen ohne eindeutig dahinterliegende Entität (z.B. Views, Formulare, Benutzereinstellungen).'
+type: module
+core: 8.x
+package: 'Leipziger Ecken'
+dependencies:
+  - le_akteure
+  - le_article
+  - le_event
+  - user
+version: 8.x-1.0
