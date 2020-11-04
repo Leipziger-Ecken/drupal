@@ -8,7 +8,7 @@ id: node.le_event.field_le_event_is_barrier_free
 field_name: field_le_event_is_barrier_free
 entity_type: node
 bundle: le_event
-label: 'barrierefreier Zugang'
+label: 'Barrierefrei?'
 description: 'Besteht ein barrierefreier Zugang zu Räumen und WC?'
 required: false
 translatable: false
