@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_contactperson
     - field.field.node.le_akteur.field_le_akteur_contactperson_fn
     - field.field.node.le_akteur.field_le_akteur_description
+    - field.field.node.le_akteur.field_le_akteur_einrichtungsname
     - field.field.node.le_akteur.field_le_akteur_email
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
@@ -42,13 +43,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_adresse:
-    weight: 18
+    weight: 33
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 17
+    weight: 32
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -58,13 +59,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_le_akteur_comments:
-    weight: 15
+    weight: 30
     settings: {  }
     third_party_settings: {  }
     type: comment_default
     region: content
   field_le_akteur_contactperson:
-    weight: 12
+    weight: 14
     settings:
       size: 60
       placeholder: ''
@@ -72,7 +73,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 13
+    weight: 15
     settings:
       size: 60
       placeholder: ''
@@ -86,6 +87,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_le_akteur_einrichtungsname:
+    weight: 34
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_le_akteur_email:
     weight: 6
@@ -111,14 +120,26 @@ content:
     type: boolean_checkbox
     region: content
   field_le_akteur_is_private:
-    weight: 16
+    weight: 31
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_le_akteur_kategorie_gruppe:
+    weight: 28
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_le_akteur_kategorie_subtyp:
+    weight: 27
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_le_akteur_kategorie_tags:
-    weight: 14
+    weight: 29
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -126,6 +147,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_le_akteur_kategorie_typ:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_le_akteur_opening_times:
     weight: 10
@@ -136,7 +163,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_phone:
-    weight: 11
+    weight: 13
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -183,9 +210,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_geofield: true
-  field_le_akteur_kategorie_gruppe: true
-  field_le_akteur_kategorie_subtyp: true
-  field_le_akteur_kategorie_typ: true
   langcode: true
   promote: true
   sticky: true

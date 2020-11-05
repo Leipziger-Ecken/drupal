@@ -1,17 +1,24 @@
-name: 'Remote content (depot.social)'
-description: 'Stellt die Konfiguration für Remote content (depot.social) content type zur Verfügung. Via "remote API" gespiegelte Daten aus der depot.social-Schnittstelle. Read-only.'
+name: 'Remote content'
+description: 'Stellt die Konfiguration für Remote content types zur Verfügung. Via "remote API" gespiegelte Daten aus der depot.social-/ und FwAL-Schnittstelle.'
 type: module
 package: 'Leipziger Ecken'
 core: 8.x
 dependencies:
+  - address
   - field
   - geofield
   - language
   - le_akteure
   - le_bezirk
+  - le_event
+  - leaflet
+  - leaflet_views
   - link
   - menu_ui
   - node
+  - og
   - path
   - text
   - user
+  - views
+version: 8.x-0.12

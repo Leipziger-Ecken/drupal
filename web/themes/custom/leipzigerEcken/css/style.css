@@ -5017,7 +5017,7 @@ tbody.collapse.in {
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #555;
-  background-color: #e7e7e7;
+  background-color: transparent;
 }
 .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
   color: #ccc;
@@ -5025,7 +5025,7 @@ tbody.collapse.in {
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   color: #555;
-  background-color: #e7e7e7;
+  background-color: transparent;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -5037,7 +5037,7 @@ tbody.collapse.in {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #e7e7e7;
+    background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
     color: #ccc;
@@ -8081,6 +8081,103 @@ h1, h2, .control-label, .filter-heading {
   text-align: center;
 }
 
+/** LEIcons font **/
+@font-face {
+  font-family: "LEIcons";
+  src: url("../fonts/LEIcons.eot");
+  src: url("../fonts/LEIcons.eot?#iefix") format("embedded-opentype"), url("../fonts/LEIcons.woff") format("woff"), url("../fonts/LEIcons.ttf") format("truetype"), url("../fonts/LEIcons.svg#LEIcons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class*=i-]:before {
+  display: inline-block;
+  font-family: "LEIcons";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.i-akteur:before {
+  content: "A";
+}
+
+.i-event:before {
+  content: "B";
+}
+
+.i-journal:before {
+  content: "C";
+}
+
+.i-profile:before {
+  content: "D";
+}
+
+.i-marktplatz:before {
+  content: "E";
+}
+
+.i-marker:before {
+  content: "F";
+}
+
+ul.menu--main li,
+ul.menu--account li {
+  padding-right: 20px;
+}
+ul.menu--main li:last-child,
+ul.menu--account li:last-child {
+  padding-right: 0;
+}
+ul.menu--main li:before,
+ul.menu--account li:before {
+  display: inline-block;
+  font-family: "LEIcons";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  font-size: 0.85em;
+  line-height: 3.3em;
+  height: 50px;
+  width: 50px;
+  border-radius: 99px;
+  text-align: center;
+  margin-left: -25px;
+  color: #8d8c8c;
+  transition: all 0.2s;
+  background-color: transparent;
+}
+ul.menu--main li:hover:before,
+ul.menu--account li:hover:before {
+  background-color: #cceaff;
+  color: #0096FF;
+}
+
+ul.menu--main li:nth-child(1):before {
+  content: "F";
+}
+ul.menu--main li:nth-child(2):before {
+  content: "A";
+}
+ul.menu--main li:nth-child(3):before {
+  content: "B";
+}
+ul.menu--main li:nth-child(4):before {
+  content: "C";
+}
+ul.menu--main li:nth-child(5):before {
+  content: "E";
+}
+
+ul.menu--account li:nth-child(1):before {
+  content: "D";
+}
+
 /*  ______filter boxen______  */
 .form-inline.form-group {
   margin-bottom: 10px;
@@ -8156,6 +8253,31 @@ body {
   box-shadow: 0px 0px 10px #add8e6;
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+a.content-type-le_remote_content_fwal,
+a.content-type-le_remote_content_depot_social {
+  padding-top: 22px;
+  display: block;
+}
+a.content-type-le_remote_content_fwal:before,
+a.content-type-le_remote_content_depot_social:before {
+  content: "";
+  position: absolute;
+  margin-top: -25px;
+  background: transparent;
+  color: #fff;
+  padding: 2px 10px;
+}
+
+a.content-type-le_remote_content_fwal:before {
+  content: "Freiwilligenagentur Leipzig";
+  background-color: #94c11a;
+}
+
+a.content-type-le_remote_content_depot_social:before {
+  content: "depot Leipzig";
+  background-color: #d8340a;
 }
 
 .btn {

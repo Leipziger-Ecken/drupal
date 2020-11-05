@@ -1,0 +1,21 @@
+name: Artikel
+description: 'Stellt die Konfiguration für Inhaltstyp Artikel ("Journal") bereit.'
+type: module
+core: 8.x
+package: 'Leipziger Ecken'
+dependencies:
+  - comment
+  - field
+  - file
+  - image
+  - le_akteure
+  - le_region
+  - node
+  - path
+  - pathauto
+  - rdf
+  - taxonomy
+  - text
+  - user
+  - views
+version: 8.x-1.01

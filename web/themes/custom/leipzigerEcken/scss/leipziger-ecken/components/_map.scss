@@ -25,3 +25,29 @@
     margin-top: 20px;
     margin-bottom: 30px;
 }
+
+// Add pseudo top label to icons on "Marktplatz"
+a.content-type-le_remote_content_fwal,
+a.content-type-le_remote_content_depot_social {
+    padding-top: 22px;
+    display: block;
+
+    &:before {
+        content: "";
+        position: absolute;
+        margin-top: -25px;
+        background: transparent;
+        color: #fff;
+        padding: 2px 10px;
+    }
+}
+
+a.content-type-le_remote_content_fwal:before {
+    content: "Freiwilligenagentur Leipzig";
+    background-color: $color-fwal;
+}
+
+a.content-type-le_remote_content_depot_social:before {
+    content: "depot Leipzig";
+    background-color: $color-depot-social;
+}

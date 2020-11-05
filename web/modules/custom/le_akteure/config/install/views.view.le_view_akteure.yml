@@ -8,6 +8,7 @@ dependencies:
     - node.type.le_akteur
     - system.menu.main
     - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_kategorie_typ
     - taxonomy.vocabulary.le_region
   module:
     - image
@@ -59,7 +60,7 @@ display:
       pager:
         type: full
         options:
-          items_per_page: 5
+          items_per_page: 12
           offset: 0
           id: 0
           total_pages: null
@@ -362,6 +363,54 @@ display:
           type: select
           limit: true
           vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_akteur_kategorie_typ_target_id:
+          id: field_le_akteur_kategorie_typ_target_id
+          table: node__field_le_akteur_kategorie_typ
+          field: field_le_akteur_kategorie_typ_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_akteur_kategorie_typ_target_id_op
+            label: Kategorien
+            description: ''
+            use_operator: false
+            operator: field_le_akteur_kategorie_typ_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_le_akteur_kategorie_typ_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_kategorie_typ
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
@@ -671,9 +720,9 @@ display:
           description_field: title
           view_mode: full
           leaflet_map: 'OSM Mapnik'
-          height: ''
-          height_unit: '%'
-          hide_empty_map: 1
+          height: '400'
+          height_unit: px
+          hide_empty_map: 0
           disable_wheel: 0
           fullscreen_control: 1
           gesture_handling: 0
@@ -691,14 +740,14 @@ display:
             zoomFiner: '0'
           icon:
             iconType: marker
-            iconUrl: ''
+            iconUrl: themes/custom/swinger/icons/marker_le_akteur.svg
             shadowUrl: ''
             html: '<div></div>'
             html_class: leaflet-map-divicon
             circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
             iconSize:
-              x: ''
-              'y': ''
+              x: '25'
+              'y': '40'
             iconAnchor:
               x: ''
               'y': ''
@@ -711,6 +760,9 @@ display:
             popupAnchor:
               x: ''
               'y': ''
+          leaflet_markercluster:
+            control: 0
+            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
           path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
           geocoder:
             control: 0

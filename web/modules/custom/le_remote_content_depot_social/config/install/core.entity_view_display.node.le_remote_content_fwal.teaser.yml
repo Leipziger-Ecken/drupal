@@ -1,0 +1,61 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_remote_content_fwal.body
+    - field.field.node.le_remote_content_fwal.field_adresse
+    - field.field.node.le_remote_content_fwal.field_bezirk
+    - field.field.node.le_remote_content_fwal.field_geofield
+    - field.field.node.le_remote_content_fwal.field_le_rcds_einrichtung_name
+    - field.field.node.le_remote_content_fwal.field_le_rcds_id_external
+    - field.field.node.le_remote_content_fwal.field_le_rcds_link
+    - field.field.node.le_remote_content_fwal.field_le_rcds_offers_count
+    - field.field.node.le_remote_content_fwal.og_audience
+    - node.type.le_remote_content_fwal
+  module:
+    - link
+    - text
+    - user
+id: node.le_remote_content_fwal.teaser
+targetEntityType: node
+bundle: le_remote_content_fwal
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_le_rcds_link:
+    type: link
+    weight: 2
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      rel: nofollow
+      target: _blank
+      url_only: false
+      url_plain: false
+    third_party_settings: {  }
+  field_le_rcds_offers_count:
+    type: number_integer
+    weight: 1
+    region: content
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+hidden:
+  field_adresse: true
+  field_bezirk: true
+  field_geofield: true
+  field_le_rcds_einrichtung_name: true
+  field_le_rcds_id_external: true
+  langcode: true
+  links: true
+  og_audience: true

@@ -1,0 +1,17 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_fwal
+id: node.le_remote_content_fwal.title
+field_name: title
+entity_type: node
+bundle: le_remote_content_fwal
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

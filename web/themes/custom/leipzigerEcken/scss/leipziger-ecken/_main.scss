@@ -80,9 +80,9 @@ p:last-child,
     padding: 1.5em;
 }
 
-.teaser-label {
-    // font-size: 17px;
-}
+// .teaser-label {
+//      font-size: 17px;
+// }
 
 .view-header {
   margin-bottom: 20px;;
@@ -112,9 +112,9 @@ h1,h2,.control-label,.filter-heading  {
   color: $text-color;
 }
 
-.breadcrump {
-  // background-color: none;
-}
+// .breadcrump {
+//   background-color: none;
+// }
 
 /* gesammt breite des inhalts ohne navbar */ 
 .main-container {
@@ -144,6 +144,7 @@ h1,h2,.control-label,.filter-heading  {
     text-align: center;
 }
 
+@import "fonts";
 // @todo Import layouts
 
 // Import components
