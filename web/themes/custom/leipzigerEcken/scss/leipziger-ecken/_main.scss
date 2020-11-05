@@ -62,6 +62,10 @@ p:last-child,
   font-family: $font-family-serif;
 }
 
+.side-bar {
+  margin-bottom: 50px;;
+}
+
 .adress-akteur {
     margin-top: 20px;
     word-wrap:break-word;
@@ -70,14 +74,26 @@ p:last-child,
 .address {
   font-family: $font-family-sans-serif;
 }
-
+.beschreibung {
+  text-align: justify;
+  hyphens: auto; 
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .grey-hr {
   border-color: $hr-border-grey;
-  border: 2px solid;
+  border-width: $hr-border-width;
+}
+
+.js-quickedit-page-title {
+  border-bottom: $hr-border-size;
+  border-color: $hr-border-grey;
 }
 
 .teaser-list{
-    padding: 1.5em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 // .teaser-label {
@@ -89,8 +105,10 @@ p:last-child,
 }
 
 hr.teaser-hr {
-    margin-bottom: 5px;
-    margin-top: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-color: $hr-border-grey;
+  border-width: $hr-border-width;
 }
 
 .event-date {
@@ -105,16 +123,15 @@ h1,h2,.control-label,.filter-heading  {
   pointer-events: none;
   cursor: default;
   font-size: $font-size-small;
-  // color: $text-color;
+}
+
+.adress-akteur .inactiveLink {
+  font-size: $font-size-base;
 }
 
 .inactiveLink a {
   color: $text-color;
 }
-
-// .breadcrump {
-//   background-color: none;
-// }
 
 /* gesammt breite des inhalts ohne navbar */ 
 .main-container {
