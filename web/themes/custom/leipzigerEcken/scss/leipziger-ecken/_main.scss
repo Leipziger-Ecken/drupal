@@ -62,6 +62,10 @@ p:last-child,
   font-family: $font-family-serif;
 }
 
+.side-bar {
+  margin-bottom: 50px;;
+}
+
 .adress-akteur {
     margin-top: 20px;
     word-wrap:break-word;
@@ -70,7 +74,12 @@ p:last-child,
 .address {
   font-family: $font-family-sans-serif;
 }
-
+.beschreibung {
+  text-align: justify;
+  hyphens: auto; 
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .grey-hr {
   border-color: $hr-border-grey;
   border: 2px solid;
@@ -108,13 +117,13 @@ h1,h2,.control-label,.filter-heading  {
   // color: $text-color;
 }
 
+.adress-akteur .inactiveLink {
+  font-size: $font-size-base;
+}
+
 .inactiveLink a {
   color: $text-color;
 }
-
-// .breadcrump {
-//   background-color: none;
-// }
 
 /* gesammt breite des inhalts ohne navbar */ 
 .main-container {

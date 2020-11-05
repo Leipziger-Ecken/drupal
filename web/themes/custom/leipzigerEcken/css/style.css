@@ -5162,7 +5162,7 @@ tbody.collapse.in {
   padding: 8px 15px;
   margin-bottom: 25px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border-radius: 0;
 }
 .breadcrumb > li {
@@ -8007,6 +8007,10 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
   font-family: "Lora", serif;
 }
 
+.side-bar {
+  margin-bottom: 50px;
+}
+
 .adress-akteur {
   margin-top: 20px;
   word-wrap: break-word;
@@ -8014,6 +8018,13 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
 
 .address {
   font-family: "Public Sans", sans-serif;
+}
+
+.beschreibung {
+  text-align: justify;
+  hyphens: auto;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .grey-hr {
@@ -8046,6 +8057,10 @@ h1, h2, .control-label, .filter-heading {
   pointer-events: none;
   cursor: default;
   font-size: 16px;
+}
+
+.adress-akteur .inactiveLink {
+  font-size: 18px;
 }
 
 .inactiveLink a {

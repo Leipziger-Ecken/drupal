@@ -75,34 +75,42 @@
     'clearfix',
   ]
 %}
+
 <div class="row"> 
-    
-    {# 
-    <div class="col-md-1"></div>
-    #}
-    
-    <div class="col-md-2">
+  <div class="col-md-2">
     <div class="adress-akteur">
-      {{ content.field_le_akteur_image }} 
-      <hr class="grey-hr">
-      {{ content.field_adresse }} <br>
-      <div class="inactiveLink"> {{ content.field_bezirk }} </div>
-    </div> 
-    <div class="geo-map">
-      {{ content.field_geofield }}
-      <hr class="grey-hr">
-    </div>
-    <div class="adress-akteur">
+      {% if content.field_le_akteur_image %}
+          {{ content.field_le_akteur_image }} 
+          <hr class="grey-hr">
+      {% endif %}
+
+      {% if content.field_adresse %}
+        {{ content.field_adresse }} 
+      {% endif %}
+
+      <div class="inactiveLink"> 
+        {% if content.field_bezirk %}
+          {{ content.field_bezirk }}  
+        {% endif %}
+      </div>
+
+      <div class="geo-map"> 
+        {% if content.field_geofield %}
+          {{ content.field_geofield }}
+          <hr class="grey-hr">  
+        {% endif %}
+      </div>
+
       {{ content.field_le_akteur_url }}
       <hr class="grey-hr">
       {{ content.field_le_akteur_email }}
-    </div>
+     </div>     
   </div>
     
-  <div class="col-md-6">
-    
-    {{ content.field_le_akteur_kategorie_tags }} <br>
-    {{ content.field_le_akteur_description }} <br>
-    {# {{ content.field_le_akteur_image }}  #}
+  <div class="col-md-6 beschreibung">
+    {% if content.field_le_akteur_kategorie_tags %}
+      {{ content.field_le_akteur_kategorie_tags }} <br>
+    {% endif %}
+    {{ content.field_le_akteur_description }}
   </div>
 </div>
