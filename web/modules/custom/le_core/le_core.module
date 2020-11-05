@@ -22,7 +22,8 @@ function le_core_views_pre_render(\Drupal\views\ViewExecutable $view) {
 /**
  * Implements hook_menu_local_tasks_alter
  */
-function le_core_menu_local_tasks_alter(&$data, $route_name) {
+function le_core_menu_local_tasks_alter(&$data, $route_name)
+{
   if ($route_name === 'entity.node.canonical' || $route_name === 'view.le_akteur_has_events.page_1' || $route_name === 'entity.node.edit_form') {
     // Context: node
 
@@ -47,7 +48,8 @@ function le_core_menu_local_tasks_alter(&$data, $route_name) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
+function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id = NULL)
+{
 
   if (in_array($form_id, ['node_le_akteur_form','node_le_akteur_edit_form'])) {
     set_kategorie_form_fields($form, $form_state, 'akteur');
@@ -122,7 +124,8 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
  * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
  * ("Select one main category; select multiple second categories which are children of that main category")
  */
-function set_kategorie_form_fields(&$form, FormStateInterface $form_state, $le_entity_type) {
+function set_kategorie_form_fields(&$form, FormStateInterface $form_state, $le_entity_type)
+{
 
   $kategorie_typ_field = "field_le_${le_entity_type}_kategorie_typ";
   $kategorie_subtyp_field = "field_le_${le_entity_type}_kategorie_subtyp";
