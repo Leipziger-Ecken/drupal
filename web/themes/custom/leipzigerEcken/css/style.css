@@ -8123,16 +8123,16 @@ h1, h2, .control-label, .filter-heading {
   content: "F";
 }
 
-ul.menu--main li,
-ul.menu--account li {
+ul.menu--main > li,
+ul.menu--account > li {
   padding-right: 20px;
 }
-ul.menu--main li:last-child,
-ul.menu--account li:last-child {
+ul.menu--main > li:last-child,
+ul.menu--account > li:last-child {
   padding-right: 0;
 }
-ul.menu--main li:before,
-ul.menu--account li:before {
+ul.menu--main > li:before,
+ul.menu--account > li:before {
   display: inline-block;
   font-family: "LEIcons";
   font-style: normal;
@@ -8152,8 +8152,8 @@ ul.menu--account li:before {
   transition: all 0.2s;
   background-color: transparent;
 }
-ul.menu--main li:hover:before,
-ul.menu--account li:hover:before {
+ul.menu--main > li:hover:before,
+ul.menu--account > li:hover:before {
   background-color: #cceaff;
   color: #0096FF;
 }
@@ -8635,6 +8635,14 @@ body.page-node-type-le-event .field--name-og-audience .teaser-thump,
 body.page-node-type-le-event .field--name-og-audience .field--name-field-bezirk,
 body.page-node-type-le-event .field--name-og-audience .teaser-hr {
   display: none;
+}
+
+/**
+ * path: akteure/{slug}/events
+ */
+.view.view-le-akteur-has-events .view-header {
+  padding-top: 10px;
+  text-align: right;
 }
 
 /*# sourceMappingURL=style.css.map */
