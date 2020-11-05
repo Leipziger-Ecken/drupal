@@ -54,6 +54,7 @@ dependencies:
   - features
   - features_ui
   - menu_ui
+  - leaflet_more_maps
   - leaflet_views
   - metatag_dc
   - schema_organization

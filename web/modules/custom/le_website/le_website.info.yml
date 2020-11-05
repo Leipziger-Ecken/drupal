@@ -8,4 +8,4 @@ dependencies:
   - le_article
   - le_event
   - user
-version: 8.x-1.0
+version: 8.x-1.01

@@ -163,7 +163,12 @@ display:
             label: ''
           granularity: second
       title: Events
-      header: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
       footer: {  }
       empty:
         area_text_custom:
@@ -233,6 +238,30 @@ display:
         - url.query_args
         - 'user.node_grants:view'
       tags: {  }
+  feed_1:
+    display_plugin: feed
+    id: feed_1
+    display_title: Feed
+    position: 2
+    display_options:
+      display_extenders: {  }
+      row:
+        type: node_rss
+        options: {  }
+      path: node/%node/events.rss
+      pager:
+        type: some
+        options:
+          items_per_page: 0
+          offset: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags: {  }
   page_1:
     display_plugin: page
     id: page_1
@@ -250,6 +279,22 @@ display:
         weight: 2
         context: '0'
         menu_name: main
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<a href="[view:url].rss">Veranstaltungen dieses Akteurs als RSS-Feed abonnieren</a>'
+            format: basic_html
+          plugin_id: text
+      defaults:
+        header: false
     cache_metadata:
       max-age: -1
       contexts:

@@ -51,7 +51,7 @@ content:
       multiple_map: '0'
       popup: '1'
       popup_content: "<strong>[node:title]</strong><br />\r\n[node:field_adresse:address_line1]\r\n[node:field_adresse:address_line2]\r\n[node:field_adresse:postal_code] [node:field_adresse:locality]"
-      leaflet_map: 'OSM Mapnik'
+      leaflet_map: osm-neighbourhood
       height: '400'
       height_unit: px
       hide_empty_map: '1'
@@ -63,21 +63,21 @@ content:
         center:
           lat: '0'
           lon: '0'
-        zoom: '12'
+        zoom: '14'
         minZoom: '1'
         maxZoom: '18'
         zoomFiner: '0'
         force: 0
       icon:
         iconType: marker
-        iconUrl: ''
+        iconUrl: themes/custom/swinger/icons/marker_le_event.svg
         shadowUrl: ''
         html: '<div></div>'
         html_class: leaflet-map-divicon
         circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
         iconSize:
-          x: ''
-          'y': ''
+          x: '25'
+          'y': '40'
         iconAnchor:
           x: ''
           'y': ''
