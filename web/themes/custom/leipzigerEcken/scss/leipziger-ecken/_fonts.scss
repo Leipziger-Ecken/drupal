@@ -30,7 +30,7 @@ $circle-width: 50px;
 
 ul.menu--main,
 ul.menu--account {
-    li {
+    > li {
         padding-right: 20px;
         &:last-child {
             padding-right: 0;

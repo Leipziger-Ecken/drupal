@@ -80,20 +80,20 @@
 /** hier werden die einzelnen Zeilen der Akteurs Übersicht beschrieben 
 */
 #}
-
 <div class="row teaser-list">     
-        <div class="row">
-            <div class="teaser-thump col-md-4">
-                {{ content.field_le_akteur_image}}
-            </div>
-            <div class="col-md-8">
-                <a class="teaser-label" href="{{ url }}">
-                    {{ label }} 
-                </a>
-                <div class="inactiveLink">
-                {{ content.field_bezirk }} </div> 
-            </div>
+    <div class="row">
+        <div class="teaser-thump col-md-4">
+            {{ content.field_le_akteur_image}}
         </div>
-        <hr class="teaser-hr">
+        <div class="col-md-8">
+            <a class="teaser-label" href="{{ url }}">
+                {{ label }} 
+            </a>
+            <div class="inactiveLink">
+            {{ content.field_bezirk }}
+            </div> 
+        </div>
+    </div>
+        <hr class="teaser-hr" />
         {# <hr class="grey-hr"> #}
 </div>
