@@ -40,7 +40,6 @@
         "drupal/date_recur": "^2.0",
         "drupal/date_recur_modular": "2.x-dev",
         "drupal/devel": "^2.1",
-        "drupal/entityconnect": "^2.0@alpha",
         "drupal/features": "^3.8",
         "drupal/fullcalendar": "^1.0@alpha",
         "drupal/geocoder": "^3.0",
@@ -49,6 +48,7 @@
         "drupal/http_client_manager": "^2.4",
         "drupal/jsonld": "^1.0",
         "drupal/leaflet": "^1.36",
+        "drupal/leaflet_more_maps": "^1.0@alpha",
         "drupal/pathauto": "^1.8",
         "drupal/schema_metatag": "^1.4",
         "drupal/token": "^1.6",
@@ -123,6 +123,9 @@
         "patches": {
             "geocoder-php/mapbox-provider": {
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
+            },
+            "drupal/leaflet_more_maps": {
+                "Enforce https, add further maps, add apiKey to default map (thunderbird neighbourhood). issues/2848895": "patches/update_thunderforest_maps_D8-2848895-6.patch"
             }
         }
     }
