@@ -91,7 +91,6 @@ p:last-child,
 hr.teaser-hr {
     margin-bottom: 5px;
     margin-top: 5px;
-    border: 2px solid;
 }
 
 .event-date {
@@ -111,6 +110,10 @@ h1,h2,.control-label,.filter-heading  {
 
 .inactiveLink a {
   color: $text-color;
+}
+
+.breadcrump {
+  // background-color: none;
 }
 
 /* gesammt breite des inhalts ohne navbar */ 
