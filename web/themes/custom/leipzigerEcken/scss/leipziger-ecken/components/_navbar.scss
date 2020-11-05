@@ -16,11 +16,12 @@ $branding-container-width: 90px;
 }
 
 #navbar {
-    background-color: white;
-    border-color: white;
+    background-color: $body-bg;
+    border-color: $body-bg;
     border-bottom-color: $hr-border;
     border-radius: 0px;
-    border-bottom: 1px solid #0064ff;
+    border-bottom: $hr-border-size;
+
 }
 
 .dropdown:hover {

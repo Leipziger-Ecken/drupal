@@ -8029,11 +8029,18 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
 
 .grey-hr {
   border-color: gray;
-  border: 2px solid;
+  border-width: 2px;
+}
+
+.js-quickedit-page-title {
+  border-bottom: 2px solid;
+  border-color: gray;
 }
 
 .teaser-list {
-  padding: 1.5em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
 }
 
 .view-header {
@@ -8043,6 +8050,8 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
 hr.teaser-hr {
   margin-bottom: 5px;
   margin-top: 5px;
+  border-color: gray;
+  border-width: 2px;
 }
 
 .event-date {
@@ -8627,11 +8636,11 @@ input[type=button].btn-block {
   }
 }
 #navbar {
-  background-color: white;
-  border-color: white;
+  background-color: #fff;
+  border-color: #fff;
   border-bottom-color: #0096FF;
   border-radius: 0px;
-  border-bottom: 1px solid #0064ff;
+  border-bottom: 2px solid;
 }
 
 .dropdown:hover .dropdown-menu {
