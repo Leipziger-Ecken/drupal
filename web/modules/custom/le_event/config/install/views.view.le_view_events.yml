@@ -714,7 +714,7 @@ display:
             identifier: kategorie_id
             required: false
             remember: false
-            multiple: false
+            multiple: true
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
@@ -737,7 +737,7 @@ display:
           type: select
           limit: true
           vid: le_kategorie_typ
-          hierarchy: false
+          hierarchy: true
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:
