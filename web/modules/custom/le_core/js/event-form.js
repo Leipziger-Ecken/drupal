@@ -1,14 +1,16 @@
+/**
+ * @file le_core/js/event-form.js
+ * @author Felix Albroscheit, 2020
+ * @package Leipziger Ecken
+ * 
+ * On node-type=le_event-form:
+ * * Add custom delete button (doing so via e.g. form_alter turned out to not work properly),
+ * * Auto-set end-field value
+ */
 (function ($) {
       'use strict';
       Drupal.behaviors.leCoreEventForm = {
         attach: function (context, settings) {
-            /**
-             * @file le_core/js/event-form.js
-             * 
-             * On node-type=le_event form:
-             * - Add custom delete button (doing so via e.g. form_alter turned out to not work properly),
-             * - Auto-set end-field value
-             */
             var $dateListItems = $(context).find('.date-recur-modular-alpha-widget').once('le-core-custom-delete');
 
             $dateListItems.each(function (_, dateListItem) {

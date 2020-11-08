@@ -1,0 +1,104 @@
+$width-desktop: 250px;
+
+.categories-select {
+    position: absolute;
+    display: none;
+    z-index: 999;
+    width: auto;
+    margin-top: -2px; // Hide border-bottom of upper select field
+    @media screen and (max-width: $screen-sm-max) {
+        width: 100%;
+    }
+
+    &.active {
+        display: block;
+    }
+
+    &__options {
+        display: none;
+        background-color: #fff;
+        border: 2px solid $brand-primary;
+
+        &__option {
+            @media screen and (min-width: $screen-sm-max) {
+                display: flex;
+            }
+
+            a {
+                padding: 10px 25px;
+                display: inline-table;
+                min-width: $width-desktop;
+                cursor: pointer;
+
+                @media screen and (max-width: $screen-sm-max) {
+                    width: 100%;
+                }
+
+                /*&:focus,
+                &:active {
+                    ~ .categories-select__options {
+                        display: block;
+                    }
+                }*/
+            }
+
+            > .categories-select__options {
+                display: none;
+                height: auto;
+
+                @media screen and (min-width: $screen-sm-max) {
+                    position: absolute;
+                    left: 100%;
+                    top: 0;
+                    margin-left: -1px;
+                }
+            }
+
+            &.has-child > a:after {
+                content: '\e114'; // .glyphicon-chevron-down
+                font-family: 'Glyphicons Halflings';
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                display: inline-block;
+                vertical-align: super;
+                line-height:1;
+                position: absolute;
+                right: 10px;
+                margin-top: 3px;
+                @media screen and (min-width: $screen-sm-max) {
+                    rotate: -90deg;
+                }
+            }
+
+            &:hover,
+            &.selected {
+                > a {
+                    background: $gray-lighter;
+                }
+            }
+
+            &.selected {
+                > a {
+                    color: $brand-primary;
+                    text-decoration: underline;
+
+                    &:after {
+                        color: $brand-primary;
+                    }
+                }
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                .categories-select__options {
+                    display: block;
+                }
+            }
+        }
+
+        &[data-level="1"] { // === > :first-child
+            display: block;
+        }
+    }
+}

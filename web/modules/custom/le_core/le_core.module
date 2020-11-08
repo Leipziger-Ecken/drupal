@@ -17,6 +17,11 @@ function le_core_views_pre_render(\Drupal\views\ViewExecutable $view) {
   if ($view->id() === 'le_view_user_has_akteure') {
     // @todo Override link to Akteur by showing full Akteur name
   }
+
+  if ($view->id() === 'le_view_akteure' || $view->id() === 'le_view_events') {
+    // Attach custom, JS-based categories selector
+    $view->element['#attached']['library'][] = 'le_core/categories-select';
+  }
 }
 
 /**
