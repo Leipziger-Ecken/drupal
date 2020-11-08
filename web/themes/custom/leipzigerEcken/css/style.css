@@ -8697,7 +8697,6 @@ input[type=button].btn-block {
   .categories-select__options__option > .categories-select__options {
     position: absolute;
     left: 100%;
-    top: 0;
     margin-left: -1px;
   }
 }
