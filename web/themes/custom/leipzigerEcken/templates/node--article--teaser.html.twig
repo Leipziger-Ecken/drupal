@@ -65,7 +65,6 @@
  *   in different view modes.
  */
 #}
-
 {%
   set classes = [
     node.bundle|clean_class,
@@ -77,24 +76,26 @@
   ]
 %}
 
-<div class="row">
-    <div class="col-md-3">
-    {% if author_name %}
-        {{ author_name }}
-        <hr class="grey-hr">
-    {% endif %}
-    {% if content.field_article_akteure %}
-        {{ content.field_article_akteure }}
-        <hr class="grey-hr">
-    {% endif %}
-    {% if content.field_image %}
-        {{ content.field_image }}
-    {% endif %}
+{#
+/** hier werden die einzelnen Zeilen der Akteurs Übersicht beschrieben 
+*/
+#}
+
+<div class="teaser-list">
+    <div class="row">
+        <div class="col-md-4">
+            {% if content.field_image %}
+                {{ content.field_image }}
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            {{ date }}
+            {{ author_name }}
+            {{ title }}
+            {{ title_prefix }}
+            {{ content.body }}
+            {{ readmore }}
+        </div>
     </div>
-    
-    <div class="col-md-7 beschreibung">
-    {% if content.body %}
-        {{ content.body }}
-    {% endif %}
-    </div>
-</div> 
+    <hr class="teaser-hr">
+</div>

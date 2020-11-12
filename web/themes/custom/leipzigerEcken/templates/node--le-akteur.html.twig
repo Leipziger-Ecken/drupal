@@ -77,7 +77,7 @@
 %}
 
 <div class="row"> 
-  <div class="col-md-2">
+  <div class="col-md-3">
     <div class="adress-akteur">
       {% if content.field_le_akteur_image %}
           {{ content.field_le_akteur_image }} 
@@ -101,13 +101,17 @@
         {% endif %}
       </div>
 
-      {{ content.field_le_akteur_url }}
-      <hr class="grey-hr">
-      {{ content.field_le_akteur_email }}
+      {% if content.field_le_akteur_url %}
+        {{ content.field_le_akteur_url }}
+        <hr class="grey-hr">
+      {% endif %}
+      {% if content.field_le_akteur_email %}
+        {{ content.field_le_akteur_email }}
+      {% endif %}
      </div>     
   </div>
     
-  <div class="col-md-6 beschreibung">
+  <div class="col-md-7 beschreibung">
     {% if content.field_le_akteur_kategorie_tags %}
       {{ content.field_le_akteur_kategorie_tags }} <br>
     {% endif %}
