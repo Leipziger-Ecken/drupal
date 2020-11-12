@@ -79,14 +79,19 @@
 
 <div class="row">
     <div class="col-md-3">
+    {% if date %}
+        {{ date }} von
+    {% endif %}
     {% if author_name %}
         {{ author_name }}
         <hr class="grey-hr">
     {% endif %}
+
     {% if content.field_article_akteure %}
         {{ content.field_article_akteure }}
         <hr class="grey-hr">
     {% endif %}
+
     {% if content.field_image %}
         {{ content.field_image }}
     {% endif %}

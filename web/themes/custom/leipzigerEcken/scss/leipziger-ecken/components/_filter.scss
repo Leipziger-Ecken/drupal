@@ -39,6 +39,8 @@
 
 .page-header {
     text-align: center;
+    border-top-color: $hr-border-grey;
+    border-top-width: $hr-border-width;
     border-bottom-color: $hr-border-grey;
     border-bottom-width: $hr-border-width;
     font-weight: 400;

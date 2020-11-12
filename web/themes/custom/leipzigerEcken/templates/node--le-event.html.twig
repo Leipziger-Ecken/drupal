@@ -96,12 +96,13 @@
           {{ content.field_adresse }} 
         {% endif %}
 
-        <div class="geo-map">
-          {% if content.field_geofield %}
+        {% if content.field_geofield %}
+          <div class="geo-map">
             {{ content.field_geofield }} 
             <hr class="grey-hr">
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
+        
 
         {% if content.og_audience %}
           <div class="field--label">Veranstalter</div>

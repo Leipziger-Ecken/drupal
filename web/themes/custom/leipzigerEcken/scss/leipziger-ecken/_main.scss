@@ -154,7 +154,7 @@ h1,h2,.control-label,.filter-heading  {
         height: 82px;
     width: 82px;
     object-fit: cover;
-    margin: 5px;
+    margin-bottom: 5px;
 }
 
 .page-header-label {
@@ -171,6 +171,7 @@ h1,h2,.control-label,.filter-heading  {
 @import "components/buttons";
 @import "components/navbar";
 @import "components/categories-select";
+@import "components/breadcrumb";
 
 // Import pages
 @import "pages/front"; 

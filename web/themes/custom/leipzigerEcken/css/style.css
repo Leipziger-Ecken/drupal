@@ -8098,7 +8098,7 @@ h1, h2, .control-label, .filter-heading {
   height: 82px;
   width: 82px;
   object-fit: cover;
-  margin: 5px;
+  margin-bottom: 5px;
 }
 
 .page-header-label {
@@ -8235,6 +8235,8 @@ ul.menu--account li:nth-child(1):before {
 
 .page-header {
   text-align: center;
+  border-top-color: #707070;
+  border-top-width: 2px;
   border-bottom-color: #707070;
   border-bottom-width: 2px;
   font-weight: 400;
@@ -8733,6 +8735,12 @@ input[type=button].btn-block {
 }
 .categories-select__options[data-level="1"] {
   display: block;
+}
+
+.breadcrumb {
+  margin-bottom: 12px;
+  border-bottom: 2px solid;
+  border-bottom-color: #707070;
 }
 
 body.path-frontpage .region-header {
