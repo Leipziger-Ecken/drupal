@@ -1,22 +1,22 @@
 {% extends "page.html.twig" %}
-{# 
+{#
 As we only want to override the content-container on front page without copying the other
 parts (e.g. header, footer), we extend page.html.twig.
 @see https://befused.com/drupal/extend-twig-templates
 #}
 {% block main %}
-<div role="main" class="main-container js-quickedit-main-content">
-    <div class="row">        
+<div role="main" class="main-container js-quickedit-main-content col-md-12">
+    <div class="row">
         {# Header #}
         {% if page.header %}
           {% block header %}
               {{ page.header }}
           {% endblock %}
         {% endif %}
-          
+
         <div class="welcome">
           <h1 class="page-header">Eine Stadtteilplattform für Nachbarschaften und Dings*</h1>
-        
+
           <div class="content text-center">
             <p>*Vereine, Initiativen, Organisationen, Künstler*innen, Kulturschaffende, Verantstalter*innen und mehr.</p>
 
@@ -33,7 +33,7 @@ parts (e.g. header, footer), we extend page.html.twig.
     <div class="map-frontpage row">
         {{ drupal_view('frontpage', 'block_1') }}
     </div>
-    
+
     <div class="row">
         <div class="col-md-4">
             <a href="{{ url }}">
@@ -55,5 +55,5 @@ parts (e.g. header, footer), we extend page.html.twig.
         </div>
     </div>
 </div>
-    
+
 {% endblock %}
