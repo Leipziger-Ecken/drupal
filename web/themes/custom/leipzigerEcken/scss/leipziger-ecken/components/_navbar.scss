@@ -3,15 +3,46 @@
 // Left "branding" block w/ logo
 $branding-container-width: 90px;
 
+.offset-branding-container {
+  display: none;
+  position: absolute;
+  width: $branding-container-width;
+  margin-left: -($branding-container-width + 20);
+
+  img {
+      width: 100%;
+  }
+}
+
+.offset-branding-container--mobile {
+  display: none;
+  padding-left: 10px;
+
+  img {
+     width: 25px;
+  }
+}
+
 @media (min-width: $grid-float-breakpoint) {
     .offset-branding-container {
-        position: absolute;
-        width: $branding-container-width;
-        margin-left: -($branding-container-width + 20);
+        display: block;
+    }
+}
 
-        img {
-            width: 100%;
-        }
+@media (max-width: $grid-float-breakpoint) {
+    .offset-branding-container--mobile {
+        display: block;
+    }
+
+    #navbar {
+      padding-right: 0;
+      padding-left: 0;
+
+      .navbar-collapse {
+        margin-top: 60px;
+        padding-left: 35px; // Makes icons visible; temporary solution
+        border: none;
+      }
     }
 }
 
@@ -21,11 +52,29 @@ $branding-container-width: 90px;
     border-bottom-color: $hr-border;
     border-radius: 0px;
     border-bottom: $hr-border-size;
+    margin-bottom: 0;
 
+    .navbar-header {
+    .navbar-toggle {
+      margin-right: 0;
+    }
+  }
+
+  .navbar-collapse {
+    overflow-y: none;
+  }
 }
 
-.dropdown:hover {
+.dropdown {
+  .dropdown-menu {
+     opacity: 0;
+     transition: opacity 0.1s;
+  }
+
+  &:hover {
     .dropdown-menu{
         display: block;
+        opacity: 1;
     }
+  }
 }

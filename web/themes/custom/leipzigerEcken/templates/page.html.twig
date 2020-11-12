@@ -49,6 +49,9 @@
  *
  * @see template_preprocess_page()
  * @see html.html.twig
+ *
+ * This code was further modified to skip page.navigation_collapsible and render a collapsible
+ * Navbar menu by default.
  */
 #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
@@ -67,31 +70,27 @@
       {{ page.branding }}
     </div>
 
-    <div class="col-md-12">
       <header {{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
         {% if not navbar_attributes.hasClass(container) %}
         <div class="{{ container_test }}">
         {% endif %}
           <div class="navbar-header header-container">
-            {{ page.navigation }}
             {# .btn-navbar is used as the toggle for collapsed navbar content #}
-            {% if page.navigation_collapsible %}
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            {% endif %}
-          </div>
-          </div> {# <- Check if right positioned! #}
+            <div class="offset-branding-container--mobile">
+              {{ page.branding }}
+            </div>
 
-        {# Navigation (collapsible) #}
-        {% if page.navigation_collapsible %}
-          <div id="navbar-collapse" class="navbar-collapse collapse">
-            {{ page.navigation_collapsible }}
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">{{ 'Toggle navigation'|t }}</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <div id="navbar-collapse" class="navbar-collapse collapse">
+              {{ page.navigation }}
+            </div>
           </div>
-        {% endif %}
         {% if not navbar_attributes.hasClass(container) %}
         </div>
         {% endif %}
@@ -101,7 +100,7 @@
 
 {# Main #}
 {% block main %}
-    <div role="main" class="main-container js-quickedit-main-content">
+    <div role="main" class="main-container js-quickedit-main-content col-md-12">
         {# Header #}
         {% if page.header %}
           {% block header %}

@@ -76,7 +76,7 @@ p:last-child,
 }
 .beschreibung {
   text-align: justify;
-  hyphens: auto; 
+  hyphens: auto;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -133,12 +133,13 @@ h1,h2,.control-label,.filter-heading  {
   color: $text-color;
 }
 
-/* gesammt breite des inhalts ohne navbar */ 
+/* gesammt breite des inhalts ohne navbar */
 .main-container {
     width: 100%;
+    padding-top: 11px;
     padding-bottom: 50px;
 }
-/* gesammt breite der navbar */ 
+/* gesammt breite der navbar */
 .header-container {
     width: 100%;
     background-color: white;
@@ -165,15 +166,15 @@ h1,h2,.control-label,.filter-heading  {
 // @todo Import layouts
 
 // Import components
-@import "components/filter"; 
-@import "components/login"; 
-@import "components/map"; 
+@import "components/filter";
+@import "components/login";
+@import "components/map";
 @import "components/buttons";
 @import "components/navbar";
 @import "components/categories-select";
 @import "components/breadcrumb";
 
 // Import pages
-@import "pages/front"; 
+@import "pages/front";
 @import "pages/event-detail";
 @import "pages/akteur-events";
