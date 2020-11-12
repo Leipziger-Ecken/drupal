@@ -90,9 +90,10 @@
         </div>
         <div class="col-md-8">
             {{ date }}
-            {{ author_name }}
-            {{ title }}
-            {{ title_prefix }}
+            {{ author_name }} <br>
+             <a class="filter-heading" href="{{ url }}">
+                {{ label }} 
+            </a>
             {{ content.body }}
             {{ readmore }}
         </div>

@@ -8235,7 +8235,8 @@ ul.menu--account li:nth-child(1):before {
 
 .page-header {
   text-align: center;
-  border-bottom-color: #0096FF;
+  border-bottom-color: #707070;
+  border-bottom-width: 2px;
   font-weight: 400;
 }
 
