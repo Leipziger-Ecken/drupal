@@ -162,6 +162,15 @@ h1,h2,.control-label,.filter-heading  {
     text-align: center;
 }
 
+@media (min-width: $grid-float-breakpoint) {
+  .sticky-sidebar {
+    position: sticky;
+    top: 0;
+    padding-top: 15px;
+    height: 100vh;
+  }
+}
+
 @import "fonts";
 // @todo Import layouts
 

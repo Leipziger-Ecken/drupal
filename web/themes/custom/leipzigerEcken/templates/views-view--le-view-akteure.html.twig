@@ -44,7 +44,7 @@
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
-     {{ title }} 
+     {{ title }}
   {% endif %}
   {{ title_suffix }}
   {% if header %}
@@ -52,8 +52,8 @@
       {{ header }}
     </div>
   {% endif %}
-    
-    <div class="row">        
+
+    <div class="row">
         <div class="col-md-2">
             {% if exposed %}
               <div class="view-filters form-group">
@@ -61,7 +61,7 @@
               </div>
             {% endif %}
         </div>
-        
+
         <div class="col-md-5">
             {% if rows %}
             <div class="view-content">
@@ -71,21 +71,21 @@
                 {{ pager }}
             {% endif %}
         </div>
-        
-        <div class="col-md-5">
+
+        <div class="col-md-5 sticky-sidebar">
             {# map wird hier auf akteur übersicht eingebaut #}
             <div class="attachment-before leaflet-container">
                 {{ attachment_before }}
             </div>
         </div>
-  
+
         {% elseif empty %}
         <div class="view-empty">
           {{ empty }}
         </div>
         {% endif %}
     </div>{# /.row #}
-        
+
     {% if attachment_after %}
       <div class="attachment attachment-after">
         {{ attachment_after }}

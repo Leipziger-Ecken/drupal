@@ -8106,6 +8106,14 @@ h1, h2, .control-label, .filter-heading {
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  .sticky-sidebar {
+    position: sticky;
+    top: 0;
+    padding-top: 15px;
+    height: 100vh;
+  }
+}
 /** LEIcons font **/
 @font-face {
   font-family: "LEIcons";
@@ -8264,9 +8272,6 @@ body {
 /* map teaser */
 .leaflet-container {
   box-shadow: 0px 0px 10px #add8e6;
-  position: -webkit-sticky;
-  /* Safari */
-  position: sticky;
 }
 
 /*map akteurs seite*/
