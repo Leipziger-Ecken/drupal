@@ -31,7 +31,7 @@ content:
     type: entity_reference_label
     weight: 2
     region: content
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

@@ -67,8 +67,8 @@ display:
           tags:
             previous: ‹‹
             next: ››
-            first: '« First'
-            last: 'Last »'
+            first: '« Erste'
+            last: 'Letzte »'
           expose:
             items_per_page: false
             items_per_page_label: 'Elemente pro Seite'

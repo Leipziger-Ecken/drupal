@@ -143,15 +143,15 @@ content:
     weight: 11
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
   field_le_event_kategorie_subtyp:
     weight: 10
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
@@ -167,7 +167,7 @@ content:
     weight: 9
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
@@ -193,10 +193,9 @@ content:
     third_party_settings: {  }
   og_audience:
     label: hidden
-    type: entity_reference_entity_view
+    type: entity_reference_label
     settings:
-      view_mode: teaser
-      link: false
+      link: true
     weight: 13
     third_party_settings: {  }
     region: content
