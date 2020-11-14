@@ -52,6 +52,11 @@ $width-desktop: 250px;
                     // top: 0; Optional: Show sub-dropdown at top of parent dropdown
                     margin-left: -1px;
                 }
+
+                @media screen and (max-width: $screen-sm-max) {
+                    border-right: 0;
+                    border-left: 0;
+                }
             }
 
             &.has-child > a:after {
@@ -66,19 +71,19 @@ $width-desktop: 250px;
                 right: 10px;
                 margin-top: 3px;
                 @media screen and (min-width: $screen-sm-max) {
-                    rotate: -90deg;
+                    transform: rotate(-90deg);
                 }
             }
 
-            &:hover,
-            &.selected {
+            /*&:hover {
                 > a {
                     background: $gray-lighter;
                 }
-            }
+            }*/
 
             &.selected {
                 > a {
+                    background: $gray-lighter;
                     color: $brand-primary;
                     text-decoration: underline;
 

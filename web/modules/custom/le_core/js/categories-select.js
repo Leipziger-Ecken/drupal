@@ -4,14 +4,17 @@
  * @package Leipziger Ecken
  * 
  * Provides a good old stateless UI component for turning a native [multiple]-select-field
- * into a nested dropdown container. Full of JQuery powa. i18n-support targeted.
+ * into a nested dropdown container. Full of JQuery powa.
  * 
  * Features:
  * * Browser-agnostic; Clients with <noscript> keep using native [multiple]-select
  * * Would work on single-select-fields without many modifications
  * * Responsive
  * 
- * @todo Accessiblity (ARIA-labels, keyboard-navigator-events like :focus, :active), formal Drupal-integration
+ * @todos
+ * * Accessiblity (ARIA-labels, keyboard-navigator-events like :focus, :active)
+ * * Formal Drupal-integration via field renderer
+ * * JQuery.once()
  * 
  * To use with Views-module, ensure that filter type is of "Select list" w/ "Show hierarchy in select list" and
  * "Allow multiple choises" are checked
@@ -20,19 +23,42 @@
     'use strict';
     Drupal.behaviors.leCoreCategoriesSelect = {
         enableReset: true,
-        options: null,
         initialSelected: [],
+        isMultipleSelect: true, // @todo functionalize
+        options: null,
         $el: null,
         $form: null,
         $selectField: null,
-        labels: {
-            'emptySelection': '',
+        labels: { // @todo Use Drupal-i18n
+            'emptySelection': '- Alle -',
             'chooseCategory': 'Nach dieser Kategorie filtern',
             'chosen': 'gewählt',
             'resetLabel': 'Alle',
             'resetLinkTitle': 'Filter zurücksetzen',
         },
-        setLocalOptions() {
+        
+        /**
+         * Bootstraping
+         */
+        attach (context, settings) {
+            this.$selectField = $(context).find('#edit-kategorie-id');
+            this.$form = this.$selectField.closest('form');
+
+            if (!this.$selectField || !this.$form) {
+                return;
+            }
+
+            this.initializeState();
+            this.render();
+        },
+        /**
+         * Map select-field-options to local state.
+         */
+        initializeState() {
+            // Set selected options
+            this.initialSelected = this.$selectField.val() || [];
+
+            // Set available options (nested)
             var options = [];
             var latestOption = options;
 
@@ -42,7 +68,7 @@
                 var isChild = label.indexOf('-') === 0 && id !== 'All';
 
                 if (id === 'All') {
-                    // We provide an own solution (see this.enableReset)
+                    // We'll provide an own solution (see this.enableReset)
                     return;
                 }
 
@@ -72,6 +98,65 @@
 
             this.options = options;
         },
+        bindEventHandlers() {
+            var that = this;
+
+            // (Un-)select option-items
+            this.$el.find('.categories-select__options__option a').click(function() {
+                var parent = $(this).parent();
+                var id = parent.attr('data-cat-id');
+
+                if (id === 'all') {
+                    that.unsetSelection();
+                    that.close();
+                } else {
+                    var toggleMethod = parent.hasClass('selected') ? 'removeClass' : 'addClass';
+                    parent[toggleMethod]('selected');
+
+                    if (parent.hasClass('has-child')) {
+                        // (Un-)select children
+                        parent.find('.categories-select__options__option')[toggleMethod]('selected');
+                    }
+                }
+
+                that.setSelectFieldPlaceholder();
+
+                return false;
+            });
+
+            // On form submit: Map local state into selected select-fields options,
+            // then submit. Do so by temporary faking a multiple-select.
+            this.$form.on('submit', function(ev) {
+                var selected = [];
+                that.$selectField.attr('multiple','multiple');
+                that.getSelectedOptions().each(function() {
+                    selected.push($(this).attr('data-cat-id'));
+                });
+                that.$selectField.val(selected);
+                window.requestAnimationFrame(function() {
+                    that.$selectField.removeAttr('multiple');
+                });
+
+                return true;
+            });
+
+            // Dropdown functionality
+            $('body').on('click', function(ev) {
+                var target = $(ev.target);
+                var targetIsSelf = target.closest('.categories-select[data-id="'+ that.$el.attr('data-id') +'"]').length !== 0;
+                var targetIsSelectField = target.closest('.select-wrapper').length !== 0;
+
+                if (!targetIsSelf && !targetIsSelectField) {
+                    that.close();
+                }
+            });
+
+            this.$selectField.on('mousedown', function(ev) { // || active / focus!
+                ev.preventDefault();
+                that.open();
+                return false;
+            });
+        },
         optionsListTpl(options, level = 1) {
             var html = '<div class="categories-select__options" data-level="'+ level +'">';
 
@@ -94,54 +179,49 @@
 
             return html;
         },
+        /**
+         * Generate and append dropdown-container-content, set init state, set events
+         */
         render() {
             if (this.$el) {
                 return;
             }
 
+            this.$selectField.wrap('<div class="select-wrapper"></div>');
+
+            this.$selectField.removeAttr('multiple')
+                             .removeAttr('size');
+
             var uniqueId = Date.now().toString().substr(0,5);
 
             var html = 
                 '<div class="categories-select" data-id="'+ uniqueId +'">' +
-                this.optionsListTpl(this.options, 1) +
+                    this.optionsListTpl(this.options, 1) +
                 '</div>';
 
             this.$selectField.after(html);
             this.$el = $('.categories-select[data-id="'+ uniqueId +'"]');
 
-            var that = this;
-
-            this.$el.find('.categories-select__options__option a').click(function() {
-                var parent = $(this).parent();
-                var id = parent.attr('data-cat-id');
-
-                if (id === 'all') {
-                    that.unsetSelection();
-                    that.close();
-                } else {
-                    parent.toggleClass('selected');
-                }
-
-                var options = that.getSelectedOptions();
-
-                if (options.length === 1) {
-                    that.setSelectFieldLabel(options[0].innerText);
-                } else if (options.length === 0) {
-                    that.setSelectFieldLabel(that.labels.emptySelection);
-                } else {
-                    that.setSelectFieldLabel(options.length +' '+ that.labels.chosen);
-                }
-
-                return false;
-            });
-
-            if (this.initialSelected.length >= 2) {
-                this.setSelectFieldLabel(this.initialSelected.length +' '+ this.labels.chosen);
-            }
+            this.bindEventHandlers();
+            this.setSelectFieldPlaceholder();
         },
-        setSelectFieldLabel(text) {
+        /**
+         * Map selected-options to label state (e.g. "2 selected").
+         */
+        setSelectFieldPlaceholder() {
+            var text = '';
             var target = this.$selectField.find('option')[0];
-            target.setAttribute('selected','selected');
+            var options = this.getSelectedOptions();
+
+            if (options.length === 1) {
+                text = options.find('>a')[0].innerText;
+            } else if (options.length === 0) {
+                text = this.labels.emptySelection;
+            } else {
+                text = options.length +' '+ this.labels.chosen;
+            }
+
+            target.setAttribute('selected','selected'); // First item MUST be selected
             target.innerText = text;
         },
         getSelectedOptions() {
@@ -157,56 +237,6 @@
         },
         close() {
             this.$el.removeClass('active');
-        },
-        attach: function (context, settings) {
-            var that = this;
-
-            this.$selectField = $(context).find('#edit-kategorie-id');
-            this.$form = this.$selectField.closest('form');
-
-            if (!this.$selectField || !this.$form) {
-                return;
-            }
-
-            this.initialSelected = this.$selectField.val() || [];
-            this.$selectField.wrap('<div class="select-wrapper"></div>');
-
-            this.$selectField.removeAttr('multiple')
-                             .removeAttr('size');
-
-            this.setLocalOptions();
-            this.render();
-
-            // Event handler
-            $('body').on('click', function(ev) {
-                var target = $(ev.target);
-                var targetIsSelf = target.closest('.categories-select[data-id="'+ that.$el.attr('data-id') +'"]').length !== 0;
-                var targetIsSelectField = target.closest('.select-wrapper').length !== 0;
-
-                if (!targetIsSelf && !targetIsSelectField) {
-                    that.close();
-                }
-            });
-
-            this.$selectField.on('mousedown', function(ev) { // || active / focus!
-                ev.preventDefault();
-                that.open();
-                return false;
-            });
-
-            this.$form.on('submit', function(ev) {
-                var selected = [];
-                that.$selectField.attr('multiple','multiple');
-                that.getSelectedOptions().each(function() {
-                    selected.push($(this).attr('data-cat-id'));
-                });
-                that.$selectField.val(selected);
-                window.requestAnimationFrame(function() {
-                    that.$selectField.removeAttr('multiple');
-                });
-
-                return true;
-            });            
-       }
+        }
     }
 })(jQuery);
