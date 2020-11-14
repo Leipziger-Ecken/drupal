@@ -15,3 +15,39 @@ function leipzigerEcken_theme_suggestions_views_view_alter(array &$suggestions, 
     'views_view__' . $variables['view']->id()
   ];
 }
+
+/**
+ * Implements template_preprocess_field().
+ * 
+ * Link (sub-)categories to their according filter in list-views.
+ * Lil' bit verbose, but doing the job.
+ */
+function leipzigerEcken_preprocess_field(&$variables) {
+  $element = $variables["element"];
+  $name    = $element["#field_name"];
+
+  if ($name == 'field_le_akteur_kategorie_typ' || $name == 'field_le_akteur_kategorie_subtyp') {
+    foreach ($variables['items'] as $delta => &$item) {
+      $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);
+      $link = "/akteure?kategorie_id[]=" . $id;
+      $content = $item['content']['#plain_text'];
+      $title = 'Akteure dieser Kategorie öffnen (neuer Tab)';
+
+      $item['content']['#markup'] = "<a href='${link}' title='${title}' target='_blank'>${content}</a>";
+      unset($item['content']['#plain_text']);
+    }
+  }
+
+  if ($name == 'field_le_event_kategorie_typ' || $name == 'field_le_event_kategorie_subtyp') {
+    foreach ($variables['items'] as $delta => &$item) {
+      $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);
+      $link = "/events?kategorie_id[]=" . $id;
+      $content = $item['content']['#plain_text'];
+      $title = 'Veranstaltungen dieser Kategorie öffnen (neuer Tab)';
+
+      $item['content']['#markup'] = "<a href='${link}' title='${title}' target='_blank'>${content}</a>";
+      unset($item['content']['#plain_text']);
+    }
+  }
+}
+

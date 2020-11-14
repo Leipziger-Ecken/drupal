@@ -62,15 +62,6 @@ p:last-child,
   font-family: $font-family-serif;
 }
 
-.side-bar {
-  margin-bottom: 50px;;
-}
-
-.adress-akteur {
-    margin-top: 20px;
-    word-wrap:break-word;
-}
-
 .address {
   font-family: $font-family-sans-serif;
 }
@@ -111,6 +102,10 @@ hr.teaser-hr {
   border-width: $hr-border-width;
 }
 
+ul.date-recur-occurrences {
+  padding-left: 18px;
+}
+
 .event-date {
     font-size: $font-size-base;
 }
@@ -123,10 +118,6 @@ h1,h2,.control-label,.filter-heading  {
   pointer-events: none;
   cursor: default;
   font-size: $font-size-small;
-}
-
-.adress-akteur .inactiveLink {
-  font-size: $font-size-base;
 }
 
 .inactiveLink a {
@@ -184,6 +175,7 @@ h1,h2,.control-label,.filter-heading  {
 @import "components/breadcrumb";
 
 // Import pages
+@import "pages/node";
 @import "pages/front";
 @import "pages/event-detail";
 @import "pages/akteur-events";

@@ -76,12 +76,8 @@
   ]
 %}
 
-<div class="row"> 
-    {#
-    <div class="col-md-1"></div>
-    #}
-    <div class="col-md-3">
-    <div class="adress-akteur">
+<div class="row">
+    <div class="col-md-3 node__sidebar">
         {% if content.field_le_event_image %}
           {{ content.field_le_event_image }}
           <hr class="grey-hr">
@@ -105,26 +101,35 @@
         
 
         {% if content.og_audience %}
-          <div class="field--label">Veranstalter</div>
+          <div class="field--label">Veranstalter*in</div>
           {{ content.og_audience }}
           <hr class="grey-hr">
         {% endif %}
-        
-        {% if content.field_le_event_kategorie_tags %}
-          {{ content.field_le_event_kategorie_tags }}
-        {% endif %}
+      
 
         {% if content.field_le_event_is_barrier_free %}
           {{ content.field_le_event_is_barrier_free }}
           <hr class="grey-hr">
         {% endif %}
 
-        {{ content.field_le_event_kategorie_typ }}
-        </div> 
-  </div>
+        {% if content.field_le_event_kategorie_typ %}
+          {{ content.field_le_event_kategorie_typ }}
+          {% if content.field_le_event_kategorie_subtyp %}
+            {{ content.field_le_event_kategorie_subtyp }}
+          {% endif %}
+          <hr class="grey-hr">
+        {% endif %}
+
+        {% if content.field_le_event_kategorie_gruppe %}
+          {{ content.field_le_event_kategorie_gruppe }}
+        {% endif %}
+    </div>
     
-  <div class="col-md-7 beschreibung">
-    {{ content.field_le_event_beschreibung }} <br>
-  </div>
+    <div class="col-md-7 beschreibung">
+      {% if content.field_le_event_kategorie_tags %}
+          {{ content.field_le_event_kategorie_tags }}
+      {% endif %}<br />
+      {{ content.field_le_event_beschreibung }}
+    </div>
         
 </div>

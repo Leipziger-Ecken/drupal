@@ -77,8 +77,7 @@
 %}
 
 <div class="row"> 
-  <div class="col-md-3">
-    <div class="adress-akteur">
+  <div class="col-md-3 node__sidebar">
       {% if content.field_le_akteur_image %}
           {{ content.field_le_akteur_image }} 
           <hr class="grey-hr">
@@ -105,12 +104,26 @@
         {{ content.field_le_akteur_url }}
         <hr class="grey-hr">
       {% endif %}
+
       {% if content.field_le_akteur_email %}
         {{ content.field_le_akteur_email }}
+        <hr class="grey-hr">
       {% endif %}
-     </div>     
+
+      {% if content.field_le_akteur_kategorie_typ %}
+        {{ content.field_le_akteur_kategorie_typ }}
+
+        {% if content.field_le_akteur_kategorie_subtyp %}
+          {{ content.field_le_akteur_kategorie_subtyp }}
+        {% endif %}
+        <hr class="grey-hr">
+      {% endif %}
+
+      {% if content.field_le_akteur_kategorie_gruppe %}
+        {{ content.field_le_akteur_kategorie_gruppe }}
+      {% endif %}
   </div>
-    
+
   <div class="col-md-7 beschreibung">
     {% if content.field_le_akteur_kategorie_tags %}
       {{ content.field_le_akteur_kategorie_tags }} <br>

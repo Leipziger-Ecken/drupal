@@ -8007,15 +8007,6 @@ p, .field--name-field-le-akteur-description, .field--type-text-long {
   font-family: "Lora", serif;
 }
 
-.side-bar {
-  margin-bottom: 50px;
-}
-
-.adress-akteur {
-  margin-top: 20px;
-  word-wrap: break-word;
-}
-
 .address {
   font-family: "Public Sans", sans-serif;
 }
@@ -8066,10 +8057,6 @@ h1, h2, .control-label, .filter-heading {
   pointer-events: none;
   cursor: default;
   font-size: 16px;
-}
-
-.adress-akteur .inactiveLink {
-  font-size: 18px;
 }
 
 .inactiveLink a {
@@ -8716,6 +8703,13 @@ input[type=button].btn-block {
   background-color: #fff;
   border: 2px solid #0096FF;
 }
+.categories-select__options__option {
+  /*&:hover {
+      > a {
+          background: $gray-lighter;
+      }
+  }*/
+}
 @media screen and (min-width: 991px) {
   .categories-select__options__option {
     display: flex;
@@ -8749,6 +8743,12 @@ input[type=button].btn-block {
     margin-left: -1px;
   }
 }
+@media screen and (max-width: 991px) {
+  .categories-select__options__option > .categories-select__options {
+    border-right: 0;
+    border-left: 0;
+  }
+}
 .categories-select__options__option.has-child > a:after {
   content: "";
   font-family: "Glyphicons Halflings";
@@ -8763,13 +8763,11 @@ input[type=button].btn-block {
 }
 @media screen and (min-width: 991px) {
   .categories-select__options__option.has-child > a:after {
-    rotate: -90deg;
+    transform: rotate(-90deg);
   }
 }
-.categories-select__options__option:hover > a, .categories-select__options__option.selected > a {
-  background: #eeeeee;
-}
 .categories-select__options__option.selected > a {
+  background: #eeeeee;
   color: #0096FF;
   text-decoration: underline;
 }
@@ -8787,6 +8785,14 @@ input[type=button].btn-block {
   margin-bottom: 12px;
   border-bottom: 2px solid;
   border-bottom-color: #707070;
+}
+
+.node__sidebar {
+  margin-top: 20px;
+  word-wrap: break-word;
+}
+.node__sidebar .inactiveLink {
+  font-size: 18px;
 }
 
 body.path-frontpage .region-header {
