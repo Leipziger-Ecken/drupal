@@ -51,6 +51,7 @@
         "drupal/leaflet_more_maps": "^1.0@alpha",
         "drupal/pathauto": "^1.8",
         "drupal/schema_metatag": "^1.4",
+        "drupal/svg_image": "^1.14",
         "drupal/token": "^1.6",
         "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^2.7",
