@@ -17,3 +17,8 @@ schemas: []
 
 # Disable the CDN provider so compiled source files can be used.
 cdn_provider: ''
+
+# Modifications for Leipziger Ecken (see themes/contrib/bootstrap/Theme-settings.md)
+# Deactivate "smart descriptions" to increase accessibility
+forms_smart_descriptions: 0
+  

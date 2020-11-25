@@ -198,7 +198,7 @@ textarea.form-control {
   input[type="datetime-local"],
   input[type="month"] {
     &.form-control {
-      line-height: $input-height-base;
+      // line-height: $input-height-base;
     }
 
     &.input-sm,

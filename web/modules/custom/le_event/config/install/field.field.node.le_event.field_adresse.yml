@@ -11,24 +11,24 @@ field_name: field_adresse
 entity_type: node
 bundle: le_event
 label: Adresse
-description: Veranstaltungsort
+description: 'Ort der Veranstaltung'
 required: true
 translatable: true
 default_value:
   -
-    country_code: DE
     langcode: ''
-    address_line1: ''
-    address_line2: ''
+    country_code: DE
+    administrative_area: null
+    locality: Leipzig
+    dependent_locality: null
     postal_code: ''
-    locality: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: null
+    organization: null
     given_name: null
     additional_name: null
     family_name: null
-    organization: null
-    sorting_code: null
-    dependent_locality: null
-    administrative_area: null
 default_value_callback: ''
 settings:
   available_countries:

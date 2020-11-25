@@ -133,6 +133,8 @@ function le_migrate_bezirke() {
 
         // PROBLEM: BID darf nicht gleich stadtteil unten sein - offset?
 
+        // @todo 
+
         $term = Term::create(array(
           'tid' => $bezirk->BID,
           'parent' => array(),

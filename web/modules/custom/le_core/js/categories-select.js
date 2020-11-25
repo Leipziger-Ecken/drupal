@@ -15,6 +15,7 @@
  * * Accessiblity (ARIA-labels, keyboard-navigator-events like :focus, :active)
  * * Formal Drupal-integration via field renderer
  * * JQuery.once()
+ * * X-Close-Button
  * 
  * To use with Views-module, ensure that filter type is of "Select list" w/ "Show hierarchy in select list" and
  * "Allow multiple choises" are checked
@@ -25,6 +26,7 @@
         enableReset: true,
         initialSelected: [],
         isMultipleSelect: true, // @todo functionalize
+        isFormMode: false,
         options: null,
         $el: null,
         $form: null,
@@ -38,19 +40,44 @@
         },
         
         /**
-         * Bootstraping
+         * "Constructor"
+         * Bootstrap & render the component
          */
         attach (context, settings) {
+            if ($(context).find('.shortcut-action').length >= 1) {
+                // Form displayed in Drupal backend; skip initialization.
+                return;
+            }
+
             this.$selectField = $(context).find('#edit-kategorie-id');
+            var settingsSelectTarget = settings.le_categories_select_target;
+
+            if (!this.$selectField || this.$selectField.length === 0) {
+                if (settingsSelectTarget) {
+                    // Fallback on provided input target
+                    // Quick & dirty implementation for akteur-/event-form select-field
+                    this.isFormMode = true;
+                    this.$selectField = $(context).find(settingsSelectTarget);
+
+                    this.labels.emptySelection = '- Keine -';
+                    this.labels.resetLabel = 'Keine';
+                    this.labels.chooseCategory = 'Diese Kategorie auswählen';
+                    this.labels.resetLinkTitle = 'Auswahl zurücksetzen';
+                } else {
+                    return;
+                }
+            }
+            
             this.$form = this.$selectField.closest('form');
 
-            if (!this.$selectField || !this.$form) {
+            if (!this.$form || this.$form.length === 0) {
                 return;
             }
 
             this.initializeState();
             this.render();
         },
+
         /**
          * Map select-field-options to local state.
          */
@@ -98,31 +125,12 @@
 
             this.options = options;
         },
+
         bindEventHandlers() {
             var that = this;
 
             // (Un-)select option-items
-            this.$el.find('.categories-select__options__option a').click(function() {
-                var parent = $(this).parent();
-                var id = parent.attr('data-cat-id');
-
-                if (id === 'all') {
-                    that.unsetSelection();
-                    that.close();
-                } else {
-                    var toggleMethod = parent.hasClass('selected') ? 'removeClass' : 'addClass';
-                    parent[toggleMethod]('selected');
-
-                    if (parent.hasClass('has-child')) {
-                        // (Un-)select children
-                        parent.find('.categories-select__options__option')[toggleMethod]('selected');
-                    }
-                }
-
-                that.setSelectFieldPlaceholder();
-
-                return false;
-            });
+            this.$el.find('.categories-select__options__option a').click(this.onOptionClick.bind(this));
 
             // On form submit: Map local state into selected select-fields options,
             // then submit. Do so by temporary faking a multiple-select.
@@ -140,7 +148,7 @@
                 return true;
             });
 
-            // Dropdown functionality
+            // Simple Dropdown functionality
             $('body').on('click', function(ev) {
                 var target = $(ev.target);
                 var targetIsSelf = target.closest('.categories-select[data-id="'+ that.$el.attr('data-id') +'"]').length !== 0;
@@ -157,6 +165,59 @@
                 return false;
             });
         },
+
+        onOptionClick(ev) {
+            var $el = $(ev.currentTarget).parent();
+            var categoryId = $el.attr('data-cat-id');
+            var level = parseInt($el.closest('.categories-select__options').attr('data-level'));
+            var isParent = $el.hasClass('has-child');
+            var isChild = level >= 2;
+
+            if (categoryId === 'all') {
+                this.unsetSelection();
+                this.close();
+            } else {
+                var toggleMethod = $el.hasClass('selected') ? 'removeClass' : 'addClass';
+                $el[toggleMethod]('selected');
+
+                if (isParent) {
+                    if (this.isFormMode) {
+                        // Ensure that no else nearby option is selected
+                        $el.siblings('.selected').removeClass('selected');
+
+                        // Query-selector from hell: Unselect all child-items that are nearby siblings
+                        var $activeSiblingChilds = this.$el.find('.categories-select__options[data-level="'+ level +'"] > .categories-select__options__option:not([data-cat-id="'+ categoryId +'"]) .selected');
+                        $activeSiblingChilds.removeClass('selected');
+                    }
+
+                    // (Un-)select children
+                    $el.find('.categories-select__options__option')[toggleMethod]('selected');
+                }
+
+                if (isChild) {
+                    var $parent = $el.closest('.has-child');
+                    var parentCategoryId = $parent.attr('data-cat-id');
+
+                    if (this.isFormMode) {
+                        // As only one selected option on first layer is allowed,
+                        // temporary unselect any selected parent option
+                        var $activeParent = this.$el.find('.categories-select__options[data-level="'+ (level-1) +'"] > .selected');
+                        $activeParent.removeClass('selected');
+
+                        // Query-selector from hell: Unselect all child-items that are not nearby siblings
+                        var $activeNonSiblingChilds = this.$el.find('.categories-select__options[data-level="'+ (level-1) +'"] > .categories-select__options__option:not([data-cat-id="'+ parentCategoryId +'"]) .selected');
+                        $activeNonSiblingChilds.removeClass('selected');
+                    }
+
+                    // Lastly: Select parent option
+                    $parent.addClass('selected');
+                }
+            }
+
+            this.setSelectFieldPlaceholder();
+            return false;
+        },
+
         optionsListTpl(options, level = 1) {
             var html = '<div class="categories-select__options" data-level="'+ level +'">';
 
@@ -179,6 +240,7 @@
 
             return html;
         },
+
         /**
          * Generate and append dropdown-container-content, set init state, set events
          */
@@ -205,6 +267,7 @@
             this.bindEventHandlers();
             this.setSelectFieldPlaceholder();
         },
+
         /**
          * Map selected-options to label state (e.g. "2 selected").
          */
@@ -224,17 +287,21 @@
             target.setAttribute('selected','selected'); // First item MUST be selected
             target.innerText = text;
         },
+
         getSelectedOptions() {
             return this.$el.find('.categories-select__options__option.selected');
         },
+
         unsetSelection() {
             this.getSelectedOptions().each(function() {
                 $(this).removeClass('selected');
             });
         },
+
         open() {
             this.$el.addClass('active');
         },
+
         close() {
             this.$el.removeClass('active');
         }

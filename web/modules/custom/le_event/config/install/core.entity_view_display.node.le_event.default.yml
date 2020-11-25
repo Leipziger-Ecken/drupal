@@ -11,17 +11,19 @@ dependencies:
     - field.field.node.le_event.field_le_event_image
     - field.field.node.le_event.field_le_event_is_barrier_free
     - field.field.node.le_event.field_le_event_kategorie_gruppe
-    - field.field.node.le_event.field_le_event_kategorie_subtyp
     - field.field.node.le_event.field_le_event_kategorie_tags
     - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
     - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
     - field.field.node.le_event.og_audience
     - node.type.le_event
   module:
     - address
     - date_recur
-    - image
     - leaflet
+    - link
+    - svg_image
     - text
     - user
 id: node.le_event.default
@@ -147,14 +149,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_le_event_kategorie_subtyp:
-    weight: 10
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_le_event_kategorie_tags:
     weight: 12
     label: above
@@ -171,6 +165,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_le_event_lizenzhinweis:
+    weight: 18
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_le_event_occurrences:
     weight: 5
     label: above
@@ -185,6 +189,18 @@ content:
       count_per_item: true
     third_party_settings: {  }
     type: date_recur_basic_formatter
+    region: content
+  field_le_event_website:
+    weight: 17
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   links:
     weight: 2

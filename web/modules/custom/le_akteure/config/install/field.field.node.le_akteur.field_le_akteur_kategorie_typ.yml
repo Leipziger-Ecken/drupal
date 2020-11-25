@@ -10,7 +10,7 @@ field_name: field_le_akteur_kategorie_typ
 entity_type: node
 bundle: le_akteur
 label: Kategorien
-description: 'Hauptkategorie des Akteurs'
+description: 'Angebotskategorie(n) des Akteurs. Es kann eine Ober- und mehrere Unterkategorien gewählt werden.'
 required: true
 translatable: false
 default_value: {  }

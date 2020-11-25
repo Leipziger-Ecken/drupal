@@ -10,7 +10,9 @@
 }
 
 ol, ul {
-    .popover &:last-child {
+  padding-left: 1em;
+
+  .popover &:last-child {
       margin-bottom: 0;
   }
 }
@@ -47,18 +49,24 @@ p:last-child,
   }
 }
 
-.help-block, .control-group .help-inline {
+.help-block,
+.control-group .help-inline,
+.fieldset-wrapper .description {
   color: $gray-light;
   font-size: 12px;
   margin: 5px 0 10px;
   padding: 0;
+
   &:first-child {
     margin-top: 0;
   }
 }
 
 /* self defined classes */
- p, .field--name-field-le-akteur-description, .field--type-text-long {
+p,
+// .field--name-field-le-akteur-description:not(.form-item),
+//.field--type-text-long
+{
   font-family: $font-family-serif;
 }
 
@@ -110,7 +118,10 @@ ul.date-recur-occurrences {
     font-size: $font-size-base;
 }
 
-h1,h2,.control-label,.filter-heading  {
+h1,
+h2,
+.control-label,
+.filter-heading  {
   color: $brand-primary;
 }
 
@@ -153,6 +164,31 @@ h1,h2,.control-label,.filter-heading  {
     text-align: center;
 }
 
+.form-item.form-type-checkbox {
+  // Quick + dirty approach to style a checkbox
+  // without changing field-template
+  input[type="checkbox"] {
+    box-shadow: 0 0 0 2px $brand-primary;
+    border-radius: 0;
+    border: 0;
+  }
+
+  /*input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #4DD5FF;
+    margin-top: 7px;
+    margin-left: -40px;
+  }
+
+  input[type="checkbox"]:checked+label::before {
+    box-shadow: inset 0px 0px 0px 3px #fff;
+    background-color: #4DD5FF;
+  }*/
+}
+
 @media (min-width: $grid-float-breakpoint) {
   .sticky-sidebar {
     position: sticky;
@@ -179,3 +215,5 @@ h1,h2,.control-label,.filter-heading  {
 @import "pages/front";
 @import "pages/event-detail";
 @import "pages/akteur-events";
+@import "pages/akteur-form";
+@import "pages/event-form";

@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_lizenzhinweis
+    - node.type.le_event
+id: node.le_event.field_le_event_lizenzhinweis
+field_name: field_le_event_lizenzhinweis
+entity_type: node
+bundle: le_event
+label: 'Lizenzhinweis gelesen & akzeptiert'
+description: "Mit der Freigabe der im Formular eingetragenen Veranstaltungsdaten auf <a href=\"https://leipziger-ecken.de\">leipziger-ecken.de</a> stimme ich/wir einer etwaigen Nutzung dieser Daten durch Andere zu.\r\n<br><br>\r\n\r\nAlle Inhalte werden unter der Free cultural Licence „<a href=\"https://creativecommons.org/licenses/by/4.0/deed.de\" target=\"_blank\">CC-By 4.0 international</a>“ veröffentlicht. Dies bedeuter, jeder darf öffentlich bereitgestellte Veranstaltungsdaten samt etwaigem Bild nutzen und bearbeiten, wenn sie/er die/den Urheber*in nennt.\r\n<br><br>\r\n\r\n<a href=\"https://leipziger-ecken.de\">leipziger-ecken.de</a> übernimmt keinerlei Haftung für Schadensersatzforderung o.ä. in Bezug auf Dritte. Bildmaterial sollte vorher mit erkennbaren Menschen abgeklärt werden. Haftung übernimmt der Urheber."
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

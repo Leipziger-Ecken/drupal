@@ -10,8 +10,8 @@ third_party_settings:
     parent: 'main:'
 name: Event
 type: le_event
-description: 'Veranstaltungen, Workshop''s, Seminare'
+description: 'Öffentliche Veranstaltungen wie Workshops, Seminare, Feste oder Märkte.'
 help: ''
-new_revision: true
+new_revision: false
 preview_mode: 1
-display_submitted: false
+display_submitted: true

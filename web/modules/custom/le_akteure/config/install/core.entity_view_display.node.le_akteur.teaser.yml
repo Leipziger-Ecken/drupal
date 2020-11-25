@@ -12,22 +12,23 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_description
     - field.field.node.le_akteur.field_le_akteur_einrichtungsname
     - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_hat_typ
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
     - field.field.node.le_akteur.field_le_akteur_is_private
     - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
-    - field.field.node.le_akteur.field_le_akteur_kategorie_subtyp
     - field.field.node.le_akteur.field_le_akteur_kategorie_tags
     - field.field.node.le_akteur.field_le_akteur_kategorie_typ
+    - field.field.node.le_akteur.field_le_akteur_lizenzhinweis
     - field.field.node.le_akteur.field_le_akteur_opening_times
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
     - node.type.le_akteur
   module:
     - address
-    - image
     - link
     - og
+    - svg_image
     - text
     - user
 id: node.le_akteur.teaser
@@ -66,14 +67,6 @@ content:
     settings:
       image_style: ''
       image_link: ''
-    third_party_settings: {  }
-  field_le_akteur_kategorie_subtyp:
-    type: entity_reference_label
-    weight: 6
-    region: content
-    label: above
-    settings:
-      link: true
     third_party_settings: {  }
   field_le_akteur_kategorie_tags:
     type: entity_reference_label
@@ -122,9 +115,11 @@ hidden:
   field_le_akteur_contactperson_fn: true
   field_le_akteur_einrichtungsname: true
   field_le_akteur_email: true
+  field_le_akteur_hat_typ: true
   field_le_akteur_is_barrier_free: true
   field_le_akteur_is_private: true
   field_le_akteur_kategorie_gruppe: true
+  field_le_akteur_lizenzhinweis: true
   field_le_akteur_opening_times: true
   field_le_akteur_phone: true
   langcode: true

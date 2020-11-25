@@ -3210,12 +3210,6 @@ textarea.form-control {
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type=date].form-control,
-input[type=time].form-control,
-input[type=datetime-local].form-control,
-input[type=month].form-control {
-    line-height: 39px;
-  }
   input[type=date].input-sm,
 .input-group-sm > .input-group-btn > input[type=date].btn, .input-group-sm input[type=date],
 input[type=time].input-sm,
@@ -7962,6 +7956,9 @@ body.toolbar-loading.toolbar {
   margin: 0;
 }
 
+ol, ul {
+  padding-left: 1em;
+}
 .popover ol:last-child, .popover ul:last-child {
   margin-bottom: 0;
 }
@@ -7992,18 +7989,22 @@ p:last-child,
   overflow: hidden;
 }
 
-.help-block, .control-group .help-inline {
+.help-block,
+.control-group .help-inline,
+.fieldset-wrapper .description {
   color: #707070;
   font-size: 12px;
   margin: 5px 0 10px;
   padding: 0;
 }
-.help-block:first-child, .control-group .help-inline:first-child {
+.help-block:first-child,
+.control-group .help-inline:first-child,
+.fieldset-wrapper .description:first-child {
   margin-top: 0;
 }
 
 /* self defined classes */
-p, .field--name-field-le-akteur-description, .field--type-text-long {
+p {
   font-family: "Lora", serif;
 }
 
@@ -8045,11 +8046,18 @@ hr.teaser-hr {
   border-width: 2px;
 }
 
+ul.date-recur-occurrences {
+  padding-left: 18px;
+}
+
 .event-date {
   font-size: 18px;
 }
 
-h1, h2, .control-label, .filter-heading {
+h1,
+h2,
+.control-label,
+.filter-heading {
   color: #0096FF;
 }
 
@@ -8091,6 +8099,28 @@ h1, h2, .control-label, .filter-heading {
 
 .page-header-label {
   text-align: center;
+}
+
+.form-item.form-type-checkbox {
+  /*input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #4DD5FF;
+    margin-top: 7px;
+    margin-left: -40px;
+  }
+
+  input[type="checkbox"]:checked+label::before {
+    box-shadow: inset 0px 0px 0px 3px #fff;
+    background-color: #4DD5FF;
+  }*/
+}
+.form-item.form-type-checkbox input[type=checkbox] {
+  box-shadow: 0 0 0 2px #0096FF;
+  border-radius: 0;
+  border: 0;
 }
 
 @media (min-width: 768px) {
@@ -8819,6 +8849,103 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
 .view.view-le-akteur-has-events .view-header {
   padding-top: 10px;
   text-align: right;
+}
+
+.node-le-akteur-form .entity-meta,
+.node-le-akteur-form .tabbable.tabs-left.vertical-tabs,
+.node-le-akteur-form .input-group-addon,
+.node-le-akteur-form *[data-drupal-selector=edit-field-le-akteur-description-0-format],
+.node-le-akteur-edit-form .entity-meta,
+.node-le-akteur-edit-form .tabbable.tabs-left.vertical-tabs,
+.node-le-akteur-edit-form .input-group-addon,
+.node-le-akteur-edit-form *[data-drupal-selector=edit-field-le-akteur-description-0-format] {
+  display: none;
+}
+.node-le-akteur-form .form-item-field-le-akteur-kategorie-tags-target-id .input-group,
+.node-le-akteur-edit-form .form-item-field-le-akteur-kategorie-tags-target-id .input-group {
+  width: 100%;
+}
+.node-le-akteur-form #edit-field-le-akteur-opening-times-0-value,
+.node-le-akteur-edit-form #edit-field-le-akteur-opening-times-0-value {
+  margin-bottom: 31px;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ--wrapper legend,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ--wrapper legend {
+  border: none;
+  font-size: 1em;
+  color: #0096FF;
+  margin-bottom: 5px;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ {
+  display: flex;
+  border: 2px solid #0096FF;
+}
+@media screen and (max-width: 991px) {
+  .node-le-akteur-form #edit-field-le-akteur-hat-typ,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ {
+    flex-wrap: wrap;
+  }
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item {
+  margin: 0;
+  padding: 20px;
+  flex: 1 1 0px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item:hover,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item:hover {
+  background-color: #eeeeee;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item .views-field-field-le-akteur-typ-icon,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item .views-field-field-le-akteur-typ-icon {
+  display: block;
+  height: 0;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item .views-field-field-le-akteur-typ-icon img,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item .views-field-field-le-akteur-typ-icon img {
+  height: 60px;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item .views-field-name,
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item .views-field-description__value,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item .views-field-name,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item .views-field-description__value {
+  float: right;
+  text-align: right;
+  width: 100%;
+}
+.node-le-akteur-form #edit-field-le-akteur-hat-typ .form-item .views-field-description__value,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ .form-item .views-field-description__value {
+  padding-left: 60px;
+  font-size: 0.85em;
+}
+
+.node-le-event-form .entity-meta,
+.node-le-event-form .tabbable.tabs-left.vertical-tabs,
+.node-le-event-form .input-group-addon,
+.node-le-event-form .tabledrag-toggle-weight,
+.node-le-event-form *[data-drupal-selector=edit-field-le-event-beschreibung-0-format],
+.node-le-event-edit-form .entity-meta,
+.node-le-event-edit-form .tabbable.tabs-left.vertical-tabs,
+.node-le-event-edit-form .input-group-addon,
+.node-le-event-edit-form .tabledrag-toggle-weight,
+.node-le-event-edit-form *[data-drupal-selector=edit-field-le-event-beschreibung-0-format] {
+  display: none;
+}
+.node-le-event-form .form-item-field-le-event-kategorie-tags-target-id .input-group,
+.node-le-event-edit-form .form-item-field-le-event-kategorie-tags-target-id .input-group {
+  width: 100%;
+}
+.node-le-event-form #edit-field-le-event-occurrences-wrapper .container-inline .form-type-select,
+.node-le-event-edit-form #edit-field-le-event-occurrences-wrapper .container-inline .form-type-select {
+  display: none;
+}
+.node-le-event-form #edit-field-le-event-occurrences-wrapper .field-label,
+.node-le-event-edit-form #edit-field-le-event-occurrences-wrapper .field-label {
+  color: #0096FF;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@ field_name: field_le_akteur_email
 entity_type: node
 bundle: le_akteur
 label: E-Mail
-description: ''
+description: 'Öffentliche E-Mail Adresse zur Kontaktaufnahme.'
 required: true
 translatable: false
 default_value: {  }

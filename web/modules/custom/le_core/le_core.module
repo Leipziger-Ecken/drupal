@@ -57,11 +57,42 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 {
 
   if (in_array($form_id, ['node_le_akteur_form','node_le_akteur_edit_form'])) {
-    set_kategorie_form_fields($form, $form_state, 'akteur');
+    // set_kategorie_form_fields($form, $form_state, 'akteur');
+    $form['#attached']['library'][] = 'le_core/categories-select';
+    $form['#attached']['drupalSettings'] = [
+      'le_categories_select_target' => '#edit-field-le-akteur-kategorie-typ'
+    ];
+    // kint($form);
+
+    // Apply bootstrap grid
+    $form['title']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_image']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_hat_typ']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_akteur_description']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_akteur_email']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_opening_times']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_phone']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_url']['#attributes']['class'][] = 'col-md-6';
+    $form['field_bezirk']['#attributes']['class'][] = 'col-md-6';
+    $form['field_adresse']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_akteur_contactperson']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_contactperson_fn']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_einrichtungsname']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_kategorie_typ']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_kategorie_gruppe']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_akteur_kategorie_tags']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_akteur_is_barrier_free']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_akteur_lizenzhinweis']['#attributes']['class'][] = 'col-md-12';
+    $form['actions']['#attributes']['class'][] = 'col-md-12';
   }
 
   if (in_array($form_id, ['node_le_event_form','node_le_event_edit_form'])) {
-    set_kategorie_form_fields($form, $form_state, 'event');
+    // set_kategorie_form_fields($form, $form_state, 'event');
+    $form['#attached']['library'][] = 'le_core/event-form';
+    $form['#attached']['library'][] = 'le_core/categories-select';
+    $form['#attached']['drupalSettings'] = [
+      'le_categories_select_target' => '#edit-field-le-event-kategorie-typ'
+    ];
 
     // Get groups ("memberships") of active user; if none, redirect to "/events"
     $user_id = \Drupal::currentUser()->id();
@@ -71,7 +102,8 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     $membership_manager = \Drupal::service('og.membership_manager');
     $user_memberships = $membership_manager->getMemberships($user_id);
 
-    if (!count($user_memberships) && !$user_is_admin) {
+    if (false && !count($user_memberships) && !$user_is_admin) {
+        // @todo Veranstalter "Privat"
         \Drupal::messenger()->addError(t('Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können'));
         $response = new RedirectResponse('/events');
         $response->send();
@@ -94,18 +126,10 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           ];
     }
 
-    $form['#attached']['library'][] = 'le_core/event-form';
-
-   /* $form['#attached'] = array(
-      'library' => array('openlayers/drupal-addlayer'),
-      'drupalSettings' => array(),
-    );*/
-
-
-    // @todo Hide several fields when user is not drupal admin
-
-    // @todo Turn autocomplete into native select
-
+    // @todo Enable Veranstalter "Privat"
+    // @todo When no Akteur there, do NOT show all Akteure
+    // @todo When choosing Akteur, fill adress-values from Akteur-adress
+    // @todo Turn autocomplete into native select (either wait for OG UI patch or use radio-output which then gets #type changed:
     // $form['og_audience']['widget'][0]['target_id']['#type'] = 'select';
     // $form['og_audience']['widget'][0]['target_id']['#options'] = [
     //   'a' => 'A',
@@ -122,12 +146,31 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           $form['og_audience']['widget'][0]['target_id']['#default_value'] = $default_akteur;
         }
     }
+
+    // Apply bootstrap grid
+    $form['title']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_event_image']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_event_beschreibung']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_event_website']['#attributes']['class'][] = 'col-md-6';
+    $form['field_bezirk']['#attributes']['class'][] = 'col-md-6';
+    $form['og_audience']['#attributes']['class'][] = 'col-md-6';
+    $form['field_adresse']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_event_kategorie_typ']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_event_kategorie_gruppe']['#attributes']['class'][] = 'col-md-6';
+    $form['field_le_event_kategorie_tags']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_event_is_barrier_free']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_event_lizenzhinweis']['#attributes']['class'][] = 'col-md-12';
+    $form['field_le_event_occurrences']['#attributes']['class'][] = 'col-md-12';
+    $form['actions']['#attributes']['class'][] = 'col-md-12';
   }
 }
 
 /**
  * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
  * ("Select one main category; select multiple second categories which are children of that main category")
+ * 
+ * @deprecated Kategorie-field was turned into multiple-select and is now managed via dedicated "categories-select.js".
+ * THERE IS NOT "SUBTYP"-FIELD ANYMORE!!!
  */
 function set_kategorie_form_fields(&$form, FormStateInterface $form_state, $le_entity_type)
 {

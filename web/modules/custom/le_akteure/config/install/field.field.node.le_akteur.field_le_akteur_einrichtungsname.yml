@@ -9,7 +9,7 @@ field_name: field_le_akteur_einrichtungsname
 entity_type: node
 bundle: le_akteur
 label: 'Einrichtungsname FwAL'
-description: 'Name der Einrichtung auf der Frewilligenagentur-Leipzig (optional).'
+description: 'Akteursprofil mit Konto bei der Frewilligenagentur-Leipzig verbinden: Name der Einrichtung eingeben. Die Spiegelung der Angebote erfolgt täglich.'
 required: false
 translatable: false
 default_value: {  }

@@ -10,19 +10,21 @@ dependencies:
     - field.field.node.le_event.field_le_event_image
     - field.field.node.le_event.field_le_event_is_barrier_free
     - field.field.node.le_event.field_le_event_kategorie_gruppe
-    - field.field.node.le_event.field_le_event_kategorie_subtyp
     - field.field.node.le_event.field_le_event_kategorie_tags
     - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
     - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
     - field.field.node.le_event.og_audience
     - image.style.thumbnail
     - node.type.le_event
   module:
     - address
     - date_recur_modular
-    - image
+    - link
     - og
     - path
+    - svg_image
     - text
 id: node.le_event.default
 targetEntityType: node
@@ -31,18 +33,18 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   field_adresse:
-    weight: 18
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 17
+    weight: 14
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -52,15 +54,15 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_le_event_beschreibung:
-    weight: 9
+    weight: 10
     settings:
-      rows: 5
+      rows: 6
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
     region: content
   field_le_event_image:
-    weight: 10
+    weight: 8
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -68,33 +70,27 @@ content:
     type: image_image
     region: content
   field_le_event_is_barrier_free:
-    weight: 11
+    weight: 18
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 14
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_le_event_kategorie_subtyp:
     weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_le_event_kategorie_tags:
-    weight: 15
+    weight: 17
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
-      placeholder: ''
+      placeholder: 'z.B. "kostenfrei, outdoor"'
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: entity_reference_autocomplete_tags
     region: content
   field_le_event_kategorie_typ:
     weight: 12
@@ -102,15 +98,30 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_le_event_lizenzhinweis:
+    weight: 26
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_le_event_occurrences:
-    weight: 8
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: date_recur_modular_alpha
     region: content
+  field_le_event_website:
+    weight: 16
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   langcode:
     type: language_select
-    weight: 1
+    weight: 0
     region: content
     settings:
       include_locked: true
@@ -119,15 +130,15 @@ content:
     type: og_complex
     settings:
       match_operator: CONTAINS
+      match_limit: 15
       size: 60
-      match_limit: 10
-      placeholder: ''
-    weight: 16
+      placeholder: 'Tippen, um Akteur zu suchen...'
+    weight: 9
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -135,26 +146,26 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 4
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 6
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 5
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 7
     region: content
     settings:
       size: 60
@@ -162,7 +173,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60

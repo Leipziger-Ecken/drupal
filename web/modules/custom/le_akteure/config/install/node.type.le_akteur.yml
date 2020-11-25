@@ -7,10 +7,10 @@ third_party_settings:
   menu_ui:
     available_menus:
       - main
-    parent: 'main:views_view:views.le_akteur_api_get.page_1'
+    parent: 'main:'
 name: Akteur
 type: le_akteur
-description: 'Organisationen, Personen und Vereine'
+description: 'Öffentliches Profil für Organisationen, Vereine, Initiativen, Netzwerke oder Einzelpersonen.'
 help: ''
 new_revision: false
 preview_mode: 1

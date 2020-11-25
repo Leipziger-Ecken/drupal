@@ -11,7 +11,7 @@ field_name: field_le_akteur_description
 entity_type: node
 bundle: le_akteur
 label: Beschreibung
-description: ''
+description: 'Welche <b>Angebote</b> bieten wir? Welche <b>Ziele</b> verfolgen wir und an wen richten sich diese? Bestehen <b>Kooperationen</b> und wie lässt sich <b>mitmachen</b>?'
 required: true
 translatable: false
 default_value: {  }

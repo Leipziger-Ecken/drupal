@@ -11,7 +11,7 @@ field_name: field_le_event_occurrences
 entity_type: node
 bundle: le_event
 label: Termine
-description: "<b>Startdatum & -zeit, Enddatum & -zeit.</b> Wenn <b>wiederholend</b>, Feld \"Wiederholungsregel\" ausfüllen.\r\n\r\nWerte (wöchentlich; zwei-wöchentlich; monatlich; zwei-monatlich):\r\n<ul>\r\n<li>RRULE:FREQ=WEEKLY</li>\r\n<li>RRULE:FREQ=WEEKLY;INTERVAL=2</li>\r\n<li>RRULE:FREQ=MONTHLY</li>\r\n<li>RRULE:FREQ=MONTHLY;INTERVAL=2</li>\r\n</ul>"
+description: 'Falls ein Event mehrmals stattfindet, können mehrere Termine vergeben werden. Hierzu einfach auf "Weiteren Eintrag hinzufügen" klicken.'
 required: true
 translatable: false
 default_value:

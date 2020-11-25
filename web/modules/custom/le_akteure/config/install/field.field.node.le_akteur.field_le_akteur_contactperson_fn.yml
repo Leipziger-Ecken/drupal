@@ -9,7 +9,7 @@ field_name: field_le_akteur_contactperson_fn
 entity_type: node
 bundle: le_akteur
 label: 'Ansprechpartner*in Funktion'
-description: 'Funktion der Ansprechpartner*in (z.B. "Projektkoordination" / "Vorstand")'
+description: 'Funktion der Ansprechpartner*in'
 required: false
 translatable: false
 default_value: {  }

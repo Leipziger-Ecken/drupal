@@ -1,0 +1,80 @@
+$icon-width: 60px;
+
+.node-le-akteur-form,
+.node-le-akteur-edit-form {
+    .form-group {
+        // Unset horizontal md-col-[x] padding
+        // padding-left: 0;
+        // padding-right: 0;
+    }
+
+    .entity-meta,
+    .tabbable.tabs-left.vertical-tabs,
+    .input-group-addon,
+    *[data-drupal-selector="edit-field-le-akteur-description-0-format"] {
+        // Hide "reload"-indicator on autoselects
+        // Hide desc-field help-tooltip-wrapper
+        // Hide "revision" container
+        display: none;
+    }
+
+    .form-item-field-le-akteur-kategorie-tags-target-id .input-group {
+        width: 100%;
+    }
+
+    #edit-field-le-akteur-opening-times-0-value {
+        margin-bottom: 31px; // Field has no label, so fake one
+    }
+
+    #edit-field-le-akteur-hat-typ--wrapper {
+        legend {
+            border: none;
+            font-size: 1em;
+            color: $brand-primary;
+            margin-bottom: 5px;
+        }
+    }
+
+    #edit-field-le-akteur-hat-typ {
+        display: flex;
+        border: 2px solid $brand-primary;
+        
+        @media screen and (max-width: $screen-sm-max) {
+            flex-wrap: wrap;
+        }
+
+        .form-item {
+            margin: 0;
+            padding: 20px;
+            flex: 1 1 0px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: $gray-lighter;
+            }
+
+            .views-field-field-le-akteur-typ-icon {
+                display: block;
+                height: 0;
+
+                img {
+                    height: $icon-width;
+                }
+            }
+
+            .views-field-name,
+            .views-field-description__value {
+                float: right;
+                text-align: right;
+                width: 100%;
+            }
+
+            .views-field-description__value {
+                padding-left: $icon-width;
+                font-size: 0.85em;
+            }
+        }
+    }
+}

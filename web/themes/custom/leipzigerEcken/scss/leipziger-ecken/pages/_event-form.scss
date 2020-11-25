@@ -1,0 +1,28 @@
+.node-le-event-form,
+.node-le-event-edit-form {
+
+    .entity-meta,
+    .tabbable.tabs-left.vertical-tabs,
+    .input-group-addon,
+    .tabledrag-toggle-weight,
+    *[data-drupal-selector="edit-field-le-event-beschreibung-0-format"] {
+        // Hide "reload"-indicator on autoselects
+        // Hide other noisy Drupal-thingies, e.g. "revision" container
+        display: none;
+    }
+
+    .form-item-field-le-event-kategorie-tags-target-id .input-group {
+        width: 100%;
+    }
+
+    #edit-field-le-event-occurrences-wrapper {
+        .container-inline .form-type-select {
+            // Hide that noisy down-arrow-thingy
+            display: none;
+        }
+
+        .field-label {
+            color: $brand-primary;
+        }
+    }
+}

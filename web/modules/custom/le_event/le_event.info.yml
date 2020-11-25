@@ -21,6 +21,7 @@ dependencies:
   - le_region
   - leaflet
   - leaflet_views
+  - link
   - menu_ui
   - metatag
   - node
@@ -29,9 +30,10 @@ dependencies:
   - pathauto
   - rest
   - serialization
+  - svg_image
   - taxonomy
   - text
   - user
   - views
-version: 8.x-0.1.95
+version: 8.x-0.1.96
 core_incompatible: false

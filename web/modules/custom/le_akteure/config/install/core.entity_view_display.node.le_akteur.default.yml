@@ -12,13 +12,14 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_description
     - field.field.node.le_akteur.field_le_akteur_einrichtungsname
     - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_hat_typ
     - field.field.node.le_akteur.field_le_akteur_image
     - field.field.node.le_akteur.field_le_akteur_is_barrier_free
     - field.field.node.le_akteur.field_le_akteur_is_private
     - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
-    - field.field.node.le_akteur.field_le_akteur_kategorie_subtyp
     - field.field.node.le_akteur.field_le_akteur_kategorie_tags
     - field.field.node.le_akteur.field_le_akteur_kategorie_typ
+    - field.field.node.le_akteur.field_le_akteur_lizenzhinweis
     - field.field.node.le_akteur.field_le_akteur_opening_times
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
@@ -26,10 +27,10 @@ dependencies:
   module:
     - address
     - comment
-    - image
     - leaflet
     - link
     - og
+    - svg_image
     - telephone
     - text
     - user
@@ -161,6 +162,14 @@ content:
     third_party_settings: {  }
     type: email_mailto
     region: content
+  field_le_akteur_hat_typ:
+    weight: 20
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_le_akteur_image:
     weight: 5
     label: hidden
@@ -198,14 +207,6 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
-  field_le_akteur_kategorie_subtyp:
-    weight: 7
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
   field_le_akteur_kategorie_tags:
     weight: 16
     label: above
@@ -221,6 +222,16 @@ content:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_le_akteur_lizenzhinweis:
+    weight: 21
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_le_akteur_opening_times:
     weight: 10

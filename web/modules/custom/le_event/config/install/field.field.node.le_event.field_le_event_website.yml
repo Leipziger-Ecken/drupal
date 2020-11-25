@@ -2,16 +2,16 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_le_akteur_url
-    - node.type.le_akteur
+    - field.storage.node.field_le_event_website
+    - node.type.le_event
   module:
     - link
-id: node.le_akteur.field_le_akteur_url
-field_name: field_le_akteur_url
+id: node.le_event.field_le_event_website
+field_name: field_le_event_website
 entity_type: node
-bundle: le_akteur
+bundle: le_event
 label: Website
-description: 'Link zur eigenen Homepage'
+description: 'Link zur offiziellen Veranstaltungswebsite'
 required: false
 translatable: false
 default_value: {  }

@@ -10,7 +10,7 @@ field_name: field_le_akteur_kategorie_tags
 entity_type: node
 bundle: le_akteur
 label: Tags
-description: 'Weitere Schlagwörter, z.B. "kostenfrei", "drinnen"'
+description: 'Komma-separierte Schlagwörter wie <i>"kostenfrei"</i>, <i>"outdoor"</i>, <i>"freestyle"</i>. Vorhandene Tags wählen oder neue anlegen.'
 required: false
 translatable: false
 default_value: {  }
@@ -23,6 +23,6 @@ settings:
     sort:
       field: name
       direction: asc
-    auto_create: false
+    auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference

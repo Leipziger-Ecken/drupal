@@ -14,7 +14,21 @@ label: Adresse
 description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    langcode: ''
+    country_code: DE
+    administrative_area: null
+    locality: Leipzig
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: null
+    organization: null
+    given_name: null
+    additional_name: null
+    family_name: null
 default_value_callback: ''
 settings:
   available_countries:
@@ -32,7 +46,7 @@ settings:
     addressLine1:
       override: required
     addressLine2:
-      override: optional
+      override: hidden
     postalCode:
       override: required
     sortingCode:
