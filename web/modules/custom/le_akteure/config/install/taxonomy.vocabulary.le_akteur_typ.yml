@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+name: Akteurstyp
+vid: le_akteur_typ
+description: 'z.B. "Regulär / Inititative / Festival"'
+weight: 0

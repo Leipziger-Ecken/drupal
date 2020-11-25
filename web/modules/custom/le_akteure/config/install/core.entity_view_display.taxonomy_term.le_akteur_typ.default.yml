@@ -1,0 +1,32 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.le_akteur_typ.field_le_akteur_typ_icon
+    - taxonomy.vocabulary.le_akteur_typ
+  module:
+    - image
+    - text
+id: taxonomy_term.le_akteur_typ.default
+targetEntityType: taxonomy_term
+bundle: le_akteur_typ
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_le_akteur_typ_icon:
+    weight: 1
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  langcode: true
