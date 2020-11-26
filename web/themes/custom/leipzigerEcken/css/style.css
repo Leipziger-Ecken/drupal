@@ -8029,7 +8029,7 @@ p {
   border-color: #707070;
 }
 
-.teaser-list {
+body:not(.path-frontpage) .teaser-list {
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;

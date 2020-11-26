@@ -89,7 +89,7 @@ p,
   border-color: $hr-border-grey;
 }
 
-.teaser-list{
+body:not(.path-frontpage) .teaser-list {
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -154,7 +154,7 @@ h2,
     border-color: $hr-border;
     border-width: 1px;
     overflow: hidden;
-        height: 82px;
+    height: 82px;
     width: 82px;
     object-fit: cover;
     margin-bottom: 5px;
