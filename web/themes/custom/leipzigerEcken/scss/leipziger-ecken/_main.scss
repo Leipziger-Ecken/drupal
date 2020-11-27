@@ -63,10 +63,7 @@ p:last-child,
 }
 
 /* self defined classes */
-p,
-// .field--name-field-le-akteur-description:not(.form-item),
-//.field--type-text-long
-{
+p {
   font-family: $font-family-serif;
 }
 
@@ -82,6 +79,45 @@ p,
 .grey-hr {
   border-color: $hr-border-grey;
   border-width: $hr-border-width;
+  margin-top: 15px;
+
+}
+
+.node__sidebar .field,
+.teaser-list 
+{ 
+  border-bottom: $hr-border-size; 
+  border-color: $hr-border-grey;
+  margin-top: 15px;
+}
+
+.teaser-list {
+  padding-bottom: 15px;
+}
+
+/*_____sidebar elemente ohne Trennline____*/
+ .node__sidebar .field--name-field-adresse, 
+ .node__sidebar .field--name-field-le-event-kategorie-gruppe, 
+ .node__sidebar .field--name-field-le-akteur-kategorie-gruppe 
+ { 
+  border-bottom: 0px; 
+  margin-bottom: 15px;
+}
+
+/*__ Tags in der Beschreibung__*/
+ .field--name-field-le-event-kategorie-tags .field--item,
+ .field--name-field-le-akteur-kategorie-tags .field--item, 
+ .field--name-field-tags .field--item
+ {
+  float: left;
+  margin-right: 10px;;
+}
+.field--name-field-le-event-kategorie-tags,
+.field--name-field-le-akteur-kategorie-tags, 
+.field--name-field-tags 
+{
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 .js-quickedit-page-title {

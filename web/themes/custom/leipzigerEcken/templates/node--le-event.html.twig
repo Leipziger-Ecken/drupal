@@ -80,12 +80,10 @@
     <div class="col-md-3 node__sidebar">
         {% if content.field_le_event_image %}
           {{ content.field_le_event_image }}
-          <hr class="grey-hr">
         {% endif %}
 
         {% if content.field_le_event_occurrences %}
         {{ content.field_le_event_occurrences }}
-        <hr class="grey-hr">
         {% endif %}
 
         {% if content.field_adresse %}
@@ -95,7 +93,6 @@
         {% if content.field_geofield %}
           <div class="geo-map">
             {{ content.field_geofield }} 
-            <hr class="grey-hr">
           </div>
         {% endif %}
         
@@ -103,18 +100,15 @@
         {% if content.og_audience %}
           <div class="field--label">Veranstalter*in</div>
           {{ content.og_audience }}
-          <hr class="grey-hr">
         {% endif %}
       
 
         {% if content.field_le_event_is_barrier_free %}
           {{ content.field_le_event_is_barrier_free }}
-          <hr class="grey-hr">
         {% endif %}
 
         {% if content.field_le_event_kategorie_typ %}
           {{ content.field_le_event_kategorie_typ }}
-          <hr class="grey-hr">
         {% endif %}
 
         {% if content.field_le_event_kategorie_gruppe %}
@@ -124,8 +118,10 @@
     
     <div class="col-md-7 beschreibung">
       {% if content.field_le_event_kategorie_tags %}
+        <div class="clearfix">
           {{ content.field_le_event_kategorie_tags }}
-      {% endif %}<br />
+        </div>
+      {% endif %}
       {{ content.field_le_event_beschreibung }}
     </div>
         
