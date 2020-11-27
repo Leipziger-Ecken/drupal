@@ -66,6 +66,9 @@ p:last-child,
 p {
   font-family: $font-family-serif;
 }
+ .abstand {
+   margin-top: 15px;
+ }
 
 .address {
   font-family: $font-family-sans-serif;
@@ -191,8 +194,8 @@ h2,
     border-color: $hr-border;
     border-width: 1px;
     overflow: hidden;
-    height: 82px;
-    width: 82px;
+    height: 80px;
+    width: 80px;
     object-fit: cover;
     margin-bottom: 5px;
 }
