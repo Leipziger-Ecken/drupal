@@ -61,6 +61,7 @@ dependencies:
   - schema_event
   - schema_metatag
   - schema_web_site
+  - svg_image
   - geocoder
   - geocoder_address
   - geocoder_field
