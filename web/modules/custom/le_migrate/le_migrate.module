@@ -3,14 +3,16 @@
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
-use Drupal\le_core\Utils\SlugHelper;
+use Drupal\path_alias\Entity\PathAlias;
 use Drupal\og\Entity\OgRole;
 
 /**
  * Implements hook_install
  */
-function le_migrate_install() {
+function le_migrate_install()
+{
     // Let's play a game... infinite server timeout or you will die... 3,2,1,...
+    le_migrate_paths();
     le_migrate_users();
     le_migrate_bezirke();
     le_migrate_akteure();
@@ -20,7 +22,29 @@ function le_migrate_install() {
     le_migrate_kategorien();
 }
 
-function le_migrate_akteure() {
+/**
+ * Provide smooth URI's for system-paths
+ */
+function le_migrate_paths()
+{
+  $akteur_form_alias = PathAlias::create([
+    'path' => '/node/add/le_akteur',
+    'alias' => '/akteure/neu',
+  ])->save();
+
+  $event_form_alias = PathAlias::create([
+    'path' => '/node/add/le_event',
+    'alias' => '/events/neu',
+  ])->save();
+
+  $contact_form_alias = PathAlias::create([
+    'path' => '/contact',
+    'alias' => '/kontakt',
+  ])->save();
+}
+
+function le_migrate_akteure()
+{
       $directory = 'public://le/';
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
@@ -99,6 +123,14 @@ function le_migrate_akteure() {
           $node = Node::create($node);
           $node->save();
 
+          $nid = $node->id();          
+
+          /** Provide backward compatibility for SEO-reasons */
+          $akteurprofil_alias = PathAlias::create([
+            'path' => "/node/{$nid}",
+            'alias' => "/akteurprofil/{$akteur->AID}"
+          ])->save();
+
           // $user = \Drupal\user\Entity\User::load((int) $akteur->hat_UID);
 
           try {
@@ -119,7 +151,8 @@ function le_migrate_akteure() {
     drupal_set_message(t("Successfully imported ${c} Akteure"));
 }
 
-function le_migrate_bezirke() {
+function le_migrate_bezirke()
+{
 
       $database = \Drupal::database();
       $query = $database->query("SELECT * FROM aae_data_bezirke");
@@ -128,8 +161,6 @@ function le_migrate_bezirke() {
       $c = 0;
 
       foreach ($result as $bezirk) {
-
-        // $slug = SlugHelper::slugify($bezirk->bezirksname);
 
         // PROBLEM: BID darf nicht gleich stadtteil unten sein - offset?
 
@@ -140,9 +171,6 @@ function le_migrate_bezirke() {
           'parent' => array(),
           'name' => $bezirk->bezirksname,
           'vid' => 'le_bezirk',
-          //'path' => [
-          //  'alias' => '/bezirke/' . $slug
-          //]
         ))->save();
 
         $c++;
@@ -151,7 +179,8 @@ function le_migrate_bezirke() {
      drupal_set_message(t("Successfully imported ${c} bezirke"));
 }
 
-function le_migrate_events() {
+function le_migrate_events()
+{
 
       $today = date("Y-m-d H:i:s");
       $directory = 'public://le/';
@@ -255,8 +284,15 @@ function le_migrate_events() {
           }
 
           $node = Node::create($node);
-
           $node->save();
+
+          $nid = $node->id();          
+
+          /** Provide backward compatibility for SEO-reasons */
+          $eventprofil_alias = PathAlias::create([
+            'path' => "/node/{$nid}",
+            'alias' => "/eventprofil/{$event->EID}"
+          ])->save();
 
           $c++;
     }
@@ -271,7 +307,8 @@ function le_migrate_events() {
  *
  * Roles aae_data: 3 => Administrator; 4 => Redakteur; 5 => Akteur; 6 => Festival
  */
-function le_migrate_users() {
+function le_migrate_users()
+{
 
         $database = \Drupal::database();
         $query = $database->query("
@@ -329,7 +366,8 @@ function le_migrate_users() {
 /**
  * Add two default stadtteile, without linkage to bezirke
  */
-function le_migrate_stadtteile() {
+function le_migrate_stadtteile()
+{
       $osten = Term::create(array(
         'parent' => array(),
         'name' => 'Osten',
@@ -346,7 +384,8 @@ function le_migrate_stadtteile() {
 /**
  * Add four default target groups
  */
-function le_migrate_zielgruppen() {
+function le_migrate_zielgruppen()
+{
     $a = Term::create(array(
       'parent' => array(),
       'name' => 'Kinder',
@@ -375,7 +414,8 @@ function le_migrate_zielgruppen() {
 /**
  * Add some demo kategorien (un-nested)
  */
-function le_migrate_kategorien() {
+function le_migrate_kategorien()
+{
     $a = Term::create(array(
       'parent' => array(),
       'name' => 'Kultur & Kreatives',
