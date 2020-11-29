@@ -1,10 +1,11 @@
 <?php
 
 use Drupal\node\Entity\Node;
+use Drupal\og\Entity\OgRole;
+use Drupal\path_alias\Entity\PathAlias;
+use Drupal\redirect\Entity\Redirect;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
-use Drupal\path_alias\Entity\PathAlias;
-use Drupal\og\Entity\OgRole;
 
 /**
  * Implements hook_install
@@ -12,9 +13,10 @@ use Drupal\og\Entity\OgRole;
 function le_migrate_install()
 {
     // Let's play a game... infinite server timeout or you will die... 3,2,1,...
-    le_migrate_paths();
+    le_migrate_path_alias();
     le_migrate_users();
     le_migrate_bezirke();
+    le_migrate_tags();
     le_migrate_akteure();
     le_migrate_events();
     le_migrate_stadtteile();
@@ -25,276 +27,348 @@ function le_migrate_install()
 /**
  * Provide smooth URI's for system-paths
  */
-function le_migrate_paths()
+function le_migrate_path_alias()
 {
-  $akteur_form_alias = PathAlias::create([
-    'path' => '/node/add/le_akteur',
-    'alias' => '/akteure/neu',
-  ])->save();
+    PathAlias::create([
+      'path' => '/node/add/le_akteur',
+      'alias' => '/akteure/neu',
+    ])->save();
 
-  $event_form_alias = PathAlias::create([
-    'path' => '/node/add/le_event',
-    'alias' => '/events/neu',
-  ])->save();
+    PathAlias::create([
+      'path' => '/node/add/le_event',
+      'alias' => '/events/neu',
+    ])->save();
 
-  $contact_form_alias = PathAlias::create([
-    'path' => '/contact',
-    'alias' => '/kontakt',
-  ])->save();
+    PathAlias::create([
+      'path' => '/contact',
+      'alias' => '/kontakt',
+    ])->save();
 }
 
 function le_migrate_akteure()
 {
-      $directory = 'public://le/';
-      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+    $directory = 'public://le/';
+    file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
-      $database = \Drupal::database();
+    $database = \Drupal::database();
 
-      $query = $database->query("
-        SELECT * FROM aae_data_akteur as ak
-        JOIN aae_data_akteur_hat_user as ahu
-        JOIN aae_data_adresse as ad
-        JOIN aae_data_bezirke as be
-        WHERE ahu.hat_AID = ak.AID
-          AND ad.ADID = ak.adresse
-          AND be.BID = ad.bezirk");
+    $query = $database->query("
+      SELECT * FROM aae_data_akteur as ak
+      JOIN aae_data_akteur_hat_user as ahu
+      JOIN aae_data_adresse as ad
+      JOIN aae_data_bezirke as be
+      WHERE ahu.hat_AID = ak.AID
+        AND ad.ADID = ak.adresse
+        AND be.BID = ad.bezirk");
 
-      $result = $query->fetchAll();
+    $akteure = $query->fetchAll();
 
-      $membership_manager = \Drupal::service('og.membership_manager');
-      $admin_role_id = 'node-le_akteur-administrator';
-      $admin_role = OgRole::load($admin_role_id);
+    $membership_manager = \Drupal::service('og.membership_manager');
+    $admin_role_id = 'node-le_akteur-administrator';
+    $admin_role = OgRole::load($admin_role_id);
 
-      $c = 0;
+    $c = 0;
 
-      foreach ($result as $akteur) {
+    foreach ($akteure as $akteur) {
 
-        $created = time();
+      $created = time();
 
-        if (!empty($akteur->created)) {
-          $created = new DateTime($akteur->created);
-          $created = $created->getTimestamp();
+      if (!empty($akteur->created)) {
+        $created = new DateTime($akteur->created);
+        $created = $created->getTimestamp();
+      }
+
+      $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
+      $image_name = basename($akteur->bild);
+      $file = null;
+
+      if (!empty(trim($akteur->bild))) {
+        $image = file_get_contents("https://leipziger-ecken.de{$akteur->bild}");
+        $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
+      }
+
+      $node = [
+          'nid' => $akteur->AID,
+          'type' => 'le_akteur',
+          'title' => $akteur->name,
+          'field_le_akteur_email' => $akteur->email,
+          'field_le_akteur_phone' => $akteur->telefon,
+          'field_le_akteur_url' => $valid_url ? $akteur->url : null,
+          'field_le_akteur_description' => [
+            'value' => $akteur->beschreibung,
+            'format' => 'full_html',
+          ],
+          'field_le_akteur_contactperson' => $akteur->ansprechpartner,
+          'field_le_akteur_contactperson_fn' => $akteur->funktion,
+          'field_le_akteur_opening_times' => $akteur->oeffnungszeiten,
+          'field_le_akteur_barrier_free' => $akteur->barrierefrei === 1,
+          'field_adresse' => [
+            'country_code' => 'DE',
+            'address_line1' => $akteur->strasse . (!empty($akteur->nr) ? ' ' . $akteur->nr : ''),
+            'address_line2' => $akteur->adresszusatz,
+            'postal_code' => $akteur->plz,
+            'locality' => 'Leipzig'
+          ],
+          'field_bezirk' => $akteur->BID,
+          'created' => $created,
+          'field_le_akteur_kategorie_tags' => [],
+          'uid' => (int) $akteur->hat_UID // || $akteur->ersteller???
+        ];
+
+        if ($file) {
+          $node['field_le_akteur_image'] = [
+              'target_id' => $file->id(),
+              'alt' => "Profilfoto Akteur ´{$akteur->name}´",
+              'title' => "Profilfoto Akteur ´{$akteur->name}´"
+          ];
         }
 
-        $valid_url = filter_var($akteur->url, FILTER_VALIDATE_URL);
-        $image_name = basename($akteur->bild);
-        $file = null;
+        /**
+         * TAGS
+         */
+        $query = $database->query("
+        SELECT kategorie FROM aae_data_sparte as s
+        INNER JOIN aae_data_akteur_hat_sparte as ahs ON s.KID = ahs.hat_KID
+        WHERE ahs.hat_AID = :aid", [':aid' => $akteur->AID]);
 
-        if (!empty(trim($akteur->bild))) {
-          $image = file_get_contents("https://leipziger-ecken.de{$akteur->bild}");
-          $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
+        $tags = $query->fetchAll();
+
+        foreach ($tags as $tag) {
+          $term = \Drupal::entityTypeManager()
+                ->getStorage('taxonomy_term')
+                ->loadByProperties(['vid' => 'le_kategorie_tags', 'name' => $tag->kategorie]);
+          
+          if (empty($term)) {
+            continue;
+          }
+          
+          $term = reset($term);
+          $node['field_le_akteur_kategorie_tags'][] = $term->id();
+        }
+        // @todo Use default "tags" instead of le_tags???
+
+        $node = Node::create($node);
+        $node->save();
+
+        $nid = $node->id();          
+
+        /** 
+         * REDIRECT
+         * Provide URI-backward-compatibility for SEO reasons
+         */
+        Redirect::create([
+          'redirect_source' => "akteurprofil/{$akteur->AID}",
+          'redirect_redirect' => "internal:/node/{$nid}",
+          'language' => 'und',
+          'status_code' => '301',
+        ])->save();
+
+        // $user = \Drupal\user\Entity\User::load((int) $akteur->hat_UID);
+
+        try {
+          // Flag akteur-user as group administrator.
+          $membership = $membership_manager->getMembership($node, (int) $akteur->hat_UID);
+
+          if (!$membership->hasRole($admin_role_id)) {
+              $membership->addRole($admin_role)->save();
+          }
+
+        } catch (Exception $e) {
+          echo "Fehler: ",  $e->getMessage(), "\n";
         }
 
-        $node = array(
-            'nid' => $akteur->AID,
-            'type' => 'le_akteur',
-            'title' => $akteur->name,
-            'field_le_akteur_email' => $akteur->email,
-            'field_le_akteur_phone' => $akteur->telefon,
-            'field_le_akteur_url' => $valid_url ? $akteur->url : null,
-            'field_le_akteur_description' => [
-              'value' => $akteur->beschreibung,
-              'format' => 'full_html',
-            ],
-            'field_le_akteur_contactperson' => $akteur->ansprechpartner,
-            'field_le_akteur_contactperson_fn' => $akteur->funktion,
-            'field_le_akteur_opening_times' => $akteur->oeffnungszeiten,
-            'field_le_akteur_barrier_free' => $akteur->barrierefrei === 1,
-            'field_adresse' => [
-              'country_code' => 'DE',
-              'address_line1' => $akteur->strasse . (!empty($akteur->nr) ? ' ' . $akteur->nr : ''),
-              'address_line2' => $akteur->adresszusatz,
-              'postal_code' => $akteur->plz,
-              'locality' => 'Leipzig'
-            ],
-            'field_bezirk' => $akteur->BID,
-            'created' => $created,
-            'uid' => (int) $akteur->hat_UID // || $akteur->ersteller???
-          );
-
-          if ($file) {
-            $node['field_le_akteur_image'] = [
-                'target_id' => $file->id(),
-                'alt' => "Profilfoto Akteur ´{$akteur->name}´",
-                'title' => "Profilfoto Akteur ´{$akteur->name}´"
-            ];
-          }
-
-          $node = Node::create($node);
-          $node->save();
-
-          $nid = $node->id();          
-
-          /** Provide backward compatibility for SEO-reasons */
-          $akteurprofil_alias = PathAlias::create([
-            'path' => "/node/{$nid}",
-            'alias' => "/akteurprofil/{$akteur->AID}"
-          ])->save();
-
-          // $user = \Drupal\user\Entity\User::load((int) $akteur->hat_UID);
-
-          try {
-            // Flag akteur-user as group administrator.
-            $membership = $membership_manager->getMembership($node, (int) $akteur->hat_UID);
-
-            if (!$membership->hasRole($admin_role_id)) {
-                $membership->addRole($admin_role)->save();
-            }
-
-          } catch (Exception $e) {
-            echo "Fehler: ",  $e->getMessage(), "\n";
-          }
-
-          $c++;
+        $c++;
     }
 
     drupal_set_message(t("Successfully imported ${c} Akteure"));
 }
 
+function le_migrate_tags()
+{
+    $database = \Drupal::database();
+    $query = $database->query("SELECT * FROM aae_data_sparte");
+    $result = $query->fetchAll();
+
+    $c = 0;
+
+    foreach ($result as $tag) {
+      Term::create([
+        'parent' => [],
+        'name' => $tag->kategorie,
+        'vid' => 'tags',
+      ])->save();
+
+      $c++;
+  }
+
+  drupal_set_message(t("Successfully imported ${c} tags"));
+}
+
 function le_migrate_bezirke()
 {
+    $database = \Drupal::database();
+    $query = $database->query("SELECT * FROM aae_data_bezirke");
+    $result = $query->fetchAll();
 
-      $database = \Drupal::database();
-      $query = $database->query("SELECT * FROM aae_data_bezirke");
-      $result = $query->fetchAll();
+    $c = 0;
 
-      $c = 0;
+    foreach ($result as $bezirk) {
+      Term::create([
+        'tid' => $bezirk->BID,
+        'parent' => [],
+        'name' => $bezirk->bezirksname,
+        'vid' => 'le_bezirk',
+      ])->save();
 
-      foreach ($result as $bezirk) {
+      $c++;
+    }
 
-        // PROBLEM: BID darf nicht gleich stadtteil unten sein - offset?
-
-        // @todo 
-
-        $term = Term::create(array(
-          'tid' => $bezirk->BID,
-          'parent' => array(),
-          'name' => $bezirk->bezirksname,
-          'vid' => 'le_bezirk',
-        ))->save();
-
-        $c++;
-     }
-
-     drupal_set_message(t("Successfully imported ${c} bezirke"));
+    drupal_set_message(t("Successfully imported ${c} bezirke"));
 }
 
 function le_migrate_events()
 {
+    $today = date("Y-m-d H:i:s");
+    $directory = 'public://le/';
+    file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
-      $today = date("Y-m-d H:i:s");
-      $directory = 'public://le/';
-      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+    $database = \Drupal::database();
 
-      $database = \Drupal::database();
+    // @todo Not yet concrete enough:
+    $query = $database->query("
+      SELECT * FROM aae_data_event as ev
+      JOIN aae_data_adresse as ad
+      JOIN aae_data_bezirke as be
+      JOIN aae_data_akteur_hat_event as ahe
+      WHERE ad.ADID = ev.ort
+        AND be.BID = ad.bezirk
+        AND ahe.EID = ev.EID
+        AND ev.start_ts >= '${today}'
+        AND ev.parent_EID IS NULL");
 
-      // @todo Not yet concrete enough:
-      $query = $database->query("
-        SELECT * FROM aae_data_event as ev
-        JOIN aae_data_adresse as ad
-        JOIN aae_data_bezirke as be
-        JOIN aae_data_akteur_hat_event as ahe
-        WHERE ad.ADID = ev.ort
-          AND be.BID = ad.bezirk
-          AND ahe.EID = ev.EID
-          AND ev.start_ts >= '${today}'
-          AND ev.parent_EID IS NULL");
+    $result = $query->fetchAll();
 
-      $result = $query->fetchAll();
+    $c = 0;
 
-      $c = 0;
+    foreach ($result as $event) {
 
-      foreach ($result as $event) {
+      $created = time();
 
-        $created = time();
+      if (!empty($event->created)) {
+        $created = new DateTime($event->created);
+        $created = $created->getTimestamp();
+      }
 
-        if (!empty($event->created)) {
-          $created = new DateTime($event->created);
-          $created = $created->getTimestamp();
-        }
+      $valid_url = filter_var($event->url, FILTER_VALIDATE_URL);
+      $image_name = basename($event->bild);
+      $file = null;
 
-        $valid_url = filter_var($event->url, FILTER_VALIDATE_URL);
-        $image_name = basename($event->bild);
-        $file = null;
+      if (!empty(trim($event->bild))) {
+        // \Drupal::logger('le_migrate')->notice("https://leipziger-ecken.de{$akteur->bild}");
+        $image = file_get_contents("https://leipziger-ecken.de{$event->bild}");
+        $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
+      }
 
-        if (!empty(trim($event->bild))) {
-          // \Drupal::logger('le_migrate')->notice("https://leipziger-ecken.de{$akteur->bild}");
-          $image = file_get_contents("https://leipziger-ecken.de{$event->bild}");
-          $file = file_save_data($image, $directory . $image_name, FILE_EXISTS_REPLACE);
-        }
+      $frequency = 0;
 
-        $frequency = 0;
-
-        switch ($event->recurring_event_type) {
-          case 2:
-            $frequency = 'WEEKLY';
+      switch ($event->recurring_event_type) {
+        case 2:
+          $frequency = 'WEEKLY';
+        break;
+        case 3:
+          $frequency = 'WEEKLY;INTERVAL=2';
           break;
-          case 3:
-            $frequency = 'WEEKLY;INTERVAL=2';
-            break;
-          case 4:
-            $frequency = 'MONTHLY';
-            break;
-          case 5:
-            $frequency = 'MONTHLY;INTERVAL=2';
-            break;
+        case 4:
+          $frequency = 'MONTHLY';
+          break;
+        case 5:
+          $frequency = 'MONTHLY;INTERVAL=2';
+          break;
+      }
+
+      $start = str_replace(' ', 'T', $event->start_ts);
+      $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01')
+        ? $start : str_replace(' ', ' ', $event->ende_ts);
+
+      // @todo!!!! if ends 01 -> is recurring!
+
+      $node = [
+          'field_le_event___eid' => $event->EID,
+          'type' => 'le_event',
+          'title' => $event->name,
+          'field_le_event_beschreibung' => [
+            'value' => $event->kurzbeschreibung,
+            'format' => 'full_html',
+          ],
+          'og_audience' => $event->AID,
+          // 'field_le_event_aid' => $event->AID, @todo move to og_audience
+          'field_adresse' => [
+            'country_code' => 'DE',
+            'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
+            'address_line2' => $event->adresszusatz,
+            'postal_code' => $event->plz,
+            'locality' => 'Leipzig'
+          ],
+          'field_bezirk' => $event->BID,
+          'field_le_event_occurrences' => [
+            'value' => $start,
+            'end_value' => $ende,
+            'timezone' => 'Europe/Berlin',
+            'rrule' => $frequency ? "RRULE:FREQ=${frequency}" : null,
+            'infinite' => $frequency ? 1 : 0
+          ],
+          'created' => $created,
+          'uid' => (int) $event->ersteller
+        ];
+
+        if ($file) {
+          $node['field_le_event_image'] = [
+              'target_id' => $file->id(),
+              'alt' => "Bild Event ´{$event->name}´",
+              'title' => "Bild Event ´{$event->name}´"
+          ];
+        }
+        
+        /**
+         * TAGS
+         */
+        $query = $database->query("
+        SELECT kategorie FROM aae_data_sparte as s
+        INNER JOIN aae_data_event_hat_sparte as ehs ON s.KID = ehs.hat_KID
+        WHERE ehs.hat_EID = :eid", [':eid' => $event->EID]);
+
+        $tags = $query->fetchAll();
+
+        foreach ($tags as $tag) {
+          $term = \Drupal::entityTypeManager()
+                ->getStorage('taxonomy_term')
+                ->loadByProperties(['vid' => 'le_kategorie_tags', 'name' => $tag->kategorie]);
+          
+          if (empty($term)) {
+            continue;
+          }
+          
+          $term = reset($term);
+          $node['field_le_event_kategorie_tags'][] = $term->id();
         }
 
-        $start = str_replace(' ', 'T', $event->start_ts);
-        $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01')
-          ? $start : str_replace(' ', ' ', $event->ende_ts);
+        $node = Node::create($node);
+        $node->save();
 
-        // @todo!!!! if ends 01 -> is recurring!
+        $nid = $node->id();
 
-        $node = array(
-            'field_le_event___eid' => $event->EID,
-            'type' => 'le_event',
-            'title' => $event->name,
-            'field_le_event_beschreibung' => [
-              'value' => $event->kurzbeschreibung,
-              'format' => 'full_html',
-            ],
-            'og_audience' => $event->AID,
-            // 'field_le_event_aid' => $event->AID, @todo move to og_audience
-            'field_adresse' => [
-              'country_code' => 'DE',
-              'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
-              'address_line2' => $event->adresszusatz,
-              'postal_code' => $event->plz,
-              'locality' => 'Leipzig'
-            ],
-            'field_bezirk' => $event->BID,
-            'field_le_event_occurrences' => [
-              'value' => $start,
-              'end_value' => $ende,
-              'timezone' => 'Europe/Berlin',
-              'rrule' => $frequency ? "RRULE:FREQ=${frequency}" : null,
-              'infinite' => $frequency ? 1 : 0
-            ],
-            'created' => $created,
-            'uid' => (int) $event->ersteller
-          );
+        /** 
+         * REDIRECT
+         * Provide URI-backward-compatibility for SEO reasons
+         */
+        Redirect::create([
+          'redirect_source' => "eventprofil/{$event->EID}",
+          'redirect_redirect' => "internal:/node/{$nid}",
+          'language' => 'und',
+          'status_code' => '301',
+        ])->save();
 
-          if ($file) {
-            $node['field_le_event_image'] = [
-                'target_id' => $file->id(),
-                'alt' => "Bild Event ´{$event->name}´",
-                'title' => "Bild Event ´{$event->name}´"
-            ];
-          }
-
-          $node = Node::create($node);
-          $node->save();
-
-          $nid = $node->id();          
-
-          /** Provide backward compatibility for SEO-reasons */
-          $eventprofil_alias = PathAlias::create([
-            'path' => "/node/{$nid}",
-            'alias' => "/eventprofil/{$event->EID}"
-          ])->save();
-
-          $c++;
+        $c++;
     }
 
     drupal_set_message(t("Successfully imported ${c} events"));
@@ -309,58 +383,57 @@ function le_migrate_events()
  */
 function le_migrate_users()
 {
+      $database = \Drupal::database();
+      $query = $database->query("
+        SELECT * FROM aae_data_users as us
+        WHERE us.uid != 1
+          AND us.status = 1");
+      $users = $query->fetchAll();
 
-        $database = \Drupal::database();
-        $query = $database->query("
-          SELECT * FROM aae_data_users as us
-          WHERE us.uid != 1
-            AND us.status = 1");
-        $users = $query->fetchAll();
+      $query = $database->query("SELECT * FROM aae_data_users_roles");
+      $roles = $query->fetchAll();
 
-        $query = $database->query("SELECT * FROM aae_data_users_roles");
-        $roles = $query->fetchAll();
+      $c = 0;
 
-        $c = 0;
+      foreach ($users as $user) {
 
-        foreach ($users as $user) {
+        $newuser = User::create([
+            'name' => $user->name,
+            'pass' => $user->pass,
+            'mail' => $user->mail,
+            'status' => $user->status,
+            'init' => $user->init,
+            'created' => $user->created,
+            'login' => $user->login,
+            'access' => $user->access,
+            'uid' => $user->uid,
+        ]);
 
-          $newuser = User::create([
-              'name' => $user->name,
-              'pass' => $user->pass,
-              'mail' => $user->mail,
-              'status' => $user->status,
-              'init' => $user->init,
-              'created' => $user->created,
-              'login' => $user->login,
-              'access' => $user->access,
-              'uid' => $user->uid,
-          ]);
+        $newuser->save();
 
-          $newuser->save();
+        // dirty overwrite re-hashed hash
+        $database->merge('users_field_data')
+          ->fields(['pass' => $user->pass])
+          ->keys(['uid' => $user->uid])
+          ->execute();
 
-          // dirty overwrite re-hashed hash
-          $database->merge('users_field_data')
-            ->fields(['pass' => $user->pass])
-            ->keys(array('uid' => $user->uid))
-            ->execute();
+        $c++;
+    }
 
-          $c++;
-      }
+    // Assign roles
+    foreach ($roles as $role) {
 
-      // Assign roles
-      foreach ($roles as $role) {
+      $user = User::load($role->uid);
 
-        $user = User::load($role->uid);
-
-        if (!empty($user)) {
-          if ($role->rid === '4') {
-             $user->addRole('le_role_redakteur');
-             $user->save();
-          }
+      if (!empty($user)) {
+        if ($role->rid === '4') {
+            $user->addRole('le_role_redakteur');
+            $user->save();
         }
       }
+    }
 
-      drupal_set_message(t("Successfully imported ${c} users"));
+    drupal_set_message(t("Successfully imported ${c} users"));
 }
 
 /**
@@ -368,17 +441,17 @@ function le_migrate_users()
  */
 function le_migrate_stadtteile()
 {
-      $osten = Term::create(array(
-        'parent' => array(),
-        'name' => 'Osten',
-        'vid' => 'le_region',
-      ))->save();
+    Term::create([
+      'parent' => [],
+      'name' => 'Osten',
+      'vid' => 'le_region',
+    ])->save();
 
-      $norden = Term::create(array(
-        'parent' => array(),
-        'name' => 'Norden',
-        'vid' => 'le_region',
-      ))->save();
+    Term::create([
+      'parent' => [],
+      'name' => 'Norden',
+      'vid' => 'le_region',
+    ])->save();
 }
 
 /**
@@ -386,29 +459,29 @@ function le_migrate_stadtteile()
  */
 function le_migrate_zielgruppen()
 {
-    $a = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Kinder',
       'vid' => 'le_kategorie_zielgruppe',
-    ))->save();
+    ])->save();
 
-    $b = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Jugendliche',
       'vid' => 'le_kategorie_zielgruppe',
-    ))->save();
+    ])->save();
 
-    $c = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Erwachsene',
       'vid' => 'le_kategorie_zielgruppe',
-    ))->save();
+    ])->save();
 
-    $d = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Senioren',
       'vid' => 'le_kategorie_zielgruppe',
-    ))->save();
+    ])->save();
 }
 
 /**
@@ -416,15 +489,15 @@ function le_migrate_zielgruppen()
  */
 function le_migrate_kategorien()
 {
-    $a = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Kultur & Kreatives',
       'vid' => 'le_kategorie_typ',
-    ))->save();
+    ])->save();
 
-    $b = Term::create(array(
-      'parent' => array(),
+    Term::create([
+      'parent' => [],
       'name' => 'Sport',
       'vid' => 'le_kategorie_typ',
-    ))->save();
+    ])->save();
 }
