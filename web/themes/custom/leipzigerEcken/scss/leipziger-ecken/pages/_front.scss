@@ -1,14 +1,18 @@
 // Frontpage
-body.path-frontpage {
-    .region-header {
-        display: none; // Temporary hide upper headline as being empty
-    }
-
-    .view-frontpage .item-list > ul {
+body.path-frontpage,
+body.path-taxonomy /* == le_regionen page */ {
+    .item-list > ul {
         // Unset styles attached by view
         list-style: none;
     }
 }
+
+body.path-frontpage {
+    .region-header {
+        display: none; // Temporary hide upper headline as being empty
+    }
+}
+
 .front-heading {
     margin-bottom: 15px;
 }

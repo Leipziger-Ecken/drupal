@@ -5,12 +5,61 @@ $branding-container-width: 90px;
 
 .offset-branding-container {
   display: none;
+  flex-wrap: wrap;
   position: absolute;
   width: $branding-container-width;
   margin-left: -($branding-container-width + 20);
 
   img {
       width: 100%;
+  }
+
+  $h: 25px;
+
+  ul.global-regions-nav {
+    list-style: none;
+    padding-top: 30px;
+  
+    li {
+      margin-top: 18px;
+      transform: skew(0, -31deg);
+      background-color: #86D0FF;
+      font-weight: 700;
+      height: $h;
+      padding: 2px 6px;
+      font-size: 0.9em;
+      transition: all 0.2s;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: $h - 3;
+        height: $h - 2;
+        margin-left: -($h + 3);
+        margin-top: -(($h / 2) + 1);
+        background-color: transparent;
+        border: 2px solid $brand-primary;
+        transform: skew(0, 50deg);
+      }
+
+      &.active,
+      &:hover {
+        background-color: darken(#86D0FF, 10);
+
+        &:before {
+          background-color: $brand-primary;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+  
+      a {
+        color: #fff;
+      }
+    }
   }
 }
 
@@ -25,7 +74,7 @@ $branding-container-width: 90px;
 
 @media (min-width: $grid-float-breakpoint) {
     .offset-branding-container {
-        display: block;
+        display: flex;
     }
 }
 

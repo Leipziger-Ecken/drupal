@@ -2,10 +2,12 @@ name: Regionen
 description: 'Stadtteile, z.B. "Osten" / "Norden"'
 type: module
 core: 8.x
-package: Leipziger Ecken
+package: 'Leipziger Ecken'
 dependencies:
+  - ctools
   - language
   - path
+  - pathauto
   - taxonomy
   - text
-version: 8.x-0.1
+version: 8.x-0.11

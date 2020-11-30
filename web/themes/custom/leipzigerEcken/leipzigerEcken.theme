@@ -3,17 +3,37 @@
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function leipzigerEcken_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+function leipzigerEcken_theme_suggestions_page_alter(array &$suggestions, array $variables)
+{
     if ($node = \Drupal::routeMatch()->getParameter('node') && isset($node->bundle)) {
         // Suggest e.g. page--le-akteur.html.twig / page--le-event.html.twig
         $suggestions[] = 'page__' . $node->bundle();
     }
 }
 
-function leipzigerEcken_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+function leipzigerEcken_theme_suggestions_views_view_alter(array &$suggestions, array $variables)
+{
   return [
     'views_view__' . $variables['view']->id()
   ];
+}
+
+/**
+ * Implements hook_preprocess_node.
+ * 
+ * Pass global variables to twig-templates.
+ */
+function leipzigerEcken_preprocess(&$variables)
+{
+  $variables['le_regions'] = [];
+  $regions = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('le_region');
+
+  foreach ($regions as $region) {
+    $variables['le_regions'][] = [
+      'tid' => $region->tid,
+      'name' => $region->name,
+    ];
+  }
 }
 
 /**
@@ -22,10 +42,12 @@ function leipzigerEcken_theme_suggestions_views_view_alter(array &$suggestions, 
  * Link (sub-)categories to their according filter in list-views.
  * Lil' bit verbose, but doing the job.
  */
-function leipzigerEcken_preprocess_field(&$variables) {
+function leipzigerEcken_preprocess_field(&$variables)
+{
   $element = $variables["element"];
   $name    = $element["#field_name"];
 
+  // @todo tags
   if ($name == 'field_le_akteur_kategorie_typ') {
     foreach ($variables['items'] as $delta => &$item) {
       $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);

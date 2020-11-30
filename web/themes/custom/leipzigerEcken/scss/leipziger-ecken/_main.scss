@@ -129,7 +129,7 @@ p {
   border-color: $hr-border-grey;
 }
 
-body:not(.path-frontpage) .teaser-list {
+body:not(.path-frontpage):not(.path-taxonomy) .teaser-list {
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;

@@ -54,6 +54,7 @@
  * Navbar menu by default.
  */
 #}
+{% set current_path = path('<current>')|replace({'/':''}) %}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
@@ -68,6 +69,14 @@
 <div class="container">
     <div class="offset-branding-container">
       {{ page.branding }}
+      {% if le_regions %}
+      <ul class="global-regions-nav">
+        {% for key,region in le_regions %}
+        {% set region_path = region.name|lower %}
+        <li class="{{ current_path == region_path ? 'active' : '' }}"><a href="{{ drupal_url(region_path) }}" title="Zum Stadtgebiet `{{ region.name }}` wechseln">{{ region.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
     </div>
 
       <header {{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">

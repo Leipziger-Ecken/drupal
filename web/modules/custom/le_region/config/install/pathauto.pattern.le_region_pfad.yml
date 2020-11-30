@@ -1,0 +1,22 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: le_region_pfad
+label: 'Region Pfad'
+type: 'canonical_entities:taxonomy_term'
+pattern: '[term:name]'
+selection_criteria:
+  fc0cdb18-0ee8-4e48-9006-54aa9a7f3a63:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      le_region: le_region
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: fc0cdb18-0ee8-4e48-9006-54aa9a7f3a63
+selection_logic: and
+weight: -6
+relationships: {  }

@@ -8069,7 +8069,7 @@ p {
   border-color: #707070;
 }
 
-body:not(.path-frontpage) .teaser-list {
+body:not(.path-frontpage):not(.path-taxonomy) .teaser-list {
   padding-bottom: 1em;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -8693,12 +8693,51 @@ input[type=button].btn-block {
 
 .offset-branding-container {
   display: none;
+  flex-wrap: wrap;
   position: absolute;
   width: 90px;
   margin-left: -110px;
 }
 .offset-branding-container img {
   width: 100%;
+}
+.offset-branding-container ul.global-regions-nav {
+  list-style: none;
+  padding-top: 30px;
+}
+.offset-branding-container ul.global-regions-nav li {
+  margin-top: 18px;
+  transform: skew(0, -31deg);
+  background-color: #86D0FF;
+  font-weight: 700;
+  height: 25px;
+  padding: 2px 6px;
+  font-size: 0.9em;
+  transition: all 0.2s;
+}
+.offset-branding-container ul.global-regions-nav li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 22px;
+  height: 23px;
+  margin-left: -28px;
+  margin-top: -13.5px;
+  background-color: transparent;
+  border: 2px solid #0096FF;
+  transform: skew(0, 50deg);
+}
+.offset-branding-container ul.global-regions-nav li.active, .offset-branding-container ul.global-regions-nav li:hover {
+  background-color: #53bcff;
+}
+.offset-branding-container ul.global-regions-nav li.active:before, .offset-branding-container ul.global-regions-nav li:hover:before {
+  background-color: #0096FF;
+}
+.offset-branding-container ul.global-regions-nav li.active a, .offset-branding-container ul.global-regions-nav li:hover a {
+  text-decoration: none;
+}
+.offset-branding-container ul.global-regions-nav li a {
+  color: #fff;
 }
 
 .offset-branding-container--mobile {
@@ -8711,7 +8750,7 @@ input[type=button].btn-block {
 
 @media (min-width: 768px) {
   .offset-branding-container {
-    display: block;
+    display: flex;
   }
 }
 @media (max-width: 768px) {
@@ -8865,11 +8904,13 @@ input[type=button].btn-block {
   font-size: 18px;
 }
 
+body.path-frontpage .item-list > ul,
+body.path-taxonomy .item-list > ul {
+  list-style: none;
+}
+
 body.path-frontpage .region-header {
   display: none;
-}
-body.path-frontpage .view-frontpage .item-list > ul {
-  list-style: none;
 }
 
 .front-heading {
