@@ -11,13 +11,13 @@ dependencies:
     - taxonomy.vocabulary.le_kategorie_typ
     - taxonomy.vocabulary.le_region
   module:
-    - image
     - jsonld
     - leaflet
     - leaflet_views
     - node
     - rest
     - serialization
+    - svg_image
     - taxonomy
 id: le_view_akteure
 label: Akteure
@@ -867,6 +867,14 @@ display:
     position: 1
     display_options:
       display_extenders:
+        simple_sitemap_display_extender:
+          variants:
+            default:
+              index: true
+              priority: '0.5'
+              changefreq: daily
+              arguments: {  }
+              max_links: 100
         metatag_display_extender: {  }
       path: api/v1/akteure
       pager:

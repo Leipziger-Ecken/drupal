@@ -4,9 +4,12 @@ type: module
 core: 8.x
 package: 'Leipziger Ecken'
 dependencies:
+  - image
   - le_akteure
   - le_article
   - le_event
   - le_region
+  - simple_sitemap
+  - simple_sitemap_engines
   - user
-version: 8.x-1.02
+version: 8.x-1.03

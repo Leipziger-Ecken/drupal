@@ -45,13 +45,9 @@ content:
     region: content
   field_bezirk:
     weight: 14
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_le_event_beschreibung:
     weight: 10
@@ -80,7 +76,7 @@ content:
     weight: 13
     settings: {  }
     third_party_settings: {  }
-    type: options_select
+    type: options_buttons
     region: content
   field_le_event_kategorie_tags:
     weight: 17
@@ -180,6 +176,11 @@ content:
       placeholder: ''
       match_limit: 10
     region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   field_geofield: true

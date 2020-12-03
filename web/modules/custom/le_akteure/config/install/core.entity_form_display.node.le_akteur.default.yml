@@ -50,13 +50,9 @@ content:
     region: content
   field_bezirk:
     weight: 16
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
   field_le_akteur_contactperson:
     weight: 12
@@ -123,7 +119,7 @@ content:
     weight: 15
     settings: {  }
     third_party_settings: {  }
-    type: options_select
+    type: options_buttons
     region: content
   field_le_akteur_kategorie_tags:
     weight: 18
@@ -201,6 +197,11 @@ content:
       placeholder: ''
       match_limit: 10
     region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   field_geofield: true

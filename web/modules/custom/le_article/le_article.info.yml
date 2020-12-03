@@ -8,14 +8,17 @@ dependencies:
   - field
   - file
   - image
+  - language
   - le_akteure
   - le_region
+  - menu_ui
   - node
   - path
   - pathauto
   - rdf
+  - simple_sitemap
   - taxonomy
   - text
   - user
   - views
-version: 8.x-1.01
+version: 8.x-1.02

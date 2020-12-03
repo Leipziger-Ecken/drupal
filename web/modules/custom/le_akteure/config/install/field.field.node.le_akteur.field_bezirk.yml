@@ -10,7 +10,7 @@ field_name: field_bezirk
 entity_type: node
 bundle: le_akteur
 label: Bezirk
-description: ''
+description: 'Für digitale oder stadtweite Veranstaltungen kann "Stadtweit" gewählt werden.'
 required: true
 translatable: true
 default_value: {  }

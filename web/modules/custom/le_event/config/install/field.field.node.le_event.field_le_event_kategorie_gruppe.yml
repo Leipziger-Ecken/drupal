@@ -9,7 +9,7 @@ id: node.le_event.field_le_event_kategorie_gruppe
 field_name: field_le_event_kategorie_gruppe
 entity_type: node
 bundle: le_event
-label: Zielgruppe
+label: Zielgruppe(n)
 description: ''
 required: true
 translatable: false

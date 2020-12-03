@@ -31,11 +31,12 @@ dependencies:
   - pathauto
   - rest
   - serialization
+  - simple_sitemap
   - svg_image
   - taxonomy
   - telephone
   - text
   - user
   - views
-version: 8.x-0.1.991
+version: 8.x-0.1.992
 core_incompatible: false

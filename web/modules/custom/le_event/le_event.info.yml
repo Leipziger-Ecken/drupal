@@ -30,10 +30,11 @@ dependencies:
   - pathauto
   - rest
   - serialization
+  - simple_sitemap
   - svg_image
   - taxonomy
   - text
   - user
   - views
-version: 8.x-0.1.96
+version: 8.x-0.1.97
 core_incompatible: false
