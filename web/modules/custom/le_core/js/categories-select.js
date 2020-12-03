@@ -215,6 +215,7 @@
             }
 
             this.setSelectFieldPlaceholder();
+            ev.preventDefault();
             return false;
         },
 
