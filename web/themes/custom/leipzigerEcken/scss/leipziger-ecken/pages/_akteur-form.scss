@@ -26,7 +26,9 @@ $icon-width: 60px;
         margin-bottom: 31px; // Field has no label, so fake one
     }
 
-    #edit-field-le-akteur-hat-typ--wrapper {
+    #edit-field-le-akteur-hat-typ--wrapper,
+    #edit-field-le-akteur-kategorie-gruppe--wrapper {
+        // Normalize label of radio checkboxes
         legend {
             border: none;
             font-size: 1em;

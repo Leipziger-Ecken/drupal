@@ -8366,7 +8366,7 @@ a.content-type-le_remote_content_fwal:before {
 }
 
 a.content-type-le_remote_content_depot_social:before {
-  content: "depot Leipzig";
+  content: "depot.social Leipzig";
   background-color: #d8340a;
 }
 
@@ -8795,7 +8795,7 @@ input[type=button].btn-block {
 .categories-select {
   position: absolute;
   display: none;
-  z-index: 999;
+  z-index: 99999;
   width: auto;
   margin-top: -2px;
 }
@@ -8951,7 +8951,9 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
   margin-bottom: 31px;
 }
 .node-le-akteur-form #edit-field-le-akteur-hat-typ--wrapper legend,
-.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ--wrapper legend {
+.node-le-akteur-form #edit-field-le-akteur-kategorie-gruppe--wrapper legend,
+.node-le-akteur-edit-form #edit-field-le-akteur-hat-typ--wrapper legend,
+.node-le-akteur-edit-form #edit-field-le-akteur-kategorie-gruppe--wrapper legend {
   border: none;
   font-size: 1em;
   color: #0096FF;
@@ -9019,6 +9021,13 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
 .node-le-event-form .form-item-field-le-event-kategorie-tags-target-id .input-group,
 .node-le-event-edit-form .form-item-field-le-event-kategorie-tags-target-id .input-group {
   width: 100%;
+}
+.node-le-event-form #edit-field-le-event-kategorie-gruppe--wrapper legend,
+.node-le-event-edit-form #edit-field-le-event-kategorie-gruppe--wrapper legend {
+  border: none;
+  font-size: 1em;
+  color: #0096FF;
+  margin-bottom: 5px;
 }
 .node-le-event-form #edit-field-le-event-occurrences-wrapper .container-inline .form-type-select,
 .node-le-event-edit-form #edit-field-le-event-occurrences-wrapper .container-inline .form-type-select {

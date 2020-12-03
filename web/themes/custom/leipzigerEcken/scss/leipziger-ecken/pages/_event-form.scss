@@ -15,6 +15,15 @@
         width: 100%;
     }
 
+    #edit-field-le-event-kategorie-gruppe--wrapper {
+        legend {
+            border: none;
+            font-size: 1em;
+            color: $brand-primary;
+            margin-bottom: 5px;
+        }
+    }
+
     #edit-field-le-event-occurrences-wrapper {
         .container-inline .form-type-select {
             // Hide that noisy down-arrow-thingy

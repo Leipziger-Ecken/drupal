@@ -3,7 +3,7 @@ $width-desktop: 250px;
 .categories-select {
     position: absolute;
     display: none;
-    z-index: 999;
+    z-index: 99999;
     width: auto;
     margin-top: -2px; // Hide border-bottom of upper select field
     @media screen and (max-width: $screen-sm-max) {
