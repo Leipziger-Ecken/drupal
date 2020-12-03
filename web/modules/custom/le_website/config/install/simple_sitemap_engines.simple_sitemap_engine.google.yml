@@ -1,0 +1,8 @@
+langcode: de
+status: true
+dependencies: {  }
+id: google
+label: Google
+url: 'https://www.google.com/ping?sitemap=[sitemap]'
+sitemap_variants: {  }
+last_submitted: null

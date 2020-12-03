@@ -12,4 +12,4 @@ dependencies:
   - simple_sitemap
   - simple_sitemap_engines
   - user
-version: 8.x-1.03
+version: 8.x-1.04
