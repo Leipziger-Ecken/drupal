@@ -7967,13 +7967,6 @@ ol, ul {
   margin-top: 0;
 }
 
-.footer {
-  margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36px;
-  border-top: 1px solid #E5E5E5;
-}
-
 p:last-child,
 .form-group:last-child,
 .panel:last-child {
@@ -8882,7 +8875,13 @@ input[type=button].btn-block {
 }
 
 .footer {
-  border-top: none;
+  margin-top: 45px;
+  padding-top: 35px;
+  padding-bottom: 36px;
+  border-top: 2px solid;
+  border-top-color: #707070;
+  width: 90%;
+  margin: auto;
 }
 
 /*__ Tags by itself___*/
