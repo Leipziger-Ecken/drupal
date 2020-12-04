@@ -9052,4 +9052,8 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
   display: none;
 }
 
+.view-le-view-profile .view-header {
+  text-align: right;
+}
+
 /*# sourceMappingURL=style.css.map */
