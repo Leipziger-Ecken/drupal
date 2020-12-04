@@ -8715,6 +8715,10 @@ input[type=button].btn-block {
   font-size: 0.9em;
   transition: all 0.2s;
 }
+.offset-branding-container ul.global-regions-nav li a {
+  margin-left: -25px;
+  padding-left: 25px;
+}
 .offset-branding-container ul.global-regions-nav li:before {
   content: "";
   display: block;

@@ -14,7 +14,7 @@ $branding-container-width: 90px;
       width: 100%;
   }
 
-  $h: 25px;
+  $region-box-height: 25px;
 
   ul.global-regions-nav {
     list-style: none;
@@ -25,19 +25,25 @@ $branding-container-width: 90px;
       transform: skew(0, -31deg);
       background-color: #86D0FF;
       font-weight: 700;
-      height: $h;
+      height: $region-box-height;
       padding: 2px 6px;
       font-size: 0.9em;
       transition: all 0.2s;
+
+      a {
+        // Move clickable area at least a bit to left, in order to cover :before
+        margin-left: -$region-box-height;
+        padding-left: $region-box-height;
+      }
 
       &:before {
         content: "";
         display: block;
         position: absolute;
-        width: $h - 3;
-        height: $h - 2;
-        margin-left: -($h + 3);
-        margin-top: -(($h / 2) + 1);
+        width: $region-box-height - 3;
+        height: $region-box-height - 2;
+        margin-left: -($region-box-height + 3);
+        margin-top: -(($region-box-height / 2) + 1);
         background-color: transparent;
         border: 2px solid $brand-primary;
         transform: skew(0, 50deg);
