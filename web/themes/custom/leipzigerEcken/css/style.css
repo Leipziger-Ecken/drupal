@@ -8884,6 +8884,8 @@ input[type=button].btn-block {
   padding-bottom: 36px;
   border-top: 2px solid;
   border-top-color: #707070;
+  width: 90%;
+  margin: auto;
 }
 
 /*__ Tags by itself___*/
