@@ -51,6 +51,7 @@ dependencies:
   - devel
   - date_popup
   - pathauto
+  - redirect
   - features
   - features_ui
   - menu_ui

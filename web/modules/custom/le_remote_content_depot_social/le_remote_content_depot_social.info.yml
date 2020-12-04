@@ -21,4 +21,4 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.14
+version: 8.x-0.15

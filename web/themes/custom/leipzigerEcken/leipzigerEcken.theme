@@ -39,36 +39,46 @@ function leipzigerEcken_preprocess(&$variables)
 /**
  * Implements template_preprocess_field().
  * 
- * Link (sub-)categories to their according filter in list-views.
- * Lil' bit verbose, but doing the job.
+ * Link certain akteur- & event-fields (e.g. categories, tags, target-group)
+ * to their according filter-result-page in list-views.
+ *
+ * Note that this requires a regular taxonomy-reference-field with display set to "Description" [No link]
  */
 function leipzigerEcken_preprocess_field(&$variables)
 {
   $element = $variables["element"];
   $name    = $element["#field_name"];
 
-  // @todo tags
-  if ($name == 'field_le_akteur_kategorie_typ') {
-    foreach ($variables['items'] as $delta => &$item) {
-      $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);
-      $link = "/akteure?kategorie_id[]=" . $id;
-      $content = $item['content']['#plain_text'];
-      $title = 'Akteure dieser Kategorie öffnen (neuer Tab)';
-
-      $item['content']['#markup'] = "<a href=\"${link}\" title=\"${title}\" target=\"_blank\">${content}</a>";
-      unset($item['content']['#plain_text']);
-    }
+  switch ($name) {
+    case 'field_le_akteur_kategorie_typ': // Akteur "Kategorie"
+      makeTaxonomyItemLink($variables['items'], "/akteure?kategorie_id[]=", "Nach Akteuren mit dieser Kategorie suchen (neuer Tab)");
+    break;
+    case 'field_le_akteur_kategorie_tags': // Akteur "Tags"
+      makeTaxonomyItemLink($variables['items'], "/akteure?tag_id[]=", "Nach Akteuren mit diesem Tag suchen (neuer Tab)");
+    break;
+    case 'field_le_akteur_kategorie_gruppe': // Akteur "Zielgruppe"
+      makeTaxonomyItemLink($variables['items'], "/akteure?zielgruppe_id[]=", "Nach Akteuren mit dieser Zielgruppe suchen (neuer Tab)");
+    break;
+    case 'field_le_event_kategorie_typ': // Event "Kategorie"
+      makeTaxonomyItemLink($variables['items'], "/events?kategorie_id[]=", "Nach Veranstaltungen mit dieser Kategorie suchen (neuer Tab)");
+    break;
+    case 'field_le_event_kategorie_tags': // Event "Tags"
+      makeTaxonomyItemLink($variables['items'], "/events?tag_id[]=", "Nach Veranstaltungen mit diesem Tag suchen (neuer Tab)");
+    break;
+    case 'field_le_event_kategorie_gruppe': // Event "Zielgruppe"
+      makeTaxonomyItemLink($variables['items'], "/events?zielgruppe_id[]=", "Nach Veranstaltungen mit dieser Zielgruppe suchen (neuer Tab)");
+    break;
   }
+}
 
-  if ($name == 'field_le_event_kategorie_typ') {
-    foreach ($variables['items'] as $delta => &$item) {
-      $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);
-      $link = "/events?kategorie_id[]=" . $id;
-      $content = $item['content']['#plain_text'];
-      $title = 'Veranstaltungen dieser Kategorie öffnen (neuer Tab)';
+function makeTaxonomyItemLink(&$items, $linkPrefix, $title)
+{
+  foreach ($items as $delta => &$item) {
+    $id = str_replace('taxonomy_term:', '', $item['content']['#cache']['tags'][0]);
+    $link =  $linkPrefix . $id;
+    $content = $item['content']['#plain_text'];
 
-      $item['content']['#markup'] = "<a href=\"${link}\" title=\"${title}\" target=\"_blank\">${content}</a>";
-      unset($item['content']['#plain_text']);
-    }
+    $item['content']['#markup'] = "<a href=\"${link}\" title=\"${title}\" target=\"_blank\">${content}</a>";
+    unset($item['content']['#plain_text']);
   }
 }

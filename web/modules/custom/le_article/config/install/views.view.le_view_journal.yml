@@ -204,7 +204,7 @@ display:
           exposed: true
           expose:
             operator_id: field_stadtteil_target_id_op
-            label: Stadtteil
+            label: Stadtgebiet
             description: ''
             use_operator: false
             operator: field_stadtteil_target_id_op

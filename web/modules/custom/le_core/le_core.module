@@ -166,6 +166,12 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 }
 
 /**
+ * --
+ * Everything below @deprecated
+ * --
+ */
+
+/**
  * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
  * ("Select one main category; select multiple second categories which are children of that main category")
  * 
