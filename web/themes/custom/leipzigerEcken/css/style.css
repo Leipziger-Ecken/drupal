@@ -8700,6 +8700,10 @@ input[type=button].btn-block {
   font-size: 0.9em;
   transition: all 0.2s;
 }
+.offset-branding-container ul.global-regions-nav li a {
+  margin-left: -25px;
+  padding-left: 25px;
+}
 .offset-branding-container ul.global-regions-nav li:before {
   content: "";
   display: block;
@@ -9055,6 +9059,10 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
 .view-le-view-events .form-item-zielgruppe-id,
 .view-le-view-events .form-item-tag-id {
   display: none;
+}
+
+.view-le-view-profile .view-header {
+  text-align: right;
 }
 
 /*# sourceMappingURL=style.css.map */
