@@ -8049,21 +8049,6 @@ p {
   margin-bottom: 15px;
 }
 
-/*__ Tags in der Beschreibung__*/
-.field--name-field-le-event-kategorie-tags .field--item,
-.field--name-field-le-akteur-kategorie-tags .field--item,
-.field--name-field-tags .field--item {
-  float: left;
-  margin-right: 10px;
-}
-
-.field--name-field-le-event-kategorie-tags,
-.field--name-field-le-akteur-kategorie-tags,
-.field--name-field-tags {
-  width: 100%;
-  margin-bottom: 50px;
-}
-
 .js-quickedit-page-title {
   border-bottom: 2px solid;
   border-color: #707070;
@@ -8894,6 +8879,30 @@ input[type=button].btn-block {
   margin-bottom: 12px;
   border-bottom: 2px solid;
   border-bottom-color: #707070;
+}
+
+.footer {
+  border-top: none;
+}
+
+/*__ Tags by itself___*/
+.field--name-field-le-event-kategorie-tags .field--item,
+.field--name-field-le-akteur-kategorie-tags .field--item,
+.field--name-field-tags .field--item {
+  float: left;
+  margin-right: 10px;
+  border-radius: 7px;
+  background-color: rgba(112, 112, 112, 0.2);
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+/*___"tag"-label___*/
+.field--name-field-le-event-kategorie-tags,
+.field--name-field-le-akteur-kategorie-tags,
+.field--name-field-tags {
+  width: 100%;
+  margin-bottom: 50px;
 }
 
 .node__sidebar {
