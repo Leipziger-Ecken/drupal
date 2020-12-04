@@ -128,6 +128,10 @@ content:
     settings:
       image_style: ''
       image_link: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
     third_party_settings: {  }
     type: image
     region: content
@@ -151,9 +155,9 @@ content:
     region: content
   field_le_event_kategorie_tags:
     weight: 12
-    label: above
+    label: hidden
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content

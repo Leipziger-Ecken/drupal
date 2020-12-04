@@ -8,7 +8,9 @@ dependencies:
     - node.type.le_event
     - system.menu.main
     - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_kategorie_tags
     - taxonomy.vocabulary.le_kategorie_typ
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
     - taxonomy.vocabulary.le_region
   module:
     - date_recur
@@ -500,6 +502,102 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Stadtgebiet
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: stadtteil_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_bezirk_target_id:
+          id: field_bezirk_target_id
+          table: node__field_bezirk
+          field: field_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_bezirk_target_id_op
+            label: Stadtteil
+            description: ''
+            use_operator: false
+            operator: field_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: bezirk_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
         field_le_event_occurrences_value:
           id: field_le_event_occurrences_value
           table: date_recur__node__field_le_event_occurrences
@@ -596,102 +694,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: datetime
-        field_bezirk_target_id:
-          id: field_bezirk_target_id
-          table: node__field_bezirk
-          field: field_bezirk_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_bezirk_target_id_op
-            label: Bezirk
-            description: ''
-            use_operator: false
-            operator: field_bezirk_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: bezirk_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              le_role_redakteur: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: le_bezirk
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
-        field_le_bezirk_region_target_id:
-          id: field_le_bezirk_region_target_id
-          table: taxonomy_term__field_le_bezirk_region
-          field: field_le_bezirk_region_target_id
-          relationship: field_bezirk
-          group_type: group
-          admin_label: ''
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_le_bezirk_region_target_id_op
-            label: Stadtteil
-            description: ''
-            use_operator: false
-            operator: field_le_bezirk_region_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: stadtteil_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-              le_role_redakteur: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-          type: select
-          limit: true
-          vid: le_region
-          hierarchy: false
-          error_message: true
-          plugin_id: taxonomy_index_tid
         field_le_event_kategorie_typ_target_id:
           id: field_le_event_kategorie_typ_target_id
           table: node__field_le_event_kategorie_typ
@@ -738,6 +740,102 @@ display:
           limit: true
           vid: le_kategorie_typ
           hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_gruppe_target_id:
+          id: field_le_event_kategorie_gruppe_target_id
+          table: node__field_le_event_kategorie_gruppe
+          field: field_le_event_kategorie_gruppe_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_gruppe_target_id_op
+            label: Zielgruppe(n)
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_gruppe_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: zielgruppe_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_kategorie_zielgruppe
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_tags_target_id:
+          id: field_le_event_kategorie_tags_target_id
+          table: node__field_le_event_kategorie_tags
+          field: field_le_event_kategorie_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_tags_target_id_op
+            label: Tags
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tag_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_kategorie_tags
+          hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:
@@ -1377,6 +1475,7 @@ display:
         options:
           items_per_page: 10
           offset: 0
+      enabled: false
     cache_metadata:
       max-age: -1
       contexts:

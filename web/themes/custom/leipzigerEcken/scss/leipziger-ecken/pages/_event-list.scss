@@ -1,0 +1,7 @@
+.view-le-view-events {
+    // Hide filters only required for filtering via URI-parameter, not for display
+    .form-item-zielgruppe-id,
+    .form-item-tag-id {
+        display: none;
+    }
+}

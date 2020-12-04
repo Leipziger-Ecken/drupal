@@ -9047,4 +9047,14 @@ body.page-node-type-le-event .field--name-og-audience .teaser-hr {
   color: #0096FF;
 }
 
+.view-le-view-akteure .form-item-zielgruppe-id,
+.view-le-view-akteure .form-item-tag-id {
+  display: none;
+}
+
+.view-le-view-events .form-item-zielgruppe-id,
+.view-le-view-events .form-item-tag-id {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

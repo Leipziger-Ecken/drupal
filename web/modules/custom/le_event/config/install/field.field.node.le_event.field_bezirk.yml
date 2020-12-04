@@ -9,7 +9,7 @@ id: node.le_event.field_bezirk
 field_name: field_bezirk
 entity_type: node
 bundle: le_event
-label: Bezirk
+label: Stadtteil
 description: 'Für digitale oder stadtweite Veranstaltungen kann "Stadtweit" gewählt werden.'
 required: true
 translatable: true
