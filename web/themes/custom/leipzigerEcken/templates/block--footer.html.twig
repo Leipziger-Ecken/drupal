@@ -1,0 +1,45 @@
+<footer id="footer">
+    {% if false %}
+        {{ page.footer }}
+    {% endif %}
+
+    <div class="row footer">
+        <div class="col-md-4">
+            {% block content %}
+                {% if site_logo %}
+                     <a class="logo navbar-btn pull-left" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
+                         <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+                     </a>
+                {% endif %}
+            {% endblock %}
+        </div>
+
+         <div class="col-md-4">
+            <a href="/impressum" title="Zum Impressum">
+              <h5 class="front-heading">Impressum</h5>
+            </a>
+            <a href="/kontakt" title="Zum Kontakt">
+              <h5 class="front-heading">Kontakt</h5>
+            </a>
+             <a href="/ueberunst" title="Über uns">
+              <h5 class="front-heading">Über uns</h5>
+            </a>
+            <a href="/partner" title="partner">
+              <h5 class="front-heading">Partner</h5>
+            </a>
+            <a href="/datenschutz" title="Zum Journal">
+              <h5 class="front-heading">Datenschutz</h5>
+            </a>
+            <a href="https://leipziger-ecken.de">
+                <h5 class="front-heading copyright">&copy; Leipziger Ecken</h5>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <h5 class="front-heading">Gefördert mit den Öffentlichen Mittlen der <a href="https://www.leipzig.de/" target="_blank">Stadt Leipzig</a></h5>
+            <a href="/datenschutz" title="Zum Journal">
+            </a>
+            <h5>Die technische Umsetzung dieses Projektes wurde getragen durch den <a href="https://helden-wider-willen.business.site/" target="_blank">Helden wider Willen e.V.</a> . 
+Mitfinanziert wurde diese Maßnahme durch Steuermittel auf Grundlage des von den Abgeordneten des Sächsischen Landtages beschlossenen Haushalts. (Kommunales Ehrenamtsbudget 2020)</h5>
+        </div>
+    </div>
+</footer>

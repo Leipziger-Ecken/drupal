@@ -1,3 +1,9 @@
+// Footer.
 .footer {
-    border-top: none;
-}
+    margin-top: 45px;
+    padding-top: 35px;
+    padding-bottom: 36px;
+    // border-top: $hr-border-width;
+    border-top: $hr-border-size;
+    border-top-color: $hr-border-grey;
+  }
