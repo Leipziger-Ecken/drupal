@@ -8056,8 +8056,8 @@ p {
 
 body:not(.path-frontpage):not(.path-taxonomy) .teaser-list {
   padding-bottom: 1em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
 .view-header {
@@ -8700,11 +8700,19 @@ input[type=button].btn-block {
   font-size: 0.9em;
   transition: all 0.2s;
 }
-.offset-branding-container ul.global-regions-nav li a {
-  margin-left: -25px;
-  padding-left: 25px;
+.offset-branding-container ul.global-regions-nav li.active, .offset-branding-container ul.global-regions-nav li:hover {
+  background-color: #53bcff;
 }
-.offset-branding-container ul.global-regions-nav li:before {
+.offset-branding-container ul.global-regions-nav li.active a, .offset-branding-container ul.global-regions-nav li:hover a {
+  text-decoration: none;
+}
+.offset-branding-container ul.global-regions-nav li.active a:before, .offset-branding-container ul.global-regions-nav li:hover a:before {
+  background-color: #0096FF;
+}
+.offset-branding-container ul.global-regions-nav li a {
+  color: #fff;
+}
+.offset-branding-container ul.global-regions-nav li a:before {
   content: "";
   display: block;
   position: absolute;
@@ -8715,18 +8723,6 @@ input[type=button].btn-block {
   background-color: transparent;
   border: 2px solid #0096FF;
   transform: skew(0, 50deg);
-}
-.offset-branding-container ul.global-regions-nav li.active, .offset-branding-container ul.global-regions-nav li:hover {
-  background-color: #53bcff;
-}
-.offset-branding-container ul.global-regions-nav li.active:before, .offset-branding-container ul.global-regions-nav li:hover:before {
-  background-color: #0096FF;
-}
-.offset-branding-container ul.global-regions-nav li.active a, .offset-branding-container ul.global-regions-nav li:hover a {
-  text-decoration: none;
-}
-.offset-branding-container ul.global-regions-nav li a {
-  color: #fff;
 }
 
 .offset-branding-container--mobile {
@@ -8894,11 +8890,16 @@ input[type=button].btn-block {
 .field--name-field-le-akteur-kategorie-tags .field--item,
 .field--name-field-tags .field--item {
   float: left;
-  margin-right: 10px;
-  border-radius: 7px;
-  background-color: rgba(112, 112, 112, 0.2);
-  padding-left: 2px;
-  padding-right: 2px;
+  margin-right: 8px;
+  border-radius: 99px;
+  border: 2px solid rgba(112, 112, 112, 0.2);
+  padding: 2px 12px;
+  transition: border 0.2s;
+}
+.field--name-field-le-event-kategorie-tags .field--item:hover,
+.field--name-field-le-akteur-kategorie-tags .field--item:hover,
+.field--name-field-tags .field--item:hover {
+  border-color: #0096FF;
 }
 
 /*___"tag"-label___*/
