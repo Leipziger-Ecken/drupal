@@ -8882,10 +8882,10 @@ input[type=button].btn-block {
   margin-top: 45px;
   padding-top: 35px;
   padding-bottom: 36px;
-  border-top: 2px solid;
-  border-top-color: #707070;
   width: 90%;
   margin: auto;
+  background-color: rgba(112, 112, 112, 0.1);
+  border-radius: 15px 15px 0 0;
 }
 
 /*__ Tags by itself___*/

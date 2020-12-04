@@ -3,8 +3,10 @@
     margin-top: 45px;
     padding-top: 35px;
     padding-bottom: 36px;
-    border-top: $hr-border-size;
-    border-top-color: $hr-border-grey;
+    // border-top: $hr-border-size;
+    // border-top-color: $hr-border-grey;
     width: 90%;
     margin: auto;
+    background-color: rgba($hr-border-grey,0.1);
+    border-radius: 15px 15px 0 0;
   }
