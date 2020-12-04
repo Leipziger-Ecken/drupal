@@ -18,14 +18,20 @@ parts (e.g. header, footer), we extend page.html.twig.
           <h1 class="page-header">Eine Stadtteilplattform für Nachbarschaften und Dings*</h1>
 
           <div class="content text-center">
-            <p>*Vereine, Initiativen, Organisationen, Künstler*innen, Kulturschaffende, Verantstalter*innen und mehr.</p>
+            <p>*z.B. Vereine, Initiativen, Kulturschaffende, Künstler*innen, Verantstalter*innen und mehr.</p>
 
-            <a href="#" class="btn btn-default">
+            <a href="/leipziger-ecken-das-projekt" class="btn btn-default" title="Mehr über das Projekt Leipziger Ecken erfahren">
                 Mehr erfahren
             </a>
-            <a href="/node/add/le_akteur" type="button" class="btn btn-default">
+            {% if logged_in %}
+            <a href="/akteure/neu" type="button" class="btn btn-default">
                 Akteur anlegen
             </a>
+            {% else %}
+            <a href="/user/login?destination=akteure/neu" type="button" class="btn btn-default">
+                Einloggen &amp; Akteur anlegen
+            </a>
+            {% endif %}
           </div>
         </div>
     </div>

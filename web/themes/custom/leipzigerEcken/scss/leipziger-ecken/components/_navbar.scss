@@ -30,40 +30,34 @@ $branding-container-width: 90px;
       font-size: 0.9em;
       transition: all 0.2s;
 
-      a {
-        // Move clickable area at least a bit to left, in order to cover :before
-        margin-left: -$region-box-height;
-        padding-left: $region-box-height;
-      }
-
-      &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: $region-box-height - 3;
-        height: $region-box-height - 2;
-        margin-left: -($region-box-height + 3);
-        margin-top: -(($region-box-height / 2) + 1);
-        background-color: transparent;
-        border: 2px solid $brand-primary;
-        transform: skew(0, 50deg);
-      }
-
       &.active,
       &:hover {
         background-color: darken(#86D0FF, 10);
 
-        &:before {
-          background-color: $brand-primary;
-        }
-
         a {
           text-decoration: none;
+
+          &:before {
+            background-color: $brand-primary;
+          }
         }
       }
   
       a {
         color: #fff;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: $region-box-height - 3;
+          height: $region-box-height - 2;
+          margin-left: -($region-box-height + 3);
+          margin-top: -(($region-box-height / 2) + 1);
+          background-color: transparent;
+          border: 2px solid $brand-primary;
+          transform: skew(0, 50deg);
+        }
       }
     }
   }
