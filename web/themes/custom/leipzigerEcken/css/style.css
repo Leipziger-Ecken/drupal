@@ -8884,6 +8884,16 @@ input[type=button].btn-block {
   border-radius: 15px 15px 0 0;
 }
 
+.footer .region-branding .logo {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.footer .region-branding .logo img {
+  margin: auto;
+}
+
 /*__ Tags by itself___*/
 .field--name-field-le-event-kategorie-tags .field--item,
 .field--name-field-le-akteur-kategorie-tags .field--item,

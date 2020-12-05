@@ -5,13 +5,10 @@
 
     <div class="row footer">
         <div class="col-md-4">
-            {% block content %}
-                {% if site_logo %}
-                     <a class="logo navbar-btn pull-left" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
-                         <img src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
-                     </a>
-                {% endif %}
-            {% endblock %}
+              {# <div class="offset-branding-container--mobile"> #}
+              {# <div class="footer-branding"> #}
+                {{ page.branding }}
+              {# </div> #}
         </div>
 
          <div class="col-md-4">
