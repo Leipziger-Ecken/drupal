@@ -41,7 +41,6 @@
         "drupal/date_recur_modular": "2.x-dev",
         "drupal/devel": "^2.1",
         "drupal/features": "^3.8",
-        "drupal/fullcalendar": "^1.0@alpha",
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
