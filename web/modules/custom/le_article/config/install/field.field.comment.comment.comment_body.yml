@@ -1,4 +1,4 @@
-langcode: en
+langcode: de
 status: true
 dependencies:
   config:
@@ -10,7 +10,7 @@ id: comment.comment.comment_body
 field_name: comment_body
 entity_type: comment
 bundle: comment
-label: Comment
+label: Kommentar
 description: ''
 required: true
 translatable: true

@@ -22,7 +22,6 @@ dependencies:
     - address
     - date_recur_modular
     - link
-    - og
     - path
     - svg_image
     - text
@@ -123,12 +122,8 @@ content:
       include_locked: true
     third_party_settings: {  }
   og_audience:
-    type: og_complex
-    settings:
-      match_operator: CONTAINS
-      match_limit: 15
-      size: 60
-      placeholder: 'Tippen, um Akteur zu suchen...'
+    type: options_buttons
+    settings: {  }
     weight: 9
     third_party_settings: {  }
     region: content

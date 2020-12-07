@@ -18,9 +18,8 @@ display:
     position: 0
     display_options:
       access:
-        type: perm
-        options:
-          perm: 'access user profiles'
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -128,7 +127,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: 'Du bist Mitglied auf den <a href="https://leipziger-ecken.de">Leipziger Ecken</a> seit {{ created }}.'
+            text: '<br />Du bist Mitglied bei den <a href="https://leipziger-ecken.de">Leipziger Ecken</a> seit {{ created }}.'
             make_link: false
             path: ''
             absolute: false
@@ -288,7 +287,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          default_action: 'not found'
+          default_action: 'access denied'
           exception:
             value: all
             title_enable: false
@@ -314,7 +313,7 @@ display:
             fail: 'not found'
           validate_options:
             access: true
-            operation: view
+            operation: update
             multiple: 0
             restrict_roles: false
             roles: {  }
@@ -330,7 +329,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user.permissions
       tags: {  }
   page_1:
     display_plugin: page
@@ -348,5 +346,4 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user.permissions
       tags: {  }

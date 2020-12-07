@@ -30,7 +30,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access user profiles'
+          perm: 'change own username'
       cache:
         type: tag
         options: {  }
@@ -558,7 +558,7 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts: {  }
-      title: 'Verwaltete Events'
+      title: 'Verwaltete Akteure'
       header: {  }
       footer: {  }
       empty: {  }
