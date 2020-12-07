@@ -193,10 +193,14 @@ function le_migrate_tags()
     $c = 0;
 
     foreach ($result as $tag) {
+      if (!isset($tag->kategorie) || empty($tag->kategorie)) {
+        continue;
+      }
+
       Term::create([
         'parent' => [],
         'name' => $tag->kategorie,
-        'vid' => 'tags',
+        'vid' => 'le_kategorie_tags',
       ])->save();
 
       $c++;
@@ -244,8 +248,9 @@ function le_migrate_events()
       WHERE ad.ADID = ev.ort
         AND be.BID = ad.bezirk
         AND ahe.EID = ev.EID
-        AND ev.start_ts >= '${today}'
         AND ev.parent_EID IS NULL");
+
+    //         AND ev.start_ts >= '${today}'
 
     $result = $query->fetchAll();
 
