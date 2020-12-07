@@ -10,7 +10,6 @@ dependencies:
   - datetime
   - field
   - file
-  - fullcalendar
   - geocoder_field
   - geofield
   - image

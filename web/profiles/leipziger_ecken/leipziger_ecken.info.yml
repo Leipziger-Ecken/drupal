@@ -76,7 +76,6 @@ dependencies:
   - date_recur
   - date_recur_modular
   - avatar_field_formatter
-  - fullcalendar
   - le_rollen
   - le_region
   - le_bezirk

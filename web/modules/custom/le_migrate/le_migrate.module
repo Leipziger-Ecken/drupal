@@ -13,15 +13,16 @@ use Drupal\user\Entity\User;
 function le_migrate_install()
 {
     // Let's play a game... infinite server timeout or you will die... 3,2,1,...
-    le_migrate_path_alias();
-    le_migrate_users();
-    le_migrate_bezirke();
-    le_migrate_tags();
-    le_migrate_akteure();
-    le_migrate_events();
-    le_migrate_stadtteile();
-    le_migrate_zielgruppen();
-    le_migrate_kategorien();
+    // ...Nah, just a joke. Better execute this manually!
+    // le_migrate_path_alias();
+    // le_migrate_users();
+    // le_migrate_bezirke();
+    // le_migrate_tags();
+    // le_migrate_akteure();
+    // le_migrate_events();
+    // le_migrate_stadtteile();
+    // le_migrate_zielgruppen();
+    // le_migrate_kategorien();
 }
 
 /**
@@ -145,7 +146,6 @@ function le_migrate_akteure()
           $term = reset($term);
           $node['field_le_akteur_kategorie_tags'][] = $term->id();
         }
-        // @todo Use default "tags" instead of le_tags???
 
         $node = Node::create($node);
         $node->save();
@@ -170,6 +170,7 @@ function le_migrate_akteure()
           $membership = $membership_manager->getMembership($node, (int) $akteur->hat_UID);
 
           if (!$membership->hasRole($admin_role_id)) {
+              echo "Added role for " . $akteur->AID;
               $membership->addRole($admin_role)->save();
           }
 
@@ -287,8 +288,7 @@ function le_migrate_events()
       }
 
       $start = str_replace(' ', 'T', $event->start_ts);
-      $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01')
-        ? $start : str_replace(' ', ' ', $event->ende_ts);
+      $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01') ? $start : str_replace(' ', ' ', $event->ende_ts);
 
       // @todo!!!! if ends 01 -> is recurring!
 
@@ -301,7 +301,6 @@ function le_migrate_events()
             'format' => 'full_html',
           ],
           'og_audience' => $event->AID,
-          // 'field_le_event_aid' => $event->AID, @todo move to og_audience
           'field_adresse' => [
             'country_code' => 'DE',
             'address_line1' => $event->strasse . (!empty($event->nr) ? ' ' . $event->nr : ''),
