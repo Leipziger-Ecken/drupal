@@ -49,6 +49,7 @@
         "drupal/jsonld": "^1.0",
         "drupal/leaflet": "^1.36",
         "drupal/leaflet_more_maps": "^1.0@alpha",
+        "drupal/login_emailusername": "^1.2",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^1.4",

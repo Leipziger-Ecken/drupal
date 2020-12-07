@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1b1ac5c6c5efbcc18bf301b2af06876",
+    "content-hash": "a21e1ef6e35ce6e04792d083b1d689f8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3844,6 +3844,63 @@
             "homepage": "https://www.drupal.org/project/leaflet_more_maps",
             "support": {
                 "source": "https://git.drupalcode.org/project/leaflet_more_maps"
+            }
+        },
+        {
+            "name": "drupal/login_emailusername",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/login_emailusername.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/login_emailusername-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "188462f807e04d7913062e9415c3c2779e21a848"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1604843985",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "See contributors",
+                    "homepage": "https://www.drupal.org/node/2820429/committers",
+                    "role": "contributor"
+                },
+                {
+                    "name": "devdesagar",
+                    "homepage": "https://www.drupal.org/user/3569773"
+                },
+                {
+                    "name": "rjjakes",
+                    "homepage": "https://www.drupal.org/user/3457245"
+                }
+            ],
+            "description": "Login with the email as username.",
+            "homepage": "https://drupal.org/project/login_emailusername",
+            "support": {
+                "source": "https://git.drupalcode.org/project/login_emailusername",
+                "issues": "https://drupal.org/project/issues/login_emailusername"
             }
         },
         {

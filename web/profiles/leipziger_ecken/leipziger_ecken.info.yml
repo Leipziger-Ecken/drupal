@@ -55,6 +55,7 @@ dependencies:
   - features
   - features_ui
   - menu_ui
+  - login_emailusername
   - leaflet_more_maps
   - leaflet_views
   - metatag_dc
