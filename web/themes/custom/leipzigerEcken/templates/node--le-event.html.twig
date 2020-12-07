@@ -99,6 +99,12 @@
 
         {% if content.og_audience %}
           <div class="field--label">Veranstalter*in</div>
+          {#
+          @todo
+          {% if content.og_audience is empty %}
+          Private*r Veranstalter*in
+          {% endif %}
+          #}
           {{ content.og_audience }}
         {% endif %}
       
