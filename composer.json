@@ -44,6 +44,7 @@
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
+        "drupal/google_analytics": "^3.1",
         "drupal/http_client_manager": "^2.4",
         "drupal/jsonld": "^1.0",
         "drupal/leaflet": "^1.36",
