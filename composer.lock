@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a21e1ef6e35ce6e04792d083b1d689f8",
+    "content-hash": "6ed7114415b624fa28a6da7f5f4cc251",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4742,15 +4742,6 @@
             ],
             "description": "An SVG sanitizer for PHP",
             "time": "2020-01-20T01:34:17+00:00"
-        },
-        {
-            "name": "fullcalendar/fullcalendar",
-            "version": "3.9.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/fullcalendar/fullcalendar/archive/v3.9.0.zip"
-            },
-            "type": "drupal-library"
         },
         {
             "name": "geocoder-php/common-http",

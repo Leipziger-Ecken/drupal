@@ -12,18 +12,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "fullcalendar/fullcalendar",
-                "version": "3.9.0",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/fullcalendar/fullcalendar/archive/v3.9.0.zip",
-                    "type": "zip"
-                }
-            }
         }
     ],
     "require": {
@@ -59,7 +47,6 @@
         "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
-        "fullcalendar/fullcalendar": "^3.9.0",
         "geocoder-php/mapbox-provider": "^1.0",
         "laravolt/avatar": "^3.2"
     },
