@@ -46,10 +46,10 @@ INSTALLATION
  * Create a database (utf8_general_ci), set up a virtual host (e.g. "drupal.localhost")
  * Navigate to the path of this repository. Run
  ``` composer install ``` to install all dependencies
- * ~~**Quickfix** - this is important: Rename the folder in web/modules/contrib/date_recur/config/optiona l from "optional" into "install". This dependency-issue will become fixed prior to the first release candidate.~~ 
+ * **Alerta alerta:** Composer may complain about not being able to "apply the patch xy". This is a [known bug](https://github.com/cweagans/composer-patches/issues/226). Just apply each patch manually by running
+ ``` git apply patches/name-of-patch.patch ```
  * Open your browser and navigate to your drupal instance (e.g. "http://drupal.localhost"). Follow the instructions of the interactive install wizard ([walk-through](https://www.drupal.org/docs/user_guide/en/install-run.html)). You may also use the [installation routine](https://drupalconsole.com/docs/en/commands/site-install) of Drupal CLI
  * You should now be able to access and administer your Leipziger Ecken instance.
- * Due to an issue with features-module (e.g. #2867792), module "Artikel" and "Website" in "Leipziger Ecken" namespace have to be installed manually.
 
 **Issues & problems**
 
