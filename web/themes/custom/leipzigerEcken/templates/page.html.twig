@@ -66,7 +66,7 @@
         theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,
       ]
     %}
-<div class="container">
+  <div class="container">
     <div class="offset-branding-container">
       {{ page.branding }}
       {% if le_regions %}
@@ -104,11 +104,13 @@
         </div>
         {% endif %}
       </header>
+    </div>
   {% endblock %}
 {% endif %}
 
 {# Main #}
 {% block main %}
+  <div class="container">
     <div role="main" class="main-container js-quickedit-main-content">
         {# Header #}
         {% if page.header %}
