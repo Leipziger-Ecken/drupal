@@ -16,7 +16,14 @@
 
     img {
       margin: 0 auto;
+      max-width: 100%;
     }
+  }
+
+  .footer .footer-logo {
+    margin: auto;
+    text-align: center;
+    // width: 100%;
   }
 
   ul {

@@ -8889,6 +8889,11 @@ input[type=button].btn-block {
 }
 #footer .region-branding .logo img {
   margin: 0 auto;
+  max-width: 100%;
+}
+#footer .footer .footer-logo {
+  margin: auto;
+  text-align: center;
 }
 #footer ul {
   list-style: none;
