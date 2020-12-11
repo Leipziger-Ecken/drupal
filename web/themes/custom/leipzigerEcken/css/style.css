@@ -8874,24 +8874,30 @@ input[type=button].btn-block {
   border-bottom-color: #707070;
 }
 
-.footer {
+#footer {
   margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36px;
+  padding: 35px 10px;
   width: 90%;
-  margin: auto;
+  margin: 0 auto;
   background-color: rgba(112, 112, 112, 0.1);
   border-radius: 15px 15px 0 0;
 }
-
-.footer .region-branding .logo {
-  margin: auto;
+#footer .region-branding .logo {
+  margin: 0 auto;
   text-align: center;
   width: 100%;
 }
-
-.footer .region-branding .logo img {
-  margin: auto;
+#footer .region-branding .logo img {
+  margin: 0 auto;
+}
+#footer ul {
+  list-style: none;
+}
+#footer ul li {
+  margin-bottom: 15px;
+}
+#footer p {
+  font-family: "Public Sans", sans-serif;
 }
 
 /*__ Tags by itself___*/

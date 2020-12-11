@@ -1,20 +1,33 @@
 // Footer.
-.footer {
+#footer {
     margin-top: 45px;
-    padding-top: 35px;
-    padding-bottom: 36px;
+    padding: 35px 10px;
     // border-top: $hr-border-size;
     // border-top-color: $hr-border-grey;
     width: 90%;
-    margin: auto;
+    margin: 0 auto;
     background-color: rgba($hr-border-grey,0.1);
     border-radius: 15px 15px 0 0;
-  }
-  .footer .region-branding .logo {
-    margin: auto;
+  
+  .region-branding .logo {
+    margin: 0 auto;
     text-align: center;
     width: 100%;
-  }  
-  .footer .region-branding .logo img {
-    margin: auto;
+
+    img {
+      margin: 0 auto;
+    }
   }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 15px;
+    }
+  }
+
+  p {
+    font-family: $font-family-sans-serif;
+  }
+}
