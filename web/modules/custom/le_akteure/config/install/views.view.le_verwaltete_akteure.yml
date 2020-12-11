@@ -27,7 +27,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access user profiles'
+          perm: 'change own username'
       cache:
         type: tag
         options: {  }

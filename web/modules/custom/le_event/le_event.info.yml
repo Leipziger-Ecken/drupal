@@ -10,7 +10,6 @@ dependencies:
   - datetime
   - field
   - file
-  - fullcalendar
   - geocoder_field
   - geofield
   - image
@@ -36,5 +35,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.99
+version: 8.x-0.1.991
 core_incompatible: false

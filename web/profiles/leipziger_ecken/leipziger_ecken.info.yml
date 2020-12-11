@@ -55,6 +55,7 @@ dependencies:
   - features
   - features_ui
   - menu_ui
+  - login_emailusername
   - leaflet_more_maps
   - leaflet_views
   - metatag_dc
@@ -76,7 +77,6 @@ dependencies:
   - date_recur
   - date_recur_modular
   - avatar_field_formatter
-  - fullcalendar
   - le_rollen
   - le_region
   - le_bezirk
@@ -84,9 +84,9 @@ dependencies:
   - le_kategorien
   - le_akteure
   - le_event
-#  - le_article
+  - le_article
   - le_remote_content_depot_social
-#  - le_website
+  - le_website
   - le_core
 
 # List any themes that should be installed as part of the profile installation.

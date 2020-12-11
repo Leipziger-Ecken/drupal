@@ -87,14 +87,13 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
   }
 
   if (in_array($form_id, ['node_le_event_form','node_le_event_edit_form'])) {
-    // set_kategorie_form_fields($form, $form_state, 'event');
     $form['#attached']['library'][] = 'le_core/event-form';
     $form['#attached']['library'][] = 'le_core/categories-select';
     $form['#attached']['drupalSettings'] = [
       'le_categories_select_target' => '#edit-field-le-event-kategorie-typ'
     ];
 
-    // Get groups ("memberships") of active user; if none, redirect to "/events"
+    // Get groups ("memberships") of active user
     $user_id = \Drupal::currentUser()->id();
     $full_user = \Drupal\user\Entity\User::load($user_id);
     $user_is_admin = $full_user->hasRole('administrator') || $user_id == 1;
@@ -102,19 +101,22 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     $membership_manager = \Drupal::service('og.membership_manager');
     $user_memberships = $membership_manager->getMemberships($user_id);
 
-    if (false && !count($user_memberships) && !$user_is_admin) {
-        // @todo Veranstalter "Privat"
-        \Drupal::messenger()->addError(t('Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können'));
-        $response = new RedirectResponse('/events');
-        $response->send();
-        return;
-    }
+    // if (!count($user_memberships) && !$user_is_admin)
+    // {
+    //     \Drupal::messenger()->addError(t("Du musst mind. einem Akteur zugeordnet sein, um Events erstellen zu können"));
+    //     $response = new RedirectResponse('/events');
+    //     $response->send();
+    //     return;
+    // }
 
     // As long as recurrencies widget UI is not completed: Hide fields "mode" and "timezone"
     $field_occurrences_widget = &$form['field_le_event_occurrences']['widget'];
 
-    foreach($field_occurrences_widget as $key => $field_occurrence) {
-        if (!is_numeric($key)) continue;
+    foreach ($field_occurrences_widget as $key => $field_occurrence) {
+        if (!is_numeric($key)) {
+          continue;
+        }
+
         $field_occurrences_widget[$key]['mode']['#attributes']['class'][] = 'hidden'; // #access = false would break JS behaviour :/
         $field_occurrences_widget[$key]['time_zone']['#access'] = false;
         $field_occurrences_widget[$key]['blakeks'] = [
@@ -126,25 +128,43 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           ];
     }
 
-    // @todo Enable Veranstalter "Privat"
-    // @todo When no Akteur there, do NOT show all Akteure
     // @todo When choosing Akteur, fill adress-values from Akteur-adress
-    // @todo Turn autocomplete into native select (either wait for OG UI patch or use radio-output which then gets #type changed:
-    // $form['og_audience']['widget'][0]['target_id']['#type'] = 'select';
-    // $form['og_audience']['widget'][0]['target_id']['#options'] = [
-    //   'a' => 'A',
-    //   'b' => 'B'
-    // ];
+    $form['og_audience']['widget']['#type'] = 'select';
 
-    if (in_array($form_id, ['node_le_event_form']) && count($user_memberships) >= 1) {
-        // Add event form: Set first akteur as default in select-list
+    if (true || !$user_is_admin) {
+      $user_akteure = [];
+
+      foreach ($user_memberships as $membership) {
+        // Map memberships to actual akteure entity_id
+        array_push($user_akteure, $membership->get('entity_id')->value);
+      }
+
+      foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
+
+        if (!in_array($entity_id, $user_akteure)) {
+          unset($form['og_audience']['widget']['#options'][$entity_id]);
+        }
+      }
+    }
+
+    array_unshift($form['og_audience']['widget']['#options'], '-- Private*r Veranstalter*in --');
+
+    if (in_array($form_id, ['node_le_event_form'])) {
+      // Add(!) event form
+
+      if (count($user_memberships) === 0) {
+        // Set "Privater Veranstalter" as default
+        $form['og_audience']['widget']['#default_value'] = '0';
+      } else if (count($user_memberships) >= 1) {
+        // Set first akteur as default in select-list
         $default_akteur = $user_memberships[key($user_memberships)]->entity_id->value;
         $default_akteur = \Drupal\node\Entity\Node::load((int) $default_akteur);
 
         if ($default_akteur) {
           // @todo may be empty as memberships become not deleted on node.le_akteur delete :(
-          $form['og_audience']['widget'][0]['target_id']['#default_value'] = $default_akteur;
+          $form['og_audience']['widget']['target_id']['#default_value'] = $default_akteur;
         }
+      }
     }
 
     // Apply bootstrap grid
