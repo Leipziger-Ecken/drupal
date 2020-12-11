@@ -8884,14 +8884,15 @@ input[type=button].btn-block {
   border-radius: 15px 15px 0 0;
 }
 
-.footer .region-branding .logo {
+/*___nicht hard codiert___*/
+.footer .footer-logo {
   margin: auto;
   text-align: center;
-  width: 100%;
 }
 
-.footer .region-branding .logo img {
+.footer img {
   margin: auto;
+  max-width: 100%;
 }
 
 /*__ Tags by itself___*/
