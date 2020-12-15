@@ -8895,6 +8895,9 @@ input[type=button].btn-block {
   margin: auto;
   text-align: center;
 }
+#footer .footer .footer-logo img {
+  width: 100%;
+}
 #footer ul {
   list-style: none;
 }
