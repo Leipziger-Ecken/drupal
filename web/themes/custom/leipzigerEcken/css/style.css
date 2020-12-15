@@ -8940,6 +8940,10 @@ input[type=button].btn-block {
   margin-bottom: 50px;
 }
 
+.tag-area {
+  margin-bottom: 15px;
+}
+
 .node__sidebar {
   margin-top: 20px;
   word-wrap: break-word;

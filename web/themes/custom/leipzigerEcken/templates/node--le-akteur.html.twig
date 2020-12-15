@@ -116,9 +116,11 @@
   </div>
 
   <div class="col-md-7 beschreibung clearfix">
-    {% if content.field_le_akteur_kategorie_tags %}
-      {{ content.field_le_akteur_kategorie_tags }} 
-    {% endif %}
+      {% if content.field_le_akteur_kategorie_tags %}
+        <div class="tag-area clearfix">
+          {{ content.field_le_akteur_kategorie_tags }} 
+        </div>
+      {% endif %}
     {{ content.field_le_akteur_description }}
   </div>
 </div>
