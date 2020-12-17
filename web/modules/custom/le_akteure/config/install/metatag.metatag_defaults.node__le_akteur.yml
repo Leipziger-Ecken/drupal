@@ -4,17 +4,17 @@ dependencies: {  }
 id: node__le_akteur
 label: 'Inhalt: Akteur'
 tags:
-  title: '[node:field_le_akteur_name]'
-  image_src: '[node:field_le_akteur_image]'
+  title: '[node:title]'
   generator: 'Leipziger Ecken'
+  image_src: '[node:field_le_akteur_image]'
+  content_language: de
   canonical_url: '[site:url]'
   description: 'Akteurprofil von [node:field_le_akteur_name] auf [site:name].'
-  content_language: de
-  schema_organization_id: '[current-page:url]'
-  schema_organization_type: NGO
   schema_organization_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:28:"[node:field_le_akteur_image]";}'
   schema_organization_telephone: '[node:field_le_akteur_phone]'
+  schema_organization_type: NGO
+  schema_organization_url: '[node:field_le_akteur_url]'
+  schema_organization_description: '[node:field_le_akteur_description]'
+  schema_organization_id: '[current-page:url]'
   schema_organization_name: '[node:field_le_akteur_name]'
   schema_organization_additional_type: Organization
-  schema_organization_description: '[node:field_le_akteur_description]'
-  schema_organization_url: '[node:field_le_akteur_url]'

@@ -50,9 +50,10 @@ content:
     weight: 1
     label: hidden
     settings:
-      link: true
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   field_geofield:
     weight: 2
@@ -62,8 +63,8 @@ content:
       popup: '1'
       popup_content: "<strong>[node:title]</strong><br />\r\n[node:field_adresse:address_line1]\r\n[node:field_adresse:address_line2]\r\n[node:field_adresse:postal_code] [node:field_adresse:locality]"
       leaflet_map: osm-neighbourhood
-      height: '100'
-      height_unit: '%'
+      height: '400'
+      height_unit: px
       hide_empty_map: '1'
       fullscreen_control: '1'
       reset_map:

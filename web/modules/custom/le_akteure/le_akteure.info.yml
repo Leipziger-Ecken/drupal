@@ -1,5 +1,5 @@
 name: Akteure
-description: 'Inhaltstyp für Akteure (Vereine, Initiativen, Organisationen)'
+description: 'Inhaltstyp, Ansichten und Metatags für Akteure'
 type: module
 core: 8.x
 package: 'Leipziger Ecken'
@@ -38,5 +38,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.995
+version: 8.x-0.1.996
 core_incompatible: false

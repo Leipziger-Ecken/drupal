@@ -488,7 +488,18 @@ display:
       title: 'Verwaltete Akteure'
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<blockquote>\r\nDu hast noch keine Akteure angelegt. <a href=\"/akteure/neu\">Jetzt Akteur anlegen</a>.\r\n</blockquote>"
+          plugin_id: text_custom
       relationships:
         uid:
           id: uid

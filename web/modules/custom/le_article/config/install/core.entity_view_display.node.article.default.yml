@@ -13,7 +13,7 @@ dependencies:
     - node.type.article
   module:
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.article.default
@@ -52,13 +52,17 @@ content:
     settings:
       image_style: large
       image_link: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
     third_party_settings: {  }
     label: hidden
   field_stadtteil:
     weight: 4
     label: above
     settings:
-      link: true
+      link: false
     third_party_settings: {  }
     type: entity_reference_label
     region: content
@@ -66,7 +70,7 @@ content:
     type: entity_reference_label
     weight: 2
     region: content
-    label: above
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }

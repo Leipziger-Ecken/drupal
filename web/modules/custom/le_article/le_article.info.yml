@@ -1,5 +1,5 @@
 name: Artikel
-description: 'Stellt die Konfiguration für Inhaltstyp Artikel ("Journal") bereit.'
+description: 'Inhaltstyp, Ansichten und Metatags für ("Journal")-Artikel'
 type: module
 core: 8.x
 package: 'Leipziger Ecken'
@@ -17,8 +17,9 @@ dependencies:
   - pathauto
   - rdf
   - simple_sitemap
+  - svg_image
   - taxonomy
   - text
   - user
   - views
-version: 8.x-1.04
+version: 8.x-1.05

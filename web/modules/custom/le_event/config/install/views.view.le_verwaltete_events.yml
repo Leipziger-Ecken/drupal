@@ -558,10 +558,21 @@ display:
           entity_field: type
           plugin_id: bundle
       sorts: {  }
-      title: 'Verwaltete Akteure'
+      title: 'Verwaltete Events'
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<blockquote>\r\nDu hast noch keine Events angelegt. <a href=\"/events/neu\">Jetzt Event anlegen</a>.\r\n</blockquote>"
+          plugin_id: text_custom
       relationships:
         uid:
           id: uid

@@ -1,5 +1,5 @@
 name: Event
-description: 'Events (Veranstaltungen, Workshops, Seminare)'
+description: 'Inhaltstyp, Ansichten und Metatags für Events'
 type: module
 package: 'Leipziger Ecken'
 core: 8.x
@@ -35,5 +35,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.991
+version: 8.x-0.1.992
 core_incompatible: false
