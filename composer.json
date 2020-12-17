@@ -18,7 +18,7 @@
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6",
         "drupal/address": "^1.8",
-        "drupal/avatar_field_formatter": "^1.2",
+        "drupal/avatar_field_formatter": "^2.0",
         "drupal/bootstrap": "^3.23",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
@@ -27,16 +27,16 @@
         "drupal/date_popup": "^1.1",
         "drupal/date_recur": "^2.0",
         "drupal/date_recur_modular": "2.x-dev",
-        "drupal/devel": "^2.1",
-        "drupal/features": "^3.8",
+        "drupal/devel": "^4.0",
+        "drupal/features": "^3.11",
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.12",
         "drupal/geofield_map": "^2.62",
         "drupal/google_analytics": "^3.1",
         "drupal/http_client_manager": "^2.4",
         "drupal/jsonld": "^1.0",
-        "drupal/leaflet": "^1.36",
-        "drupal/leaflet_more_maps": "^1.0@alpha",
+        "drupal/leaflet": "^2.1",
+        "drupal/leaflet_more_maps": "1.0",
         "drupal/login_emailusername": "^1.2",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
@@ -47,8 +47,7 @@
         "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
-        "geocoder-php/mapbox-provider": "^1.0",
-        "laravolt/avatar": "^3.2"
+        "geocoder-php/mapbox-provider": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -116,7 +115,7 @@
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             },
             "drupal/leaflet_more_maps": {
-                "Enforce https, add further maps, add apiKey to default map (thunderbird neighbourhood). issues/2848895": "patches/update_thunderforest_maps_D8-2848895-6.patch"
+                "Add apiKey to default map (thunderbird neighbourhood)": "patches/update_thunderforest_maps.patch"
             }
         }
     }

@@ -87,4 +87,4 @@ A *read-only* REST-API (JSON, XML, HAL) is provided for akteur- and event-data. 
 The following patches are shipped with ./patches (for any troubles whilst installation, see instructions above):
 
 * During *composer install*, a patch is injected into geocoder-mapbox package which enforces a returned locality ("Bezirk"), if any given.
-* During *composer install*, a patch is injected into leaflet-more-maps module which extends the list of available map types.
+* During *composer install*, a patch is injected into leaflet-more-maps module to pass further settings.
