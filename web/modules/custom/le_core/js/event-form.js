@@ -8,8 +8,8 @@
  * * Auto-set end-field value
  */
 (function ($) {
-      'use strict';
-      Drupal.behaviors.leCoreEventForm = {
+    'use strict';
+    Drupal.behaviors.leCoreEventForm = {
         attach: function (context, settings) {
             var $dateListItems = $(context).find('.date-recur-modular-alpha-widget').once('le-core-custom-delete');
 
