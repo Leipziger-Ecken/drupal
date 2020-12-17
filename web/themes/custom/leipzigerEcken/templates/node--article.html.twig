@@ -79,20 +79,25 @@
 
 <div class="row abstand">
     <div class="col-md-3">
+    {% if content.field_image %}
+      {{ content.field_image }}
+    {% endif %}
+
     {% if date %}
         {{ date }} von
     {% endif %}
     {% if author_name %}
         {{ author_name }}
-        <hr class="grey-hr">
+        <hr class="grey-hr" />
+    {% endif %}
+
+    {% if content.field_stadtteil %}
+      {{ content.field_stadtteil }}
+       <hr class="grey-hr" />
     {% endif %}
 
     {% if content.field_article_akteure %}
-        {{ content.field_article_akteure }}
-    {% endif %}
-
-    {% if content.field_image %}
-        {{ content.field_image }}
+      {{ content.field_article_akteure }}
     {% endif %}
     </div>
     

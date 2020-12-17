@@ -73,7 +73,11 @@
       <ul class="global-regions-nav">
         {% for key,region in le_regions %}
         {% set region_path = region.name|lower %}
-        <li class="{{ current_path == region_path ? 'active' : '' }}"><a href="{{ drupal_url(region_path) }}" title="Zum Stadtgebiet `{{ region.name }}` wechseln">{{ region.name }}</a></li>
+        <li class="{{ current_path == region_path ? 'active' : '' }}" data-region="{{ region_path }}">
+          <a href="{{ drupal_url(region_path) }}" title="Zum Stadtgebiet `{{ region.name }}` wechseln">
+            {{ region.name }}
+          </a>
+        </li>
         {% endfor %}
       </ul>
       {% endif %}

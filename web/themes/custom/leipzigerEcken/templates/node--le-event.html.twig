@@ -83,11 +83,15 @@
         {% endif %}
 
         {% if content.field_le_event_occurrences %}
-        {{ content.field_le_event_occurrences }}
+          {{ content.field_le_event_occurrences }}
         {% endif %}
 
         {% if content.field_adresse %}
           {{ content.field_adresse }} 
+        {% endif %}
+
+        {% if content.field_bezirk %}
+          {{ content.field_bezirk }}  
         {% endif %}
 
         {% if content.field_geofield %}

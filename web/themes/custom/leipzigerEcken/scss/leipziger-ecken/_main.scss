@@ -79,9 +79,9 @@ p {
 
 }
 
-.node__sidebar .field,
+.node__sidebar .field:not(.field--name-field-bezirk),
 .teaser-list 
-{ 
+{
   border-bottom: $hr-border-size; 
   border-color: $hr-border-grey;
   margin-top: 15px;
@@ -117,7 +117,7 @@ body:not(.path-frontpage):not(.path-taxonomy) .teaser-list {
 // }
 
 .view-header {
-  margin-bottom: 20px;;
+  margin-bottom: 20px;
 }
 
 hr.teaser-hr {
@@ -233,6 +233,7 @@ h2,
 @import "pages/node";
 @import "pages/front";
 @import "pages/event-detail";
+@import "pages/akteur-detail";
 @import "pages/akteur-events";
 @import "pages/akteur-form";
 @import "pages/event-form";
