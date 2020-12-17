@@ -1,10 +1,10 @@
-# German translation of Drupal core (8.9.7)
+# German translation of Drupal core (8.9.11)
 # Copyright (c) 2020 by the German translation team
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Drupal core (8.9.7)\n"
-"POT-Creation-Date: 2020-10-29 23:11+0000\n"
+"Project-Id-Version: Drupal core (8.9.11)\n"
+"POT-Creation-Date: 2020-12-03 22:08+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -12073,7 +12073,7 @@ msgstr "Unterschiede anzeigen"
 msgid "Menu language"
 msgstr "Menüsprache"
 msgid "Block types"
-msgstr "Block-Typen"
+msgstr "Blocktypen"
 msgid "@field_name"
 msgstr "@field_name"
 msgid "media item"
@@ -37036,3 +37036,5 @@ msgstr ""
 "führt nicht zu dem Ergebniss, dass Sie haben möchten.Wenn Sie "
 "mehrere Versionen einer Ansicht haben möchten, die Inhalte des "
 "Modules Node anzeigt,,verwenden Sie den Layout Builder."
+msgid "For security reasons, your upload has been rejected."
+msgstr "Der Upload wurde aus Sicherheitsgründen abgelehnt."
