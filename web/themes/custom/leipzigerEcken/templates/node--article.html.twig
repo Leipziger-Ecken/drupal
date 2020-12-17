@@ -98,9 +98,11 @@
     
     <div class="col-md-7 beschreibung clearfix">
         {% if content.field_tags %}
-            {{ content.field_tags }} 
+            <div class="tag-area clearfix">
+                {{ content.field_tags }} 
+            </div>
         {% endif %}
-
+        
         {% if content.body %}
             {{ content.body }}
         {% endif %}

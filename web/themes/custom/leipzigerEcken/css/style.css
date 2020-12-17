@@ -8895,6 +8895,9 @@ input[type=button].btn-block {
   margin: auto;
   text-align: center;
 }
+#footer .footer .footer-logo img {
+  width: 100%;
+}
 #footer ul {
   list-style: none;
 }
@@ -8935,6 +8938,10 @@ input[type=button].btn-block {
 .field--name-field-tags {
   width: 100%;
   margin-bottom: 50px;
+}
+
+.tag-area {
+  margin-bottom: 15px;
 }
 
 .node__sidebar {
