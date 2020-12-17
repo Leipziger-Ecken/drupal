@@ -277,7 +277,7 @@ function le_migrate_events()
 
       $frequency = 0;
 
-      switch ($event->recurring_event_type) {
+      /*switch ($event->recurring_event_type) {
         case 2:
           $frequency = 'WEEKLY';
         break;
@@ -290,11 +290,13 @@ function le_migrate_events()
         case 5:
           $frequency = 'MONTHLY;INTERVAL=2';
           break;
-      }
+      }*/
 
       $start = str_replace(' ', 'T', $event->start_ts);
       $ende = ($event->ende_ts === '1000-01-01 00:00:00' || $event->ende_ts === '1000-01-01 00:00:01') ? $start : str_replace(' ', ' ', $event->ende_ts);
 
+      // @todo Fully skip recurring events (has parent)
+      // @todo created_at -> Actually working?
       // @todo!!!! if ends 01 -> is recurring!
 
       $node = [
