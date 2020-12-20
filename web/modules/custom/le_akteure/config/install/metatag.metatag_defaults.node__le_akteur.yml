@@ -4,17 +4,20 @@ dependencies: {  }
 id: node__le_akteur
 label: 'Inhalt: Akteur'
 tags:
-  title: '[node:title]'
-  generator: 'Leipziger Ecken'
-  image_src: '[node:field_le_akteur_image]'
+  geo_placename: '[node:title]'
   content_language: de
-  canonical_url: '[site:url]'
+  canonical_url: '[node:url]'
+  image_src: '[node:field_le_akteur_image]'
+  geo_region: DE
+  geo_position: '[node:field_geofield:latlon]'
   description: 'Akteurprofil von [node:field_le_akteur_name] auf [site:name].'
-  schema_organization_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:28:"[node:field_le_akteur_image]";}'
-  schema_organization_telephone: '[node:field_le_akteur_phone]'
-  schema_organization_type: NGO
-  schema_organization_url: '[node:field_le_akteur_url]'
+  title: '[node:title]'
   schema_organization_description: '[node:field_le_akteur_description]'
+  schema_organization_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:28:"[node:field_le_akteur_image]";}'
+  schema_organization_url: '[node:field_le_akteur_url]'
+  schema_organization_address: 'a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_adresse:address_line1]";s:15:"addressLocality";s:29:"[node:field_adresse:locality]";s:10:"postalCode";s:32:"[node:field_adresse:postal_code]";s:14:"addressCountry";s:33:"[node:field_adresse:country_code]";}'
+  schema_organization_telephone: '[node:field_le_akteur_phone]'
   schema_organization_id: '[current-page:url]'
   schema_organization_name: '[node:field_le_akteur_name]'
   schema_organization_additional_type: Organization
+  schema_organization_type: NGO
