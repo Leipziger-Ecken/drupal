@@ -59,6 +59,7 @@ dependencies:
   - leaflet_more_maps
   - leaflet_views
   - metatag_dc
+  - metatag_open_graph
   - schema_organization
   - schema_event
   - schema_metatag
