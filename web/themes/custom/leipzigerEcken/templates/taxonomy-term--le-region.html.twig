@@ -49,19 +49,19 @@ Most of this is copied from front-page. Take that these files stay in sync!
     <div class="row">
         <div class="col-md-4">
             <a href="/akteure?stadtteil_id={{ term.id }}" title="Zur Akteursübersicht">
-              <h1 class="front-heading">Akteure</h1>
+              <h2 class="front-heading">Akteure</h2>
             </a>
             {{ drupal_view('frontpage', 'page_1', le_region_key) }}
         </div>
         <div class="col-md-4">
             <a href="/events?stadtteil_id={{ term.id }}" title="Zur Eventsübersicht">
-              <h1 class="front-heading">Events</h1>
+              <h2 class="front-heading">Events</h2>
             </a>
             {{ drupal_view('frontpage', 'page_2', le_region_key) }}
         </div>
         <div class="col-md-4">
             <a href="/journal?stadtteil_id={{ term.id }}" title="Zum Journal">
-              <h1 class="front-heading">Journal</h1>
+              <h2 class="front-heading">Journal</h2>
             </a>
             {{ drupal_view('frontpage', 'page_3', le_region_key) }}
         </div>
