@@ -4,16 +4,21 @@ type: module
 core: 8.x
 package: 'Leipziger Ecken'
 dependencies:
+  - ckeditor
+  - editor
   - field
   - file
+  - filter
   - image
   - le_akteure
   - le_article
   - le_event
   - le_region
   - metatag
+  - obfuscate_email
+  - path
   - simple_sitemap
   - simple_sitemap_engines
   - user
   - views
-version: 8.x-1.06
+version: 8.x-1.07
