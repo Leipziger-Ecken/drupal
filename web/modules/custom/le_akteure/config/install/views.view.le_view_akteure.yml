@@ -409,7 +409,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_typ
@@ -457,7 +457,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_zielgruppe
@@ -505,7 +505,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_tags
@@ -513,6 +513,21 @@ display:
           error_message: true
           plugin_id: taxonomy_index_tid
       sorts:
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
         created:
           id: created
           table: node_field_data
@@ -732,28 +747,28 @@ display:
           click_sort_column: value
           type: leaflet_formatter_default
           settings:
-            multiple_map: 0
-            popup: 0
+            multiple_map: false
+            popup: false
             popup_content: ''
             leaflet_map: 'OSM Mapnik'
-            height: '400'
+            height: 400
             height_unit: px
-            hide_empty_map: 0
-            disable_wheel: 0
-            fullscreen_control: 0
-            gesture_handling: 0
+            hide_empty_map: false
+            disable_wheel: false
+            fullscreen_control: false
+            gesture_handling: false
             reset_map:
-              control: 0
+              control: false
               position: topright
             map_position:
-              force: 0
+              force: false
               center:
-                lat: '0'
-                lon: '0'
-              zoom: '12'
-              minZoom: '1'
-              maxZoom: '18'
-              zoomFiner: '0'
+                lat: !!float 0
+                lon: !!float 0
+              zoom: 12
+              minZoom: 1
+              maxZoom: 18
+              zoomFiner: 0
             icon:
               iconType: marker
               iconUrl: ''
@@ -778,18 +793,18 @@ display:
                 'y': ''
             path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
             geocoder:
-              control: 0
+              control: false
               settings:
                 position: topright
-                input_size: '25'
+                input_size: 25
                 providers:
                   mapbox:
-                    weight: '0'
-                    checked: 0
-                min_terms: '4'
-                delay: '800'
-                zoom: '16'
-                popup: 0
+                    weight: 0
+                    checked: false
+                min_terms: 4
+                delay: 800
+                zoom: 16
+                popup: false
                 options: ''
           group_column: value
           group_columns: {  }
@@ -820,22 +835,22 @@ display:
           leaflet_map: osm-neighbourhood
           height: '400'
           height_unit: px
-          hide_empty_map: 0
-          disable_wheel: 0
-          fullscreen_control: 1
-          gesture_handling: 0
+          hide_empty_map: false
+          disable_wheel: false
+          fullscreen_control: true
+          gesture_handling: false
           reset_map:
-            control: 0
+            control: false
             position: topright
           map_position:
-            force: 0
+            force: false
             center:
-              lat: '0'
-              lon: '0'
-            zoom: '12'
-            minZoom: '1'
-            maxZoom: '18'
-            zoomFiner: '0'
+              lat: 0
+              lon: 0
+            zoom: 12
+            minZoom: 1
+            maxZoom: 18
+            zoomFiner: 0
           icon:
             iconType: marker
             iconUrl: themes/custom/swinger/icons/marker_le_akteur.svg
@@ -859,22 +874,22 @@ display:
               x: ''
               'y': ''
           leaflet_markercluster:
-            control: 0
+            control: false
             options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
           path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
           geocoder:
-            control: 0
+            control: false
             settings:
               position: topright
-              input_size: '25'
+              input_size: 25
               providers:
                 mapbox:
                   weight: '0'
                   checked: 0
-              min_terms: '4'
-              delay: '800'
-              zoom: '16'
-              popup: 0
+              min_terms: 4
+              delay: 800
+              zoom: 16
+              popup: false
               options: ''
       row:
         type: fields

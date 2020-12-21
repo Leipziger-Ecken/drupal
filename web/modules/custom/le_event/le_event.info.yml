@@ -35,5 +35,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.993
+version: 8.x-0.1.994
 core_incompatible: false

@@ -735,7 +735,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_typ
@@ -783,7 +783,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_zielgruppe
@@ -831,7 +831,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          reduce_duplicates: false
+          reduce_duplicates: true
           type: select
           limit: true
           vid: le_kategorie_tags
