@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8fec4b449ee6fb1e5732583e6124913",
+    "content-hash": "be52a036baa79b456e67def59a47c325",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4084,6 +4084,63 @@
             }
         },
         {
+            "name": "drupal/obfuscate_email",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/obfuscate_email.git",
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/obfuscate_email-8.x-1.3.zip",
+                "reference": "8.x-1.3",
+                "shasum": "34c17d1311a62d5c2111184cada2f03df324c5b2"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/rot13": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1604334614",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "b_sharpe",
+                    "homepage": "https://www.drupal.org/user/2512258"
+                },
+                {
+                    "name": "tassilogroeper",
+                    "homepage": "https://www.drupal.org/user/3074381"
+                },
+                {
+                    "name": "yobottehg",
+                    "homepage": "https://www.drupal.org/user/3066367"
+                }
+            ],
+            "description": "Obfuscate Email",
+            "homepage": "https://www.drupal.org/project/obfuscate_email/",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/obfuscate_email",
+                "issues": "https://www.drupal.org/project/issues/obfuscate_email/"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.8.0",
             "source": {
@@ -4201,6 +4258,48 @@
             "homepage": "https://www.drupal.org/project/redirect",
             "support": {
                 "source": "https://git.drupalcode.org/project/redirect"
+            }
+        },
+        {
+            "name": "drupal/rot13",
+            "version": "1.3.0",
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/obfuscate_email": "self.version"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1604334614",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "b_sharpe",
+                    "homepage": "https://www.drupal.org/user/2512258"
+                },
+                {
+                    "name": "tassilogroeper",
+                    "homepage": "https://www.drupal.org/user/3074381"
+                },
+                {
+                    "name": "yobottehg",
+                    "homepage": "https://www.drupal.org/user/3066367"
+                }
+            ],
+            "description": "The rot13 function for twig",
+            "homepage": "https://www.drupal.org/project/obfuscate_email",
+            "support": {
+                "source": "https://git.drupalcode.org/project/obfuscate_email"
             }
         },
         {

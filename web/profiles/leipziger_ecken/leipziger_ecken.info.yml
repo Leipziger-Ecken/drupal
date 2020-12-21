@@ -68,6 +68,7 @@ dependencies:
   - simple_sitemap_engines
   - simple_sitemap_views
   - svg_image
+  - obfuscate_email
   - geocoder
   - geocoder_address
   - geocoder_field
