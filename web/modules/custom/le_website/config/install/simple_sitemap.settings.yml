@@ -12,4 +12,5 @@ excluded_languages: {  }
 enabled_entity_types:
   - node
   - menu_link_content
+  - taxonomy_term
 langcode: de

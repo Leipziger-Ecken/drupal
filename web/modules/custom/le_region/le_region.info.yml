@@ -8,6 +8,7 @@ dependencies:
   - language
   - path
   - pathauto
+  - simple_sitemap
   - taxonomy
   - text
-version: 8.x-0.11
+version: 8.x-0.12
