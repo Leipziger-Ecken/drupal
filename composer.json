@@ -43,6 +43,7 @@
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^1.4",
         "drupal/simple_sitemap": "^3.8",
+        "drupal/subpathauto": "^1.1",
         "drupal/svg_image": "^1.14",
         "drupal/token": "^1.6",
         "drupal/twig_tweak": "^2.6",
