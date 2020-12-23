@@ -19,6 +19,7 @@ dependencies:
   - path
   - simple_sitemap
   - simple_sitemap_engines
+  - subpathauto
   - user
   - views
-version: 8.x-1.07
+version: 8.x-1.08
