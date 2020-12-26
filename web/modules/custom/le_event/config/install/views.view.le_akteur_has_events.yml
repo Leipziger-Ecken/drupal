@@ -5,6 +5,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - node.type.le_event
   module:
+    - datetime
     - node
 id: le_akteur_has_events
 label: 'Akteur Events'
@@ -45,23 +46,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: mini
+        type: none
         options:
-          items_per_page: 10
           offset: 0
-          id: 0
-          total_pages: null
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
       style:
         type: default
         options:
@@ -147,21 +134,19 @@ display:
             operator_limit_selection: false
             operator_list: {  }
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
-          granularity: second
+          granularity: hour
+          plugin_id: datetime
       title: Events
       header:
         area_text_custom:
@@ -235,7 +220,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
       tags: {  }
   feed_1:
@@ -268,7 +252,9 @@ display:
     display_title: Page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        simple_sitemap_display_extender:
+          variants: {  }
       path: node/%node/events
       menu:
         type: none
@@ -301,6 +287,5 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - url.query_args
         - 'user.node_grants:view'
       tags: {  }

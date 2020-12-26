@@ -249,7 +249,7 @@ display:
             operator_list: {  }
             identifier: title
             required: false
-            remember: true
+            remember: false
             multiple: false
             remember_roles:
               anonymous: anonymous
@@ -924,7 +924,15 @@ display:
     display_title: Seite
     position: 2
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        simple_sitemap_display_extender:
+          variants:
+            default:
+              index: true
+              priority: '0.8'
+              changefreq: daily
+              arguments: {  }
+              max_links: 100
       path: akteure
       menu:
         type: normal
@@ -967,67 +975,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user
-        - 'user.node_grants:view'
-      tags:
-        - 'config:field.storage.node.field_le_akteur_image'
-  rest_export_1:
-    display_plugin: rest_export
-    id: rest_export_1
-    display_title: 'REST export'
-    position: 1
-    display_options:
-      display_extenders:
-        simple_sitemap_display_extender:
-          variants:
-            default:
-              index: true
-              priority: '0.5'
-              changefreq: daily
-              arguments: {  }
-              max_links: 100
-        metatag_display_extender: {  }
-      path: api/v1/akteure
-      pager:
-        type: full
-        options:
-          items_per_page: 2
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: '‹ Vorherige Seite'
-            next: 'Nächste Seite ›'
-            first: '« Anfang'
-            last: 'Ende »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Elemente pro Seite'
-            items_per_page_options: '2'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- Alle -'
-            offset: false
-            offset_label: Versatz
-          quantity: 9
-      style:
-        type: serializer
-        options:
-          uses_fields: false
-          formats:
-            jsonld: jsonld
-            json: json
-      row:
-        type: data_entity
-        options: {  }
-      enabled: false
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
         - url
         - url.query_args
         - user

@@ -14,9 +14,9 @@ dependencies:
   - geofield
   - geofield_map
   - image
+  - jsonapi_extras
   - jsonld
   - language
-  - le_api
   - le_bezirk
   - le_kategorien
   - le_region
@@ -38,5 +38,5 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-0.1.997
+version: 8.x-0.1.998
 core_incompatible: false

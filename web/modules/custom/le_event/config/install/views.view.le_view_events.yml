@@ -1414,7 +1414,7 @@ display:
           variants:
             default:
               index: true
-              priority: '0.5'
+              priority: '0.8'
               changefreq: daily
               arguments: {  }
               max_links: 100
@@ -1449,40 +1449,6 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
-        - 'user.node_grants:view'
-        - user.permissions
-      tags:
-        - 'config:field.storage.node.field_le_event_beschreibung'
-  rest_export_1:
-    display_plugin: rest_export
-    id: rest_export_1
-    display_title: 'REST export'
-    position: 2
-    display_options:
-      display_extenders: {  }
-      path: /api/v1/events
-      style:
-        type: serializer
-      defaults:
-        style: false
-        row: false
-      row:
-        type: data_entity
-        options: {  }
-      pager:
-        type: some
-        options:
-          items_per_page: 10
-          offset: 0
-      enabled: false
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - request_format
-        - url
         - user
         - 'user.node_grants:view'
         - user.permissions

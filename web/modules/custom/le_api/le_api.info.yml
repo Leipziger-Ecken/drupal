@@ -1,5 +1,0 @@
-name: Leipziger Ecken API
-description: PATCH & POST endpoints for Akteure, Events & Tags
-package: Leipziger Ecken
-type: module
-core: 8.x
