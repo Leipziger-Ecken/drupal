@@ -1,7 +1,0 @@
-langcode: de
-status: true
-dependencies: {  }
-id: comment
-label: Standardkommentare
-target_entity_type_id: node
-description: 'Kommentieren des Inhalts erlauben'

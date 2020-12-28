@@ -1,25 +1,49 @@
 name: Website
-description: 'Enthält alle Konfigurationen ohne eindeutig dahinterliegende Entität (z.B. Views, Formulare, Benutzereinstellungen).'
+description: 'Enthält alle "losen" Systemkonfigurationen (z.B. globale Views, Nutzerformulare) und JSON:API-Ressourcen.'
 type: module
 core: 8.x
 package: 'Leipziger Ecken'
 dependencies:
+  - block
+  - block_content
   - ckeditor
+  - comment
+  - contact
+  - date_recur
   - editor
+  - features
   - field
   - file
   - filter
+  - geocoder
+  - http_client_manager
   - image
+  - jsonapi_extras
+  - language
   - le_akteure
   - le_article
   - le_event
   - le_region
+  - menu_link_content
   - metatag
+  - node
   - obfuscate_email
+  - og
   - path
+  - path_alias
+  - pathauto
+  - rdf
+  - redirect
+  - rest
+  - rules
+  - search
+  - shortcut
   - simple_sitemap
   - simple_sitemap_engines
   - subpathauto
+  - system
+  - taxonomy
+  - text
   - user
   - views
-version: 8.x-1.09
+version: 8.x-1.10

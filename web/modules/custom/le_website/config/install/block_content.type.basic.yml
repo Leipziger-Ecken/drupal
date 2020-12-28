@@ -1,0 +1,7 @@
+langcode: de
+status: true
+dependencies: {  }
+id: basic
+label: 'Normaler Block'
+revision: 0
+description: 'Ein normaler Block enthält einen Titel und einen Textkörper.'

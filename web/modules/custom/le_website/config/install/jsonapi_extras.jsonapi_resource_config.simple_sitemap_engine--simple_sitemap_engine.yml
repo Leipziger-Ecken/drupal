@@ -1,0 +1,76 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - simple_sitemap_engines
+id: simple_sitemap_engine--simple_sitemap_engine
+disabled: true
+path: simple_sitemap_engine/simple_sitemap_engine
+resourceType: simple_sitemap_engine--simple_sitemap_engine
+resourceFields:
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  dependencies:
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+    disabled: false
+  third_party_settings:
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  url:
+    fieldName: url
+    publicName: url
+    enhancer:
+      id: ''
+    disabled: false
+  sitemap_variants:
+    fieldName: sitemap_variants
+    publicName: sitemap_variants
+    enhancer:
+      id: ''
+    disabled: false
+  last_submitted:
+    fieldName: last_submitted
+    publicName: last_submitted
+    enhancer:
+      id: ''
+    disabled: false

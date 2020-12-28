@@ -1,0 +1,11 @@
+langcode: de
+status: true
+dependencies: {  }
+id: feedback
+label: Website-Feedback
+recipients:
+  - admin@example.com
+reply: ''
+weight: 0
+message: 'Ihre Nachricht wurde gesendet.'
+redirect: ''

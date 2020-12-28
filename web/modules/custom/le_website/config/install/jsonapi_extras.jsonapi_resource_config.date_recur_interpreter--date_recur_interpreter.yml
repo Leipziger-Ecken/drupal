@@ -1,0 +1,34 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - date_recur
+id: date_recur_interpreter--date_recur_interpreter
+disabled: true
+path: date_recur_interpreter/date_recur_interpreter
+resourceType: date_recur_interpreter--date_recur_interpreter
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  type:
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false

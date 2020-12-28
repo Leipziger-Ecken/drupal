@@ -13,6 +13,7 @@ dependencies:
   - geocoder_field
   - geofield
   - image
+  - jsonapi_extras
   - language
   - le_akteure
   - le_bezirk

@@ -1,0 +1,82 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - og.og_membership_type.default
+id: og_membership--default
+disabled: true
+path: og_membership/default
+resourceType: og_membership--default
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  type:
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+    disabled: false
+  uid:
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+    disabled: false
+  entity_type:
+    fieldName: entity_type
+    publicName: entity_type
+    enhancer:
+      id: ''
+    disabled: false
+  entity_bundle:
+    fieldName: entity_bundle
+    publicName: entity_bundle
+    enhancer:
+      id: ''
+    disabled: false
+  entity_id:
+    fieldName: entity_id
+    publicName: entity_id
+    enhancer:
+      id: ''
+    disabled: false
+  state:
+    fieldName: state
+    publicName: state
+    enhancer:
+      id: ''
+    disabled: false
+  roles:
+    fieldName: roles
+    publicName: roles
+    enhancer:
+      id: ''
+    disabled: false
+  created:
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+    disabled: false
+  language:
+    fieldName: language
+    publicName: language
+    enhancer:
+      id: ''
+    disabled: false
+  og_membership_request:
+    fieldName: og_membership_request
+    publicName: og_membership_request
+    enhancer:
+      id: ''
+    disabled: false

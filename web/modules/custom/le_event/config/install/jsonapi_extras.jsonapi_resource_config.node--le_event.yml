@@ -2,11 +2,11 @@ langcode: de
 status: true
 dependencies:
   config:
-    - node.type.le_akteur
-id: node--le_akteur
+    - node.type.le_event
+id: node--le_event
 disabled: false
-path: akteure
-resourceType: akteur
+path: events
+resourceType: event
 resourceFields:
   nid:
     fieldName: nid
@@ -152,111 +152,69 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_comments:
-    disabled: true
-    fieldName: field_le_akteur_comments
-    publicName: field_le_akteur_comments
-    enhancer:
-      id: ''
-  field_le_akteur_contactperson:
-    fieldName: field_le_akteur_contactperson
-    publicName: contact_person
-    enhancer:
-      id: ''
-    disabled: false
-  field_le_akteur_contactperson_fn:
-    fieldName: field_le_akteur_contactperson_fn
-    publicName: contact_person_function
-    enhancer:
-      id: ''
-    disabled: false
-  field_le_akteur_description:
-    fieldName: field_le_akteur_description
+  field_le_event_beschreibung:
+    fieldName: field_le_event_beschreibung
     publicName: description
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_einrichtungsname:
-    disabled: true
-    fieldName: field_le_akteur_einrichtungsname
-    publicName: einrichtungsname
-    enhancer:
-      id: ''
-  field_le_akteur_email:
-    fieldName: field_le_akteur_email
-    publicName: contact_email
-    enhancer:
-      id: ''
-    disabled: false
-  field_le_akteur_hat_typ:
-    fieldName: field_le_akteur_hat_typ
-    publicName: typ
-    enhancer:
-      id: ''
-    disabled: false
-  field_le_akteur_image:
-    fieldName: field_le_akteur_image
+  field_le_event_image:
+    fieldName: field_le_event_image
     publicName: image
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_is_barrier_free:
-    fieldName: field_le_akteur_is_barrier_free
+  field_le_event_is_barrier_free:
+    fieldName: field_le_event_is_barrier_free
     publicName: barrier_free_location
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_is_private:
-    disabled: true
-    fieldName: field_le_akteur_is_private
-    publicName: field_le_akteur_is_private
-    enhancer:
-      id: ''
-  field_le_akteur_kategorie_gruppe:
-    fieldName: field_le_akteur_kategorie_gruppe
+  field_le_event_kategorie_gruppe:
+    fieldName: field_le_event_kategorie_gruppe
     publicName: target_groups
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_kategorie_tags:
-    fieldName: field_le_akteur_kategorie_tags
+  field_le_event_kategorie_tags:
+    fieldName: field_le_event_kategorie_tags
     publicName: tags
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_kategorie_typ:
-    fieldName: field_le_akteur_kategorie_typ
+  field_le_event_kategorie_typ:
+    fieldName: field_le_event_kategorie_typ
     publicName: categories
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_lizenzhinweis:
+  field_le_event_lizenzhinweis:
     disabled: true
-    fieldName: field_le_akteur_lizenzhinweis
-    publicName: field_le_akteur_lizenzhinweis
+    fieldName: field_le_event_lizenzhinweis
+    publicName: field_le_event_lizenzhinweis
     enhancer:
       id: ''
-  field_le_akteur_opening_times:
-    fieldName: field_le_akteur_opening_times
-    publicName: opening_times
-    enhancer:
-      id: ''
-    disabled: false
-  field_le_akteur_phone:
-    fieldName: field_le_akteur_phone
-    publicName: contact_phone
+  field_le_event_occurrences:
+    fieldName: field_le_event_occurrences
+    publicName: occurrences
     enhancer:
       id: ''
     disabled: false
-  field_le_akteur_url:
-    fieldName: field_le_akteur_url
-    publicName: external_url
+  field_le_event_website:
+    fieldName: field_le_event_website
+    publicName: external_website
     enhancer:
       id: ''
     disabled: false
-  og_group:
+  field_le_event___eid:
     disabled: true
-    fieldName: og_group
-    publicName: og_group
+    fieldName: field_le_event___eid
+    publicName: field_le_event___eid
     enhancer:
       id: ''
+  og_audience:
+    fieldName: og_audience
+    publicName: akteur
+    enhancer:
+      id: ''
+    disabled: false

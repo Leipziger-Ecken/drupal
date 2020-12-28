@@ -5,6 +5,7 @@ core: 8.x
 package: 'Leipziger Ecken'
 dependencies:
   - ctools
+  - jsonapi_extras
   - language
   - path
   - pathauto

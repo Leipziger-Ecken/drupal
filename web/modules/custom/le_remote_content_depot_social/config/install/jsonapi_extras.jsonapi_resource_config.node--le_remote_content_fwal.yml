@@ -1,0 +1,190 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_fwal
+id: node--le_remote_content_fwal
+disabled: true
+path: node/le_remote_content_fwal
+resourceType: node--le_remote_content_fwal
+resourceFields:
+  nid:
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  vid:
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  type:
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+    disabled: false
+  revision_timestamp:
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+    disabled: false
+  revision_uid:
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+    disabled: false
+  revision_log:
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  uid:
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+    disabled: false
+  title:
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+    disabled: false
+  created:
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+    disabled: false
+  changed:
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+    disabled: false
+  promote:
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+    disabled: false
+  sticky:
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+    disabled: false
+  default_langcode:
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+    disabled: false
+  revision_default:
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+    disabled: false
+  revision_translation_affected:
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+    disabled: false
+  metatag:
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+    disabled: false
+  path:
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+    disabled: false
+  menu_link:
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+    disabled: false
+  body:
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
+    disabled: false
+  field_adresse:
+    fieldName: field_adresse
+    publicName: field_adresse
+    enhancer:
+      id: ''
+    disabled: false
+  field_bezirk:
+    fieldName: field_bezirk
+    publicName: field_bezirk
+    enhancer:
+      id: ''
+    disabled: false
+  field_geofield:
+    fieldName: field_geofield
+    publicName: field_geofield
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_rcds_einrichtung_name:
+    fieldName: field_le_rcds_einrichtung_name
+    publicName: field_le_rcds_einrichtung_name
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_rcds_id_external:
+    fieldName: field_le_rcds_id_external
+    publicName: field_le_rcds_id_external
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_rcds_link:
+    fieldName: field_le_rcds_link
+    publicName: field_le_rcds_link
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_rcds_offers_count:
+    fieldName: field_le_rcds_offers_count
+    publicName: field_le_rcds_offers_count
+    enhancer:
+      id: ''
+    disabled: false
+  og_audience:
+    fieldName: og_audience
+    publicName: og_audience
+    enhancer:
+      id: ''
+    disabled: false

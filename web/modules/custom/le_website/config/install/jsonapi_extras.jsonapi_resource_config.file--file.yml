@@ -1,0 +1,76 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - file
+id: file--file
+disabled: false
+path: file
+resourceType: file
+resourceFields:
+  fid:
+    fieldName: fid
+    publicName: fid
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  filename:
+    fieldName: filename
+    publicName: filename
+    enhancer:
+      id: ''
+    disabled: false
+  uri:
+    fieldName: uri
+    publicName: uri
+    enhancer:
+      id: ''
+    disabled: false
+  filemime:
+    fieldName: filemime
+    publicName: filemime
+    enhancer:
+      id: ''
+    disabled: false
+  filesize:
+    fieldName: filesize
+    publicName: filesize
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    disabled: true
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
