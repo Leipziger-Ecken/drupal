@@ -32,14 +32,20 @@ $ cd bin
 $ ./stop.sh
 ```
 
-## Update
-
-### For production
+## Update for production
 
 ```
 $ cd bin
 $ ./update_production.sh
 ```
+
+This will:
+
+- pull the latest code
+- fix file permissions
+- import config
+- update the database
+- clear the cache
 
 ### For development
 
