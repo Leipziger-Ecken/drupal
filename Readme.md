@@ -47,13 +47,6 @@ This will:
 - update the database
 - clear the cache
 
-### For development
-
-```
-$ cd bin
-$ ./update_development.sh
-```
-
 
 ## Get a terminal into the running container
 
