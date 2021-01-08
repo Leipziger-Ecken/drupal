@@ -38,3 +38,22 @@ $ ./stop.sh
 $ cd bin
 $ ./update.sh
 ```
+
+## Get a terminal into the running container
+
+```
+$ cd bin
+$ ./bash.sh
+```
+
+The terminal will run under the `www-data` user.
+
+## Fix file permissions
+
+Sometimes you get errors due to file permissions.
+To fix them do
+
+```
+$ cd bin
+$ ./fix_permissions.sh
+```
