@@ -1,0 +1,31 @@
+services:
+  http_client_manager.http_services_api:
+    class: Drupal\http_client_manager\HttpServiceApiHandler
+    arguments: ["@app.root", "@module_handler", "@string_translation", "@controller_resolver", "@config.factory"]
+
+  http_client_manager.factory:
+    class: Drupal\http_client_manager\HttpClientManagerFactory
+    parent: container.trait
+
+  http_client_manager.client_base:
+    abstract: true
+    class: Drupal\http_client_manager\HttpClient
+    factory: http_client_manager.factory:get
+
+  cache.http_client_manager:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments: ['http_client_manager']
+
+  http_client_manager.api_wrapper.factory:
+    class: Drupal\http_client_manager\HttpServiceApiWrapperFactory
+    arguments: []
+    tags:
+      - { name: service_collector, tag: 'http_service_api_wrapper', call: addApiWrapper }
+
+  http_client_manager.api_wrapper.base:
+    abstract: true
+    class: Drupal\http_client_manager\Plugin\HttpServiceApiWrapper\HttpServiceApiWrapperBase
+    arguments: ['@http_client_manager.factory', '@cache.http_client_manager', '@current_user', '@language_manager', '@messenger']

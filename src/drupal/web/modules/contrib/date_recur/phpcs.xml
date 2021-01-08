@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="date_recur">
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal"/>
+  <exclude-pattern>vendor/*</exclude-pattern>
+  <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>
+</ruleset>

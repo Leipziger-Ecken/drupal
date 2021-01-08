@@ -1,0 +1,111 @@
+field.value.date_recur:
+  type: field.value.daterange
+  label: 'Default value'
+  mapping:
+    default_date_time_zone:
+      type: string
+      label: 'A time zone identifier used for default start and/or end dates.'
+    default_time_zone:
+      type: string
+      label: 'A time zone identifier used as default value for time zone. If empty, current user time zone should be used.'
+    default_rrule:
+      type: string
+      label: 'Default RRULE'
+
+field.storage_settings.date_recur:
+  type: field.storage_settings.daterange
+  label: 'Date recur settings'
+  mapping:
+    rrule_max_length:
+      type: integer
+      label: 'Maximum character length of RRULE'
+
+field.field_settings.date_recur:
+  type: mapping
+  label: 'Integer'
+  mapping:
+    precreate:
+      type: string
+      label: 'Precreate interval'
+    parts:
+      type: mapping
+      mapping:
+        all:
+          type: boolean
+          label: 'Explicitly enable all frequencies and parts'
+        frequencies:
+          type: sequence
+          label: 'Frequencies'
+          sequence:
+            type: sequence
+            label: 'An array of enabled parts for the frequency.'
+            sequence:
+              type: string
+              label: 'A part.'
+
+field.formatter.settings.date_recur_basic_formatter:
+  type: field.formatter.settings.daterange_default
+  label: 'Basic date recur formatter.'
+  mapping:
+    show_next:
+      type: integer
+    count_per_item:
+      type: boolean
+    occurrence_format_type:
+      type: string
+    same_end_date_format_type:
+      type: string
+    interpreter:
+      type: string
+
+field.widget.settings.date_recur_basic_widget:
+  type: field.widget.settings.daterange_default
+  label: 'Settings for Simple Recurring Date Widget'
+
+date_recur.interpreter.*:
+  type: config_entity
+  label: 'Date format'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Label'
+    plugin:
+      type: string
+      label: 'Plugin type'
+    settings:
+      type: date_recur.interpreter.settings.[%parent.plugin]
+
+
+date_recur.interpreter.settings.*:
+  type: date_recur_interpreter_settings_base
+
+date_recur_interpreter_settings_base:
+  type: mapping
+  label: 'Base settings for date recur interpreters'
+  mapping: []
+
+date_recur.interpreter.settings.rl:
+  type: mapping
+  mapping:
+    show_start_date:
+      type: boolean
+    show_until:
+      type: boolean
+    date_format:
+      type: string
+    show_infinite:
+      type: boolean
+
+views.filter.date_recur_occurrences_filter:
+  type: views.filter.string
+  label: 'Date recur occurrences filter'
+  mapping:
+    value_granularity:
+      type: string
+    value_min:
+      type: string
+    value_max:
+      type: string

@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a recurring dates field.
+ *
+ * Available variables:
+ * - date: shows first start, and end date if available, whether or not the
+ *   field is a rule.
+ * - interpretation: The human readable repeat rule.
+ * - occurrences: The occurrences, if value is recurring. Individual occurrences
+ *   can be printed as a whole, or properties of each occurrences can be
+ *   accessed:
+ *   - occurrence: print all properties
+ *     - start_date: the start date.
+ *     - end_date: the end date.
+ *     - separator: the date separator.
+ * - is_recurring: Whether the field value is recurring.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if date and not is_recurring %}
+  <div class="date-recur-date">{{ date }}</div>
+{% endif %}
+
+{% if interpretation -%}
+  <div class="date-recur-interpretaton">{{ interpretation }}</div>
+{% endif %}
+
+{% if is_recurring and occurrences|length > 0 %}
+  <ul class="date-recur-occurrences">
+    {% for item in occurrences %}
+      <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}

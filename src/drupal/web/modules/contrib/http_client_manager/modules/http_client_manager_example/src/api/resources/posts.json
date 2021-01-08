@@ -1,0 +1,119 @@
+{
+  "operations": {
+    "CreatePost": {
+      "httpMethod": "POST",
+      "uri": "posts",
+      "summary": "Create post",
+      "parameters": {
+        "content-type": {
+          "location": "header",
+          "default": "application/json"
+        },
+        "title": {
+          "type": "string",
+          "location": "json",
+          "description": "The post title",
+          "required": true
+        },
+        "body": {
+          "type": "string",
+          "location": "json",
+          "description": "The post body",
+          "required": true
+        },
+        "userId": {
+          "type": "string",
+          "location": "json",
+          "description": "The post author id",
+          "required": true
+        }
+      },
+      "responseModel": "Post"
+    },
+    "FindPosts": {
+      "httpMethod": "GET",
+      "uri": "posts",
+      "summary": "Find posts",
+      "responseModel": "PostList"
+    },
+    "FindPost": {
+      "httpMethod": "GET",
+      "uri": "posts/{postId}",
+      "summary": "Find posts",
+      "parameters": {
+        "postId": {
+          "location": "uri",
+          "description": "Filter posts by id",
+          "required": true,
+          "type": "integer"
+        }
+      },
+      "responseModel": "Post"
+    },
+    "FindComments": {
+      "httpMethod": "GET",
+      "uri": "comments",
+      "summary": "Find comments",
+      "parameters": {
+        "postId": {
+          "location": "query",
+          "description": "Filter comments by post id",
+          "required": false,
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "models": {
+    "CreatePostOutput": {
+      "location": "json",
+      "type": "object",
+      "properties": {
+        "title": {
+          "location": "json",
+          "type": "string"
+        },
+        "body": {
+          "location": "json",
+          "type": "string"
+        },
+        "userId": {
+          "location": "json",
+          "type": "integer"
+        },
+        "id": {
+          "location": "json",
+          "type": "integer"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "location": "json",
+          "type": "integer"
+        },
+        "id": {
+          "location": "json",
+          "type": "integer"
+        },
+        "title": {
+          "location": "json",
+          "type": "string"
+        },
+        "body": {
+          "location": "json",
+          "type": "string"
+        }
+      }
+    },
+    "PostList": {
+      "location": "json",
+      "type": "array",
+      "items": {
+        "$ref": "Post"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+http_client_manager.preview:
+  title: 'HTTP Client Manager'
+  parent: system.admin_config_services
+  description: 'Show configured services api and allows creation of configurable requests.'
+  route_name: http_client_manager.preview

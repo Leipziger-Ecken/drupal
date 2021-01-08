@@ -1,0 +1,5 @@
+entity.date_recur_interpreter.collection:
+  title: 'Recurring date interpreters'
+  parent: system.admin_config_regional
+  description: 'Configure how recurring dates are converted to readable text.'
+  route_name: entity.date_recur_interpreter.collection

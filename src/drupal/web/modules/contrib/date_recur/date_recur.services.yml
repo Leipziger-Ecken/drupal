@@ -1,0 +1,10 @@
+services:
+  plugin.manager.date_recur_interpreter:
+    class: Drupal\date_recur\Plugin\DateRecurInterpreterManager
+    parent: default_plugin_manager
+
+  date_recur.occurrences:
+    class: Drupal\date_recur\DateRecurOccurrences
+    arguments: ['@database', '@entity_field.manager', '@typed_data_manager', '@entity_type.manager']
+    tags:
+    - { name: 'event_subscriber' }

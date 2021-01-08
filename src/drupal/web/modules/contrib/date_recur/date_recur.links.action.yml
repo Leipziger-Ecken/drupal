@@ -1,0 +1,5 @@
+entity.date_recur_interpreter.add:
+  route_name: entity.date_recur_interpreter.add_form
+  title: 'Add interpreter'
+  appears_on:
+    - entity.date_recur_interpreter.collection

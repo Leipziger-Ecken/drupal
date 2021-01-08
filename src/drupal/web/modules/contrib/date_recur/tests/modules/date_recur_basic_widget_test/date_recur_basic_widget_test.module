@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks for date_recur_basic_widget_test module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * State flag to hide time zone field in basic widget via a hook_form_alter.
+ *
+ * Triggers when non empty.
+ */
+const DATE_RECUR_BASIC_WIDGET_TEST_HIDDEN_TIMEZONE_FIELD_HOOK_FORM_ALTER = 'DATE_RECUR_BASIC_WIDGET_TEST_HIDDEN_TIMEZONE_FIELD_HOOK_FORM_ALTER';
+
+/**
+ * Implements hook_form_alter().
+ */
+function date_recur_basic_widget_test_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $useTimeZoneFormAlter = \Drupal::state()->get(\DATE_RECUR_BASIC_WIDGET_TEST_HIDDEN_TIMEZONE_FIELD_HOOK_FORM_ALTER);
+  if (!empty($useTimeZoneFormAlter)) {
+    if ('dr_entity_test_dr_entity_test_form' === $form_id) {
+      $form['dr']['widget']['0']['timezone']['#access'] = FALSE;
+    }
+  }
+}

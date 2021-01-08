@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.3-cli
+    steps:
+      - run: composer global require hirak/prestissimo
+      - run: composer create-project drupal-composer/drupal-project:8.x-dev drupal --no-interaction --ignore-platform-reqs
+      - checkout:
+          path: drupal/web/modules/contrib/date_recur
+      - run: cd drupal/web/modules/contrib/date_recur && composer install --ignore-platform-reqs
+      - save_cache:
+          key: my-key-{{ checksum "drupal/web/modules/contrib/date_recur/composer.lock" }}-{{ .Revision }}
+          paths:
+            - drupal/
+
+  coding_standards:
+    docker:
+      - image: circleci/php:7.3-cli
+    steps:
+      - checkout:
+          path: tmp/
+      - restore_cache:
+          key: my-key-{{ checksum "tmp/composer.lock" }}-{{ .Revision }}
+      - run: cd drupal/web/modules/contrib/date_recur && ./vendor/bin/phpcs . > ~/phpcs-report.txt
+      - store_artifacts:
+          path: ~/phpcs-report.txt
+
+  static_analysis:
+    docker:
+      - image: circleci/php:7.3-cli
+    steps:
+      - run: echo 'memory_limit=-1' | sudo tee -a /usr/local/etc/php/php.ini
+      - run: php -i | grep memory_limit
+      - checkout:
+          path: tmp/
+      - restore_cache:
+          key: my-key-{{ checksum "tmp/composer.lock" }}-{{ .Revision }}
+      - run: sudo apt update
+      - run: sudo apt install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
+      - run: sudo docker-php-ext-install gd
+      - run: cd drupal/web/modules/contrib/date_recur && ./vendor/bin/phpstan analyse --no-progress -c phpstan.neon --level=max > ~/phpstan-report.txt
+      - store_artifacts:
+          path: ~/phpstan-report.txt
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
+      - coding_standards:
+          requires:
+            - build
+      - static_analysis:
+          requires:
+            - build

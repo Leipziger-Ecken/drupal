@@ -1,0 +1,31 @@
+entity.date_recur_interpreter.collection:
+  path: '/admin/config/regional/recurring-date-interpreters'
+  defaults:
+    _entity_list: 'date_recur_interpreter'
+    _title: 'Recurring date interpreters'
+  requirements:
+    _permission: 'date_recur manage interpreters'
+
+entity.date_recur_interpreter.add_form:
+  path: '/admin/config/regional/recurring-date-interpreters/add'
+  defaults:
+    _entity_form: 'date_recur_interpreter.add'
+    _title: 'Add interpreter'
+  requirements:
+    _permission: 'date_recur manage interpreters'
+
+entity.date_recur_interpreter.edit_form:
+  path: '/admin/config/regional/recurring-date-interpreters/manage/{date_recur_interpreter}'
+  defaults:
+    _entity_form: 'date_recur_interpreter.edit'
+    _title: 'Edit interpreter'
+  requirements:
+    _entity_access: 'date_recur_interpreter.update'
+
+entity.date_recur_interpreter.delete_form:
+  path: '/admin/config/regional/recurring-date-interpreters/manage/{date_recur_interpreter}/delete'
+  defaults:
+    _entity_form: 'date_recur_interpreter.delete'
+    _title: 'Delete interpreter'
+  requirements:
+    _entity_access: 'date_recur_interpreter.delete'

@@ -1,0 +1,10 @@
+uuid: 00018629-7342-4456-95ee-ec3725657eaf
+langcode: en
+status: true
+dependencies: {  }
+id: all_posts
+label: 'All posts'
+service_api: example_services
+command_name: FindPosts
+parameters:
+  postId: ''

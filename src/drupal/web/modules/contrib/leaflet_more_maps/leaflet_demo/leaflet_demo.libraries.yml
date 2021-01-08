@@ -1,0 +1,5 @@
+leaflet_demo_form:
+  version: 1.x
+  css:
+    theme:
+      css/leaflet_demo.css: {}

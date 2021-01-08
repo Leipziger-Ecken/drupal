@@ -1,0 +1,17 @@
+{
+  "description": "Enables administrators to package configuration into modules",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "name": "drupal/features",
+  "require": {
+    "drupal/config_update": "^1.4"
+  },
+  "type": "drupal-module",
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^9"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  example_api.http_client:
+    parent: http_client_manager.client_base
+    arguments: ['example_services']
+
+  http_client_manager_example.subscriber:
+    class: Drupal\http_client_manager_example\EventSubscriber\HttpClientManagerExampleSubscriber
+    tags:
+      - { name: event_subscriber }
+
+  http_client_manager_example.api_wrapper.posts:
+    class: Drupal\http_client_manager_example\Plugin\HttpServiceApiWrapper\HttpServiceApiWrapperPosts
+    parent: http_client_manager.api_wrapper.base
+    tags:
+      - { name: 'http_service_api_wrapper', api: 'posts'}

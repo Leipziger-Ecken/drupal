@@ -1,0 +1,34 @@
+
+http_client_manager_example.find_posts:
+  path: 'find-posts/{postId}'
+  defaults:
+    _controller: '\Drupal\http_client_manager_example\Controller\ExampleController::findPosts'
+    _title: 'Find posts'
+    postId: null
+  requirements:
+    _permission: 'access content'
+
+http_client_manager_example.find_posts.advanced:
+  path: 'find-posts-advanced/{postId}'
+  defaults:
+    _controller: '\Drupal\http_client_manager_example\Controller\ExampleController::findPostsAdvanced'
+    _title: 'Find posts - Advanced'
+    postId: null
+  requirements:
+    _permission: 'access content'
+
+http_client_manager_example.create_post:
+  path: 'create-post'
+  defaults:
+    _controller: '\Drupal\http_client_manager_example\Controller\ExampleController::createPost'
+    _title: 'Create post'
+  requirements:
+    _permission: 'access content'
+
+http_client_manager_example.create_post.advanced:
+  path: 'create-post-advanced'
+  defaults:
+    _controller: '\Drupal\http_client_manager_example\Controller\ExampleController::createPostAdvanced'
+    _title: 'Create post - Advanced'
+  requirements:
+    _permission: 'access content'

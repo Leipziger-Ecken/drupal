@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Displays the Geofield Google Map (embed) formatter.
+ *
+ * Available variables:
+ * - width: Width of map.
+ * - height: Height of map.
+ * - q: The place address / location string, url-escaped.
+ * - apikey: Google Maps API key.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="geofield-embed-google-map">
+  <iframe
+    width={{ width }}
+    height={{ height }}
+    frameborder="0" style="border:0"
+    title="{{ title }}"
+    src="https://www.google.com/maps/embed/v1/place?key={{ apikey }}&q={{ q }}{{ options_string }}" allowfullscreen>
+  </iframe>
+</div>

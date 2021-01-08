@@ -1,0 +1,8 @@
+{
+  "name": "TestApi",
+  "apiVersion": "2016-07-29",
+  "description": "Client wrapper for the TestApi API.",
+  "imports" : [
+    "items/posts.json"
+  ]
+}

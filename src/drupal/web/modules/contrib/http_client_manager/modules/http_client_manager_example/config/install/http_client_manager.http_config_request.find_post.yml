@@ -1,0 +1,10 @@
+uuid: 8784103e-4053-41e5-8b73-79ffa89c0c10
+langcode: en
+status: true
+dependencies: {  }
+id: find_post
+label: 'Find post'
+service_api: example_services
+command_name: FindPost
+parameters:
+  postId: '1'

@@ -1,0 +1,24 @@
+.markers-location .form-item {
+  display: inline-block;
+}
+
+form #map-theming-container {
+  width: 90%;
+  font-size: 0.95em;
+  table {
+    thead {
+      display: block;
+    }
+    tbody {
+      display: block;
+      max-height: 800px;
+      overflow-y: scroll;
+    }
+    &.map-theming-options .deprecated {
+      opacity: 0.4;
+    }
+  }
+}
+form .image-widget-data .file {
+  display: none;
+}

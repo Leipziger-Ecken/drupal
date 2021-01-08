@@ -1,0 +1,25 @@
+version: '3'
+services:
+  drupal:
+    build:
+      context: ./docker/drupal/
+      args:
+        buildno: 1
+    volumes:
+      - ./src/drupal:/var/www/html:rw
+      - ./php-conf/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./php-conf/opcache.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini
+    links:
+      - "db:mysql"
+    env_file:
+      - ./.env
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./docker/data/mysql:/var/lib/mysql
+      - ./docker/mysql/backup:/docker-entrypoint-initdb.d
+      - ./docker/mysql/conf:/etc/mysql/conf.d
+    env_file:
+      - ./.env

@@ -1,0 +1,11 @@
+http_client_manager.admin.preview:
+  route_name: http_client_manager.preview
+  base_route: http_client_manager.preview
+  title: 'HTTP Services API'
+  weight: 0
+
+http_client_manager.admin.settings:
+  route_name: http_client_manager.settings
+  base_route: http_client_manager.preview
+  title: 'Settings'
+  weight: 1

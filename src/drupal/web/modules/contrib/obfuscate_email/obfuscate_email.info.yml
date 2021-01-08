@@ -1,0 +1,14 @@
+name: 'Obfuscate Email'
+type: module
+description: 'Twig Template to obfuscate a <code>field_email</code>.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: Fields
+dependencies:
+  - obfuscate_email:rot13
+  - drupal:field
+
+# Information added by Drupal.org packaging script on 2020-11-02
+version: '8.x-1.3'
+project: 'obfuscate_email'
+datestamp: 1604334616

@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Contains install, uninstall and update hooks for geofield_map.
+ */
+
+/**
+ * Enable geofield_map_extras if the site is using Google Static Maps Formatter.
+ */
+function geofield_map_update_8201(&$sandbox) {
+  $map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('geofield');
+  $config_factory = \Drupal::configFactory();
+  $uses_static_formatter = FALSE;
+  foreach ($map as $entity_type_id => $info) {
+    foreach ($info as $data) {
+      foreach ($data['bundles'] as $bundle_name) {
+        $displays = $config_factory->listAll("core.entity_view_display.{$entity_type_id}.{$bundle_name}.");
+        foreach ($displays as $display_name) {
+          $config_object = $config_factory->get($display_name);
+          if ($config_object) {
+            foreach ($config_object->get('content') as $formatter_array) {
+              if (!empty($formatter_array['type']) && $formatter_array['type'] === 'geofield_static_google_map') {
+                $uses_static_formatter = TRUE;
+                break 5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if ($uses_static_formatter) {
+    \Drupal::service('module_installer')->install(['geofield_map_extras']);
+    return t('Installed the Geofield Map Extras module since the GoogleMapStaticFormatter is now part of the submodule and it is being used on this site.');
+  }
+}

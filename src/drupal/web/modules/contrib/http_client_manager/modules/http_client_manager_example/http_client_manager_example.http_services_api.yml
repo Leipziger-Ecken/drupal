@@ -1,0 +1,11 @@
+example_services:
+  title: "[JSON] - Example Services fake API"
+  api_path: "src/api/example_services.json"
+  config:
+    base_uri: "http://jsonplaceholder.typicode.com"
+
+example_services_yaml:
+  title: "[YAML] - Example Services fake API"
+  api_path: "src/api/example_services.yml"
+  config:
+    base_uri: "http://jsonplaceholder.typicode.com"

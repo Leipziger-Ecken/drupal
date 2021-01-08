@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains the geofield_map_extras.module.
+ */
+
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function geofield_map_extras_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+  switch ($route_name) {
+    case 'help.page.geofield_map_extras':
+      $output .= '<h3>' . t('Geofield Map Extras Help') . '</h3>';
+      $output .= '<p>' . t('Additional features to the main Geofield Map module.') . '</p>';
+      $output .= '<p>' . t('For more info: @readme', [
+        '@readme' => Link::fromTextAndUrl(t('Readme.md'), Url::fromUri('base:/' . drupal_get_path('module', 'geofield_map_extras') . '/README.md', ['attributes' => ['target' => '_blank']]))->toString(),
+      ]) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function geofield_map_extras_theme($existing, $type, $theme, $path) {
+  return [
+    'geofield_static_google_map' => [
+      'variables' => [
+        'width' => NULL,
+        'height' => NULL,
+        'scale' => NULL,
+        'locations' => NULL,
+        'zoom' => NULL,
+        'langcode' => NULL,
+        'static_map_type' => NULL,
+        'apikey' => NULL,
+        'marker_color' => NULL,
+        'marker_size' => NULL,
+      ],
+    ],
+    'geofield_embed_google_map' => [
+      'variables' => [
+        'width' => NULL,
+        'height' => NULL,
+        'q' => NULL,
+        'apikey' => NULL,
+        'options_string' => NULL,
+        'title' => NULL,
+      ],
+    ],
+  ];
+}

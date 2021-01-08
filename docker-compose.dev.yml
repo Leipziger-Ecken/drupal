@@ -1,0 +1,9 @@
+version: '3'
+services:
+  drupal:
+    ports:
+      - "80:80"
+      - "443:443"
+  db:
+    ports:
+      - "3306:3306"

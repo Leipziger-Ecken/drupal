@@ -1,0 +1,12 @@
+uuid: 8a1ae0a9-a7d1-460c-9fdc-4b52111beb05
+langcode: en
+status: true
+dependencies: {  }
+id: create_post
+label: 'Create Post'
+service_api: example_services
+command_name: CreatePost
+parameters:
+  title: '[current-user:display-name]''s lucky numbers!'
+  body: "Date: [current-date:medium]\r\nIP address: [current-user:ip-address]\r\nYour lucky number is [random:number]!"
+  userId: '[current-user:uid]'

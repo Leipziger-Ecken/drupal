@@ -1,0 +1,8 @@
+field.value.date_recur_sub:
+  type: field.value.date_recur
+
+field.storage_settings.date_recur_sub:
+  type: field.storage_settings.date_recur
+
+field.field_settings.date_recur_sub:
+  type: field.field_settings.date_recur

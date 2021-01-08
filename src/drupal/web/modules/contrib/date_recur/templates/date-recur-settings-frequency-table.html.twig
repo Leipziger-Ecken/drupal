@@ -1,0 +1,22 @@
+{% if table|length > 0 %}
+  <table{{ attributes }}>
+    <thead>
+      <tr>
+        <th>{{ 'Frequency'|t }}</th>
+        <th>{{ 'Setting'|t }}</th>
+        <th colspan="{{ all_parts|length }}" width="75%">{{ 'Parts'|t }}</th>
+      </tr>
+    </thead>
+  {% for row in table %}
+    <tr>
+      <td>{{ row.frequency }}</td>
+      <td>{{ row.setting }}</td>
+      {% for part in row.parts.parts %}
+        <td>
+          {{ part }}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+  </table>
+{% endif %}

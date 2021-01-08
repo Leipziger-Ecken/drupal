@@ -1,0 +1,62 @@
+/**
+ * Issue #1966296: Info tooltip styling is broken for GeofieldMap
+ */
+/* line 4, ../sass/geofield_google_map.scss */
+.geofield-google-map img {
+  max-width: none;
+}
+
+/**
+ * Styles for geofield gmap views AJAX popup.
+ */
+/* line 11, ../sass/geofield_google_map.scss */
+.geofield-google-map-ajax-popup {
+  height: 140px;
+  width: 180px;
+  background: center no-repeat url("../assets/spin.gif");
+}
+
+/* line 18, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw {
+  max-width: 440px;
+}
+/* line 20, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw img {
+  margin: 4px 0;
+  max-width: 100%;
+}
+/* line 24, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw h1 {
+  font-size: 22px;
+  margin: 10px 0 6px 0;
+}
+/* line 28, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw h2 {
+  font-size: 18px;
+  margin: 8px 0 6px 0;
+}
+/* line 32, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw h3 {
+  font-size: 16px;
+  margin: 6px 0 4px 0;
+}
+/* line 36, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw h4 {
+  font-size: 14px;
+  margin: 4px 0 4px 0;
+}
+/* line 40, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw p:first-child, .gm-style .gm-style-iw div:first-child, .gm-style .gm-style-iw .field:first-child {
+  padding: 2px 0;
+}
+/* line 43, ../sass/geofield_google_map.scss */
+.gm-style .gm-style-iw .geofield-google-map {
+  display: none;
+}
+
+@media (max-device-width: 480px) {
+  /* line 49, ../sass/geofield_google_map.scss */
+  .gm-style .gm-style-iw {
+    max-width: 240px;
+  }
+}

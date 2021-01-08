@@ -1,0 +1,10 @@
+entity.dr_entity_test.admin_form:
+  # Inspired by \Drupal\entity_test\Routing\EntityTestRoutes
+  # This route enables Field UI to do its thing.
+  path: '/dr_entity_test/structure/{bundle}'
+  defaults:
+    _controller: '\Drupal\entity_test\Controller\EntityTestController::testAdmin'
+  options:
+    _admin_route: 'TRUE'
+  requirements:
+    _permission: 'administer entity_test content'

@@ -1,0 +1,78 @@
+operations:
+  CreatePost:
+    httpMethod: "POST"
+    uri: "posts"
+    summary: "Create post"
+    parameters:
+      content-type:
+        location: "header"
+        default: "application/json"
+      title:
+        type: "string"
+        location: "json"
+        description: "The post title"
+        required: true
+      body:
+        type: "string"
+        location: "json"
+        description: "The post body"
+        required: true
+      userId:
+        type: "string"
+        location: "json"
+        description: "The post author id"
+        required: true
+    responseModel: "Post"
+
+  FindPosts:
+    httpMethod: "GET"
+    uri: "posts"
+    summary: "Find all the available posts."
+    responseClass: "PostList"
+
+  FindPost:
+    httpMethod: "GET"
+    uri: "posts/{postId}"
+    summary: "Find a single post by id."
+    parameters:
+      postId:
+        location: "uri"
+        description: "Filter posts by id"
+        required: true
+        type: "integer"
+    responseModel: "Post"
+
+  FindComments:
+    httpMethod: "GET"
+    uri: "comments"
+    summary: "Find all post comments."
+    parameters:
+      postId:
+        location: "query"
+        description: "Filter comments by post id"
+        required: false
+        type: "integer"
+
+models:
+  Post:
+    type: "object"
+    location: "json"
+    properties:
+      userId:
+        location: "json"
+        type: "integer"
+      id:
+        location: "json"
+        type: "integer"
+      title:
+        location: "json"
+        type: "string"
+      body:
+        location: "json"
+        type: "string"
+
+  PostList:
+    type: "array"
+    location: "json"
+    items:
+      "$ref": "Post"

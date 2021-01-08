@@ -1,0 +1,29 @@
+/* line 1, ../sass/geofield_map_view_display_settings.scss */
+.markers-location .form-item {
+  display: inline-block;
+}
+
+/* line 5, ../sass/geofield_map_view_display_settings.scss */
+form #map-theming-container {
+  width: 90%;
+  font-size: 0.95em;
+}
+/* line 9, ../sass/geofield_map_view_display_settings.scss */
+form #map-theming-container table thead {
+  display: block;
+}
+/* line 12, ../sass/geofield_map_view_display_settings.scss */
+form #map-theming-container table tbody {
+  display: block;
+  max-height: 800px;
+  overflow-y: scroll;
+}
+/* line 17, ../sass/geofield_map_view_display_settings.scss */
+form #map-theming-container table.map-theming-options .deprecated {
+  opacity: 0.4;
+}
+
+/* line 22, ../sass/geofield_map_view_display_settings.scss */
+form .image-widget-data .file {
+  display: none;
+}

@@ -1,0 +1,35 @@
+{
+  "name": "drupal/date_recur",
+  "type": "drupal-module",
+  "description": "Recurring Dates Field",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/date_recur",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/date_recur",
+    "source": "http://cgit.drupalcode.org/date_recur"
+  },
+  "repositories": [
+      {
+          "type": "composer",
+          "url": "https://packages.drupal.org/8"
+      }
+  ],
+  "require": {
+    "php": "^7.1",
+    "drupal/core": "^8.6",
+    "rlanvin/php-rrule": "1.*"
+  },
+  "require-dev": {
+    "drupal/coder": "~8.2",
+    "drupal/token": "^1.5",
+    "phpstan/phpstan": "^0.11.19",
+    "mglaman/phpstan-drupal": "^0.11.12",
+    "phpstan/phpstan-deprecation-rules": "^0.11.2",
+    "dealerdirect/phpcodesniffer-composer-installer": "dev-master"
+  },
+  "suggest": {
+    "drupal/date_recur_interactive": "Provides an interactive recurring date widget."
+  }
+}

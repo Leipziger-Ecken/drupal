@@ -1,0 +1,26 @@
+http_client_manager.settings:
+  type: config_object
+  label: 'HTTP Client Manager settings'
+  mapping:
+    enable_overriding_service_definitions:
+      type: integer
+      label: 'Enable overriding of HTTP Services API definitions'
+
+http_client_manager.http_config_request.*:
+  type: config_entity
+  label: 'Http Config Request config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    service_api:
+      type: string
+    command_name:
+      type: string
+    parameters:
+      type: sequence

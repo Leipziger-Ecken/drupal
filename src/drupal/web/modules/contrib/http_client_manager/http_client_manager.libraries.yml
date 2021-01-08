@@ -1,0 +1,8 @@
+service.preview:
+  version: VERSION
+  js:
+    js/http_client_manager.preview.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.form

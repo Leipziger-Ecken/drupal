@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Contains http_client_manager.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\http_client_manager\HttpServiceApiHandler;
+
+/**
+ * Implements hook_help().
+ */
+function http_client_manager_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the http_client_manager module.
+    case 'help.page.http_client_manager':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Manage HTTP Clients instances and configurations.') . '</p>';
+      return $output;
+
+    case 'http_client_manager.settings':
+      $code = "<pre><code>\$settings['http_services_api']['your_service_api_id'] = [\n";
+      $code .= "  'title' => 'Example API (Development)',\n";
+      $code .= "  'api_path' => 'src/api/api_development.json',\n";
+      $code .= "  'config' => [\n";
+      $code .= "    'base_uri' => 'http://dev.example.com/api',\n";
+      $code .= "    'timeout' => 10,\n";
+      $code .= "    'connect_timeout' => 8,\n";
+      $code .= "    'debug' => 1,\n";
+      $code .= "  ],\n";
+      $code .= "  'commands' => [\n";
+      $code .= "    blacklist' => [\n";
+      $code .= "      'DoNotMockMeCommand',\n";
+      $code .= "      'AnotherCommandNotToBeMocked',\n";
+      $code .= "      'UseProductionServicesCommand',\n";
+      $code .= "    ],\n";
+      $code .= "  ],\n";
+      $code .= "];</code></pre>";
+
+      $build = [
+        'help' => [
+          '#type' => 'details',
+          '#title' => t('Help - Overriding HTTP Services API definitions'),
+          '#description' => t('HTTP Services API definitions can be overridden in settings.php. Overridable properties are: @list', [
+            '@list' => implode(', ', array_keys(HttpServiceApiHandler::getOverridableProperties())),
+          ]),
+          'code' => [
+            '#markup' => $code,
+          ],
+          'description' => [
+            '#markup' => t('<p>The "<strong>commands</strong>" property has to be an associative array containing a <strong>whitelist</strong> or <strong>blacklist</strong> key related to an array of command names.</p>'),
+          ],
+        ],
+      ];
+      return $build;
+
+    default:
+  }
+}

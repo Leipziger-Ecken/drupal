@@ -1,0 +1,5 @@
+date_recur.interpreter.settings.test_interpreter:
+  type: date_recur_interpreter_settings_base
+  mapping:
+    show_foo:
+      type: boolean

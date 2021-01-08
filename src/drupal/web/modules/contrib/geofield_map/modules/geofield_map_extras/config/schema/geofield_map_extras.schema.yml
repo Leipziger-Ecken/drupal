@@ -1,0 +1,39 @@
+field.formatter.settings.geofield_static_map:
+  type: mapping
+  label: 'Geofield Static Map formatter settings'
+  mapping:
+    width:
+      type: integer
+      label: 'Width of the map'
+    height:
+      type: integer
+      label: 'Height of the map'
+    scale:
+      type: string
+      label: 'Scale to be used when requesting image dimensions'
+    zoom:
+      type: string
+      label: 'Zoom level to use on the map'
+    langcode:
+      type: string
+      label: 'The two-letter langcode to use'
+    static_map_type:
+      type: string
+      label: 'The static map to use, such as roadmap, satellite, etc.'
+    marker_color:
+      type: string
+      label: 'The Marker color'
+    marker_size:
+      type: string
+      label: 'The Marker size'
+
+field.formatter.settings.geofield_embed_map:
+  type: mapping
+  label: 'Geofield Embed Map formatter settings'
+  mapping:
+    width:
+      type: integer
+      label: 'Width of the map'
+    height:
+      type: integer
+      label: 'Height of the map'

@@ -1,0 +1,282 @@
+<?php
+
+/**
+ * @file
+ * Contains the geofield_map.module.
+ */
+
+use Drupal\Component\Serialization\Json;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\Core\Render\Element;
+use Drupal\file\FileInterface;
+use Drupal\image\Entity\ImageStyle;
+
+/**
+ * Implements hook_help().
+ */
+function geofield_map_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+  switch ($route_name) {
+    case 'help.page.geofield_map':
+      $output .= '<h3>' . t('Geofield Map Help') . '</h3>';
+      $output .= '<p>' . t('Map Widget, Formatter and Views integration for Geofields.') . '</p>';
+      $output .= '<p>' . t('For more info: @readme', [
+        '@readme' => Link::fromTextAndUrl(t('Readme.md'), Url::fromUri('base:/' . drupal_get_path('module', 'geofield_map') . '/README.md', ['attributes' => ['target' => '_blank']]))->toString(),
+      ]) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function geofield_map_theme($existing, $type, $theme, $path) {
+  return [
+    'geofield_map_widget' => [
+      'variables' => [
+        'mapid' => NULL,
+        'width' => '100%',
+        'height' => '450px',
+      ],
+    ],
+    'geofield_google_map' => [
+      'variables' => [
+        'mapid' => NULL,
+        'width' => '100%',
+        'height' => '450px',
+      ],
+    ],
+  ];
+}
+
+/**
+ * Load all Geofield Google Map client files and return markup for a map.
+ *
+ * @param array $js_settings
+ *   The map rendering data.
+ *
+ * @return array
+ *   The returned render array.
+ */
+function geofield_map_googlemap_render(array $js_settings) {
+
+  $attached_libraries = [
+    'geofield_map/geojson',
+    'geofield_map/geofield_google_map',
+  ];
+
+  // Add the intersection_observer library, if lazy load is enabled.
+  if ($js_settings['map_settings']['map_lazy_load']) {
+    $attached_libraries[] = 'geofield_map/intersection_observer';
+  }
+
+  // Add the Marker Cluster library, if asked.
+  if ($js_settings['map_settings']['map_markercluster']['markercluster_control']) {
+    $attached_libraries[] = 'geofield_map/marker_cluster';
+  }
+
+  // Add the OverlappingMarkerSpiderfier library, if asked.
+  if (!isset($js_settings['map_settings']['map_oms']['map_oms_control']) || $js_settings['map_settings']['map_oms']['map_oms_control']) {
+    $attached_libraries[] = 'geofield_map/overlappingmarkerspiderfier';
+  }
+
+  // Add the Leaflet Geocoder library and functionalities, if requested,
+  // and the user has access to Geocoder Api Enpoints.
+  if (\Drupal::service('module_handler')->moduleExists('geocoder')
+    && class_exists('\Drupal\geocoder\Controller\GeocoderApiEnpoints')
+    && isset($js_settings['map_settings']['map_geocoder'])
+    && $js_settings['map_settings']['map_geocoder']['control']
+    && \Drupal::service('current_user')->hasPermission('access geocoder api endpoints')) {
+    $attached_libraries[] = 'geofield_map/geocoder';
+
+    /* @var \Drupal\geofield_map\Services\GeocoderService $geofield_map_geocoder_service */
+    $geofield_map_geocoder_service = \Drupal::service('geofield_map.geocoder');
+    // Get Filtered Js Map Geocoder Settings.
+    $js_settings['map_settings']['map_geocoder']['settings'] = $geofield_map_geocoder_service->getJsGeocoderSettings($js_settings['map_settings']['map_geocoder']['settings']);
+  }
+
+  $render_array = [
+    '#theme' => 'geofield_google_map',
+    '#mapid' => $js_settings['mapid'],
+    '#height' => $js_settings['map_settings']['map_dimensions']['height'],
+    '#width' => $js_settings['map_settings']['map_dimensions']['width'],
+    '#attached' => [
+      'library' => $attached_libraries,
+      'drupalSettings' => [
+        'geofield_google_map' => [$js_settings['mapid'] => $js_settings],
+      ],
+    ],
+    '#cache' => [
+      'contexts' => ['url.path', 'url.query_args'],
+    ],
+  ];
+
+  return $render_array;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Drupal 8, add an image field from a BuildForm with preview
+ * https://stackoverflow.com/questions/34100546/drupal-8-add-an-image-field-from-a-buildform-with-preview/43936256#43936256
+ */
+function geofield_map_preprocess_image_widget(&$variables) {
+  $element = $variables['element'];
+
+  // Check and initial setup for SVG file support.
+  $svg_image_support = \Drupal::service('module_handler')->moduleExists('svg_image');
+  $svg_image_is_file_svg = FALSE;
+
+  // Only act when it is geofield_map_marker_icon_upload case.
+  // @see: MarkerIconService->getIconFileManagedElement().
+  if (!empty($element['#geofield_map_marker_icon_upload'])) {
+
+    $variables['attributes'] = [
+      'class' => [
+        'image-widget',
+        'js-form-managed-file',
+        'form-managed-file',
+        'clearfix',
+      ],
+    ];
+
+    if (!empty($element['fids']['#value'])) {
+      $file = reset($element['#files']);
+      $element['file_' . $file->id()]['filename']['#suffix'] = ' <span class="file-size">(' . format_size($file->getSize()) . ')</span> ';
+      $file_variables = [
+        'style_name' => $element['#preview_image_style'],
+        'uri' => $file->getFileUri(),
+      ];
+      /* @var \Drupal\Core\Image\Image $image */
+      $image = \Drupal::service('image.factory')->get($file->getFileUri());
+      $file_is_manageable = FALSE;
+      $file_width = $file_height = 1;
+
+      if ($image->isValid()) {
+        $file_is_manageable = TRUE;
+        $file_width = $image->getWidth();
+        $file_height = $image->getHeight();
+      }
+
+      if ($svg_image_support && $svg_image_is_file_svg = svg_image_is_file_svg($file)) {
+        $file_is_manageable = TRUE;
+        $file_variables = array_merge(svg_image_get_image_file_dimensions($file), $file_variables);
+        $file_width = $file_variables['width'];
+        $file_height = $file_variables['height'];
+      }
+
+      if ($file_is_manageable) {
+        $style = ImageStyle::load($element['#preview_image_style']);
+        $image_preview_width = 44;
+        $image_preview_height = $image_preview_width * $file_width / $file_height;
+        $element['preview'] = [
+          '#weight' => -10,
+          '#theme' => 'image_style',
+          '#width' => $image_preview_width,
+          '#height' => $image_preview_height,
+          '#style_name' => $file_variables['style_name'],
+          '#uri' => $file_variables['uri'],
+        ];
+        if (!isset($style)) {
+          // Inform the site builders why their image didn't work.
+          $element['preview']['#theme'] = 'image';
+          unset($element['preview']['#style_name']);
+          \Drupal::logger('image')->warning('Image style (@style) missing for @image. Please add the missing style under /admin/config/media/image-styles.', [
+            '@style' => $file_variables['style_name'],
+            '@image' => $file_variables['uri'],
+          ]);
+        }
+
+        // Manage SVG file Preview.
+        if ($svg_image_support && $svg_image_is_file_svg) {
+          $element['preview']['#theme'] = 'image';
+          unset($element['preview']['#style_name']);
+          // Tag the element as SVG.
+          $element['#svg'] = TRUE;
+        }
+
+        // Store the dimensions in the form so the file doesn't have to be
+        // accessed again. This is important for remote files.
+        $element['width'] = [
+          '#type' => 'hidden',
+          '#value' => $image_preview_width,
+        ];
+        $element['height'] = [
+          '#type' => 'hidden',
+          '#value' => $image_preview_height,
+        ];
+      }
+    }
+    $variables['data'] = [];
+    foreach (Element::children($element) as $child) {
+      $variables['data'][$child] = $element[$child];
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function geofield_map_preprocess_select(&$variables) {
+  $element = $variables['element'];
+  if (!empty($element['#geofield_map_marker_icon_select']) && !empty($element['#value']) && $element['#value'] != 'none') {
+    /* @var \Drupal\Core\Image\Image $image */
+    $image = \Drupal::service('image.factory')->get($element['#value']);
+    $file_width = $file_height = 1;
+    if ($image->isValid()) {
+      $file_width = $image->getWidth();
+      $file_height = $image->getHeight();
+    }
+    $image_preview_width = 44;
+    $image_preview_height = $image_preview_width * $file_width / $file_height;
+    $element['preview'] = [
+      '#weight' => -10,
+      '#theme' => 'image',
+      '#width' => $image_preview_width,
+      '#height' => $image_preview_height,
+      '#uri' => file_create_url($element['#value']),
+    ];
+    $variables['data'] = [];
+    foreach (Element::children($element) as $child) {
+      $variables['data'][$child] = $element[$child];
+    }
+  }
+}
+
+/**
+ * Checks that the file is recognized as a valid image.
+ *
+ * @param \Drupal\file\FileInterface $file
+ *   A file entity.
+ *
+ * @return array
+ *   An empty array if the file is a valid image or an array containing an error
+ *   message if it's not.
+ *
+ * @see file_validate_is_image()
+ */
+function geofield_map_file_validate_is_image(FileInterface $file) {
+  $errors = [];
+
+  /* @var \Drupal\Core\Image\ImageFactory $image_factory */
+  $image_factory = \Drupal::service('image.factory');
+  $image = $image_factory->get($file->getFileUri());
+  $supported_extensions = $image_factory->getSupportedExtensions();
+  if ($svg_image_support = \Drupal::service('module_handler')->moduleExists('svg_image')) {
+    $supported_extensions[] = 'svg';
+  }
+
+  // Check before if it is an SVG file, when might be handled.
+  /* @var \Drupal\file\Entity\File $file */
+  if ($svg_image_support && svg_image_is_file_svg($file)) {
+    $errors = [];
+  }
+  elseif (!$image->isValid()) {
+    $errors[] = t('The image file is invalid or the image type is not allowed. Allowed types: %types', ['%types' => implode(', ', $supported_extensions)]);
+  }
+
+  return $errors;
+}

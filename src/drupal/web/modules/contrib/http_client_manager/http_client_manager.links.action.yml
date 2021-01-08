@@ -1,0 +1,5 @@
+entity.http_config_request.add_form:
+  route_name: 'entity.http_config_request.add_form'
+  title: 'Add Http Config Request'
+  appears_on:
+    - entity.http_config_request.collection

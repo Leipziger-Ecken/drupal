@@ -1,0 +1,67 @@
+{
+  "operations": {
+    "FindPosts": {
+      "httpMethod": "GET",
+      "uri": "posts",
+      "summary": "Find posts",
+      "responseClass": "FindPostsOutput"
+    },
+    "FindPost": {
+      "httpMethod": "GET",
+      "uri": "posts/{postId}",
+      "summary": "Find posts",
+      "responseClass": "Post",
+      "parameters": {
+        "postId": {
+          "location": "uri",
+          "description": "Filter posts by id",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+    "FindComments": {
+      "httpMethod": "GET",
+      "uri": "comments",
+      "summary": "Find comments",
+      "parameters": {
+        "postId": {
+          "location": "query",
+          "description": "Filter comments by post id",
+          "required": false,
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "models": {
+    "Post": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "location": "json",
+          "type": "integer"
+        },
+        "id": {
+          "location": "json",
+          "type": "integer"
+        },
+        "title": {
+          "location": "json",
+          "type": "string"
+        },
+        "body": {
+          "location": "json",
+          "type": "string"
+        }
+      }
+    },
+    "FindPostsOutput": {
+      "location": "json",
+      "type": "array",
+      "items": {
+        "$ref": "Post"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+http_client_manager.preview:
+  path: 'admin/config/services/http-client-manager'
+  defaults:
+    _controller: '\Drupal\http_client_manager\Controller\HttpClientManagerPreview::view'
+    _title: 'HTTP Client Manager'
+  requirements:
+    _permission: 'administer http_client_manager'
+  options:
+    _admin_route: TRUE
+
+http_client_manager.http_service_api_preview_view:
+  path: 'admin/config/services/http-client-manager/{serviceApi}'
+  defaults:
+    _form: '\Drupal\http_client_manager\Form\HttpServiceApiPreviewForm'
+    _title_callback: '\Drupal\http_client_manager\Form\HttpServiceApiPreviewForm::title'
+  requirements:
+    _permission: 'administer http_client_manager'
+    serviceApi: '[\w+\.]+'
+  options:
+    _admin_route: TRUE
+
+http_client_manager.settings:
+  path: 'admin/config/services/http-client-manager/settings'
+  defaults:
+    _form: '\Drupal\http_client_manager\Form\HttpClientManagerConfigForm'
+    _title: 'HttpClientManagerConfigForm'
+  requirements:
+    _permission: 'administer http_client_manager'
+  options:
+    _admin_route: TRUE

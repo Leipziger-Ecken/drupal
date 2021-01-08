@@ -1,0 +1,571 @@
+<?php
+/*
+ * @file
+ * "Leaflet More Maps" adds more map options to the Leaflet module.
+ *
+ * All maps support zoom levels 0..18, except where stated otherwise.
+ */
+
+use Drupal\Component\Utility\Unicode;
+
+const LEAFLET_MORE_MAPS_NO_CUSTOM_MAPS = 3;
+
+/**
+ * Implements hook_leaflet_map_info().
+ *
+ * All maps show at lat=31, long=-89, zoom=4
+ *
+ * @return array of map info (includes provider URL, attribution, map features)
+ */
+function leaflet_more_maps_leaflet_map_info() {
+
+  $default_settings = [
+    'attributionControl' => TRUE,
+    'closePopupOnClick'  => TRUE,
+    'doubleClickZoom'    => TRUE,
+    'dragging'           => TRUE,
+    'fadeAnimation'      => TRUE,
+    'layerControl'       => FALSE,
+    'maxZoom'            => 18,
+    'minZoom'            => 0,
+    'scrollWheelZoom'    => TRUE,
+    'touchZoom'          => TRUE,
+    'trackResize'        => TRUE,
+    // Don't specify zoom, if you want to use Auto-box.
+    // 'zoom'               =>  2,
+    'zoomAnimation'      => TRUE,
+    'zoomControl'        => TRUE,
+  ];
+  $map_info =  [];
+  _leaflet_more_maps_assemble_default_map_info($map_info, $default_settings);
+
+  $custom_maps = \Drupal::config('leaflet_more_maps.settings')->get('leaflet_more_maps_custom_maps') ?? [];
+
+  foreach ($custom_maps as $custom_map) {
+    _leaflet_more_maps_assemble_custom_map_info(
+      $custom_map['map-key'],
+      $custom_map['layer-keys'],
+      $map_info, $default_settings,
+      $custom_map['reverse-order']
+    );
+  }
+  return $map_info;
+}
+
+/**
+ * Preprocess function for leaflet_more_maps.
+ */
+function leaflet_more_maps_preprocess_leaflet_map(&$variables) {
+  $variables['#attached']['library'][] = 'leaflet_more_maps/leaflet-more-maps';
+}
+
+/**
+ * Implements hook_leaflet_map_info_alter().
+ */
+function leaflet_more_maps_leaflet_map_info_alter(&$map_info) {
+  @ksort($map_info, SORT_NATURAL | SORT_FLAG_CASE);
+}
+
+/**
+ * Assemble default map info.
+ */
+function _leaflet_more_maps_assemble_default_map_info(&$map_info, $default_settings =  []) {
+  // Use headless protocol rather than logic based on global $is_https;
+  $prot = '//';
+
+  // As used by most.
+  $zxy = '{z}/{x}/{y}.png';
+  // As used by Esri.
+  $zyx = '{z}/{y}/{x}.png';
+
+  // Google and Yandex also use x, y and z, but require different URL query
+  // templates, see below.
+  // Bing uses the quadtree system whereby x, y and z are encoded in a sequence
+  // of digits in the range 0..3. See leaflet_more_maps.js for the conversion
+  // algorithm.
+
+  $attr_bing = 'Tiles <a href="http://www.bing.com/maps">Bing</a> &copy; Microsoft and suppliers';
+  $map_info['bing'] = [
+    'label' => 'Bing road & satellite & hybrid (zoom 1..18)',
+    'description' => t('Bing road, satellite and hybrid layers'),
+    'settings' => ['minZoom' => 1, 'layerControl' => TRUE] + $default_settings,
+    'layers' => [
+      'hybrid layer' => [
+        'type' => 'quad',
+        'urlTemplate' => $prot . 'ak.dynamic.t{s}.tiles.virtualearth.net/comp/ch/{q}?it=A,G,L&shading=hill',
+        'options' => [
+          'attribution' => $attr_bing,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+      'satellite layer' => [
+        'type' => 'quad',
+        'urlTemplate' => $prot . 'ak.t{s}.tiles.virtualearth.net/tiles/a{q}?g=1236',
+        'options' => [
+          'attribution' => $attr_bing,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+      'road layer' => [
+        'type' => 'quad',
+        'urlTemplate' => $prot . 'ecn.t{s}.tiles.virtualearth.net/tiles/r{q}?g=1236',
+        'options' => [
+          'attribution' => $attr_bing,
+          'subdomains' => [0, 1, 2, 3, 4, 5, 6, 7],
+        ],
+      ],
+    ],
+  ];
+
+  // Esri http://esri.com
+  $attr_esri = 'Tiles &copy; <a href="http://esri.com">Esri</a>';
+  $esri_names = [
+    // North America only, zoom 0..16.
+    'Specialty/Soil Survey Map',
+    // Parts of the world, zoom 0..10.
+    'Specialty/World Navigation Charts',
+    // Zoom 0..17.
+    'World Imagery',
+    // Zoom 0..12.
+    'NatGeo World Map',
+    // Zoom 0..8.
+    'World Physical Map',
+    // Zoom 0..10.
+    'Ocean BaseMap',
+    'Reference/World Transportation',
+    'World Topo Map',
+    'World Street Map',
+  ];
+  $settings = $default_settings;
+  foreach ($esri_names as $esri_name) {
+    $code = str_replace(' ', '_', $esri_name);
+    $url_template = $prot . "server.arcgisonline.com/ArcGIS/rest/services/$code/MapServer/tile/$zyx";
+    switch ($esri_name) {
+      case 'NatGeo World Map':
+        $label = 'Esri National Geographic (zoom 0..12)';
+        $settings['maxZoom'] = 12;
+        break;
+
+      case 'World Imagery':
+        $label = 'Esri World Imagery (zoom 0..17)';
+        $settings['maxZoom'] = 17;
+        break;
+
+      case 'World Physical Map':
+        $label = 'Esri Physical (zoom 0..8)';
+        $settings['maxZoom'] = 8;
+        break;
+
+      case 'Ocean BaseMap':
+        $label = 'Esri Ocean (zoom 0..10)';
+        $settings['maxZoom'] = 10;
+        break;
+
+      case 'Specialty/Soil Survey Map':
+        $label = 'Esri Soil Survey (North America, zoom 0..16)';
+        $settings['maxZoom'] = 16;
+        break;
+
+      case 'Specialty/World Navigation Charts':
+        $label = 'Esri Navigation Charts (parts of the world, zoom 0..10)';
+        $settings['maxZoom'] = 10;
+        break;
+
+      default:
+        $label = "Esri $esri_name (zoom 0..18)";
+        $settings['maxZoom'] = 18;
+    }
+    $map_info['esri-' . mb_strtolower($code)] = [
+      'label' => $label,
+      'description' => $label,
+      'settings' => $settings,
+      'layers' => [
+        'layer' => [
+          'urlTemplate' => $url_template,
+          'options' => ['attribution' => $attr_esri],
+        ],
+      ],
+    ];
+  }
+
+  $attr_google = 'Map data &copy; <a href="http://googlemaps.com">Google</a>';
+  $map_info['google-hybrid'] = [
+    'label' => 'Google hybrid (zoom 0..18)',
+    'description' => t('Google hybrid'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'type' => 'google',
+        'urlTemplate' => $prot . 'khm{s}.googleapis.com/kh?v=125&x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          // 'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+      'overlay' => [
+        'type' => 'google',
+        // Note 'lyrs=h' for transparent overlay.
+        'urlTemplate' => $prot . 'mt{s}.googleapis.com/vt?lyrs=h&x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+    ],
+  ];
+  $map_info['google-satellite'] = [
+    'label' => 'Google satellite (zoom 0..18)',
+    'description' => t('Google satellite'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'type' => 'google',
+        'urlTemplate' => $prot . 'khm{s}.googleapis.com/kh?v=125&x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          // 'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3]],
+      ],
+    ],
+  ];
+  $map_info['google-roadmap'] = [
+    'label' => 'Google roadmap (zoom 0..18)',
+    'description' => t('Google roadmap'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'type' => 'google',
+        'urlTemplate' => $prot . 'mt{s}.googleapis.com/vt?x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+    ],
+  ];
+  $map_info['google-high-res'] = [
+    'label' => 'Google high-res road & terrain (zoom 0..18)',
+    'description' => t('Google road & terrain layers, with high-res (Retina) support'),
+    'settings' => ['layerControl' => TRUE] + $default_settings,
+    'layers' => [
+      'terrain' => [
+        'type' => 'google',
+        'urlTemplate' => $prot . 'mt{s}.googleapis.com/vt?lyrs=t,r&x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+      'roadmap' => [
+        'type' => 'google',
+        // For retina displays we append '&style=high_dpi&w=512',
+        // see leaflet_more_maps_preprocess_leaflet_map()
+        'urlTemplate' => $prot . 'mt{s}.googleapis.com/vt?x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_google,
+          'detectRetina' => TRUE,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+    ],
+  ];
+
+  // MapBox/OSM http://mapbox.com
+  $mapbox_names = [
+    // 'Streets', // as used by foursquare
+    // 'Chester',
+    // 'Graphite',
+    // 'Lacquer',
+    // 'Light',
+    // 'Nightvision',
+    // 'Osgoode',
+    // 'Simple',
+    // 'St-Clair',
+    // 'Union',
+    // 'Zenburn',
+    'Warden',
+  ];
+  $attr_mapbox = 'Tiles by <a href="http://mapbox.com">MapBox</a>. Map data &copy; <a href="http://openstreetap.org">OpenStreetMap</a> and contributors';
+  foreach ($mapbox_names as $mapbox_name) {
+    $code = mb_strtolower($mapbox_name);
+    $label = "MapBox $mapbox_name (zoom 0..17)";
+    $url_template = $prot . "{s}.tiles.mapbox.com/v3/mapbox.mapbox-$code/$zxy";
+    $map_info["mapbox-$code"] = [
+      'label' => $code == 'streets' ? t('Mapbox streets, classic (zoom 0..17)') : $label,
+      'description' => $label,
+      'settings' => ['maxZoom' => 17] + $default_settings,
+      'layers' => [
+        'layer' => [
+          'urlTemplate' => $url_template,
+          'options' => ['attribution' => $attr_mapbox],
+        ],
+      ],
+    ];
+  }
+  // OpenStreetMap OSM Mapnik classic map is available via leaflet.module
+  $attr_osm = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> and contributors';
+
+  // MapQuest OSM.
+  $attr_mapquest = 'Tiles by <a href="http://mapquest.com">MapQuest</a>. ' . $attr_osm;
+  $map_info['mapquest-hybrid'] = [
+    'label' => 'MapQuest Hybrid (zoom 0..18)',
+    'description' => t('MapQuest Hybrid'),
+    'settings' => $default_settings,
+    'layers' => [
+      'base' => [
+        'urlTemplate' => $prot . "mtile0{s}.mqcdn.com/tiles/1.0.0/vy/sat/$zxy",
+        'options' => [
+          'attribution' => $attr_mapquest,
+          'subdomains' => [1, 2, 3, 4],
+        ],
+      ],
+      'overlay' => [
+        'urlTemplate' => $prot . "mtile0{s}.mqcdn.com/tiles/1.0.0/vy/hyb/$zxy",
+        'options' => [
+          'attribution' => $attr_mapquest,
+          'subdomains' => [1, 2, 3, 4],
+        ],
+      ],
+    ],
+  ];
+  $map_info['mapquest'] = [
+    'label' => 'MapQuest OSM & Aerial (zoom 0..18)',
+    'description' => t('MapQuest rendering of OpenStreetMap, as well as Aerial layer'),
+    'settings' => ['layerControl' => TRUE] + $default_settings,
+    'layers' => [
+      'aerial layer' => [
+        // 'urlTemplate' => $prot . "oatile{s}.mqcdn.com/naip/$zxy",
+        'urlTemplate' => $prot . "mtile0{s}.mqcdn.com/tiles/1.0.0/vy/sat/$zxy",
+        'options' => [
+          'attribution' => $attr_mapquest,
+          'subdomains' => [1, 2, 3, 4],
+        ],
+      ],
+      'road layer' => [
+        // 'urlTemplate' => $prot .  "otile{s}.mqcdn.com/tiles/1.0.0/osm/$zxy",
+        'urlTemplate' => $prot . "mtile0{s}.mqcdn.com/tiles/1.0.0/vy/map/$zxy",
+        'options' => [
+          'attribution' => $attr_mapquest,
+          'subdomains' => [1, 2, 3, 4],
+        ],
+      ],
+    ],
+  ];
+
+  $attr_thunderforest = '<a href="https://www.thunderforest.com">Thunderforest</a>. ' . $attr_osm;
+  $map_info['osm-cycle'] = [
+    'label' => 'OSM Thunderforest Cycle (zoom 0..22)',
+    'description' => t('OpenStreetMap for cyclists'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/cycle/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-transport'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Transport (zoom 0..22)',
+    'description' => t('OpenCycleMap with train & tram lines'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/transport/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-landscape'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Landscape (zoom 0..22)',
+    'description' => t('OpenCycleMap with landscape'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/landscape/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-outdoors'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Outdoors (zoom 0..22)',
+    'description' => t('OpenStreetMap for outdoor activities'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/outdoors/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-transport-dark'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Transport Dark (zoom 0..22)',
+    'description' => t('A dark variant of OSM Thunderforest Transport'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/transport-dark/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-spinal-map'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Spinal Map (zoom 0..22)',
+    'description' => t('A perfect map style for all your heavy-rock needs, based on OSM'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/spinal-map/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-pioneer'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Pioneer (zoom 0..22)',
+    'description' => t('A turn-of-the-century railroad map style, evoking a sense of bygone mapping, based on OSM'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/pioneer/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-mobile-atlas'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Mobile Atlas (zoom 0..22)',
+    'description' => t('A new map style by Thunderforest, based on OSM'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/mobile-atlas/$zxy",
+       'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $map_info['osm-neighbourhood'] = [
+    // See http://thunderforest.com.
+    'label' => 'OSM Thunderforest Neighbourhood (zoom 0..22)',
+    'description' => t('Another new map style by Thunderforest, based on OSM'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/neighbourhood/$zxy",
+        'options' => ['attribution' => $attr_thunderforest],
+      ],
+    ],
+  ];
+  $attr_piste = '<a href="http://openpistemap.org">OpenPisteMap</a> ' . $attr_osm;
+  $map_info['osm-piste'] = [
+    'label' => 'OSM OpenPisteMap (zoom 0..18)',
+    'description' => t('OpenStreetMap for skiers with 3 layers'),
+    'settings' => $default_settings,
+    'layers' => [
+      'base' => [
+        'urlTemplate' => $prot . "{s}.tile.openstreetmap.org/$zxy",
+        'options' => ['attribution' => $attr_piste],
+      ],
+      'relief shading' => [
+        // Or tiles2?
+        'urlTemplate' => $prot . "tiles.openpistemap.org/landshaded/$zxy",
+        'options' => ['attribution' => $attr_piste],
+      ],
+      'piste layer' => [
+        'urlTemplate' => $prot . "tiles.openpistemap.org/nocontours/$zxy",
+        'options' => ['attribution' => $attr_piste],
+      ],
+    ],
+  ];
+
+  // Wikimedia
+  $attr_wiki= 'Wikimedia maps beta | ' . $attr_osm;
+  $map_info['wikimedia'] = [
+    'label' => 'Wikimedia (zoom 0..18)',
+    'description' => t('Wikimedia Maps'),
+    'settings' =>  ['maxZoom' => 18] + $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . "maps.wikimedia.org/osm-intl/$zxy",
+         'options' => ['attribution' => $attr_wiki],
+        'detectRetina' => TRUE,
+      ],
+    ],
+  ];
+
+  // Stamen http://stamen.com
+  $attr_stamen = 'Tiles by <a href="http://stamen.com">Stamen Design</a> under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. ' . $attr_osm;
+  $stamen_names = ['Toner', 'Toner-Light', 'Toner-labels', 'Watercolor'/* , 'Terrain'*/];
+  foreach ($stamen_names as $stamen_name) {
+    $code = mb_strtolower($stamen_name);
+    $label = "Stamen $stamen_name (zoom 0..18)";
+    $t = t('@label , USA only', ['@label' => $label]);
+    $url_template = $prot . "stamen-tiles-{s}.a.ssl.fastly.net/$code/$zxy";
+    $map_info["stamen-$code"] = [
+      'label' => $code == 'terrain' ? $t : $label,
+      'description' => t('@label layer.', ['@label' => $label]),
+      'settings' => $default_settings,
+      'layers' => [
+        'layer' => [
+          'urlTemplate' => $url_template,
+          'options' => ['attribution' => $attr_stamen],
+        ],
+      ],
+    ];
+  }
+
+  $attr_yandex = 'Map data &copy; <a href="http://maps.yandex.ru">Yandex.Maps</a>';
+  $map_info['yandex'] = [
+    'label' => 'Yandex Maps (zoom 0..7 in many areas)',
+    'description' => t('Yandex roadmap'),
+    'settings' => $default_settings,
+    'layers' => [
+      'layer' => [
+        'urlTemplate' => $prot . 'vec0{s}.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}',
+        'options' => [
+          'attribution' => $attr_yandex,
+          'subdomains' => [0, 1, 2, 3],
+        ],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Assemble custom map info.
+ */
+function _leaflet_more_maps_assemble_custom_map_info($custom_map_key, $selected_layer_keys, &$map_info, $default_settings =  [], $reverse_order = FALSE) {
+  if (empty($custom_map_key) || empty($selected_layer_keys)) {
+    return;
+  }
+  $map_info["~$custom_map_key"] = [
+    'label' => $custom_map_key,
+    'description' => t('Custom defined map with layer switcher'),
+    'layers' =>  [],
+  ];
+  $i = $reverse_order ? count($selected_layer_keys) : 1;
+  foreach ($map_info as $map_key => $map) {
+    foreach ($map['layers'] as $layer_key => $layer) {
+      // Unique.
+      $custom_layer_key = "$map_key $layer_key";
+      if (in_array($custom_layer_key, $selected_layer_keys)) {
+        $layer_switcher_key = t('layer') . " #$i";
+        $map_info["~$custom_map_key"]['layers'][$layer_switcher_key] = $layer;
+        $i = $reverse_order ? $i - 1 : $i + 1;
+      }
+    }
+  }
+  if ($reverse_order) {
+    $map_info["~$custom_map_key"]['layers'] = array_reverse($map_info["~$custom_map_key"]['layers']);
+  }
+  $has_layer_control = count($map_info["~$custom_map_key"]['layers']) > 1;
+  $map_info["~$custom_map_key"]['settings'] = ['layerControl' => $has_layer_control] + $default_settings;
+}

@@ -1,0 +1,121 @@
+<strong>Geofield Map</strong> is an advanced, complete and easy-to-use Geo Mapping solution for Drupal 8, based on and fully compatible with the <a href="https://www.drupal.org/project/geofield" title="Geofield" target="_blank">Geofield</a> module, that <strong>lets you manage the Geofield with an interactive Map both in back-end and in the front-end.</strong>
+
+It represents the perfect solution to:
+<ul>
+  <li>geolocate (with one or more Locations / Geofields) any fieldable Drupal entity throughout an Interactive Geofield Map widget;</li>
+  <li>render each Content's Locations throughout a fully customizable Interactive Geofield Map Formatter;</li>
+  <li>expose and query Contents throughout fully customizable  Map Views Integration;</li>
+  <li>implement advanced front-end Google Maps with Marker Icon & Infowindow advanced customizations, custom Google Map Styles and Marker Clustering capabilities;</li>
+  <li>customize Map Geometries properties (Lines & Polylines, Polygons,
+    Multipolygons, etc.), based on Google Maps Polygons APIs;</li>
+</ul>
+
+<h2><a href="http://www.geodemocracy.com/geofield_d8/web/" target="blank">>>>> Live Demo <<<<</a></h2>
+<hr>
+<h2 style="color: red;">New !!!</h2>
+<h3>The new 8.x-2.50 release implements Geocoder module integration for the Geofield Map Widget Search Address Functionality.</h3>
+<div>(get rid of mandatory Google Maps API Key).</div>
+<hr>
+<br>
+<h4>Geofield Map 2.x. What's New</h4>
+<h3><strong>Dynamic Map Markers Theming & Contextual Legends.</strong></h3>
+<p>The Geofield Map 2.x version allows the Geofield Map View definition of Custom Markers & Icons Images based on dynamic values of the Map features.</p>
+<p>Moreover, as an absolute novelty and uniqueness in the history of Drupal CMS (!), a custom Geofield Map Legend Block is defined by the module and is able to expose each Map Theming logics in the form of fully configurable and impressive Legends.</p>
+
+
+<h3><strong>Technical Functionalities and specifications</strong></h3>
+
+The actual module release implements the following components:
+
+<h4><strong>Geofield Map widget</strong></h4>
+An highly customizable  Map widget,
+providing an interactive and very intuitive map on which to perform localization and input of geographic coordinates throughout:
+<ul>
+  <li>MULTIPOINTS Geofield mapping support;</li>
+  <li>Search Address Geocoding throughout <a href="https://developers.google.com/maps/documentation/javascript/geocoding" target="_blank">Google Maps Geocoder service</a> and
+    <a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete" target="_blank">Google Maps Places Autocomplete Service</a> or throughout other Geocoder providers provided by the <a href="https://www.drupal.org/project/geocoder" target="_blank">Geocoder module</a> integration;</li>
+  <li>Google Map or Leaflet Map JS libraries and interfaces;</li>
+  <li>Map click and marker dragging, with instant reverse geocoding;</li>
+  <li>HTML5 Geolocation of the user position;</li>
+  <li>the possibility to permanently store the Geocoded address into the Entity Title
+    or in a "string type" field (among the content's ones);</li>
+  <li>etc.</li>
+</ul>
+
+<h4><strong>Geofield Map Formatter</strong></h4>
+An higly customizable  Google Map formatter, by which render and expose the Geo contents throughout:
+<ul>
+  <li>a wide set of Map options fully compliant with <a href="https://developers.google.com/maps/documentation/javascript/" title="Google Maps Js v3 APIs" target="_blank">Google Maps Js v3 APIs</a>;</li>
+  <li>the possibility to fully personalize the Map Marker Icon and its Infowindow content;</li>
+  <li>the integration of <a href="https://github.com/googlemaps/js-marker-clusterer" title="Markecluster Google Maps Library" target="_blank">Markecluster Google Maps Library</a> functionalities and its personalization;</li>
+</ul>
+
+<p>A "Geofield Google Map (static)" formatter is also available, that renders a
+  Google Map, accordingly to the <a href="https://developers.google.com/maps/documentation/maps-static/dev-guide" target="_blank">Google Maps Static API</a> (only Points supported, and not Geometries such as Polylines, Polygons, etc.).</p>
+
+<h4>Views Integration</h4>
+A dedicated Geofield Map View style plugin able to render a Views result on a higly customizable  Google Map,
+with Marker and Infowindow specifications and Markers Clustering capabilities.
+
+<h4>Advanced Google Map and Markeclustering Features for the front-end maps</h4>
+Both in Geofield Map Formatter and in the Geofield Map View style it is possible:
+<ul>
+  <li>to add additional Map and Markecluster Options, as Object Literal in valid Json format;</li>
+  <li>define and manage a <a href="https://developers.google.com/maps/documentation/javascript/examples/maptype-styled-simple" title="Google Custom Map Style" target="_blank">Google Custom Map Style</a></li>
+  <li>use the <a href="https://github.com/jawj/OverlappingMarkerSpiderfier#overlapping-marker-spiderfier-for-google-maps-api-v3" title="Overlapping Marker Spiderfier Library (for Google Maps)" target="_blank">Overlapping Marker Spiderfier Library (for Google Maps)</a> to manage overlapping markers;</li>
+</ul>
+
+<h3><strong>Basic Installation and Use</strong></h3>
+<p>Geofield Map module needs to be installed <a href="https://www.drupal.org/docs/develop/using-composer/using-composer-to-manage-drupal-site-dependencies" target="_blank">using Composer to manage Drupal site dependencies</a>, which will also download the required <a href="https://www.drupal.org/project/geofield" target="_blank">Geofield Module</a> dependency and PHP libraries).</p>
+<p>It means simply running the following command from your project root (where the main composer.json file is sited):</p>
+
+<strong>$ composer require 'drupal/geofield_map'</strong>
+
+<p>Once done, you can setup the following:</p>
+<ul>
+  <li>Geofield Widget: In a Content Type including a Geofield Field, go to "Manage form display" and select "Geofield Map" as Geofield Widget. Specify the Widget further settings for both Google or Leaflet Map types;</li>
+  <li>Geofield Google Map Formatter: In a Content Type including a Geofield Field, go to "Manage display" and select "Geofield Google Map" as Geofield field Formatter.  Specify the Formatter further settings for specific personalization;</li>
+  <li>Geofield Map Views: In a View Display select the Geofield Google Map Format, and be sure to add a Geofield type field in the fields list. Specify the View Format settings for specific personalization;</li>
+</ul>
+<h4>Hints for Advanced Use</h4>
+<ul>
+  <li>For each GeofieldMapWidget it is possible the enable (and custom configure) addresses Geocoding via the <a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete" target="_blank">Google Maps Places Autocomplete Service</a>.
+  </li>
+  <li>GeofieldMapWidget uses Leaflet MapTypes/Tiles pre-defined as LeafletTileLayers D8 plugins, but any third party module is able to define and add its new LeafletTileLayer Plugins;</li>
+  <li>As default (configurable) option, eventual overlapping markers will be Spiderfied, with the support of the <a href="https://github.com/jawj/OverlappingMarkerSpiderfier#overlapping-marker-spiderfier-for-google-maps-api-v3" title="Overlapping Marker Spiderfier Library (for Google Maps)" target="_blank">Overlapping Marker Spiderfier Library (for Google Maps)</a>;</li>
+  <li> Add, enable and configure the <a href="https://www.drupal.org/project/geocoder" target="_blank">Geoocoder module for D8</a> to enable Geocoder Control (with Autocomplete) for quick Address search and Geofield Map Pan & Zoom functionalities;</li>
+  <li>The Geofield Map View style plugin will pass to the client js (as drupalSettings.geofield_google_map[mapid] & Drupal.geoFieldMap[mapid] variables) the un-hidden fields values of the View, as markers/features' properties data;</li>
+</ul>
+
+<h3><strong>Geofield Map 2.x Dynamic Markers Theming & Legends Specifications</strong></h3>
+
+<p>Geofield Map 2.x introduces the MapThemer Plugin system that allows the definition of MapThemer Plugins able to dinamically differentiate Map Features/Markers based on Contents Types, Taxonomy Terms, Values, etc.
+  Each Plugin Type provides the automatic definition of a related Legend Build, that is able to fill the definition of a Custom GeofieldMapLegend block.</p>
+
+<p>At the moment the following two Geofield Map Themers plugin types have been defined:</p>
+
+<ul>
+  <li> Custom Icon Image File, allows the definition of a unique custom Marker Icon, valid for all the Map Markers;</li>
+  <li> Entity Type, allows the definition of different Marker Icons based on the View filtered Entity Types/Bundles;</li>
+  <li> Taxonomy Term, allows the definition of different Marker Icons based on Taxonomy Terms reference field in View;</li>
+  <li> List Type Field, allows the definition of different Marker Icons based on List (Options) Type fields in View;</li>
+</ul>
+
+<p>As Drupal 8 Plugin system based, the Geofield MapThemers Plugin and Legend block system is fully extendable and overridable.
+  You, as D8 developer, are free to override and extend the existing ones, or create your custom MapThemer based on your specific needs and logics.</p>
+
+<b>New: </b><u>SVG Image files are now supported for Marker Icons, via the <a href="https://www.drupal.org/project/svg_image">Svg Image module</a></u>
+
+<h4>How to use.</h4>
+
+<p>In a Geofield Map View Display, just go into its settings and choose the wanted MapThemer in the new Map Theming Options section/fieldset.
+  It is possible to associate a Drupal Managed File for each MapThemer plugin value and even the Icon Image style the Icon should be rendered on the Map. The Value labels and Icons might have an alias, might be reordered and might be hidden from the correspondent Legend Block.<p>
+
+<p>Once defined and configured the Legend you are free to place it, once or several times, as a normal Drupal 8 block on the pages, with your logics and contextual rules.</p>
+
+<h4><strong>Notes & Warnings</strong></h4>
+<ul>
+  <li>The Geofield Map module depends from the <a href="https://www.drupal.org/project/geofield" title="Geofield" target="_blank">Geofield</a> module;</li>
+  <li>A unique Gmap Api Key is required for both Google Mapping and Geocoding operations, all performed client-side by js. <a href="https://developers.google.com/maps/documentation/javascript/get-api-key#key-restrictions" target="_blank">It might/should be restricted using the Website Domain / HTTP referrers method</a>;</li>
+  <li><b>NEW (!)</b>: The module integrates with the <a href="https://www.drupal.org/project/geocoder" title="Geocoder" target="_blank">Geocoder</a> module, thus skipping the need of Gmap Api Key for Geocoding operations;</li>
+</ul>

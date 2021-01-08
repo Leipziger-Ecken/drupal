@@ -1,0 +1,5 @@
+
+administer http_client_manager:
+  title: 'Administer HTTP Client Manager'
+  description: 'Allow administration of HTTP Client Manager configurations'
+  restrict access: true

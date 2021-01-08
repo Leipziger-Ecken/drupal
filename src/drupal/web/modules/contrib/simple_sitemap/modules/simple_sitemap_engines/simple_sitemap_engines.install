@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Module install and update procedures.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function simple_sitemap_engines_uninstall() {
+  \Drupal::service('state')->delete('simple_sitemap_engines_last_submitted');
+}
