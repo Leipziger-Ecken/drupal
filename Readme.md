@@ -32,12 +32,22 @@ $ cd bin
 $ ./stop.sh
 ```
 
-## Update on production to latest master
+## Update
+
+### For production
 
 ```
 $ cd bin
-$ ./update.sh
+$ ./update_production.sh
 ```
+
+### For development
+
+```
+$ cd bin
+$ ./update_development.sh
+```
+
 
 ## Get a terminal into the running container
 
