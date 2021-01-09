@@ -2,10 +2,10 @@ langcode: de
 status: true
 dependencies: {  }
 id: feedback
-label: Website-Feedback
+label: Kontaktformular
 recipients:
-  - admin@example.com
+  - kontakt@leipziger-ecken.de
 reply: ''
 weight: 0
-message: 'Ihre Nachricht wurde gesendet.'
+message: 'Vielen Dank, Deine Nachricht wurde gesendet.'
 redirect: ''
