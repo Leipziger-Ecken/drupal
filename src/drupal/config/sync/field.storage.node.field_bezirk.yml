@@ -1,0 +1,22 @@
+uuid: 0ad94a57-6b26-4dba-a6cb-ee36fa94cde7
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: RcF49ldGFQmlaeWflYPPjqtTPoGWfbtwjToS-CC8Yck
+id: node.field_bezirk
+field_name: field_bezirk
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

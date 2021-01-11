@@ -1,0 +1,30 @@
+uuid: 245696fd-08b8-41d1-aaec-c56ad93d974d
+langcode: de
+status: true
+dependencies:
+  config:
+    - comment.type.le_comment_type_gespraeche
+    - field.field.comment.le_comment_type_gespraeche.comment_body
+  module:
+    - text
+_core:
+  default_config_hash: b5ohf9nfSEMAlgnsLsmHd6uP2nlk-Jse5YqVYduYpr8
+id: comment.le_comment_type_gespraeche.default
+targetEntityType: comment
+bundle: le_comment_type_gespraeche
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

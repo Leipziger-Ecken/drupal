@@ -1,0 +1,22 @@
+uuid: 8db58848-50d7-4e8e-99ba-771a825aee54
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Ke8c2BSGNaaQC_IgvLuul3GnkOIS4hV3qEwtQPJlNZQ
+id: node.field_le_rcds_resources_count
+field_name: field_le_rcds_resources_count
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: 5794642a-0700-4a58-b0c9-23c3346aea4a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_einrichtung_name
+    - node.type.le_remote_content_fwal
+  module:
+    - text
+_core:
+  default_config_hash: t4VRzqSRrEihMDAA8O7N7bqiFomqULHO7HMhzaS9C7Y
+id: node.le_remote_content_fwal.field_le_rcds_einrichtung_name
+field_name: field_le_rcds_einrichtung_name
+entity_type: node
+bundle: le_remote_content_fwal
+label: Einrichtung
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

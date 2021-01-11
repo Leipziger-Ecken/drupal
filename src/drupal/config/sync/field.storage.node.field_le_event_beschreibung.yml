@@ -1,0 +1,21 @@
+uuid: 094a8ae0-01d4-4fb2-8777-1e3feb3dc538
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - text
+_core:
+  default_config_hash: B4uvxDPcKf6we7wkMVkoVP2Ec6OBE6eMqoKAdZEtKRs
+id: node.field_le_event_beschreibung
+field_name: field_le_event_beschreibung
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

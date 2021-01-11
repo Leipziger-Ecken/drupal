@@ -1,0 +1,20 @@
+uuid: 808d7a64-8e13-4ae0-95a8-1ff6e45b995a
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 3J0am-DqEQ0X_hyZlQSVOUIKHXGeABvbrvwePa652_E
+id: node.field_le_akteur_is_private
+field_name: field_le_akteur_is_private
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

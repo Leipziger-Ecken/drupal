@@ -1,0 +1,25 @@
+uuid: f1e6a4c2-1380-4501-aa40-e269ec030efc
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - leipzigerEcken
+id: benutzermenu
+theme: leipzigerEcken
+region: navigation
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: Benutzermenü
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,31 @@
+uuid: 1ffcfb21-7192-4c06-a391-6562f63145fe
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
+id: authenticated
+label: 'Angemeldeter Benutzer'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'access user profiles'
+  - 'cancel account'
+  - 'change own username'
+  - 'create le_akteur content'
+  - 'create le_event content'
+  - 'create terms in le_kategorie_tags'
+  - 'date_recur_modular use sierra form'
+  - 'delete own le_akteur content'
+  - 'delete own le_event content'
+  - 'edit own le_akteur content'
+  - 'edit own le_event content'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'use text format basic_html'
+  - 'use text format full_html'

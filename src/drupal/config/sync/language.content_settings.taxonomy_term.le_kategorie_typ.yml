@@ -1,0 +1,13 @@
+uuid: ec174c51-347d-4629-aa26-a3ca1667045f
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_typ
+_core:
+  default_config_hash: RAi7L0DGOBtZEz0inXuoJtMICSEIkmBoJFoYuTsmb8k
+id: taxonomy_term.le_kategorie_typ
+target_entity_type_id: taxonomy_term
+target_bundle: le_kategorie_typ
+default_langcode: site_default
+language_alterable: false

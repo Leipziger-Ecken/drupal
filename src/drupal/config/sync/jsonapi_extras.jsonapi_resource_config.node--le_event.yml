@@ -1,0 +1,221 @@
+uuid: ee0e2d13-3c1d-4864-ab66-68f4db9c4c48
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_event
+id: node--le_event
+disabled: false
+path: events
+resourceType: event
+resourceFields:
+  nid:
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  vid:
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: true
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: true
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: true
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  status:
+    fieldName: status
+    publicName: active
+    enhancer:
+      id: ''
+    disabled: false
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  title:
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+    disabled: false
+  created:
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+    disabled: false
+  changed:
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+    disabled: false
+  promote:
+    disabled: true
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+  sticky:
+    disabled: true
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: true
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: true
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  metatag:
+    disabled: true
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  path:
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+    disabled: false
+  menu_link:
+    disabled: true
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+  field_adresse:
+    fieldName: field_adresse
+    publicName: address
+    enhancer:
+      id: ''
+    disabled: false
+  field_bezirk:
+    fieldName: field_bezirk
+    publicName: district
+    enhancer:
+      id: ''
+    disabled: false
+  field_geofield:
+    fieldName: field_geofield
+    publicName: geodata
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_beschreibung:
+    fieldName: field_le_event_beschreibung
+    publicName: description
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_image:
+    fieldName: field_le_event_image
+    publicName: image
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_is_barrier_free:
+    fieldName: field_le_event_is_barrier_free
+    publicName: barrier_free_location
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_kategorie_gruppe:
+    fieldName: field_le_event_kategorie_gruppe
+    publicName: target_groups
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_kategorie_tags:
+    fieldName: field_le_event_kategorie_tags
+    publicName: tags
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_kategorie_typ:
+    fieldName: field_le_event_kategorie_typ
+    publicName: categories
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_lizenzhinweis:
+    disabled: true
+    fieldName: field_le_event_lizenzhinweis
+    publicName: field_le_event_lizenzhinweis
+    enhancer:
+      id: ''
+  field_le_event_occurrences:
+    fieldName: field_le_event_occurrences
+    publicName: occurrences
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event_website:
+    fieldName: field_le_event_website
+    publicName: external_website
+    enhancer:
+      id: ''
+    disabled: false
+  field_le_event___eid:
+    disabled: true
+    fieldName: field_le_event___eid
+    publicName: field_le_event___eid
+    enhancer:
+      id: ''
+  og_audience:
+    fieldName: og_audience
+    publicName: akteur
+    enhancer:
+      id: ''
+    disabled: false

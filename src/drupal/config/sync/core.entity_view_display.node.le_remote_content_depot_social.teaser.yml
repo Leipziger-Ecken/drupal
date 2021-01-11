@@ -1,0 +1,47 @@
+uuid: 29a693cc-d7ad-4014-a2bf-0f9fcfae4199
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_remote_content_depot_social.body
+    - field.field.node.le_remote_content_depot_social.field_bezirk
+    - field.field.node.le_remote_content_depot_social.field_geofield
+    - field.field.node.le_remote_content_depot_social.field_le_rcds_id_external
+    - field.field.node.le_remote_content_depot_social.field_le_rcds_image
+    - field.field.node.le_remote_content_depot_social.field_le_rcds_link
+    - field.field.node.le_remote_content_depot_social.field_le_rcds_resources_count
+    - field.field.node.le_remote_content_depot_social.field_le_rcds_zip_code
+    - node.type.le_remote_content_depot_social
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: h_Sao_47pPZvgDcsulyD0ch5uKKI9xvOg_-fcp3WYOc
+id: node.le_remote_content_depot_social.teaser
+targetEntityType: node
+bundle: le_remote_content_depot_social
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_bezirk: true
+  field_geofield: true
+  field_le_rcds_id_external: true
+  field_le_rcds_image: true
+  field_le_rcds_link: true
+  field_le_rcds_resources_count: true
+  field_le_rcds_zip_code: true
+  langcode: true

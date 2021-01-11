@@ -1,0 +1,22 @@
+uuid: d70f0e64-80fd-4966-a68a-3a15859b3364
+langcode: de
+status: false
+dependencies:
+  module:
+    - le_api
+    - serialization
+    - user
+_core:
+  default_config_hash: SIcx5YgSTSPt3-T27bL_pJ69rr8A2kWzqOUeMv_d3kU
+id: le_akteure_get
+plugin_id: le_akteure_get
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie

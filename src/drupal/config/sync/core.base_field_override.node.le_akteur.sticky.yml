@@ -1,0 +1,24 @@
+uuid: 36ac9b51-d146-486d-b3d4-231660af546a
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: rhmi3tUjjNC4_j1wbhRtHdC9ZCyI2aUEFDOeMBDyXKM
+id: node.le_akteur.sticky
+field_name: sticky
+entity_type: node
+bundle: le_akteur
+label: 'Oben in Listen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

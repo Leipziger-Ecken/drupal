@@ -1,0 +1,25 @@
+uuid: 4c2a06e2-053b-4ff2-9ace-5fa6d1559f0c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_is_barrier_free
+    - node.type.le_akteur
+_core:
+  default_config_hash: VB-GGep9pZEg72aW0ELrhwQE22cD0xsPuqn_uWDuzO0
+id: node.le_akteur.field_le_akteur_is_barrier_free
+field_name: field_le_akteur_is_barrier_free
+entity_type: node
+bundle: le_akteur
+label: 'Barrierefreier Zugang?'
+description: 'Besteht ein barrierefreier Zugang zu den Räumlichkeiten?'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

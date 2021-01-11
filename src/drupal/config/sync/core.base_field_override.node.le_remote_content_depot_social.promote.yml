@@ -1,0 +1,24 @@
+uuid: 56a2eff3-992a-40fc-9286-e47c50e35edf
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_depot_social
+_core:
+  default_config_hash: r51zshh17AAosVO9bo9ItsyFArj62oHOTqf4Gs0ieKY
+id: node.le_remote_content_depot_social.promote
+field_name: promote
+entity_type: node
+bundle: le_remote_content_depot_social
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

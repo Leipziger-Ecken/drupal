@@ -1,0 +1,20 @@
+uuid: d42705d2-ea48-4d32-aea8-0fca0ae6ad6b
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 6G-Kdr_TX4YyCr2OZW6o58kAKTy0J2JxXIzFciwued0
+id: node.field_le_event_is_barrier_free
+field_name: field_le_event_is_barrier_free
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

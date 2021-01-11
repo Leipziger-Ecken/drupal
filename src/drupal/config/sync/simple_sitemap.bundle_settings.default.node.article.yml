@@ -1,0 +1,7 @@
+index: true
+priority: '0.8'
+changefreq: never
+include_images: false
+_core:
+  default_config_hash: qpJ02sWD0pLkQcU7BN0WEjsWnMHoprT7DGb0foCQUnU
+langcode: de

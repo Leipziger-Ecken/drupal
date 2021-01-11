@@ -1,0 +1,17 @@
+uuid: 479d15c3-ae2e-4c1b-8e63-e9f9052097f4
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: rDE5sryV64s3dlzCM0hhh1VjPQMh-03x7I4UjJxSYRk
+id: node-le_akteur-administrator
+label: Administrator
+weight: 2
+is_admin: true
+group_type: node
+group_bundle: le_akteur
+group_id: null
+permissions: {  }
+role_type: null

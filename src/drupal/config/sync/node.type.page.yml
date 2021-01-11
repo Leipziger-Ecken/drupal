@@ -1,0 +1,13 @@
+uuid: 4b32cab4-e8f1-49db-8938-0440798f33ac
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KuyA4NHPXcmKAjRtwa0vQc2ZcyrUJy6IlS2TAyMNRbc
+name: 'Einfache Seite'
+type: page
+description: 'Benutzen Sie <em>Einfache Seiten</em> für statischen Inhalt, wie z.B. eine „Über uns“ Seite.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

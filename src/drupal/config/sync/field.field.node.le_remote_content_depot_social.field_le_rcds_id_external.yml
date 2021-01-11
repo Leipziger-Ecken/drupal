@@ -1,0 +1,25 @@
+uuid: 5b0a1f39-52da-4cee-a5f3-dab635f4eaba
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_id_external
+    - node.type.le_remote_content_depot_social
+_core:
+  default_config_hash: lQ2FFQF4-n1pDh7CN6-eELh0QdoVrbHj_8BAEJyVGM8
+id: node.le_remote_content_depot_social.field_le_rcds_id_external
+field_name: field_le_rcds_id_external
+entity_type: node
+bundle: le_remote_content_depot_social
+label: 'ID (extern)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

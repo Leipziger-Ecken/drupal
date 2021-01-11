@@ -1,0 +1,128 @@
+uuid: 70be2869-a0b6-47d7-b1c9-3ec8fd5abe96
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_akteur.field_adresse
+    - field.field.node.le_akteur.field_bezirk
+    - field.field.node.le_akteur.field_geofield
+    - field.field.node.le_akteur.field_le_akteur_comments
+    - field.field.node.le_akteur.field_le_akteur_contactperson
+    - field.field.node.le_akteur.field_le_akteur_contactperson_fn
+    - field.field.node.le_akteur.field_le_akteur_description
+    - field.field.node.le_akteur.field_le_akteur_einrichtungsname
+    - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_hat_typ
+    - field.field.node.le_akteur.field_le_akteur_image
+    - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_is_private
+    - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
+    - field.field.node.le_akteur.field_le_akteur_kategorie_tags
+    - field.field.node.le_akteur.field_le_akteur_kategorie_typ
+    - field.field.node.le_akteur.field_le_akteur_lizenzhinweis
+    - field.field.node.le_akteur.field_le_akteur_opening_times
+    - field.field.node.le_akteur.field_le_akteur_phone
+    - field.field.node.le_akteur.field_le_akteur_url
+    - node.type.le_akteur
+  module:
+    - address
+    - link
+    - og
+    - svg_image
+    - text
+    - user
+_core:
+  default_config_hash: xCZXLXcdamjYuRVcQSA6NSCgRGdbSJlnzPKT3KJHJqQ
+id: node.le_akteur.teaser
+targetEntityType: node
+bundle: le_akteur
+mode: teaser
+content:
+  field_adresse:
+    type: address_default
+    weight: 7
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_bezirk:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_le_akteur_description:
+    type: text_trimmed
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      trim_length: 200
+    third_party_settings: {  }
+  field_le_akteur_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_le_akteur_kategorie_tags:
+    type: entity_reference_label
+    weight: 9
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_le_akteur_kategorie_typ:
+    type: entity_reference_label
+    weight: 5
+    region: content
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_le_akteur_url:
+    type: link
+    weight: 8
+    region: content
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  links:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_group:
+    weight: 3
+    type: og_group_subscribe
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_geofield: true
+  field_le_akteur_comments: true
+  field_le_akteur_contactperson: true
+  field_le_akteur_contactperson_fn: true
+  field_le_akteur_einrichtungsname: true
+  field_le_akteur_email: true
+  field_le_akteur_hat_typ: true
+  field_le_akteur_is_barrier_free: true
+  field_le_akteur_is_private: true
+  field_le_akteur_kategorie_gruppe: true
+  field_le_akteur_lizenzhinweis: true
+  field_le_akteur_opening_times: true
+  field_le_akteur_phone: true
+  langcode: true

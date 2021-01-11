@@ -1,0 +1,89 @@
+uuid: b300856d-6b54-4278-b256-66a67f88cec9
+langcode: de
+status: true
+dependencies:
+  module:
+    - rules
+id: rules_reaction_rule--rules_reaction_rule
+disabled: true
+path: rules_reaction_rule/rules_reaction_rule
+resourceType: rules_reaction_rule--rules_reaction_rule
+resourceFields:
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  dependencies:
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+    disabled: false
+  third_party_settings:
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  events:
+    fieldName: events
+    publicName: events
+    enhancer:
+      id: ''
+    disabled: false
+  description:
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+    disabled: false
+  tags:
+    fieldName: tags
+    publicName: tags
+    enhancer:
+      id: ''
+    disabled: false
+  config_version:
+    fieldName: config_version
+    publicName: config_version
+    enhancer:
+      id: ''
+    disabled: false
+  expression:
+    fieldName: expression
+    publicName: expression
+    enhancer:
+      id: ''
+    disabled: false

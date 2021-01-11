@@ -1,0 +1,31 @@
+uuid: 1c4d7ad2-ffff-4b87-a471-f50844cbe159
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_kategorie_tags
+    - node.type.le_event
+    - taxonomy.vocabulary.le_kategorie_tags
+_core:
+  default_config_hash: zsl_56w9Huniac-kc0Ugs134hvgKEeDSikTqg1drBDc
+id: node.le_event.field_le_event_kategorie_tags
+field_name: field_le_event_kategorie_tags
+entity_type: node
+bundle: le_event
+label: Tags
+description: 'Komma-separierte Schlagwörter wie <i>"kostenfrei"</i>, <i>"outdoor"</i>, <i>"freestyle"</i>. Vorhandene Tags wählen oder neue anlegen.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_kategorie_tags: le_kategorie_tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

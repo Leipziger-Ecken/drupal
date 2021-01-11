@@ -1,0 +1,10 @@
+uuid: e6bfe0b5-cc27-4403-bf51-56b8efa131ec
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XwPYNZYSAXm1oZzMt3G09sZY0thTymA63jljbmL_NZg
+name: 'Kategorie: Angebotstyp'
+vid: le_kategorie_typ
+description: 'Kategorisierung eines Akteurs / Events (1 Hauptkategorie - hat - n Unterkategorien)'
+weight: 0

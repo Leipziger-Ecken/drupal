@@ -1,0 +1,23 @@
+uuid: feba776f-6185-444b-8bbf-79c63fa120f3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_beschreibung
+    - node.type.le_event
+  module:
+    - text
+_core:
+  default_config_hash: ZkzTPZmtTecJCwaxmg2h0Fiz8Bw38YTOTfoEH7Y82TY
+id: node.le_event.field_le_event_beschreibung
+field_name: field_le_event_beschreibung
+entity_type: node
+bundle: le_event
+label: Beschreibung
+description: 'Inhaltliche Beschreibung des Events'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

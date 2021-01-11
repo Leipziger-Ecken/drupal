@@ -1,0 +1,24 @@
+uuid: f36275b9-c3e8-43dc-ab8b-7e163b1a5347
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: PDH_zb9PpGe3wRGFpP5BXOm2XKFiWfid6BD4gwUwDLc
+id: le_event_pfad
+label: 'Event Pfad'
+type: 'canonical_entities:node'
+pattern: '/events/[node:title]-[node:field_adresse:postal_code]'
+selection_criteria:
+  124c88e8-41ef-48b8-8ad6-ab097fd7aa35:
+    id: node_type
+    bundles:
+      le_event: le_event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 124c88e8-41ef-48b8-8ad6-ab097fd7aa35
+selection_logic: and
+weight: -9
+relationships: {  }

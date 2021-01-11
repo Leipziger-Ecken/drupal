@@ -1,0 +1,22 @@
+uuid: 34a85c95-f216-45ea-952b-b9d6f9e9de9d
+langcode: de
+status: true
+dependencies:
+  theme:
+    - claro
+_core:
+  default_config_hash: 7cvXIzw8NabmQCWMPqBz0mvIQZzXUZB3OeOTa5eqbCo
+id: claro_primary_local_tasks
+theme: claro
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primäre Reiter'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

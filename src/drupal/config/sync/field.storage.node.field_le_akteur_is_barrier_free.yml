@@ -1,0 +1,20 @@
+uuid: e12f9a01-2a59-4659-a138-c2563839576d
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: mHd-Ej2Yn63aDMBjwM7J04ybQtoqtdmfz98f_JXHFbw
+id: node.field_le_akteur_is_barrier_free
+field_name: field_le_akteur_is_barrier_free
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

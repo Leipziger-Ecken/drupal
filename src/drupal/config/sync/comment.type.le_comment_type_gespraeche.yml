@@ -1,0 +1,10 @@
+uuid: 9651a47d-ef24-4483-a3b2-ea5c37c364d8
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ec8_1rTZvsOf8QSG7iAaTBftmLMF29AIqKsXAshH-wU
+id: le_comment_type_gespraeche
+label: Gespräche
+target_entity_type_id: node
+description: 'Forum-ähnliches Diskussionsformat für Akteure.'

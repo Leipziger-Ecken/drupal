@@ -1,0 +1,23 @@
+uuid: be664a03-47d1-4c59-aef6-b40409a60a21
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEcken
+id: brandingderwebsite
+theme: leipzigerEcken
+region: branding
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Branding der Website'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

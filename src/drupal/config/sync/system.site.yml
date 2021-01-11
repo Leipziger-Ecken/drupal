@@ -1,0 +1,15 @@
+uuid: c63faf3e-69d7-46ac-ba5f-0b6dc8904ab2
+name: 'Leipziger Ecken'
+mail: kontakt@leipziger-ecken.de
+slogan: 'Stadtteilplattform für den Leiziger Osten und Norden'
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: de
+default_langcode: de
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
+mail_notification: ''

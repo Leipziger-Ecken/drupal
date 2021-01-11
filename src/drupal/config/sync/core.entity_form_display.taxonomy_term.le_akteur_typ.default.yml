@@ -1,0 +1,64 @@
+uuid: 6bf494f9-8c7e-4f14-8a52-c9d38080a7f4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.le_akteur_typ.field_le_akteur_typ_icon
+    - image.style.thumbnail
+    - taxonomy.vocabulary.le_akteur_typ
+  module:
+    - path
+    - svg_image
+    - text
+_core:
+  default_config_hash: Em4JShAfDXxpp6_D1HD56ZU7YRClG-o3VbKVQqewjQA
+id: taxonomy_term.le_akteur_typ.default
+targetEntityType: taxonomy_term
+bundle: le_akteur_typ
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_le_akteur_typ_icon:
+    weight: 101
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 100
+    region: content
+    third_party_settings: {  }
+hidden: {  }

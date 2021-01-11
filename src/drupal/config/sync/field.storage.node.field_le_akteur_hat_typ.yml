@@ -1,0 +1,22 @@
+uuid: 2d5bf7c3-87e9-4dc5-bc36-b2e989dffe16
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: XU_MCJaEazh4d8jEwYFt8NGSQtW_4fOWqLDupgcau_4
+id: node.field_le_akteur_hat_typ
+field_name: field_le_akteur_hat_typ
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

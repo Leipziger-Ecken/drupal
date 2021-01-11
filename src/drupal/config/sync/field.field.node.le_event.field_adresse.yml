@@ -1,0 +1,64 @@
+uuid: 795c8a83-50f8-435d-9310-e33c4314c6e9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adresse
+    - node.type.le_event
+  module:
+    - address
+_core:
+  default_config_hash: AeQEW139YQLRYasI8uBfMsICyq4NBHamUT7AvUPL48I
+id: node.le_event.field_adresse
+field_name: field_adresse
+entity_type: node
+bundle: le_event
+label: Adresse
+description: 'Ort der Veranstaltung'
+required: true
+translatable: true
+default_value:
+  -
+    langcode: ''
+    country_code: DE
+    administrative_area: null
+    locality: Leipzig
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: null
+    organization: null
+    given_name: null
+    additional_name: null
+    family_name: null
+default_value_callback: ''
+settings:
+  available_countries:
+    DE: DE
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: required
+    addressLine2:
+      override: hidden
+    postalCode:
+      override: required
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: required
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

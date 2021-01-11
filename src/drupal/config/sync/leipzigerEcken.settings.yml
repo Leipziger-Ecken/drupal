@@ -1,0 +1,41 @@
+schemas:
+  bootstrap: 8000
+  leipzigerEcken: 8000
+cdn_provider: ''
+forms_smart_descriptions: 0
+_core:
+  default_config_hash: NMMKqOjSbSGXigLyLk0S8uYdWE1nU6D0IxyWvKJpct8
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'https://beta.leipziger-ecken.de/themes/custom/leipzigerEcken/favicon.ico'
+  use_default: true
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: 'public://200924_LE-Logo_0-150-255_0.png'
+  url: ''
+  use_default: false
+table_responsive: '-1'
+region_wells:
+  navigation: ''
+  navigation_collapsible: ''
+  header: ''
+  branding: ''
+  highlighted: ''
+  help: ''
+  content: ''
+  sidebar_first: ''
+  sidebar_second: well
+  footer: ''
+cdn_theme: ''
+cdn_cache_ttl_versions: 0
+cdn_cache_ttl_themes: 0
+cdn_cache_ttl_assets: 0
+cdn_cache_ttl_library: 0
+reset_http_request_cache: ''
+table: ''
+langcode: de

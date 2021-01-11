@@ -1,0 +1,77 @@
+uuid: afd17440-6d1c-44e9-b8bb-5ba6790942b9
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.date_format.medium
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
+    - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.og_audience
+    - node.type.le_event
+  module:
+    - date_recur
+    - text
+    - user
+_core:
+  default_config_hash: uV8_O0gBtEVSiZsHksgHhef70e33LMCEbPesTM_EUCk
+id: node.le_event.teaser
+targetEntityType: node
+bundle: le_event
+mode: teaser
+content:
+  field_bezirk:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_le_event_beschreibung:
+    type: text_default
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_le_event_occurrences:
+    type: date_recur_basic_formatter
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      format_type: medium
+      occurrence_format_type: medium
+      same_end_date_format_type: medium
+      separator: '-'
+      timezone_override: ''
+      interpreter: ''
+      show_next: 4
+      count_per_item: true
+    third_party_settings: {  }
+hidden:
+  field_adresse: true
+  field_geofield: true
+  field_le_event___eid: true
+  field_le_event_image: true
+  field_le_event_is_barrier_free: true
+  field_le_event_kategorie_gruppe: true
+  field_le_event_kategorie_tags: true
+  field_le_event_kategorie_typ: true
+  field_le_event_lizenzhinweis: true
+  field_le_event_website: true
+  langcode: true
+  links: true
+  og_audience: true

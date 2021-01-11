@@ -1,0 +1,20 @@
+uuid: 7b885e28-2720-4eb7-aaf7-ad0d5ed0249b
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEcken
+id: benachrichtigungen
+theme: leipzigerEcken
+region: content
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Benachrichtigungen
+  provider: system
+  label_display: '0'
+visibility: {  }

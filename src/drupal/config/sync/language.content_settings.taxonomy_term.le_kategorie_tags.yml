@@ -1,0 +1,13 @@
+uuid: 0306b7f0-7368-4388-89b5-e91cdbd8373d
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_tags
+_core:
+  default_config_hash: 4tlEJWx6yqy2myLymQrPHd836bGQ7uEJzom0QtspTXo
+id: taxonomy_term.le_kategorie_tags
+target_entity_type_id: taxonomy_term
+target_bundle: le_kategorie_tags
+default_langcode: site_default
+language_alterable: false

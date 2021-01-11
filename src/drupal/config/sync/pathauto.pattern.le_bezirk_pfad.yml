@@ -1,0 +1,25 @@
+uuid: e64d6a01-1956-4cb0-afe0-14c2d445df1a
+langcode: de
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+_core:
+  default_config_hash: '-xU8G7cimZCRUNzpc7jdptvnvq4vERddIC0YR1qZiH8'
+id: le_bezirk_pfad
+label: 'Bezirke Pfad'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/bezirke/[term:name]'
+selection_criteria:
+  d6139488-e7b9-4bc0-90ed-f7e6462d9d35:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      le_bezirk: le_bezirk
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: d6139488-e7b9-4bc0-90ed-f7e6462d9d35
+selection_logic: and
+weight: -7
+relationships: {  }

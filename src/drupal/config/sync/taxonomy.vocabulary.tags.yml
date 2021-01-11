@@ -1,0 +1,10 @@
+uuid: 45fddd06-374a-42a2-ab29-f88d46440127
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yoNVreoTdTZTY7GuE8fI9Jmxqdz8vlo4ZJKixMNSosw
+name: Tags
+vid: tags
+description: 'Mit Schlagwörtern können Artikel zu verwandten Themen in Kategorien zusammengefasst werden.'
+weight: 0

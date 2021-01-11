@@ -1,0 +1,24 @@
+uuid: 264f74ba-63d6-4946-a659-feec6e532bc4
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_event
+_core:
+  default_config_hash: O6Jb2EgyksteBMFazFTNxx8DE9jB59gUAGzoJsXXgmA
+id: node.le_event.sticky
+field_name: sticky
+entity_type: node
+bundle: le_event
+label: 'Oben in Listen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

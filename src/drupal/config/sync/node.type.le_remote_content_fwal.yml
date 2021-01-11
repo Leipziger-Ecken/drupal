@@ -1,0 +1,19 @@
+uuid: c177a83c-06bf-4f9d-b477-619afcd21b03
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: _bIvoFNGNWrGDzX3zReN7dtA1MGVnWQ-TiiuV0D5ndw
+name: 'Remote content (FwAL)'
+type: le_remote_content_fwal
+description: 'Via "remote API" gespiegelte Angebotsdaten aus der FwAL-/Freinet-Schnittstelle. Read-only.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

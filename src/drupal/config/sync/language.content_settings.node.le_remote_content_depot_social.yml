@@ -1,0 +1,13 @@
+uuid: 34a34225-8c0e-48ec-8594-793c0ead3be5
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_depot_social
+_core:
+  default_config_hash: cupE-7vh1iVmsiuDUQp375YAJOieJLVJs89L5KJQdmc
+id: node.le_remote_content_depot_social
+target_entity_type_id: node
+target_bundle: le_remote_content_depot_social
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,16 @@
+htmlmail_debug: false
+hmtlmail_theme: ''
+htmlmail_html_with_plain: false
+htmlmail_use_mime_mail: false
+htmlmail_postfilter: full_html
+htmlmail_test:
+  to: felix@artplantation.de
+  subject: 'subject test'
+  body:
+    value: "<p>Liebe/r [user:display-name],</p>\r\n\r\n<p><br />\r\nEure Stadtteilplattform unter https://leipziger-ecken.de hat pünktlich zum Jahreswechsel einen neuen Anstrich erhalten! Und nicht nur das: Zusammen mit den Akteuren des Leipziger Nordens stehen die Leipziger Ecken ab sofort auch in vielen anderen Bezirken Leipzigs offiziell zur Verfügung. Alle Nutzer-, Akteurs- und Veranstaltungsdaten wurden dabei auf eine neue technische Plattform migriert. Um sicherzustellen, dass alle von Euch eingetragenen Daten noch aktuell sind, möchten wir Euch bitten, sich auf der Plattform einzuloggen (https://leipziger-ecken.de/user/login) und unter dem Reiter \"Akteure\" die angelegten Informationen zu prüfen.</p>\r\n\r\n<p><br />\r\n&nbsp;Eure Stadtteilplattform hat ein neues Outfit und benötigt eure Tests, damit alles funktioniert. Meldet euch kurz an und kontrolliert eure Daten. Vielen Dank an das Kommunale Ehrenamtsbudget der Stadt Leipzig für die Unterstützung. Wir freuen uns auf ein tolles Werkzeug für die nächsten Jahre in unserer gemeinsamen Stadtteilarbeit.<br />\r\nDer erste Schritt ist trotz Covid19 geschafft. Bis bald und bei Fragen meldet euch bei uns. matthias@hybridartlab.com</p>\r\n\r\n<p><br />\r\nP.S.: Du erhälst diese einmalige Benachrichtigung, weil Du Dich am [user:created:html_date] mit dem Benutzernamen \"[user:account-name]\" auf leipziger-ecken.de registriert hast.</p>\r\n\r\n<p>blakeks,</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+    format: basic_html
+  class: htmlmail
+_core:
+  default_config_hash: Wu3IKMk26-vsOrYw0-gdQelLF90-LJG4ce9mvT9zooE
+langcode: de
+htmlmail_theme: leipzigerEcken

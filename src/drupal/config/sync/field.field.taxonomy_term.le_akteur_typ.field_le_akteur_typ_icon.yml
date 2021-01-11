@@ -1,0 +1,40 @@
+uuid: 10d92c98-a8fc-40d1-9021-b0678f9db94a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_le_akteur_typ_icon
+    - taxonomy.vocabulary.le_akteur_typ
+  module:
+    - image
+_core:
+  default_config_hash: 33nLj5Wo--ppMWHEa4On3LPoQi3v4ZIurYChnhLj5Rc
+id: taxonomy_term.le_akteur_typ.field_le_akteur_typ_icon
+field_name: field_le_akteur_typ_icon
+entity_type: taxonomy_term
+bundle: le_akteur_typ
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif svg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

@@ -1,0 +1,25 @@
+uuid: 4af8d29d-b10f-4fd7-89ee-d3ba36e9e929
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_offers_count
+    - node.type.le_remote_content_fwal
+_core:
+  default_config_hash: Yxdrp8FrzQxIfPtGiYxa66JbYt0yMLeJwnTj7_n7LhE
+id: node.le_remote_content_fwal.field_le_rcds_offers_count
+field_name: field_le_rcds_offers_count
+entity_type: node
+bundle: le_remote_content_fwal
+label: 'Anzahl Gesuche'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,13 @@
+uuid: 66e3d9fd-c0a0-48dc-8e48-e1c1a0927581
+langcode: de
+status: true
+dependencies:
+  module:
+    - usernotification
+_core:
+  default_config_hash: u8l7fAQaU0PV9EZRljN4-0pFSDvklz_pXMaFNg-4GSU
+id: usernotification_action
+label: 'Send notification message to user(s)'
+type: user
+plugin: usernotification_action
+configuration: {  }

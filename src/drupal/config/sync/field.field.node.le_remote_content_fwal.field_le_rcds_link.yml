@@ -1,0 +1,25 @@
+uuid: 15d483c0-a677-48b4-9dbc-a458d5cb31bd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_link
+    - node.type.le_remote_content_fwal
+  module:
+    - link
+_core:
+  default_config_hash: g1wDSw-CEsnTGdbDP5vVy2_1CW99dl5A_h1DEtLqp1Q
+id: node.le_remote_content_fwal.field_le_rcds_link
+field_name: field_le_rcds_link
+entity_type: node
+bundle: le_remote_content_fwal
+label: 'Link zum Angebot'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

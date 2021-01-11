@@ -1,0 +1,21 @@
+uuid: d8c7a477-ce74-4499-a4b1-2ef49e04a8b1
+langcode: de
+status: true
+dependencies:
+  module:
+    - address
+    - node
+_core:
+  default_config_hash: fC43GJEr9TUxxkZYKv2GU5JPrbgxvGZ-03rc6kQZ9E0
+id: node.field_adresse
+field_name: field_adresse
+entity_type: node
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

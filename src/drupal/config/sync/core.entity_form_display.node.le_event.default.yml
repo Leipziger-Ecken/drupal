@@ -1,0 +1,185 @@
+uuid: 43699c96-aa82-40f8-9a38-13915cc5ac5d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
+    - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.og_audience
+    - image.style.thumbnail
+    - node.type.le_event
+  module:
+    - address
+    - date_recur_modular
+    - link
+    - path
+    - svg_image
+    - text
+_core:
+  default_config_hash: 25O-AwsEx0saDOI8u5hH18O9GnZdbsejDBbyq2L3xOs
+id: node.le_event.default
+targetEntityType: node
+bundle: le_event
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_adresse:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_bezirk:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_le_event_beschreibung:
+    weight: 10
+    settings:
+      rows: 6
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_le_event_image:
+    weight: 8
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_le_event_is_barrier_free:
+    weight: 18
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_le_event_kategorie_gruppe:
+    weight: 13
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_le_event_kategorie_tags:
+    weight: 17
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'z.B. "kostenfrei, outdoor"'
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  field_le_event_kategorie_typ:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_le_event_lizenzhinweis:
+    weight: 26
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_le_event_occurrences:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: date_recur_modular_alpha
+    region: content
+  field_le_event_website:
+    weight: 16
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  og_audience:
+    type: options_buttons
+    settings: {  }
+    weight: 9
+    third_party_settings: {  }
+    region: content
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_geofield: true
+  field_le_event___eid: true

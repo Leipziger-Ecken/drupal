@@ -1,0 +1,7 @@
+uuid: ee5fc950-a838-41d1-8be3-c554592dffba
+langcode: de
+status: false
+dependencies: {  }
+formId: node_le_remote_content_fwal_form
+captchaType: default
+label: null

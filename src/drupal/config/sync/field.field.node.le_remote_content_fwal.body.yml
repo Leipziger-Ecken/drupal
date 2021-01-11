@@ -1,0 +1,25 @@
+uuid: 84ab7fa3-39be-4a2c-b36d-be71ed17094b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.le_remote_content_fwal
+  module:
+    - text
+_core:
+  default_config_hash: 2iWBTOx0fa4cezUIrQTNhfbUrGQzDOB3zgMRNHeLpnA
+id: node.le_remote_content_fwal.body
+field_name: body
+entity_type: node
+bundle: le_remote_content_fwal
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

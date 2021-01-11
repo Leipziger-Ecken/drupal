@@ -1,0 +1,32 @@
+uuid: a82d0d20-32be-4548-8ea4-8227d3554dc5
+langcode: de
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - node
+_core:
+  default_config_hash: MbmQTeOEo9wJ6pFPXCSEfOvCso5kmE7gCjKINJFXmJo
+id: node.field_le_akteur_image
+field_name: field_le_akteur_image
+entity_type: node
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: f3818038-0748-426f-8cc0-ca61041f959e
+    alt: ''
+    title: ''
+    width: 249
+    height: 148
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

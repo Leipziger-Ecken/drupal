@@ -1,0 +1,25 @@
+uuid: 654bd727-8b5b-45de-8533-a43c8527de78
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_url
+    - node.type.le_akteur
+  module:
+    - link
+_core:
+  default_config_hash: xF3u28RQOIhfhPDAgW6tmRTNOJo4fSvt0SThAEKHEQY
+id: node.le_akteur.field_le_akteur_url
+field_name: field_le_akteur_url
+entity_type: node
+bundle: le_akteur
+label: Website
+description: 'Link zur eigenen Homepage'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

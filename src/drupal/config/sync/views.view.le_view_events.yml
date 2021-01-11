@@ -1,0 +1,1951 @@
+uuid: d2124658-e54a-48f9-afbf-4dc238eb53ee
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.storage.node.field_geofield
+    - field.storage.node.field_le_event_beschreibung
+    - node.type.le_event
+    - system.menu.main
+    - taxonomy.vocabulary.le_bezirk
+    - taxonomy.vocabulary.le_kategorie_tags
+    - taxonomy.vocabulary.le_kategorie_typ
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
+    - taxonomy.vocabulary.le_region
+  module:
+    - date_recur
+    - datetime
+    - geofield
+    - leaflet_views
+    - node
+    - rest
+    - serialization
+    - taxonomy
+    - text
+    - user
+_core:
+  default_config_hash: j2o0nguE93wImAsBy7bZ-fNEA0YAqY1uf4xg2O6InMo
+id: le_view_events
+label: Events
+module: views
+description: 'Filterbare Eventsliste'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Anwenden
+          reset_button: false
+          reset_button_label: Zurücksetzen
+          exposed_sorts_label: 'Sortieren nach'
+          expose_sort_order: true
+          sort_asc_label: Aufsteigend
+          sort_desc_label: Absteigend
+      pager:
+        type: full
+        options:
+          items_per_page: 16
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Erste'
+            last: 'Letzte »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Elemente pro Seite'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- Alle -'
+            offset: false
+            offset_label: Versatz
+          quantity: 9
+      style:
+        type: default
+        options:
+          row_class: event-container
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      fields:
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: '{{ view_node }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Ansicht
+          output_url_as_text: true
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Titel
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        field_le_event_occurrences_value_1:
+          id: field_le_event_occurrences_value_1
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Titel
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ title }} öffnen'
+            make_link: true
+            path: '{{ view_node }}?date={{ field_le_event_occurrences_value_1 }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: lower
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: html_date
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Start
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: medium
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Ende
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: medium
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_beschreibung:
+          id: field_le_event_beschreibung
+          table: node__field_le_event_beschreibung
+          field: field_le_event_beschreibung
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Beschreibung
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            le_event: le_event
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Schlagwortsuche
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Stadtgebiet
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: stadtteil_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_bezirk_target_id:
+          id: field_bezirk_target_id
+          table: node__field_bezirk
+          field: field_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_bezirk_target_id_op
+            label: Stadtteil
+            description: ''
+            use_operator: false
+            operator: field_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: bezirk_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_value_op
+            label: 'Start (ab...)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-01'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_end_value_op
+            label: 'Ende (...bis)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ende
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-02'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_kategorie_typ_target_id:
+          id: field_le_event_kategorie_typ_target_id
+          table: node__field_le_event_kategorie_typ
+          field: field_le_event_kategorie_typ_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_typ_target_id_op
+            label: Kategorien
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_typ_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: kategorie_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: le_kategorie_typ
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_gruppe_target_id:
+          id: field_le_event_kategorie_gruppe_target_id
+          table: node__field_le_event_kategorie_gruppe
+          field: field_le_event_kategorie_gruppe_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_gruppe_target_id_op
+            label: Zielgruppe(n)
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_gruppe_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: zielgruppe_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: le_kategorie_zielgruppe
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_tags_target_id:
+          id: field_le_event_kategorie_tags_target_id
+          table: node__field_le_event_kategorie_tags
+          field: field_le_event_kategorie_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_tags_target_id_op
+            label: Tags
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tag_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_kategorie_tags
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+      sorts:
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: 'Datum (d. Wiederholung)'
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Zeitraum (field_le_event_occurrences)'
+          granularity: minute
+          plugin_id: datetime
+      title: Events
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships:
+        field_le_event_occurrences_occurrences:
+          id: field_le_event_occurrences_occurrences
+          table: node_field_data
+          field: field_le_event_occurrences_occurrences
+          relationship: none
+          group_type: group
+          admin_label: 'Wiederholungen von Zeitraum'
+          required: false
+          entity_type: node
+          plugin_id: standard
+        field_bezirk:
+          id: field_bezirk
+          table: node__field_bezirk
+          field: field_bezirk
+          relationship: none
+          group_type: group
+          admin_label: 'field_bezirk: Taxonomy term'
+          required: false
+          plugin_id: standard
+      arguments: {  }
+      display_extenders: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_le_event_beschreibung'
+  attachment_1:
+    display_plugin: attachment
+    id: attachment_1
+    display_title: Attachment
+    position: 4
+    display_options:
+      display_extenders: {  }
+      style:
+        type: leaflet_map
+        options:
+          grouping: {  }
+          data_source: field_geofield
+          entity_source: __base_table
+          entity_source_submit: 'Update Entity Source'
+          name_field: title
+          description_field: field_le_event_occurrences_value_1
+          view_mode: full
+          leaflet_map: osm-neighbourhood
+          height: '400'
+          height_unit: px
+          hide_empty_map: false
+          disable_wheel: false
+          fullscreen_control: true
+          gesture_handling: false
+          reset_map:
+            control: false
+            position: topright
+          map_position:
+            force: false
+            center:
+              lat: 0
+              lon: 0
+            zoom: 12
+            minZoom: 1
+            maxZoom: 18
+            zoomFiner: 0
+          icon:
+            iconType: marker
+            iconUrl: themes/custom/swinger/icons/marker_le_event.svg
+            shadowUrl: ''
+            html: '<div></div>'
+            html_class: leaflet-map-divicon
+            circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
+            iconSize:
+              x: '25'
+              'y': '40'
+            iconAnchor:
+              x: ''
+              'y': ''
+            shadowSize:
+              x: ''
+              'y': ''
+            shadowAnchor:
+              x: ''
+              'y': ''
+            popupAnchor:
+              x: ''
+              'y': ''
+          leaflet_markercluster:
+            control: false
+            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
+          path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
+          geocoder:
+            control: false
+            settings:
+              position: topright
+              input_size: 25
+              providers:
+                mapbox:
+                  weight: '0'
+                  checked: 0
+              min_terms: 4
+              delay: 800
+              zoom: 16
+              popup: false
+              options: ''
+      defaults:
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      fields:
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: '{{ view_node }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Ansicht
+          output_url_as_text: true
+          absolute: true
+          entity_type: node
+          plugin_id: entity_link
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Titel
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        field_le_event_occurrences_value_1:
+          id: field_le_event_occurrences_value_1
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Titel
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ title }} am/ab {{ field_le_event_occurrences_value_1 }}'
+            make_link: true
+            path: '{{ view_node }}?date={{ field_le_event_occurrences_value_1 }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: lower
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: html_date
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Start
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: medium
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          label: Ende
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          date_format: medium
+          custom_date_format: ''
+          timezone: ''
+          plugin_id: date_recur_date
+        field_le_event_beschreibung:
+          id: field_le_event_beschreibung
+          table: node__field_le_event_beschreibung
+          field: field_le_event_beschreibung
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Beschreibung
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_geofield:
+          id: field_geofield
+          table: node__field_geofield
+          field: field_geofield
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: geofield_default
+          settings:
+            output_format: wkt
+            output_escape: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+      pager:
+        type: none
+        options:
+          offset: 0
+      inherit_exposed_filters: true
+      displays:
+        page_1: page_1
+      display_description: 'Leaflet Map - erhält Filter aus Seite, aber OHNE Paginierung'
+      inherit_arguments: false
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            le_event: le_event
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Schlagwortsuche
+            description: ''
+            use_operator: false
+            operator: title_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_le_bezirk_region_target_id:
+          id: field_le_bezirk_region_target_id
+          table: taxonomy_term__field_le_bezirk_region
+          field: field_le_bezirk_region_target_id
+          relationship: field_bezirk
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_bezirk_region_target_id_op
+            label: Stadtgebiet
+            description: ''
+            use_operator: false
+            operator: field_le_bezirk_region_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: stadtteil_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_region
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_bezirk_target_id:
+          id: field_bezirk_target_id
+          table: node__field_bezirk
+          field: field_bezirk_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_bezirk_target_id_op
+            label: Stadtteil
+            description: ''
+            use_operator: false
+            operator: field_bezirk_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: bezirk_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_bezirk
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_value_op
+            label: 'Start (ab...)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: start
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-01'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_occurrences_end_value_op
+            label: 'Ende (...bis)'
+            description: ''
+            use_operator: false
+            operator: field_le_event_occurrences_end_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ende
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            placeholder: 'z.B. 2020-12-02'
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_kategorie_typ_target_id:
+          id: field_le_event_kategorie_typ_target_id
+          table: node__field_le_event_kategorie_typ
+          field: field_le_event_kategorie_typ_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_typ_target_id_op
+            label: Kategorien
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_typ_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: kategorie_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: le_kategorie_typ
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_gruppe_target_id:
+          id: field_le_event_kategorie_gruppe_target_id
+          table: node__field_le_event_kategorie_gruppe
+          field: field_le_event_kategorie_gruppe_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_gruppe_target_id_op
+            label: Zielgruppe(n)
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_gruppe_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: zielgruppe_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          type: select
+          limit: true
+          vid: le_kategorie_zielgruppe
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_kategorie_tags_target_id:
+          id: field_le_event_kategorie_tags_target_id
+          table: node__field_le_event_kategorie_tags
+          field: field_le_event_kategorie_tags_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_le_event_kategorie_tags_target_id_op
+            label: Tags
+            description: ''
+            use_operator: false
+            operator: field_le_event_kategorie_tags_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tag_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              le_role_redakteur: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: le_kategorie_tags
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_le_event_occurrences_value_1:
+          id: field_le_event_occurrences_value_1
+          table: node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_geofield'
+        - 'config:field.storage.node.field_le_event_beschreibung'
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: Page
+    position: 1
+    display_options:
+      display_extenders:
+        simple_sitemap_display_extender:
+          variants:
+            default:
+              index: true
+              priority: '0.8'
+              changefreq: daily
+              arguments: {  }
+              max_links: 100
+      path: events
+      menu:
+        type: normal
+        title: Events
+        description: ''
+        expanded: false
+        parent: ''
+        weight: -48
+        context: '0'
+        menu_name: main
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<blockquote>Wir konnten keine Veranstaltungen mit diesen Filterangaben finden.</blockquote>'
+          plugin_id: text_custom
+      defaults:
+        empty: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_le_event_beschreibung'
+  rest_export_1:
+    display_plugin: rest_export
+    id: rest_export_1
+    display_title: 'REST export'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: /api/v1/events
+      style:
+        type: serializer
+      defaults:
+        style: false
+        row: false
+      row:
+        type: data_entity
+        options: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 10
+          offset: 0
+      enabled: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - url
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_le_event_beschreibung'

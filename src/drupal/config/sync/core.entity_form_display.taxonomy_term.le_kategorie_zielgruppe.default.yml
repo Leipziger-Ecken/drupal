@@ -1,0 +1,39 @@
+uuid: 596ee888-f686-4ac2-a0cc-bde6a680b3da
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
+  module:
+    - path
+_core:
+  default_config_hash: c0KCE5THJRiqsK4XXy_C8MeB5FFFAQEm9SmwQUU_P0o
+id: taxonomy_term.le_kategorie_zielgruppe.default
+targetEntityType: taxonomy_term
+bundle: le_kategorie_zielgruppe
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  status: true

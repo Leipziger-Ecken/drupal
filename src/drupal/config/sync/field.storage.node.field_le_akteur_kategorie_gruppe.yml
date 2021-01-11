@@ -1,0 +1,22 @@
+uuid: 292313b8-e1c6-4c10-9b6c-f0e1b5ae6550
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: 75th7xdC7kMqngtQLa5WX6OtfTce4wH05hVy51-SDM0
+id: node.field_le_akteur_kategorie_gruppe
+field_name: field_le_akteur_kategorie_gruppe
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

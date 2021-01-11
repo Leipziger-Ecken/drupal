@@ -1,0 +1,20 @@
+uuid: aefe025f-bfe9-481f-9962-d73064067b12
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEcken
+id: pfadnavigation
+theme: leipzigerEcken
+region: header
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Pfadnavigation
+  provider: system
+  label_display: '0'
+visibility: {  }

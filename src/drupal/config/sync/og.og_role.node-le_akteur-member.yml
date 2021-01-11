@@ -1,0 +1,17 @@
+uuid: a5d4a8be-6ba6-47e1-9636-2cc66303a67d
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: n56TP5PxaoZf6jaB6Sf9r9ihg0L3XxYMGnRxuhNs4QM
+id: node-le_akteur-member
+label: Member
+weight: 1
+is_admin: null
+group_type: node
+group_bundle: le_akteur
+group_id: null
+permissions: {  }
+role_type: required

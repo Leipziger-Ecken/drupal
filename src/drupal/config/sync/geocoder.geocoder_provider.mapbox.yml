@@ -1,0 +1,15 @@
+uuid: 8ebea889-e722-47f7-812f-5e15379a529e
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: dlKmTtDn-bJMjYOkTvLxwb-vRZlgT_cMNY7P2KU3In8
+id: mapbox
+label: Mapbox
+plugin: mapbox
+configuration:
+  accessToken: pk.eyJ1IjoibGVpcHppZ2VyZWNrZW4iLCJhIjoiY2s5bDR5bWcxMTlhNzNlcTYxOWhpcXlkbCJ9.wKFBU6tds4ytRZlcMIOkOQ
+  country: DE
+  throttle:
+    period: null
+    limit: null

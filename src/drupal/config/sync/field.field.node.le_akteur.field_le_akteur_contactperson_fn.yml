@@ -1,0 +1,21 @@
+uuid: c2a2eb0c-a8ac-49dd-9ddf-686c62c244cd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_contactperson_fn
+    - node.type.le_akteur
+_core:
+  default_config_hash: aH9J80Hq9dQ3PuFtu-FdS8CEYYs1zaRfKOukUyVq4nI
+id: node.le_akteur.field_le_akteur_contactperson_fn
+field_name: field_le_akteur_contactperson_fn
+entity_type: node
+bundle: le_akteur
+label: 'Ansprechpartner*in Funktion'
+description: 'Funktion der Ansprechpartner*in'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

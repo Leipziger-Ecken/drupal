@@ -1,0 +1,10 @@
+uuid: 7ceaae5a-7078-4bcf-8b8c-fc4eed298aa3
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: C-19g2s1BPrjUkJXFJPF-i_2OwY8ZktOy6k5_JcaMRk
+name: 'Kategorie: Zielgruppe'
+vid: le_kategorie_zielgruppe
+description: 'z.B. "Kinder" / "Jugendliche" / "Erwachsene" / "Senioren"'
+weight: 0

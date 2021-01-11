@@ -1,0 +1,228 @@
+uuid: 132710af-7496-48a1-98ac-637f19344fcb
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.date_format.medium
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
+    - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.og_audience
+    - node.type.le_event
+  module:
+    - address
+    - date_recur
+    - leaflet
+    - link
+    - svg_image
+    - text
+    - user
+_core:
+  default_config_hash: SranR5Ezhhmx-F7EeReEqZU2MDf3q1HfccOPfqVIgDI
+id: node.le_event.default
+targetEntityType: node
+bundle: le_event
+mode: default
+content:
+  field_adresse:
+    weight: 16
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_bezirk:
+    weight: 15
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_geofield:
+    weight: 14
+    label: hidden
+    settings:
+      multiple_map: false
+      popup: true
+      popup_content: "<strong>[node:title]</strong><br />\r\n[node:field_adresse:address_line1]\r\n[node:field_adresse:address_line2]\r\n[node:field_adresse:postal_code] [node:field_adresse:locality]"
+      leaflet_map: osm-neighbourhood
+      height: 400
+      height_unit: px
+      hide_empty_map: true
+      fullscreen_control: true
+      reset_map:
+        position: topright
+        control: false
+      map_position:
+        center:
+          lat: !!float 0
+          lon: !!float 0
+        zoom: 14
+        minZoom: 1
+        maxZoom: 18
+        zoomFiner: 0
+        force: false
+      icon:
+        iconType: marker
+        iconUrl: themes/custom/swinger/icons/marker_le_event.svg
+        shadowUrl: ''
+        html: '<div></div>'
+        html_class: leaflet-map-divicon
+        circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
+        iconSize:
+          x: '25'
+          'y': '40'
+        iconAnchor:
+          x: ''
+          'y': ''
+        shadowSize:
+          x: ''
+          'y': ''
+        shadowAnchor:
+          x: ''
+          'y': ''
+        popupAnchor:
+          x: ''
+          'y': ''
+      leaflet_markercluster:
+        options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
+        control: false
+      path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
+      geocoder:
+        settings:
+          position: topright
+          input_size: 25
+          providers:
+            mapbox:
+              weight: 0
+              checked: false
+          min_terms: 4
+          delay: 800
+          zoom: 16
+          options: ''
+          popup: false
+        control: false
+      disable_wheel: false
+      gesture_handling: false
+    third_party_settings: {  }
+    type: leaflet_formatter_default
+    region: content
+  field_le_event_beschreibung:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_le_event_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_le_event_is_barrier_free:
+    weight: 8
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_le_event_kategorie_gruppe:
+    weight: 11
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_tags:
+    weight: 12
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_typ:
+    weight: 9
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_lizenzhinweis:
+    weight: 18
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_le_event_occurrences:
+    weight: 5
+    label: above
+    settings:
+      format_type: medium
+      occurrence_format_type: medium
+      same_end_date_format_type: medium
+      separator: '-'
+      timezone_override: Europe/Berlin
+      interpreter: ''
+      show_next: 8
+      count_per_item: true
+    third_party_settings: {  }
+    type: date_recur_basic_formatter
+    region: content
+  field_le_event_website:
+    weight: 17
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    label: hidden
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 13
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_le_event___eid: true
+  langcode: true

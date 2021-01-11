@@ -1,0 +1,31 @@
+uuid: 2f2d7072-d6e0-4f3e-ace2-11f709401415
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bezirk
+    - node.type.le_remote_content_fwal
+    - taxonomy.vocabulary.le_bezirk
+_core:
+  default_config_hash: mZqGdW6ZgOIMO98YhCmgqfXhxDXpw4IP_H4-jOx1PJM
+id: node.le_remote_content_fwal.field_bezirk
+field_name: field_bezirk
+entity_type: node
+bundle: le_remote_content_fwal
+label: Bezirk
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_bezirk: le_bezirk
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

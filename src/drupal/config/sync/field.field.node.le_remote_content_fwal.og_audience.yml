@@ -1,0 +1,28 @@
+uuid: b1de08d0-d045-47ab-90b2-6e9be139243d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_audience
+    - node.type.le_akteur
+    - node.type.le_remote_content_fwal
+  module:
+    - og
+_core:
+  default_config_hash: zOw4nXe4EUH_JYdWta56Gl5xYksLuYYll5fn2kgPEnE
+id: node.le_remote_content_fwal.og_audience
+field_name: og_audience
+entity_type: node
+bundle: le_remote_content_fwal
+label: 'Groups audience'
+description: 'OG group audience reference field.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'og:default'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+field_type: og_standard_reference

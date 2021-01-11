@@ -1,0 +1,31 @@
+uuid: 0722b721-d5c7-4822-8e56-2fb355392f33
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_akteure
+    - node.type.article
+    - node.type.le_akteur
+_core:
+  default_config_hash: LfX_CjrwSg7mun02nWdlDw5G-XksYOMsHQN_5lhJqxY
+id: node.article.field_article_akteure
+field_name: field_article_akteure
+entity_type: node
+bundle: article
+label: Akteur(e)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

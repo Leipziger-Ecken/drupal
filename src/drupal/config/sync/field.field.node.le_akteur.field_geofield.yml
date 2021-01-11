@@ -1,0 +1,41 @@
+uuid: b9c49c41-6241-4715-a23a-7191ab26dc62
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geofield
+    - node.type.le_akteur
+  module:
+    - geocoder_field
+    - geofield
+third_party_settings:
+  geocoder_field:
+    method: geocode
+    weight: 0
+    skip_not_empty_value: 0
+    disabled: false
+    hidden: false
+    providers:
+      - mapbox
+    dumper: wkt
+    failure:
+      handling: preserve
+      status_message: true
+      log: true
+    field: field_adresse
+    delta_handling: default
+_core:
+  default_config_hash: y_YqHSWSZlt5lqhZho-pefgX7YW_it9TTaAXbV-JMn8
+id: node.le_akteur.field_geofield
+field_name: field_geofield
+entity_type: node
+bundle: le_akteur
+label: Geofield
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield

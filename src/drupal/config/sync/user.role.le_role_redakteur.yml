@@ -1,0 +1,11 @@
+uuid: beea385b-329b-4670-b438-f4d901e209a1
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: xzDRYAjqC1mUZ3XEvf2Rm4DD2dZczB6d68tmj_upESg
+id: le_role_redakteur
+label: Redakteur
+weight: 3
+is_admin: null
+permissions: {  }

@@ -1,0 +1,18 @@
+uuid: fdde0c9a-ffbb-46a9-b4b7-280e81d944ce
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: WsgFCKhlmr7TODkWLT8vb5I016cPOuzp--5qVboCYys
+id: node-le_akteur-non-member
+label: Non-member
+weight: 3
+is_admin: null
+group_type: node
+group_bundle: le_akteur
+group_id: null
+permissions:
+  - subscribe
+role_type: required

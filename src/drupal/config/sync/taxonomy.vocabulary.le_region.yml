@@ -1,0 +1,10 @@
+uuid: aa26300d-72fc-4e81-ac78-e0f9252b4944
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yr5W1EdIqDPBxJ0MULP-uw8470yCPtHmgwVEjlicyqk
+name: Region
+vid: le_region
+description: 'Geogr. Kategoriseriung von Bezirken, z.B. "Osten" / "Norden"'
+weight: 0

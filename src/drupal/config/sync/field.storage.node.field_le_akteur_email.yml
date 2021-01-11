@@ -1,0 +1,20 @@
+uuid: 466cff0f-b783-4755-8599-29f2166d1289
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: IppkUPNjjOhOrkVCEoDRr1S2Irizx9KC0HAXe4ZAJQI
+id: node.field_le_akteur_email
+field_name: field_le_akteur_email
+entity_type: node
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,13 @@
+uuid: ca8681c8-a166-49b6-b201-b740f8f875e8
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_fwal
+_core:
+  default_config_hash: 5pKIL03R1_FrYgTWPvzPpqxn-ib7VcDDY0cE5VZarB8
+id: node.le_remote_content_fwal
+target_entity_type_id: node
+target_bundle: le_remote_content_fwal
+default_langcode: site_default
+language_alterable: false

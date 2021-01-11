@@ -1,0 +1,21 @@
+uuid: 4de61122-71ac-415a-bba5-02ea058f70fb
+langcode: de
+status: true
+dependencies:
+  module:
+    - link
+    - node
+_core:
+  default_config_hash: 04zCTe6GJ24ErQS3YMUiuL0P8Y7L4JUfMfXeysumDgw
+id: node.field_le_rcds_link
+field_name: field_le_rcds_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+uuid: 79b4965a-cc53-455c-aba5-7442d703bbf6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.le_bezirk.field_le_bezirk_region
+    - taxonomy.vocabulary.le_bezirk
+_core:
+  default_config_hash: YA1qYltiHAaUHYHcZKkwfPC089s5Pdzg8p_jtVomwTI
+id: taxonomy_term.le_bezirk.default
+targetEntityType: taxonomy_term
+bundle: le_bezirk
+mode: default
+content:
+  field_le_bezirk_region:
+    weight: 0
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  description: true
+  langcode: true
