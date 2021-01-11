@@ -43,7 +43,7 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
   if ($route_name === 'entity.node.canonical' || $route_name === 'view.le_akteur_has_events.page_1' || $route_name === 'entity.node.edit_form') {
     // Context: node
 
-    $tabs = $data['tabs'][0]; 
+    $tabs = $data['tabs'][0];
 
     if (isset($data['tabs'][0]) && isset($data['tabs'][0]['entity.node.canonical'])) {
       // Change first tab title from "Ansicht" to "Beschreibung"
@@ -108,7 +108,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     $user_id = \Drupal::currentUser()->id();
     $full_user = \Drupal\user\Entity\User::load($user_id);
     $user_is_admin = $full_user->hasRole('administrator') || $user_id == 1;
-    
+
     $membership_manager = \Drupal::service('og.membership_manager');
     $user_memberships = $membership_manager->getMemberships($user_id);
 
@@ -139,26 +139,30 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           ];
     }
 
-    // @todo When choosing Akteur, fill adress-values from Akteur-adress
+    // @todo When choosing Akteur, auto-fill-in address values from Akteur address, see #13
     $form['og_audience']['widget']['#type'] = 'select';
 
-    if (true || !$user_is_admin) {
-      $user_akteure = [];
+    $user_akteure = [];
 
-      foreach ($user_memberships as $membership) {
-        // Map memberships to actual akteure entity_id
-        array_push($user_akteure, $membership->get('entity_id')->value);
-      }
+    foreach ($user_memberships as $membership) {
+      // Map memberships to actual akteure entity_id
+      array_push($user_akteure, $membership->get('entity_id')->value);
+    }
 
+    if (!$user_is_admin) {
+      // Limit selection to owned Akteure
       foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
-
         if (!in_array($entity_id, $user_akteure)) {
           unset($form['og_audience']['widget']['#options'][$entity_id]);
         }
       }
     }
 
-    array_unshift($form['og_audience']['widget']['#options'], '-- Private*r Veranstalter*in --');
+    // Push "Private owner" at the top of og_audience select list
+    $form['og_audience']['widget']['#options'] = ['0' => '-- Private:r Veranstalter:in --'] + $form['og_audience']['widget']['#options'];
+
+    // @todo Ensure that on edit-form, "Private owner" stays selected
+    // $form['og_audience']['widget']['#value'] = '0';
 
     if (in_array($form_id, ['node_le_event_form'])) {
       // Add(!) event form
@@ -205,7 +209,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 /**
  * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
  * ("Select one main category; select multiple second categories which are children of that main category")
- * 
+ *
  * @deprecated Kategorie-field was turned into multiple-select and is now managed via dedicated "categories-select.js".
  * THERE IS NOT "SUBTYP"-FIELD ANYMORE!!!
  */
