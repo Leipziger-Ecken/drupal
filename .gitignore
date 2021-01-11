@@ -11,11 +11,11 @@
 
 # Ignore sensitive information
 #/src/drupal/web/sites/*/settings.php
-!/src/drupal/web/sites/*/settings.php
 /src/drupal/web/sites/settings.local.php
 /src/drupal/web/sites/*/settings.local.php
 /src/drupal/web/sites/*/settings*.php
 /src/drupal/web/sites/*/services*.yml
+!/src/drupal/web/sites/*/settings.php
 
 # Ignore Drupal's file directory
 /src/drupal/web/sites/*/files/
