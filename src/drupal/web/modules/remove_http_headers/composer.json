@@ -1,0 +1,25 @@
+{
+    "name": "drupal/remove_http_headers",
+    "description": "Removes configured HTTP Response headers.",
+    "type": "drupal-module",
+    "homepage": "https://drupal.org/project/remove_http_headers",
+    "license": "GPL-2.0-or-later",
+    "keywords": ["Drupal", "HTTP headers", "Security"],
+    "authors": [
+        {
+            "name": "Orlando Thöny",
+            "email": "orlando.thoeny@gmail.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "drupal/core": "^8.6||^9.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.17",
+        "phpstan/phpstan-deprecation-rules": "^0.12.2",
+        "mglaman/phpstan-drupal": "^0.12.2",
+        "phpstan/phpstan-strict-rules": "^0.12.2",
+        "ekino/phpstan-banned-code": "^0.3.1"
+    }
+}

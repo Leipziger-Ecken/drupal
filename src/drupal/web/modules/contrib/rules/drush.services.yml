@@ -1,0 +1,6 @@
+services:
+  rules.commands:
+    class: Drupal\rules\Commands\RulesCommands
+    arguments: ['@config.factory', '@config.storage', '@plugin.manager.rules_event']
+    tags:
+      - { name: drush.command }

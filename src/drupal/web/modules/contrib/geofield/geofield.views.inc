@@ -71,42 +71,6 @@ function geofield_field_views_data(FieldStorageConfigInterface $field_storage) {
         'real field' => $field_name,
       ],
     ];
-
-    $data[$table_name][$field_name . '_boundary'] = [
-      'group' => $table_data[$field_name . '_value']['group'],
-      'title' => t('@label Rectangular Boundary (@field_name)', [
-        '@label' => $field_label,
-        '@field_name' => $field_name,
-      ]),
-      'help' => $table_data[$field_name . '_value']['help'],
-      'argument' => [
-        'id' => 'geofield_rectangular_boundary_argument',
-        'table' => $table_name,
-        'entity_type' => $entity_type_id,
-        'field_name' => $field_name . '_boundary',
-        'real field' => $field_name,
-        'label' => t('Rectangular Boundaries around !field_name', [$field_name]),
-        'empty field name' => '- No value -',
-        'additional fields' => [
-          $field_name . '_lat',
-          $field_name . '_lon',
-        ],
-      ],
-      'filter' => [
-        'id' => 'geofield_rectangular_boundary_filter',
-        'table' => $table_name,
-        'entity_type' => $entity_type_id,
-        'field_name' => $field_name . '_boundary',
-        'real field' => $field_name,
-        'label' => t('Rectangular Boundaries around !field_name', [$field_name]),
-        'allow empty' => TRUE,
-        'additional fields' => [
-          $field_name . '_lat',
-          $field_name . '_lon',
-        ],
-      ],
-    ];
-
   }
 
   return $data;

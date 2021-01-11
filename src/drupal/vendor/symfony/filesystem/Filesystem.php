@@ -695,9 +695,7 @@ class Filesystem
 
             $this->rename($tmpFile, $filename, true);
         } finally {
-            if (file_exists($tmpFile)) {
-                @unlink($tmpFile);
-            }
+            @unlink($tmpFile);
         }
     }
 

@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * Provides the installation and update routines for the Maillog module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_install().
+ */
+function maillog_install() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+  $config->set('interface.default', 'maillog');
+  $config->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function maillog_uninstall() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+
+  // Restore the mail configuration to the default "php_mail" if it currently
+  // uses Maillog.
+  if ($config->get('interface.default') == 'maillog') {
+    $config->set('interface.default', 'php_mail');
+    $config->save();
+  }
+}
+
+/**
+ * Implements hook_schema().
+ */
+function maillog_schema() {
+  $schema['maillog'] = [
+    'description' => "Stores outgoing emails that are captured using the Maillog module.",
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => "The primary key of this table.",
+      ],
+      'header_message_id' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "The 'message-id' field of the e-mail.",
+      ],
+      'header_from' => [
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => "The 'From' field of the e-mail.",
+      ],
+      'header_to' => [
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => "The 'To' field of the e-mail.",
+      ],
+      'header_reply_to' => [
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => "The 'Reply-To' field of the e-mail.",
+      ],
+      'header_all' => [
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => "The 'Header' field of the e-mail.",
+      ],
+      'subject' => [
+        'description' => "The 'Subject' field of the e-mail.",
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'body' => [
+        'description' => 'The body of this message.',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+      ],
+      'sent_date' => [
+        'description' => 'The Unix timestamp when the mail was sent.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Rename the 'idmaillog' field to just 'id'.
+ */
+function maillog_update_8100() {
+  $connection = Database::getConnection();
+  $schema = $connection->schema();
+
+  if (!$schema->fieldExists('maillog', 'id')) {
+    // Add the new 'id' field.
+    $spec = [
+      'type' => 'int',
+      'not null' => TRUE,
+      'unsigned' => TRUE,
+      'default' => 0,
+      'description' => "The primary key of this table.",
+    ];
+    $schema->addField('maillog', 'id', $spec);
+
+    // Fill in all of the 'id' fields.
+    $connection->query("UPDATE {maillog} SET id=idmaillog");
+
+    // Drop the 'idmaillog' field.
+    $schema->dropField('maillog', 'idmaillog');
+
+    // Change the 'id' field to a serial.
+    $spec = [
+      'type' => 'serial',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+      'description' => "The primary key of this table.",
+    ];
+    $keys = [
+      'primary key' => ['id'],
+    ];
+    $schema->changeField('maillog', 'id', 'id', $spec, $keys);
+  }
+}

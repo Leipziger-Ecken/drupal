@@ -1,6 +1,5 @@
 <?php
 
-use Stringy\Stringy;
 use PHPUnit\Framework\TestCase;
 use Laravolt\Avatar\Generator\DefaultGenerator;
 
@@ -19,14 +18,6 @@ class InitialGeneratorTest extends TestCase
     public function it_accept_string()
     {
         $this->assertEquals('BH', $this->generator->make('Bayu Hendra'));
-    }
-
-    /**
-     * @test
-     */
-    public function it_accept_stringy()
-    {
-        $this->assertEquals('BH', $this->generator->make(new Stringy('Bayu Hendra')));
     }
 
     /**
@@ -103,6 +94,14 @@ class InitialGeneratorTest extends TestCase
     public function it_can_convert_to_ascii()
     {
         $this->assertEquals('Ba', (string)$this->generator->make('Bāyu', 2, false, true));
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_convert_to_uppercase()
+    {
+        $this->assertEquals('SA', (string)$this->generator->make('sabil', 2, true));
     }
 
     /**

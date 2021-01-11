@@ -174,43 +174,43 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      *
      * @var string
      */
-    public const RECURRENCES_FILTER = [self::class, 'filterRecurrences'];
-    public const END_DATE_FILTER = [self::class, 'filterEndDate'];
+    const RECURRENCES_FILTER = 'Carbon\CarbonPeriod::filterRecurrences';
+    const END_DATE_FILTER = 'Carbon\CarbonPeriod::filterEndDate';
 
     /**
      * Special value which can be returned by filters to end iteration. Also a filter.
      *
      * @var string
      */
-    public const END_ITERATION = [self::class, 'endIteration'];
+    const END_ITERATION = 'Carbon\CarbonPeriod::endIteration';
 
     /**
      * Exclude start date from iteration.
      *
      * @var int
      */
-    public const EXCLUDE_START_DATE = 1;
+    const EXCLUDE_START_DATE = 1;
 
     /**
      * Exclude end date from iteration.
      *
      * @var int
      */
-    public const EXCLUDE_END_DATE = 2;
+    const EXCLUDE_END_DATE = 2;
 
     /**
      * Yield CarbonImmutable instances.
      *
      * @var int
      */
-    public const IMMUTABLE = 4;
+    const IMMUTABLE = 4;
 
     /**
      * Number of maximum attempts before giving up on finding next valid date.
      *
      * @var int
      */
-    public const NEXT_MAX_ATTEMPTS = 1000;
+    const NEXT_MAX_ATTEMPTS = 1000;
 
     /**
      * The registered macros.
@@ -583,15 +583,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     public static function __callStatic($method, $parameters)
     {
-        $date = new static();
-
-        if (static::hasMacro($method)) {
-            return static::bindMacroContext(null, function () use (&$method, &$parameters, &$date) {
-                return $date->callMacro($method, $parameters);
-            });
-        }
-
-        return $date->$method(...$parameters);
+        return (new static)->$method(...$parameters);
     }
 
     /**
@@ -1220,7 +1212,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     public function setStartDate($date, $inclusive = null)
     {
-        if (!$date = ([$this->dateClass, 'make'])($date)) {
+        if (!$date = \call_user_func([$this->dateClass, 'make'], $date)) {
             throw new InvalidPeriodDateException('Invalid start date.');
         }
 
@@ -1245,7 +1237,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     public function setEndDate($date, $inclusive = null)
     {
-        if (!\is_null($date) && !$date = ([$this->dateClass, 'make'])($date)) {
+        if (!\is_null($date) && !$date = \call_user_func([$this->dateClass, 'make'], $date)) {
             throw new InvalidPeriodDateException('Invalid end date.');
         }
 
@@ -1338,7 +1330,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
     public function rewind()
     {
         $this->key = 0;
-        $this->current = ([$this->dateClass, 'make'])($this->startDate);
+        $this->current = \call_user_func([$this->dateClass, 'make'], $this->startDate);
         $settings = $this->getSettings();
 
         if ($this->hasLocalTranslator()) {
@@ -1406,7 +1398,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     public function toString()
     {
-        $translator = ([$this->dateClass, 'getTranslator'])();
+        $translator = \call_user_func([$this->dateClass, 'getTranslator']);
 
         $parts = [];
 
@@ -1498,7 +1490,11 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
 
         $result = iterator_to_array($this);
 
-        [$this->key, $this->current, $this->validationResult] = $state;
+        [
+            $this->key,
+            $this->current,
+            $this->validationResult
+        ] = $state;
 
         return $result;
     }
@@ -1641,10 +1637,9 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
             case 'minute':
             case 'seconds':
             case 'second':
-                return $this->setDateInterval((
+                return $this->setDateInterval(\call_user_func(
                     // Override default P1D when instantiating via fluent setters.
-                    [$this->isDefaultInterval ? new CarbonInterval('PT0S') : $this->dateInterval, $method]
-                )(
+                    [$this->isDefaultInterval ? new CarbonInterval('PT0S') : $this->dateInterval, $method],
                     \count($parameters) === 0 ? 1 : $first
                 ));
         }
@@ -2178,7 +2173,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
         }
 
         return [function ($date) use ($method, $parameters) {
-            return ([$date, $method])(...$parameters);
+            return \call_user_func_array([$date, $method], $parameters);
         }, $method];
     }
 
@@ -2192,8 +2187,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     protected function isCarbonPredicateMethod($callable)
     {
-        return \is_string($callable) && substr($callable, 0, 2) === 'is' &&
-            (method_exists($this->dateClass, $callable) || ([$this->dateClass, 'hasMacro'])($callable));
+        return \is_string($callable) && substr($callable, 0, 2) === 'is' && (method_exists($this->dateClass, $callable) || \call_user_func([$this->dateClass, 'hasMacro'], $callable));
     }
 
     /**
@@ -2319,7 +2313,7 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
      */
     protected function prepareForReturn(CarbonInterface $date)
     {
-        $date = ([$this->dateClass, 'make'])($date);
+        $date = \call_user_func([$this->dateClass, 'make'], $date);
 
         if ($this->timezone) {
             $date = $date->setTimezone($this->timezone);
@@ -2365,10 +2359,10 @@ class CarbonPeriod implements Iterator, Countable, JsonSerializable
         if ($macro instanceof Closure) {
             $boundMacro = @$macro->bindTo($this, static::class) ?: @$macro->bindTo(null, static::class);
 
-            return ($boundMacro ?: $macro)(...$parameters);
+            return \call_user_func_array($boundMacro ?: $macro, $parameters);
         }
 
-        return $macro(...$parameters);
+        return \call_user_func_array($macro, $parameters);
     }
 
     /**

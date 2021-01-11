@@ -459,7 +459,7 @@ function _leaflet_more_maps_assemble_default_map_info(&$map_info, $default_setti
     'settings' => $default_settings,
     'layers' => [
       'layer' => [
-        'urlTemplate' => $prot . "{s}.tile.thunderforest.com/neighbourhood/$zxy",
+        'urlTemplate' => "https://tile.thunderforest.com/neighbourhood/$zxy?apikey=fe478abf78a944cc9f662fff1c8f520e",
         'options' => ['attribution' => $attr_thunderforest],
       ],
     ],

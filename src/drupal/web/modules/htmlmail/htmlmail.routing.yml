@@ -1,0 +1,15 @@
+htmlmail.settings:
+  path: '/admin/config/system/htmlmail'
+  defaults:
+    _title: 'HTML Mail'
+    _form: '\Drupal\htmlmail\Form\HtmlMailConfigurationForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+htmlmail.test:
+  path: '/admin/config/system/htmlmail/test'
+  defaults:
+    _title: 'Send Test'
+    _form: '\Drupal\htmlmail\Form\HtmlMailTestForm'
+  requirements:
+    _permission: 'administer site configuration'

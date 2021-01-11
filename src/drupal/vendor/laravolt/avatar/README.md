@@ -89,7 +89,7 @@ You may specify custom font-family for your SVG text.
     <link href="https://fonts.googleapis.com/css?family=Laravolt" rel="stylesheet">
 
     <!--OR-->
-    
+
     <!--Setup your own style-->
     <style>
     @font-face {
@@ -135,12 +135,12 @@ return [
     | Avatar use Intervention Image library to process image.
     | Meanwhile, Intervention Image supports "GD Library" and "Imagick" to process images
     | internally. You may choose one of them according to your PHP
-    | configuration. By default PHP's "GD Library" implementation is used.
+    | configuration. By default PHP's "Imagick" implementation is used.
     |
     | Supported: "gd", "imagick"
     |
     */
-    'driver'    => 'gd',
+    'driver'    => 'imagick',
 
     // Initial generator class
     'generator' => \Laravolt\Avatar\Generator\DefaultGenerator::class,
@@ -163,19 +163,16 @@ return [
     // font size
     'fontSize' => 48,
 
-    // Font family to be used in SVG text
-    'fontFamily' => null,
-
-    // convert initial letter to uppercase
+    // convert initial letter in uppercase
     'uppercase' => false,
 
     // Fonts used to render text.
     // If contains more than one fonts, randomly selected based on name supplied
-    'fonts'    => ['path/to/OpenSans-Bold.ttf', 'path/to/rockwell.ttf'],
+    'fonts'    => [__DIR__.'/../fonts/OpenSans-Bold.ttf', __DIR__.'/../fonts/rockwell.ttf'],
 
     // List of foreground colors to be used, randomly selected based on name supplied
     'foregrounds'   => [
-        '#FFFFFF'
+        '#FFFFFF',
     ],
 
     // List of background colors to be used, randomly selected based on name supplied
@@ -199,12 +196,56 @@ return [
 
     'border'    => [
         'size'  => 1,
-        
+
         // border color, available value are:
         // 'foreground' (same as foreground color)
         // 'background' (same as background color)
         // or any valid hex ('#aabbcc')
-        'color' => 'foreground'
+        'color' => 'background',
+
+        // border radius, only works for SVG
+        'radius' => 0,
+    ],
+
+    // List of theme name to be used when rendering avatar
+    // Possible values are:
+    // 1. Theme name as string: 'colorful'
+    // 2. Or array of string name: ['grayscale-light', 'grayscale-dark']
+    // 3. Or wildcard "*" to use all defined themes
+    'theme' => ['*'],
+
+    // Predefined themes
+    // Available theme attributes are:
+    // shape, chars, backgrounds, foregrounds, fonts, fontSize, width, height, ascii, uppercase, and border.
+    'themes' => [
+        'grayscale-light' => [
+            'backgrounds' => ['#edf2f7', '#e2e8f0', '#cbd5e0'],
+            'foregrounds' => ['#a0aec0'],
+        ],
+        'grayscale-dark' => [
+            'backgrounds' => ['#2d3748', '#4a5568', '#718096'],
+            'foregrounds' => ['#e2e8f0'],
+        ],
+        'colorful' => [
+            'backgrounds' => [
+                '#f44336',
+                '#E91E63',
+                '#9C27B0',
+                '#673AB7',
+                '#3F51B5',
+                '#2196F3',
+                '#03A9F4',
+                '#00BCD4',
+                '#009688',
+                '#4CAF50',
+                '#8BC34A',
+                '#CDDC39',
+                '#FFC107',
+                '#FF9800',
+                '#FF5722',
+            ],
+            'foregrounds' => ['#FFFFFF'],
+        ],
     ]
 ];
 
@@ -221,12 +262,17 @@ Avatar::create('Soekarno')->setForeground('#999999');
 Avatar::create('Soekarno')->setFontSize(72);
 Avatar::create('Soekarno')->setFont('/path/to/font.ttf');
 Avatar::create('Soekarno')->setBorder(1, '#aabbcc'); // size = 1, color = #aabbcc
+Avatar::create('Soekarno')->setBorder(1, '#aabbcc', 10); // size = 1, color = #aabbcc, border radius = 10 (only for SVG)
 Avatar::create('Soekarno')->setShape('square');
+
+// Available since 3.0.0
+Avatar::create('Soekarno')->setTheme('colorful'); // set exact theme
+Avatar::create('Soekarno')->setTheme(['grayscale-light', 'grayscale-dark']); // theme will be randomized from these two options
 
 // chaining
 Avatar::create('Habibie')->setDimension(50)->setFontSize(18)->toBase64();
 
-``` 
+```
 
 ## Integration With Other PHP Project
 ```php

@@ -1,0 +1,107 @@
+rules_expression:
+  type: mapping
+  label: 'Rules expression'
+  mapping:
+    id:
+      type: string
+      label: 'Plugin ID'
+    uuid:
+      type: string
+      label: 'UUID'
+    weight:
+      type: integer
+      label: 'Weight'
+
+rules_expression.*:
+  type: rules_expression
+  label: 'Rules expression default configuration'
+
+rules_expression.rules_condition:
+  type: rules_expression
+  label: 'Rules condition configuration'
+  mapping:
+    condition_id:
+      type: string
+      label: 'Condition plugin ID'
+    negate:
+      type: boolean
+      label: 'Negated'
+    context_values:
+      type: rules.condition.context_values.[%parent.condition_id]
+      label: 'Context values'
+    context_mapping:
+      type: rules.context.mapping
+      label: 'Context mapping'
+    context_processors:
+      type: rules.context.processors
+      label: 'Context processors'
+    provides_mapping:
+      type: rules.context.mapping
+      label: 'Provided context mapping'
+
+rules_expression.rules_action:
+  type: rules_expression
+  label: 'Rules action configuration'
+  mapping:
+    action_id:
+      type: string
+      label: 'Action plugin ID'
+    context_values:
+      type: rules.action.context_values.[%parent.action_id]
+      label: 'Context values'
+    context_mapping:
+      type: rules.context.mapping
+      label: 'Context mapping'
+    context_processors:
+      type: rules.context.processors
+      label: 'Context processors'
+    provides_mapping:
+      type: rules.context.mapping
+      label: 'Provided context mapping'
+
+rules_expression.rules_and:
+  type: rules_expression
+  label: 'Rules And'
+  mapping:
+    negate:
+      type: boolean
+      label: 'Negate'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        - type: rules_expression.[id]
+
+rules_expression.rules_or:
+  type: rules_expression
+  label: 'Rules Or'
+  mapping:
+    negate:
+      type: boolean
+      label: 'Negate'
+    conditions:
+      type: sequence
+      label: 'Conditions'
+      sequence:
+        - type: rules_expression.[id]
+
+rules_expression.rules_action_set:
+  type: rules_expression
+  label: 'Action set'
+  mapping:
+    actions:
+      type: sequence
+      label: 'Actions'
+      sequence:
+        - type: rules_expression.[id]
+
+rules_expression.rules_rule:
+  type: rules_expression
+  label: 'Rule'
+  mapping:
+    conditions:
+      type: rules_expression.[id]
+      label: 'Conditions'
+    actions:
+      type: rules_expression.[id]
+      label: 'Actions'

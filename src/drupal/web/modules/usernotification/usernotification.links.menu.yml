@@ -1,0 +1,6 @@
+usernotification.notification_settings:
+  title: 'Notification settings'
+  parent: user.admin_index
+  description: 'Configure user account notification settings,'
+  weight: 10
+  route_name: usernotification.notification_settings

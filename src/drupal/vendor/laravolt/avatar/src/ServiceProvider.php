@@ -22,10 +22,10 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->bind('avatar', function (Application $app) {
-            $config = $app->make('config');
             $cache = $app->make('cache.store');
+            $config = $app['config']->get('laravolt.avatar', []);
 
-            $avatar = new Avatar($config->get('laravolt.avatar'), $cache);
+            $avatar = new Avatar($config, $cache);
             $avatar->setGenerator($app['avatar.generator']);
 
             return $avatar;
@@ -68,7 +68,7 @@ class ServiceProvider extends BaseServiceProvider
     /**
      * Loads a path relative to the package base directory.
      *
-     * @param string $path
+     * @param  string  $path
      * @return string
      */
     protected function packagePath($path = '')

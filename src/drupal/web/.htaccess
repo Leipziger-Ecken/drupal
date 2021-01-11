@@ -38,7 +38,8 @@ AddEncoding gzip svgz
   ExpiresActive On
 
   # Cache all files for 2 weeks after access (A).
-  ExpiresDefault A1209600
+  #ExpiresDefault A1209600
+  ExpiresDefault                                      "access plus 1 month"
 
   <FilesMatch \.php$>
     # Do not allow PHP scripts to be cached unless they explicitly send cache
@@ -146,6 +147,9 @@ AddEncoding gzip svgz
   # Deny access to any other PHP files that do not match the rules above.
   # Specifically, disallow autoload.php from being served directly.
   RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
+  
+  RewriteCond %{REQUEST_URI} "/Data/"
+  RewriteRule (.*) $1 [L]
 
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
@@ -179,4 +183,8 @@ AddEncoding gzip svgz
   Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
+  
+  # Added by Felix:
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Content-Security-Policy "default-src 'none'; connect-src 'self' https://www.google-analytics.com; base-uri 'self'; form-action 'self'; frame-src www.google.com; script-src 'self' 'unsafe-inline' www.google-analytics.com ajax.googleapis.com api.mapbox.com www.googletagmanager.com www.google.com www.gstatic.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: https://tile.thunderforest.com https://api.mapbox.com https://freiwilligen-agentur-leipzig.de https://depot.social https://www.google-analytics.com https://googletagmanager.com www.gstatic.com; style-src 'self' 'unsafe-inline' api.mapbox.com fonts.googleapis.com"
 </IfModule>

@@ -1,0 +1,13 @@
+name: Rules
+type: module
+description: 'React on events and conditionally evaluate actions.'
+package: Rules
+core_version_requirement: ^8.7.7
+dependencies:
+  - typed_data:typed_data
+configure: entity.rules_reaction_rule.collection
+
+# Information added by Drupal.org packaging script on 2020-07-20
+version: '8.x-3.0-alpha6'
+project: 'rules'
+datestamp: 1595222445

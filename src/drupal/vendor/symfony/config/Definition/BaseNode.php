@@ -24,7 +24,7 @@ use Symfony\Component\Config\Definition\Exception\UnsetKeyException;
  */
 abstract class BaseNode implements NodeInterface
 {
-    public const DEFAULT_PATH_SEPARATOR = '.';
+    const DEFAULT_PATH_SEPARATOR = '.';
 
     private static $placeholderUniquePrefixes = [];
     private static $placeholders = [];

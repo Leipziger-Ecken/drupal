@@ -1,0 +1,157 @@
+<?php
+
+/**
+ * @file
+ * Rules 7.x tests.
+ *
+ * This files is here for keeping track which tests have been ported to Drupal
+ * 8 and which not. Any tests covered can be removed, so everything that's
+ * left in this file still needs to be ported.
+ */
+
+// @codingStandardsIgnoreStart
+
+/**
+ * Test rules data wrappers.
+ */
+class RulesTestDataCase extends DrupalWebTestCase {
+
+  static function getInfo() {
+    return array(
+      'name' => 'Rules Data tests',
+      'description' => 'Tests rules data saving and type matching.',
+      'group' => 'Rules',
+    );
+  }
+
+  function setUp() {
+    parent::setUp('rules', 'rules_test');
+    variable_set('rules_debug_log', 1);
+    // Make sure we don't ran over issues with the node_load static cache.
+    entity_get_controller('node')->resetCache();
+  }
+
+  /**
+   * Tests intelligently saving data.
+   */
+  function testDataSaving() {
+    $node = $this->drupalCreateNode();
+    $state = new RulesState(rule());
+    $state->addVariable('node', $node, array('type' => 'node'));
+    $wrapper = $state->get('node');
+    $node->title = 'test';
+    $wrapper->set($node);
+    $state->saveChanges('node', $wrapper, FALSE);
+
+    $this->assertFalse($this->drupalGetNodeByTitle('test'), 'Changes have not been saved.');
+    $state->saveChanges('node', $wrapper, TRUE);
+    $this->assertTrue($this->drupalGetNodeByTitle('test'), 'Changes have been saved.');
+
+    // Test skipping saving.
+    $state->addVariable('node2', $node, array(
+      'type' => 'node',
+      'skip save' => TRUE,
+    ));
+    $wrapper = $state->get('node2');
+    $node->title = 'test2';
+    $wrapper->set($node);
+    $state->saveChanges('node2', $wrapper, TRUE);
+    $this->assertFalse($this->drupalGetNodeByTitle('test2'), 'Changes have not been saved.');
+
+    // Try saving a non-entity wrapper, which should result in saving the
+    // parent entity containing the property.
+    $wrapper = $state->get('node');
+    $wrapper->title->set('test3');
+    $state->saveChanges('node:title', $wrapper, TRUE);
+    $this->assertTrue($this->drupalGetNodeByTitle('test3'), 'Parent entity has been saved.');
+  }
+
+  /**
+   * Test type matching
+   */
+  function testTypeMatching() {
+    $entity = array('type' => 'entity');
+    $node = array('type' => 'node');
+    $this->assertTrue(RulesData::typesMatch($node, $entity), 'Types match.');
+    $this->assertFalse(RulesData::typesMatch($entity, $node), 'Types don\'t match.');
+
+    $this->assertTrue(RulesData::typesMatch($node + array('bundle' => 'page'), $node), 'Types match.');
+    $this->assertTrue(RulesData::typesMatch($node + array('bundle' => 'page'), $entity), 'Types match.');
+    $this->assertTrue(RulesData::typesMatch(array('type' => 'list<node>'), array('type' => 'list')), 'Types match.');
+    $this->assertTrue(RulesData::typesMatch($node + array('bundle' => 'page'), $node + array('bundles' => array('page', 'story'))), 'Types match.');
+    $this->assertFalse(RulesData::typesMatch($node, $node + array('bundles' => array('page', 'story'))), 'Types don\'t match.');
+
+    // Test that a type matches its grand-parent type (text > decimal > integer)
+    $this->assertTrue(RulesData::typesMatch(array('type' => 'integer'), array('type' => 'text')), 'Types match.');
+    $this->assertFalse(RulesData::typesMatch(array('type' => 'text'), array('type' => 'integer')), 'Types don\'t match.');
+  }
+
+  /**
+   * Tests making use of custom wrapper classes.
+   */
+  function testCustomWrapperClasses() {
+    // Test loading a vocabulary by name, which is done by a custom wrapper.
+    $set = rules_action_set(array('vocab' => array('type' => 'taxonomy_vocabulary')), array('vocab'));
+    $set->action('drupal_message', array('message:select' => 'vocab:name'));
+    $set->integrityCheck();
+    list($vocab) = $set->execute('tags');
+    $this->assertTrue($vocab->machine_name == 'tags', 'Loaded vocabulary by name.');
+
+    // Now test wrapper creation for a direct input argument value.
+    $set = rules_action_set(array('term' => array('type' => 'taxonomy_term')));
+    $set->action('data_set', array('data:select' => 'term:vocabulary', 'value' => 'tags'));
+    $set->integrityCheck();
+
+    $vocab = entity_create('taxonomy_vocabulary', array(
+      'name' => 'foo',
+      'machine_name' => 'foo',
+    ));
+    entity_save('taxonomy_vocabulary', $vocab);
+    $term_wrapped = entity_property_values_create_entity('taxonomy_term', array(
+      'name' => $this->randomName(),
+      'vocabulary' => $vocab,
+    ))->save();
+    $set->execute($term_wrapped);
+    $this->assertEqual($term_wrapped->vocabulary->machine_name->value(), 'tags', 'Vocabulary name used as direct input value.');
+    RulesLog::logger()->checkLog();
+  }
+
+  /**
+   * Makes sure the RulesIdentifiableDataWrapper is working correctly.
+   */
+  function testRulesIdentifiableDataWrapper() {
+    $node = $this->drupalCreateNode();
+    $wrapper = new RulesTestTypeWrapper('rules_test_type', $node);
+    $this->assertTrue($wrapper->value() == $node, 'Data correctly wrapped.');
+
+    // Test serializing and make sure only the id is stored.
+    $this->assertTrue(strpos(serialize($wrapper), $node->title) === FALSE, 'Data has been correctly serialized.');
+    $this->assertEqual(unserialize(serialize($wrapper))->value()->title, $node->title, 'Serializing works right.');
+
+    $wrapper2 = unserialize(serialize($wrapper));
+    // Test serializing the unloaded wrapper.
+    $this->assertEqual(unserialize(serialize($wrapper2))->value()->title, $node->title, 'Serializing works right.');
+
+    // Test loading a not more existing node.
+    $s = serialize($wrapper2);
+    node_delete($node->nid);
+    $this->assertFalse(node_load($node->nid), 'Node deleted.');
+    try {
+      unserialize($s)->value();
+      $this->fail("Loading hasn't created an exception.");
+    }
+    catch (EntityMetadataWrapperException $e) {
+      $this->pass("Exception was thrown: ". $e->getMessage());
+    }
+
+    // Test saving a saveable custom, identifiable wrapper.
+    $action = rules_action('test_type_save');
+    $node = $this->drupalCreateNode(array('status' => 0, 'type' => 'page'));
+    $node->status = 1;
+    $action->execute($node);
+
+    // Load the node fresh from the db.
+    $node = node_load($node->nid, NULL, TRUE);
+    $this->assertEqual($node->status, 1, 'Savable non-entity has been saved.');
+  }
+}

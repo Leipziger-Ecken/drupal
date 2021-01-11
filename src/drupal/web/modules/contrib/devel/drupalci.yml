@@ -1,0 +1,17 @@
+# See docs at https://www.drupal.org/drupalorg/docs/drupal-ci/customizing-drupalci-testing-for-projects.
+# The container_command below is the only non-default item in this file. It was
+# added for testing of Drush commands.
+build:
+  assessment:
+    validate_codebase:
+      host_command:
+        commands:
+          # Temporary patch for JavascriptTestBase when running D9. See https://www.drupal.org/project/devel/issues/3097125
+          - 'cd ${SOURCE_DIR} && git status | awk "{print \$3}"| grep 9.0.x && cd ${PROJECT_DIR} && sudo -u www-data curl "https://www.drupal.org/files/issues/2020-04-07/3097125-33.replace-JavascriptTestBase.patch" | sudo -u www-data patch -p1 --verbose'
+          # Revert the Drupal and DrupalPractice sniff locations for running phpcs on drupal.org. See https://www.drupal.org/project/devel/issues/3081785#comment-13568091
+          - 'cd ${PROJECT_DIR} && sudo -u www-data curl "https://www.drupal.org/files/issues/2020-04-23/3081785-21.revert-sniff-location.patch" | sudo -u www-data patch -p1 --verbose'
+      phplint:
+      container_composer:
+      csslint:
+      eslint:
+      phpcs:

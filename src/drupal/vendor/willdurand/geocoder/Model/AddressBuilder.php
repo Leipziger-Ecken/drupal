@@ -179,7 +179,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $streetNumber
+     * @param null|string $streetNumber
      *
      * @return AddressBuilder
      */
@@ -191,7 +191,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $streetName
+     * @param null|string $streetName
      *
      * @return AddressBuilder
      */
@@ -203,7 +203,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $locality
+     * @param null|string $locality
      *
      * @return AddressBuilder
      */
@@ -215,7 +215,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $postalCode
+     * @param null|string $postalCode
      *
      * @return AddressBuilder
      */
@@ -227,7 +227,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $subLocality
+     * @param null|string $subLocality
      *
      * @return AddressBuilder
      */
@@ -251,7 +251,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $country
+     * @param null|string $country
      *
      * @return AddressBuilder
      */
@@ -263,7 +263,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $countryCode
+     * @param null|string $countryCode
      *
      * @return AddressBuilder
      */
@@ -275,7 +275,7 @@ final class AddressBuilder
     }
 
     /**
-     * @param string|null $timezone
+     * @param null|string $timezone
      *
      * @return AddressBuilder
      */

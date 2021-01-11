@@ -17,11 +17,11 @@
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0"
+        "php": "^7.2"
     },
     "require-dev": {
         "nyholm/nsa": "^1.1",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^7.5",
         "symfony/stopwatch": "~2.5"
     },
     "suggest": {

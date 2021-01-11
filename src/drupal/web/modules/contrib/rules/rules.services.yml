@@ -1,0 +1,86 @@
+services:
+  cache.rules:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    factory: cache_factory:get
+    arguments: [rules]
+    tags:
+      - { name: cache.bin }
+  plugin.manager.rules_expression:
+    class: Drupal\rules\Engine\ExpressionManager
+    arguments: ['@container.namespaces', '@module_handler', '@uuid']
+  plugin.manager.rules_action:
+    class: Drupal\rules\Core\RulesActionManager
+    parent: default_plugin_manager
+  plugin.manager.rules_event:
+    class: Drupal\rules\Core\RulesEventManager
+    arguments: ['@module_handler', '@entity_type.bundle.info']
+  plugin.manager.rules_data_processor:
+    class: Drupal\rules\Context\DataProcessorManager
+    arguments: ['@container.namespaces', '@module_handler']
+  plugin.manager.rules_ui:
+    class: Drupal\rules\Ui\RulesUiManager
+    arguments: ['@module_handler']
+  logger.channel.rules:
+    parent: logger.channel_base
+    arguments: ['rules']
+  logger.channel.rules_debug:
+    class: Drupal\rules\Logger\RulesDebugLoggerChannel
+    arguments: ['@logger.rules_debug_log', '@config.factory']
+  logger.rules_debug_log:
+    class: Drupal\rules\Logger\RulesDebugLog
+    arguments: ['@session']
+  logger.ruleslog:
+    class: Drupal\rules\Logger\RulesLog
+    arguments: ['@event_dispatcher', '@logger.log_message_parser']
+    tags:
+      - { name: logger }
+  rules.event_subscriber:
+    class: Drupal\rules\EventSubscriber\GenericEventSubscriber
+    arguments: ['@entity_type.manager', '@plugin.manager.rules_event', '@rules.component_repository', '@logger.channel.rules_debug']
+    tags:
+      - { name: event_subscriber }
+  rules.redirect_event_subscriber:
+    class: Drupal\rules\EventSubscriber\RedirectEventSubscriber
+    tags:
+      - { name: event_subscriber }
+  rules.component_repository:
+    class: Drupal\rules\Engine\RulesComponentRepository
+    arguments: ['@cache.rules', '@language_manager']
+    tags:
+      - { name: service_collector, tag: rules.component_resolver, call: addComponentResolver }
+  rules.component_resolver.component_config:
+    class: Drupal\rules\ComponentResolver\ComponentConfigResolver
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: rules.component_resolver, resolver_name: rules_component }
+  rules.component_resolver.event_component:
+    class: Drupal\rules\ComponentResolver\EventComponentResolver
+    arguments: ['@entity_type.manager', '@plugin.manager.rules_expression']
+    tags:
+      - { name: rules.component_resolver, resolver_name: rules_event }
+  rules.ui_route_enhancer:
+    class: Drupal\rules\Routing\RulesUiRouteEnhancer
+    arguments: ['@plugin.manager.rules_ui']
+    tags:
+      - { name: route_enhancer }
+  rules.ui_route_subscriber:
+    class: Drupal\rules\Routing\RulesUiRouteSubscriber
+    arguments: ['@plugin.manager.rules_ui']
+    tags:
+      - { name: event_subscriber }
+
+  rules.current_path_context:
+    class: Drupal\rules\ContextProvider\CurrentPathContext
+    arguments: ['@path.current']
+    tags:
+      - { name: context_provider }
+  rules.current_date_context:
+    class: Drupal\rules\ContextProvider\CurrentDateContext
+    arguments: ['@datetime.time']
+    tags:
+      - { name: context_provider }
+  rules.site_context:
+    class: Drupal\rules\ContextProvider\SiteContext
+    arguments: ['@config.factory']
+    tags:
+      - { name: context_provider }

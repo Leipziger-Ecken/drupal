@@ -1,0 +1,34 @@
+{
+    "name": "drupal/htmlmail",
+    "description": "Enables HTML in system emails.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/htmlmail",
+    "authors": [
+        {
+            "name": "gaurav.kapoor",
+            "homepage": "https://www.drupal.org/user/3495331",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Nafes",
+            "homepage": "https://www.drupal.org/user/2489926",
+            "role": "Maintainer"
+        },
+        {
+            "name": "RenatoG",
+            "email": "renatog@ciandt.com",
+            "homepage": "https://www.drupal.org/u/RenatoG",
+            "role": "Maintainer"
+        },
+        {
+            "name": "salvis",
+            "homepage": "https://www.drupal.org/u/salvis",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "irc": "irc://irc.freenode.org/drupal-contribute",
+        "source": "https://cgit.drupalcode.org/htmlmail"
+    },
+    "license": "GPL-2.0+"
+}

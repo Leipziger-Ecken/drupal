@@ -31,16 +31,17 @@ for more info.
 #### Local Development
 1. Clone devel `git clone https://gitlab.com/drupalforks/devel.git`
 1. `cd devel`
-1. Install the composer plugin from https://gitlab.com/drupalspoons/composer-plugin. Your source tree now looks like:
+1. Assemble a codebase (i.e. get Drupal core). `composer install`. Your source tree now looks like:
 ![Folder tree](/icons/folder.png)
-1. Configure a web server to serve devel's `/web` directory as docroot. __Either__ of these works fine:
-    1. `vendor/bin/spoon runserver`
+1. Configure a web server to serve devel's `/web` directory as docroot. __Any__ of these works fine:
+    1. `composer runserver`
 	1. Setup Apache/Nginx/Other. A virtual host will work fine. Any domain name works.
+	1. docker-compose.yml is available for local development if you wish. More info at [wodby/php](https://github.com/wodby/php).
 1. Configure a database server and a database.
-1. Install a testing site `vendor/bin/spoon si -- --db-url=mysql://user:pass@localhost/db`. Adjust as needed.
+1. Install a testing site `composer si -- --db-url=mysql://user:pass@localhost/db`. Adjust as needed.
 
 #### Testing
-- [CI docs](https://gitlab.com/drupalspoons/webmasters/-/blob/master/docs/ci.md) gives info on running tests.
+- [CI docs](https://gitlab.com/drupalspoons/webmasters/-/blob/master/docs/ci.md) give info on running tests.
 - See [develCommandsTest.php](tests/src/Functional/DevelCommandsTest.php) for an example of Drush command testing. This uses [Drush Test Traits](https://www.drush.org/contribute/#drush-test-traits).
 
 #### Version Compatibility

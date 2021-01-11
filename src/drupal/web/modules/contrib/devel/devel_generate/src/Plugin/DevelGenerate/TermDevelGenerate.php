@@ -374,7 +374,7 @@ class TermDevelGenerate extends DevelGenerateBase implements ContainerFactoryPlu
       $info['terms']++;
       @$info[$vid][$depth]['total']++;
       // List only the first 10 new terms at each vocab/level.
-      if (!isset($info[$vid][$depth]['terms']) || count($info[$vid][$depth]['terms']) < 10) {
+      if (@count($info[$vid][$depth]['terms']) < 10) {
         $info[$vid][$depth]['terms'][] = $term->label();
       }
 

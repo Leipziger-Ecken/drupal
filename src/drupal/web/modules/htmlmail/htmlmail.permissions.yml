@@ -1,0 +1,3 @@
+'choose htmlmail_plaintext':
+  title: 'Choose to receive plaintext emails via HTML Mail'
+  description: 'Granting this permission allows users to choose whether to receive all their emails in plaintext, rather than the default format provided by the HTML Mail module.'

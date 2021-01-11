@@ -206,14 +206,10 @@ class ImageWidget extends FileWidget {
         'uri' => $file->getFileUri(),
       ];
 
-      $dimension_key = $variables['uri'] . '.image_preview_dimensions';
       // Determine image dimensions.
       if (isset($element['#value']['width']) && isset($element['#value']['height'])) {
         $variables['width'] = $element['#value']['width'];
         $variables['height'] = $element['#value']['height'];
-      }
-      elseif ($form_state->has($dimension_key)) {
-        $variables += $form_state->get($dimension_key);
       }
       else {
         $image = \Drupal::service('image.factory')->get($file->getFileUri());
@@ -237,7 +233,14 @@ class ImageWidget extends FileWidget {
 
       // Store the dimensions in the form so the file doesn't have to be
       // accessed again. This is important for remote files.
-      $form_state->set($dimension_key, ['width' => $variables['width'], 'height' => $variables['height']]);
+      $element['width'] = [
+        '#type' => 'hidden',
+        '#value' => $variables['width'],
+      ];
+      $element['height'] = [
+        '#type' => 'hidden',
+        '#value' => $variables['height'],
+      ];
     }
     elseif (!empty($element['#default_image'])) {
       $default_image = $element['#default_image'];

@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - rules_test_default_component
+  enforced:
+    module:
+      - rules_test_default_component
+id: rules_test_default_component
+label: Rules test default component
+description: 'Tests adding Rules component by default.'
+tags:
+  - test
+config_version: '3'
+component:
+  context_definitions:
+    user:
+      type: 'entity:user'
+      label: User
+      description: 'The user whose mail address to print.'
+  provided_context_definitions:
+    concatenated:
+      type: 'string'
+      label: Concatenated result
+      description: 'The concatenated text.'
+  expression:
+    id: rules_rule
+    uuid: 0098a33a-1f26-4e3c-9031-206ffade5ab1
+    conditions:
+      id: rules_and
+      uuid: 0c3d7234-a90c-4d28-a07d-7ef997cf82ba
+      conditions: {  }
+    actions:
+      id: rules_action_set
+      uuid: dae9f105-c02f-4b08-9f77-e4f108113ab2
+      actions:
+        -
+          id: rules_action
+          uuid: 850eb49d-1153-428d-8aae-a9b8d4b9eb47
+          context_values:
+            message: '{{ user.mail.value }}'
+            type: status
+            repeat: false
+          context_mapping: {  }
+          context_processors:
+            message:
+              rules_tokens: {  }
+            type:
+              rules_tokens: {  }
+            repeat:
+              rules_tokens: {  }
+          provides_mapping: {  }
+          action_id: rules_system_message
+        -
+          id: rules_action
+          uuid: 044cf79a-ec4b-45d5-87db-69bb3284889b
+          context_values:
+            text: '{{ user.mail.value }}'
+          context_mapping: {  }
+          context_processors:
+            text:
+              rules_tokens: {  }
+          provides_mapping: {  }
+          action_id: rules_test_string

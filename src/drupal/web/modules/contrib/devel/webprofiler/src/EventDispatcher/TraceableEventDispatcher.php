@@ -48,12 +48,9 @@ class TraceableEventDispatcher extends ContainerAwareEventDispatcher implements 
   /**
    * {@inheritdoc}
    */
-  public function dispatch($event, $event_name = NULL) {
-    // Temporary hack for 9.0 and 9.1 compat. See https://gitlab.com/drupalspoons/devel/-/issues/344.
-    if (is_string($event)) {
-      $event_obj = $event_name ?? new Event();
-      $event_name = $event;
-      $event = $event_obj;
+  public function dispatch($event_name, Event $event = NULL) {
+    if ($event === NULL) {
+      $event = new Event();
     }
 
     $this->preDispatch($event_name, $event);

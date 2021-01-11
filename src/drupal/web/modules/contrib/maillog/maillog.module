@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for the Maillog module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function maillog_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.maillog':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Maillog module provides an opportunity to save the mail log for debugging purposes.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Saves the mail log') . '</dt>';
+      $output .= '<dt>' . t('View integration') . '</dt>';
+      $output .= '<dt>' . t('Displays verbose output of the mail for users with permission "view maillog"') . '</dt>';
+      $output .= '<dt>' . t('Suppress email delivery') . '</dt>';
+      $output .= '</dl>';
+      return $output;
+  }
+}

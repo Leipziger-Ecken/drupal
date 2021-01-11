@@ -10,7 +10,7 @@ tags:
   image_src: '[node:field_le_akteur_image]'
   geo_region: DE
   geo_position: '[node:field_geofield:latlon]'
-  description: 'Akteurprofil von [node:field_le_akteur_name] auf [site:name].'
+  description: 'Akteurprofil von [node:title] auf [site:name].'
   title: '[node:title]'
   schema_organization_description: '[node:field_le_akteur_description]'
   schema_organization_image: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:4:"True";s:3:"url";s:28:"[node:field_le_akteur_image]";}'

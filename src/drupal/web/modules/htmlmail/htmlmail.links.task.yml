@@ -1,0 +1,11 @@
+htmlmail.tab_settings:
+  route_name : htmlmail.settings
+  title: Settings
+  base_route: htmlmail.settings
+  weight: 10
+
+htmlmail.tab_send_test:
+  route_name : htmlmail.test
+  title: Send Test
+  base_route: htmlmail.settings
+  weight: 11

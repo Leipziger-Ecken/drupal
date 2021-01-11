@@ -2,29 +2,6 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.8.0 - 2020-10-31
-
-### Added
-
-- [#4](https://github.com/laminas/laminas-text/pull/4) Added PHP 8.0 support
-
-
------
-
-### Release Notes for [2.8.0](https://github.com/laminas/laminas-text/milestone/1)
-
-
-
-### 2.8.0
-
-- Total issues resolved: **0**
-- Total pull requests resolved: **1**
-- Total contributors: **1**
-
-#### Enhancement,hacktoberfest-accepted
-
- - [4: feat: add support for PHP 8](https://github.com/laminas/laminas-text/pull/4) thanks to @owenvoke
-
 ## 2.7.1 - 2019-10-16
 
 ### Added

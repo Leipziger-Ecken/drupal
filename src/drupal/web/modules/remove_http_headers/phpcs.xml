@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="DrupalProject">
+  <description>Drupal Project coding standard.</description>
+  <!--
+  Ruleset documentation:
+  - PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-Ruleset
+  - Integrating Drupal coding standard: https://git.drupalcode.org/project/coder#store-settings-in-a-phpcsxmldist-file
+  -->
+
+  <file>.</file>
+
+  <arg name="basepath" value="."/>
+  <arg name="colors"/>
+  <arg name="parallel" value="75"/>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,info,txt,md,yml"/>
+  <arg name="warning-severity" value="0"/>
+  <!-- All Drupal code files must be UTF-8 encoded and we treat them as such. -->
+  <arg name="encoding" value="utf-8"/>
+
+  <ini name="memory_limit" value="2G"/>
+
+  <rule ref="Drupal">
+    <!-- This collides with PHPStan. -->
+    <exclude name="Drupal.Commenting.FunctionComment.ParamNameNoMatch"/>
+    <!-- Disable to allow defining array schemas: https://phpstan.org/writing-php-code/phpdoc-types#array-shapes -->
+    <exclude name="Drupal.Commenting.FunctionComment.ReturnTypeSpaces"/>
+  </rule>
+</ruleset>

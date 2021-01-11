@@ -1,0 +1,13 @@
+{
+  "name": "drupal/obfuscate_email",
+  "description": "Obfuscate Email",
+  "type": "drupal-module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/obfuscate_email/",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/obfuscate_email/"
+  },
+  "require": { }
+}

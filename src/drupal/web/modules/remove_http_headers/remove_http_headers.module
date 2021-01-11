@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Contains remove_http_headers module hooks.
+ */
+
+use Drupal as Drupal;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Remove the "Generator" meta tag from the <head> section.
+ *
+ * If the "X-Generator" should be removed.
+ *
+ * @code
+ * <head>
+ *    <meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+ * </head>
+ * @endcode
+ */
+function remove_http_headers_page_attachments_alter(array &$attachments): void {
+  /** @var \Drupal\remove_http_headers\Config\ConfigManager $config_manager */
+  $config_manager = Drupal::service('remove_http_headers.config_manager');
+
+  if ($config_manager->shouldHeaderBeRemoved('X-Generator')) {
+    foreach ($attachments['#attached']['html_head'] as $key => $attachment) {
+      if ($attachment[1] == 'system_meta_generator') {
+        unset($attachments['#attached']['html_head'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_help().
+ *
+ * @return string|void
+ *   The help page markup.
+ */
+function remove_http_headers_help(string $route_name, RouteMatchInterface $route_match) {
+  if ($route_name === 'help.page.remove_http_headers') {
+    $readme_content = file_get_contents(dirname(__FILE__) . '/README.md');
+    return '<pre>' . $readme_content . '</pre>';
+  }
+}

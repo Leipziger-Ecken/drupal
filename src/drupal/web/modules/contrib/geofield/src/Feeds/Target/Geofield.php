@@ -18,7 +18,7 @@ use Drupal\feeds\Plugin\Type\Target\FieldTargetBase;
  *   field_types = {"geofield"}
  * )
  */
-class Geofield extends FieldTargetBase implements ContainerFactoryPluginInterface {
+class Geofield extends FieldTargetBase implements ContainerFactoryPluginInterface{
 
   /**
    * The Settings object or array.
@@ -69,67 +69,63 @@ class Geofield extends FieldTargetBase implements ContainerFactoryPluginInterfac
    * {@inheritdoc}
    */
   protected static function prepareTarget(FieldDefinitionInterface $field_definition) {
-    return FieldTargetDefinition::createFromFieldDefinition($field_definition)
+    $definition = FieldTargetDefinition::createFromFieldDefinition($field_definition)
       ->addProperty('lat')
-      ->addProperty('lon')
-      ->addProperty('value');
+      ->addProperty('lon');
+    return $definition;
   }
 
   /**
    * {@inheritdoc}
    */
   protected function prepareValues(array $values) {
-    $results = [];
+    $return = [];
     $coordinates = [];
+    $coordinates_counter = 0;
 
     foreach ($values as $delta => $columns) {
       try {
         $this->prepareValue($delta, $columns);
-        foreach ($columns as $column => $value) {
 
-          // Add Lat/Lon Coordinates.
-          if (in_array($column, ['lat', 'lon'])) {
-            foreach ($value as $item) {
-              $coordinates[$column][] = $item;
-            }
+        foreach ($columns as $key => $items) {
+          foreach ($items as $item) {
+            $coordinates[$coordinates_counter][$key][] = $item;
           }
-
-          // Raw Geometry value (i.e. WKT or GeoJson).
-          if ($column == 'value') {
-            $results[]['value'] = $value;
-          }
+          $coordinates_counter = 0;
         }
+
       }
       catch (EmptyFeedException $e) {
         $this->messenger->addError($e->getMessage());
+
         return FALSE;
+      };
+
+    }
+    if (isset($coordinates)) {
+      foreach ($coordinates as $coordinate) {
+        $count_of_coordinates = count($coordinate['lat']);
+
+        for ($i = 0; $i < $count_of_coordinates; $i++) {
+          $return[]['value'] = "POINT (" . $coordinate['lon'][$i] . " " . $coordinate['lat'][$i] . ")";
+        }
       }
     }
 
-    // Transform Lat/Lon Coordinates couples into WKT Points.
-    if (!empty($coordinates)) {
-      $count_of_coordinates = count($coordinates['lat']);
-      for ($i = 0; $i < $count_of_coordinates; $i++) {
-        $results[]['value'] = "POINT (" . $coordinates['lon'][$i] . " " . $coordinates['lat'][$i] . ")";
-      }
-    }
-    return $results;
+    return $return;
   }
 
   /**
    * {@inheritdoc}
    */
   protected function prepareValue($delta, array &$values) {
-
-    // Here is been preparing values for Lat/Lon coordinates.
+    // Here is been preparing values for coordinates.
     foreach ($values as $column => $value) {
-      if (in_array($column, ['lat', 'lon'])) {
-        $separated_coordinates = explode(" ", $value);
-        $values[$column] = [];
+      $separated_coordinates = explode(" ", $value);
+      $values[$column] = [];
 
-        foreach ($separated_coordinates as $coordinate) {
-          $values[$column][] = (float) $coordinate;
-        }
+      foreach ($separated_coordinates as $coordinate) {
+        $values[$column][] = (float) $coordinate;
       }
     }
 

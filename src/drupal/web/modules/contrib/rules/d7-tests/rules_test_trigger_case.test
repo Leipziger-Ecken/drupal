@@ -1,0 +1,236 @@
+<?php
+
+/**
+ * @file
+ * Rules 7.x tests.
+ *
+ * This files is here for keeping track which tests have been ported to Drupal
+ * 8 and which not. Any tests covered can be removed, so everything that's
+ * left in this file still needs to be ported.
+ */
+
+// @codingStandardsIgnoreStart
+
+/**
+ * Test triggering rules.
+ */
+class RulesTriggerTestCase extends DrupalWebTestCase {
+
+  static function getInfo() {
+    return array(
+      'name' => 'Reaction Rules',
+      'description' => 'Tests triggering reactive rules.',
+      'group' => 'Rules',
+    );
+  }
+
+  function setUp() {
+    parent::setUp('rules', 'rules_test');
+    RulesLog::logger()->clear();
+    variable_set('rules_debug_log', 1);
+  }
+
+  protected function createTestRule($action = TRUE, $event = 'node_presave') {
+    $rule = rules_reaction_rule();
+    $rule->event($event)
+         ->condition(rules_condition('data_is', array('data:select' => 'node:status', 'value' => TRUE))->negate())
+         ->condition('data_is', array('data:select' => 'node:type', 'value' => 'page'));
+    if ($action) {
+      $rule->action('rules_action_delete_node');
+    }
+    return $rule;
+  }
+
+  /**
+   * Tests CRUD for reaction rules - making sure the events are stored properly.
+   */
+  function testReactiveRuleCreation() {
+    $rule = $this->createTestRule();
+    $rule->save();
+    $result = db_query("SELECT event FROM {rules_trigger} WHERE id = :id", array(':id' => $rule->id));
+    $this->assertEqual($result->fetchField(), 'node_presave', 'Associated event has been saved.');
+    // Try updating.
+    $rule->removeEvent('node_presave');
+    $rule->event('node_insert');
+    $rule->event('node_update');
+    $rule->active = FALSE;
+    $rule->integrityCheck()->save();
+    $result = db_query("SELECT event FROM {rules_trigger} WHERE id = :id", array(':id' => $rule->id));
+    $this->assertEqual($result->fetchCol(), array_values($rule->events()), 'Updated associated events.');
+    // Try deleting.
+    $rule->delete();
+    $result = db_query("SELECT event FROM {rules_trigger} WHERE id = :id", array(':id' => $rule->id));
+    $this->assertEqual($result->fetchField(), FALSE, 'Deleted associated events.');
+  }
+
+  /**
+   * Tests creating and triggering a basic reaction rule.
+   */
+  function testBasicReactionRule() {
+    $node = $this->drupalCreateNode(array('type' => 'page'));
+    $rule = $this->createTestRule();
+    $rule->integrityCheck()->save();
+    // Test the basics of the event set work right.
+    $event = rules_get_cache('event_node_presave');
+    $this->assertEqual(array_keys($event->parameterInfo()), array('node'), 'EventSet returns correct argument info.');
+
+    // Trigger the rule by updating the node.
+    $nid = $node->nid;
+    $node->status = 0;
+    node_save($node);
+
+    RulesLog::logger()->checkLog();
+    $this->assertFalse(node_load($nid), 'Rule successfully triggered and executed');
+    //debug(RulesLog::logger()->render());
+  }
+
+  /**
+   * Test a rule using a handler to load a variable.
+   */
+  function testVariableHandler() {
+    $node = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+    $rule = $this->createTestRule(FALSE, 'node_update');
+    $rule->action('rules_node_publish_action_save', array('node:select' => 'node_unchanged'));
+    // Test without recursion prevention to make sure recursive invocations
+    // work right too. This rule won't ran in an infinite loop anyway.
+    $rule->recursion = TRUE;
+    $rule->label = 'rule 1';
+    $rule->integrityCheck()->save();
+
+    $node->status = 0;
+    $node->sticky = 1;
+    node_save($node);
+
+    RulesLog::logger()->checkLog();
+    entity_get_controller('node')->resetCache();
+    $node = node_load($node->nid);
+
+    $this->assertFalse($node->sticky, 'Parameter has been loaded and saved.');
+    $this->assertTrue($node->status, 'Action has been executed.');
+
+    // Ensure the rule was evaluated a second time
+    $text = RulesLog::logger()->render();
+    $msg = RulesTestCase::t('Evaluating conditions of rule %rule 1', array('rule 1'));
+    $pos = strpos($text, $msg);
+    $pos = ($pos !== FALSE) ? strpos($text, $msg, $pos) : FALSE;
+    $this->assertTrue($pos !== FALSE, "Recursion prevented.");
+    //debug(RulesLog::logger()->render());
+  }
+
+  /**
+   * Test aborting silently when handlers are not able to load.
+   */
+  function testVariableHandlerFailing() {
+    $rule = $this->createTestRule(FALSE, 'node_presave');
+    $rule->action('rules_node_publish_action_save', array('node:select' => 'node_unchanged'));
+    $rule->integrityCheck()->save();
+
+    // On insert it's not possible to get the unchanged node during presave.
+    $node = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+
+    //debug(RulesLog::logger()->render());
+    $text = RulesTestCase::t('Unable to load variable %node_unchanged, aborting.', array('node_unchanged'));
+    $this->assertTrue(strpos(RulesLog::logger()->render(), $text) !== FALSE, "Aborted evaluation.");
+  }
+
+  /**
+   * Tests preventing recursive rule invocations by creating a rule that reacts
+   * on node-update and generates a node update that would trigger it itself.
+   */
+  function testRecursionPrevention() {
+    $rule = $this->createTestRule(FALSE, 'node_update');
+    $rule->action('rules_node_make_sticky_action');
+    $rule->integrityCheck()->save();
+
+    // Now trigger the rule.
+    $node = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+    node_save($node);
+
+    $text = RulesTestCase::t('Not evaluating reaction rule %label to prevent recursion.', array('label' => $rule->name));
+    //debug(RulesLog::logger()->render());
+    $this->assertTrue((strpos(RulesLog::logger()->render(), $text) !== FALSE), "Recursion prevented.");
+    //debug(RulesLog::logger()->render());
+  }
+
+  /**
+   * Ensure the recursion prevention still allows to let the rule trigger again
+   * during evaluation of the same event set, if the event isn't caused by the
+   * rule itself - thus we won't run in an infinite loop.
+   */
+  function testRecursionOnDifferentArguments() {
+    // Create rule1 - which might recurse.
+    $rule = $this->createTestRule(FALSE, 'node_update');
+    $rule->action('rules_node_make_sticky_action');
+    $rule->label = 'rule 1';
+    $rule->integrityCheck()->save();
+
+    // Create rule2 - which triggers rule1 on another node.
+    $node2 = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+    $rule2 = $this->createTestRule(FALSE, 'node_update');
+    $rule2->action('rules_action_load_node', array('nid' => $node2->nid))
+          ->action('rules_node_make_sticky_action', array('node:select' => 'node_loaded'));
+    $rule2->label = 'rule 2';
+    $rule2->save();
+
+    // Now trigger both rules by generating the event.
+    $node = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+    node_save($node);
+
+    //debug(RulesLog::logger()->render());
+    $text = RulesLog::logger()->render();
+    $pos = strpos($text, RulesTestCase::t('Evaluating conditions of rule %rule 1', array('rule 1')));
+    $pos = ($pos !== FALSE) ? strpos($text, RulesTestCase::t('Evaluating conditions of rule %rule 2', array('rule 2')), $pos) : FALSE;
+    $pos = ($pos !== FALSE) ? strpos($text, RulesTestCase::t('Saved %node_loaded of type %node.', array('node_loaded', 'node')), $pos) : FALSE;
+    $pos = ($pos !== FALSE) ? strpos($text, RulesTestCase::t('Evaluating conditions of rule %rule 1', array('rule 1')), $pos) : FALSE;
+    $pos = ($pos !== FALSE) ? strpos($text, RulesTestCase::t('Not evaluating reaction rule %rule 2 to prevent recursion', array('rule 2')), $pos) : FALSE;
+    $this->assertTrue($pos !== FALSE, 'Rule1 was triggered on the event caused by Rule2.');
+  }
+
+  /**
+   * Tests the provided default rule 'rules_test_default_1'.
+   */
+  function testDefaultRule() {
+    $rule = rules_config_load('rules_test_default_1');
+    $this->assertTrue($rule->status & ENTITY_IN_CODE && !($rule->status & ENTITY_IN_DB), 'Default rule can be loaded and has the right status.');
+    // Enable.
+    $rule->active = TRUE;
+    $rule->save();
+
+    // Create a node that triggers the rule.
+    $node = $this->drupalCreateNode(array('type' => 'page', 'sticky' => 0, 'status' => 0));
+    // Clear messages.
+    drupal_get_messages();
+    // Let event node_update occur.
+    node_save($node);
+
+    $msg = drupal_get_messages();
+    $this->assertEqual($msg['status'][0], 'A node has been updated.', 'Default rule has been triggered.');
+  }
+
+  /**
+   * Tests creating and triggering a reaction rule with event settings.
+   */
+  function testEventSettings() {
+    $rule = rules_reaction_rule();
+    $rule->event('node_presave', array('bundle' => 'article'))
+      ->condition('data_is_empty', array('data:select' => 'node:field-tags'))
+      ->action('node_publish', array('node:select' => 'node'));
+    $rule->integrityCheck()->save();
+
+    $node = $this->drupalCreateNode(array('type' => 'page', 'status' => 0));
+    $this->assertEqual($node->status, 0, 'Rule has not been triggered.');
+    $node = $this->drupalCreateNode(array('type' => 'article', 'status' => 0));
+    $this->assertEqual($node->status, 1, 'Rule has been triggered.');
+    RulesLog::logger()->checkLog();
+
+    // Make sure an invalid bundle raises integrity problems.
+    $rule->event('node_presave', array('bundle' => 'invalid'));
+    try {
+      $rule->integrityCheck();
+      $this->fail('Integrity check failed.');
+    }
+    catch (RulesIntegrityException $e) {
+      $this->pass('Integrity check failed: ' . $e);
+    }
+  }
+}

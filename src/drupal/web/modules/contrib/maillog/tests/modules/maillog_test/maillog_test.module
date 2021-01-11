@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for the Maillog test helper module.
+ */
+
+/**
+ * Implements hook_mail().
+ */
+function maillog_test_mail($key, &$message, $params) {
+  // A very rudimentary test.
+  if ($key == 'maillog_basic_test') {
+    $message['subject'] = t('Test email subject');
+    $message['body'][] = t('Test email body.');
+  }
+
+  // This has a very long subject line.
+  elseif ($key == 'maillog_long_subject_test') {
+    $message['subject'] = str_repeat(t('Test email subject') . ' ', 20);
+    $message['body'][] = t('Test email body.');
+  }
+
+  // This has an XSS test for the subject line.
+  elseif ($key == 'maillog_subject_xss_test') {
+    $message['subject'] = '<script type="text/javascript">alert("XSS test")</script>';
+    $message['body'][] = t('Test email body.');
+  }
+
+  // This has an XSS test for the body field.
+  elseif ($key == 'maillog_body_xss_test') {
+    $message['subject'] = t('Test email subject');
+    $message['body'][] = '<script type="text/javascript">alert("XSS test")</script>';
+  }
+}

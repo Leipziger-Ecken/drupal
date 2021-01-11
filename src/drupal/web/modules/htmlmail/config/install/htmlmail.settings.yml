@@ -1,0 +1,11 @@
+htmlmail_debug: false
+hmtlmail_theme: ''
+htmlmail_html_with_plain: false
+htmlmail_use_mime_mail: false
+htmlmail_postfilter: '0'
+htmlmail_test:
+  to: 'user@example.com'
+  subject: 'subject test'
+  body:
+    value: 'body test'
+  class: 'test'

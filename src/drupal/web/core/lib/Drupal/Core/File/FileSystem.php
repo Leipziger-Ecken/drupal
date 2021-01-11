@@ -535,22 +535,12 @@ class FileSystem implements FileSystemInterface {
     }
 
     if (!is_dir($directory)) {
-      if (!($options & static::CREATE_DIRECTORY)) {
-        return FALSE;
-      }
-
       // Let mkdir() recursively create directories and use the default
       // directory permissions.
-      $success = @$this->mkdir($directory, NULL, TRUE);
-      if ($success) {
-        return TRUE;
+      if ($options & static::CREATE_DIRECTORY) {
+        return @$this->mkdir($directory, NULL, TRUE);
       }
-      // If the operation failed, check again if the directory was created
-      // by another process/server, only report a failure if not. In this case
-      // we still need to ensure the directory is writable.
-      if (!is_dir($directory)) {
-        return FALSE;
-      }
+      return FALSE;
     }
 
     $writable = is_writable($directory);

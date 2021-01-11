@@ -1,0 +1,175 @@
+<?php
+
+/**
+ * @file
+ * Default file for HTML Mail module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\htmlmail\Helper\HtmlMailHelper;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_mail().
+ */
+function htmlmail_mail($key, &$message, $params) {
+  $message['module'] = HtmlMailHelper::HTMLMAIL_MODULE_NAME;
+  $message['key'] = $key;
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['body'];
+
+  if (isset($params['headers'])) {
+    $message['headers'] = array_merge($message['headers'], $params['headers']);
+  }
+
+  return $message;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function htmlmail_theme($existing, $type, $theme, $path) {
+  $items = [];
+  $module_path = \Drupal::service('module_handler')->getModule(HtmlMailHelper::HTMLMAIL_MODULE_NAME)->getPath();
+  $pattern = '/^htmlmail.*\.html\.twig$/';
+  $files = file_scan_directory('modules', $pattern, ['key' => 'name']);
+  if ($theme = HtmlMailHelper::getSelectedTheme()) {
+    $theme_path = \Drupal::service('theme_handler')->getTheme($theme)->getPath();
+    $files = array_merge($files,
+      file_scan_directory($theme_path, $pattern, ['key' => 'name'])
+    );
+  }
+  else {
+    $theme_path = $module_path . '/templates';
+  }
+  ksort($files);
+  foreach ($files as $file) {
+    $path = dirname($file->uri);
+    $template = substr($file->name, 0, -5);
+    $suggestion = str_replace('--', '__', $template);
+    $items[$suggestion] = [
+      'variables' => ['message' => []],
+      'template' => $template,
+      'path' => $path,
+      'theme path' => $theme_path,
+    ];
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function htmlmail_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!HtmlMailHelper::allowUserAccess()) {
+    return;
+  }
+
+  $account_data_plaintext = \Drupal::service('user.data')->get(
+    HtmlMailHelper::HTMLMAIL_MODULE_NAME,
+    $form_state->getFormObject()->getEntity()->id(),
+    'htmlmail_plaintext'
+  );
+
+  $form['account']['mail'] = [
+    'mail' => $form['account']['mail'],
+    'htmlmail_plaintext' => [
+      '#type' => 'checkbox',
+      '#title' => t('Plaintext-only emails'),
+      '#default_value' => empty($account_data_plaintext) ? 0 : 1,
+      '#description' => t('The %htmlmail module can send emails with fonts, styles, and other HTML formatting.  If you prefer to receive all your emails in unformatted plain text, select this option.',
+        ['%htmlmail' => 'HTML Mail']
+      ),
+    ],
+  ];
+
+  $form['actions']['submit']['#submit'][] = 'htmlmail_user_form_submit';
+}
+
+/**
+ * Submit handler.
+ */
+function htmlmail_user_form_submit(array $form, FormStateInterface $form_state) {
+  $user_data_name = HtmlMailHelper::HTMLMAIL_USER_DATA_NAME;
+  \Drupal::service('user.data')->set(
+    HtmlMailHelper::HTMLMAIL_MODULE_NAME,
+    $form_state->getValue('uid'),
+    $user_data_name,
+    $form_state->getValue($user_data_name)
+  );
+}
+
+/**
+ * Process variables to format email messages.
+ *
+ * @see htmlmail.html.twig
+ */
+function template_preprocess_htmlmail(array &$variables) {
+  $html_settings = \Drupal::config('htmlmail.settings');
+  $module_handler = \Drupal::service('module_handler');
+  $theme_handler = \Drupal::service('theme_handler');
+
+  $variables['debug'] = $html_settings->get('htmlmail_debug') ?: 0;
+  $variables['theme'] = HtmlMailHelper::getSelectedTheme($variables);
+  $variables['module_path'] = $module_handler->getModule('htmlmail')->getPath() . '/templates';
+  if (empty($variables['theme'])) {
+    $variables['theme'] = 'no theme';
+    $variables['theme_path'] = $variables['module_path'];
+  }
+  else {
+    $variables['theme_path'] = $theme_handler->getTheme($variables['theme'])->getPath() . '/templates';
+  }
+  global $base_url;
+
+  $module = $variables['message']['module'];
+  $key = $variables['message']['key'];
+  $params = [
+    trim($variables['message']['subject']),
+    trim($variables['message']['body']),
+  ];
+
+  $variables['theme_url'] = $base_url . base_path() . $variables['theme_path'];
+  $variables['message_id'] = $module . '_' . $key;
+
+  $variables['module_template'] = "htmlmail--$module.html.twig";
+  $variables['message_template'] = "htmlmail--$module--$key.html.twig";
+
+  $variables['theme_html_exists'] = file_exists($variables['theme_path'] . '/htmlmail.html.twig');
+  $variables['message_template_exists'] = file_exists("{$variables['theme_path']}/{$variables['message_template']}");
+  $variables['module_template_exists'] = file_exists("{$variables['theme_path']}/{$variables['module_template']}");
+
+  $variables['pre_formatted_params'] = print_r($params, 1);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function htmlmail_theme_suggestions_htmlmail_alter(array &$suggestions, array $variables) {
+  $module = $variables['message']['module'];
+  $key = $variables['message']['key'];
+
+  $suggestion = 'htmlmail__' . $module;
+  $suggestions[] = $suggestion;
+  $suggestion .= '__' . $key;
+  $suggestions[] = $suggestion;
+}
+
+/**
+ * Implements hook_help().
+ */
+function htmlmail_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.htmlmail':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('<a target="blank" href=":htmlmail">HTML Mail</a> lets you theme your messages the same way you theme the rest of your website. For more information, see the <a href=":online_documentation">online documentation for the HTML Mail project.</a>',
+          [
+            ':htmlmail' => 'http://drupal.org/project/htmlmail',
+            ':online_documentation' => 'https://www.drupal.org/docs/8/modules/html-mail',
+          ]
+        ) . '</p>';
+
+      return $output;
+  }
+}

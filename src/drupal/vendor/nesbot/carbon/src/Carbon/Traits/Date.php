@@ -2295,10 +2295,10 @@ trait Date
             if ($macro instanceof Closure) {
                 $boundMacro = @Closure::bind($macro, null, static::class);
 
-                return ($boundMacro ?: $macro)(...$parameters);
+                return \call_user_func_array($boundMacro ?: $macro, $parameters);
             }
 
-            return $macro(...$parameters);
+            return \call_user_func_array($macro, $parameters);
         });
     }
 
@@ -2412,10 +2412,10 @@ trait Date
         if ($macro instanceof Closure) {
             $boundMacro = @$macro->bindTo($this, static::class) ?: @$macro->bindTo(null, static::class);
 
-            return ($boundMacro ?: $macro)(...$parameters);
+            return \call_user_func_array($boundMacro ?: $macro, $parameters);
         }
 
-        return $macro(...$parameters);
+        return \call_user_func_array($macro, $parameters);
     }
 
     protected function executeCallableWithContext($macro, ...$parameters)

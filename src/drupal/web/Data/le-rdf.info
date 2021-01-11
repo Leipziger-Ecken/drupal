@@ -1,0 +1,3 @@
+name = RDF-Anbindung Leiziger Ecken
+description = provides an RDF binding of leipziger-ecken.de to leipzig-data.de 
+core = 7.x

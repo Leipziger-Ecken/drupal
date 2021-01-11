@@ -1,0 +1,50 @@
+# Documentation: https://www.drupal.org/drupalorg/docs/drupal-ci/customizing-drupalci-testing.
+build:
+  assessment:
+    validate_codebase:
+      phplint:
+      phpcs:
+        sniff-all-files: true
+        halt-on-fail: true
+      # Uses our custom PHP Stan config.
+      container_command.phpstan:
+        halt-on-fail: true
+        commands:
+          # Replace environment variable placeholders with values.
+          # PHP Stan does not support using environment variables in config.
+          # See https://github.com/phpstan/phpstan/issues/1918.
+          - sed -i "s|\${SOURCE_DIR}|${SOURCE_DIR}|g" ${PROJECT_DIR}/phpstan-configuration.ci.neon
+          - ${SOURCE_DIR}/vendor/bin/phpstan analyze --configuration=${PROJECT_DIR}/phpstan-configuration.ci.neon --memory-limit=4G --no-progress  --no-interaction ${PROJECT_DIR}
+    testing:
+      run_tests.phpunit:
+        types: 'PHPUnit-Unit'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: true
+      run_tests.kernel:
+        types: 'PHPUnit-Kernel'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: true
+      run_tests.build:
+        concurrency: 15
+        types: 'PHPUnit-Build'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: true
+      run_tests.functional:
+        types: 'PHPUnit-Functional'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: true
+      run_tests.javascript:
+        concurrency: 15
+        types: 'PHPUnit-FunctionalJavascript'
+        testgroups: '--all'
+        suppress-deprecations: false
+        halt-on-fail: true
+      container_command.composer-upgrade:
+        commands:
+          - "sudo composer self-update --snapshot"
+          - "./vendor/bin/phpunit -c core --group VendorHardening,ProjectMessage,Scaffold"
+        halt-on-fail: true

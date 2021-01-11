@@ -1,0 +1,15 @@
+# @file
+# Custom user permissions for the Maillog module.
+
+view maillog:
+  title: 'View Maillog'
+  description: 'Allow users to view messages when being sent and all previously sent and logged mails.'
+  restrict access: true
+delete maillog:
+  title: 'Delete entries from the log'
+  description: 'Allow users to delete logged mails.'
+  restrict access: true
+administer maillog:
+  title: 'Administer Maillog'
+  description: 'Allow users to change Maillog settings'
+  restrict access: true

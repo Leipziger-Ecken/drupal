@@ -1,0 +1,47 @@
+diff --git a/src/Form/NotificationSettingsForm.php b/src/Form/NotificationSettingsForm.php
+index af06ab7..f35c351 100755
+--- a/src/Form/NotificationSettingsForm.php
++++ b/src/Form/NotificationSettingsForm.php
+@@ -32,6 +32,7 @@ class NotificationSettingsForm extends FormBase {
+   public function buildForm(array $form, FormStateInterface $form_state) {
+     $form = [];
+     $config = $this->config('usernotification.settings');
++    $message_body = $config->get('message');
+ 
+     $form['notification_fieldset'] = [
+       '#type' => 'fieldset',
+@@ -47,12 +48,13 @@ class NotificationSettingsForm extends FormBase {
+       '#required' => TRUE,
+     ];
+     $form['notification_fieldset']['message'] = [
+-      '#type' => 'textarea',
++      '#type' => 'text_format',
+       "#title" => $this->t('Notification message'),
+       '#description' => $this->t("Configure to send notification message that will send to user from people's page."),
+-      '#default_value' => !empty($config->get('message')) ? $config->get('message') : '',
++      '#default_value' => !empty($config->get('message')) ? $message_body['value'] : '',
+       '#required' => TRUE,
+       '#rows' => 15,
++      '#format' => !empty($config->get('message')) ? $message_body['format'] : filter_default_format(),
+     ];
+     $form['notification_fieldset']['token_tree'] = [
+       '#theme' => 'token_tree_link',
+diff --git a/usernotification.module b/usernotification.module
+index 549540f..caf0590 100755
+--- a/usernotification.module
++++ b/usernotification.module
+@@ -40,6 +40,7 @@ function usernotification_mail($key, &$message, $params) {
+   }
+   $langcode = $message['langcode'];
+   $mail_config = \Drupal::config('usernotification.settings');
++  $message_body = $mail_config->get('message');
+   $message['from'] = $params['from'];
+   $token_options = [
+     'langcode' => $langcode,
+@@ -47,5 +48,5 @@ function usernotification_mail($key, &$message, $params) {
+     'clear' => TRUE,
+   ];
+   $message['subject'] = PlainTextOutput::renderFromHtml($token_service->replace($mail_config->get('subject'), $variables, $token_options));
+-  $message['body'][] = $token_service->replace($mail_config->get('message'), $variables, $token_options);
++  $message['body'][] = $token_service->replace($message_body['value'], $variables, $token_options);
+ }

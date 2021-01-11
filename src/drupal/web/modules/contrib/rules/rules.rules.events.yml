@@ -1,0 +1,61 @@
+# Symfony Kernel events.
+kernel.request:
+  label: 'Drupal is initializing'
+  category: 'System'
+  # @todo Should this event have the request as context? Should we define a
+  # request data type?
+  help: "Be aware that some actions might initialize the theme system. After that, it's impossible for any module to change the used theme."
+kernel.terminate:
+  label: 'Drupal is terminating'
+  category: 'System'
+
+# Entity CRUD events.
+rules_entity_presave:
+  label: 'Before saving an entity'
+  deriver: '\Drupal\rules\Plugin\RulesEvent\EntityPresaveDeriver'
+  class: '\Drupal\rules\EventHandler\ConfigurableEventHandlerEntityBundle'
+rules_entity_delete:
+  label: 'After deleting an entity'
+  deriver: '\Drupal\rules\Plugin\RulesEvent\EntityDeleteDeriver'
+  class: '\Drupal\rules\EventHandler\ConfigurableEventHandlerEntityBundle'
+rules_entity_insert:
+  label: 'After saving a new entity'
+  deriver: '\Drupal\rules\Plugin\RulesEvent\EntityInsertDeriver'
+  class: '\Drupal\rules\EventHandler\ConfigurableEventHandlerEntityBundle'
+rules_entity_update:
+  label: 'After updating an entity'
+  deriver: '\Drupal\rules\Plugin\RulesEvent\EntityUpdateDeriver'
+  class: '\Drupal\rules\EventHandler\ConfigurableEventHandlerEntityBundle'
+rules_entity_view:
+  label: 'Viewing an entity'
+  deriver: '\Drupal\rules\Plugin\RulesEvent\EntityViewDeriver'
+  class: '\Drupal\rules\EventHandler\ConfigurableEventHandlerEntityBundle'
+
+# System events.
+rules_system_cron:
+  label: 'Cron maintenance tasks are performed'
+  category: 'System'
+rules_system_logger_event:
+  label: 'System log entry is created'
+  category: 'System'
+  context_definitions:
+    # @todo Create a TypedData logger-entry object: https://www.drupal.org/node/2625238
+    logger_entry:
+      type: 'any'
+      label: 'Logger entry'
+
+# User events.
+rules_user_login:
+  label: 'User has logged in'
+  category: 'User'
+  context_definitions:
+    account:
+      type: 'entity:user'
+      label: 'Logged in user'
+rules_user_logout:
+  label: 'User has logged out'
+  category: 'User'
+  context_definitions:
+    account:
+      type: 'entity:user'
+      label: 'Logged out user'

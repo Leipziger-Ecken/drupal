@@ -1,0 +1,5 @@
+remove_http_headers.remove_http_headers_settings:
+  title: 'Remove HTTP headers settings'
+  description: 'Configure the HTTP headers that should be removed.'
+  route_name: remove_http_headers.remove_http_headers_settings
+  parent: system.admin_config_system

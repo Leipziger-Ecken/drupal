@@ -1,0 +1,33 @@
+# Rules that should be checked during CI runs, and fail the CI on errors.
+# Example DrupalCI execution:
+# ${SOURCE_DIR}/vendor/bin/phpstan analyze --configuration=${PROJECT_DIR}/phpstan-configuration.ci.neon --memory-limit=4G --no-progress  --no-interaction ${PROJECT_DIR}
+parameters:
+  level: 7
+  reportUnmatchedIgnoredErrors: false
+  # This check also fails for non-iterable interfaces.
+  checkMissingIterableValueType: false
+  parallel:
+    processTimeout: 120.0
+  ignoreErrors:
+      # Output message is Regex matched using the PHP preg_match() function.
+      # The PHPCS Drupal standandard requires to use "object" as PHPDoc type for parameters and return values of type "stdClass".
+      - '#PHPDoc tag @param for parameter \$.+ with type object is not subtype of native type stdClass\.#'
+      - '#PHPDoc tag @return with type object is not subtype of native type stdClass\.#'
+      # We are aware that \Drupal calls should be avoided,
+      # but dependency injection is not supported everywhere,
+      # because of this we deactivate the check.
+      - '#\\Drupal calls should be avoided in classes, use dependency injection instead#'
+      # Allow setting of mock object properties.
+      - '#Access to an undefined property PHPUnit\\Framework\\MockObject\\MockObject::\$.+\.#'
+      # Skip this check for tests because identicalTo in test may cause it.
+      -
+        message: '#Negated boolean expression is always false\.#'
+        path: *Test.php
+      # Disable because this feature is used consciously for static factory methods.
+      - '#Unsafe usage of new static\(\)\.#'
+      # PHP Stan doesn't correctly evaluate this if a method may or may not have a return value.
+      - '#Function .+\(\) never returns void so it can be removed from the return typehint.#'
+
+includes:
+	- ${SOURCE_DIR}/vendor/mglaman/phpstan-drupal/extension.neon
+	- ${SOURCE_DIR}/vendor/phpstan/phpstan-deprecation-rules/rules.neon

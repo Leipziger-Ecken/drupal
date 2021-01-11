@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @file
+ * Installation for HTML Mail module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function htmlmail_install() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+  $mail_plugins = $config->get('interface');
+  if (in_array('htmlmail', array_keys($mail_plugins))) {
+    return;
+  }
+
+  $mail_plugins['htmlmail'] = 'HTMLMailMailSystem';
+  $config->set('interface', $mail_plugins)->save();
+
+  $config = \Drupal::configFactory()->getEditable('mailsystem.settings');
+  $config
+    ->set('defaults.sender', 'htmlmail')
+    ->set('defaults.formatter', 'htmlmail')
+    ->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function htmlmail_uninstall() {
+  $config = \Drupal::configFactory()->getEditable('system.mail');
+  $mail_plugins = $config->get('interface');
+  if (!in_array('htmlmail', array_keys($mail_plugins))) {
+    return;
+  }
+
+  unset($mail_plugins['htmlmail']);
+  $config->set('interface', $mail_plugins)->save();
+
+  $config = \Drupal::configFactory()->getEditable('mailsystem.settings');
+  $config
+    ->set('defaults.sender', 'php_mail')
+    ->set('defaults.formatter', 'php_mail')
+    ->save();
+
+  \Drupal::configFactory()->getEditable('htmlmail.settings')
+    ->delete();
+}

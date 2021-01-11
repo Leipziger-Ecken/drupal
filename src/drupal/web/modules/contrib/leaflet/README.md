@@ -66,20 +66,6 @@ so they can be controlled together,
 * $height:
 The map height, expressed in css units.
 
-###Tips & Tricks
-
-- ####Bind events on geojson (json) features
-  @see: https://www.drupal.org/project/leaflet/issues/3186029
-
-  $features[] = [
-    'type' => 'json',
-    'json' => $geojson,
-    'events' => [
-      'click' => 'Drupal.manageGeojsonClick', // or whatever callback
-    ],
-  ];
-  $this->leaflet->leafletRenderMap($map_info, $features, $height),
-
 ####Authors/Credits
 
 * [itamair](https://www.drupal.org/u/itamair)

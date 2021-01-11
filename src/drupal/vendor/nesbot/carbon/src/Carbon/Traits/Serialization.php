@@ -149,11 +149,10 @@ trait Serialization
     public function jsonSerialize()
     {
         $serializer = $this->localSerializer ?? static::$serializer;
-
         if ($serializer) {
             return \is_string($serializer)
                 ? $this->rawFormat($serializer)
-                : $serializer($this);
+                : \call_user_func($serializer, $this);
         }
 
         return $this->toJSON();

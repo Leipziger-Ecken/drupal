@@ -1,0 +1,38 @@
+htmlmail.settings:
+  type: config_object
+  label: 'HTML Mail label settings'
+  mapping:
+    htmlmail_debug:
+      type: boolean
+      label: 'Enable the template debug'
+    hmtlmail_theme:
+      type: string
+      label: 'The theme used to send the email'
+    htmlmail_html_with_plain:
+      type: boolean
+      label: 'Send the email as text plain'
+    htmlmail_postfilter:
+      type: string
+      label: 'The filter used on email body'
+    htmlmail_use_mime_mail:
+      type: boolean
+      label: 'Use the PEAR Mime mail class'
+    htmlmail_test:
+      type: mapping
+      label: 'Mail header data for sending out the test mail message'
+      mapping:
+        to:
+          type: string
+          label: 'The recipient of the test mail message'
+        subject:
+          type: string
+          label: 'The subject of the test mail message'
+        body:
+          type: sequence
+          label: 'The content of the test mail message'
+          sequence:
+            type: string
+            label: 'The body text of the test mail message'
+        class:
+          type: string
+          label: 'The class of the test mail message'

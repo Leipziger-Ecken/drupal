@@ -187,7 +187,7 @@ class GeofieldItem extends FieldItemBase {
       '#title' => $this->t('Storage Backend'),
       '#default_value' => $this->getSetting('backend'),
       '#options' => $backend_options,
-      '#description' => $this->t("Select the Geospatial storage backend you would like to use to store geofield geometry data. If you don't know what this means, select 'Default Backend'."),
+      '#description' => $this->t("Select the Geospatial storage backend you would like to use to store geofield geometry data. If you don't know what this means, select 'Default'."),
     ];
 
     return $element;

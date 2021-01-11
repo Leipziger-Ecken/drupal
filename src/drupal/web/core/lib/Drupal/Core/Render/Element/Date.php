@@ -62,7 +62,7 @@ class Date extends FormElement {
   public static function processDate(&$element, FormStateInterface $form_state, &$complete_form) {
     // Attach JS support for the date field, if we can determine which date
     // format should be used.
-    if ($element['#attributes']['type'] == 'date' && !empty($element['#date_date_format'])) {
+    if (isset($element['#attributes']) && isset($element['#attributes']['type']) && $element['#attributes']['type'] == 'date' && !empty($element['#date_date_format'])) {
       $element['#attached']['library'][] = 'core/drupal.date';
       $element['#attributes']['data-drupal-date-format'] = [$element['#date_date_format']];
     }

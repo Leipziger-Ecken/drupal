@@ -1,0 +1,12 @@
+maillog.settings:
+  type: config_object
+  mapping:
+    send:
+      type: boolean
+      label: Send emails
+    log:
+      type: boolean
+      label: Log emails
+    verbose:
+      type: boolean
+      label: Display mails

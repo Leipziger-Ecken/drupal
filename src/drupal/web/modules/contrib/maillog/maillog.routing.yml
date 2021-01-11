@@ -1,0 +1,33 @@
+# @file
+# Custom routes for the Maillog module.
+
+maillog.settings:
+  path: '/admin/config/development/maillog'
+  defaults:
+    _form: '\Drupal\maillog\Form\MaillogSettingsForm'
+    _title: 'Maillog Settings'
+  requirements:
+    _permission: 'administer maillog'
+
+maillog.delete:
+  path: '/admin/reports/maillog/delete/{maillog_id}'
+  defaults:
+    _controller: '\Drupal\maillog\Controller\MaillogController::delete'
+  requirements:
+    _permission: 'delete maillog'
+    _csrf_token: 'TRUE'
+
+maillog.clear_log:
+  path: '/admin/reports/maillog/delete/all'
+  defaults:
+    _form: '\Drupal\maillog\Form\MaillogClearConfirmForm'
+    _title: 'Clear log'
+  requirements:
+    _permission: 'administer maillog'
+
+maillog.details:
+  path: '/admin/reports/maillog/details/{maillog_id}'
+  defaults:
+    _controller: '\Drupal\maillog\Controller\MaillogController::details'
+  requirements:
+    _permission: 'view maillog'

@@ -17,7 +17,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
             'fonts'       => ['arial.ttf'],
             'foregrounds' => ['#FFFFFF'],
             'backgrounds' => ['#000000'],
-            'border'      => ['size' => 1, 'color' => '#999999'],
+            'border'      => ['size' => 1, 'color' => '#999999', 'radius' => 15],
         ];
 
         $avatar = new \Laravolt\Avatar\Avatar($config);
@@ -32,6 +32,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
         $this->assertAttributeEquals(48, 'fontSize', $avatar);
         $this->assertAttributeEquals(1, 'borderSize', $avatar);
         $this->assertAttributeEquals('#999999', 'borderColor', $avatar);
+        $this->assertAttributeEquals(15, 'borderRadius', $avatar);
         $this->assertAttributeEquals(false, 'ascii', $avatar);
     }
 
@@ -60,7 +61,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
 
         $avatar = new \Laravolt\Avatar\Avatar($config);
         $name = 'A';
-        $avatar->create($name);
+        $avatar->create($name)->buildAvatar();
 
         $this->assertAttributeEquals('#000000', 'background', $avatar);
         $this->assertAttributeEquals('#111111', 'foreground', $avatar);
@@ -79,13 +80,66 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
         $name2 = 'AAA';
 
         $avatar1 = new \Laravolt\Avatar\Avatar($config);
-        $avatar1->create($name1);
+        $avatar1->create($name1)->buildAvatar();
 
         $avatar2 = new \Laravolt\Avatar\Avatar($config);
-        $avatar2->create($name2);
+        $avatar2->create($name2)->buildAvatar();
 
         $this->assertAttributeEquals('#000000', 'background', $avatar1);
         $this->assertAttributeEquals('#111111', 'background', $avatar2);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_resolve_random_themes_and_then_overrides()
+    {
+        $config = [
+            'theme' => '*',
+            'themes' => [
+                'dark' => [
+                    'backgrounds' => ['#000000', '#111111'],
+                    'foregrounds' => ['#EEEEEE', '#FFFFFF'],
+                ],
+                'light' => [
+                    'backgrounds' => ['#FFFFFF', '#EEEEEE'],
+                    'foregrounds' => ['#000000', '#111111'],
+                ],
+            ]
+        ];
+
+        $name1 = 'Bay';
+
+        $avatar1 = new \Laravolt\Avatar\Avatar($config);
+        $avatar1->create($name1)->buildAvatar();
+
+        $this->assertAttributeEquals('#000000', 'background', $avatar1);
+        $this->assertAttributeEquals('#EEEEEE', 'foreground', $avatar1);
+
+        $avatar1->setTheme('light')->buildAvatar();
+        $this->assertAttributeEquals('#FFFFFF', 'background', $avatar1);
+        $this->assertAttributeEquals('#000000', 'foreground', $avatar1);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_handle_invalid_theme()
+    {
+        $config = [
+            'foregrounds' => ['#000000', '#111111'],
+            'backgrounds' => ['#111111', '#000000'],
+        ];
+
+        $avatar = new \Laravolt\Avatar\Avatar($config);
+        $name = 'A';
+        $avatar->create($name)->setTheme('zombie')->buildAvatar();
+
+        $this->assertAttributeEquals('#000000', 'background', $avatar);
+        $this->assertAttributeEquals('#111111', 'foreground', $avatar);
+
+        $avatar->setTheme(new stdClass())->buildAvatar();
+        $avatar->setTheme(['satu', 'dua'])->buildAvatar();
     }
 
     /**
@@ -98,6 +152,20 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
 
         $this->assertAttributeEquals('Bayu Hendra', 'name', $avatar);
         $this->assertAttributeEquals('BH', 'initials', $avatar);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_set_chars_length()
+    {
+        $avatar = new \Laravolt\Avatar\Avatar();
+
+        $avatar->create('Bayu Hendra Winata')->setChars(1)->buildAvatar();
+        $this->assertAttributeEquals('B', 'initials', $avatar);
+
+        $avatar->create('Bayu Hendra Winata')->setChars(3)->buildAvatar();
+        $this->assertAttributeEquals('BHW', 'initials', $avatar);
     }
 
     /**
@@ -174,7 +242,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
      */
     public function it_can_generate_circle_svg()
     {
-        $expected = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="100" height="100">';
+        $expected = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">';
         $expected .= '<circle cx="50" cy="50" r="45" stroke="yellow" stroke-width="10" fill="red" />';
         $expected .= '<text x="50" y="50" font-size="24" fill="white" alignment-baseline="middle" text-anchor="middle" dominant-baseline="central">AB</text>';
         $expected .= '</svg>';
@@ -197,8 +265,8 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
      */
     public function it_can_generate_rectangle_svg()
     {
-        $expected = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="100" height="100">';
-        $expected .= '<rect x="5" y="5" width="90" height="90" stroke="yellow" stroke-width="10" fill="red" />';
+        $expected = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">';
+        $expected .= '<rect x="5" y="5" width="90" height="90" stroke="yellow" stroke-width="10" rx="15" fill="red" />';
         $expected .= '<text x="50" y="50" font-size="24" fill="white" alignment-baseline="middle" text-anchor="middle" dominant-baseline="central">AB</text>';
         $expected .= '</svg>';
 
@@ -209,6 +277,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
                       ->setDimension(100, 100)
                       ->setForeground('white')
                       ->setBorder(10, 'yellow')
+                      ->setBorderRadius(15)
                       ->setBackground('red')
                       ->toSvg();
 
@@ -220,7 +289,7 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
      */
     public function it_can_generate_svg_with_custom_font_family()
     {
-        $expected = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="100" height="100">';
+        $expected = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">';
         $expected .= '<circle cx="50" cy="50" r="45" stroke="yellow" stroke-width="10" fill="red" />';
         $expected .= '<text x="50" y="50" font-size="24" font-family="Lato" fill="white" alignment-baseline="middle" text-anchor="middle" dominant-baseline="central">AB</text>';
         $expected .= '</svg>';
@@ -397,6 +466,25 @@ class AvatarPhpTest extends \PHPUnit\Framework\TestCase
 
             $this->assertAttributeEquals($borderSize, 'borderSize', $avatar);
             $this->assertAttributeEquals($color, 'borderColor', $avatar);
+            $this->assertAttributeEquals(0, 'borderRadius', $avatar);
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_set_border_radius()
+    {
+        $borderSize = 1;
+        $borderColors = ['#ffffff', 'foreground', 'background'];
+
+        $avatar = new \Laravolt\Avatar\Avatar();
+        foreach ($borderColors as $color) {
+            $avatar->setBorder($borderSize, $color, 10)->buildAvatar();
+
+            $this->assertAttributeEquals($borderSize, 'borderSize', $avatar);
+            $this->assertAttributeEquals($color, 'borderColor', $avatar);
+            $this->assertAttributeEquals(10, 'borderRadius', $avatar);
         }
     }
 

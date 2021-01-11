@@ -1,0 +1,9 @@
+remove_http_headers.remove_http_headers_settings:
+  path: '/admin/config/system/remove-http-headers'
+  defaults:
+    _form: '\Drupal\remove_http_headers\Form\RemoveHttpHeadersSettings'
+    _title: 'Remove HTTP headers settings'
+  requirements:
+    _permission: 'remove_http_headers settings access'
+  options:
+    _admin_route: TRUE

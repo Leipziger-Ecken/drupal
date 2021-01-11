@@ -1,0 +1,54 @@
+Maillog 8.x-1.0-beta1, 2020-09-22
+---------------------------------
+#2214815 by tonnosf: Initial port to Drupal 8
+By Berdir: Remove typo in info file.
+By Berdir: Removed test script.
+#2216177 by tonnosf: Added basic test coverage.
+By Berdir: Convert to PSR-4.
+By Berdir: Chasing D8 HEAD.
+By Berdir: Fixed menu link parent.
+#2232875 by aprohl5: Improved maillog default view.
+By Berdir: Update for FormStateInterface.
+By Berdir: FormState can now longer be used as an array.
+#2346841 by Arla: Move permissions into maillog.permissions.yml.
+#2346845 by Arla: Replace drupal_write_record() call with db_insert().
+By Berdir: Replace watchdog() call with Drupal::logger().
+By Berdir: Updated routing.yml.
+By Berdir: Update remove functions, add config schema, fix default view..
+#2346833 by Arla: Convert MailTest to kernel test.
+#2412739 by Berdir: Immutable config changes.
+By Berdir: Change test group to maillog.
+By Berdir: Fix install and uninstall, simplify and cleanup.
+#2462153 by mbovan: Tests fail because of wrong properties in maillog overview.
+#2470845 by LKS90: Replace old Classes with their new equivalent.
+#2549285 by giancarlosotelo: Fix schema langcode error.
+#2553241 by LKS90: Fix link in maillog reports page.
+#2553761 by giancarlosotelo: Remove Message_ID from the default view.
+#2553849 by LKS90, Berdir: Removed url() in Maillog.php.
+By Berdir: Update deprecated t() placeholders.
+#2566277 by giancarlosotelo: Don't rely on devel module for printing mail
+  content.
+#1421886 by edurenye, pluess, rhabbachi: Clear maillog?
+#1977178 by edurenye, miro_dietiker: Add empty message.
+#1977178 by edurenye: Add empty message - Remove broken test to make HEAD pass.
+#2621896 by Arla, edurenye, miro_dietiker: Sort by date, latest first.
+#1977178 by edurenye: Add empty message; readd test.
+By Berdir: Convert simpletest kernel tests to phpunit.
+#2245761 by tduong, DamienMcKenna, Shreya Shetty, David_Rothstein, markdorison:
+  E-mail subjects longer than 255 characters lead to a fatal error.
+#2346881 by LOBsTerr: Implement hook_help().
+#3004608 by chipway: Namespace Dependencies in .info.yml.
+#3137711 by DamienMcKenna: Add a CHANGELOG.txt file.
+#2777709 by DamienMcKenna: Update README.txt file.
+#3162614 by DamienMcKenna: Make all permissions "restricted".
+#3162610 by DamienMcKenna: Rename the idmaillog column to just "id".
+#3137712 by laxman.ghavte, Suresh Prabhu Parkala, DamienMcKenna, Sahana _N,
+  karishmaamin: Drupal 9 compatibility fixes.
+#3162648 by DamienMcKenna: D9 compatibility fixes for test coverage.
+#3162697 by DamienMcKenna: Change route paths to admin/reports/maillog/*.
+#2913191 by kmajzlik, DamienMcKenna: Move views.view.maillog_overview.yml to
+  optional.
+#3163100 by acrollet: Class 'Database' not found when running
+  maillog_update_8100.
+#3137746 by Suresh Prabhu Parkala, DamienMcKenna, markdorison: Drupal coding
+  standards.

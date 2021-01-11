@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Rules module.
+ */
+
+use Drupal\rules\Entity\ReactionRuleConfig;
+use Drupal\rules\Entity\RulesComponentConfig;
+
+/**
+ * Update the "tags" property of Reaction Rules and Rules Components.
+ *
+ * Rules 8.x-3.0-alpha4 and earlier erroneously set the "tags" property to
+ * "array(0 => '')" if there were no tags. The proper value is an empty array,
+ * "array()".
+ */
+function rules_update_8301() {
+  // Update Reaction Rules and Rules Components. Rules 8.x-3.0-alpha4 and
+  // earlier erroneously sets the "tags" property to "array(0 => '')" if
+  // there are no tags. The proper value is an empty array, "array()".
+  $ids = \Drupal::entityQuery('rules_reaction_rule')->execute();
+  foreach ($ids as $id) {
+    $rule = ReactionRuleConfig::load($id);
+    $tags = $rule->getTags();
+    if ($tags == [0 => '']) {
+      $rule->set('tags', []);
+      $rule->save();
+    }
+  }
+  $ids = \Drupal::entityQuery('rules_component')->execute();
+  foreach ($ids as $id) {
+    $rule = RulesComponentConfig::load($id);
+    $tags = $rule->getTags();
+    if ($tags == [0 => '']) {
+      $rule->set('tags', []);
+      $rule->save();
+    }
+  }
+
+}

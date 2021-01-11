@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
+class ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -39,15 +39,18 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
         '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
+        '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '952683d815ff0a7bf322b93c0be7e4e4' => __DIR__ . '/..' . '/chi-teck/drupal-code-generator/src/bootstrap.php',
-        '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
-        '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         '5a12a5271c58108e0aa33355e6ac54ea' => __DIR__ . '/..' . '/drupal/console-core/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\' => 5,
+        ),
         'e' => 
         array (
             'enshrined\\svgSanitize\\' => 22,
@@ -102,10 +105,7 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
             'Symfony\\Component\\ClassLoader\\' => 30,
             'Symfony\\Cmf\\Component\\Routing\\' => 30,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
-            'Stringy\\' => 8,
             'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
-            'Shaper\\Tests\\' => 13,
-            'Shaper\\' => 7,
             'SelfUpdate\\' => 11,
         ),
         'R' => 
@@ -140,10 +140,6 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
             'Laminas\\Feed\\' => 13,
             'Laminas\\Escaper\\' => 16,
             'Laminas\\Diactoros\\' => 18,
-        ),
-        'J' => 
-        array (
-            'JsonSchema\\' => 11,
         ),
         'I' => 
         array (
@@ -221,6 +217,10 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
         'enshrined\\svgSanitize\\' => 
         array (
             0 => __DIR__ . '/..' . '/enshrined/svg-sanitize/src',
@@ -369,21 +369,9 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
         array (
             0 => __DIR__ . '/..' . '/symfony/psr-http-message-bridge',
         ),
-        'Stringy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/danielstjules/stringy/src',
-        ),
         'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
         array (
             0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
-        ),
-        'Shaper\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/e0ipso/shaper/tests/src',
-        ),
-        'Shaper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/e0ipso/shaper/src',
         ),
         'SelfUpdate\\' => 
         array (
@@ -473,10 +461,6 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
         'Laminas\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-diactoros/src',
-        ),
-        'JsonSchema\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
         'Intervention\\Image\\' => 
         array (
@@ -758,7 +742,6 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DivisionByZeroError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/DivisionByZeroError.php',
         'Drupal' => __DIR__ . '/../..' . '/web/core/lib/Drupal.php',
         'DrupalFinder\\DrupalFinder' => __DIR__ . '/..' . '/webflo/drupal-finder/src/DrupalFinder.php',
@@ -826,11 +809,11 @@ class ComposerStaticInitffcad37478981f5b23fa8322a959fa8c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitffcad37478981f5b23fa8322a959fa8c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitffcad37478981f5b23fa8322a959fa8c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitffcad37478981f5b23fa8322a959fa8c::$prefixesPsr0;
-            $loader->fallbackDirsPsr0 = ComposerStaticInitffcad37478981f5b23fa8322a959fa8c::$fallbackDirsPsr0;
-            $loader->classMap = ComposerStaticInitffcad37478981f5b23fa8322a959fa8c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4::$fallbackDirsPsr0;
+            $loader->classMap = ComposerStaticInit5dc0c79f2da65772c84142422fd94dc4::$classMap;
 
         }, null, ClassLoader::class);
     }

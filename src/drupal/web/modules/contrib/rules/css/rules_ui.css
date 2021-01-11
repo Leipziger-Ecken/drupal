@@ -1,0 +1,60 @@
+/**
+ * @file
+ * Styles for the Rules UI.
+ */
+
+/* Expression container forms. */
+.edit-events,
+.edit-conditions-table,
+.edit-actions-table {
+  margin-bottom: 3em;
+}
+
+.edit-conditions-table .form-wrapper,
+.edit-actions-table .form-wrapper {
+  display: inline-block;
+}
+
+.edit-conditions-table .tabledrag-handle,
+.edit-actions-table .tabledrag-handle {
+  margin-top: 1.5em;
+}
+
+.edit-events .description,
+.edit-conditions-table .description,
+.edit-actions-table .description {
+  font-size: 75%;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+}
+
+.edit-events tr div.js-form-item,
+.edit-conditions-table tr div.js-form-item,
+.edit-actions-table tr div.js-form-item {
+  margin-bottom: 0;
+}
+
+tfoot .action-links {
+  margin: 0.5em 0;
+}
+
+/* Reaction rules list builder. */
+.rules-list-section {
+  margin-bottom: 3em;
+}
+
+.rules-listing-table div.description {
+  font-size: 75%;
+  line-height: 1.5em;
+}
+
+/* Rules component list builder. */
+.rules-component-list-builder div.description {
+  font-size: 75%;
+  line-height: 1.5em;
+}
+
+.rules-component-list-builder .edit-description-text {
+  display: block;
+  margin-top: 1em;
+}

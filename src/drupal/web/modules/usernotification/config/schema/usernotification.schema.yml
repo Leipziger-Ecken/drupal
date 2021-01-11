@@ -1,0 +1,5 @@
+# Schema for the configuration files of the User module.
+
+action.configuration.usernotification_action:
+  type: mapping
+  label: 'Configuration for the send notification to users'

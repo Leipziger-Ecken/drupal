@@ -206,18 +206,18 @@ class SettingsForm extends ConfigFormBase {
   protected function demonstrateErrorHandlers($severity) {
     switch ($severity) {
       case 'notice':
-        trigger_error('This is an example notice', E_USER_NOTICE);
+        $undefined = $undefined;
         break;
 
       case 'warning':
-        trigger_error('This is an example notice', E_USER_NOTICE);
-        trigger_error('This is an example warning', E_USER_WARNING);
+        $undefined = $undefined;
+        1 / 0;
         break;
 
       case 'error':
-        trigger_error('This is an example notice', E_USER_NOTICE);
-        trigger_error('This is an example warning', E_USER_WARNING);
-        trigger_error('This is an example error', E_USER_ERROR);
+        $undefined = $undefined;
+        1 / 0;
+        devel_undefined_function();
         break;
     }
   }

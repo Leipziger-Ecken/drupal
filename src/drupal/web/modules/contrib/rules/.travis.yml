@@ -1,0 +1,110 @@
+language: php
+
+os: linux
+
+php:
+  - 5.6
+  - 7.0
+  - 7.3
+
+env:
+  global:
+    # Make the script re-usable for other modules.
+    - MODULE=rules
+    # Allow this many deprecation warnings before failing the build.
+    - SYMFONY_DEPRECATIONS_HELPER=3909
+  jobs:
+    - DRUPAL_CORE=8.7.x
+    - DRUPAL_CORE=8.8.x
+    - DRUPAL_CORE=8.9.x
+
+jobs:
+  fast_finish: true
+  # PHP7.3 is not supported on Core 8.7 and earlier.
+  # PHP5 is not supported on Core 8.8 and later.
+  exclude:
+    - php: 7.3
+      env: DRUPAL_CORE=8.7.x
+    - php: 5.6
+      env: DRUPAL_CORE=8.8.x
+    - php: 5.6
+      env: DRUPAL_CORE=8.9.x
+
+services:
+  - mysql
+
+# Be sure to cache composer downloads.
+cache:
+  directories:
+    - $HOME/.composer
+
+before_script:
+  - echo $MODULE
+
+  # Remove Xdebug as we don't need it and it causes
+  # PHP Fatal error:  Maximum function nesting level of '256' reached.
+  # We also don't care if that file exists or not on PHP 7.
+  - phpenv config-rm xdebug.ini || true
+
+  # Save the current $MODULE test directory for use in the Drupal installation.
+  - TESTDIR=$(pwd)
+  # Navigate out to prevent blown stack by recursive module lookup.
+  - cd ..
+
+  # Create database.
+  - mysql -e "create database $MODULE"
+  # Export database variable for kernel tests.
+  - export SIMPLETEST_DB=mysql://root:@127.0.0.1/$MODULE
+  # Download Drupal 8 core from the Github mirror because it is faster.
+  - travis_retry git clone --branch $DRUPAL_CORE --depth 1 https://github.com/drupal/drupal.git
+  - cd drupal
+  # Store the path to Drupal root.
+  - DRUPAL_ROOT=$(pwd)
+  - echo $DRUPAL_ROOT
+
+  # Reference $MODULE in build site.
+  - ln -s $TESTDIR modules/$MODULE
+  # Install dependencies.
+  - travis_retry git clone --branch 8.x-1.x --depth 1 https://git.drupalcode.org/project/typed_data.git modules/typed_data
+
+  # We need an up-to-date composer.
+  - travis_retry composer self-update && travis_retry composer install
+
+  # Set the phpcs installed_paths to pick up the Drupal standards.
+  - $DRUPAL_ROOT/vendor/bin/phpcs --config-set installed_paths $DRUPAL_ROOT/vendor/drupal/coder/coder_sniffer
+
+  # If running Core 8.6 or 8.7 the following script will upgrade to phpunit 6
+  # which is required in PHP7. The script has now been deleted from Core 8.8.
+  - if [[ $DRUPAL_CORE == "8.6.x" || $DRUPAL_CORE == "8.7.x" ]]; then
+      travis_retry composer run-script drupal-phpunit-upgrade;
+    fi
+
+  # Core 8.7 has more deprecation warnings because it executes more assertions.
+  - if [ $DRUPAL_CORE == "8.7.x" ]; then
+      SYMFONY_DEPRECATIONS_HELPER=4731;
+    fi
+  - echo $SYMFONY_DEPRECATIONS_HELPER
+
+  # Start a web server on port 8888, run in the background.
+  - php -S localhost:8888 &
+
+  # Export web server URL for browser tests.
+  - export SIMPLETEST_BASE_URL=http://localhost:8888
+
+script:
+  # Run the PHPUnit tests which also include the kernel tests.
+  - ./vendor/bin/phpunit -c ./core/phpunit.xml.dist ./modules/$MODULE/tests/
+
+  # Check for coding standards. First change directory to our module.
+  - cd $DRUPAL_ROOT/modules/$MODULE
+
+  # Show the phpcs version, standards and all the sniffs that are used.
+  - $DRUPAL_ROOT/vendor/bin/phpcs --version
+  - $DRUPAL_ROOT/vendor/bin/phpcs -i
+  - $DRUPAL_ROOT/vendor/bin/phpcs -e
+
+  # Show the violations in detail but do not fail for any errors or warnings.
+  - $DRUPAL_ROOT/vendor/bin/phpcs --report-width=100 --runtime-set ignore_warnings_on_exit 1 --runtime-set ignore_errors_on_exit 1
+
+  # Run again to give a summary and totals, and fail for errors and warnings.
+  - $DRUPAL_ROOT/vendor/bin/phpcs --report-width=100 --report=summary

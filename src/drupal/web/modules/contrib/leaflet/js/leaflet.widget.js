@@ -70,14 +70,6 @@
         });
       }
 
-      // Adjust toolbar to show defaultMarker or circleMarker.
-      this.settings.toolbarSettings.drawMarker = false;
-      this.settings.toolbarSettings.drawCircleMarker = false;
-      if (this.settings.toolbarSettings.marker === "defaultMarker") {
-        this.settings.toolbarSettings.drawMarker = 1;
-      } else if (this.settings.toolbarSettings.marker === "circleMarker") {
-        this.settings.toolbarSettings.drawCircleMarker = 1;
-      }
       map.pm.addControls(this.settings.toolbarSettings);
 
       map.on('pm:create', function(event){
@@ -171,22 +163,9 @@
     }
 
     try {
-      let layerOpts = {
-        style: function (feature) {
-          return self.settings.path_style;
-        }
-      };
-      // Use circleMarkers if specified.
-      if (self.settings.toolbarSettings.marker === "circleMarker") {
-        layerOpts.pointToLayer = function (feature, latlng) {
-          return L.circleMarker(latlng);
-        };
-      }
-      // Apply styles to pm drawn items.
-      this.map.pm.setGlobalOptions({
-        pathOptions: self.settings.path_style
-      });
-      let obj = L.geoJson(JSON.parse(value), layerOpts);
+      let obj = L.geoJson(JSON.parse(value), {style: function (feature) {
+        return self.settings.path_style;
+      }});
       // See https://github.com/Leaflet/Leaflet.draw/issues/398
       obj.eachLayer(function(layer) {
         if (typeof layer.getLayers === "function") {

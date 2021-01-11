@@ -225,7 +225,7 @@
 
       // dealing with a layer group
       if (feature.group) {
-        let lGroup = self.create_feature_group();
+        let lGroup = self.create_feature_group(feature);
         for (let groupKey in feature.features) {
           let groupFeature = feature.features[groupKey];
           lFeature = self.create_feature(groupFeature);
@@ -267,7 +267,7 @@
     $(document).trigger('leaflet.features', [initial || false, self])
   };
 
-  Drupal.Leaflet.prototype.create_feature_group = function() {
+  Drupal.Leaflet.prototype.create_feature_group = function(feature) {
     return new L.LayerGroup();
   };
 
@@ -285,7 +285,7 @@
 
       case 'polygon':
         lFeature = self.create_polygon(feature);
-        break;
+        break
 
       case 'multipolygon':
         lFeature = self.create_multipolygon(feature);
@@ -296,7 +296,7 @@
         break;
 
       case 'json':
-        lFeature = self.create_json(feature.json, feature.events);
+        lFeature = self.create_json(feature.json);
         break;
 
       case 'multipoint':
@@ -528,7 +528,7 @@
     }
   };
 
-  Drupal.Leaflet.prototype.create_json = function(json, events) {
+  Drupal.Leaflet.prototype.create_json = function(json) {
     let lJSON = new L.GeoJSON();
 
     lJSON.options.onEachFeature = function(feature, layer) {
@@ -546,66 +546,46 @@
       if (feature.properties.popup) {
         layer.bindPopup(feature.properties.popup);
       }
-      for (e in events) {
-        layerParam = {};
-        layerParam[e] = eval(events[e]);
-        layer.on(layerParam);
-      }
     };
 
     lJSON.addData(json);
     return lJSON;
   };
 
-  // Set Map initial map position and Zoom.  Different scenarios:
-  //  1)  Force the initial map center and zoom to values provided by input settings
-  //  2)  Fit multiple features onto map using Leaflet's fitBounds method
-  //  3)  Fit a single polygon onto map using Leaflet's fitBounds method
-  //  4)  Display a single marker using the specified zoom
-  //  5)  Adjust the initial zoom using zoomFiner, if specified
-  //  6)  Cater for a map with no features (use input settings for Zoom and Center, if supplied)
-  //
-  // @NOTE: This method used by Leaflet Markecluster module (don't remove/rename)
+  // Set Map position, fitting Bounds in case of more than one feature.
+  // @NOTE: This method used by Leaflet Markercluster module (don't remove/rename)
   Drupal.Leaflet.prototype.fitbounds = function(mapid) {
     let self = this;
-    let start_zoom = self.settings.zoom;
-    // Note: self.settings.center might not be defined in case of Leaflet widget and Automatically locate user current position.
-    let start_center = self.settings.center ? new L.LatLng(self.settings.center.lat, self.settings.center.lon) : null;
+    let start_zoom, start_center;
+    // Fit Bounds if both them and features exist.
+    if (self.bounds.length > 0) {
+      let bounds = new L.LatLngBounds(self.bounds);
+      Drupal.Leaflet[mapid].lMap.fitBounds(bounds);
+      start_center = bounds.getCenter();
 
-    //  Check whether the Zoom and Center are to be forced to use the input settings
-    if (start_center && self.settings.map_position_force) {
-      //  Set the Zoom and Center to values provided by the input settings
-      Drupal.Leaflet[mapid].lMap.setView(start_center, start_zoom);
-    } else if (start_center ) {
-      if (self.bounds.length === 0) {
-        //  No features - set the Zoom and Center to values provided by the input settings, if specified
-        Drupal.Leaflet[mapid].lMap.setView(start_center, start_zoom);
-      } else {
-        //  Set the Zoom and Center by using the Leaflet fitBounds function
-        let bounds = new L.LatLngBounds(self.bounds);
-        Drupal.Leaflet[mapid].lMap.fitBounds(bounds);
-        start_center = bounds.getCenter();
-        start_zoom = Drupal.Leaflet[mapid].lMap.getBoundsZoom(bounds);
-
-        if (self.bounds.length === 1) {
-          //  Single marker - set zoom to input settings
-          Drupal.Leaflet[mapid].lMap.setZoom(self.settings.zoom);
-          start_zoom = self.settings.zoom;
+      // In case of single result, or Map Zoom Forced, use the custom Map Zoom.
+      if ((self.bounds.length === 1 || self.settings.map_position_force) && self.settings.zoom) {
+        start_zoom = self.settings.zoom;
+        Drupal.Leaflet[mapid].lMap.setZoom(start_zoom);
+        // In case of Map Center Forced, use it.
+        if (self.settings.center && self.settings.map_position_force) {
+          start_center = L.latLng(self.settings.center);
+          Drupal.Leaflet[mapid].lMap.setView(start_center);
         }
       }
-
+      else {
+        start_zoom = Drupal.Leaflet[mapid].lMap.getBoundsZoom(bounds);
+      }
       // In case of map initial position not forced, and zooFiner not null/neutral,
       // adapt the Map Zoom and the Start Zoom accordingly.
-      if (self.settings.hasOwnProperty('zoomFiner') && parseInt(self.settings.zoomFiner)) {
-        start_zoom += parseFloat(self.settings.zoomFiner);
-        Drupal.Leaflet[mapid].lMap.setView(start_center, start_zoom);
+      if (!self.settings.map_position_force && self.settings.hasOwnProperty('zoomFiner') && parseInt(self.settings['zoomFiner'] !== 0)) {
+        start_zoom += parseFloat(self.settings['zoomFiner']);
+        Drupal.Leaflet[mapid].lMap.setZoom(start_zoom);
       }
-
-      // Set the map start zoom and center.
-      Drupal.Leaflet[mapid].start_zoom = start_zoom;
-      Drupal.Leaflet[mapid].start_center = start_center;
     }
-
+    // Set the map start zoom and center.
+    Drupal.Leaflet[mapid].start_zoom = start_zoom;
+    Drupal.Leaflet[mapid].start_center = start_center;
   };
 
   Drupal.Leaflet.prototype.map_reset = function(mapid) {
@@ -618,7 +598,7 @@
     let control = new L.Control({position: reset_map_control_settings.position});
     control.onAdd = function() {
       // Set CSS for the control border.
-      let controlUI = L.DomUtil.create('div','resetzoom');
+      let controlUI = L.DomUtil.create('div','resetzoom')
       controlUI.style.backgroundColor = '#fff';
       controlUI.style.border = '2px solid #fff';
       controlUI.style.borderRadius = '3px';
