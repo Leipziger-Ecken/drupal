@@ -10,7 +10,8 @@
 #/src/drupal/web/libraries/
 
 # Ignore sensitive information
-#/web/sites/*/settings.php
+#/src/drupal/web/sites/*/settings.php
+!/src/drupal/web/sites/*/settings.php
 /src/drupal/web/sites/settings.local.php
 /src/drupal/web/sites/*/settings.local.php
 /src/drupal/web/sites/*/settings*.php
