@@ -2,8 +2,8 @@ version: '3'
 services:
   drupal:
     ports:
-      - "80:80"
-      - "443:443"
+      - "${PORT:-80}:80"
+      - "${SSL_PORT:-443}:443"
   db:
     ports:
-      - "3306:3306"
+      - "${DB_PORT:-3306}:3306"
