@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo chown -R :33 ../src/drupal
+sudo chown -R ${UID}:33 ../src/drupal
 sudo chmod -R g+rw ../src/drupal
