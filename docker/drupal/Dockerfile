@@ -13,8 +13,6 @@ RUN apt-get install -y \
    libmemcached-dev \
    curl \
    default-mysql-client \
-   sendmail-bin \
-   sendmail \
    wget \
    sudo \
    bash-completion \
@@ -89,7 +87,7 @@ RUN curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/co
 RUN curl -sSL https://getcomposer.org/installer | php  && \
    mv composer.phar /usr/local/bin/composer &&\
 
-   # Install PHPUnit
+  # Install PHPUnit
   curl -sSL https://phar.phpunit.de/phpunit.phar -o phpunit.phar && \
     chmod +x phpunit.phar && \
        mv phpunit.phar /usr/local/bin/phpunit && \
@@ -103,15 +101,16 @@ RUN ln -s $HOME/.composer/vendor/bin/drush /usr/local/bin/drush
 RUN \
 	mkdir -p /root/bin && \
 	ln -s $HOME/.composer/vendor/bin/drush /root/bin/drush
-RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-RUN sudo apt-get install -y nodejs
 # cleanup
+RUN apt-get remove --purge -y \
+   libzip-dev \
+	 libonig-dev \
+   libmemcached-dev
 RUN \
-	apt-get autoremove && \
-	apt-get autoclean
-RUN npm i -g gulp-cli
+	apt-get autoremove -y && \
+	apt-get autoclean -y
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY update.sh /update.sh
-RUN chown -R www-data:www-data /var/www
+RUN chown -R :www-data /var/www && chmod -R g+rw /var/www
 WORKDIR /var/www/html
