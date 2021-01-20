@@ -1,5 +1,0 @@
-name: "[YAML] - ExampleServicesApi"
-apiVersion: "2.0"
-description: "Client wrapper for the Example Services API."
-imports:
-  - "resources/posts.yml"

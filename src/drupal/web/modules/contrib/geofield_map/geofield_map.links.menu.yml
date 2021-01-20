@@ -1,6 +1,0 @@
-# Default menu links for the Geofield Map module.
-geofield_map.settings:
-  route_name: geofield_map.settings
-  title: 'Geofield Map settings'
-  parent: system.admin_config_system
-  description: 'Configure Geofield Map Settings (such as Google Maps API key, etc...)'

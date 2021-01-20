@@ -1,4 +1,0 @@
-services:
-  leaflet.service:
-      class: Drupal\leaflet\LeafletService
-      arguments: ['@current_user', '@geofield.geophp', '@module_handler', '@link_generator']

@@ -1,6 +1,0 @@
-services:
-  rot13.twig:
-    arguments: ['@renderer']
-    class: Drupal\rot13\Twig\Rot13Extension
-    tags:
-      - { name: twig.extension }

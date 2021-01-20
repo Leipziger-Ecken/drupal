@@ -1,1 +1,0 @@
-Avatar Field Formatter

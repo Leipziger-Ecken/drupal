@@ -1,7 +1,0 @@
-leaflet_demo.demo_page:
-  path: '/admin/config/system/leaflet_more_maps/demo'
-  defaults:
-    _form: '\Drupal\leaflet_demo\Form\LeafletDemoForm'
-    _title: 'Leaflet Demo'
-  requirements:
-    _permission: 'administer site configuration'
