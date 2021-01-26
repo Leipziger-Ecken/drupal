@@ -43,11 +43,13 @@
         "drupal/login_emailusername": "^1.2",
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
+        "drupal/rules": "^3.0@alpha",
         "drupal/schema_metatag": "^1.4",
         "drupal/simple_sitemap": "^3.8",
         "drupal/svg_image": "^1.14",
         "drupal/token": "^1.6",
         "drupal/twig_tweak": "^2.6",
+        "drupal/typed_data": "^1.0@dev",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
         "geocoder-php/mapbox-provider": "^1.0"
