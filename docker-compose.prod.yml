@@ -2,7 +2,7 @@ version: '3'
 services:
   drupal:
     ports:
-      - "${PORT:=80}:80"
+      - "${PORT:-80}:80"
     restart: always
   db:
     restart: always
