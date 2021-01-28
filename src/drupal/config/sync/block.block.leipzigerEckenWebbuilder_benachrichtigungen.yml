@@ -1,22 +1,20 @@
-uuid: f48b4138-6c4b-41d4-ad04-e86192b8c8b7
+uuid: 87885701-a0d6-4e8d-b3e5-ce30ab2117f8
 langcode: de
 status: true
 dependencies:
   module:
     - system
   theme:
-    - seven
-_core:
-  default_config_hash: XJqWwLt1LDCnazcEN6QkJmCLjk4R0__-8s0OO9xeNjg
-id: seven_messages
-theme: seven
-region: highlighted
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_benachrichtigungen
+theme: leipzigerEckenWebbuilder
+region: content
 weight: 0
 provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: Status-Nachrichten
+  label: Benachrichtigungen
   provider: system
   label_display: '0'
 visibility: {  }

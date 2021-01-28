@@ -1,0 +1,25 @@
+uuid: 173d1b4e-2bbb-40a7-9553-46a80d819e0d
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_hauptnavigation
+theme: leipzigerEckenWebbuilder
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: Hauptnavigation
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

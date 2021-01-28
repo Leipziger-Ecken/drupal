@@ -1,0 +1,23 @@
+uuid: 098549ad-a560-4872-9637-0d21ba4b536f
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_brandingderwebsite
+theme: leipzigerEckenWebbuilder
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Branding der Website'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }
