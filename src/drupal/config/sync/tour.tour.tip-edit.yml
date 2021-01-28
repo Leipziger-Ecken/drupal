@@ -1,0 +1,50 @@
+uuid: 13158fbd-5b20-4a81-8467-eb5516bcf654
+langcode: de
+status: true
+dependencies:
+  module:
+    - tour_ui
+_core:
+  default_config_hash: zA-axs6lQFTDR7kBfJOW57ZWQAPWS_DmWI-gcLWUjvQ
+id: tip-edit
+label: 'Tipp bearbeiten'
+module: tour_ui
+routes:
+  -
+    route_name: tour_ui.tip.edit
+tips:
+  tour-page:
+    id: tour-page
+    plugin: text
+    label: Tourbearbeitung
+    weight: 1
+    attributes: {  }
+    body: '<p>Auf dieser Seite wird eine tour bearbeitet.</p><p>Beachten sie, dass Sie nach dem speichern einer tour sicherstellen müssen, dass die Datei, die die Tour enthält, zur späteren Verwendung im Konfigurationsverzeichnis eines Moduls oder in einer Issue-Queue gespeichert werden muss.</p>'
+    location: top
+  tour-label:
+    id: tour-label
+    plugin: text
+    label: Label
+    weight: 3
+    attributes:
+      data-id: edit-label
+    body: '<p>Die Bezeichnung, die zu Verwaltungszwecken eingesetzt wird. Diese Bezeichnung wird von der Tour UI verwendet, um die Liste, der verfügbaren Touren anzeigen zu können..</p>'
+    location: top
+  tour-paths:
+    id: tour-paths
+    plugin: text
+    label: Pfade
+    weight: 5
+    attributes:
+      data-id: edit-paths
+    body: '<p>Hier legen Sie den Pfad oder die Pfade fest, auf denen eine Tour angezeigt werden soll.</p><p><p>Sie können * als Platzhalter für ein Pfadelement verwenden. z. B. node/*edit</p>'
+    location: top
+  tour-tips:
+    id: tour-tips
+    plugin: text
+    label: Tips
+    weight: 7
+    attributes:
+      data-id: edit-tips
+    body: '<p>Dies sind die Tipps.</p>'
+    location: null

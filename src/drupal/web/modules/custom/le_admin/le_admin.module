@@ -1,0 +1,8 @@
+<?php
+
+function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_le_akteur_edit_form') {
+    $form['#attached']['library'][] = 'le_admin/akteur_form';
+  }
+}

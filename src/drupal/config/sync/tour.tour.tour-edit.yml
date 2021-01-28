@@ -1,0 +1,59 @@
+uuid: 65ab174a-85e0-4cf5-874f-2b7ff772a399
+langcode: de
+status: true
+dependencies:
+  module:
+    - tour_ui
+_core:
+  default_config_hash: Ku5a8ch74z7f-Tgc-XMjwpqNE97rF5bKtX5RwzJNhcQ
+id: tour-edit
+label: 'Tour bearbeiten'
+module: tour_ui
+routes:
+  -
+    route_name: entity.tour.edit_form
+tips:
+  tour-page:
+    id: tour-page
+    plugin: text
+    label: Tourbearbeitung
+    weight: -100
+    attributes: {  }
+    body: '<p>Auf dieser Seite wird eine tour bearbeitet.</p><p>Beachten sie, dass Sie nach dem speichern einer tour sicherstellen müssen, dass die Datei, die die Tour enthält, zur späteren Verwendung im Konfigurationsverzeichnis eines Moduls oder in einer Issue-Queue gespeichert werden muss.</p>'
+    location: top
+  tour-label:
+    id: tour-label
+    plugin: text
+    label: Label
+    weight: -99
+    attributes:
+      data-id: edit-label
+    body: '<p>Die Bezeichnung, die zu Verwaltungszwecken eingesetzt wird. Diese Bezeichnung wird von der Tour UI verwendet, um die Liste, der verfügbaren Touren anzeigen zu können..</p>'
+    location: bottom
+  module:
+    id: module
+    plugin: text
+    label: Module
+    weight: -98
+    attributes:
+      data-id: edit-module
+    body: 'Hier kann eine Modulabhängigkeit definiert werden. Das Konfigurationssystem entfernt diese Tour, wenn das Modul deinstalliert wird.'
+    location: bottom
+  tour-routes:
+    id: tour-routes
+    plugin: text
+    label: Routes
+    weight: -97
+    attributes:
+      data-id: edit-routes
+    body: '<p>Hier legen Sie fest, auf welchen Routen eine Tour angezeigt werden soll.</p><p><p>Sie können Das Modul <a href="https://www.drupal.org/project/devel">Devel</a> verwenden, um eine bestimmte Route herauszufinden.</p>'
+    location: bottom
+  tour-tips:
+    id: tour-tips
+    plugin: text
+    label: Tips
+    weight: -96
+    attributes:
+      data-id: edit-tips
+    body: '<p>Dies sind die Tipps.</p>'
+    location: top

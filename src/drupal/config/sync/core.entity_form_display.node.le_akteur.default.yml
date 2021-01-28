@@ -30,6 +30,7 @@ dependencies:
     - field_group
     - link
     - path
+    - select2_multicheck
     - svg_image
     - telephone
     - text
@@ -154,9 +155,10 @@ content:
     region: content
   field_le_akteur_kategorie_typ:
     weight: 13
-    settings: {  }
+    settings:
+      width: 100%
     third_party_settings: {  }
-    type: options_select
+    type: select2_multicheck
     region: content
   field_le_akteur_lizenzhinweis:
     weight: 20

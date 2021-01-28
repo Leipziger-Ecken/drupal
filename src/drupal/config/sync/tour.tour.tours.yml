@@ -1,0 +1,49 @@
+uuid: 474ff974-19ac-4425-8092-f50b454f023f
+langcode: de
+status: true
+dependencies:
+  module:
+    - tour_ui
+_core:
+  default_config_hash: gf2gD8a95uMUFNpgHV2uERiG22n9g6__okOkgFkvhTY
+id: tours
+label: Tours
+module: tour_ui
+routes:
+  -
+    route_name: entity.tour.collection
+tips:
+  getting-started:
+    id: getting-started
+    plugin: text
+    label: 'Erste Schritte'
+    weight: -100
+    attributes: {  }
+    body: 'Auf dieser Seite können Touren verwaltet werden.'
+    location: top
+  adding-tours:
+    id: adding-tours
+    plugin: text
+    label: 'Touren hinzufügen'
+    weight: -100
+    attributes:
+      data-class: 'action-links a[href="/admin/config/user-interface/tour/add"]'
+    body: "Wenn Sie eine Tour hinzufügen, müssen Sie wissen, auf welchen Seiten, oder noch genauer auf welchen Routen diese Tour später verfügbar sein soll.\r\n\r\n<h3>Routen</h3>\r\n\r\nSie können das Modul <a href=\"https://www.drupal.org/project/tour_ui\">Devel</a> installieren und die Seite <a href=\"/devel/routes\">/devel/routes</a> aufrufen, um die entsprechende route über die Eingabe der Pfandangabe zur gewünschten Seite oder auf dieser Seite herausfinden.."
+    location: top
+  edit-tour:
+    id: edit-tour
+    plugin: text
+    label: 'Tour bearbeiten'
+    weight: -100
+    attributes:
+      data-class: dropbutton-action
+    body: '<p>Hier können Sie auswählen, welche Aktionen auf die Tour angewendet werden sollen.</p><p><p>Wenn Sie das Modul <a href="https://www.drupal.org/project/tour_builder">Tour Builder</a> installieren, können Sie Touren duplizieren.</p>'
+    location: left
+  share-tours:
+    id: share-tours
+    plugin: text
+    label: 'Touren teilen'
+    weight: -100
+    attributes: {  }
+    body: "Nach dem Erstellen oder Aktualisieren einer Tour möchten Sie diese eventuell teilen.\r\n\r\n<h3>Konfigurationsverwaltung</h3>\r\n\r\nSie können einen einzelnen Eintrag als YAML-Datei exportieren. Stellen Sie sicher, dass die Zeile <strong>uuid</strong> und  die <strong>_core</strong>-Werte nicht geteilt werden.\r\n\r\n<h3>Tour builder</h3>\r\n\r\nSie können auch das Modul <a href=\"https://www.drupal.org/project/tour_builder\">Tour Builder</a> verwenden, dass den Export und den Arbeitsablauf beim aktualisieren von Touren in der Regel vereinfacht."
+    location: top
