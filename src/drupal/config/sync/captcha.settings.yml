@@ -1,5 +1,5 @@
 enabled_default: 0
-default_challenge: recaptcha/reCAPTCHA
+default_challenge: hcaptcha/hCaptcha
 description: 'Diese Sicherheitsfrage überprüft, ob Sie ein menschlicher Besucher sind und verhindert automatisches Spamming.'
 administration_mode: false
 allow_on_admin_pages: false

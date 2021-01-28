@@ -1,0 +1,29 @@
+uuid: b1e9c82d-9eab-4bb1-8495-833771c33ee9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.webbuilder.og_audience
+    - node.type.webbuilder
+  module:
+    - user
+id: node.webbuilder.default
+targetEntityType: node
+bundle: webbuilder
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  og_audience:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 101
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

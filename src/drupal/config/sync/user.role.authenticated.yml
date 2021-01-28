@@ -27,5 +27,8 @@ permissions:
   - 'post comments'
   - 'search content'
   - 'skip comment approval'
+  - 'toggle gin darkmode'
+  - 'toggle gin high contrast mode'
   - 'use text format basic_html'
   - 'use text format full_html'
+  - 'view the administration theme'

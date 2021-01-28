@@ -1,0 +1,23 @@
+uuid: 7db39e05-75c8-4b14-b980-8df5acfb0bae
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webbuilder.og_audience
+    - node.type.webbuilder
+  module:
+    - user
+id: node.webbuilder.teaser
+targetEntityType: node
+bundle: webbuilder
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  og_audience: true
