@@ -1,0 +1,35 @@
+uuid: 6a920b01-3108-4d20-9f3c-e51c5bb0fb61
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.webbuilder_page.default
+targetEntityType: node
+bundle: webbuilder_page
+mode: default
+content:
+  field_contents:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_slug: true
+  langcode: true
+  og_audience: true

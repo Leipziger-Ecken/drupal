@@ -1,0 +1,41 @@
+uuid: 4319c91b-bd4a-4211-bf59-16f54268627c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_text.field_body
+    - field.field.paragraph.webbuilder_text.field_heading
+    - field.field.paragraph.webbuilder_text.field_heading_type
+    - paragraphs.paragraphs_type.webbuilder_text
+  module:
+    - text
+id: paragraph.webbuilder_text.default
+targetEntityType: paragraph
+bundle: webbuilder_text
+mode: default
+content:
+  field_body:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_heading_type:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

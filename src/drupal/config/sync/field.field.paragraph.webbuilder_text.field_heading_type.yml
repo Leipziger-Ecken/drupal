@@ -1,0 +1,23 @@
+uuid: 2eccbd2c-2670-40d0-b7c2-8583b425550d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading_type
+    - paragraphs.paragraphs_type.webbuilder_text
+  module:
+    - options
+id: paragraph.webbuilder_text.field_heading_type
+field_name: field_heading_type
+entity_type: paragraph
+bundle: webbuilder_text
+label: 'Überschrift Typ'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: h2
+default_value_callback: ''
+settings: {  }
+field_type: list_string

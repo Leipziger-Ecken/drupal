@@ -1,0 +1,31 @@
+uuid: 9076ad40-ae46-4036-907d-28b6f7306807
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contents
+    - node.type.webbuilder_page
+    - paragraphs.paragraphs_type.webbuilder_text
+  module:
+    - entity_reference_revisions
+id: node.webbuilder_page.field_contents
+field_name: field_contents
+entity_type: node
+bundle: webbuilder_page
+label: Inhalt
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      webbuilder_text: webbuilder_text
+    target_bundles_drag_drop:
+      webbuilder_text:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

@@ -1,15 +1,13 @@
-uuid: b1aacd1d-a8b0-43af-8ec9-a63adc09d215
+uuid: b6aa4dbc-aa0a-4dae-be00-8bf2acddfaac
 langcode: de
 status: true
 dependencies:
   theme:
-    - gin
-_core:
-  default_config_hash: HLQY2xgby8K3vN_98hiOSasOhm9pdCsH234-s0duJ8Q
-id: gin_page_title
-theme: gin
+    - leipzigerEckenAdmin
+id: leipzigerEckenAdmin_seitentitel
+theme: leipzigerEckenAdmin
 region: header
-weight: -30
+weight: 0
 provider: null
 plugin: page_title_block
 settings:

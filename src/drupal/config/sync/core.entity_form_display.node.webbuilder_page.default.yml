@@ -1,0 +1,91 @@
+uuid: ea83aa12-21be-4605-8614-279a0f1eb736
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - field_group
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - langcode
+        - field_slug
+        - og_audience
+      parent_name: ''
+      weight: 6
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        open: true
+        required_fields: true
+        weight: 0
+      label: Einstellungen
+id: node.webbuilder_page.default
+targetEntityType: node
+bundle: webbuilder_page
+mode: default
+content:
+  field_contents:
+    type: entity_reference_paragraphs
+    weight: 5
+    settings:
+      title: Seitenabschnitt
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_slug:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  og_audience:
+    type: options_buttons
+    settings: {  }
+    weight: 3
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true
+  url_redirects: true

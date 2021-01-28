@@ -1,4 +1,4 @@
-admin: gin
+admin: leipzigerEckenAdmin
 default: leipzigerEcken
 _core:
   default_config_hash: P8WNTllBi0s9ftYEvvortxnGmiX2HNuV4bABzwZhC2c

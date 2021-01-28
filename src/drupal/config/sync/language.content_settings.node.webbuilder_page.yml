@@ -1,0 +1,11 @@
+uuid: 7bf774ec-b486-4465-9150-3bcd8cf921f1
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.webbuilder_page
+id: node.webbuilder_page
+target_entity_type_id: node
+target_bundle: webbuilder_page
+default_langcode: site_default
+language_alterable: true

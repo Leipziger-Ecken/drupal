@@ -1,0 +1,22 @@
+uuid: 3c55aa2d-b94e-40f2-809e-c57c00028e03
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.webbuilder_page
+id: node.webbuilder_page.promote
+field_name: promote
+entity_type: node
+bundle: webbuilder_page
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

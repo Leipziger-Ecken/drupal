@@ -1,22 +1,20 @@
-uuid: 4e6b382b-81a8-4319-a5bc-320cf6af33ce
+uuid: e6d365fc-b0a2-48cd-a4e0-1c24988b789a
 langcode: de
 status: true
 dependencies:
   module:
     - system
   theme:
-    - gin
-_core:
-  default_config_hash: WvPhI8OwllG0gE69-F8qL3ai3nd5SbYD6JpmEuZcyok
-id: gin_messages
-theme: gin
-region: highlighted
+    - leipzigerEckenAdmin
+id: leipzigerEckenAdmin_benachrichtigungen
+theme: leipzigerEckenAdmin
+region: content
 weight: 0
 provider: null
 plugin: system_messages_block
 settings:
   id: system_messages_block
-  label: Status-Nachrichten
+  label: Benachrichtigungen
   provider: system
   label_display: '0'
 visibility: {  }

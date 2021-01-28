@@ -8,6 +8,7 @@ module:
   captcha: 0
   ckeditor: 0
   color: 0
+  color_field: 0
   comment: 0
   config: 0
   config_update: 0
@@ -22,10 +23,13 @@ module:
   dblog: 0
   devel: 0
   editor: 0
+  entity_reference_revisions: 0
   features: 0
   features_ui: 0
   field: 0
+  field_group: 0
   field_ui: 0
+  field_validation: 0
   file: 0
   filter: 0
   geocoder: 0
@@ -79,7 +83,7 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  quickedit: 0
+  previewer: 0
   rdf: 0
   recaptcha: 0
   redirect: 0
@@ -93,6 +97,7 @@ module:
   schema_web_site: 0
   search: 0
   serialization: 0
+  settings_tray: 0
   shortcut: 0
   simple_sitemap: 0
   simple_sitemap_engines: 0
@@ -113,6 +118,7 @@ module:
   views_ui: 0
   pathauto: 1
   views: 10
+  paragraphs: 11
   leipziger_ecken: 1000
 theme:
   stable: 0
@@ -122,6 +128,7 @@ theme:
   claro: 0
   seven: 0
   gin: 0
+  leipzigerEckenAdmin: 0
 profile: leipziger_ecken
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

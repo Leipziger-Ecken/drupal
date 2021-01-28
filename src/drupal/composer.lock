@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb6ed7654d6ee1c55e8207e3bb06c857",
+    "content-hash": "a27189dd6362d828d4de6ff3c3af99fc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2341,6 +2341,65 @@
             }
         },
         {
+            "name": "drupal/color_field",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/color_field.git",
+                "reference": "8.x-2.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/color_field-8.x-2.4.zip",
+                "reference": "8.x-2.4",
+                "shasum": "11c163a409f4f70083f188d917fecc6052c53a2f"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "require-dev": {
+                "drupal/token": "~1.3",
+                "nickwilde1990/php-composter-phpcs-drupal": "^2.0"
+            },
+            "suggest": {
+                "bower-asset/jquery-simple-color": "^v1.2.2: Provides JavaScript library necessary for the Color Grid widget",
+                "bower-asset/spectrum": "^1.8: Provides JavaScript library necessary for Spectrum widget."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.4",
+                    "datestamp": "1596479692",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "targoo",
+                    "homepage": "https://www.drupal.org/user/431910",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nick Wilde",
+                    "homepage": "https://www.drupal.org/user/nickwilde",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides a color field type to store the color value and opacity",
+            "homepage": "https://www.drupal.org/project/color_field",
+            "support": {
+                "source": "https://git.drupalcode.org/project/color_field",
+                "issues": "https://www.drupal.org/project/issues/color_field?version=8.x"
+            }
+        },
+        {
             "name": "drupal/config_update",
             "version": "1.7.0",
             "source": {
@@ -3399,6 +3458,65 @@
             }
         },
         {
+            "name": "drupal/entity_reference_revisions",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/entity_reference_revisions.git",
+                "reference": "8.x-1.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.8.zip",
+                "reference": "8.x-1.8",
+                "shasum": "c1279e6c683edc2dbccedba8de1505340c8a62b6"
+            },
+            "require": {
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "require-dev": {
+                "drupal/diff": "1.x-dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.8",
+                    "datestamp": "1583961846",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Frans",
+                    "homepage": "https://www.drupal.org/user/514222"
+                },
+                {
+                    "name": "jeroen.b",
+                    "homepage": "https://www.drupal.org/user/1853532"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                }
+            ],
+            "description": "Entity Reference Revisions",
+            "homepage": "https://www.drupal.org/project/entity_reference_revisions",
+            "support": {
+                "source": "https://git.drupalcode.org/project/entity_reference_revisions"
+            }
+        },
+        {
             "name": "drupal/features",
             "version": "3.11.0",
             "source": {
@@ -3482,6 +3600,118 @@
             "homepage": "https://www.drupal.org/project/features",
             "support": {
                 "source": "https://git.drupalcode.org/project/features"
+            }
+        },
+        {
+            "name": "drupal/field_group",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/field_group.git",
+                "reference": "8.x-3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.1.zip",
+                "reference": "8.x-3.1",
+                "shasum": "8a719eaea594f0ba874172831cb28da93c66b77a"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "require-dev": {
+                "drupal/jquery_ui_accordion": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.1",
+                    "datestamp": "1591772567",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Hydra",
+                    "homepage": "https://www.drupal.org/user/647364"
+                },
+                {
+                    "name": "Stalski",
+                    "homepage": "https://www.drupal.org/user/322618"
+                },
+                {
+                    "name": "jyve",
+                    "homepage": "https://www.drupal.org/user/591438"
+                },
+                {
+                    "name": "nils.destoop",
+                    "homepage": "https://www.drupal.org/user/361625"
+                },
+                {
+                    "name": "swentel",
+                    "homepage": "https://www.drupal.org/user/107403"
+                }
+            ],
+            "description": "Provides the field_group module.",
+            "homepage": "https://www.drupal.org/project/field_group",
+            "support": {
+                "source": "https://git.drupalcode.org/project/field_group",
+                "issues": "https://www.drupal.org/project/issues/field_group"
+            }
+        },
+        {
+            "name": "drupal/field_validation",
+            "version": "1.0.0-beta3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/field_validation.git",
+                "reference": "8.x-1.0-beta3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_validation-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "d527fa9696e069f582d1b0c3f7d81928082346ca"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1601896531",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "g089h515r806",
+                    "homepage": "https://www.drupal.org/user/174740"
+                },
+                {
+                    "name": "manuel.adan",
+                    "homepage": "https://www.drupal.org/user/516420"
+                }
+            ],
+            "description": "Provides customizable field validation rules.",
+            "homepage": "https://www.drupal.org/project/field_validation",
+            "support": {
+                "source": "https://git.drupalcode.org/project/field_validation"
             }
         },
         {
@@ -4348,6 +4578,181 @@
             }
         },
         {
+            "name": "drupal/paragraphs",
+            "version": "1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs.git",
+                "reference": "8.x-1.12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs-8.x-1.12.zip",
+                "reference": "8.x-1.12",
+                "shasum": "3b67d8af1160af42d93a4610be1e02869e428965"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/entity_reference_revisions": "~1.3"
+            },
+            "require-dev": {
+                "drupal/block_field": "~1.0",
+                "drupal/ctools": "3.x-dev",
+                "drupal/diff": "~1.0",
+                "drupal/entity_browser": "2.x-dev",
+                "drupal/entity_usage": "2.x-dev",
+                "drupal/field_group": "3.x-dev",
+                "drupal/inline_entity_form": "~1.0",
+                "drupal/paragraphs-paragraphs_library": "*",
+                "drupal/replicate": "~1.0",
+                "drupal/search_api": "~1.0",
+                "drupal/search_api_db": "*"
+            },
+            "suggest": {
+                "drupal/entity_browser": "Recommended for an improved user experience when using the Paragraphs library module"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.12",
+                    "datestamp": "1590140081",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Frans",
+                    "homepage": "https://www.drupal.org/user/514222"
+                },
+                {
+                    "name": "Primsi",
+                    "homepage": "https://www.drupal.org/user/282629"
+                },
+                {
+                    "name": "jeroen.b",
+                    "homepage": "https://www.drupal.org/user/1853532"
+                },
+                {
+                    "name": "jstoller",
+                    "homepage": "https://www.drupal.org/user/99012"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                }
+            ],
+            "description": "Enables the creation of Paragraphs entities.",
+            "homepage": "https://www.drupal.org/project/paragraphs",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs"
+            }
+        },
+        {
+            "name": "drupal/paragraphs_edit",
+            "version": "2.0.0-alpha8",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs_edit.git",
+                "reference": "8.x-2.0-alpha8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_edit-8.x-2.0-alpha8.zip",
+                "reference": "8.x-2.0-alpha8",
+                "shasum": "7447a72afc3ef528afa51996bbf7c8dbf3d822b8"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0-alpha8",
+                    "datestamp": "1592930672",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "bbrala",
+                    "homepage": "https://www.drupal.org/user/3366066"
+                },
+                {
+                    "name": "casey",
+                    "homepage": "https://www.drupal.org/user/32403"
+                }
+            ],
+            "description": "Allows users to edit/clone and delete paragraphs.",
+            "homepage": "https://www.drupal.org/project/paragraphs_edit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs_edit"
+            }
+        },
+        {
+            "name": "drupal/paragraphs_sets",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs_sets.git",
+                "reference": "8.x-2.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_sets-8.x-2.7.zip",
+                "reference": "8.x-2.7",
+                "shasum": "ec5b0367f2502f40ba20f226560ee3d2ce84c108"
+            },
+            "require": {
+                "drupal/core": "^8.6 || ^9",
+                "drupal/paragraphs": "~1.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.7",
+                    "datestamp": "1605855570",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "stBorchert",
+                    "homepage": "https://www.drupal.org/user/36942"
+                }
+            ],
+            "description": "Allow adding a set of pre-configured paragraphs.",
+            "homepage": "https://www.drupal.org/project/paragraphs_sets",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs_sets"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.8.0",
             "source": {
@@ -4413,6 +4818,54 @@
                 "source": "https://cgit.drupalcode.org/pathauto",
                 "issues": "https://www.drupal.org/project/issues/pathauto",
                 "documentation": "https://www.drupal.org/docs/8/modules/pathauto"
+            }
+        },
+        {
+            "name": "drupal/previewer",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/previewer.git",
+                "reference": "1.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/previewer-1.0.6.zip",
+                "reference": "1.0.6",
+                "shasum": "16aea66a349a94118255c06ecdb13c5a68538967"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.6",
+                    "datestamp": "1601988966",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "jefuri",
+                    "homepage": "https://www.drupal.org/user/2733365"
+                }
+            ],
+            "description": "Previewer",
+            "homepage": "https://www.drupal.org/project/previewer",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/previewer",
+                "issues": "https://www.drupal.org/project/issues/previewer"
             }
         },
         {
@@ -11342,6 +11795,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/date_recur_modular": 20,
+        "drupal/field_validation": 10,
+        "drupal/paragraphs_edit": 15,
         "drupal/rules": 15,
         "drupal/typed_data": 20
     },

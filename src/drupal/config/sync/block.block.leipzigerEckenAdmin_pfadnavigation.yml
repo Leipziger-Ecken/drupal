@@ -1,16 +1,14 @@
-uuid: 8c372d66-f058-4ddc-9238-d6720e8838d4
+uuid: 9cb464d7-f4c4-445a-a635-a19abb9de142
 langcode: de
 status: true
 dependencies:
   module:
     - system
   theme:
-    - gin
-_core:
-  default_config_hash: y9X3xgCsO59pQyzNLzY1D3SDJJxCHILLWkpPnmuTJ2E
-id: gin_breadcrumbs
-theme: gin
-region: breadcrumb
+    - leipzigerEckenAdmin
+id: leipzigerEckenAdmin_pfadnavigation
+theme: leipzigerEckenAdmin
+region: header
 weight: 0
 provider: null
 plugin: system_breadcrumb_block

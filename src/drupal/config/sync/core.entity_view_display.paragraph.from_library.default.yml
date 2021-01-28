@@ -1,0 +1,14 @@
+uuid: c27321bf-d5a5-4908-ae95-0d6977f2a52a
+langcode: de
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.from_library
+_core:
+  default_config_hash: cwuIPYXF5vCbzfY8wjj_shzx513Cwc122DIqGh2Uqho
+id: paragraph.from_library.default
+targetEntityType: paragraph
+bundle: from_library
+mode: default
+content: {  }
+hidden: {  }

@@ -1,4 +1,4 @@
-paths: '/user/*/*'
+paths: "/user/*\r\n/user/*/*"
 exclude_paths: /dummy-path-needed-until-core-issue-2930364-is-fixed
 _core:
   default_config_hash: djrGnpQFw2Jm0GjIQ-o28-09ZKtCusE5k0VNddWmOKE

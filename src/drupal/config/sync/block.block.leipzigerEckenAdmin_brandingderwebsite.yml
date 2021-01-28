@@ -1,0 +1,23 @@
+uuid: 536b9bd9-088b-4327-b8d8-36286852542d
+langcode: de
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEckenAdmin
+id: leipzigerEckenAdmin_brandingderwebsite
+theme: leipzigerEckenAdmin
+region: sidebar_first
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Branding der Website'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: false
+  use_site_slogan: false
+visibility: {  }

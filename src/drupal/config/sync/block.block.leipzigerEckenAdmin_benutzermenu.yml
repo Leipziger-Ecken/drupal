@@ -1,0 +1,25 @@
+uuid: 90373cad-fb77-4697-bd4e-d5b9bec4cbf1
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - leipzigerEckenAdmin
+id: leipzigerEckenAdmin_benutzermenu
+theme: leipzigerEckenAdmin
+region: sidebar_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: Benutzermenü
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }
