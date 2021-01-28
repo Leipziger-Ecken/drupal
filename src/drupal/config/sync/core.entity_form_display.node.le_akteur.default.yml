@@ -30,7 +30,7 @@ dependencies:
     - field_group
     - link
     - path
-    - select2_multicheck
+    - select2
     - svg_image
     - telephone
     - text
@@ -72,9 +72,13 @@ content:
     region: content
   field_bezirk:
     weight: 15
-    settings: {  }
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
     third_party_settings: {  }
-    type: options_select
+    type: select2_entity_reference
     region: content
   field_le_akteur_contactperson:
     weight: 11
@@ -139,9 +143,13 @@ content:
     region: content
   field_le_akteur_kategorie_gruppe:
     weight: 14
-    settings: {  }
+    settings:
+      width: 100%
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
     third_party_settings: {  }
-    type: options_buttons
+    type: select2_entity_reference
     region: content
   field_le_akteur_kategorie_tags:
     weight: 17
@@ -157,8 +165,11 @@ content:
     weight: 13
     settings:
       width: 100%
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
     third_party_settings: {  }
-    type: select2_multicheck
+    type: select2_entity_reference
     region: content
   field_le_akteur_lizenzhinweis:
     weight: 20
