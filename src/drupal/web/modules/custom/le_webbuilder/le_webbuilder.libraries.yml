@@ -1,0 +1,4 @@
+webbuilder:
+  css:
+    theme:
+      assets/css/webbuilder.css: {}
