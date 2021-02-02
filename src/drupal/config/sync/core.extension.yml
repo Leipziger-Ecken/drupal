@@ -67,6 +67,7 @@ module:
   le_remote_api_services: 0
   le_remote_content_depot_social: 0
   le_rollen: 0
+  le_webbuilder: 0
   le_website: 0
   leaflet: 0
   leaflet_more_maps: 0
