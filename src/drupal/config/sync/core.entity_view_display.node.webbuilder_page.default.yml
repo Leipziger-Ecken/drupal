@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -11,6 +12,7 @@ dependencies:
     - node.type.webbuilder_page
   module:
     - entity_reference_revisions
+    - options
     - user
 id: node.webbuilder_page.default
 targetEntityType: node
@@ -25,6 +27,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  field_layout:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_webbuilder:
     weight: 2

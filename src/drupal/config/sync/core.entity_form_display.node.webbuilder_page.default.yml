@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -25,7 +26,7 @@ third_party_settings:
         - field_slug
         - field_weight
       parent_name: ''
-      weight: 6
+      weight: 4
       format_type: details_sidebar
       region: content
       format_settings:
@@ -43,7 +44,7 @@ mode: default
 content:
   field_contents:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 3
     settings:
       title: Seitenabschnitt
       title_plural: Paragraphs
@@ -52,6 +53,12 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
+    region: content
+  field_layout:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_slug:
     weight: 32
@@ -98,7 +105,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 1
     region: content
     third_party_settings: {  }
   title:
