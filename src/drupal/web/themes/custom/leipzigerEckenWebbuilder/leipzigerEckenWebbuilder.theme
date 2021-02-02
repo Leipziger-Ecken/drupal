@@ -1,0 +1,6 @@
+<?php
+
+function leipzigerEckenWebbuilder_preprocess_page($variables)
+{
+
+}

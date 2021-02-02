@@ -75,3 +75,6 @@
     view_mode ? view_mode|clean_class,
   ]
 %}
+{% set layout = content.field_layout[0]['#markup'] | default('default') %}
+
+{{ include('@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig') }}
