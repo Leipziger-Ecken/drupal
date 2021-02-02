@@ -1,0 +1,29 @@
+uuid: 5bc38f7a-3bfd-4e16-95e1-8da6b71ede2c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webbuilder_pages
+    - node.type.webbuilder
+    - node.type.webbuilder_page
+id: node.webbuilder.field_webbuilder_pages
+field_name: field_webbuilder_pages
+entity_type: node
+bundle: webbuilder
+label: Seiten
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webbuilder_page: webbuilder_page
+    sort:
+      field: field_weight
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

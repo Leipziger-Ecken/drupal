@@ -3,15 +3,80 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.webbuilder.field_akteur
+    - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_font_body
+    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_webbuilder_pages
+    - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
+    - color_field
+    - options
     - user
 id: node.webbuilder.default
 targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
+  field_akteur:
+    weight: 105
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_color_primary:
+    weight: 102
+    label: above
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+    type: color_field_formatter_text
+    region: content
+  field_font_body:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_font_heading:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_logo:
+    type: entity_reference_entity_view
+    weight: 106
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_webbuilder_pages:
+    weight: 108
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_webbuilder_preset:
+    weight: 107
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   links:
     weight: 100
     settings: {  }

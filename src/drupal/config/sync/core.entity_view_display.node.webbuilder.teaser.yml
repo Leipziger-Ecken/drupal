@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.webbuilder.field_akteur
+    - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_font_body
+    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_webbuilder_pages
+    - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
@@ -19,5 +26,12 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_akteur: true
+  field_color_primary: true
+  field_font_body: true
+  field_font_heading: true
+  field_logo: true
+  field_webbuilder_pages: true
+  field_webbuilder_preset: true
   langcode: true
   og_audience: true

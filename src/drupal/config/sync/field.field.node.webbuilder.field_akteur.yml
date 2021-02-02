@@ -1,0 +1,28 @@
+uuid: 4ca1a971-773f-4a6a-b84c-6a5df127919b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_akteur
+    - node.type.le_akteur
+    - node.type.webbuilder
+id: node.webbuilder.field_akteur
+field_name: field_akteur
+entity_type: node
+bundle: webbuilder
+label: Akteur
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

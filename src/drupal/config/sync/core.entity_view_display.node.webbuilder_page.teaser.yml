@@ -6,6 +6,8 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.field_webbuilder
+    - field.field.node.webbuilder_page.field_weight
     - field.field.node.webbuilder_page.og_audience
     - node.type.webbuilder_page
   module:
@@ -23,5 +25,7 @@ content:
 hidden:
   field_contents: true
   field_slug: true
+  field_webbuilder: true
+  field_weight: true
   langcode: true
   og_audience: true

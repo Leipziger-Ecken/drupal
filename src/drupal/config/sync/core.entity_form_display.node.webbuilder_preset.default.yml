@@ -1,104 +1,77 @@
-uuid: ea83aa12-21be-4605-8614-279a0f1eb736
+uuid: 45e0d296-1708-4a56-af7e-e6a262873021
 langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.webbuilder_page.field_contents
-    - field.field.node.webbuilder_page.field_slug
-    - field.field.node.webbuilder_page.field_webbuilder
-    - field.field.node.webbuilder_page.field_weight
-    - field.field.node.webbuilder_page.og_audience
-    - node.type.webbuilder_page
+    - field.field.node.webbuilder_preset.field_description
+    - field.field.node.webbuilder_preset.field_webbuilder
+    - field.field.node.webbuilder_preset.field_weight
+    - node.type.webbuilder_preset
   module:
     - field_group
-    - og
-    - paragraphs
     - select2
+    - text
     - weight
 third_party_settings:
   field_group:
     group_settings:
       children:
-        - og_audience
-        - field_webbuilder
-        - langcode
-        - field_slug
+        - status
         - field_weight
+        - langcode
       parent_name: ''
-      weight: 6
+      weight: 3
       format_type: details_sidebar
       region: content
       format_settings:
-        id: ''
+        id: settings
         classes: ''
         description: ''
-        open: true
+        open: false
         required_fields: true
         weight: 0
       label: Einstellungen
-id: node.webbuilder_page.default
+id: node.webbuilder_preset.default
 targetEntityType: node
-bundle: webbuilder_page
+bundle: webbuilder_preset
 mode: default
 content:
-  field_contents:
-    type: entity_reference_paragraphs
-    weight: 5
+  field_description:
+    weight: 1
     settings:
-      title: Seitenabschnitt
-      title_plural: Paragraphs
-      edit_mode: preview
-      add_mode: button
-      form_display_mode: default
-      default_paragraph_type: _none
-    third_party_settings: {  }
-    region: content
-  field_slug:
-    weight: 32
-    settings:
-      size: 60
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: text_textarea
     region: content
   field_webbuilder:
-    weight: 30
+    weight: 2
     settings:
-      autocomplete: false
       match_operator: CONTAINS
       match_limit: 10
+      autocomplete: false
       width: 100%
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
   field_weight:
-    weight: 33
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: weight_selector
     region: content
   langcode:
     type: language_select
-    weight: 31
+    weight: 10
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
-  og_audience:
-    type: og_complex
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    weight: 29
-    third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 8
     region: content
     third_party_settings: {  }
   title:

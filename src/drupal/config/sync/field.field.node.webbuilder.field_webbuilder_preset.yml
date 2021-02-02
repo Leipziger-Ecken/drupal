@@ -1,0 +1,28 @@
+uuid: 3713cb05-344d-4369-ae92-39f2fa0bdd8c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webbuilder_preset
+    - node.type.webbuilder
+    - node.type.webbuilder_preset
+id: node.webbuilder.field_webbuilder_preset
+field_name: field_webbuilder_preset
+entity_type: node
+bundle: webbuilder
+label: Vorlage
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webbuilder_preset: webbuilder_preset
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

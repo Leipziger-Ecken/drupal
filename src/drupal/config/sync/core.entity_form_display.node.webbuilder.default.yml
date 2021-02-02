@@ -3,29 +3,143 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.webbuilder.field_akteur
+    - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_font_body
+    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_webbuilder_pages
+    - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
+    - color_field
+    - field_group
+    - media_library
     - og
     - path
+    - select2
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - og_audience
+        - field_akteur
+      parent_name: ''
+      weight: 6
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: settings
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Einstellungen
+    group_style:
+      children:
+        - field_logo
+        - field_color_primary
+        - field_font_heading
+        - field_font_body
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        description: ''
+        open: true
+        required_fields: true
+        id: style
+        classes: ''
+        formatter: closed
+        direction: vertical
+      label: Stil
+    group_presets:
+      children:
+        - field_webbuilder_preset
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        id: presets
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        formatter: closed
+        direction: vertical
+      label: Vorlagen
+    group_pages:
+      children:
+        - field_webbuilder_pages
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: pages
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        formatter: closed
+        direction: vertical
+      label: Seiten
 id: node.webbuilder.default
 targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
-  created:
-    type: datetime_timestamp
+  field_akteur:
     weight: 10
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
+  field_color_primary:
+    weight: 3
     settings: {  }
     third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
+    type: color_field_widget_html5
     region: content
-    settings:
-      include_locked: true
+  field_font_body:
+    weight: 5
+    settings: {  }
     third_party_settings: {  }
+    type: options_select
+    region: content
+  field_font_heading:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_logo:
+    type: media_library_widget
+    weight: 2
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_webbuilder_pages:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_webbuilder_preset:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   og_audience:
     type: og_complex
     settings:
@@ -33,57 +147,34 @@ content:
       size: 60
       match_limit: 10
       placeholder: ''
-    weight: 121
+    weight: 9
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 30
+    weight: 7
     region: content
     settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 15
-    region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 120
-    region: content
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 16
+    weight: 1
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 5
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
-    region: content
-    third_party_settings: {  }
-  url_redirects:
-    weight: 50
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  created: true
+  langcode: true
+  promote: true
+  sticky: true
+  uid: true
+  url_redirects: true

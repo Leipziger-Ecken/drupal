@@ -1,0 +1,23 @@
+uuid: ddc43bca-5cf3-476d-8cb1-d3a49cd3eca6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_font_heading
+    - node.type.webbuilder
+  module:
+    - options
+id: node.webbuilder.field_font_heading
+field_name: field_font_heading
+entity_type: node
+bundle: webbuilder
+label: 'Schriftart für Überschriften'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: sans
+default_value_callback: ''
+settings: {  }
+field_type: list_string
