@@ -93,12 +93,14 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
   {
     $routeName = $route_match->getRouteName();
     $parameters = $route_match->getParameters();
+    $node = $parameters->get('node') ?? $parameters->get('node_preview') ?? null;
     // dd($routeName, $parameters);
 
     if (
-      $routeName === 'entity.node.canonical' &&
+      $node &&
+      in_array($routeName, ['entity.node.canonical', 'entity.node.preview']) &&
       in_array(
-        $parameters->get('node')->getType(),
+        $node->getType(),
         ['webbuilder', 'webbuilder_page', 'webbuilder_preset']
       )
     ) {
