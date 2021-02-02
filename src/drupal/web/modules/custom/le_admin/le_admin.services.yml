@@ -1,0 +1,6 @@
+services:
+  theme.negotiator.admin_theme.custom:
+    class: Drupal\le_admin\Theme\AdminThemeNegotiator
+    arguments: ['@current_user', '@config.factory', '@entity.manager', '@router.admin_context']
+    tags:
+      - { name: theme_negotiator, priority: -38 }

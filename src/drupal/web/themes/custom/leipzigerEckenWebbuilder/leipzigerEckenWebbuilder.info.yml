@@ -3,6 +3,9 @@ name: Leipziger Ecken Webbuilder
 description: Webbuilder frontend theme for Leipziger Ecken
 core_version_requirement: ^8 || ^9
 
+libraries:
+  - leipzigerEckenWebbuilder/webbuilder
+
 # Regions
 regions:
   header: 'Header'
