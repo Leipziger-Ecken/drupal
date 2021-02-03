@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_preset.field_description
+    - field.field.node.webbuilder_preset.field_preview_image
     - field.field.node.webbuilder_preset.field_webbuilder
     - field.field.node.webbuilder_preset.field_weight
     - node.type.webbuilder_preset
   module:
     - field_group
+    - media_library
     - select2
     - text
     - weight
@@ -20,7 +22,7 @@ third_party_settings:
         - field_weight
         - langcode
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: details_sidebar
       region: content
       format_settings:
@@ -43,6 +45,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_preview_image:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
     region: content
   field_webbuilder:
     weight: 2

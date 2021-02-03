@@ -66,18 +66,15 @@
  */
 #}
 
-{% set first_page_id = content.field_webbuilder_pages[0]['#plain_text'] | default(null) %}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+  ]
+%}
+{% set layout = content.field_layout[0]['#markup'] | default('default') %}
 
-{% set color_primary = content.field_color_primary[0]['#markup'] %}
-{% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
-{% set font_heading = content.field_font_heading[0]['#markup'] %}
-{% set font_body = content.field_font_body[0]['#markup'] %}
-{% set logo = content.field_logo[0]['#item'] %}
-{% set logo_url = logo|file_url %}
-
-{# Display first page #}
-{% if first_page_id %}
-<div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: {{ color_primary_hsl[2] }}%; --font-heading: {{ font_heading }}; --font-body: {{ font_body }}; --logo: url('{{ logo_url }}')">
-  {{ drupal_entity('node', first_page_id, 'in_webbuilder') }}
-</div>
-{% endif %}
+{{ include('@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig') }}

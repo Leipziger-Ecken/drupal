@@ -5,23 +5,41 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.webbuilder_preset.field_description
+    - field.field.node.webbuilder_preset.field_preview_image
     - field.field.node.webbuilder_preset.field_webbuilder
     - field.field.node.webbuilder_preset.field_weight
     - node.type.webbuilder_preset
   module:
+    - media
+    - text
     - user
 id: node.webbuilder_preset.teaser
 targetEntityType: node
 bundle: webbuilder_preset
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_description:
+    type: text_default
+    weight: 1
+    region: content
+    label: inline
     settings: {  }
     third_party_settings: {  }
+  field_preview_image:
+    type: media_thumbnail
+    weight: 2
     region: content
+    label: inline
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
-  field_description: true
   field_webbuilder: true
   field_weight: true
   langcode: true

@@ -14,6 +14,7 @@ dependencies:
     - node.type.webbuilder
   module:
     - color_field
+    - media
     - options
     - user
 id: node.webbuilder.default
@@ -22,73 +23,57 @@ bundle: webbuilder
 mode: default
 content:
   field_akteur:
-    weight: 105
-    label: above
-    settings:
-      link: true
+    weight: 5
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_id
     region: content
   field_color_primary:
-    weight: 102
-    label: above
+    weight: 1
+    label: hidden
     settings:
-      format: hex
       opacity: true
+      format: hex
     third_party_settings: {  }
     type: color_field_formatter_text
     region: content
   field_font_body:
-    weight: 104
-    label: above
+    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: list_key
     region: content
   field_font_heading:
-    weight: 103
-    label: above
+    weight: 2
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: list_key
     region: content
   field_logo:
-    type: entity_reference_entity_view
-    weight: 106
-    label: above
+    type: media_thumbnail
+    weight: 4
+    label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
     region: content
   field_webbuilder_pages:
-    weight: 108
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_webbuilder_preset:
-    weight: 107
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  links:
-    weight: 100
+    weight: 6
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    type: entity_reference_entity_id
     region: content
-  og_audience:
-    label: above
-    type: entity_reference_label
-    settings:
-      link: true
-    weight: 101
+  links:
+    weight: 0
+    region: content
+    settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
+  field_webbuilder_preset: true
   langcode: true
+  og_audience: true

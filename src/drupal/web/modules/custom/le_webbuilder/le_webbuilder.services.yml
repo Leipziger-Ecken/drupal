@@ -4,3 +4,7 @@ services:
     arguments: ['@current_user', '@config.factory', '@entity_type.manager', '@router.admin_context']
     tags:
       - { name: theme_negotiator, priority: -39 }
+  le_webbuilder.twig_extension:
+    class: Drupal\le_webbuilder\TwigExtension
+    tags:
+      - { name: twig.extension }

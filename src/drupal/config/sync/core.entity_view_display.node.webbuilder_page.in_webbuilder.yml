@@ -1,0 +1,55 @@
+uuid: b00105a2-9d03-4101-a471-c5e7bf30cffc
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.in_webbuilder
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_layout
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.field_webbuilder
+    - field.field.node.webbuilder_page.field_weight
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - entity_reference_revisions
+    - options
+    - user
+id: node.webbuilder_page.in_webbuilder
+targetEntityType: node
+bundle: webbuilder_page
+mode: in_webbuilder
+content:
+  field_contents:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_layout:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_webbuilder:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_slug: true
+  field_weight: true
+  langcode: true
+  og_audience: true
