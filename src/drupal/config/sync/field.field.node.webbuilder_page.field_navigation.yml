@@ -1,0 +1,21 @@
+uuid: d142c0ec-84e0-401c-a706-87009ac02b4b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_navigation
+    - node.type.webbuilder_page
+  module:
+    - options
+id: node.webbuilder_page.field_navigation
+field_name: field_navigation
+entity_type: node
+bundle: webbuilder_page
+label: Navigation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

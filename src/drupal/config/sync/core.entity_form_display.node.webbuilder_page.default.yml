@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_layout
+    - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
@@ -26,7 +27,7 @@ third_party_settings:
         - field_slug
         - field_weight
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -44,7 +45,7 @@ mode: default
 content:
   field_contents:
     type: entity_reference_paragraphs
-    weight: 4
+    weight: 5
     settings:
       title: Seitenabschnitt
       title_plural: Paragraphs
@@ -55,10 +56,16 @@ content:
     third_party_settings: {  }
     region: content
   field_layout:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_navigation:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   field_parent:
     weight: 2

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_layout
+    - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
@@ -35,6 +36,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_key
+    region: content
+  field_navigation:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_parent:
     weight: 2

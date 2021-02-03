@@ -9,6 +9,7 @@ dependencies:
     - node.type.webbuilder_page
   module:
     - node
+    - options
     - user
     - views_tree
 id: webbuilder_pages
@@ -918,10 +919,10 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_parent'
-  navigation_main:
+  navigation:
     display_plugin: block
-    id: navigation_main
-    display_title: Hauptnavigation
+    id: navigation
+    display_title: Navigation
     position: 2
     display_options:
       display_extenders:
@@ -994,6 +995,46 @@ display:
           break_phrase: false
           not: false
           plugin_id: numeric
+        field_navigation_value:
+          id: field_navigation_value
+          table: node__field_navigation
+          field: field_navigation_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          default_action: 'not found'
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          default_argument_skip_url: false
+          summary_options:
+            base_path: ''
+            count: true
+            items_per_page: 25
+            override: false
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+            human: false
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: lower
+          path_case: lower
+          transform_dash: true
+          break_phrase: false
+          plugin_id: string_list_field
       style:
         type: tree
         options:
