@@ -7,8 +7,8 @@ dependencies:
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_font_body
     - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_logo
-    - field.field.node.webbuilder.field_webbuilder_pages
     - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -52,6 +52,13 @@ content:
     third_party_settings: {  }
     type: list_key
     region: content
+  field_frontpage:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
   field_logo:
     type: media_thumbnail
     weight: 4
@@ -60,13 +67,6 @@ content:
       image_style: ''
       image_link: ''
     third_party_settings: {  }
-    region: content
-  field_webbuilder_pages:
-    weight: 6
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: entity_reference_entity_id
     region: content
   links:
     weight: 0

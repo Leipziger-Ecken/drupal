@@ -1,9 +1,9 @@
-uuid: b00105a2-9d03-4101-a471-c5e7bf30cffc
+uuid: c08a53c5-5b08-4adc-a2b3-810bd26fc617
 langcode: de
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.in_webbuilder
+    - core.entity_view_mode.node.navigation
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_parent
@@ -13,39 +13,31 @@ dependencies:
     - field.field.node.webbuilder_page.og_audience
     - node.type.webbuilder_page
   module:
-    - entity_reference_revisions
-    - options
     - user
-id: node.webbuilder_page.in_webbuilder
+id: node.webbuilder_page.navigation
 targetEntityType: node
 bundle: webbuilder_page
-mode: in_webbuilder
+mode: navigation
 content:
-  field_contents:
-    type: entity_reference_revisions_entity_view
-    weight: 3
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
+  field_parent:
+    type: entity_reference_entity_id
+    weight: 1
     region: content
-  field_layout:
-    weight: 2
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
-    region: content
-  links:
+  field_webbuilder:
+    type: entity_reference_entity_id
     weight: 0
     region: content
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_parent: true
+  field_contents: true
+  field_layout: true
   field_slug: true
-  field_webbuilder: true
   field_weight: true
   langcode: true
+  links: true
   og_audience: true

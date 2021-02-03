@@ -68,6 +68,7 @@
         "drupal/twig_tweak": "^2.9",
         "drupal/typed_data": "^1.0@dev",
         "drupal/upgrade_status": "^2.7",
+        "drupal/views_tree": "^2.0@alpha",
         "drupal/weight": "^3.2",
         "drush/drush": "^10.2",
         "geocoder-php/mapbox-provider": "^1.0",

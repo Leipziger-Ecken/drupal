@@ -8,8 +8,8 @@ dependencies:
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_font_body
     - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_logo
-    - field.field.node.webbuilder.field_webbuilder_pages
     - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -30,8 +30,8 @@ hidden:
   field_color_primary: true
   field_font_body: true
   field_font_heading: true
+  field_frontpage: true
   field_logo: true
-  field_webbuilder_pages: true
   field_webbuilder_preset: true
   langcode: true
   og_audience: true

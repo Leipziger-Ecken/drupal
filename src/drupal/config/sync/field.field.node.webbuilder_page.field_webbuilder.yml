@@ -1,4 +1,4 @@
-uuid: 31b9f996-399d-4081-b5d3-01c1c2e958f0
+uuid: f0bb242c-1d1f-4ba4-b2cc-1687e57cfeb9
 langcode: de
 status: true
 dependencies:
@@ -13,7 +13,7 @@ bundle: webbuilder_page
 label: Webbaukasten
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

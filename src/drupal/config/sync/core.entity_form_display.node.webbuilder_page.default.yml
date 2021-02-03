@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_layout
+    - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -12,7 +13,6 @@ dependencies:
     - node.type.webbuilder_page
   module:
     - field_group
-    - og
     - paragraphs
     - select2
     - weight
@@ -20,13 +20,14 @@ third_party_settings:
   field_group:
     group_settings:
       children:
-        - og_audience
         - field_webbuilder
+        - field_parent
+        - og_audience
         - langcode
         - field_slug
         - field_weight
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details_sidebar
       region: content
       format_settings:
@@ -44,7 +45,7 @@ mode: default
 content:
   field_contents:
     type: entity_reference_paragraphs
-    weight: 3
+    weight: 4
     settings:
       title: Seitenabschnitt
       title_plural: Paragraphs
@@ -55,13 +56,23 @@ content:
     third_party_settings: {  }
     region: content
   field_layout:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_parent:
+    weight: 36
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      autocomplete: false
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
   field_slug:
-    weight: 32
+    weight: 39
     settings:
       size: 60
       placeholder: ''
@@ -69,36 +80,32 @@ content:
     type: string_textfield
     region: content
   field_webbuilder:
-    weight: 30
+    weight: 35
     settings:
-      autocomplete: false
       match_operator: CONTAINS
       match_limit: 10
+      autocomplete: false
       width: 100%
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
   field_weight:
-    weight: 33
+    weight: 40
     settings: {  }
     third_party_settings: {  }
     type: weight_selector
     region: content
   langcode:
     type: language_select
-    weight: 31
+    weight: 38
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   og_audience:
-    type: og_complex
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    weight: 29
+    type: options_buttons
+    settings: {  }
+    weight: 37
     third_party_settings: {  }
     region: content
   status:

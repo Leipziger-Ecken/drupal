@@ -1,19 +1,18 @@
-uuid: 5bc38f7a-3bfd-4e16-95e1-8da6b71ede2c
+uuid: cfd8cf5f-93d4-45c4-9284-50d581d06e4c
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_webbuilder_pages
-    - node.type.webbuilder
+    - field.storage.node.field_parent
     - node.type.webbuilder_page
-id: node.webbuilder.field_webbuilder_pages
-field_name: field_webbuilder_pages
+id: node.webbuilder_page.field_parent
+field_name: field_parent
 entity_type: node
-bundle: webbuilder
-label: Seiten
+bundle: webbuilder_page
+label: 'Übergeordnete Seite'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -22,8 +21,7 @@ settings:
     target_bundles:
       webbuilder_page: webbuilder_page
     sort:
-      field: field_weight
-      direction: ASC
-    auto_create: true
+      field: _none
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

@@ -125,6 +125,7 @@ module:
   update: 0
   user: 0
   usernotification: 0
+  views_tree: 0
   views_ui: 0
   weight: 0
   pathauto: 1

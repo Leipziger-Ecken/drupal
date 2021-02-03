@@ -1,5 +1,12 @@
 <?php
-
-function le_webbuilder_custom_theme() {
-
+function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_webbuilder_edit_form') {
+    $node_id = $form_state->getFormObject()->getEntity()->id();
+    $form['group_pages']['field_page_tree'] = [
+      '#type' => 'inline_template',
+      '#template' => '<label class="form-item__label">Seitenbaum</label> {{ drupal_view(\'webbuilder_pages\', \'form_page_tree\', ' . $node_id . ')}}',
+      '#weight' => 100,
+    ];
+  }
 }

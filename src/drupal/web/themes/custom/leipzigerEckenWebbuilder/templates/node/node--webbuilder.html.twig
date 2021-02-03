@@ -65,9 +65,7 @@
  *   in different view modes.
  */
 #}
-
-{% set first_page_id = content.field_webbuilder_pages[0]['#plain_text'] | default(null) %}
-
+{% set frontpage_id = content.field_frontpage[0]['#plain_text'] | default(null) %}
 {% set color_primary = content.field_color_primary[0]['#markup'] %}
 {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
 {% set font_heading = content.field_font_heading[0]['#markup'] %}
@@ -76,8 +74,8 @@
 {% set logo_url = logo|file_url %}
 
 {# Display first page #}
-{% if first_page_id %}
+{% if frontpage_id %}
 <div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: {{ color_primary_hsl[2] }}%; --font-heading: {{ font_heading }}; --font-body: {{ font_body }}; --logo: url('{{ logo_url }}')">
-  {{ drupal_entity('node', first_page_id, 'in_webbuilder') }}
+  {{ drupal_entity('node', frontpage_id, 'in_webbuilder') }}
 </div>
 {% endif %}

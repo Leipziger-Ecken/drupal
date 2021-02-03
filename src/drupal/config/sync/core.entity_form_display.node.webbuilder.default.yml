@@ -7,8 +7,8 @@ dependencies:
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_font_body
     - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_logo
-    - field.field.node.webbuilder.field_webbuilder_pages
     - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -26,7 +26,7 @@ third_party_settings:
         - og_audience
         - field_akteur
       parent_name: ''
-      weight: 6
+      weight: 5
       format_type: details_sidebar
       region: content
       format_settings:
@@ -74,7 +74,7 @@ third_party_settings:
       label: Vorlagen
     group_pages:
       children:
-        - field_webbuilder_pages
+        - field_frontpage
       parent_name: ''
       weight: 4
       format_type: details
@@ -85,8 +85,6 @@ third_party_settings:
         description: ''
         open: false
         required_fields: true
-        formatter: closed
-        direction: vertical
       label: Seiten
 id: node.webbuilder.default
 targetEntityType: node
@@ -121,18 +119,22 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_frontpage:
+    weight: 26
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
   field_logo:
     type: media_library_widget
     weight: 2
     settings:
       media_types: {  }
     third_party_settings: {  }
-    region: content
-  field_webbuilder_pages:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_webbuilder_preset:
     weight: 4
@@ -152,7 +154,7 @@ content:
     region: content
   path:
     type: path
-    weight: 7
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
