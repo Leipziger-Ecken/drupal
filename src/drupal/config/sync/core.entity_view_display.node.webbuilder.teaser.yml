@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.webbuilder.field_akteur
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_font_body
@@ -48,7 +47,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_akteur: true
   field_color_primary: true
   field_font_body: true
   field_font_heading: true

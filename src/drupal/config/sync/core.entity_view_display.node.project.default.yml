@@ -1,0 +1,38 @@
+uuid: b75fc1d8-fc1b-40ac-a5b4-174752c67a5b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.project.body
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - text
+    - user
+id: node.project.default
+targetEntityType: node
+bundle: project
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 102
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  og_audience:
+    label: above
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 101
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

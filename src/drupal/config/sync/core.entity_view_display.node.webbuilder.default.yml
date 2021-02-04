@@ -3,7 +3,6 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.webbuilder.field_akteur
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_font_body
@@ -26,13 +25,6 @@ targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
-  field_akteur:
-    weight: 5
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: entity_reference_entity_id
-    region: content
   field_color_primary:
     weight: 1
     label: hidden

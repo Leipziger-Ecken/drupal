@@ -3,7 +3,6 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.webbuilder.field_akteur
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_font_body
@@ -113,16 +112,6 @@ targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
-  field_akteur:
-    weight: 10
-    settings:
-      autocomplete: false
-      match_operator: CONTAINS
-      match_limit: 10
-      width: 100%
-    third_party_settings: {  }
-    type: select2_entity_reference
-    region: content
   field_color_primary:
     weight: 29
     settings: {  }
