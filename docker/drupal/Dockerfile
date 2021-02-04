@@ -37,7 +37,7 @@ RUN set -ex; \
 		libpq-dev \
 	; \
 	\
-	docker-php-ext-configure gd; \
+	docker-php-ext-configure gd --with-jpeg=/usr/include/; \
 	docker-php-ext-install -j "$(nproc)" \
 		gd \
 		opcache \
