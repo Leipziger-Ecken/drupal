@@ -1,19 +1,19 @@
-uuid: e49d7474-b5cd-41ce-be47-c8197bc4c148
+uuid: 79ef69bd-7ac0-44eb-aa29-e4c5a2432802
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_preview_image
     - media.type.image
-    - node.type.webbuilder_preset
-id: node.webbuilder_preset.field_preview_image
+    - node.type.webbuilder
+id: node.webbuilder.field_preview_image
 field_name: field_preview_image
 entity_type: node
-bundle: webbuilder_preset
+bundle: webbuilder
 label: Vorschaubild
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

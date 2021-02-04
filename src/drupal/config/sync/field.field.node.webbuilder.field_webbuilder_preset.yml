@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_webbuilder_preset
     - node.type.webbuilder
-    - node.type.webbuilder_preset
 id: node.webbuilder.field_webbuilder_preset
 field_name: field_webbuilder_preset
 entity_type: node
@@ -17,12 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      webbuilder_preset: webbuilder_preset
-    sort:
-      field: _none
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: webbuilders
+      display_name: entity_reference_presets
+      arguments: {  }
 field_type: entity_reference

@@ -1,20 +1,31 @@
 <?php
 function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
 {
-  if ($form_id == 'node_webbuilder_page_create_form') {
-    // TODO: set value of webbuilder and og_audience automaticly
+  if ($form_id == 'node_webbuilder_page_form') {
+    $webbuilder_id = \Drupal::request()->query->get('webbuilder');
+
+    if ($webbuilder_id) {
+      $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+      $akteur_id = $webbuilder->field_akteur[0]->target_id;
+      $form['og_audience']['#attributes']['class'][] = 'hidden';
+      $form['og_audience']['widget']['#default_value'] = $akteur_id;
+      $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+      $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+    }
   }
 
   if ($form_id === 'node_webbuilder_edit_form') {
     $node_id = $form_state->getFormObject()->getEntity()->id();
+
     $form['group_pages']['field_page_tree'] = [
       '#type' => 'inline_template',
       '#template' => '<label class="form-item__label">Seitenbaum</label> {{ drupal_view(\'webbuilder_pages\', \'form_page_tree\', ' . $node_id . ')}}',
       '#weight' => 100,
     ];
+    $dest = \Drupal::destination()->getAsArray()['destination'];
     $form['group_pages']['field_add_page'] = [
       '#type' => 'markup',
-      '#markup' => '<a class="button button--default" href="/node/add/webbuilder_page?webbuilder=' . $node_id . '">+ ' . t('Add page') . '</a>',
+      '#markup' => '<a class="button button--default" href="/node/add/webbuilder_page?webbuilder=' . $node_id . '&destination=' . urlencode($dest) . '">+ ' . t('Add page') . '</a>',
       '#weight' => 101,
     ];
   }

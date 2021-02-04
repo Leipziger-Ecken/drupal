@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_akteur
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_font_body
     - field.field.node.webbuilder.field_font_heading
     - field.field.node.webbuilder.field_frontpage
+    - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -19,6 +22,7 @@ dependencies:
     - og
     - path
     - select2
+    - text
 third_party_settings:
   field_group:
     group_settings:
@@ -26,7 +30,7 @@ third_party_settings:
         - og_audience
         - field_akteur
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -44,7 +48,7 @@ third_party_settings:
         - field_font_heading
         - field_font_body
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: details
       region: content
       format_settings:
@@ -60,7 +64,7 @@ third_party_settings:
       children:
         - field_webbuilder_preset
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: details
       region: content
       format_settings:
@@ -76,7 +80,7 @@ third_party_settings:
       children:
         - field_frontpage
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       region: content
       format_settings:
@@ -86,6 +90,22 @@ third_party_settings:
         open: false
         required_fields: true
       label: Seiten
+    group_preset:
+      children:
+        - field_is_preset
+        - field_description
+        - field_preview_image
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        id: preset
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Vorlage
 id: node.webbuilder.default
 targetEntityType: node
 bundle: webbuilder
@@ -106,6 +126,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: color_field_widget_html5
+    region: content
+  field_description:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_font_body:
     weight: 5
@@ -129,12 +157,26 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_is_preset:
+    weight: 7
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_logo:
     type: media_library_widget
     weight: 2
     settings:
       media_types: {  }
     third_party_settings: {  }
+    region: content
+  field_preview_image:
+    weight: 9
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
     region: content
   field_webbuilder_preset:
     weight: 4
@@ -146,15 +188,15 @@ content:
     type: og_complex
     settings:
       match_operator: CONTAINS
-      size: 60
       match_limit: 10
+      size: 60
       placeholder: ''
     weight: 9
     third_party_settings: {  }
     region: content
   path:
     type: path
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

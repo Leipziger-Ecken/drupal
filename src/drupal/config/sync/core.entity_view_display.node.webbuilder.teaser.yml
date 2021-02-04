@@ -6,31 +6,53 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.webbuilder.field_akteur
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_font_body
     - field.field.node.webbuilder.field_font_heading
     - field.field.node.webbuilder.field_frontpage
+    - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_webbuilder_preset
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
+    - media
+    - text
     - user
 id: node.webbuilder.teaser
 targetEntityType: node
 bundle: webbuilder
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_description:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_preview_image:
+    type: media_thumbnail
+    weight: 2
     region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_akteur: true
   field_color_primary: true
   field_font_body: true
   field_font_heading: true
   field_frontpage: true
+  field_is_preset: true
   field_logo: true
   field_webbuilder_preset: true
   langcode: true

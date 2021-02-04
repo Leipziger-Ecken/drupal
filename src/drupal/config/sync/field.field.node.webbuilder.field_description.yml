@@ -1,20 +1,20 @@
-uuid: 3d5e17e1-b8a9-4f88-9d1c-c90afa960494
+uuid: 72e244c9-899c-4d52-8357-b2406a08914d
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_description
-    - node.type.webbuilder_preset
+    - node.type.webbuilder
   module:
     - text
-id: node.webbuilder_preset.field_description
+id: node.webbuilder.field_description
 field_name: field_description
 entity_type: node
-bundle: webbuilder_preset
+bundle: webbuilder
 label: Beschreibung
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
