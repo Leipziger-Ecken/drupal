@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.webbuilder.field_font_heading
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_is_preset
+    - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_webbuilder_preset
@@ -53,6 +54,7 @@ hidden:
   field_font_heading: true
   field_frontpage: true
   field_is_preset: true
+  field_layout: true
   field_logo: true
   field_webbuilder_preset: true
   langcode: true

@@ -66,15 +66,9 @@
  */
 #}
 
-{%
-  set classes = [
-    node.bundle|clean_class,
-    node.isPromoted() ? 'is-promoted',
-    node.isSticky() ? 'is-sticky',
-    not node.isPublished() ? 'is-unpublished',
-    view_mode ? view_mode|clean_class,
-  ]
-%}
-{% set layout = content.field_layout[0]['#markup'] | default('default') %}
+{% set webbuilder_id = content.field_webbuilder[0]['#plain_text'] | default(null) %}
+{% if webbuilder_id %}
+  {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
+{% endif %}
 
 {{ include('@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig') }}

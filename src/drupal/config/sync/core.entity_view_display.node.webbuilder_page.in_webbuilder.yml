@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.in_webbuilder
     - field.field.node.webbuilder_page.field_contents
-    - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
@@ -15,7 +14,6 @@ dependencies:
     - node.type.webbuilder_page
   module:
     - entity_reference_revisions
-    - options
     - user
 id: node.webbuilder_page.in_webbuilder
 targetEntityType: node
@@ -24,30 +22,35 @@ mode: in_webbuilder
 content:
   field_contents:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 1
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
     region: content
-  field_layout:
+  field_webbuilder:
+    type: entity_reference_entity_id
     weight: 2
+    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_key
-    region: content
   links:
     weight: 0
     region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    type: entity_reference_entity_id
+    weight: 3
+    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
 hidden:
   field_navigation: true
   field_parent: true
   field_slug: true
-  field_webbuilder: true
   field_weight: true
   langcode: true
-  og_audience: true

@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
-    - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
@@ -53,12 +52,6 @@ content:
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }
-    region: content
-  field_layout:
-    weight: 5
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
     region: content
   field_navigation:
     weight: 4

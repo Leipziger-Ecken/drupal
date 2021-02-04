@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webbuilder.field_font_heading
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_is_preset
+    - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_webbuilder_preset
@@ -47,6 +48,7 @@ third_party_settings:
         - field_color_primary
         - field_font_heading
         - field_font_body
+        - field_layout
       parent_name: ''
       weight: 3
       format_type: details
@@ -122,7 +124,7 @@ content:
     type: select2_entity_reference
     region: content
   field_color_primary:
-    weight: 3
+    weight: 29
     settings: {  }
     third_party_settings: {  }
     type: color_field_widget_html5
@@ -136,13 +138,13 @@ content:
     type: text_textarea
     region: content
   field_font_body:
-    weight: 5
+    weight: 31
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_font_heading:
-    weight: 4
+    weight: 30
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -164,9 +166,15 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  field_layout:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_logo:
     type: media_library_widget
-    weight: 2
+    weight: 28
     settings:
       media_types: {  }
     third_party_settings: {  }

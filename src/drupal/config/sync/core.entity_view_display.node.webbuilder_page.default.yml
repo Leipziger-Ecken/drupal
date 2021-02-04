@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
-    - field.field.node.webbuilder_page.field_layout
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_slug
@@ -29,13 +28,6 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    region: content
-  field_layout:
-    weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
     region: content
   field_navigation:
     weight: 5
