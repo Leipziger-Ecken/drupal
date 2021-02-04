@@ -1,13 +1,12 @@
-uuid: 10db953d-9769-4a69-9e0b-071cd76cf28e
+uuid: b73523ed-d33a-40a9-9c94-cc4d764ea13d
 langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.project.body
-    - field.field.node.project.field_description
-    - field.field.node.project.field_main_image
-    - field.field.node.project.og_audience
-    - node.type.project
+    - field.field.node.partner.field_description
+    - field.field.node.partner.field_main_image
+    - field.field.node.partner.og_audience
+    - node.type.partner
   module:
     - field_group
     - media_library
@@ -17,10 +16,10 @@ third_party_settings:
   field_group:
     group_settings:
       children:
-        - og_audience
         - langcode
+        - og_audience
       parent_name: ''
-      weight: 5
+      weight: 4
       format_type: details_sidebar
       region: content
       format_settings:
@@ -31,23 +30,13 @@ third_party_settings:
         required_fields: true
         weight: 0
       label: Einstellungen
-id: node.project.default
+id: node.partner.default
 targetEntityType: node
-bundle: project
+bundle: partner
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 4
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-    region: content
   field_description:
-    weight: 2
+    weight: 3
     settings:
       rows: 5
       placeholder: ''
@@ -55,15 +44,15 @@ content:
     type: text_textarea
     region: content
   field_main_image:
-    type: media_library_widget
-    weight: 3
+    weight: 2
     settings:
       media_types: {  }
     third_party_settings: {  }
+    type: media_library_widget
     region: content
   langcode:
     type: language_select
-    weight: 10
+    weight: 1
     region: content
     settings:
       include_locked: true
@@ -75,7 +64,7 @@ content:
       size: 60
       match_limit: 10
       placeholder: ''
-    weight: 9
+    weight: 2
     third_party_settings: {  }
     region: content
   status:

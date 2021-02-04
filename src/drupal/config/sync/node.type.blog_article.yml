@@ -1,4 +1,4 @@
-uuid: 69d6685d-8bf6-462e-8866-a3942055f11b
+uuid: c6199edd-614a-4a50-85ef-0cd5f76b3118
 langcode: de
 status: true
 dependencies:
@@ -8,10 +8,10 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Projekt
-type: project
-description: 'Längerfristige oder dauerhafte Projekte.'
+name: 'Blog Artikel'
+type: blog_article
+description: ''
 help: ''
 new_revision: false
 preview_mode: 1
-display_submitted: false
+display_submitted: true

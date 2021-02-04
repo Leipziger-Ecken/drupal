@@ -1,4 +1,4 @@
-uuid: c5022fbd-6cab-4960-b04b-86a8dade1f9c
+uuid: 1729add8-a932-48ce-8852-4276b0eb0160
 langcode: de
 status: true
 dependencies:
@@ -8,9 +8,9 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'Webbaukasten: Seite'
-type: webbuilder_page
-description: 'Eine Seite innerhalb Ihrer eigenen Webseite auf der Leipziger-Ecken Platform.'
+name: 'Partner*in'
+type: partner
+description: 'Netzwerk von Helfer*innen, Partner*innen, Mitarbeiter*innen etc.'
 help: ''
 new_revision: false
 preview_mode: 1

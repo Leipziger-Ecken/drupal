@@ -1,23 +1,21 @@
-uuid: 070036f0-d863-4586-ac93-a5261f711520
+uuid: 2c1764b0-5282-4091-8c00-719af6bc8283
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.body
+    - field.storage.node.field_description
     - node.type.project
   module:
     - text
-id: node.project.body
-field_name: body
+id: node.project.field_description
+field_name: field_description
 entity_type: node
 bundle: project
-label: Inhalt
+label: Beschreibung
 description: ''
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  display_summary: true
-  required_summary: false
-field_type: text_with_summary
+settings: {  }
+field_type: text_long

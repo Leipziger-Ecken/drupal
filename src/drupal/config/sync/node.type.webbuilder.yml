@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Webbaukasten
 type: webbuilder
-description: ''
+description: 'Erstellen Sie Ihre eigene kleine Webseite auf der Leipziger-Ecken Platform.'
 help: ''
 new_revision: false
 preview_mode: 1

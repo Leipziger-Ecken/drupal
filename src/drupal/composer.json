@@ -59,6 +59,7 @@
         "drupal/paragraphs_sets": "^2.7",
         "drupal/pathauto": "^1.8",
         "drupal/previewer": "^1.0",
+        "drupal/publication_date": "^2.0@beta",
         "drupal/redirect": "^1.6",
         "drupal/rules": "^3.0@alpha",
         "drupal/schema_metatag": "^1.4",

@@ -1,0 +1,22 @@
+uuid: 01631cc3-f167-4e73-a9c0-023f9d1f1c39
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.blog_article
+id: node.blog_article.promote
+field_name: promote
+entity_type: node
+bundle: blog_article
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

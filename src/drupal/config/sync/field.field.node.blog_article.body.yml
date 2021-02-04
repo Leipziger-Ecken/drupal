@@ -1,16 +1,16 @@
-uuid: 070036f0-d863-4586-ac93-a5261f711520
+uuid: d03844d3-1916-4b60-bd45-b1e55a1b86bc
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.project
+    - node.type.blog_article
   module:
     - text
-id: node.project.body
+id: node.blog_article.body
 field_name: body
 entity_type: node
-bundle: project
+bundle: blog_article
 label: Inhalt
 description: ''
 required: false

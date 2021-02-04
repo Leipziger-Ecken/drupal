@@ -1,19 +1,19 @@
-uuid: 0a540d64-977d-40fa-b6ff-d95be383fcd6
+uuid: 13b3a858-7852-4d53-8ec3-4551662e17b8
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.og_audience
     - node.type.le_akteur
-    - node.type.project
+    - node.type.partner
   module:
     - og
-id: node.project.og_audience
+id: node.partner.og_audience
 field_name: og_audience
 entity_type: node
-bundle: project
+bundle: partner
 label: 'Akteur*in'
-description: 'Ersteller*in des Projekts.'
+description: 'Ersteller*in des/der Partner*in.'
 required: false
 translatable: true
 default_value: {  }

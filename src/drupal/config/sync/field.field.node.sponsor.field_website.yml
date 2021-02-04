@@ -1,0 +1,19 @@
+uuid: fbfdf4a3-dde4-4f4d-b137-b734487b8419
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_website
+    - node.type.sponsor
+id: node.sponsor.field_website
+field_name: field_website
+entity_type: node
+bundle: sponsor
+label: Webseite
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

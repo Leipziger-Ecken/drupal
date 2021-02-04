@@ -1,37 +1,38 @@
-uuid: 5ac0082a-5d5f-4853-ab99-0bf0d3300cdf
+uuid: 5f728e59-50d3-40b4-a629-40c963cfe5d8
 langcode: de
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.project.body
-    - field.field.node.project.field_description
-    - field.field.node.project.field_main_image
-    - field.field.node.project.og_audience
-    - node.type.project
+    - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.og_audience
+    - image.style.medium
+    - node.type.blog_article
   module:
     - media
     - text
     - user
-id: node.project.teaser
+id: node.blog_article.teaser
 targetEntityType: node
-bundle: project
+bundle: blog_article
 mode: teaser
 content:
-  field_description:
-    type: text_default
-    weight: 2
-    region: content
+  body:
     label: hidden
-    settings: {  }
+    type: text_summary_or_trimmed
+    weight: 2
+    settings:
+      trim_length: 600
     third_party_settings: {  }
+    region: content
   field_main_image:
     type: media_thumbnail
     weight: 1
     region: content
     label: hidden
     settings:
-      image_style: ''
+      image_style: medium
       image_link: ''
     third_party_settings: {  }
   links:
@@ -40,6 +41,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  body: true
   langcode: true
   og_audience: true
