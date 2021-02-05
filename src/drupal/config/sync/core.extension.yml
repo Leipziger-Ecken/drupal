@@ -76,6 +76,7 @@ module:
   login_emailusername: 0
   mailsystem: 0
   media: 0
+  media_entity_remote_image: 0
   media_library: 0
   menu_link_content: 0
   menu_ui: 0

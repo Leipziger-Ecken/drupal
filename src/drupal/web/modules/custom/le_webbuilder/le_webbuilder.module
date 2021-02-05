@@ -29,4 +29,39 @@ function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
       '#weight' => 101,
     ];
   }
+
+  if (in_array($form_id, ['media_unsplash_image_add_form', 'media_unsplash_image_edit_form'])) {
+    $form['search'] = [
+      '#type' => 'search',
+      '#title' => t('Search images'),
+      '#placeholder' => t('Enter search terms'),
+      '#attributes' => [
+        'data-results-target' => '#edit-field-unsplash-search-results',
+        'data-preview-target' => '#edit-field-image-preview',
+        'data-url-target' => '#edit-field-media-remote-image-0-uri',
+        'data-alt-target' => '#edit-field-media-remote-image-0-alt',
+        'data-title-target' => '#edit-name-0-value',
+        'data-attribution-target' => '#edit-field-attribution-0-value',
+        'data-api-url' => '/webbuilder/unsplash-api-proxy',
+        'oninput' => 'handleUnsplashSearchInput(this)',
+        'autocomplete' => 'off',
+      ],
+      '#weight' => -100,
+    ];
+    $form['search_results'] = [
+      '#type' => 'markup',
+      '#markup' => '<div class="unsplash-results" id="edit-field-unsplash-search-results"></div>',
+      '#weight' => -99,
+    ];
+    $form['image_preview'] = [
+      '#type' => 'markup',
+      '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview"></figure>',
+      '#weight' => -98,
+    ];
+
+    // hide attribution field, so user cannot enter values
+    // $form['field_attribution']['#attributes']['class'][] = 'hidden';
+
+    $form['#attached']['library'][] = 'le_webbuilder/unsplash_media_form';
+  }
 }

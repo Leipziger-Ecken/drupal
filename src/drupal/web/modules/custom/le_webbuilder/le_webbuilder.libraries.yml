@@ -1,0 +1,7 @@
+unsplash_media_form:
+  css:
+    theme:
+      assets/css/unsplash_media_form.css: {}
+  js:
+    /libraries/unsplash-js/dist/unsplash.min.js: {}
+    assets/js/unsplash_media_form.js: {}

@@ -1,0 +1,36 @@
+uuid: f7e0a173-ff42-4d99-9f91-fdd793e8e3dd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.media.unsplash_image.field_attribution
+    - field.field.media.unsplash_image.field_media_remote_image
+    - media.type.unsplash_image
+  module:
+    - text
+id: media.unsplash_image.default
+targetEntityType: media
+bundle: unsplash_image
+mode: default
+content:
+  field_attribution:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media_remote_image:
+    label: visually_hidden
+    weight: 0
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

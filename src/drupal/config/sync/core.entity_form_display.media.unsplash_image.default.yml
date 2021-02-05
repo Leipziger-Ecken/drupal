@@ -1,0 +1,45 @@
+uuid: 20f31af4-46f2-4848-911f-9500b12d74ae
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.media.unsplash_image.field_attribution
+    - field.field.media.unsplash_image.field_media_remote_image
+    - media.type.unsplash_image
+  module:
+    - text
+id: media.unsplash_image.default
+targetEntityType: media
+bundle: unsplash_image
+mode: default
+content:
+  field_attribution:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_remote_image:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  status: true
+  uid: true

@@ -1,0 +1,33 @@
+uuid: 06826d66-b428-4a38-bab7-049862b1334e
+langcode: de
+status: true
+dependencies:
+  config:
+    - media.type.remote_image
+  module:
+    - media_entity_remote_image
+_core:
+  default_config_hash: WKlUxowDaf6TB2K5sPfDhnrsgScXvXEdeji9Tn8mGOw
+id: media.remote_image.default
+targetEntityType: media
+bundle: remote_image
+mode: default
+content:
+  field_media_remote_image:
+    weight: 0
+    label: hidden
+    settings:
+      trim_length: '80'
+      url_only: ''
+      url_plain: ''
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: remote_image_url_formatter
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

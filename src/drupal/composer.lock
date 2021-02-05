@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e85bf88aca2b4e122ac162b0392e925",
+    "content-hash": "37082553db9a082bfc53a380683a0527",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4880,6 +4880,54 @@
             }
         },
         {
+            "name": "drupal/media_entity_remote_image",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_entity_remote_image.git",
+                "reference": "8.x-1.0-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_remote_image-8.x-1.0-alpha2.zip",
+                "reference": "8.x-1.0-alpha2",
+                "shasum": "645af20ddef2c866863158138235189ad3ab7643"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-alpha2",
+                    "datestamp": "1587951391",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nick Hope",
+                    "homepage": "https://www.drupal.org/user/28698"
+                },
+                {
+                    "name": "mrweiner",
+                    "homepage": "https://www.drupal.org/user/1882778"
+                }
+            ],
+            "description": "Media entity remote image provider.",
+            "homepage": "https://www.drupal.org/project/media_entity_remote_image",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_entity_remote_image"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "1.15.0",
             "source": {
@@ -8505,11 +8553,102 @@
             "time": "2020-12-20T10:01:03+00:00"
         },
         {
+            "name": "npm-asset/form-urlencoded",
+            "version": "1.2.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/form-urlencoded/-/form-urlencoded-1.2.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/lodash.get",
+            "version": "4.4.2",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/querystring",
+            "version": "0.2.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz"
+            },
+            "type": "npm-asset"
+        },
+        {
+            "name": "npm-asset/querystringify",
+            "version": "2.2.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/querystringify/-/querystringify-2.2.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/requires-port",
+            "version": "1.0.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "npm-asset/select2",
             "version": "4.0.13",
             "dist": {
                 "type": "tar",
                 "url": "https://registry.npmjs.org/select2/-/select2-4.0.13.tgz"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/unsplash-js",
+            "version": "6.3.0",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/unsplash-js/-/unsplash-js-6.3.0.tgz"
+            },
+            "require": {
+                "npm-asset/form-urlencoded": "1.2.0",
+                "npm-asset/lodash.get": "4.4.2",
+                "npm-asset/querystring": "0.2.0",
+                "npm-asset/url-parse": "1.4.5"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "npm-asset/url-parse",
+            "version": "1.4.5",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/url-parse/-/url-parse-1.4.5.tgz"
+            },
+            "require": {
+                "npm-asset/querystringify": ">=2.0.0,<3.0.0",
+                "npm-asset/requires-port": ">=1.0.0,<2.0.0"
             },
             "type": "npm-asset",
             "license": [
@@ -12588,6 +12727,7 @@
         "drupal/field_validation": 10,
         "drupal/gin_login": 5,
         "drupal/gin_permissions": 20,
+        "drupal/media_entity_remote_image": 15,
         "drupal/paragraphs_edit": 15,
         "drupal/publication_date": 10,
         "drupal/rules": 15,

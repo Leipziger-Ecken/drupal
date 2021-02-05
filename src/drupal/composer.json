@@ -54,6 +54,7 @@
         "drupal/leaflet": "^2.1",
         "drupal/leaflet_more_maps": "1.0",
         "drupal/login_emailusername": "^1.2",
+        "drupal/media_entity_remote_image": "^1.0@alpha",
         "drupal/paragraphs": "^1.12",
         "drupal/paragraphs_edit": "^2.0@alpha",
         "drupal/paragraphs_sets": "^2.7",
@@ -77,6 +78,7 @@
         "drush/drush": "^10.2",
         "geocoder-php/mapbox-provider": "^1.0",
         "npm-asset/select2": "^4.0",
+        "npm-asset/unsplash-js": "^6.3",
         "oomphinc/composer-installers-extender": "^2.0"
     },
     "conflict": {

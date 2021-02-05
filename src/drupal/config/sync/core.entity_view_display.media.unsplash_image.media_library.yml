@@ -1,0 +1,37 @@
+uuid: 87b59762-b35d-4227-97a8-bf4ca3059ca3
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.unsplash_image.field_attribution
+    - field.field.media.unsplash_image.field_media_remote_image
+    - image.style.medium
+    - media.type.unsplash_image
+  module:
+    - svg_image
+id: media.unsplash_image.media_library
+targetEntityType: media
+bundle: unsplash_image
+mode: media_library
+content:
+  thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_style: medium
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_link: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_attribution: true
+  field_media_remote_image: true
+  langcode: true
+  name: true
+  uid: true

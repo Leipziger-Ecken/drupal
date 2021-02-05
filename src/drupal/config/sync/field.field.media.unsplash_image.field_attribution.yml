@@ -1,0 +1,21 @@
+uuid: 4f6302d2-a4bb-42b1-8438-39adda44cded
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_attribution
+    - media.type.unsplash_image
+  module:
+    - text
+id: media.unsplash_image.field_attribution
+field_name: field_attribution
+entity_type: media
+bundle: unsplash_image
+label: Namensnennung
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,11 @@
+uuid: 8c917961-707b-4311-8c41-6a78c12a36fc
+langcode: de
+status: true
+dependencies:
+  config:
+    - media.type.unsplash_image
+id: media.unsplash_image
+target_entity_type_id: media
+target_bundle: unsplash_image
+default_langcode: site_default
+language_alterable: false

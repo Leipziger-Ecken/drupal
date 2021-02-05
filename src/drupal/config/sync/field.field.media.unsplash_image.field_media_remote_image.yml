@@ -1,0 +1,23 @@
+uuid: ea9b9bd8-4664-413b-baf7-e836f361772e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_remote_image
+    - media.type.unsplash_image
+  module:
+    - media_entity_remote_image
+id: media.unsplash_image.field_media_remote_image
+field_name: field_media_remote_image
+entity_type: media
+bundle: unsplash_image
+label: Bild
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: '16'
+  title: 1
+field_type: remote_image_url

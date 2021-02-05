@@ -1,0 +1,11 @@
+le_webbuilder.unsplash_api_proxy:
+  path: '/webbuilder/unsplash-api-proxy/{a}/{b}/{c}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\Unsplash::proxy'
+    _title: 'Unsplash API Proxy'
+    a: ''
+    b: ''
+    c: ''
+  methods: [GET]
+  requirements:
+    _permission: 'create unsplash_image media'
