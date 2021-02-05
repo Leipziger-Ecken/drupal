@@ -111,7 +111,8 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
       (
         $this->adminContext->isAdminRoute($route_match->getRouteObject()) ||
         strpos($routeName, 'view.le_verwaltete_akteure') === 0 ||
-        strpos($routeName, 'view.le_verwaltete_events') === 0
+        strpos($routeName, 'view.le_verwaltete_events') === 0 ||
+        strpos($routeName, 'entity.user.') === 0
       )
     ) {
       return $this->configFactory->get('system.theme')->get('admin') ?: NULL;
