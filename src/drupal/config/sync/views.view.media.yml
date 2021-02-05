@@ -6,8 +6,8 @@ dependencies:
     - field.storage.media.field_media_remote_image
     - image.style.thumbnail
   module:
+    - le_webbuilder
     - media
-    - media_entity_remote_image
     - svg_image
     - user
 _core:
@@ -264,7 +264,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Bild
+          label: 'Externes Bild'
           exclude: false
           alter:
             alter_text: false
@@ -306,13 +306,14 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: uri
-          type: remote_image_url_formatter
+          type: remote_image_url_thumbnail_formatter
           settings:
             trim_length: '80'
             url_only: ''
             url_plain: ''
             rel: 0
             target: 0
+            width: '100'
           group_column: ''
           group_columns: {  }
           group_rows: true

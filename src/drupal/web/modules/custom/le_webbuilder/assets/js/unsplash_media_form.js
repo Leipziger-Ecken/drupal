@@ -19,6 +19,17 @@ if (typeof 'debounce' !== 'function') {
   };
 }
 
+function initUnsplashPreview() {
+  const previewTarget = document.querySelector('.unsplash-preview');
+  const urlSource = document.querySelector(previewTarget.getAttribute('data-url-source'));
+  const altSource = document.querySelector(previewTarget.getAttribute('data-alt-source'));
+  const url = urlSource.value.replace('.jpg', '&w=400');
+  const alt = altSource.value;
+  previewTarget.innerHTML = `
+    <img src="${url}" alt="${alt}">
+  `;
+}
+
 let unsplashClient;
 
 const handleUnsplashSearchInput = debounce((input) => {
@@ -118,3 +129,6 @@ const handleUnsplashSearchInput = debounce((input) => {
     console.warn(err);
   });
 }, 1000);
+
+
+initUnsplashPreview();

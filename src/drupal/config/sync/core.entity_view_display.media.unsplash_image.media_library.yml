@@ -8,14 +8,14 @@ dependencies:
     - field.field.media.unsplash_image.field_media_remote_image
     - media.type.unsplash_image
   module:
-    - media_entity_remote_image
+    - le_webbuilder
 id: media.unsplash_image.media_library
 targetEntityType: media
 bundle: unsplash_image
 mode: media_library
 content:
   field_media_remote_image:
-    type: remote_image_url_formatter
+    type: remote_image_url_thumbnail_formatter
     weight: 0
     region: content
     label: hidden
@@ -25,6 +25,7 @@ content:
       url_plain: ''
       rel: 0
       target: 0
+      width: '100'
     third_party_settings: {  }
 hidden:
   created: true

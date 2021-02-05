@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_main_image
     - media.type.image
+    - media.type.unsplash_image
     - node.type.project
 id: node.project.field_main_image
 field_name: field_main_image
@@ -21,8 +22,9 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      unsplash_image: unsplash_image
     sort:
       field: _none
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: image
 field_type: entity_reference

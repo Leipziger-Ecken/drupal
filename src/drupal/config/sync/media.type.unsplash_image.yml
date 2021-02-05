@@ -5,8 +5,8 @@ dependencies:
   module:
     - media_entity_remote_image
 id: unsplash_image
-label: 'Unsplash Image'
-description: 'Bild von https://unsplash.com'
+label: 'Unsplash Bild'
+description: 'Kostenlose Bilder von unsplash.com'
 source: remote_image
 queue_thumbnail_downloads: true
 new_revision: false

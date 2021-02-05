@@ -55,7 +55,7 @@ function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
     ];
     $form['image_preview'] = [
       '#type' => 'markup',
-      '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview"></figure>',
+      '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview" data-url-source="#edit-field-media-remote-image-0-uri" data-alt-source="#edit-field-media-remote-image-0-alt"></figure>',
       '#weight' => -98,
     ];
 
