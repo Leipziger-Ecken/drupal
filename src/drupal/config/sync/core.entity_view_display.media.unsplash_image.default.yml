@@ -7,6 +7,7 @@ dependencies:
     - field.field.media.unsplash_image.field_media_remote_image
     - media.type.unsplash_image
   module:
+    - media_entity_remote_image
     - text
 id: media.unsplash_image.default
 targetEntityType: media
@@ -21,12 +22,16 @@ content:
     type: text_default
     region: content
   field_media_remote_image:
-    label: visually_hidden
+    label: hidden
     weight: 0
     settings:
-      link_to_entity: false
+      trim_length: '80'
+      url_only: ''
+      url_plain: ''
+      rel: ''
+      target: ''
     third_party_settings: {  }
-    type: string
+    type: remote_image_url_formatter
     region: content
 hidden:
   created: true

@@ -6,32 +6,30 @@ dependencies:
     - core.entity_view_mode.media.media_library
     - field.field.media.unsplash_image.field_attribution
     - field.field.media.unsplash_image.field_media_remote_image
-    - image.style.medium
     - media.type.unsplash_image
   module:
-    - svg_image
+    - media_entity_remote_image
 id: media.unsplash_image.media_library
 targetEntityType: media
 bundle: unsplash_image
 mode: media_library
 content:
-  thumbnail:
-    type: image
+  field_media_remote_image:
+    type: remote_image_url_formatter
+    weight: 0
+    region: content
     label: hidden
     settings:
-      image_style: medium
-      svg_attributes:
-        width: null
-        height: null
-      svg_render_as_image: true
-      image_link: ''
-    weight: 0
+      trim_length: '80'
+      url_only: ''
+      url_plain: ''
+      rel: 0
+      target: 0
     third_party_settings: {  }
-    region: content
 hidden:
   created: true
   field_attribution: true
-  field_media_remote_image: true
   langcode: true
   name: true
+  thumbnail: true
   uid: true

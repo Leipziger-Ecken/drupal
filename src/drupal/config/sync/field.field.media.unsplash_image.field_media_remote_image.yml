@@ -11,7 +11,7 @@ id: media.unsplash_image.field_media_remote_image
 field_name: field_media_remote_image
 entity_type: media
 bundle: unsplash_image
-label: Bild
+label: 'Externes Bild'
 description: ''
 required: true
 translatable: true
