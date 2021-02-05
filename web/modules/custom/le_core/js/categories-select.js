@@ -56,7 +56,6 @@
                 if (settingsSelectTarget) {
                     // Fallback on provided input target
                     // Quick & dirty implementation for akteur-/event-form select-field
-                    this.isFormMode = true;
                     this.$selectField = $(context).find(settingsSelectTarget);
 
                     this.labels.emptySelection = '- Keine -';
