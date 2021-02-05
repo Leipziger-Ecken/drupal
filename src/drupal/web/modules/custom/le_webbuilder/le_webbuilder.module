@@ -37,7 +37,6 @@ function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
       '#placeholder' => t('Enter search terms'),
       '#attributes' => [
         'data-results-target' => '#edit-field-unsplash-search-results',
-        'data-preview-target' => '#edit-field-image-preview',
         'data-url-target' => '#edit-field-media-remote-image-0-uri',
         'data-alt-target' => '#edit-field-media-remote-image-0-alt',
         'data-title-target' => '#edit-name-0-value',

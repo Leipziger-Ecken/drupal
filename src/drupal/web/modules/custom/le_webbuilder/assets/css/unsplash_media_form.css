@@ -1,11 +1,25 @@
 .unsplash-results {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 20px 20px 40px rgba(226,229,236,0.98),-16px -16px 24px #fbfbff;
+}
+.unsplash-results__items {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: start;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 20px 20px 40px rgba(226,229,236,0.98),-16px -16px 24px #fbfbff;
+  border-bottom: 2px solid #ddd;
+  overflow: auto;
+  max-height: 70vh;
+}
+.unsplash-results__pagination {
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.unsplash-results__current-page {
+  margin: 0 1rem;
 }
 .unsplash-results__info {
   margin: 20px;
