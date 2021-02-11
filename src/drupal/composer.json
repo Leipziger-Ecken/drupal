@@ -36,6 +36,7 @@
         "drupal/date_recur": "^2.0",
         "drupal/date_recur_modular": "2.x-dev",
         "drupal/devel": "^4.0",
+        "drupal/draggableviews": "^2.0",
         "drupal/features": "^3.11",
         "drupal/field_group": "^3.1",
         "drupal/field_permissions": "^1.1",
@@ -151,6 +152,9 @@
             },
             "drupal/leaflet_more_maps": {
                 "Add apiKey to default map (thunderbird neighbourhood)": "patches/update_thunderforest_maps.patch"
+            },
+            "drupal/core": {
+                "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch"
             }
         }
     }

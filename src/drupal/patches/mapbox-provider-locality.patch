@@ -1,5 +1,5 @@
---- a/vendor/geocoder-php/mapbox-provider/Mapbox.php
-+++ a/vendor/geocoder-php/mapbox-provider/Mapbox.php
+--- a/src/drupal/vendor/geocoder-php/mapbox-provider/Mapbox.php
++++ a/src/drupal/vendor/geocoder-php/mapbox-provider/Mapbox.php
 @@ -144,6 +144,11 @@
      private $geocodingMode;
 
