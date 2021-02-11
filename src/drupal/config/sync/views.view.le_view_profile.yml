@@ -277,7 +277,7 @@ display:
           admin_label: ''
           empty: false
           tokenize: false
-          content: "<a class=\"button button--default btn-add-entitiy\" href=\"/akteure/neu\">Akteur erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/events/neu\">Event erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/projects/neu\">Projekt erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/partners/neu\">Partner*in erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/sponsors/neu\">Unterstützer*in erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/webbuilders/neu\">Webbaukasten erstellen</a>\r\n<hr />"
+          content: "<a class=\"button button--default btn-add-entitiy\" href=\"/akteure/neu\">Akteur erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/events/neu\">Event erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/projects/neu\">Projekt erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/partners/neu\">Partner*in erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/sponsors/neu\">Unterstützer*in erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/blog-articles/neu\">Blog-Artikel erstellen</a>\r\n<a class=\"button button--default btn-add-entity\" href=\"/webbuilders/neu\">Webbaukasten erstellen</a>\r\n<hr />"
           plugin_id: text_custom
       footer: {  }
       empty: {  }

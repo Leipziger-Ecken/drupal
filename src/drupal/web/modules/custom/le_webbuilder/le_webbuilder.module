@@ -93,4 +93,9 @@ function le_webbuilder_path_alias()
       'path' => '/node/add/partner',
       'alias' => '/partners/neu',
     ])->save();
+
+    PathAlias::create([
+      'path' => '/node/add/blog_article',
+      'alias' => '/blog-articles/neu',
+    ])->save();
 }

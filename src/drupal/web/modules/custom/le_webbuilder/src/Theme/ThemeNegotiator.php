@@ -116,6 +116,7 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
         strpos($routeName, 'view.projects') === 0 ||
         strpos($routeName, 'view.partners') === 0 ||
         strpos($routeName, 'view.sponsors') === 0 ||
+        strpos($routeName, 'view.blog') === 0 ||
         strpos($routeName, 'entity.user.') === 0
       )
     ) {
