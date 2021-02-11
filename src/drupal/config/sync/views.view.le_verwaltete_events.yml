@@ -726,7 +726,7 @@ display:
         description: 'Deinem Profil zugeordnete Events'
         expanded: false
         parent: ''
-        weight: 0
+        weight: -9
         context: '0'
         menu_name: account
     cache_metadata:

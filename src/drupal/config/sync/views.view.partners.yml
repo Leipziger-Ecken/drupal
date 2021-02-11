@@ -404,7 +404,7 @@ display:
         description: 'Deine Partner*innen'
         expanded: false
         parent: ''
-        weight: 0
+        weight: -6
         context: '0'
         menu_name: account
       display_description: ''

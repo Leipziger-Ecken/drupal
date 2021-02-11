@@ -404,7 +404,7 @@ display:
         description: 'Deine Projekte'
         expanded: false
         parent: ''
-        weight: 0
+        weight: -7
         context: '0'
         menu_name: account
       display_description: ''
