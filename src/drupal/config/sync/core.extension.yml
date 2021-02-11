@@ -24,7 +24,9 @@ module:
   devel: 0
   draggableviews: 0
   editor: 0
+  entity_clone: 0
   entity_reference_revisions: 0
+  entity_type_clone: 0
   features: 0
   features_ui: 0
   field: 0

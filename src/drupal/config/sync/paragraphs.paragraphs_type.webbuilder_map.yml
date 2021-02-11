@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_map
-label: 'Webbaukasten: Karte'
+label: Karte
 icon_uuid: null
 icon_default: null
 description: 'Eine Karte mit Ortsmarkierungen.'

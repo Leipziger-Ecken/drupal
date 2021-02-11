@@ -1,0 +1,23 @@
+uuid: b8639bd5-d20b-43a7-9cd1-1904be83a098
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_listing_layout
+    - paragraphs.paragraphs_type.webbuilder_projects
+  module:
+    - options
+id: paragraph.webbuilder_projects.field_listing_layout
+field_name: field_listing_layout
+entity_type: paragraph
+bundle: webbuilder_projects
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 3_col_teasers
+default_value_callback: ''
+settings: {  }
+field_type: list_string

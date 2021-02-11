@@ -1,0 +1,23 @@
+uuid: 591a7e81-5015-4a8d-94dc-2fec3c225e7f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_has_pagination
+    - paragraphs.paragraphs_type.webbuilder_blog_articles
+id: paragraph.webbuilder_blog_articles.field_has_pagination
+field_name: field_has_pagination
+entity_type: paragraph
+bundle: webbuilder_blog_articles
+label: 'Seitennavigation verwenden'
+description: 'Aktivieren, um eine Seitennavigation zu verwenden.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

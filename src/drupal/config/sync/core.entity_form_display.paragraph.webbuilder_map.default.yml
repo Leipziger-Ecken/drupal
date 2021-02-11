@@ -3,18 +3,29 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_map.field_body
     - field.field.paragraph.webbuilder_map.field_center_lat_lon
+    - field.field.paragraph.webbuilder_map.field_heading
     - field.field.paragraph.webbuilder_map.field_zoom
     - paragraphs.paragraphs_type.webbuilder_map
   module:
     - leaflet
+    - text
 id: paragraph.webbuilder_map.default
 targetEntityType: paragraph
 bundle: webbuilder_map
 mode: default
 content:
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_center_lat_lon:
-    weight: 2
+    weight: 3
     settings:
       map:
         leaflet_map: 'OSM Mapnik'
@@ -67,15 +78,23 @@ content:
     third_party_settings: {  }
     type: leaflet_widget_default
     region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_zoom:
-    weight: 1
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   status:
     type: boolean_checkbox
-    weight: 3
+    weight: 4
     region: content
     settings:
       display_label: true

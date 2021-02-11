@@ -8,6 +8,7 @@ dependencies:
   module:
     - datetime
     - node
+    - user
 _core:
   default_config_hash: j4N7y_SYIcFZ0fEBg-HpZxwwQL-2g7c_Mx0JzeFLDAM
 id: le_akteur_has_events
@@ -291,4 +292,68 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
+      tags: {  }
+  webbuilder:
+    display_plugin: block
+    id: webbuilder
+    display_title: Webbaukasten
+    position: 3
+    display_options:
+      display_extenders:
+        simple_sitemap_display_extender: {  }
+      display_description: ''
+      title: Webbaukasten
+      defaults:
+        title: false
+        style: false
+        row: false
+        header: false
+        access: false
+        empty: false
+        pager: false
+        relationships: false
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
+      header: {  }
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      empty: {  }
+      pager:
+        type: mini
+        options:
+          items_per_page: 6
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: Zurück
+            next: Weiter
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      relationships: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
       tags: {  }

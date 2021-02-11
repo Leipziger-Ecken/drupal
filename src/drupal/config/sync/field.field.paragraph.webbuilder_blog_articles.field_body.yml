@@ -1,0 +1,21 @@
+uuid: 7c071d4b-21f8-442d-9f5c-d2217dfaef3f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_blog_articles
+  module:
+    - text
+id: paragraph.webbuilder_blog_articles.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_blog_articles
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

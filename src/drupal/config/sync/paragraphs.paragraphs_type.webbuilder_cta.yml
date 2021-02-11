@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_cta
-label: 'Webbaukasten: Call to action'
+label: 'Call to action'
 icon_uuid: null
 icon_default: null
 description: 'Ein Block, der Webseitenbesucher*innen zum klicken eines Buttons auffordert.'

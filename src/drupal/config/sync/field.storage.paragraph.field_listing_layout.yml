@@ -1,0 +1,30 @@
+uuid: 5623d7d9-7157-487c-88e7-7c87c640f360
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_listing_layout
+field_name: field_listing_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 3_col_teasers
+      label: 3-Spaltig
+    -
+      value: 3_col_cards
+      label: '3-Spaltig in Box mit Schatten'
+    -
+      value: 2_col_teasers
+      label: 2-Spaltig
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

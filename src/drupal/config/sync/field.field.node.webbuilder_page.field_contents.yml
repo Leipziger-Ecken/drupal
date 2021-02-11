@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_contents
     - node.type.webbuilder_page
+    - paragraphs.paragraphs_type.from_library
   module:
     - entity_reference_revisions
 id: node.webbuilder_page.field_contents
@@ -21,33 +22,49 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 1
-    target_bundles: null
+    target_bundles:
+      from_library: from_library
     target_bundles_drag_drop:
       from_library:
-        weight: 11
+        enabled: true
+        weight: -16
+      webbuilder_blog_articles:
+        weight: -20
         enabled: false
       webbuilder_contact_form:
-        weight: 12
+        weight: -23
         enabled: false
       webbuilder_cta:
-        weight: 13
+        weight: -24
+        enabled: false
+      webbuilder_events:
+        weight: -21
         enabled: false
       webbuilder_gallery:
-        weight: 14
+        weight: -26
         enabled: false
       webbuilder_image:
-        weight: 15
+        weight: -28
         enabled: false
       webbuilder_map:
-        weight: 10
+        weight: -22
+        enabled: false
+      webbuilder_partners:
+        weight: -18
+        enabled: false
+      webbuilder_projects:
+        weight: -19
+        enabled: false
+      webbuilder_sponsors:
+        weight: -17
         enabled: false
       webbuilder_text:
-        weight: 2
+        weight: -29
         enabled: false
       webbuilder_text_image:
-        weight: 17
+        weight: -27
         enabled: false
       webbuilder_video:
-        weight: 18
+        weight: -25
         enabled: false
 field_type: entity_reference_revisions

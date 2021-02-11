@@ -1,0 +1,10 @@
+uuid: 879b5178-61b1-4a41-bb1b-3bf330054069
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_partners
+label: 'Partner*innen'
+icon_uuid: null
+icon_default: null
+description: 'Eine Liste der Partner*innen.'
+behavior_plugins: {  }

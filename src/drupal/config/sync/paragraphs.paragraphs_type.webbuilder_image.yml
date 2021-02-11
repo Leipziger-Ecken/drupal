@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_image
-label: 'Webbaukasten: Bild'
+label: Bild
 icon_uuid: null
 icon_default: null
 description: 'Ein einzelnes Bild.'

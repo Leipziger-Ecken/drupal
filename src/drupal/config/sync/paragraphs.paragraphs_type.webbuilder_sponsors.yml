@@ -1,0 +1,10 @@
+uuid: 24b1bf58-0cbe-41b5-90fe-4b9c7cf2dba2
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_sponsors
+label: 'Unterstützer*innen'
+icon_uuid: null
+icon_default: null
+description: 'Eine Liste der Unterstützer*innen und Förderer*innen.'
+behavior_plugins: {  }

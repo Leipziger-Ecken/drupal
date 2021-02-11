@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_gallery
-label: 'Webbaukasten: Galerie'
+label: Galerie
 icon_uuid: null
 icon_default: null
 description: 'Eine Bildergalerie.'

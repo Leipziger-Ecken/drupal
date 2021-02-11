@@ -1,0 +1,23 @@
+uuid: fca0088a-ded7-4602-9818-ceb99ee6ea20
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_has_pagination
+    - paragraphs.paragraphs_type.webbuilder_events
+id: paragraph.webbuilder_events.field_has_pagination
+field_name: field_has_pagination
+entity_type: paragraph
+bundle: webbuilder_events
+label: 'Seitennavigation verwenden'
+description: 'Aktivieren, um eine Seitennavigation zu verwenden.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

@@ -11,7 +11,7 @@ id: paragraph.webbuilder_gallery.field_cols
 field_name: field_cols
 entity_type: paragraph
 bundle: webbuilder_gallery
-label: Spalten
+label: 'Anzahl Spalten'
 description: 'Anzahl der Spalten, in welchen die Bilder erscheinen.'
 required: true
 translatable: false

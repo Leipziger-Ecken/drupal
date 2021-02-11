@@ -1,0 +1,23 @@
+uuid: 52d6e384-ed76-4a4e-b972-8ea8c838868c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_has_filters
+    - paragraphs.paragraphs_type.webbuilder_projects
+id: paragraph.webbuilder_projects.field_has_filters
+field_name: field_has_filters
+entity_type: paragraph
+bundle: webbuilder_projects
+label: 'Filter verwenden'
+description: 'Aktivieren, um den Besucher*innen Filter wie z.B. ein Suchfeld zur Verfügung zu stellen.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

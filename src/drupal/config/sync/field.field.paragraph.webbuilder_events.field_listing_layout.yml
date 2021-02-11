@@ -1,0 +1,23 @@
+uuid: cae83dd9-27f9-4169-8f1f-5e0799a52ea7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_listing_layout
+    - paragraphs.paragraphs_type.webbuilder_events
+  module:
+    - options
+id: paragraph.webbuilder_events.field_listing_layout
+field_name: field_listing_layout
+entity_type: paragraph
+bundle: webbuilder_events
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 3_col_teasers
+default_value_callback: ''
+settings: {  }
+field_type: list_string

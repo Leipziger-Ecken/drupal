@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_contact_form
-label: 'Webbaukasten: Kontaktformular'
+label: Kontaktformular
 icon_uuid: null
 icon_default: null
 description: 'Ein Kontaktformular.'

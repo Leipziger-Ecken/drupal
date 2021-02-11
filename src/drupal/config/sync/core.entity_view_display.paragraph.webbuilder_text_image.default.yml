@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.webbuilder_text_image.field_image_caption
     - paragraphs.paragraphs_type.webbuilder_text_image
   module:
+    - media
     - options
     - text
 id: paragraph.webbuilder_text_image.default
@@ -17,30 +18,31 @@ bundle: webbuilder_text_image
 mode: default
 content:
   field_body:
-    weight: 2
-    label: above
+    weight: 0
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_image:
-    weight: 0
-    label: above
+    weight: 1
+    label: hidden
     settings:
-      link: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_label
+    type: media_thumbnail
     region: content
   field_image_alignment:
-    weight: 3
-    label: above
+    weight: 2
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: list_key
     region: content
   field_image_caption:
-    weight: 1
-    label: above
+    weight: 3
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

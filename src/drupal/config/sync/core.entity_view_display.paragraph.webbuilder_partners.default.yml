@@ -1,0 +1,31 @@
+uuid: 4e0b0594-dffe-4e09-867f-7c1176137e70
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_partners.field_body
+    - field.field.paragraph.webbuilder_partners.field_heading
+    - paragraphs.paragraphs_type.webbuilder_partners
+  module:
+    - text
+id: paragraph.webbuilder_partners.default
+targetEntityType: paragraph
+bundle: webbuilder_partners
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

@@ -3,19 +3,29 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_map.field_body
     - field.field.paragraph.webbuilder_map.field_center_lat_lon
+    - field.field.paragraph.webbuilder_map.field_heading
     - field.field.paragraph.webbuilder_map.field_zoom
     - paragraphs.paragraphs_type.webbuilder_map
   module:
     - leaflet
     - options
+    - text
 id: paragraph.webbuilder_map.default
 targetEntityType: paragraph
 bundle: webbuilder_map
 mode: default
 content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
   field_center_lat_lon:
-    weight: 0
+    weight: 2
     label: hidden
     settings:
       multiple_map: false
@@ -85,11 +95,19 @@ content:
     third_party_settings: {  }
     type: leaflet_formatter_default
     region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_zoom:
-    weight: 2
+    weight: 3
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    type: list_default
+    type: list_key
     region: content
 hidden: {  }

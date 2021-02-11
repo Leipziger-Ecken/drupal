@@ -1,0 +1,10 @@
+uuid: 802c08b5-4593-4001-afd9-6491627a5779
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_projects
+label: Projekte
+icon_uuid: null
+icon_default: null
+description: 'Liste der Projekte.'
+behavior_plugins: {  }

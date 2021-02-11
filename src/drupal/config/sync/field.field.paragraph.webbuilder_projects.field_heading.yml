@@ -1,0 +1,19 @@
+uuid: e2ea7204-7677-47ef-96e0-6fd5f404a129
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.webbuilder_projects
+id: paragraph.webbuilder_projects.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: webbuilder_projects
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

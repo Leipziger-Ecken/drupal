@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_video.field_heading
     - field.field.paragraph.webbuilder_video.field_video
     - field.field.paragraph.webbuilder_video.field_video_caption
     - paragraphs.paragraphs_type.webbuilder_video
@@ -13,18 +14,26 @@ targetEntityType: paragraph
 bundle: webbuilder_video
 mode: default
 content:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_video:
     type: entity_reference_entity_view
-    weight: 0
-    label: above
+    weight: 1
+    label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
     region: content
   field_video_caption:
-    weight: 1
-    label: above
+    weight: 2
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default

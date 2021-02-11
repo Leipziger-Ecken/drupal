@@ -3,8 +3,8 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_video
-label: 'Webbaukasten: Video'
+label: Video
 icon_uuid: null
 icon_default: null
-description: 'Ein Youtube oder Vimeo Video.'
+description: 'Ein YouTube oder Vimeo Video.'
 behavior_plugins: {  }
