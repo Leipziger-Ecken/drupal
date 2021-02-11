@@ -1,29 +1,29 @@
-uuid: b4372eb1-beda-41d1-a6a2-a563f15fbc58
+uuid: 55a679bd-9115-48bd-8f12-2bbd290dac1f
 langcode: de
 status: true
 dependencies:
   module:
     - options
     - paragraphs
-id: paragraph.field_heading_type
-field_name: field_heading_type
+id: paragraph.field_contact_form_fields
+field_name: field_contact_form_fields
 entity_type: paragraph
 type: list_string
 settings:
   allowed_values:
     -
-      value: h1
-      label: 'Erste Ebene'
+      value: full_name
+      label: 'Vollständiger Name'
     -
-      value: h2
-      label: 'Zweite Ebene'
+      value: email
+      label: E-Mail
     -
-      value: h3
-      label: 'Dritte Ebene'
+      value: phone
+      label: Telefonnummer
   allowed_values_function: ''
 module: options
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

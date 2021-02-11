@@ -1,0 +1,10 @@
+uuid: ec05055e-0f67-40ac-954c-8da3c6f5e8ea
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_text_image
+label: 'Webbaukasten: Text mit Bild'
+icon_uuid: null
+icon_default: null
+description: 'Ein Bild und daneben ein Text.'
+behavior_plugins: {  }

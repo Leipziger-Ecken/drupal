@@ -1,0 +1,56 @@
+uuid: 43f89c77-a47b-4781-aa62-a51e17bce782
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_contact_form.field_body
+    - field.field.paragraph.webbuilder_contact_form.field_contact_form_fields
+    - field.field.paragraph.webbuilder_contact_form.field_contact_form_recipients
+    - field.field.paragraph.webbuilder_contact_form.field_contact_form_required
+    - field.field.paragraph.webbuilder_contact_form.field_heading
+    - paragraphs.paragraphs_type.webbuilder_contact_form
+  module:
+    - options
+    - text
+id: paragraph.webbuilder_contact_form.default
+targetEntityType: paragraph
+bundle: webbuilder_contact_form
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_contact_form_fields:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_contact_form_recipients:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_contact_form_required:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_heading:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

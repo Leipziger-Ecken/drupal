@@ -1,0 +1,19 @@
+uuid: fa4bb8a9-5ce7-422f-892f-4ec6715ac51b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sub_heading
+    - paragraphs.paragraphs_type.webbuilder_text
+id: paragraph.webbuilder_text.field_sub_heading
+field_name: field_sub_heading
+entity_type: paragraph
+bundle: webbuilder_text
+label: 'Kategorie Überschrift'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

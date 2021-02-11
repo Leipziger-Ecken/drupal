@@ -1,0 +1,27 @@
+uuid: 9d775929-ffad-4c2b-9029-befa04038118
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_form_fields
+    - paragraphs.paragraphs_type.webbuilder_contact_form
+  module:
+    - options
+id: paragraph.webbuilder_contact_form.field_contact_form_fields
+field_name: field_contact_form_fields
+entity_type: paragraph
+bundle: webbuilder_contact_form
+label: 'Verfügbare Felder'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: full_name
+  -
+    value: email
+  -
+    value: phone
+default_value_callback: ''
+settings: {  }
+field_type: list_string

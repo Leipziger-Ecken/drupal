@@ -1,0 +1,21 @@
+uuid: cfa261e0-b940-4e48-8142-ceb0d709a522
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_caption
+    - paragraphs.paragraphs_type.webbuilder_text_image
+  module:
+    - text
+id: paragraph.webbuilder_text_image.field_image_caption
+field_name: field_image_caption
+entity_type: paragraph
+bundle: webbuilder_text_image
+label: Bildbeschreibung
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

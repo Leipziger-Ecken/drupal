@@ -1,0 +1,18 @@
+uuid: 0bafbac6-28d1-4458-9d03-56b28da21937
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_contact_form_recipients
+field_name: field_contact_form_recipients
+entity_type: paragraph
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

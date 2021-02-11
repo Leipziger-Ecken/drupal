@@ -5,10 +5,9 @@ dependencies:
   config:
     - field.field.paragraph.webbuilder_text.field_body
     - field.field.paragraph.webbuilder_text.field_heading
-    - field.field.paragraph.webbuilder_text.field_heading_type
+    - field.field.paragraph.webbuilder_text.field_sub_heading
     - paragraphs.paragraphs_type.webbuilder_text
   module:
-    - options
     - text
 id: paragraph.webbuilder_text.default
 targetEntityType: paragraph
@@ -30,11 +29,12 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_heading_type:
-    weight: 1
+  field_sub_heading:
+    weight: 3
     label: above
-    settings: {  }
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-    type: list_default
+    type: string
     region: content
 hidden: {  }

@@ -1,0 +1,23 @@
+uuid: ca77c1a6-8da6-41d0-bc17-9f3185670efb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cols
+    - paragraphs.paragraphs_type.webbuilder_gallery
+  module:
+    - options
+id: paragraph.webbuilder_gallery.field_cols
+field_name: field_cols
+entity_type: paragraph
+bundle: webbuilder_gallery
+label: Spalten
+description: 'Anzahl der Spalten, in welchen die Bilder erscheinen.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '4'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

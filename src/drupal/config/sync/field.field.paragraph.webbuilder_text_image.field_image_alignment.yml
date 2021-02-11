@@ -1,0 +1,23 @@
+uuid: b7977a5f-2cdd-48ef-bb58-7eea55a28943
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_alignment
+    - paragraphs.paragraphs_type.webbuilder_text_image
+  module:
+    - options
+id: paragraph.webbuilder_text_image.field_image_alignment
+field_name: field_image_alignment
+entity_type: paragraph
+bundle: webbuilder_text_image
+label: Bildausrichtung
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

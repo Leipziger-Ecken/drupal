@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.webbuilder_text.field_body
     - field.field.paragraph.webbuilder_text.field_heading
-    - field.field.paragraph.webbuilder_text.field_heading_type
+    - field.field.paragraph.webbuilder_text.field_sub_heading
     - paragraphs.paragraphs_type.webbuilder_text
   module:
     - text
@@ -23,6 +23,14 @@ content:
     type: text_textarea
     region: content
   field_heading:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_sub_heading:
     weight: 0
     settings:
       size: 60
@@ -30,12 +38,12 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_heading_type:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
+  status:
+    type: boolean_checkbox
+    weight: 3
     region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
 hidden:
   created: true
-  status: true

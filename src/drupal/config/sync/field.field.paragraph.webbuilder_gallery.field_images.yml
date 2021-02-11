@@ -1,0 +1,30 @@
+uuid: 87510293-0370-493e-93f8-d2ccd25bd3cb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_images
+    - media.type.image
+    - media.type.unsplash_image
+    - paragraphs.paragraphs_type.webbuilder_gallery
+id: paragraph.webbuilder_gallery.field_images
+field_name: field_images
+entity_type: paragraph
+bundle: webbuilder_gallery
+label: Bilder
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      unsplash_image: unsplash_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,23 @@
+uuid: 57a53f96-8835-4ba8-a835-a294c53d7e42
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_secondary_button
+    - paragraphs.paragraphs_type.webbuilder_cta
+  module:
+    - link
+id: paragraph.webbuilder_cta.field_secondary_button
+field_name: field_secondary_button
+entity_type: paragraph
+bundle: webbuilder_cta
+label: 'Sekundärer Button'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

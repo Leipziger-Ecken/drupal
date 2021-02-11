@@ -1,0 +1,19 @@
+uuid: 0152d5f3-3976-4c1b-b645-cde4ffcc0e03
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_form_recipients
+    - paragraphs.paragraphs_type.webbuilder_contact_form
+id: paragraph.webbuilder_contact_form.field_contact_form_recipients
+field_name: field_contact_form_recipients
+entity_type: paragraph
+bundle: webbuilder_contact_form
+label: 'Senden an'
+description: 'Geben Sie hier E-Mail Adressen an, an welche das Kontaktformular gesendet werden soll.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

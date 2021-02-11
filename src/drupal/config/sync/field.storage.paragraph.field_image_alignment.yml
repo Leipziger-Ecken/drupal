@@ -1,0 +1,27 @@
+uuid: 29347897-77e9-49fd-a88d-ba7a9976597e
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_image_alignment
+field_name: field_image_alignment
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: links
+    -
+      value: right
+      label: rechts
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
