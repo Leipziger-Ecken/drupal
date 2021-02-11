@@ -62,6 +62,73 @@ display:
           offset: 0
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title: title
+            field_le_event_image: field_le_event_image
+            field_le_event_occurrences: field_le_event_occurrences
+            og_audience: og_audience
+            created: created
+            edit_node: edit_node
+            delete_node: edit_node
+          info:
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_le_event_image:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_le_event_occurrences:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            og_audience:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            created:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ' | '
+              empty_column: false
+              responsive: ''
+            delete_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       row:
         type: fields
       fields:
@@ -562,9 +629,7 @@ display:
           plugin_id: bundle
       sorts: {  }
       title: 'Verwaltete Events'
-      header: {  }
-      footer: {  }
-      empty:
+      header:
         area_text_custom:
           id: area_text_custom
           table: views
@@ -574,8 +639,10 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: "<blockquote>\r\nDu hast noch keine Events angelegt. <a href=\"/events/neu\">Jetzt Event anlegen</a>.\r\n</blockquote>"
+          content: '<a class="button button--default btn-add-entity" href="/events/neu">Event erstellen</a>'
           plugin_id: text_custom
+      footer: {  }
+      empty: {  }
       relationships:
         uid:
           id: uid

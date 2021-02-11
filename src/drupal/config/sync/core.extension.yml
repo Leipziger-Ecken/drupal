@@ -22,6 +22,7 @@ module:
   datetime_range: 0
   dblog: 0
   devel: 0
+  draggableviews: 0
   editor: 0
   entity_reference_revisions: 0
   features: 0

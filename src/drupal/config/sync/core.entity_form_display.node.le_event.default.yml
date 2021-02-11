@@ -25,17 +25,18 @@ dependencies:
     - field_group
     - link
     - publication_date
+    - select2
+    - select2_multicheck
     - svg_image
     - text
 third_party_settings:
   field_group:
     group_settings:
       children:
-        - og_audience
         - langcode
         - published_at
       parent_name: ''
-      weight: 14
+      weight: 8
       format_type: details_sidebar
       region: content
       format_settings:
@@ -56,7 +57,7 @@ third_party_settings:
         - field_le_event_kategorie_tags
         - field_le_event_is_barrier_free
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details
       region: content
       format_settings:
@@ -81,12 +82,16 @@ content:
     region: content
   field_bezirk:
     weight: 8
-    settings: {  }
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
     third_party_settings: {  }
-    type: options_select
+    type: select2_entity_reference
     region: content
   field_le_event_beschreibung:
-    weight: 3
+    weight: 4
     settings:
       rows: 6
       placeholder: ''
@@ -94,7 +99,7 @@ content:
     type: text_textarea
     region: content
   field_le_event_image:
-    weight: 2
+    weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -126,19 +131,20 @@ content:
     region: content
   field_le_event_kategorie_typ:
     weight: 6
-    settings: {  }
+    settings:
+      width: 100%
     third_party_settings: {  }
-    type: options_select
+    type: select2_multicheck
     region: content
   field_le_event_lizenzhinweis:
-    weight: 13
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_occurrences:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: date_recur_modular_alpha
@@ -161,7 +167,7 @@ content:
   og_audience:
     type: options_buttons
     settings: {  }
-    weight: 6
+    weight: 2
     third_party_settings: {  }
     region: content
   published_at:

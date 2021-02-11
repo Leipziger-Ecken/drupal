@@ -1,5 +1,9 @@
 <?php
-function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+
+use Drupal\path_alias\Entity\PathAlias;
+use \Drupal\Core\Form\FormStateInterface;
+
+function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if ($form_id == 'node_webbuilder_page_form') {
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
@@ -63,4 +67,30 @@ function le_webbuilder_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $
 
     $form['#attached']['library'][] = 'le_webbuilder/unsplash_media_form';
   }
+}
+
+/**
+ * Provide smooth URI's for system-paths
+ */
+function le_webbuilder_path_alias()
+{
+    PathAlias::create([
+      'path' => '/node/add/webbuilder',
+      'alias' => '/webbuilders/neu',
+    ])->save();
+
+    PathAlias::create([
+      'path' => '/node/add/project',
+      'alias' => '/projects/neu',
+    ])->save();
+
+    PathAlias::create([
+      'path' => '/node/add/sponsor',
+      'alias' => '/sponsors/neu',
+    ])->save();
+
+    PathAlias::create([
+      'path' => '/node/add/partner',
+      'alias' => '/partners/neu',
+    ])->save();
 }

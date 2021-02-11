@@ -515,9 +515,27 @@ display:
       tags:
         - 'config:field.storage.node.field_description'
         - 'config:field.storage.node.field_preview_image'
-  page_1:
+  presets:
+    display_plugin: block
+    id: presets
+    display_title: Vorlagen
+    position: 1
+    display_options:
+      display_extenders:
+        simple_sitemap_display_extender: {  }
+      display_description: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  user_table:
     display_plugin: page
-    id: page_1
+    id: user_table
     display_title: 'Meine Webbaukästen'
     position: 3
     display_options:
@@ -534,6 +552,8 @@ display:
         style: false
         row: false
         fields: false
+        relationships: false
+        header: false
       filters:
         type:
           id: type
@@ -591,7 +611,7 @@ display:
         groups:
           1: AND
       arguments: {  }
-      path: webbuilders
+      path: user/%user/webbuilders
       style:
         type: table
         options:
@@ -605,8 +625,32 @@ display:
           description: ''
           columns:
             title: title
+            og_audience: og_audience
+            edit_node: edit_node
+            delete_node: edit_node
           info:
             title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            og_audience:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_node:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ' | '
+              empty_column: false
+              responsive: ''
+            delete_node:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -733,6 +777,134 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Aktionen
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Bearbeiten
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_edit
+        delete_node:
+          id: delete_node
+          table: node
+          field: delete_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Löschen
+          output_url_as_text: false
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link_delete
+      menu:
+        type: tab
+        title: Webbaukästen
+        description: 'Deine Webbaukästen'
+        expanded: false
+        parent: ''
+        weight: 0
+        context: '0'
+        menu_name: account
+      relationships: {  }
+      header:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: '<a class="button button--default btn-add-entity" href="/webbuilders/neu">Webbaukasten erstellen</a>'
+          plugin_id: text_custom
     cache_metadata:
       max-age: -1
       contexts:
@@ -742,21 +914,3 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.og_audience'
-  presets:
-    display_plugin: block
-    id: presets
-    display_title: Vorlagen
-    position: 1
-    display_options:
-      display_extenders:
-        simple_sitemap_display_extender: {  }
-      display_description: ''
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - 'user.node_grants:view'
-        - user.permissions
-      tags: {  }

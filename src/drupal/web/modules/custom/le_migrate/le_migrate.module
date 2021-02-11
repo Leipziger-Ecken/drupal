@@ -138,11 +138,11 @@ function le_migrate_akteure()
           $term = \Drupal::entityTypeManager()
                 ->getStorage('taxonomy_term')
                 ->loadByProperties(['vid' => 'le_kategorie_tags', 'name' => $tag->kategorie]);
-          
+
           if (empty($term)) {
             continue;
           }
-          
+
           $term = reset($term);
           $node['field_le_akteur_kategorie_tags'][] = $term->id();
         }
@@ -150,9 +150,9 @@ function le_migrate_akteure()
         $node = Node::create($node);
         $node->save();
 
-        $nid = $node->id();          
+        $nid = $node->id();
 
-        /** 
+        /**
          * REDIRECT
          * Provide URI-backward-compatibility for SEO reasons
          */
@@ -334,7 +334,7 @@ function le_migrate_events()
               'title' => "Bild Event ´{$event->name}´"
           ];
         }
-        
+
         /**
          * TAGS
          */
@@ -349,11 +349,11 @@ function le_migrate_events()
           $term = \Drupal::entityTypeManager()
                 ->getStorage('taxonomy_term')
                 ->loadByProperties(['vid' => 'le_kategorie_tags', 'name' => $tag->kategorie]);
-          
+
           if (empty($term)) {
             continue;
           }
-          
+
           $term = reset($term);
           $node['field_le_event_kategorie_tags'][] = $term->id();
         }
@@ -363,7 +363,7 @@ function le_migrate_events()
 
         $nid = $node->id();
 
-        /** 
+        /**
          * REDIRECT
          * Provide URI-backward-compatibility for SEO reasons
          */
