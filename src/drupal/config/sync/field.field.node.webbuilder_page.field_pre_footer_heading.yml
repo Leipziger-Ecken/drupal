@@ -1,0 +1,19 @@
+uuid: e2968927-cea9-463f-be81-f692857ad8eb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_footer_heading
+    - node.type.webbuilder_page
+id: node.webbuilder_page.field_pre_footer_heading
+field_name: field_pre_footer_heading
+entity_type: node
+bundle: webbuilder_page
+label: 'Pre-Footer Überschrift'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

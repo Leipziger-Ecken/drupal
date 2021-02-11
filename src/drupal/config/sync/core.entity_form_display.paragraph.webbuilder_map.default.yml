@@ -1,0 +1,84 @@
+uuid: 135b75de-3d28-4ba1-9298-66015a12e73b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_map.field_center_lat_lon
+    - field.field.paragraph.webbuilder_map.field_zoom
+    - paragraphs.paragraphs_type.webbuilder_map
+  module:
+    - leaflet
+id: paragraph.webbuilder_map.default
+targetEntityType: paragraph
+bundle: webbuilder_map
+mode: default
+content:
+  field_center_lat_lon:
+    weight: 2
+    settings:
+      map:
+        leaflet_map: 'OSM Mapnik'
+        height: '400'
+        auto_center: '1'
+        map_position:
+          center:
+            lat: '0'
+            lon: '0'
+          zoom: '14'
+          minZoom: '1'
+          maxZoom: '18'
+          zoomFiner: '0'
+          force: 0
+        scroll_zoom_enabled: '1'
+        fullscreen_control: '1'
+        locate: 0
+      toolbar:
+        position: topright
+        marker: defaultMarker
+        drawPolyline: 0
+        drawRectangle: 0
+        drawPolygon: 0
+        drawCircle: false
+        editMode: 0
+        dragMode: 0
+        cutPolygon: 0
+        removalMode: 0
+      reset_map:
+        position: topright
+        control: 0
+      path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
+      geocoder:
+        control: '1'
+        settings:
+          position: topright
+          input_size: '25'
+          providers:
+            mapbox:
+              checked: '1'
+              weight: '0'
+          min_terms: '4'
+          delay: '800'
+          zoom: '16'
+          options: ''
+          popup: 0
+      input:
+        show: 0
+        readonly: 0
+    third_party_settings: {  }
+    type: leaflet_widget_default
+    region: content
+  field_zoom:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

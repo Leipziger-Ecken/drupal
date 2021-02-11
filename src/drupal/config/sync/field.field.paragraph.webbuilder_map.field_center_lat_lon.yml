@@ -1,0 +1,22 @@
+uuid: 934840fd-0904-4893-92d9-df7129937bee
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_center_lat_lon
+    - paragraphs.paragraphs_type.webbuilder_map
+  module:
+    - geofield
+id: paragraph.webbuilder_map.field_center_lat_lon
+field_name: field_center_lat_lon
+entity_type: paragraph
+bundle: webbuilder_map
+label: Karte
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield

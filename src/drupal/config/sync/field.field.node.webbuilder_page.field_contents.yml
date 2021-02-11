@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_contents
     - node.type.webbuilder_page
-    - paragraphs.paragraphs_type.webbuilder_text
   module:
     - entity_reference_revisions
 id: node.webbuilder_page.field_contents
@@ -21,11 +20,34 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
-    target_bundles:
-      webbuilder_text: webbuilder_text
+    negate: 1
+    target_bundles: null
     target_bundles_drag_drop:
+      from_library:
+        weight: 11
+        enabled: false
+      webbuilder_contact_form:
+        weight: 12
+        enabled: false
+      webbuilder_cta:
+        weight: 13
+        enabled: false
+      webbuilder_gallery:
+        weight: 14
+        enabled: false
+      webbuilder_image:
+        weight: 15
+        enabled: false
+      webbuilder_map:
+        weight: 10
+        enabled: false
       webbuilder_text:
-        enabled: true
         weight: 2
+        enabled: false
+      webbuilder_text_image:
+        weight: 17
+        enabled: false
+      webbuilder_video:
+        weight: 18
+        enabled: false
 field_type: entity_reference_revisions

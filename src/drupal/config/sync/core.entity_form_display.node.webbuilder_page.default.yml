@@ -4,8 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_header_image
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer_body
+    - field.field.node.webbuilder_page.field_pre_footer_button
+    - field.field.node.webbuilder_page.field_pre_footer_heading
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -13,8 +17,12 @@ dependencies:
     - node.type.webbuilder_page
   module:
     - field_group
+    - link
+    - media_library
     - paragraphs
+    - publication_date
     - select2
+    - text
     - weight
 third_party_settings:
   field_group:
@@ -25,7 +33,7 @@ third_party_settings:
         - langcode
         - field_weight
       parent_name: ''
-      weight: 7
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -36,31 +44,91 @@ third_party_settings:
         required_fields: true
         weight: 0
       label: Einstellungen
+    group_pre_footer:
+      children:
+        - field_pre_footer_heading
+        - field_pre_footer_body
+        - field_pre_footer_button
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        id: pre-footer
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Pre-Footer
+    group_navigation:
+      children:
+        - field_slug
+        - field_parent
+        - field_navigation
+      parent_name: ''
+      weight: 2
+      format_type: details
+      region: content
+      format_settings:
+        id: navigation
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Navigation
+    group_header:
+      children:
+        - field_header_image
+      parent_name: ''
+      weight: 3
+      format_type: details
+      region: content
+      format_settings:
+        id: header
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+      label: Header
 id: node.webbuilder_page.default
 targetEntityType: node
 bundle: webbuilder_page
 mode: default
 content:
   field_contents:
-    type: entity_reference_paragraphs
-    weight: 6
+    type: paragraphs
+    weight: 5
     settings:
-      title: Seitenabschnitt
-      title_plural: Paragraphs
-      edit_mode: preview
-      add_mode: button
+      title: Inhalt
+      title_plural: Inhalte
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: modal
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: add_above
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_header_image:
+    type: media_library_widget
+    weight: 3
+    settings:
+      media_types: {  }
     third_party_settings: {  }
     region: content
   field_navigation:
-    weight: 4
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_parent:
-    weight: 3
+    weight: 2
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -68,6 +136,30 @@ content:
       width: 100%
     third_party_settings: {  }
     type: select2_entity_reference
+    region: content
+  field_pre_footer_body:
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_pre_footer_button:
+    weight: 12
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_pre_footer_heading:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_slug:
     weight: 1
@@ -102,16 +194,22 @@ content:
     weight: 37
     third_party_settings: {  }
     region: content
+  published_at:
+    type: publication_date_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 2
+    weight: 0
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
