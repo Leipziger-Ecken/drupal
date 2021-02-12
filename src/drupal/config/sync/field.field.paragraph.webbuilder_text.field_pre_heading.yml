@@ -1,16 +1,16 @@
-uuid: fa4bb8a9-5ce7-422f-892f-4ec6715ac51b
+uuid: 7a8fa0ae-e2b4-4ae3-9468-7b631074c37b
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_sub_heading
+    - field.storage.paragraph.field_pre_heading
     - paragraphs.paragraphs_type.webbuilder_text
-id: paragraph.webbuilder_text.field_sub_heading
-field_name: field_sub_heading
+id: paragraph.webbuilder_text.field_pre_heading
+field_name: field_pre_heading
 entity_type: paragraph
 bundle: webbuilder_text
-label: 'Kategorie Überschrift'
-description: ''
+label: 'kleine Überschrift'
+description: 'Erscheint über der Überschrift.'
 required: false
 translatable: false
 default_value: {  }

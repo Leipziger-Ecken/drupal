@@ -1,11 +1,11 @@
-uuid: 16ccd481-2981-4029-9134-8cd644e9bef8
+uuid: 755df576-40bc-41a0-b433-ea1b3ebf21f3
 langcode: de
 status: true
 dependencies:
   module:
     - paragraphs
-id: paragraph.field_sub_heading
-field_name: field_sub_heading
+id: paragraph.field_pre_heading
+field_name: field_pre_heading
 entity_type: paragraph
 type: string
 settings:

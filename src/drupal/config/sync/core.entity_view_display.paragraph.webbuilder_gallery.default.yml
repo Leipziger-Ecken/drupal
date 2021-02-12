@@ -7,10 +7,8 @@ dependencies:
     - field.field.paragraph.webbuilder_gallery.field_cols
     - field.field.paragraph.webbuilder_gallery.field_heading
     - field.field.paragraph.webbuilder_gallery.field_images
-    - image.style.large
     - paragraphs.paragraphs_type.webbuilder_gallery
   module:
-    - media
     - options
     - text
 id: paragraph.webbuilder_gallery.default
@@ -41,12 +39,12 @@ content:
     type: string
     region: content
   field_images:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     weight: 3
     label: hidden
     settings:
-      image_style: large
-      image_link: media
+      view_mode: default
+      link: false
     third_party_settings: {  }
     region: content
 hidden: {  }

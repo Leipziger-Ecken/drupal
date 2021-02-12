@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.webbuilder_text.field_body
     - field.field.paragraph.webbuilder_text.field_heading
-    - field.field.paragraph.webbuilder_text.field_sub_heading
+    - field.field.paragraph.webbuilder_text.field_pre_heading
     - paragraphs.paragraphs_type.webbuilder_text
   module:
     - text
@@ -29,7 +29,7 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_sub_heading:
+  field_pre_heading:
     weight: 0
     label: hidden
     settings:

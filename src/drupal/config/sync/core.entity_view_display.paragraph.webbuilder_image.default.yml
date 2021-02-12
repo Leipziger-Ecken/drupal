@@ -8,7 +8,6 @@ dependencies:
     - field.field.paragraph.webbuilder_image.field_image_caption
     - paragraphs.paragraphs_type.webbuilder_image
   module:
-    - media
     - text
 id: paragraph.webbuilder_image.default
 targetEntityType: paragraph
@@ -24,12 +23,12 @@ content:
     type: string
     region: content
   field_image:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     weight: 1
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
     region: content
   field_image_caption:

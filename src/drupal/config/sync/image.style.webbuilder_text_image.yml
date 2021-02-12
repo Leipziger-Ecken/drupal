@@ -1,0 +1,15 @@
+uuid: 26e383af-48f4-4f7f-ace2-40cd397667e1
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_text_image
+label: 'Webbaukasten: Text mit Bild'
+effects:
+  b1fe13ce-f849-49e5-ae70-82c9ad758f99:
+    uuid: b1fe13ce-f849-49e5-ae70-82c9ad758f99
+    id: image_scale
+    weight: 1
+    data:
+      width: 1184
+      height: null
+      upscale: false

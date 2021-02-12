@@ -11,7 +11,7 @@
 
     {# Unsplash images always require attribution #}
     {% if header_image['#media'].field_attribution %}
-    <figcaption class="mt-4 text-gray-500 text-sm leading-6">
+    <figcaption class="mt-4 prose">
       {# TODO: find a way to correctly render attribution field #}
       {{ header_image['#media'].field_attribution[0].value|raw }}
     </figcaption>
