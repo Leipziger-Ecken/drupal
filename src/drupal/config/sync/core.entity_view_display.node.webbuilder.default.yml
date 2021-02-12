@@ -5,8 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
-    - field.field.node.webbuilder.field_font_body
-    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
@@ -34,15 +33,8 @@ content:
     third_party_settings: {  }
     type: color_field_formatter_text
     region: content
-  field_font_body:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
-    region: content
-  field_font_heading:
-    weight: 2
+  field_fonts:
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -83,3 +75,4 @@ hidden:
   field_webbuilder_preset: true
   langcode: true
   og_audience: true
+  published_at: true

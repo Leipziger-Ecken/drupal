@@ -5,8 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
-    - field.field.node.webbuilder.field_font_body
-    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
@@ -43,8 +42,7 @@ third_party_settings:
       children:
         - field_logo
         - field_color_primary
-        - field_font_heading
-        - field_font_body
+        - field_fonts
         - field_layout
       parent_name: ''
       weight: 4
@@ -124,17 +122,12 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_font_body:
-    weight: 31
-    settings: {  }
-    third_party_settings: {  }
-    type: options_select
-    region: content
-  field_font_heading:
+  field_fonts:
     weight: 30
-    settings: {  }
+    settings:
+      width: 100%
     third_party_settings: {  }
-    type: options_select
+    type: select2
     region: content
   field_frontpage:
     weight: 26
@@ -154,7 +147,7 @@ content:
     type: boolean_checkbox
     region: content
   field_layout:
-    weight: 32
+    weight: 31
     settings: {  }
     third_party_settings: {  }
     type: options_select

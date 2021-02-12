@@ -1,0 +1,36 @@
+uuid: f05571d2-fb0d-4428-91c2-f88af05fee19
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_fonts
+field_name: field_fonts
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Cormorant Garamond+Proza Libre'
+      label: 'Cormorant Garamond & Proza Libre'
+    -
+      value: 'Libre Franklin+Libre Baskerville'
+      label: 'Libre Franklin & Libre Baskerville'
+    -
+      value: Trirong+Rubik
+      label: 'Trirong & Rubik'
+    -
+      value: 'Work Sans+Taviraj'
+      label: 'Work Sans & Taviraj'
+    -
+      value: 'Eczar+Gentium Basic'
+      label: 'Eczar & Gentium Basic'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

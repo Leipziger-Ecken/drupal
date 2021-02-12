@@ -6,8 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
-    - field.field.node.webbuilder.field_font_body
-    - field.field.node.webbuilder.field_font_heading
+    - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
@@ -48,8 +47,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_color_primary: true
-  field_font_body: true
-  field_font_heading: true
+  field_fonts: true
   field_frontpage: true
   field_is_preset: true
   field_layout: true
@@ -57,3 +55,4 @@ hidden:
   field_webbuilder_preset: true
   langcode: true
   og_audience: true
+  published_at: true

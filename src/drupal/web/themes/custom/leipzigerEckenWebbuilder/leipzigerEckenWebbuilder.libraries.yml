@@ -2,3 +2,53 @@ webbuilder:
   css:
     theme:
       assets/css/webbuilder.css: {}
+
+Cormorant Garamond:
+  css:
+    theme:
+      assets/css/Cormorant Garamond.css: {}
+
+Eczar:
+  css:
+    theme:
+      assets/css/Eczar.css: {}
+
+Gentium Basic:
+  css:
+    theme:
+      assets/css/Gentium Basic.css: {}
+
+Libre Baskerville:
+  css:
+    theme:
+      assets/css/Libre Baskerville.css: {}
+
+Libre Franklin:
+  css:
+    theme:
+      assets/css/Libre Franklin.css: {}
+
+Proza Libre:
+  css:
+    theme:
+      assets/css/Proza Libre.css: {}
+
+Rubik:
+  css:
+    theme:
+      assets/css/Rubik.css: {}
+
+Taviraj:
+  css:
+    theme:
+      assets/css/Taviraj.css: {}
+
+Trirong:
+  css:
+    theme:
+      assets/css/Trirong.css: {}
+
+Work Sans:
+  css:
+    theme:
+      assets/css/Work Sans.css: {}

@@ -69,11 +69,14 @@
 {% if webbuilder_id %}
   {% set color_primary = drupal_field('field_color_primary', 'node', webbuilder_id)[0]['#markup'] | default(color_primary) %}
   {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
-  {% set font_heading = drupal_field('field_font_heading', 'node', webbuilder_id)[0]['#markup'] | default(font_heading) %}
-  {% set font_body = drupal_field('field_font_body', 'node', webbuilder_id)[0]['#markup'] | default(font_body) %}
+  {% set fonts = drupal_field('field_fonts', 'node', webbuilder_id)[0]['#markup'] | split('+', 2) %}
+  {% set font_heading = fonts[0] %}
+  {% set font_body = fonts[1] %}
   {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
   {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
   {% set logo_url = logo|file_url %}
+  {{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
+  {{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
 {% endif %}
 
 <div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: {{ font_heading }}; --font-body: {{ font_body }}; --logo: url('{{ logo_url }}')">
