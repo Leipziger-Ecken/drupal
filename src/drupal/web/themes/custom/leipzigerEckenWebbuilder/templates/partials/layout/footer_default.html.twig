@@ -1,0 +1,202 @@
+{% set akteur_id = webbuilder_akteur_id(webbuilder_id) %}
+<footer class="bg-gray-800" aria-labelledby="footerHeading">
+  <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div class="grid grid-cols-2 gap-8 xl:col-span-2">
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            {{ drupal_view('blog', 'webbuilder_footer', akteur_id) }}
+            {#
+            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Aktuelles
+            </h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Blogeintrag 01
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Blogeintrag 02
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Blogeintrag 03
+                </a>
+              </li>
+
+              <li>
+                <a href="/blog_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
+                  Mehr&thinsp;…
+                </a>
+              </li>
+            </ul>
+            #}
+          </div>
+
+          <div class="mt-12 md:mt-0">
+            {{ drupal_view('le_akteur_has_events', 'webbuilder_footer', akteur_id) }}
+            {#
+            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Events
+            </h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Event 01
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Event 02
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Event 03
+                </a>
+              </li>
+
+              <li>
+                <a href="/events_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
+                  Mehr&thinsp;…
+                </a>
+              </li>
+            </ul>
+            #}
+          </div>
+        </div>
+        <div class="md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            {{ drupal_view('projects', 'webbuilder_footer', akteur_id) }}
+            {#
+            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Projekte
+            </h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Schulgründung im Kiez?
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Förderverein Bülowgärten e.V.
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  BülowSTRASSENMUSIKfestival
+                </a>
+              </li>
+
+              <li>
+                <a href="/projects_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
+                  Mehr&thinsp;…
+                </a>
+              </li>
+            </ul>
+            #}
+          </div>
+          <div class="mt-12 md:mt-0">
+            {{ drupal_view('webbuilder_pages', 'navigation_footer', webbuilder_id, 'footer') }}
+            {#
+            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Sonstiges
+            </h3>
+            <ul class="mt-4 space-y-4">
+              <li>
+                <a href="/network_01.html" class="text-base text-gray-300 hover:text-white">
+                  Netzwerk
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Über Uns
+                </a>
+              </li>
+
+              <li>
+                <a href="/contact_01.html" class="text-base text-gray-300 hover:text-white">
+                  Kontakt
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Impressum
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="text-base text-gray-300 hover:text-white">
+                  Datenschutz
+                </a>
+              </li>
+            </ul>
+            #}
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 xl:mt-0">
+        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+          Melde dich zu unserem Newsletter an
+        </h3>
+        <p class="mt-4 text-base text-gray-300">
+          Bekomme einmal im Monat die wichtigsten Infos zu unseren Projekten.
+        </p>
+        <form class="mt-4 sm:flex sm:max-w-md">
+          <label for="emailAddress" class="sr-only">E-Mail Adresse</label>
+          <input type="email" name="emailAddress" id="emailAddress" autocomplete="email" required class="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400" placeholder="Gib deine E-Mail ein">
+          <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+            <button type="submit" class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
+              Anmelden
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+      <div class="flex space-x-6 md:order-2">
+        {% set facebook_uri = drupal_field('field_facebook_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if facebook_uri %}
+        <a href="{{ facebook_uri }}" class="text-gray-400 hover:text-gray-300">
+          <span class="sr-only">Facebook</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
+
+        {% set instagram_uri = drupal_field('field_instagram_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if instagram_uri %}
+        <a href="{{ instagram_uri }}" class="text-gray-400 hover:text-gray-300" target="instagram">
+          <span class="sr-only">Instagram</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/instagram.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
+
+        {% set twitter_uri = drupal_field('field_twitter_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if twitter_uri %}
+        <a href="{{ twitter_uri }}" class="text-gray-400 hover:text-gray-300" target="twitter">
+          <span class="sr-only">Twitter</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
+      </div>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+        Powered by <a class="text-gray-300 hover:text-white" href="https://leipziger-ecken.de" target="leipziger-ecken">
+          Leipziger-Ecken <img class="inline-block ml-2 h-8 w-auto align-middle" src="/{{ directory ~ '/assets/images/leipziger-ecken_logo.png' }}">
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

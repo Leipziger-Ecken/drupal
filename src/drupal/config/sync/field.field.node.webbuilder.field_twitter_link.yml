@@ -1,0 +1,23 @@
+uuid: 071447ea-659b-41d1-a38f-383bb36eb10b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_twitter_link
+    - node.type.webbuilder
+  module:
+    - link
+id: node.webbuilder.field_twitter_link
+field_name: field_twitter_link
+entity_type: node
+bundle: webbuilder
+label: 'Twitter Seite'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

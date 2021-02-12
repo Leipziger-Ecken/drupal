@@ -1,6 +1,6 @@
 uuid: 9160d664-7366-439d-b758-e3b7de8f66b6
 langcode: de
-status: true
+status: false
 dependencies:
   config:
     - system.menu.account
@@ -10,7 +10,7 @@ dependencies:
     - leipzigerEckenWebbuilder
 id: leipzigerEckenWebbuilder_benutzermenu
 theme: leipzigerEckenWebbuilder
-region: header
+region: content
 weight: 0
 provider: null
 plugin: 'system_menu_block:account'

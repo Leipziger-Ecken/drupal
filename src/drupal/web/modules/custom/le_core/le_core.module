@@ -43,11 +43,13 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
   if ($route_name === 'entity.node.canonical' || $route_name === 'view.le_akteur_has_events.page_1' || $route_name === 'entity.node.edit_form') {
     // Context: node
 
-    $tabs = $data['tabs'][0]; 
+    $tabs = $data['tabs'][0];
 
     if (isset($data['tabs'][0]) && isset($data['tabs'][0]['entity.node.canonical'])) {
       // Change first tab title from "Ansicht" to "Beschreibung"
       $local_task_main_view = &$data['tabs'][0]['entity.node.canonical'];
+
+      // TODO: this is very missleading
       $local_task_main_view['#link']['title'] = 'Beschreibung';
     }
 
@@ -108,7 +110,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     $user_id = \Drupal::currentUser()->id();
     $full_user = \Drupal\user\Entity\User::load($user_id);
     $user_is_admin = $full_user->hasRole('administrator') || $user_id == 1;
-    
+
     $membership_manager = \Drupal::service('og.membership_manager');
     $user_memberships = $membership_manager->getMemberships($user_id);
 
@@ -151,6 +153,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
       }
 
       foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
+        if ($entity_id == '_none') continue;
 
         if (!in_array($entity_id, $user_akteure)) {
           unset($form['og_audience']['widget']['#options'][$entity_id]);
@@ -158,7 +161,8 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
       }
     }
 
-    array_unshift($form['og_audience']['widget']['#options'], '-- Private*r Veranstalter*in --');
+    $form['og_audience']['widget']['#options']['_none'] = '-- Private*r Veranstalter*in --';
+    // array_unshift($form['og_audience']['widget']['#options'], '-- Private*r Veranstalter*in --');
 
     if (in_array($form_id, ['node_le_event_form'])) {
       // Add(!) event form
@@ -205,7 +209,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 /**
  * Dynamically set the select options of $field_{le_entity_type}_kategorie_typ & - _subtyp based on user input.
  * ("Select one main category; select multiple second categories which are children of that main category")
- * 
+ *
  * @deprecated Kategorie-field was turned into multiple-select and is now managed via dedicated "categories-select.js".
  * THERE IS NOT "SUBTYP"-FIELD ANYMORE!!!
  */

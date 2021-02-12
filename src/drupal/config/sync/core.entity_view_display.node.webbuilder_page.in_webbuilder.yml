@@ -19,7 +19,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - link
-    - media
     - options
     - text
     - user
@@ -38,13 +37,13 @@ content:
     third_party_settings: {  }
     region: content
   field_header_image:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     weight: 3
     region: content
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
   field_navigation:
     type: list_key

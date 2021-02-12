@@ -1,6 +1,6 @@
 uuid: 7c714967-304d-4a2b-8f7c-cef18f22fb7c
 langcode: de
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -8,7 +8,7 @@ dependencies:
     - leipzigerEckenWebbuilder
 id: leipzigerEckenWebbuilder_brandingderwebsite
 theme: leipzigerEckenWebbuilder
-region: header
+region: content
 weight: 0
 provider: null
 plugin: system_branding_block

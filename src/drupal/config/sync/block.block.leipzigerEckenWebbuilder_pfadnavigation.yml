@@ -1,6 +1,6 @@
 uuid: 05cb36a3-1cd6-4cd3-9b30-6f6df896585f
 langcode: de
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -8,7 +8,7 @@ dependencies:
     - leipzigerEckenWebbuilder
 id: leipzigerEckenWebbuilder_pfadnavigation
 theme: leipzigerEckenWebbuilder
-region: header
+region: content
 weight: 0
 provider: null
 plugin: system_breadcrumb_block

@@ -1,6 +1,6 @@
 uuid: 3bc92e45-4f47-4f46-84e9-e2c634866873
 langcode: de
-status: true
+status: false
 dependencies:
   theme:
     - leipzigerEckenWebbuilder

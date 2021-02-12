@@ -1,6 +1,10 @@
-{{ include('@leipzigerEckenWebbuilder/partials/layout/navigation_default.html.twig') }}
-{{ include('@leipzigerEckenWebbuilder/partials/layout/header_default.html.twig') }}
-
+<header>
+  {{ include('@leipzigerEckenWebbuilder/partials/layout/navigation_default.html.twig') }}
+  {{ include('@leipzigerEckenWebbuilder/partials/layout/header_default.html.twig') }}
+  {{ drupal_block('system_messages_block') }}
+  {{ drupal_block('local_tasks_block') }}
+  {{ drupal_block('local_actions_block') }}
+</header>
 <main id="main">
   {{ content.field_contents }}
 </main>

@@ -4,7 +4,7 @@ webbuilder:
       assets/css/webbuilder.css: {}
   js:
     assets/stimulus/stimulus.umd.js: {}
-    assets/turbo/dist/turbo.es2017-umd.js: {}
+    # assets/turbo/dist/turbo.es2017-umd.js: {}
     assets/js/webbuilder.js: {}
 
 Cormorant Garamond:

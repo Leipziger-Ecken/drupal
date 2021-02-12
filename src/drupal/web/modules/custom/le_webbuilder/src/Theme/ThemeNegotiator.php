@@ -101,7 +101,10 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
       in_array($routeName, ['entity.node.canonical', 'entity.node.preview']) &&
       in_array(
         $node->getType(),
-        ['webbuilder', 'webbuilder_page', 'webbuilder_preset']
+        [
+          'webbuilder', 'webbuilder_page', 'webbuilder_preset',
+          'blog_article', 'project', 'partner', 'sponsor',
+        ]
       )
     ) {
       return 'leipzigerEckenWebbuilder';

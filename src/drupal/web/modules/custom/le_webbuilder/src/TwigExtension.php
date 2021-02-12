@@ -22,6 +22,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('color_rgb_to_hsl', [$this, 'colorRgbToHsl']),
       new \Twig_SimpleFunction('color_hex_to_rgb', [$this, 'colorHexToRgb']),
       new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
+      new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
     ];
   }
 
@@ -118,6 +119,17 @@ class TwigExtension extends \Twig_Extension
           return $frontpage->toUrl()->toString();
         }
       }
+    }
+
+    return null;
+  }
+
+  public function webbuilderAkteurId($webbuilder_id)
+  {
+    $webbuilder = $this->getNodeById($webbuilder_id);
+
+    if (isset($webbuilder->og_audience[0])) {
+      return $webbuilder->og_audience[0]->target_id;
     }
 
     return null;
