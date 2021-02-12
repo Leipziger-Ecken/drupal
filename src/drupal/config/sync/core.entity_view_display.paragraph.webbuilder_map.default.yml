@@ -4,13 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webbuilder_map.field_body
-    - field.field.paragraph.webbuilder_map.field_center_lat_lon
     - field.field.paragraph.webbuilder_map.field_heading
-    - field.field.paragraph.webbuilder_map.field_zoom
+    - field.field.paragraph.webbuilder_map.field_map
     - paragraphs.paragraphs_type.webbuilder_map
   module:
     - leaflet
-    - options
     - text
 id: paragraph.webbuilder_map.default
 targetEntityType: paragraph
@@ -24,15 +22,24 @@ content:
     third_party_settings: {  }
     type: text_default
     region: content
-  field_center_lat_lon:
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_map:
     weight: 2
     label: hidden
     settings:
       multiple_map: false
       popup_content: ''
-      leaflet_map: 'OSM Mapnik'
+      leaflet_map: osm-neighbourhood
       height: 400
       height_unit: px
+      hide_empty_map: true
       fullscreen_control: true
       gesture_handling: true
       reset_map:
@@ -42,9 +49,9 @@ content:
         center:
           lat: !!float 0
           lon: !!float 0
-        zoom: 12
+        zoom: 14
         minZoom: 1
-        maxZoom: 19
+        maxZoom: 18
         zoomFiner: 0
         force: false
       weight: ''
@@ -87,27 +94,11 @@ content:
           popup: false
         control: false
       popup: false
-      hide_empty_map: false
       disable_wheel: false
       leaflet_markercluster:
         control: false
         options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds": false}'
     third_party_settings: {  }
     type: leaflet_formatter_default
-    region: content
-  field_heading:
-    weight: 0
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
-  field_zoom:
-    weight: 3
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: list_key
     region: content
 hidden: {  }

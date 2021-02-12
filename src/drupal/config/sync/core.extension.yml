@@ -41,6 +41,7 @@ module:
   geocoder_geofield: 0
   geofield: 0
   geofield_map: 0
+  geofield_map_extras: 0
   gin_login: 0
   gin_permissions: 0
   gin_toolbar: 0

@@ -1,12 +1,12 @@
-uuid: 9db37811-d5bb-4a41-9465-7be7960b1747
+uuid: 005e161b-f254-491c-a856-651eeb2ea60f
 langcode: de
 status: true
 dependencies:
   module:
     - geofield
     - paragraphs
-id: paragraph.field_center_lat_lon
-field_name: field_center_lat_lon
+id: paragraph.field_map
+field_name: field_map
 entity_type: paragraph
 type: geofield
 settings:

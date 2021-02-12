@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webbuilder_map.field_body
-    - field.field.paragraph.webbuilder_map.field_center_lat_lon
     - field.field.paragraph.webbuilder_map.field_heading
-    - field.field.paragraph.webbuilder_map.field_zoom
+    - field.field.paragraph.webbuilder_map.field_map
     - paragraphs.paragraphs_type.webbuilder_map
   module:
-    - leaflet
+    - geofield_map
     - text
 id: paragraph.webbuilder_map.default
 targetEntityType: paragraph
@@ -24,60 +23,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_center_lat_lon:
-    weight: 3
-    settings:
-      map:
-        leaflet_map: 'OSM Mapnik'
-        height: '400'
-        auto_center: '1'
-        map_position:
-          center:
-            lat: '0'
-            lon: '0'
-          zoom: '14'
-          minZoom: '1'
-          maxZoom: '18'
-          zoomFiner: '0'
-          force: 0
-        scroll_zoom_enabled: '1'
-        fullscreen_control: '1'
-        locate: 0
-      toolbar:
-        position: topright
-        marker: defaultMarker
-        drawPolyline: 0
-        drawRectangle: 0
-        drawPolygon: 0
-        drawCircle: false
-        editMode: 0
-        dragMode: 0
-        cutPolygon: 0
-        removalMode: 0
-      reset_map:
-        position: topright
-        control: 0
-      path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2","radius":"6"}'
-      geocoder:
-        control: '1'
-        settings:
-          position: topright
-          input_size: '25'
-          providers:
-            mapbox:
-              checked: '1'
-              weight: '0'
-          min_terms: '4'
-          delay: '800'
-          zoom: '16'
-          options: ''
-          popup: 0
-      input:
-        show: 0
-        readonly: 0
-    third_party_settings: {  }
-    type: leaflet_widget_default
-    region: content
   field_heading:
     weight: 0
     settings:
@@ -86,15 +31,53 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_zoom:
+  field_map:
     weight: 2
-    settings: {  }
+    settings:
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            mapbox:
+              checked: true
+              weight: 0
+          min_terms: 4
+          delay: 800
+          options: ''
+      map_google_places:
+        places_additional_options: ''
+        places_control: false
+      map_library: leaflet
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_dimensions:
+        width: 100%
+        height: 450px
+      zoom:
+        start: 14
+        focus: 14
+        min: 1
+        max: 18
+      click_to_find_marker: true
+      click_to_place_marker: true
+      geoaddress_field:
+        field: '0'
+        disabled: true
+        hidden: false
+      html5_geolocation: true
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
+      map_type_selector: false
+      hide_coordinates: false
+      map_google_api_key: ''
+      zoom_level: 5
     third_party_settings: {  }
-    type: options_select
+    type: geofield_map
     region: content
   status:
     type: boolean_checkbox
-    weight: 4
+    weight: 3
     region: content
     settings:
       display_label: true

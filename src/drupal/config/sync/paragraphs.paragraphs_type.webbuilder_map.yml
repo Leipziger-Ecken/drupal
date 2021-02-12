@@ -6,5 +6,5 @@ id: webbuilder_map
 label: Karte
 icon_uuid: null
 icon_default: null
-description: 'Eine Karte mit Ortsmarkierungen.'
+description: 'Eine Karte mit einer Ortsmarkierung.'
 behavior_plugins: {  }
