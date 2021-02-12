@@ -84,13 +84,35 @@ display:
           summary: ''
           description: ''
           columns:
+            media_bulk_form: media_bulk_form
+            thumbnail__target_id: thumbnail__target_id
+            field_media_remote_image: thumbnail__target_id
             name: name
             bundle: bundle
-            changed: changed
             uid: uid
             status: status
-            thumbnail__target_id: thumbnail__target_id
+            changed: changed
+            operations: operations
           info:
+            media_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            thumbnail__target_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_media_remote_image:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             name:
               sortable: true
               default_sort_order: asc
@@ -101,13 +123,6 @@ display:
             bundle:
               sortable: true
               default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            changed:
-              sortable: true
-              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false
@@ -126,9 +141,14 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            thumbnail__target_id:
-              sortable: false
-              default_sort_order: asc
+            changed:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
               align: ''
               separator: ''
               empty_column: false
@@ -954,7 +974,9 @@ display:
     display_title: Media
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        simple_sitemap_display_extender:
+          variants: {  }
       path: admin/content/media
       menu:
         type: tab

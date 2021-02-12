@@ -1,5 +1,8 @@
-<h1>Default</h1>
-<figure class="w-100 h-64 bg-center bg-no-repeat bg-contain" style="background-image: var(--logo);"></figure>
-{{ include('@leipzigerEckenWebbuilder/partials/_colors.html.twig') }}
-{{ include('@leipzigerEckenWebbuilder/partials/_fonts.html.twig') }}
-{{ content }}
+{{ include('@leipzigerEckenWebbuilder/partials/layout/navigation_default.html.twig') }}
+{{ include('@leipzigerEckenWebbuilder/partials/layout/header_default.html.twig') }}
+
+<main id="main">
+  {{ content.field_contents }}
+</main>
+
+{{ include('@leipzigerEckenWebbuilder/partials/layout/footer_default.html.twig') }}

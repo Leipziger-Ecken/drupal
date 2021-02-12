@@ -78,7 +78,7 @@
 
 {# Display first page #}
 {% if frontpage_id %}
-<div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: {{ font_heading }}; --font-body: {{ font_body }}; --logo: url('{{ logo_url }}')">
+<div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: {{ font_heading }}; --font-body: {{ font_body }};')">
   {{ drupal_entity('node', frontpage_id, 'in_webbuilder') }}
 </div>
 {% endif %}

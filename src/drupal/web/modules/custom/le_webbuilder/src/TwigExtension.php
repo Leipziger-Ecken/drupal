@@ -21,6 +21,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('color_hex_to_hsl', [$this, 'colorHexToHsl']),
       new \Twig_SimpleFunction('color_rgb_to_hsl', [$this, 'colorRgbToHsl']),
       new \Twig_SimpleFunction('color_hex_to_rgb', [$this, 'colorHexToRgb']),
+      new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
     ];
   }
 
@@ -99,5 +100,26 @@ class TwigExtension extends \Twig_Extension
   {
     $rgb = $this->colorHexToRgb($hex);
     return $this->colorRgbToHsl($rgb[0], $rgb[1], $rgb[2]);
+  }
+
+  protected function getNodeById($node_id)
+  {
+    return \Drupal::entityManager()->getStorage('node')->load($node_id);
+  }
+
+  public function webbuilderUrl($webbuilder_id, $url)
+  {
+    $webbuilder = $this->getNodeById($webbuilder_id);
+    if ($url === '<front>') {
+      if (isset($webbuilder->field_frontpage[0])) {
+        $frontpage_id = $webbuilder->field_frontpage[0]->target_id;
+        $frontpage = $this->getNodeById($frontpage_id);
+        if ($frontpage) {
+          return $frontpage->toUrl()->toString();
+        }
+      }
+    }
+
+    return null;
   }
 }

@@ -21,11 +21,11 @@ content:
     label: hidden
     settings:
       trim_length: '80'
+      width: '220'
       url_only: ''
       url_plain: ''
       rel: 0
       target: 0
-      width: '100'
     third_party_settings: {  }
 hidden:
   created: true

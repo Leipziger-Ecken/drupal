@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.media_library
+    - field.storage.media.field_media_remote_image
     - image.style.media_library
   enforced:
     module:
       - media_library
   module:
+    - le_webbuilder
     - media
     - media_library
     - svg_image
@@ -481,7 +483,20 @@ display:
         - 'url.query_args:sort_by'
         - user
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.media.audio.default'
+        - 'config:core.entity_view_display.media.audio.media_library'
+        - 'config:core.entity_view_display.media.document.default'
+        - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.image.default'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.remote_image.default'
+        - 'config:core.entity_view_display.media.remote_video.default'
+        - 'config:core.entity_view_display.media.remote_video.media_library'
+        - 'config:core.entity_view_display.media.unsplash_image.default'
+        - 'config:core.entity_view_display.media.unsplash_image.media_library'
+        - 'config:core.entity_view_display.media.video.default'
+        - 'config:core.entity_view_display.media.video.media_library'
   page:
     display_plugin: page
     id: page
@@ -778,7 +793,20 @@ display:
         - 'url.query_args:sort_by'
         - user
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.media.audio.default'
+        - 'config:core.entity_view_display.media.audio.media_library'
+        - 'config:core.entity_view_display.media.document.default'
+        - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.image.default'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.remote_image.default'
+        - 'config:core.entity_view_display.media.remote_video.default'
+        - 'config:core.entity_view_display.media.remote_video.media_library'
+        - 'config:core.entity_view_display.media.unsplash_image.default'
+        - 'config:core.entity_view_display.media.unsplash_image.media_library'
+        - 'config:core.entity_view_display.media.video.default'
+        - 'config:core.entity_view_display.media.video.media_library'
   widget:
     display_plugin: page
     id: widget
@@ -1098,20 +1126,91 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:core.entity_view_display.media.audio.default'
+        - 'config:core.entity_view_display.media.audio.media_library'
+        - 'config:core.entity_view_display.media.document.default'
+        - 'config:core.entity_view_display.media.document.media_library'
+        - 'config:core.entity_view_display.media.image.default'
+        - 'config:core.entity_view_display.media.image.media_library'
+        - 'config:core.entity_view_display.media.remote_image.default'
+        - 'config:core.entity_view_display.media.remote_video.default'
+        - 'config:core.entity_view_display.media.remote_video.media_library'
+        - 'config:core.entity_view_display.media.unsplash_image.default'
+        - 'config:core.entity_view_display.media.unsplash_image.media_library'
+        - 'config:core.entity_view_display.media.video.default'
+        - 'config:core.entity_view_display.media.video.media_library'
   widget_table:
     display_plugin: page
     id: widget_table
     display_title: 'Widget (table)'
     position: 3
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        simple_sitemap_display_extender:
+          variants: {  }
       path: admin/content/media-widget-table
       style:
         type: table
         options:
+          grouping: {  }
           row_class: 'media-library-item media-library-item--table js-media-library-item js-click-to-select'
           default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            media_library_select_form: media_library_select_form
+            thumbnail__target_id: thumbnail__target_id
+            field_media_remote_image: thumbnail__target_id
+            name: name
+            uid: uid
+            changed: changed
+          info:
+            media_library_select_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            thumbnail__target_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_media_remote_image:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            changed:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: '-1'
+          empty_table: false
       defaults:
         style: false
         row: false
@@ -1148,6 +1247,74 @@ display:
           settings:
             image_style: media_library
             image_link: ''
+        field_media_remote_image:
+          id: field_media_remote_image
+          table: media__field_media_remote_image
+          field: field_media_remote_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Externes Bild'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: remote_image_url_thumbnail_formatter
+          settings:
+            trim_length: '80'
+            url_only: ''
+            url_plain: ''
+            rel: 0
+            target: 0
+            width: '100'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         name:
           id: name
           label: Name
@@ -1386,4 +1553,5 @@ display:
         - url.query_args
         - 'url.query_args:sort_by'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.media.field_media_remote_image'

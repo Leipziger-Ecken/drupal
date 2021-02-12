@@ -1,0 +1,21 @@
+{% set header_image = content.field_header_image[0] %}
+{% if header_image %}
+<section class="bg-gray-50 mb-16">
+  <figure class="container mx-auto px-4 sm:px-6 lg:px-8">
+    {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+      image: header_image,
+      class:'w-full h-50-screen object-cover',
+      image_style: 'webbuilder_header',
+      width: 1480,
+    }) }}
+
+    {# Unsplash images always require attribution #}
+    {% if header_image['#media'].field_attribution %}
+    <figcaption class="mt-4 text-gray-500 text-sm leading-6">
+      {# TODO: find a way to correctly render attribution field #}
+      {{ header_image['#media'].field_attribution[0].value|raw }}
+    </figcaption>
+    {% endif %}
+  </figure>
+</section>
+{% endif %}
