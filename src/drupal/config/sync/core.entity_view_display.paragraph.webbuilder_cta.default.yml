@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webbuilder_cta.field_body
+    - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
     - field.field.paragraph.webbuilder_cta.field_primary_button
     - field.field.paragraph.webbuilder_cta.field_secondary_button
     - paragraphs.paragraphs_type.webbuilder_cta
   module:
     - link
+    - options
     - text
 id: paragraph.webbuilder_cta.default
 targetEntityType: paragraph
@@ -22,6 +24,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
+  field_cta_layout:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
     region: content
   field_heading:
     weight: 0
@@ -38,8 +47,8 @@ content:
       trim_length: 80
       url_only: false
       url_plain: false
-      rel: ''
-      target: ''
+      rel: '0'
+      target: '0'
     third_party_settings: {  }
     type: link
     region: content

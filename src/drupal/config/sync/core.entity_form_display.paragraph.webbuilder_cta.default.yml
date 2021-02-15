@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.webbuilder_cta.field_body
+    - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
     - field.field.paragraph.webbuilder_cta.field_primary_button
     - field.field.paragraph.webbuilder_cta.field_secondary_button
@@ -23,6 +24,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_cta_layout:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_heading:
     weight: 0
@@ -50,7 +57,7 @@ content:
     region: content
   status:
     type: boolean_checkbox
-    weight: 4
+    weight: 5
     region: content
     settings:
       display_label: true

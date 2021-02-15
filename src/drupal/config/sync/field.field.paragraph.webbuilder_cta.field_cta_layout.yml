@@ -1,0 +1,23 @@
+uuid: e7ba2c9c-7b76-4f35-b770-5d5a126e2a8b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_layout
+    - paragraphs.paragraphs_type.webbuilder_cta
+  module:
+    - options
+id: paragraph.webbuilder_cta.field_cta_layout
+field_name: field_cta_layout
+entity_type: paragraph
+bundle: webbuilder_cta
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: lg
+default_value_callback: ''
+settings: {  }
+field_type: list_string
