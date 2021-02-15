@@ -40,12 +40,25 @@
 #}
 {% block paragraph %}
 <section class="bg-gray-50">
-  <div class="container pb-24 mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Content goes here -->
-    <!-- Image should be centered vertically and cropped -->
-    <figure>
-      <img class="w-full h-auto m-auto" src="/assets/images/map.png"/>
-    </figure>
+  <div class="container py-24 mx-auto px-4 sm:px-6 lg:px-8">
+    {% if content.field_heading[0] or content.field_body[0] %}
+    <div class="max-w-lg mx-auto mb-8 text-center">
+      {% if content.field_heading[0] %}
+      <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      {% if content.field_body[0] %}
+      <div class="mt-3 text-lg leading-6 text-gray-500 prose">
+        {{ content.field_body }}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="w-full h-auto m-auto">
+      {{ content.field_map }}
+    </div>
   </div>
 </section>
 {% endblock paragraph %}
