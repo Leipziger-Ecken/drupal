@@ -37,8 +37,8 @@ content:
       multiple_map: false
       popup_content: ''
       leaflet_map: osm-neighbourhood
-      height: 400
-      height_unit: px
+      height: 100
+      height_unit: '%'
       hide_empty_map: true
       fullscreen_control: true
       gesture_handling: true
