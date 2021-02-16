@@ -1,10 +1,10 @@
-uuid: afd17440-6d1c-44e9-b8bb-5ba6790942b9
+uuid: 5b3d03b1-ec29-481b-b25e-870773b6f680
 langcode: de
 status: true
 dependencies:
   config:
     - core.date_format.medium
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webbuilder_teaser
     - field.field.node.le_event.field_adresse
     - field.field.node.le_event.field_bezirk
     - field.field.node.le_event.field_geofield
@@ -23,57 +23,72 @@ dependencies:
     - node.type.le_event
   module:
     - date_recur
+    - svg_image
     - text
     - user
 _core:
-  default_config_hash: uV8_O0gBtEVSiZsHksgHhef70e33LMCEbPesTM_EUCk
-id: node.le_event.teaser
+  default_config_hash: SranR5Ezhhmx-F7EeReEqZU2MDf3q1HfccOPfqVIgDI
+id: node.le_event.webbuilder_teaser
 targetEntityType: node
 bundle: le_event
-mode: teaser
+mode: webbuilder_teaser
 content:
-  field_bezirk:
-    type: entity_reference_label
+  field_le_event_beschreibung:
     weight: 2
-    region: content
     label: hidden
     settings:
-      link: true
+      trim_length: 600
     third_party_settings: {  }
-  field_le_event_beschreibung:
-    type: text_default
+    type: text_trimmed
+    region: content
+  field_le_event_image:
     weight: 0
-    region: content
-    label: above
-    settings: {  }
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
     third_party_settings: {  }
-  field_le_event_occurrences:
-    type: date_recur_basic_formatter
-    weight: 1
+    type: image
     region: content
+  field_le_event_occurrences:
+    weight: 3
     label: hidden
     settings:
       format_type: medium
       occurrence_format_type: medium
       same_end_date_format_type: medium
       separator: '-'
-      timezone_override: ''
+      timezone_override: Europe/Berlin
       interpreter: ''
-      show_next: 4
+      show_next: 8
       count_per_item: true
     third_party_settings: {  }
+    type: date_recur_basic_formatter
+    region: content
+  field_main_image:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
 hidden:
   field_adresse: true
+  field_bezirk: true
   field_geofield: true
   field_le_event___eid: true
-  field_le_event_image: true
   field_le_event_is_barrier_free: true
   field_le_event_kategorie_gruppe: true
   field_le_event_kategorie_tags: true
   field_le_event_kategorie_typ: true
   field_le_event_lizenzhinweis: true
   field_le_event_website: true
-  field_main_image: true
   langcode: true
   links: true
   og_audience: true

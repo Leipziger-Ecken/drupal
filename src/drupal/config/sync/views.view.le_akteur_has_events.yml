@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webbuilder_teaser
     - node.type.le_event
   module:
     - datetime
@@ -314,6 +315,7 @@ display:
         relationships: false
         filters: false
         filter_groups: false
+        sorts: false
       style:
         type: default
         options:
@@ -323,7 +325,8 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: teaser
+          relationship: none
+          view_mode: webbuilder_teaser
       header: {  }
       access:
         type: perm
@@ -331,7 +334,7 @@ display:
           perm: 'access content'
       empty: {  }
       pager:
-        type: mini
+        type: full
         options:
           items_per_page: 6
           offset: 0
@@ -340,6 +343,8 @@ display:
           tags:
             previous: Zurück
             next: Weiter
+            first: Anfang
+            last: Ende
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -348,6 +353,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       relationships:
         field_le_event_occurrences_occurrences:
           id: field_le_event_occurrences_occurrences
@@ -386,10 +392,129 @@ display:
             operator_limit_selection: false
             operator_list: {  }
           group: 1
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: offset
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
+        field_le_event_occurrences_end_value:
+          id: field_le_event_occurrences_end_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_end_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: offset
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
+      sorts:
+        sticky:
+          id: sticky
+          table: node_field_data
+          field: sticky
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: ''
+          entity_type: node
+          entity_field: sticky
+          plugin_id: standard
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          granularity: minute
+          plugin_id: datetime
     cache_metadata:
       max-age: -1
       contexts:

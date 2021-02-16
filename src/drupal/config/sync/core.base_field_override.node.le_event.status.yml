@@ -1,16 +1,14 @@
-uuid: 264f74ba-63d6-4946-a659-feec6e532bc4
+uuid: eedef099-db6b-4c68-abfb-5f5a69afd524
 langcode: de
 status: true
 dependencies:
   config:
     - node.type.le_event
-_core:
-  default_config_hash: O6Jb2EgyksteBMFazFTNxx8DE9jB59gUAGzoJsXXgmA
-id: node.le_event.sticky
-field_name: sticky
+id: node.le_event.status
+field_name: status
 entity_type: node
 bundle: le_event
-label: 'Oben in Listen'
+label: Published
 description: ''
 required: false
 translatable: true

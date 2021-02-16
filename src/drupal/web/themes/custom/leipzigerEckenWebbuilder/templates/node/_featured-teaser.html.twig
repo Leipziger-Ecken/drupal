@@ -1,0 +1,131 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: (optional) The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: (optional) Themed creation date field.
+ * - author_name: (optional) Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{% set node_type = node.type[0].target_id %}
+{% set image = content.field_main_image[0] %}
+<article class="relative bg-white overflow-hidden">
+  <div class="relative pt-6 pb-16 sm:pb-24 lg:pb-32">
+    <div class="mx-auto max-w-7xl">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+        <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+          {{ include('@leipzigerEckenWebbuilder/partials/components/badge.html.twig', {
+            type: 'primary',
+            label: node_type == 'le_event' ? content.field_le_event_occurrences,
+          }) }}
+
+          <h2 class="mt-4">
+            <a href="{{ url }}" class="mt-1 text-gray-900 block text-2xl tracking-tight font-extrabold sm:text-3xl xl:text-4xl">
+              {{ label }}
+            </a>
+          </h2>
+          <div class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl prose">
+            {% if node_type == 'le_event' %}
+            {{ content.field_le_event_beschreibung }}
+            {% else %}
+
+            {% endif %}
+          </div>
+          <a href="{{ url }}" class="mt-3 text-base text-gray-900 hover:underline block sm:text-xl lg:text-lg xl:text-xl">
+            Mehr erfahren&thinsp;…
+          </a>
+          {# TODO: only show, if content has call to action
+          <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+            <div class="mt-3">
+              <a href="#" class="mt-3 w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white hover:bg-primary-700 bg-primary shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0">
+                Ticket sichern
+              </a>
+            </div>
+          </div>
+          #}
+        </div>
+        {# Image #}
+        {% if image %}
+        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+          <figure class="relative mx-auto w-full lg:max-w-md">
+            <a href="{{ url }}" class="relative block w-full rounded-lg shadow-lg bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <span class="sr-only">{{ '' }}</span>
+              {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+                class: 'w-full',
+                image: image,
+                width: 610,
+                image_style: 'webbuilder_featured_teaser',
+              }) }}
+            </a>
+            {# Unsplash images always require attribution #}
+            {% if image['#media'].field_attribution %}
+            <figcaption class="mt-4 prose">
+              {# TODO: find a way to correctly render attribution field #}
+              {{ image['#media'].field_attribution[0].value|raw }}
+            </figcaption>
+            {% endif %}
+          </figure>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

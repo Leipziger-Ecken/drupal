@@ -1,0 +1,7 @@
+{% set type = type|default('primary') %}
+{% set typeClasses = {
+  'primary': 'bg-primary-100 text-primary-800',
+} %}
+<span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium {{ typeClasses[type] }} {{ class }}">
+  {{ label }}
+</span>

@@ -68,8 +68,7 @@ if (typeof 'debounce' !== 'function') {
               </a>
               <a target="_blank" href="${result.user.links.html}" class="unsplash-results__item-author-name">
                 ${result.user.name}
-              </a>
-              on Unsplash
+              </a> on Unsplash
             </div>
             <button data-role="add" class="unsplash-results__item-add button button--default">Bild verwenden</button>
           </figcaption>
@@ -125,8 +124,7 @@ if (typeof 'debounce' !== 'function') {
     <p>
       by <a target="_blank" href="${result.user.links.html}">
         ${result.user.name} (${result.user.links.html})
-      </a>
-      on Unsplash
+      </a> on Unsplash
     </p>
     `;
   }

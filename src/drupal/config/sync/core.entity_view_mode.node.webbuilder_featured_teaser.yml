@@ -1,0 +1,10 @@
+uuid: f9330c04-4529-4e55-aa42-c176fe6f7487
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_featured_teaser
+label: 'Webbaukasten Featured Teaser'
+targetEntityType: node
+cache: true

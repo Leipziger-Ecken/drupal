@@ -37,41 +37,10 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
-{% set layout = view.args[1] %}
-{% set filters = view.args[2] %}
-{% set images = view.args[3] %}
-
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title }}
   {{ title_suffix }}
 
-  {% if header %}
-    <header>
-      {{ header }}
-    </header>
-  {% endif %}
-
-  {% if filters %}
-  {{ exposed }}
-  {% endif %}
-  {{ attachment_before }}
-
-  {% if rows -%}
-    {{ rows }}
-  {% elseif empty -%}
-    {{ empty }}
-  {% endif %}
-  {{ pager }}
-
-  {{ attachment_after }}
-  {{ more }}
-
-  {% if footer %}
-    <footer>
-      {{ footer }}
-    </footer>
-  {% endif %}
-
-  {{ feed_icons }}
+  {{ include('@leipzigerEckenWebbuilder/partials/listings/views_listing.html.twig') }}
 </div>

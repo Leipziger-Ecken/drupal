@@ -1,0 +1,15 @@
+uuid: 2d379552-3b13-4e80-9df4-da68ca02715a
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_featured_teaser
+label: 'Webbaukasten: Featured Teaser'
+effects:
+  6fcae7a3-511d-47e4-aac9-04da75290efb:
+    uuid: 6fcae7a3-511d-47e4-aac9-04da75290efb
+    id: image_scale
+    weight: 2
+    data:
+      width: 610
+      height: null
+      upscale: false

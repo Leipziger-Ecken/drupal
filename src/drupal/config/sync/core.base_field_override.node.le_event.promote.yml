@@ -1,16 +1,14 @@
-uuid: 264f74ba-63d6-4946-a659-feec6e532bc4
+uuid: 7bdff02f-c47c-450b-ad95-8006d8ca1937
 langcode: de
 status: true
 dependencies:
   config:
     - node.type.le_event
-_core:
-  default_config_hash: O6Jb2EgyksteBMFazFTNxx8DE9jB59gUAGzoJsXXgmA
-id: node.le_event.sticky
-field_name: sticky
+id: node.le_event.promote
+field_name: promote
 entity_type: node
 bundle: le_event
-label: 'Oben in Listen'
+label: 'Auf der Startseite anzeigen'
 description: ''
 required: false
 translatable: true
