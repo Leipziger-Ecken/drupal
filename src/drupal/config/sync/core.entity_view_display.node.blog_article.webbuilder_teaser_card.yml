@@ -1,43 +1,49 @@
-uuid: c8d045f8-4859-4004-9a9e-032f5a978eb6
+uuid: 5ed141f4-bd26-4845-b00c-3dac63833a77
 langcode: de
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.webbuilder_teaser_card
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
   module:
-    - media
     - text
     - user
-id: node.blog_article.default
+id: node.blog_article.webbuilder_teaser_card
 targetEntityType: node
 bundle: blog_article
-mode: default
+mode: webbuilder_teaser_card
 content:
   body:
     label: hidden
-    type: text_default
+    type: text_summary_or_trimmed
     weight: 2
-    settings: {  }
+    settings:
+      trim_length: 600
     third_party_settings: {  }
     region: content
   field_main_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: media_thumbnail
+    type: entity_reference_entity_view
     region: content
-  links:
-    weight: 0
+  published_at:
+    type: timestamp
+    weight: 1
     region: content
-    settings: {  }
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
     third_party_settings: {  }
 hidden:
   langcode: true
+  links: true
   og_audience: true
-  published_at: true

@@ -7,10 +7,8 @@ dependencies:
     - field.field.node.sponsor.field_logo
     - field.field.node.sponsor.field_website
     - field.field.node.sponsor.og_audience
-    - image.style.medium
     - node.type.sponsor
   module:
-    - media
     - user
 id: node.sponsor.teaser
 targetEntityType: node
@@ -18,27 +16,24 @@ bundle: sponsor
 mode: teaser
 content:
   field_logo:
-    type: media_thumbnail
-    weight: 1
+    type: entity_reference_entity_view
+    weight: 0
     region: content
     label: hidden
     settings:
-      image_style: medium
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
   field_website:
     type: string
-    weight: 2
+    weight: 1
     region: content
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  links:
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   langcode: true
+  links: true
   og_audience: true
+  published_at: true

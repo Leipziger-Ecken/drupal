@@ -5,6 +5,6 @@ dependencies:
   module:
     - node
 id: node.webbuilder_featured_teaser
-label: 'Webbaukasten Featured Teaser'
+label: 'Webbaukasten: Featured Teaser'
 targetEntityType: node
 cache: true

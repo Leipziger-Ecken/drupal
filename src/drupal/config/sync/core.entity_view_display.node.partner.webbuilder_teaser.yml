@@ -1,9 +1,9 @@
-uuid: 71f9053d-fdb9-4117-80d5-41deef8f3496
+uuid: 00dc468d-156c-4a80-80d6-1bace7acf437
 langcode: de
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.webbuilder_teaser
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
     - field.field.node.partner.og_audience
@@ -11,28 +11,28 @@ dependencies:
   module:
     - text
     - user
-id: node.partner.teaser
+id: node.partner.webbuilder_teaser
 targetEntityType: node
 bundle: partner
-mode: teaser
+mode: webbuilder_teaser
 content:
   field_description:
-    type: text_trimmed
     weight: 1
-    region: content
     label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
-  field_main_image:
-    type: entity_reference_entity_view
-    weight: 0
+    type: text_trimmed
     region: content
+  field_main_image:
+    weight: 0
     label: hidden
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
 hidden:
   langcode: true
   links: true
