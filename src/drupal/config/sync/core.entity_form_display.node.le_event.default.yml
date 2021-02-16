@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.le_event.field_le_event_lizenzhinweis
     - field.field.node.le_event.field_le_event_occurrences
     - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.field_main_image
     - field.field.node.le_event.og_audience
     - image.style.thumbnail
     - node.type.le_event
@@ -24,6 +25,7 @@ dependencies:
     - date_recur_modular
     - field_group
     - link
+    - media_library
     - publication_date
     - select2
     - select2_multicheck
@@ -36,7 +38,7 @@ third_party_settings:
         - langcode
         - published_at
       parent_name: ''
-      weight: 8
+      weight: 9
       format_type: details_sidebar
       region: content
       format_settings:
@@ -57,7 +59,7 @@ third_party_settings:
         - field_le_event_kategorie_tags
         - field_le_event_is_barrier_free
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: details
       region: content
       format_settings:
@@ -91,7 +93,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_beschreibung:
-    weight: 4
+    weight: 5
     settings:
       rows: 6
       placeholder: ''
@@ -137,14 +139,14 @@ content:
     type: select2_multicheck
     region: content
   field_le_event_lizenzhinweis:
-    weight: 7
+    weight: 8
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_occurrences:
-    weight: 5
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: date_recur_modular_alpha
@@ -156,6 +158,15 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_main_image:
+    weight: 4
+    settings:
+      media_types:
+        - image
+        - unsplash_image
+    third_party_settings: {  }
+    type: media_library_widget
     region: content
   langcode:
     type: language_select

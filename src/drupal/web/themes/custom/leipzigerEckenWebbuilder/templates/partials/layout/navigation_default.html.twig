@@ -22,7 +22,7 @@
       </button>
     </div>
     <nav class="hidden md:flex space-x-10">
-      {{ drupal_view('webbuilder_pages', 'navigation', webbuilder_id, 'main') }}
+      {{ drupal_view('webbuilder_pages', 'navigation_main', webbuilder_id) }}
       {#
       <a href="/blog_index_01.html" class="text-base font-medium text-gray-500 hover:text-gray-900">Aktuelles</a>
       <a href="/events_index_01.html" class="text-base font-medium text-gray-500 hover:text-gray-900">Events</a>
@@ -125,7 +125,7 @@
         </div>
         <div class="mt-6">
           <nav class="grid grid-cols-1 gap-7">
-            {{ drupal_view('webbuilder_pages', 'navigation_mobile', webbuilder_id, 'main') }}
+            {{ drupal_view('webbuilder_pages', 'navigation_mobile', webbuilder_id) }}
             {#
             <a href="#" class="-m-3 p-3 rounded-lg hover:bg-gray-50">
               <div class="ml-4 text-base font-medium text-gray-900">

@@ -2,6 +2,8 @@
 
 namespace Drupal\le_webbuilder;
 
+use Drupal\views\Views;
+
 /**
  * Twig extension with some useful functions and filters.
  *
@@ -23,6 +25,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('color_hex_to_rgb', [$this, 'colorHexToRgb']),
       new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
       new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
+      new \Twig_SimpleFunction('webbuilder_view', [$this, 'webbuilderView']),
     ];
   }
 
@@ -133,5 +136,33 @@ class TwigExtension extends \Twig_Extension
     }
 
     return null;
+  }
+
+  public function webbuilderView($view_name, $display_name, array $options = [], array $arguments = [])
+  {
+    $options = array_merge([
+      'pagination' => false,
+      'filters' => false,
+      'images' => false,
+      'per_page' => null,
+      'layout' => null,
+    ], $options);
+
+    $arguments[] = $options['layout'];
+    $arguments[] = $options['filters'];
+    $arguments[] = $options['images'];
+
+    $view = Views::getView($view_name);
+    $view->setDisplay($display_name);
+
+    if ($options['per_page']) {
+      $view->setItemsPerPage(intval($options['per_page']));
+    }
+    if (!$options['pagination']) {
+      $view->pager = null;
+    }
+    $view->setArguments($arguments);
+
+    return $view->render();
   }
 }
