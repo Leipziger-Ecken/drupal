@@ -1,10 +1,5 @@
 <?php
 
-function leipzigerEckenWebbuilder_preprocess_page($variables)
-{
-
-}
-
 /**
  * @param array $suggestions
  * @param array $variables

@@ -2,12 +2,13 @@
 
 use Drupal\path_alias\Entity\PathAlias;
 use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\views\Views;
 
 function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if ($form_id == 'node_webbuilder_page_form') {
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
-
     if ($webbuilder_id) {
       $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
       if ($webbuilder) {
@@ -16,6 +17,37 @@ function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_
         $form['og_audience']['widget']['#default_value'] = $akteur_id;
         $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
         $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+      }
+    }
+  }
+
+  if ($form_id === 'node_webbuilder_page_edit_form') {
+    $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
+    if ($webbuilder_id) {
+      // dd($form['field_parent']['widget']);
+      $form['field_parent']['widget']['#selection_settings']['view']['arguments'][0] = $webbuilder_id;
+
+      // load the page tree
+      $view = Views::getView('webbuilder_pages');
+      $view->setDisplay('entity_reference_page_tree');
+      $view->setArguments([$webbuilder_id]);
+      $result = $view->render();
+      foreach($result as $nid => $row) {
+        if ($row['#row']->_entity) {
+          $title = $row['#row']->_entity->title[0]->value;
+          $_row = $row;
+
+          while($_row !== null) {
+            if (isset($_row['#row']->_entity->field_parent[0])) {
+              $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+              $title = '- ' . $title;
+              $_row = $result[$parent_id];
+            } else {
+              $_row = null;
+            }
+          }
+          $form['field_parent']['widget']['#options'][$nid] = $title;
+        }
       }
     }
   }

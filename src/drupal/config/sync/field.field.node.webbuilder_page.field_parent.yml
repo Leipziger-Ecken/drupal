@@ -16,10 +16,12 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: views_tree
+  handler: 'default:node'
   handler_settings:
-    view:
-      view_name: webbuilder_pages
-      display_name: entity_reference_page_tree
-      arguments: {  }
+    target_bundles:
+      webbuilder_page: webbuilder_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference
