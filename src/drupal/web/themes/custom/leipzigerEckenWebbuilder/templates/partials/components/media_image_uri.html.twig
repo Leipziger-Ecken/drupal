@@ -1,7 +1,9 @@
 {% set uri = null %}
 {% if image['#media'].field_media_remote_image %}
   {% set uri = image['#media'].field_media_remote_image[0].uri | replace({'.jpg': '&w=' ~ width}) %}
-{% else %}
+{% elseif image['#media'] %}
   {% set uri = image['#media'] | file_uri | image_style(image_style) %}
+{% else %}
+  {% set uri = image['#item'] | file_uri | image_style(image_style) %}
 {% endif %}
 {{ uri }}
