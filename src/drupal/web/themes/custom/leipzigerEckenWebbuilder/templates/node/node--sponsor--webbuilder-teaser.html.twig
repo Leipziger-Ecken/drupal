@@ -1,6 +1,6 @@
 {% set image = content.field_logo[0] %}
 {% set website_url = content.field_website[0]['#context'].value %}
-<a href="{{ website_url }}" target="_blank" title="{{ label[0]['#context'].value }}">
+<a class="block" href="{{ website_url }}" target="_blank" title="{{ label[0]['#context'].value }}">
   {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
     class: 'max-h-12',
     image: image,
