@@ -3,7 +3,7 @@
 <article>
   {% if image %}
   <figure class="relative mx-auto w-full lg:max-w-md mb-8">
-    <a href="{{ url }}" class="relative block w-full rounded-lg shadow-lg bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    <a href="{{ url }}" class="relative block w-full rounded-lg shadow-lg bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
       <span class="sr-only">{{ '' }}</span>
       {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
         class: 'w-full h-48 sm:h-64 object-cover',
@@ -12,19 +12,12 @@
         image_style: 'webbuilder_teaser',
       }) }}
     </a>
-    {# Unsplash images always require attribution #}
-    {% if image['#media'].field_attribution %}
-    <figcaption class="mt-4 prose">
-      {# TODO: find a way to correctly render attribution field #}
-      {{ image['#media'].field_attribution[0].value|raw }}
-    </figcaption>
-    {% endif %}
   </figure>
   {% endif %}
   <div>
     {{ include('@leipzigerEckenWebbuilder/partials/components/badge.html.twig', {
       type: 'primary',
-      label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at,
+      label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(content.created_at),
     }) }}
   </div>
   <a href="{{ url }}" class="block mt-4">
@@ -35,7 +28,7 @@
       {% if node_type == 'le_event' %}
       {{ content.field_le_event_beschreibung }}
       {% else %}
-
+      {{ content.field_body | default(content.body) }}
       {% endif %}
     </div>
   </a>

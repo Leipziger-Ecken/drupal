@@ -1,12 +1,5 @@
-{%
-  set classes = [
-    dom_id ? 'js-view-dom-id-' ~ dom_id,
-  ]
-%}
-<div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title }}
-  {{ title_suffix }}
+{{ title_prefix }}
+{{ title }}
+{{ title_suffix }}
 
-  {{ include('@leipzigerEckenWebbuilder/views/_views_listing.html.twig') }}
-</div>
+{{ include('@leipzigerEckenWebbuilder/views/_views_listing.html.twig') }}

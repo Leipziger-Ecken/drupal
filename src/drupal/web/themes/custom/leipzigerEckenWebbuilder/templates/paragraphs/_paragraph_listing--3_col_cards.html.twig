@@ -1,9 +1,6 @@
 <section class="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8">
-    <div class="absolute inset-0">
-      <div class="bg-white h-1/3 sm:h-2/3"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto">
+  <div class="relative bg-white pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8">
+    <div class="relative max-w-7xl mx-auto divide-y-2 divide-gray-200">
       <div class="text-center">
         {% if content.field_heading[0] %}
         <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
@@ -15,14 +12,14 @@
           {{ content.field_body }}
         </div>
         {% endif %}
-
-        {# exposed filters #}
-        {% if has_filters %}
-        <div class="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
-          {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
-        </div>
-        {% endif %}
       </div>
+
+      {# exposed filters #}
+      {% if has_filters %}
+      <div class="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
+        {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
+      </div>
+      {% endif %}
 
       {# results #}
       {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images }, [akteur_id]) }}
