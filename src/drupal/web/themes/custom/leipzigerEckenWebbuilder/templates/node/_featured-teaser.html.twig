@@ -19,7 +19,7 @@
             {% if node_type == 'le_event' %}
             {{ content.field_le_event_beschreibung }}
             {% else %}
-            {{ content.field_body | default(content.body) }}
+            {{ content.field_body | default(content.field_description) | default(content.body) }}
             {% endif %}
           </div>
           <a href="{{ url }}" class="mt-3 text-base text-gray-900 hover:underline block sm:text-xl lg:text-lg xl:text-xl">
