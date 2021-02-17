@@ -7,7 +7,7 @@
         <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
           {{ include('@leipzigerEckenWebbuilder/partials/components/badge.html.twig', {
             type: 'primary',
-            label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(content.created_at),
+            label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at),
           }) }}
 
           <h2 class="mt-4">

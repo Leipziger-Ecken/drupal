@@ -14,7 +14,7 @@
   <div class="flex-1 bg-white p-6 flex flex-col justify-between">
     <div class="flex-1">
       <div class="text-sm font-medium text-primary-600">
-        {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(content.created_at) }}
+        {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
       </div>
       <a href="{{ url }}" class="block mt-2">
         <h3 class="text-xl font-semibold text-gray-900">

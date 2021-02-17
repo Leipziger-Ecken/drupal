@@ -4,7 +4,6 @@
   {% if image %}
   <figure class="relative mx-auto w-full lg:max-w-md mb-8">
     <a href="{{ url }}" class="relative block w-full rounded-lg shadow-lg bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-      <span class="sr-only">{{ '' }}</span>
       {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
         class: 'w-full h-48 sm:h-64 object-cover',
         image: image,
@@ -17,7 +16,7 @@
   <div>
     {{ include('@leipzigerEckenWebbuilder/partials/components/badge.html.twig', {
       type: 'primary',
-      label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(content.created_at),
+      label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at),
     }) }}
   </div>
   <a href="{{ url }}" class="block mt-4">

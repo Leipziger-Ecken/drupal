@@ -33,9 +33,18 @@ content:
       link: false
     third_party_settings: {  }
     region: content
+  published_at:
+    type: timestamp
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
 hidden:
   body: true
   langcode: true
   links: true
   og_audience: true
-  published_at: true
