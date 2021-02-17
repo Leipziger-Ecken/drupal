@@ -22,7 +22,7 @@
  */
 #}
 {% import _self as views_tree %}
-{{ dd(rows[0]['#rows']) }}
+
 {{ views_tree.tree(items.leaves, attributes, list_type) }}
 
 {% macro tree(items, attributes, list_type) %}
