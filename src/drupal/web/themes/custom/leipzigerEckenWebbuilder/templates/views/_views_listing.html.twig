@@ -1,0 +1,8 @@
+{% set layout = view.args[1] %}
+{% set filters = view.args[2] %}
+{% set images = view.args[3] %}
+{% if filters %}
+{{ exposed }}
+{% else %}
+{{ include('@leipzigerEckenWebbuilder/views/_views_listing--' ~ layout ~ '--results.html.twig') }}
+{% endif %}

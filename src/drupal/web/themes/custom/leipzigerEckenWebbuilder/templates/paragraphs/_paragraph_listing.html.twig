@@ -1,0 +1,11 @@
+{% set view_display = view_display|default('webbuilder') %}
+{% set layout = content.field_listing_layout[0]['#markup'] %}
+{% set per_page = content.field_per_page[0]['#markup'] %}
+{% set use_images = content.field_use_images[0]['#markup'] == 1 %}
+{% set has_pagination = content.field_has_pagination[0]['#markup'] == 1 %}
+{% set has_filters = content.field_has_filters[0]['#markup'] == 1 %}
+{% set node_id = paragraph.parent_id[0].value %}
+{% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
+{% block paragraph %}
+{{ include('@leipzigerEckenWebbuilder/paragraphs/_paragraph_listing--' ~ layout ~ '.html.twig') }}
+{% endblock paragraph %}
