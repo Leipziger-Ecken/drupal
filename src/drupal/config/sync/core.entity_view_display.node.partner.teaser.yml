@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - node.type.partner
   module:
@@ -34,6 +36,8 @@ content:
       link: false
     third_party_settings: {  }
 hidden:
+  field_akteur: true
+  field_website: true
   langcode: true
   links: true
   og_audience: true

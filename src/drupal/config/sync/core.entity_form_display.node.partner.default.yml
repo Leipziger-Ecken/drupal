@@ -3,13 +3,16 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - node.type.partner
   module:
     - field_group
     - media_library
+    - select2
     - text
 third_party_settings:
   field_group:
@@ -17,7 +20,7 @@ third_party_settings:
       children:
         - langcode
       parent_name: ''
-      weight: 5
+      weight: 8
       format_type: details_sidebar
       region: content
       format_settings:
@@ -28,13 +31,39 @@ third_party_settings:
         required_fields: true
         weight: 0
       label: Einstellungen
+    group_no_atkeur:
+      children:
+        - field_main_image
+        - field_description
+        - field_website
+      parent_name: ''
+      weight: 4
+      format_type: details
+      region: content
+      format_settings:
+        description: 'Tragen Sie hier die Informationen zum/zur Partner*in hein, falls es sich nicht um eine(n) Akteur*in der Leipziger-Ecken handelt.'
+        required_fields: true
+        id: no-akteur
+        classes: ''
+        open: false
+      label: 'Andere(r) Partner*in'
 id: node.partner.default
 targetEntityType: node
 bundle: partner
 mode: default
 content:
+  field_akteur:
+    weight: 3
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
   field_description:
-    weight: 4
+    weight: 6
     settings:
       rows: 5
       placeholder: ''
@@ -42,11 +71,19 @@ content:
     type: text_textarea
     region: content
   field_main_image:
-    weight: 3
+    weight: 5
     settings:
       media_types: {  }
     third_party_settings: {  }
     type: media_library_widget
+    region: content
+  field_website:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   langcode:
     type: language_select

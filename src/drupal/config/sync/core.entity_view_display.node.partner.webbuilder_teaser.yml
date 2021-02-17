@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.webbuilder_teaser
+    - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - node.type.partner
   module:
@@ -16,6 +18,13 @@ targetEntityType: node
 bundle: partner
 mode: webbuilder_teaser
 content:
+  field_akteur:
+    type: entity_reference_entity_id
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_description:
     weight: 1
     label: hidden
@@ -33,6 +42,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_website:
+    type: string
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   langcode: true
   links: true

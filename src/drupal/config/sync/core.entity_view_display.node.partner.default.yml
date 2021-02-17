@@ -3,8 +3,10 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - image.style.medium
     - node.type.partner
@@ -17,6 +19,14 @@ targetEntityType: node
 bundle: partner
 mode: default
 content:
+  field_akteur:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_description:
     weight: 2
     label: hidden
@@ -32,6 +42,14 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: media_thumbnail
+    region: content
+  field_website:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   links:
     weight: 0
