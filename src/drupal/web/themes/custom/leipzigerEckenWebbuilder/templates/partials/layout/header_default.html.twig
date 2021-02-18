@@ -1,6 +1,6 @@
 {% set header_image = content.field_header_image[0] %}
 {% if header_image %}
-<section class="bg-gray-50 mb-16">
+<section class="bg-gray-50 mb-16 pt-24">
   <figure class="container mx-auto px-4 sm:px-6 lg:px-8">
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
       image: header_image,
@@ -18,4 +18,6 @@
     {% endif %}
   </figure>
 </section>
+{% else %}
+<div class="mb-16 pt-24"></div>
 {% endif %}
