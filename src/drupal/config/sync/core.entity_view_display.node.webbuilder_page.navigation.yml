@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.webbuilder_page.field_pre_footer_body
     - field.field.node.webbuilder_page.field_pre_footer_button
     - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_short_description
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -25,6 +26,13 @@ mode: navigation
 content:
   field_parent:
     type: entity_reference_entity_id
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_short_description:
+    type: basic_string
     weight: 1
     region: content
     label: hidden

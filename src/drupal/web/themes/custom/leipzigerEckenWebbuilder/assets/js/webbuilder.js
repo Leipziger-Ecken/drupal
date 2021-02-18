@@ -4,6 +4,7 @@
   app.register('dropdown', class extends Stimulus.Controller {
     static targets = [
       'trigger',
+      'triggericon',
       'dropdown',
     ];
     toggle(event) {
@@ -11,13 +12,36 @@
       this.dropdownTarget.classList.toggle('opacity-100');
       this.dropdownTarget.classList.toggle('translate-y-1');
       this.dropdownTarget.classList.toggle('translate-y-0');
+      this.triggericonTarget.classList.toggle('rotate-0');
+      this.triggericonTarget.classList.toggle('rotate-180');
       setTimeout(() => {
         this.dropdownTarget.classList.toggle('duration-200');
         this.dropdownTarget.classList.toggle('duration-150');
         this.dropdownTarget.classList.toggle('ease-out');
         this.dropdownTarget.classList.toggle('ease-in');
       }, 200);
+    }
+  });
 
+  app.register('collapsible', class extends Stimulus.Controller {
+    static targets = [
+      'trigger',
+      'triggericon',
+      'collapsible',
+    ];
+    toggle(event) {
+      this.collapsibleTarget.classList.toggle('opacity-0');
+      this.collapsibleTarget.classList.toggle('opacity-100');
+      this.collapsibleTarget.classList.toggle('max-h-0');
+      this.collapsibleTarget.classList.toggle('max-h-lg');
+      this.triggericonTarget.classList.toggle('rotate-0');
+      this.triggericonTarget.classList.toggle('rotate-180');
+      setTimeout(() => {
+        this.collapsibleTarget.classList.toggle('duration-200');
+        this.collapsibleTarget.classList.toggle('duration-150');
+        this.collapsibleTarget.classList.toggle('ease-out');
+        this.collapsibleTarget.classList.toggle('ease-in');
+      }, 200);
     }
   });
 

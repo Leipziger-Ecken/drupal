@@ -1,0 +1,19 @@
+uuid: 2d370835-c964-47ce-8e7b-4034043fcebf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_short_description
+    - node.type.webbuilder_page
+id: node.webbuilder_page.field_short_description
+field_name: field_short_description
+entity_type: node
+bundle: webbuilder_page
+label: Kurzbeschreibung
+description: 'Eine kurze Beschreibung des Inhalts der Seite. Wird in der Navigation mit angezeigt.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

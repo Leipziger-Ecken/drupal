@@ -11,3 +11,15 @@ function leipzigerEckenWebbuilder_theme_suggestions_views_view_alter(array &$sug
         $suggestions[] = $hook . '__' . $variables['view']->id() . '__' . $variables['view']->current_display;
     }
 }
+
+/**
+ * @param array $suggestions
+ * @param array $variables
+ * @param $hook
+ */
+function leipzigerEckenWebbuilder_theme_suggestions_views_tree_alter(array &$suggestions, array &$variables, $hook)
+{
+    if ($variables['view']->id() && $variables['view']->current_display) {
+        $suggestions[] = $hook . '__' . $variables['view']->id() . '__' . $variables['view']->current_display;
+    }
+}

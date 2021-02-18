@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webbuilder_page.field_pre_footer_body
     - field.field.node.webbuilder_page.field_pre_footer_button
     - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_short_description
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
@@ -33,7 +34,7 @@ third_party_settings:
         - langcode
         - field_weight
       parent_name: ''
-      weight: 6
+      weight: 7
       format_type: details_sidebar
       region: content
       format_settings:
@@ -50,7 +51,7 @@ third_party_settings:
         - field_pre_footer_body
         - field_pre_footer_button
       parent_name: ''
-      weight: 4
+      weight: 5
       format_type: details
       region: content
       format_settings:
@@ -66,7 +67,7 @@ third_party_settings:
         - field_parent
         - field_navigation
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: details
       region: content
       format_settings:
@@ -80,7 +81,7 @@ third_party_settings:
       children:
         - field_header_image
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: details
       region: content
       format_settings:
@@ -97,7 +98,7 @@ mode: default
 content:
   field_contents:
     type: paragraphs
-    weight: 5
+    weight: 6
     settings:
       title: Inhalt
       title_plural: Inhalte
@@ -161,6 +162,14 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_short_description:
+    weight: 2
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
   field_slug:
     weight: 1
     settings:
@@ -196,7 +205,7 @@ content:
     region: content
   published_at:
     type: publication_date_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
