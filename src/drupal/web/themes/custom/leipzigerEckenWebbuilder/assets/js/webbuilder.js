@@ -11,7 +11,6 @@
       const classes = (
         this.dropdownTarget.getAttribute('data-dropdown-toggle-classes') || 'opacity-0 opacity-100 translate-y-1 translate-y-0'
       ).split(' ');
-      console.log(classes);
       classes.forEach((className) => {
         this.dropdownTarget.classList.toggle(className);
       });
