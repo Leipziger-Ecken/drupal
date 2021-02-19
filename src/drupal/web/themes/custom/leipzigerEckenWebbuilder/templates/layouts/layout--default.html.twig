@@ -1,9 +1,13 @@
 <header>
   {{ include('@leipzigerEckenWebbuilder/partials/layout/navigation_default.html.twig') }}
   {{ include('@leipzigerEckenWebbuilder/partials/layout/header_default.html.twig') }}
-  {{ drupal_block('system_messages_block') }}
-  {{ drupal_block('local_tasks_block') }}
-  {{ drupal_block('local_actions_block') }}
+  <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+    {{ drupal_block('system_messages_block') }}
+  </section>
+  <section class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end space-x-10">
+    {{ drupal_block('local_tasks_block') }}
+    {{ drupal_block('local_actions_block') }}
+  </section>
 </header>
 <main id="main">
   {{ content.field_contents }}
