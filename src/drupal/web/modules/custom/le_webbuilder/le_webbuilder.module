@@ -1,5 +1,4 @@
 <?php
-
 use Drupal\path_alias\Entity\PathAlias;
 use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\Html;
@@ -8,20 +7,26 @@ use Drupal\views\Views;
 function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if ($form_id == 'node_webbuilder_page_form') {
+    $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
+
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
     if ($webbuilder_id) {
       $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
       if ($webbuilder) {
-        $akteur_id = $webbuilder->og_audience[0]->target_id;
-        $form['og_audience']['#attributes']['class'][] = 'hidden';
-        $form['og_audience']['widget']['#default_value'] = $akteur_id;
-        $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
-        $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+        if (isset($webbuilder->og_audience[0])) {
+          $akteur_id = $webbuilder->og_audience[0]->target_id;
+          $form['og_audience']['#attributes']['class'][] = 'hidden';
+          $form['og_audience']['widget']['#default_value'] = $akteur_id;
+          $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+          $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+        }
       }
     }
   }
 
   if ($form_id === 'node_webbuilder_page_edit_form') {
+    $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
+
     $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
     if ($webbuilder_id) {
       // dd($form['field_parent']['widget']);
