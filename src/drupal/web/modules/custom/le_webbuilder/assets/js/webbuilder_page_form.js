@@ -3,7 +3,6 @@
   const slugInput = document.getElementById('edit-field-slug-0-value');
 
   function updateSlug() {
-    console.log('change', slugify(titleInput.value));
     slugInput.value = slugify(titleInput.value);
   }
 
