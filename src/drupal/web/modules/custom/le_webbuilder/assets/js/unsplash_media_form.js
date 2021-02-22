@@ -175,7 +175,9 @@ if (typeof 'debounce' !== 'function') {
           urlTarget.value = result.urls.raw + '.jpg';
           altTarget.value = result.alt_description || result.description || '';
           titleTarget.value = result.description || result.alt_description || '';
-          attributionTarget.value = getAttribution(result);
+          const attribution = getAttribution(result);
+          attributionTarget.value = attribution;
+          CKEDITOR.instances[attributionTarget.getAttribute('id')].setData(attribution);
 
           // trigger a download, as required by the unsplash API usage terms
           unsplashClient.photos.trackDownload(result);
