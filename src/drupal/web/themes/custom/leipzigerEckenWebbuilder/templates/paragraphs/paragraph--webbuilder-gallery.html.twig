@@ -1,7 +1,23 @@
 {% set cols = content.field_cols[0]['#markup'] %}
 {% block paragraph %}
-{% if content.field_images[0] %}
-<section class="container mx-auto px-4 sm:px-6 lg:px-8">
+<section class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
+  {% if content.field_heading[0] %}
+  <div class="text-lg {{ webbuilder_classes.container.prose }} {{ webbuilder_classes.margin.b_sm }}">
+    <h2>
+      {% if content.field_heading[0] %}
+      <span class="block text-center {{ webbuilder_classes.text.h2 }}">
+        {{ content.field_heading }}
+      </span>
+      {% endif %}
+    </h2>
+  </div>
+  {% endif %}
+  {% if content.field_body[0] %}
+  <div class="{{ webbuilder_classes.text.prose }} mb-4 mx-auto">
+    {{ content.field_body }}
+  </div>
+  {% endif %}
+  {% if content.field_images[0] %}
   <div class="grid grid-cols-1 sm:grid-cols-2 {% if cols >= 3 %}md:grid-cols-3{% endif %} {% if cols >= 4 %}lg:grid-cols-4{% endif %} auto-rows-auto gap-4 items-stretch">
   {% for i in range(0, 100) %}
     {% set image = content.field_images[i] %}
@@ -24,6 +40,6 @@
     {% endif %}
   {% endfor %}
   </div>
+  {% endif %}
 </section>
-{% endif %}
 {% endblock paragraph %}

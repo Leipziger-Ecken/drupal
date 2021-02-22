@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: zoY2QezH0nIdp_u3-DrA78BuTyLg8lMAClnwj1Bz2Wg
-name: Akteur
+name: 'Akteur*in'
 type: le_akteur
 description: 'Öffentliches Profil für Organisationen, Vereine, Initiativen, Netzwerke oder Einzelpersonen.'
 help: ''

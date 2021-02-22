@@ -7,19 +7,19 @@
 {% set required_fields = required_fields|merge([content.field_contact_form_required[index]['#markup']]) %}
 {% endfor %}
 {% block paragraph %}
-<section class="relative bg-white">
+<section class="relative bg-white {{ webbuilder_classes.margin.b_md }}">
   <div class="absolute inset-0">
     <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50"></div>
   </div>
-  <div class="relative max-w-7xl mx-auto lg:grid lg:grid-cols-5">
-    <div class="bg-gray-50 py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
+  <div class="relative {{ webbuilder_classes.container.md }} lg:grid lg:grid-cols-5">
+    <div class="bg-gray-50 py-16 lg:col-span-2 lg:py-24 xl:pr-12 {{ webbuilder_classes.padding.x_md }}">
       <div class="max-w-lg mx-auto">
         {% if content.field_heading[0] %}
-        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+        <h2 class="mb-3 {{ webbuilder_classes.text.h3 }}">
           {{ content.field_heading }}
         </h2>
         {% endif %}
-        <div class="mt-3 text-lg leading-6 text-gray-500 prose">
+        <div class="{{ webbuilder_classes.text.prose }}">
           {{ content.field_body }}
         </div>
       </div>
@@ -35,7 +35,7 @@
               name="full_name"
               id="full_name"
               autocomplete="name"
-              class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+              class="block w-full {{ webbuilder_classes.form.input }}"
               placeholder="{{ 'Full name'|t }}"
               {% if 'full_name' in required_fields %}required="true"{% endif %}
             >
@@ -49,7 +49,7 @@
               name="email"
               type="email"
               autocomplete="email"
-              class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+              class="block w-full {{ webbuilder_classes.form.input }}"
               placeholder="{{ 'Email'|t }}"
               {% if 'email' in required_fields %}required="true"{% endif %}
             >
@@ -63,7 +63,7 @@
               name="phone"
               id="phone"
               autocomplete="tel"
-              class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+              class="block w-full {{ webbuilder_classes.form.input }}"
               placeholder="{{ 'Phone'|t }}"
               {% if 'phone' in required_fields %}required="true"{% endif %}
             >
@@ -75,7 +75,7 @@
               id="message"
               name="message"
               rows="4"
-              class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+              class="block w-full {{ webbuilder_classes.form.input }}"
               placeholder="{{ 'Message'|t }}"
               required="true"
             >

@@ -7,5 +7,32 @@
 {% set node_id = paragraph.parent_id[0].value %}
 {% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
 {% block paragraph %}
-{{ include('@leipzigerEckenWebbuilder/paragraphs/_paragraph_listing--' ~ layout ~ '.html.twig') }}
+<section class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
+  <div class="relative {{ webbuilder_classes.container.md }} {{ webbuilder_classes.divide.md }}">
+    <div>
+      {% if content.field_heading[0] %}
+      <h2 class="mb-3 {{ webbuilder_classes.text.h2 }}">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      <div class="sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
+        {% if content.field_body[0] %}
+        <div class="{{ webbuilder_classes.text.prose_lg }}">
+          {{ content.field_body }}
+        </div>
+        {% endif %}
+
+        {# exposed filters #}
+        {% if has_filters %}
+        <div class="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
+          {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {# results #}
+    {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images }, [akteur_id]) }}
+  </div>
+</section>
 {% endblock paragraph %}
