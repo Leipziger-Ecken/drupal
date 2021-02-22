@@ -214,15 +214,11 @@ function le_webbuilder_webbuilder_form_submit(array $form, FormStateInterface $f
       'field_layout',
       'field_color_primary',
       'field_fonts',
+      'field_logo',
     ];
 
     foreach($fields_to_clone as $field) {
       $webbuilder->$field = $webbuilder_preset->$field;
-    }
-
-    // clone logo if any
-    if ($webbuilder->field_logo[0]) {
-
     }
 
     // load preset pages
