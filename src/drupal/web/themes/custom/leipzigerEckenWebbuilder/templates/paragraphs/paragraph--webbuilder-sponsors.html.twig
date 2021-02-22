@@ -1,20 +1,18 @@
 {% set node_id = paragraph.parent_id[0].value %}
 {% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
 {% block paragraph %}
-<div class="bg-white mb-16">
-  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-    {% if content.field_heading[0] %}
-    <h2 class="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-      {{ content.field_heading }}
-    </h2>
-    {% endif %}
-    {% if content.field_body[0] %}
-    <div class="text-center text-base font-semibold uppercase text-gray-600 tracking-wider prose">
-      {{ content.field_body }}
-    </div>
-    {% endif %}
-
-    {{ drupal_view('sponsors', 'webbuilder', akteur_id) }}
+<section class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}">
+  {% if content.field_heading[0] %}
+  <h2 class="text-center {{ webbuilder_classes.text.h2 }}">
+    {{ content.field_heading }}
+  </h2>
+  {% endif %}
+  {% if content.field_body[0] %}
+  <div class="mx-auto text-center {{ webbuilder_classes.text.prose_strong }}">
+    {{ content.field_body }}
   </div>
-</div>
+  {% endif %}
+
+  {{ drupal_view('sponsors', 'webbuilder', akteur_id) }}
+</section>
 {% endblock paragraph %}

@@ -2,17 +2,18 @@
 
 const WEBBUILDER_CLASSES = [
   'container' => [
-    'lg' => 'container mx-auto',
-    'md' => 'max-w-7xl mx-auto',
     'sm' => 'max-w-3xl mx-auto',
+    'md' => 'max-w-7xl mx-auto',
+    'lg' => 'container mx-auto',
     'prose' => 'max-w-prose mx-auto',
   ],
   'divide' => [
     'md' => 'divide-y-2 divide-gray-200',
   ],
   'margin' => [
-    'b_md' => 'mb-16',
     'b_sm' => 'mb-6',
+    'b_md' => 'mb-16',
+    'b_lg' => 'mb-36',
   ],
   'padding' => [
     'x_md' => 'px-4 sm:px-6 lg:px-8',
