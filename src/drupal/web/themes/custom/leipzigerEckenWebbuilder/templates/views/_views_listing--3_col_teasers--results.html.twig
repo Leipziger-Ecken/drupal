@@ -7,7 +7,7 @@
 {% endif %}
 {% endfor %}
 
-<div class="mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
+<div class="mt-12 pt-10 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
   {# regular articles #}
   {% for index,row in rows[0]['#rows'] %}
   {% if row['#node'].sticky[0].value == '0' %}
