@@ -20,6 +20,11 @@ function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_
     _le_webbuilder_alter_webbuilder_form($form, $form_state, $form_id);
   }
 
+  if ($form_id === 'node_webbuilder_delete_form') {
+    // add custom submit handler, to clone preset
+    $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_delete_submit';
+  }
+
   if (in_array($form_id, ['media_unsplash_image_add_form', 'media_unsplash_image_edit_form'])) {
     _le_webbuilder_alter_media_unsplash_image_form($form, $form_state, $form_id);
   }
@@ -262,5 +267,22 @@ function le_webbuilder_webbuilder_form_submit(array $form, FormStateInterface $f
     $form_state->setRedirect('entity.node.edit_form', [
       'node' => $webbuilder->id(),
     ]);
+  }
+}
+
+function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface $form_state)
+{
+  $webbuilder = $form_state->getFormObject()->getEntity();
+  if (!$webbuilder) {
+    return;
+  }
+
+  // load pages
+  $pages_query = \Drupal::entityQuery('node');
+  $pages_query->condition('field_webbuilder', $webbuilder->id());
+  $result = $pages_query->execute();
+  foreach($result as $nid) {
+    $page = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $page->delete();
   }
 }
