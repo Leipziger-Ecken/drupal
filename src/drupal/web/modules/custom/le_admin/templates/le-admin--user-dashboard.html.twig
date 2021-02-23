@@ -2,12 +2,13 @@
 
 <h2>{{ 'Deine Akteur*innen'|t }}</h2>
 
-<p class="text-gray-500">
-  {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Akteur*innen in den Leipziger-Ecken haben.'|t }}
-</p>
-
-{% if akteure|length %}
 <div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Akteur*innen in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+{% if akteure|length %}
 {% for row in akteure %}
   <div class="py-4 flex space-x-10">
     <div>
@@ -28,17 +29,15 @@
     </div>
   </div>
 {% endfor %}
-</div>
 {% else %}
 <p>
   {{ 'Du hast noch keine Akteur*in erstellt.'|t }}
 </p>
 {% endif %}
-
-<div class="py-4">
-  <a class="button button--primary" href="{{ drupal_url('/node/akteur/add') }}">
-    {{ 'Akteur*in hinzufügen'|t }}
-  </a>
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/akteur/add') }}">
+      {{ 'Akteur*in hinzufügen'|t }}
+    </a>
+  </div>
 </div>
-
 {{ attach_library('le_admin/tailwind') }}
