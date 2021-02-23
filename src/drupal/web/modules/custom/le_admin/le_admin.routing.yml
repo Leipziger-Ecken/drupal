@@ -1,0 +1,8 @@
+le_admin.user_dashboard:
+  path: '/user/dashboard'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\UserController::dashboard'
+    _title: 'Overview'
+  methods: [GET]
+  requirements:
+    _permission: 'create le_akteur content'

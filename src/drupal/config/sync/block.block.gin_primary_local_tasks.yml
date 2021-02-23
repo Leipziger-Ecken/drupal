@@ -2,6 +2,8 @@ uuid: 1e6d4afd-ab7b-4129-a2ba-b3f168165044
 langcode: de
 status: true
 dependencies:
+  module:
+    - user
   theme:
     - gin
 _core:
@@ -9,7 +11,7 @@ _core:
 id: gin_primary_local_tasks
 theme: gin
 region: header
-weight: 0
+weight: -2
 provider: null
 plugin: local_tasks_block
 settings:
@@ -19,4 +21,12 @@ settings:
   label_display: '0'
   primary: true
   secondary: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      le_role_redakteur: le_role_redakteur
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

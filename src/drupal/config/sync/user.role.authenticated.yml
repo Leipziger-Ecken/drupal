@@ -13,7 +13,6 @@ permissions:
   - 'access content'
   - 'access geocoder api endpoints'
   - 'access media overview'
-  - 'access shortcuts'
   - 'access site-wide contact form'
   - 'access toolbar'
   - 'access tour'

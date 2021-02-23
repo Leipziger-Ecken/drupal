@@ -91,14 +91,14 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
    */
   public function determineActiveTheme(RouteMatchInterface $route_match)
   {
-    $routeName = $route_match->getRouteName();
+    $route_name = $route_match->getRouteName();
     $parameters = $route_match->getParameters();
     $node = $parameters->get('node') ?? $parameters->get('node_preview') ?? null;
-    // dd($routeName, $parameters);
+    // dd($route_name);
 
     if (
       $node &&
-      in_array($routeName, ['entity.node.canonical', 'entity.node.preview']) &&
+      in_array($route_name, ['entity.node.canonical', 'entity.node.preview']) &&
       in_array(
         $node->getType(),
         [
@@ -113,14 +113,15 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
       $this->user->hasPermission('view the administration theme') &&
       (
         $this->adminContext->isAdminRoute($route_match->getRouteObject()) ||
-        strpos($routeName, 'view.le_verwaltete_akteure') === 0 ||
-        strpos($routeName, 'view.le_verwaltete_events') === 0 ||
-        strpos($routeName, 'view.webbuilders') === 0 ||
-        strpos($routeName, 'view.projects') === 0 ||
-        strpos($routeName, 'view.partners') === 0 ||
-        strpos($routeName, 'view.sponsors') === 0 ||
-        strpos($routeName, 'view.blog') === 0 ||
-        strpos($routeName, 'entity.user.') === 0
+        strpos($route_name, 'view.le_verwaltete_akteure') === 0 ||
+        strpos($route_name, 'view.le_verwaltete_events') === 0 ||
+        strpos($route_name, 'view.webbuilders') === 0 ||
+        strpos($route_name, 'view.projects') === 0 ||
+        strpos($route_name, 'view.partners') === 0 ||
+        strpos($route_name, 'view.sponsors') === 0 ||
+        strpos($route_name, 'view.blog') === 0 ||
+        strpos($route_name, 'entity.user.') === 0 ||
+        $route_name === 'le_admin.user_dashboard'
       )
     ) {
       return $this->configFactory->get('system.theme')->get('admin') ?: NULL;

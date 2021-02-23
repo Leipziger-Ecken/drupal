@@ -1,0 +1,15 @@
+uuid: 9ddfc528-ef22-4b9e-9bf7-bbf0435a6a42
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_preset_thumb
+label: 'Webbaukasten: Vorschau Vorlage'
+effects:
+  f92b795d-1e0c-4f03-8532-6ab156ad6e44:
+    uuid: f92b795d-1e0c-4f03-8532-6ab156ad6e44
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 560
+      height: 315
+      anchor: center-top
