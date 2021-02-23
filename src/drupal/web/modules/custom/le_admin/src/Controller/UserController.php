@@ -3,6 +3,7 @@
 namespace Drupal\le_admin\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Theme\ThemeAccessCheck;
@@ -29,23 +30,40 @@ class UserController extends ControllerBase
   protected $menuLinkTree;
 
   /**
-   * Constructs a new UserController.
+   * Constructs a new SystemController.
    *
+   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   *   The form builder.
+   * @param \Drupal\Core\Menu\MenuLinkTreeInterface $menu_link_tree
+   *   The menu link tree service.
    */
-  public function __construct()
+  public function __construct(FormBuilderInterface $form_builder, MenuLinkTreeInterface $menu_link_tree)
   {
+    $this->formBuilder = $form_builder;
+    $this->menuLinkTree = $menu_link_tree;
+  }
 
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('form_builder'),
+      $container->get('menu.link_tree')
+    );
   }
 
   /**
    * Provide the user dashboard page.
    *
   * @return array
-   *   A renderable array of the administration overview page.
+   *   A renderable array of the user dashboard page.
    */
   public function dashboard()
   {
-    return [];
+    return [
+      '#theme' => 'le_admin_dashboard',
+    ];
   }
 
 }

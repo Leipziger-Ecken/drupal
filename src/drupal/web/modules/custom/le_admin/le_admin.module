@@ -1,5 +1,15 @@
 <?php
 
+function le_admin_theme($existing, $type, $theme, $path)
+{
+  return [
+    'le_admin_dashboard' => [
+      'variables' => [],
+      'render element' => 'elements',
+    ],
+  ];
+}
+
 function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
 {
   if ($form_id === 'node_le_akteur_edit_form') {
