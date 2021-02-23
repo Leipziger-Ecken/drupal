@@ -1,0 +1,44 @@
+{% set akteure = drupal_view_result('le_verwaltete_akteure', 'dashboard', user.id) %}
+
+<h2>{{ 'Deine Akteur*innen'|t }}</h2>
+
+<p class="text-gray-500">
+  {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Akteur*innen in den Leipziger-Ecken haben.'|t }}
+</p>
+
+{% if akteure|length %}
+<div class="divide-y-2 divide-gray-200">
+{% for row in akteure %}
+  <div class="py-4 flex space-x-10">
+    <div>
+      {{ drupal_entity('node', row.node_field_data_users_field_data_nid, 'backend_teaser') }}
+
+      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents' )}}">
+        {{ 'Inhalte verwalten'|t }}
+      </a>
+
+      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder' )}}">
+        {{ 'Webbaukasten'|t }}
+      </a>
+    </div>
+    <div>
+      <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row.node_field_data_users_field_data_nid ~ '/edit') }}">
+        {{ 'Akteur bearbeiten'|t }}
+      </a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% else %}
+<p>
+  {{ 'Du hast noch keine Akteur*in erstellt.'|t }}
+</p>
+{% endif %}
+
+<div class="py-4">
+  <a class="button button--primary" href="{{ drupal_url('/node/akteur/add') }}">
+    {{ 'Akteur*in hinzufügen'|t }}
+  </a>
+</div>
+
+{{ attach_library('le_admin/tailwind') }}

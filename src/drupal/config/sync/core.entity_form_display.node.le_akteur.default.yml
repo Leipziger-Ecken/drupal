@@ -23,13 +23,16 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_opening_times
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
+    - field.field.node.le_akteur.field_logo
     - image.style.medium
     - node.type.le_akteur
   module:
     - address
     - field_group
     - link
+    - media_library
     - path
+    - publication_date
     - select2
     - svg_image
     - telephone
@@ -40,7 +43,7 @@ third_party_settings:
       children:
         - path
       parent_name: ''
-      weight: 22
+      weight: 23
       format_type: details_sidebar
       region: content
       format_settings:
@@ -60,18 +63,18 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_adresse:
-    weight: 16
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 15
+    weight: 17
     settings:
       autocomplete: false
       match_operator: CONTAINS
@@ -81,7 +84,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_contactperson:
-    weight: 11
+    weight: 13
     settings:
       size: 60
       placeholder: ''
@@ -89,7 +92,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 12
+    weight: 14
     settings:
       size: 60
       placeholder: 'z.B. "Projektkoordination" / "Vorstand"'
@@ -97,7 +100,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_description:
-    weight: 3
+    weight: 4
     settings:
       rows: 6
       placeholder: ''
@@ -105,7 +108,7 @@ content:
     type: text_textarea
     region: content
   field_le_akteur_einrichtungsname:
-    weight: 18
+    weight: 20
     settings:
       size: 60
       placeholder: ''
@@ -113,7 +116,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_email:
-    weight: 7
+    weight: 8
     settings:
       size: 60
       placeholder: ''
@@ -121,7 +124,7 @@ content:
     type: email_default
     region: content
   field_le_akteur_hat_typ:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -135,14 +138,14 @@ content:
     type: image_image
     region: content
   field_le_akteur_is_barrier_free:
-    weight: 19
+    weight: 21
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_akteur_kategorie_gruppe:
-    weight: 14
+    weight: 16
     settings:
       width: 100%
       autocomplete: false
@@ -152,7 +155,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_kategorie_tags:
-    weight: 17
+    weight: 19
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -162,7 +165,7 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_le_akteur_kategorie_typ:
-    weight: 13
+    weight: 15
     settings:
       width: 100%
       autocomplete: false
@@ -172,14 +175,14 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_lizenzhinweis:
-    weight: 20
+    weight: 22
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_akteur_opening_times:
-    weight: 10
+    weight: 11
     settings:
       size: 60
       placeholder: 'z.B. "Mo - Fr 10:00 - 18:00, Sa 10:00 - 12:00"'
@@ -187,19 +190,26 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_phone:
-    weight: 9
+    weight: 10
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
     region: content
   field_le_akteur_url:
-    weight: 8
+    weight: 9
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
+  field_logo:
+    weight: 2
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
     region: content
   path:
     type: path
@@ -207,11 +217,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 7
     region: content
     third_party_settings: {  }
   title:
@@ -224,7 +240,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60

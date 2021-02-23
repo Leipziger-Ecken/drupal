@@ -121,7 +121,11 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
         strpos($route_name, 'view.sponsors') === 0 ||
         strpos($route_name, 'view.blog') === 0 ||
         strpos($route_name, 'entity.user.') === 0 ||
-        $route_name === 'le_admin.user_dashboard'
+        in_array($route_name, [
+          'le_admin.user_dashboard',
+          'le_admin.user_akteur_contents',
+          'le_admin.user_akteur_webbuilder',
+        ])
       )
     ) {
       return $this->configFactory->get('system.theme')->get('admin') ?: NULL;

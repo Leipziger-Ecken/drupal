@@ -1,0 +1,5 @@
+services:
+ le_admin.breadcrumb:
+   class: Drupal\le_admin\Breadcrumb\BreadcrumbBuilder
+   tags:
+    - { name: breadcrumb_builder, priority: 100 }

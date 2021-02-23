@@ -4,16 +4,35 @@ use \Drupal\Core\Form\FormStateInterface;
 function le_admin_theme($existing, $type, $theme, $path)
 {
   return [
-    'le_admin_dashboard' => [
+    'le_admin__user_dashboard' => [
       'variables' => [],
       'render element' => 'elements',
+    ],
+    'le_admin__user_akteur_contents' => [
+      'variables' => [],
+      'render element' => 'elements',
+    ],
+    'le_admin__user_akteur_webbuilder' => [
+      'variables' => [],
+      'render element' => 'elements',
+    ],
+    'node__le_akteur__backend_teaser' => [
+      'template' => 'node/node--le-akteur--backend-teaser',
+      'base hook' => 'node',
+    ],
+    'node__webbuilder__backend_teaser' => [
+      'template' => 'node/node--webbuilder--backend-teaser',
+      'base hook' => 'node',
     ],
   ];
 }
 
 function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
 {
-  if ($form_id === 'node_le_akteur_edit_form') {
+  if (in_array($form_id, [
+    'node_le_akteur_edit_form',
+    'node_le_akteur_form',
+  ])) {
     $form['#attached']['library'][] = 'le_admin/akteur_form';
   }
   if ($form_id === 'user_login_form') {

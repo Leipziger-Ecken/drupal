@@ -2,8 +2,6 @@ uuid: 1e6d4afd-ab7b-4129-a2ba-b3f168165044
 langcode: de
 status: true
 dependencies:
-  module:
-    - user
   theme:
     - gin
 _core:
@@ -21,12 +19,4 @@ settings:
   label_display: '0'
   primary: true
   secondary: false
-visibility:
-  user_role:
-    id: user_role
-    roles:
-      administrator: administrator
-      le_role_redakteur: le_role_redakteur
-    negate: false
-    context_mapping:
-      user: '@user.current_user_context:current_user'
+visibility: {  }

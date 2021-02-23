@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Returns responses for System routes.
  */
-class UserController extends ControllerBase
+class AdminController extends ControllerBase
 {
   /**
    * The form builder service.
@@ -54,16 +54,51 @@ class UserController extends ControllerBase
   }
 
   /**
-   * Provide the user dashboard page.
+   * Provides the user dashboard page.
    *
   * @return array
    *   A renderable array of the user dashboard page.
    */
-  public function dashboard()
+  public function userDashboard()
   {
     return [
-      '#theme' => 'le_admin_dashboard',
+      '#theme' => 'le_admin__user_dashboard',
     ];
   }
 
+  /**
+   * Provides the akteur contents page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur contents page.
+   */
+  public function userAkteurContents($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_contents',
+      '#variables' => [
+        'node' => $node,
+      ]
+    ];
+  }
+
+  /**
+   * Provides the akteur webbuilder page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur webbuilder page.
+   */
+  public function userAkteurWebbuilder($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_webbuilde',
+      '#variables' => [
+        'node' => $node,
+      ]
+    ];
+  }
 }

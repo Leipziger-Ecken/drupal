@@ -1,8 +1,32 @@
 le_admin.user_dashboard:
   path: '/user/dashboard'
   defaults:
-    _controller: '\Drupal\le_admin\Controller\UserController::dashboard'
-    _title: 'Overview'
+    _controller: '\Drupal\le_admin\Controller\AdminController::userDashboard'
+    _title: 'Übersicht'
   methods: [GET]
   requirements:
     _permission: 'create le_akteur content'
+
+le_admin.user_akteur_contents:
+  path: '/user/akteur/{node}/contents'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurContents'
+    _title: 'Akteur Inhalte'
+  requirements:
+    _permission: 'edit own le_akteur content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_webbuilder:
+  path: '/user/akteur/{node}/webbuilder'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurWebbuilder'
+    _title: 'Akteur Webbaukasten'
+  requirements:
+    _permission: 'edit own le_akteur content'
+  options:
+    parameters:
+      node:
+        type: entity:node
