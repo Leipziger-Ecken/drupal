@@ -1,4 +1,5 @@
 <?php
+use \Drupal\Core\Form\FormStateInterface;
 
 function le_admin_theme($existing, $type, $theme, $path)
 {
@@ -14,5 +15,21 @@ function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
 {
   if ($form_id === 'node_le_akteur_edit_form') {
     $form['#attached']['library'][] = 'le_admin/akteur_form';
+  }
+  if ($form_id === 'user_login_form') {
+    $form['#submit'][] = 'le_admin_user_login_form_submit';
+  }
+}
+
+function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)
+{
+  // Check if a destination was set, probably on an exception controller.
+  // @see \Drupal\user\Form\UserLoginForm::submitForm()
+  $request = \Drupal::service('request_stack')->getCurrentRequest();
+  if ($request->request->has('destination')) {
+    $request->query->set('destination', $request->request->get('destination'));
+  }
+  else {
+    $form_state->setRedirect('le_admin.user_dashboard');
   }
 }
