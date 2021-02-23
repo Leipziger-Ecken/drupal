@@ -35,7 +35,6 @@ dependencies:
   - rdf
   - redirect
   - rest
-  - rules
   - search
   - shortcut
   - simple_sitemap

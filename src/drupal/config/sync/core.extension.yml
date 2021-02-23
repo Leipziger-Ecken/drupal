@@ -102,7 +102,6 @@ module:
   remove_http_headers: 0
   rest: 0
   rot13: 0
-  rules: 0
   schema_event: 0
   schema_metatag: 0
   schema_organization: 0
