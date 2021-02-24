@@ -1,9 +1,9 @@
-uuid: 04bdf958-99eb-456d-8702-955d008fa4d0
+uuid: f1044f3d-e8ee-4fd2-b850-1dff9ed8889e
 langcode: de
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.webbuilder_featured_teaser
+    - core.entity_view_mode.node.backend_teaser
     - field.field.node.project.body
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
@@ -12,19 +12,19 @@ dependencies:
   module:
     - text
     - user
-id: node.project.webbuilder_featured_teaser
+id: node.project.backend_teaser
 targetEntityType: node
 bundle: project
-mode: webbuilder_featured_teaser
+mode: backend_teaser
 content:
   body:
+    label: hidden
     type: text_summary_or_trimmed
     weight: 1
-    region: content
-    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   field_main_image:
     type: entity_reference_entity_view
     weight: 0

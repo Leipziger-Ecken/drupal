@@ -71,8 +71,8 @@ function le_admin_theme($existing, $type, $theme, $path)
       'template' => 'views/views-view--projects--dashboard',
       'base hook' => 'views_view',
     ],
-    'views_view__blog_articles__dashboard' => [
-      'template' => 'views/views-view--blog-articles--dashboard',
+    'views_view__blog__dashboard' => [
+      'template' => 'views/views-view--blog--dashboard',
       'base hook' => 'views_view',
     ],
     'views_view__sponsors__dashboard' => [
@@ -102,21 +102,42 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   ])) {
     _le_admin_akteur_form_alter($form, $form_state, $form_id);
   }
+
+  if (in_array($form_id, [
+    'node_le_event_edit_form',
+    'node_le_event_form',
+  ])) {
+    _le_admin_event_form_alter($form, $form_state, $form_id);
+  }
+
+  if (in_array($form_id, [
+    'node_project_edit_form',
+    'node_project_form',
+  ])) {
+    _le_admin_project_form_alter($form, $form_state, $form_id);
+  }
+
+  if (in_array($form_id, [
+    'node_blog_article_edit_form',
+    'node_blog_article_form',
+  ])) {
+    _le_admin_blog_article_form_alter($form, $form_state, $form_id);
+  }
+
   if (in_array($form_id, [
     'node_webbuilder_edit_form',
     'node_webbuilder_form',
   ])) {
     _le_admin_webbuilder_form_alter($form, $form_state, $form_id);
   }
+
   if (in_array($form_id, [
     'node_webbuilder_page_edit_form',
     'node_webbuilder_page_form',
   ])) {
     _le_admin_webbuilder_page_form_alter($form, $form_state, $form_id);
   }
-  if ($form_id === 'user_login_form') {
-    $form['#submit'][] = 'le_admin_user_login_form_submit';
-  }
+  
   if (in_array($form_id, [
     'node_le_event_form',
     'node_le_event_edit_form',
@@ -125,12 +146,17 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     'node_project_form',
     'node_project_edit_form',
     'node_partner_form',
+    'node_partner_edit_form',
     'node_sponsor_form',
     'node_sponsor_edit_form',
     'node_webbuilder_form',
     'node_webbuilder_edit_form',
   ])) {
     _le_admin_og_audience_form_alter($form, $form_state, $form_id);
+  }
+
+  if ($form_id === 'user_login_form') {
+    $form['#submit'][] = 'le_admin_user_login_form_submit';
   }
 }
 
@@ -192,7 +218,7 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
   if ($form_id === 'node_webbuilder_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_webbuilder_view'] = [
+    $form['le_admin_node_view'] = [
       '#type' => 'link',
       '#title' => t('Webseite öffnen'),
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
@@ -220,7 +246,7 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
   if ($form_id === 'node_webbuilder_page_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_webbuilder_page_view'] = [
+    $form['le_admin_node_view'] = [
       '#type' => 'link',
       '#title' => t('Seite öffnen'),
       '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
@@ -245,8 +271,55 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
 
 function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  if ($form_id === 'node_le_event_form') {
-    _le_admin_og_audience_form_alter($form, $form_state);
+  if ($form_id === 'node_le_event_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+
+    $form['le_admin_node_view'] = [
+      '#type' => 'link',
+      '#title' => t('Event öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'le_event_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
+  }
+}
+
+function _le_admin_project_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_project_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+    
+    $form['le_admin_node_view'] = [
+      '#type' => 'link',
+      '#title' => t('Projekt öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'le_event_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
+  }
+}
+
+function _le_admin_blog_article_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_blog_article_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+    
+    $form['le_admin_node_view'] = [
+      '#type' => 'link',
+      '#title' => t('Blog-Artikel öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'le_event_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
   }
 }
 

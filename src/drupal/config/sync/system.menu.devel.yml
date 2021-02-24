@@ -9,5 +9,5 @@ _core:
   default_config_hash: 3V-l1uuTcyirYOGLPZV5HWaDfr02uEbWZJIwc8Byz-c
 id: devel
 label: Entwicklung
-description: 'Links related to Devel module.'
+description: 'Mit dem Modul Devel verbundene Links.'
 locked: true

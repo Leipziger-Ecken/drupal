@@ -9,7 +9,9 @@
       {{ label }}
     </h3>
     <div class="mt-1">
-      {{ content.field_description }}
+      <a href="{{ content.field_website[0]['#context'].value }}" target="_blank">
+        {{ content.field_website[0]['#context'].value }}
+      </a>
     </div>
   </div>
 </article>

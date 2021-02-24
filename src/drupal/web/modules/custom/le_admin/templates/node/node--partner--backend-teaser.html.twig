@@ -1,15 +1,29 @@
+{% set image = content.field_main_image[0] %}
+{% set website_url = content.field_website[0]['#context'].value %}
+{% set akteur_id = content.field_akteur[0]['#plain_text'] %}
+{% set title = label %}
+{% set description = content.field_description %}
+{% if akteur_id %}
+{% set title = drupal_field('title', 'node', akteur_id) %}
+{% set image = drupal_field('field_main_image', 'node', akteur_id)[0] %}
+{% set website_url = drupal_url('node/' ~ akteur_id) %}
+{% if not image %}
+{% set image = drupal_field('field_le_akteur_image', 'node', akteur_id)[0] %}
+{% endif %}
+{% set description = drupal_field('field_le_akteur_description', 'node', akteur_id) %}
+{% endif %}
 <article class="flex">
   <div class="mr-4 flex-shrink-0">
     <figure class="h-16 w-16 border border-gray-300 bg-white text-gray-300">
-      {{ content.field_main_image }}
+      {{ image }}
     </figure>
   </div>
   <div>
     <h3 class="text-lg font-bold mt-0">
-      {{ label }}
+      {{ title }}
     </h3>
     <div class="mt-1">
-      {{ content.field_description }}
+      {{ description }}
     </div>
   </div>
 </article>

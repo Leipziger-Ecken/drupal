@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.project.body
-    - field.field.node.project.field_description
+    - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
     - node.type.project
@@ -24,12 +24,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_description:
-    weight: 3
-    label: hidden
-    settings: {  }
+  field_legal_terms_accepted:
+    weight: 5
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
     third_party_settings: {  }
-    type: text_default
+    type: boolean
     region: content
   field_main_image:
     type: media_thumbnail

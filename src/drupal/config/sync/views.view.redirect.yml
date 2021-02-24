@@ -182,7 +182,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: 'Mit Auswahl'
+          action_title: Auswahl
           include_exclude: exclude
           selected_actions: {  }
           entity_type: redirect

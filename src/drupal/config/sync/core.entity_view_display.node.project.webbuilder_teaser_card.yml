@@ -5,7 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.webbuilder_teaser_card
     - field.field.node.project.body
-    - field.field.node.project.field_description
+    - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
     - node.type.project
@@ -17,13 +17,14 @@ targetEntityType: node
 bundle: project
 mode: webbuilder_teaser_card
 content:
-  field_description:
+  body:
+    type: text_summary_or_trimmed
     weight: 1
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
     region: content
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
   field_main_image:
     type: entity_reference_entity_view
     weight: 0
@@ -44,7 +45,7 @@ content:
       timezone: ''
     third_party_settings: {  }
 hidden:
-  body: true
+  field_legal_terms_accepted: true
   langcode: true
   links: true
   og_audience: true

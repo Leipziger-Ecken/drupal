@@ -20,7 +20,7 @@ third_party_settings:
       children:
         - langcode
       parent_name: ''
-      weight: 8
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -36,9 +36,9 @@ third_party_settings:
         - field_main_image
         - field_description
         - field_website
-      parent_name: ''
-      weight: 4
-      format_type: details
+      parent_name: group_basic
+      weight: 22
+      format_type: accordion_item
       region: content
       format_settings:
         description: 'Tragen Sie hier die Informationen zum/zur Partner*in hein, falls es sich nicht um eine(n) Akteur*in der Leipziger-Ecken handelt.'
@@ -46,14 +46,42 @@ third_party_settings:
         id: no-akteur
         classes: ''
         open: false
+        formatter: closed
       label: 'Andere(r) Partner*in'
+    group_basic:
+      children:
+        - group_akteur
+        - group_no_atkeur
+      parent_name: ''
+      weight: 3
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Basic
+    group_akteur:
+      children:
+        - field_akteur
+      parent_name: group_basic
+      weight: 20
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: akteur
+        classes: ''
+        formatter: open
+        required_fields: true
+        description: ''
+      label: 'Akteur*in'
 id: node.partner.default
 targetEntityType: node
 bundle: partner
 mode: default
 content:
   field_akteur:
-    weight: 3
+    weight: 21
     settings:
       width: 100%
       autocomplete: true
@@ -95,14 +123,14 @@ content:
   og_audience:
     type: options_buttons
     settings: {  }
-    weight: 1
+    weight: 2
     third_party_settings: {  }
     region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 2
+    weight: 1
     region: content
     third_party_settings: {  }
   title:
