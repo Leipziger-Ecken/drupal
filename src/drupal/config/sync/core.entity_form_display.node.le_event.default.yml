@@ -28,7 +28,6 @@ dependencies:
     - media_library
     - publication_date
     - select2
-    - select2_multicheck
     - svg_image
     - text
 third_party_settings:
@@ -37,9 +36,8 @@ third_party_settings:
       children:
         - langcode
         - sticky
-        - published_at
       parent_name: ''
-      weight: 9
+      weight: 10
       format_type: details_sidebar
       region: content
       format_settings:
@@ -52,16 +50,14 @@ third_party_settings:
       label: Einstellungen
     group_details:
       children:
+        - field_le_event_website
         - field_le_event_kategorie_typ
         - field_le_event_kategorie_gruppe
-        - field_bezirk
-        - field_adresse
-        - field_le_event_website
         - field_le_event_kategorie_tags
         - field_le_event_is_barrier_free
-      parent_name: ''
-      weight: 7
-      format_type: details
+      parent_name: group_basic
+      weight: 22
+      format_type: accordion_item
       region: content
       format_settings:
         id: details
@@ -69,7 +65,69 @@ third_party_settings:
         description: ''
         open: false
         required_fields: true
+        formatter: closed
       label: Details
+    group_basic:
+      children:
+        - group_general
+        - group_address
+        - group_details
+        - group_images
+      parent_name: ''
+      weight: 3
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Basic
+    group_address:
+      children:
+        - field_adresse
+        - field_bezirk
+      parent_name: group_basic
+      weight: 21
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: address
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: Adresse
+    group_general:
+      children:
+        - published_at
+        - field_le_event_beschreibung
+        - field_le_event_occurrences
+      parent_name: group_basic
+      weight: 20
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: general
+        classes: ''
+        formatter: open
+        required_fields: true
+        description: ''
+      label: Allgemein
+    group_images:
+      children:
+        - field_le_event_image
+        - field_main_image
+      parent_name: group_basic
+      weight: 23
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: images
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: Bilder
 _core:
   default_config_hash: 25O-AwsEx0saDOI8u5hH18O9GnZdbsejDBbyq2L3xOs
 id: node.le_event.default
@@ -84,7 +142,7 @@ content:
     type: address_default
     region: content
   field_bezirk:
-    weight: 8
+    weight: 10
     settings:
       autocomplete: false
       match_operator: CONTAINS
@@ -94,7 +152,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_beschreibung:
-    weight: 5
+    weight: 10
     settings:
       rows: 6
       placeholder: ''
@@ -102,7 +160,7 @@ content:
     type: text_textarea
     region: content
   field_le_event_image:
-    weight: 3
+    weight: 4
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -110,44 +168,51 @@ content:
     type: image_image
     region: content
   field_le_event_is_barrier_free:
-    weight: 12
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 7
-    settings: {  }
-    third_party_settings: {  }
-    type: options_buttons
-    region: content
-  field_le_event_kategorie_tags:
-    weight: 11
+    weight: 12
     settings:
+      autocomplete: false
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: 'z.B. "kostenfrei, outdoor"'
-    third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
-    region: content
-  field_le_event_kategorie_typ:
-    weight: 6
-    settings:
       width: 100%
     third_party_settings: {  }
-    type: select2_multicheck
+    type: select2_entity_reference
+    region: content
+  field_le_event_kategorie_tags:
+    weight: 13
+    settings:
+      width: 100%
+      autocomplete: true
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_le_event_kategorie_typ:
+    weight: 11
+    settings:
+      width: 100%
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   field_le_event_lizenzhinweis:
-    weight: 8
+    weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_occurrences:
-    weight: 6
+    weight: 11
     settings: {  }
     third_party_settings: {  }
     type: date_recur_modular_alpha
@@ -161,7 +226,7 @@ content:
     type: link_default
     region: content
   field_main_image:
-    weight: 4
+    weight: 5
     settings:
       media_types:
         - image
@@ -192,7 +257,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 0
+    weight: 1
     region: content
     third_party_settings: {  }
   sticky:
@@ -204,7 +269,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 1
+    weight: 0
     region: content
     settings:
       size: 60
