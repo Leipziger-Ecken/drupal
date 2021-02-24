@@ -1,0 +1,97 @@
+uuid: 02fdcbe1-7544-4a43-9ebf-64009bbc1ac2
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.date_format.medium
+    - core.entity_view_mode.node.backend_teaser
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
+    - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.field_main_image
+    - field.field.node.le_event.og_audience
+    - image.style.medium
+    - node.type.le_event
+  module:
+    - date_recur
+    - media
+    - svg_image
+    - text
+    - user
+_core:
+  default_config_hash: SranR5Ezhhmx-F7EeReEqZU2MDf3q1HfccOPfqVIgDI
+id: node.le_event.backend_teaser
+targetEntityType: node
+bundle: le_event
+mode: backend_teaser
+content:
+  field_le_event_beschreibung:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_le_event_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_le_event_occurrences:
+    weight: 2
+    label: hidden
+    settings:
+      format_type: medium
+      occurrence_format_type: medium
+      same_end_date_format_type: medium
+      separator: '-'
+      timezone_override: Europe/Berlin
+      interpreter: ''
+      show_next: 8
+      count_per_item: true
+    third_party_settings: {  }
+    type: date_recur_basic_formatter
+    region: content
+  field_main_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+hidden:
+  field_adresse: true
+  field_bezirk: true
+  field_geofield: true
+  field_le_event___eid: true
+  field_le_event_is_barrier_free: true
+  field_le_event_kategorie_gruppe: true
+  field_le_event_kategorie_tags: true
+  field_le_event_kategorie_typ: true
+  field_le_event_lizenzhinweis: true
+  field_le_event_website: true
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

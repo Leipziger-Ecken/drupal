@@ -9,25 +9,69 @@ function le_admin_theme($existing, $type, $theme, $path)
       'render element' => 'elements',
     ],
     'le_admin__user_akteur_contents' => [
-      'variables' => [],
+      'variables' => ['node' => null],
       'render element' => 'elements',
     ],
     'le_admin__user_akteur_webbuilder' => [
-      'variables' => [],
+      'variables' => ['node' => null],
       'render element' => 'elements',
     ],
     'node__le_akteur__backend_teaser' => [
       'template' => 'node/node--le-akteur--backend-teaser',
       'base hook' => 'node',
     ],
+    'node__le_event__backend_teaser' => [
+      'template' => 'node/node--le-event--backend-teaser',
+      'base hook' => 'node',
+    ],
+    'node__project__backend_teaser' => [
+      'template' => 'node/node--project--backend-teaser',
+      'base hook' => 'node',
+    ],
+    'node__blog_article__backend_teaser' => [
+      'template' => 'node/node--blog-article--backend-teaser',
+      'base hook' => 'node',
+    ],
+    'node__partner__backend_teaser' => [
+      'template' => 'node/node--partner--backend-teaser',
+      'base hook' => 'node',
+    ],
+    'node__sponsor__backend_teaser' => [
+      'template' => 'node/node--sponsor--backend-teaser',
+      'base hook' => 'node',
+    ],
     'node__webbuilder__backend_teaser' => [
       'template' => 'node/node--webbuilder--backend-teaser',
       'base hook' => 'node',
     ],
+    'views_view__le_akteur_has_events__dashboard' => [
+      'template' => 'views/views-view--le-akteur-has-events--dashboard',
+      'base hook' => 'views_view',
+    ],
+    'views_view__projects__dashboard' => [
+      'template' => 'views/views-view--projects--dashboard',
+      'base hook' => 'views_view',
+    ],
+    'views_view__blog_articles__dashboard' => [
+      'template' => 'views/views-view--blog-articles--dashboard',
+      'base hook' => 'views_view',
+    ],
+    'views_view__sponsors__dashboard' => [
+      'template' => 'views/views-view--sponsors--dashboard',
+      'base hook' => 'views_view',
+    ],
+    'views_view__partners__dashboard' => [
+      'template' => 'views/views-view--partners--dashboard',
+      'base hook' => 'views_view',
+    ],
+    'views_view__webbuilders__dashboard' => [
+      'template' => 'views/views-view--webbuilders--dashboard',
+      'base hook' => 'views_view',
+    ],
   ];
 }
 
-function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if (in_array($form_id, [
     'node_le_akteur_edit_form',
@@ -37,6 +81,21 @@ function le_admin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_
   }
   if ($form_id === 'user_login_form') {
     $form['#submit'][] = 'le_admin_user_login_form_submit';
+  }
+  if (in_array($form_id, [
+    'node_le_event_form',
+    'node_le_event_edit_form',
+    'node_blog_article_form',
+    'node_blog_article_edit_form',
+    'node_project_form',
+    'node_project_edit_form',
+    'node_partner_form',
+    'node_sponsor_form',
+    'node_sponsor_edit_form',
+    'node_webbuilder_form',
+    'node_webbuilder_edit_form',
+  ])) {
+    _le_admin_og_audience_form_alter($form, $form_state, $form_id);
   }
 }
 
@@ -51,4 +110,25 @@ function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)
   else {
     $form_state->setRedirect('le_admin.user_dashboard');
   }
+}
+
+function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_le_event_form') {
+    _le_admin_og_audience_form_alter($form, $form_state);
+  }
+}
+
+function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if (strpos($form_id, 'edit_form') === false) {
+    $akteur_id = \Drupal::request()->query->get('le_akteur');
+    if (!$akteur_id) {
+      return;
+    }
+
+    $form['og_audience']['widget']['#default_value'] = $akteur_id;
+  }
+
+  $form['og_audience']['#attributes']['class'][] = 'hidden';
 }

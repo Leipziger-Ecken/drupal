@@ -60,5 +60,18 @@ function leipzigerEckenWebbuilder_theme_suggestions_views_tree_alter(array &$sug
 
 function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
 {
+  $is_preview = \Drupal::request()->query->get('webbuilder_preview') === '1';
   $variables['webbuilder_classes'] = WEBBUILDER_CLASSES;
+  $variables['webbuilder_is_preview'] = $is_preview;
+
+  // hide toolbar in preview mode
+  if ($hook === 'html' && $is_preview) {
+    unset($variables['page_top']['toolbar']);
+
+    foreach($variables['attributes']['class'] as $i => $class) {
+      if (strpos($class, 'toolbar') !== false) {
+        unset($variables['attributes']['class'][$i]);
+      }
+    }
+  }
 }

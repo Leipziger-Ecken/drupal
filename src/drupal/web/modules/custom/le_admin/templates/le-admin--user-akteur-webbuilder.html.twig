@@ -1,0 +1,25 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set current_url = url('<current>')['#markup'] | url_encode %}
+{% set webbuilders = drupal_view_result('webbuilders', 'dashboard', node.id) %}
+
+<h2>{{ 'Webbaukasten von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Webbaukasten in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if webbuilders|length %}
+  {{ drupal_view('webbuilders', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keinen Webbaukasten erstellt.'|t }}
+  </p>
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/webbuilder', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Webbaukasten für Akteur*in erstellen'|t }}
+    </a>
+  </div>
+  {% endif %}
+</div>

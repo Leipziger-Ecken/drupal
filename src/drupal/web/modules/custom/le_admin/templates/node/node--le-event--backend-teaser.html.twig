@@ -1,0 +1,18 @@
+<article class="flex">
+  <div class="mr-4 flex-shrink-0">
+    <figure class="h-16 w-16 border border-gray-300 bg-white text-gray-300">
+      {{ content.field_image|default(content.field_main_image) }}
+    </figure>
+  </div>
+  <div>
+    <h3 class="text-lg font-bold mt-0">
+      {{ label }}
+    </h3>
+    <div class="my-1 text-gray-500 text-sm">
+      {{ content.field_le_event_occurrences }}
+    </div>
+    <div class="mt-1">
+      {{ content.field_le_event_beschreibung }}
+    </div>
+  </div>
+</article>

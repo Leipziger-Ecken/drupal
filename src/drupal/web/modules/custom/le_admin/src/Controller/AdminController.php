@@ -78,9 +78,7 @@ class AdminController extends ControllerBase
   {
     return [
       '#theme' => 'le_admin__user_akteur_contents',
-      '#variables' => [
-        'node' => $node,
-      ]
+      '#node' => $node,
     ];
   }
 
@@ -95,10 +93,8 @@ class AdminController extends ControllerBase
   public function userAkteurWebbuilder($node)
   {
     return [
-      '#theme' => 'le_admin__user_akteur_webbuilde',
-      '#variables' => [
-        'node' => $node,
-      ]
+      '#theme' => 'le_admin__user_akteur_webbuilder',
+      '#node' => $node,
     ];
   }
 }

@@ -1,3 +1,5 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set current_url = url('<current>')['#markup'] | url_encode %}
 {% set akteure = drupal_view_result('le_verwaltete_akteure', 'dashboard', user.id) %}
 
 <h2>{{ 'Deine Akteur*innen'|t }}</h2>
@@ -14,30 +16,29 @@
     <div>
       {{ drupal_entity('node', row.node_field_data_users_field_data_nid, 'backend_teaser') }}
 
-      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents' )}}">
+      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents') }}">
         {{ 'Inhalte verwalten'|t }}
       </a>
 
-      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder' )}}">
+      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder') }}">
         {{ 'Webbaukasten'|t }}
       </a>
     </div>
     <div>
-      <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row.node_field_data_users_field_data_nid ~ '/edit') }}">
+      <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row.node_field_data_users_field_data_nid ~ '/edit', {query: {destination: current_url }}) }}">
         {{ 'Akteur bearbeiten'|t }}
       </a>
     </div>
   </div>
 {% endfor %}
 {% else %}
-<p>
-  {{ 'Du hast noch keine Akteur*in erstellt.'|t }}
-</p>
+  <p class="pt-4">
+    {{ 'Du hast noch keine Akteur*innen erstellt.'|t }}
+  </p>
 {% endif %}
   <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/akteur/add') }}">
+    <a class="button button--primary" href="{{ drupal_url('/node/akteur/add', {query: {destination: current_url }}) }}">
       {{ 'Akteur*in hinzufügen'|t }}
     </a>
   </div>
 </div>
-{{ attach_library('le_admin/tailwind') }}

@@ -1,0 +1,125 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set current_url = url('<current>')['#markup'] | url_encode %}
+{% set events = drupal_view_result('le_akteur_has_events', 'dashboard', node.id) %}
+{% set projects = drupal_view_result('projects', 'dashboard', node.id) %}
+{% set partners = drupal_view_result('partners', 'dashboard', node.id) %}
+{% set sponsors = drupal_view_result('sponsors', 'dashboard', node.id) %}
+{% set blog_articles = drupal_view_result('blog', 'dashboard', node.id) %}
+
+<h2>{{ 'Events von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Events in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if events|length %}
+  {{ drupal_view('le_akteur_has_events', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keine Events erstellt.'|t }}
+  </p>
+  {% endif %}
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/le_event', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Event hinzufügen'|t }}
+    </a>
+  </div>
+</div>
+
+<hr/>
+
+<h2>{{ 'Projekte von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Projekte in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if projects|length %}
+  {{ drupal_view('projects', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keine Projekte erstellt.'|t }}
+  </p>
+  {% endif %}
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/project', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Projekt hinzufügen'|t }}
+    </a>
+  </div>
+</div>
+
+<hr/>
+
+<h2>{{ 'Blog-Artikel von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Blog-Artikel in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if blog_articles|length %}
+  {{ drupal_view('blog', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keine Blog-Artikel erstellt.'|t }}
+  </p>
+  {% endif %}
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/blog_article', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Blog-Artikel hinzufügen'|t }}
+    </a>
+  </div>
+</div>
+
+<hr/>
+
+<h2>{{ 'Partner*innen von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Partner*innen in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if partners|length %}
+  {{ drupal_view('partners', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keine Partner*innen erstellt.'|t }}
+  </p>
+  {% endif %}
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/partner', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Partner*in hinzufügen'|t }}
+    </a>
+  </div>
+</div>
+
+<hr/>
+
+<h2>{{ 'Unterstützer*innen von :label'|t({':label': node.title[0].value}) }}</h2>
+
+<div class="divide-y-2 divide-gray-200">
+  <div class="py-4">
+    <p class="text-gray-500">
+      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Unterstützer*innen in den Leipziger-Ecken haben.'|t }}
+    </p>
+  </div>
+  {% if sponsors|length %}
+  {{ drupal_view('sponsors', 'dashboard', node.id) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'Du hast noch keine Unterstützer*innen erstellt.'|t }}
+  </p>
+  {% endif %}
+  <div class="py-4">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/sponsor', {query: {le_akteur: node.id, destination: current_url }}) }}">
+      {{ 'Unterstützer*in hinzufügen'|t }}
+    </a>
+  </div>
+</div>

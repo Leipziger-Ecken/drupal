@@ -1,0 +1,17 @@
+{% set current_url = url('<current>')['#markup'] | url_encode %}
+
+{% for row in rows[0]['#rows'] %}
+{#{ dd(row) }#}
+<div class="py-4 flex space-x-10">
+  <div>
+    {{ row }}
+  </div>
+  <div>
+    <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: current_url }}) }}">
+      {{ 'Blog-Artikel bearbeiten'|t }}
+    </a>
+  </div>
+</div>
+{% endfor %}
+
+{{ pager }}

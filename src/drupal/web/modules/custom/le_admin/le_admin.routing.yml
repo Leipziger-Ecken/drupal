@@ -11,7 +11,7 @@ le_admin.user_akteur_contents:
   path: '/user/akteur/{node}/contents'
   defaults:
     _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurContents'
-    _title: 'Akteur Inhalte'
+    _title: 'Inhalte'
   requirements:
     _permission: 'edit own le_akteur content'
   options:
@@ -23,7 +23,7 @@ le_admin.user_akteur_webbuilder:
   path: '/user/akteur/{node}/webbuilder'
   defaults:
     _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurWebbuilder'
-    _title: 'Akteur Webbaukasten'
+    _title: 'Webbaukasten'
   requirements:
     _permission: 'edit own le_akteur content'
   options:

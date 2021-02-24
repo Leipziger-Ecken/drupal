@@ -1,0 +1,10 @@
+{% set current_url = url('<current>')['#markup'] | url_encode %}
+
+{% for row in rows[0]['#rows'] %}
+<a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: current_url }}) }}">
+  {{ 'Webbaukasten bearbeiten'|t }}
+</a>
+<div class="mt-4">
+  {{ row }}
+</div>
+{% endfor %}
