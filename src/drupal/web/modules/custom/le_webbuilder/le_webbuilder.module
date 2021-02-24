@@ -97,6 +97,8 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
   $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
 
   $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+  $form['og_audience']['#attributes']['class'][] = 'hidden';
+  
   if ($form_id === 'node_webbuilder_page_form') {
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
     if ($webbuilder_id) {
