@@ -11,7 +11,7 @@ id: node.webbuilder_page.field_header_image
 field_name: field_header_image
 entity_type: node
 bundle: webbuilder_page
-label: 'Bild im Header'
+label: 'Bild im Kopfbereich'
 description: ''
 required: false
 translatable: false

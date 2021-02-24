@@ -11,7 +11,7 @@ id: node.webbuilder_page.field_pre_footer_button
 field_name: field_pre_footer_button
 entity_type: node
 bundle: webbuilder_page
-label: 'Pre-Footer Button'
+label: Button
 description: ''
 required: false
 translatable: false

@@ -12,8 +12,8 @@ id: node.webbuilder_page.field_contents
 field_name: field_contents
 entity_type: node
 bundle: webbuilder_page
-label: Inhalt
-description: ''
+label: Seitenabschnitte
+description: "Platziere Seitenabschnitte, um deine Seite mit Inhalt und Leben zu füllen.\r\nEs steht dir eine Auswahl unterschiedlicher Module wie z.B. Text, Bild oder Video zur Verfügung."
 required: false
 translatable: false
 default_value: {  }

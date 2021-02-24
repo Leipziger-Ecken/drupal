@@ -9,7 +9,7 @@ id: node.webbuilder_page.field_pre_footer_heading
 field_name: field_pre_footer_heading
 entity_type: node
 bundle: webbuilder_page
-label: 'Pre-Footer Überschrift'
+label: Überschrift
 description: ''
 required: false
 translatable: false

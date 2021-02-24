@@ -34,7 +34,7 @@ third_party_settings:
         - langcode
         - field_weight
       parent_name: ''
-      weight: 7
+      weight: 8
       format_type: details_sidebar
       region: content
       format_settings:
@@ -50,25 +50,23 @@ third_party_settings:
         - field_pre_footer_heading
         - field_pre_footer_body
         - field_pre_footer_button
-      parent_name: ''
-      weight: 5
-      format_type: details
+      parent_name: group_basic
+      weight: 20
+      format_type: accordion_item
       region: content
       format_settings:
+        formatter: closed
+        required_fields: true
         id: pre-footer
         classes: ''
-        description: ''
-        open: false
-        required_fields: true
-      label: Pre-Footer
+      label: Seitenabschluss
     group_navigation:
       children:
-        - field_slug
         - field_parent
         - field_navigation
-      parent_name: ''
-      weight: 3
-      format_type: details
+      parent_name: group_basic
+      weight: 17
+      format_type: accordion_item
       region: content
       format_settings:
         id: navigation
@@ -76,21 +74,66 @@ third_party_settings:
         description: ''
         open: false
         required_fields: true
+        formatter: closed
       label: Navigation
     group_header:
       children:
         - field_header_image
-      parent_name: ''
-      weight: 4
-      format_type: details
+      parent_name: group_basic
+      weight: 18
+      format_type: accordion_item
       region: content
       format_settings:
+        formatter: closed
+        required_fields: true
         id: header
         classes: ''
-        description: ''
-        open: false
+      label: 'Kopfbereich der Seite'
+    group_basic:
+      children:
+        - group_general
+        - group_navigation
+        - group_header
+        - group_contents
+        - group_pre_footer
+      parent_name: ''
+      weight: 2
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Basic
+    group_general:
+      children:
+        - field_slug
+        - published_at
+        - field_short_description
+      parent_name: group_basic
+      weight: 16
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: general
+        classes: ''
+        formatter: open
         required_fields: true
-      label: Header
+        description: ''
+      label: Allgemein
+    group_contents:
+      children:
+        - field_contents
+      parent_name: group_basic
+      weight: 19
+      format_type: accordion_item
+      region: content
+      format_settings:
+        formatter: closed
+        required_fields: true
+        id: contents
+        classes: ''
+      label: Seiteninhalte
 id: node.webbuilder_page.default
 targetEntityType: node
 bundle: webbuilder_page
@@ -98,10 +141,10 @@ mode: default
 content:
   field_contents:
     type: paragraphs
-    weight: 6
+    weight: 7
     settings:
-      title: Inhalt
-      title_plural: Inhalte
+      title: Abschnitt
+      title_plural: Abschnitte
       edit_mode: closed
       closed_mode: preview
       autocollapse: all
@@ -163,7 +206,7 @@ content:
     type: string_textfield
     region: content
   field_short_description:
-    weight: 2
+    weight: 5
     settings:
       rows: 2
       placeholder: ''
@@ -171,7 +214,7 @@ content:
     type: string_textarea
     region: content
   field_slug:
-    weight: 1
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -179,20 +222,20 @@ content:
     type: string_textfield
     region: content
   field_webbuilder:
-    weight: 35
+    weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_weight:
-    weight: 40
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: weight_selector
     region: content
   langcode:
     type: language_select
-    weight: 38
+    weight: 5
     region: content
     settings:
       include_locked: true
@@ -200,12 +243,12 @@ content:
   og_audience:
     type: options_buttons
     settings: {  }
-    weight: 37
+    weight: 4
     third_party_settings: {  }
     region: content
   published_at:
     type: publication_date_timestamp
-    weight: 8
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -213,12 +256,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 0
+    weight: 1
     region: content
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 1
+    weight: 0
     region: content
     settings:
       size: 60

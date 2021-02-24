@@ -11,8 +11,8 @@ id: node.webbuilder_page.field_navigation
 field_name: field_navigation
 entity_type: node
 bundle: webbuilder_page
-label: Navigation
-description: ''
+label: 'Seite erscheint in folgenden Navigationen'
+description: 'Wähle die Navigationen aus, in welchen die Seite erscheinen soll.'
 required: false
 translatable: false
 default_value: {  }

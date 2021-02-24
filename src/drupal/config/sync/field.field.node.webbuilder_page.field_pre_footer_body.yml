@@ -11,7 +11,7 @@ id: node.webbuilder_page.field_pre_footer_body
 field_name: field_pre_footer_body
 entity_type: node
 bundle: webbuilder_page
-label: 'Pre-Footer Text'
+label: Text
 description: ''
 required: false
 translatable: false
