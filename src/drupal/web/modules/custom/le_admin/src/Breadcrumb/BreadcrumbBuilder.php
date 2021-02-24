@@ -50,12 +50,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       $breadcrumb->addLink(
         Link::createFromRoute(
           t('Akteur: :label', [':label' => $node->title[0]->value]),
-          'entity.node.edit_form', ['node' => $node->id() ]
-        )
-      );
-      $breadcrumb->addLink(
-        Link::createFromRoute(
-          t('Inhalte'), 'le_admin.user_akteur_contents', ['node' => $node->id() ]
+          'le_admin.user_akteur_contents', ['node' => $node->id() ]
         )
       );
     }
@@ -65,7 +60,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       $breadcrumb->addLink(
         Link::createFromRoute(
           t('Akteur: :label', [':label' => $node->title[0]->value]),
-          'entity.node.edit_form', ['node' => $node->id() ]
+          'le_admin.user_akteur_contents', ['node' => $node->id() ]
         )
       );
       $breadcrumb->addLink(
@@ -81,7 +76,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       $breadcrumb->addLink(
         Link::createFromRoute(
           t('Akteur: :label', [':label' => $akteur->title[0]->value]),
-          'entity.node.edit_form', ['node' => $akteur->id() ]
+          'le_admin.user_akteur_contents', ['node' => $node->id() ]
         )
       );
       $breadcrumb->addLink(

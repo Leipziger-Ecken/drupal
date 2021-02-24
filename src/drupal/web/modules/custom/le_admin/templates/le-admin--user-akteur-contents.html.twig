@@ -1,10 +1,31 @@
 {{ attach_library('le_admin/tailwind') }}
 {% set destination = get_destination() %}
+{% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
 {% set events = drupal_view_result('le_akteur_has_events', 'dashboard', node.id) %}
 {% set projects = drupal_view_result('projects', 'dashboard', node.id) %}
 {% set partners = drupal_view_result('partners', 'dashboard', node.id) %}
 {% set sponsors = drupal_view_result('sponsors', 'dashboard', node.id) %}
 {% set blog_articles = drupal_view_result('blog', 'dashboard', node.id) %}
+
+
+<div class="py-4 flex space-x-10">
+  <div>
+    {{ drupal_entity('node', node.id, 'backend_teaser') }}
+
+    <a class="{{ link_button_classes }} mx-2"
+      href="{{ drupal_url('/user/akteur/' ~ node.id ~ '/webbuilder') }}">
+      {{ 'Webbaukasten'|t }}
+    </a>
+  </div>
+  <div>
+    <a class="button button--default button--small mt-0"
+      href="{{ drupal_url('/node/' ~ node.id ~ '/edit', {query: {destination: destination }}) }}">
+      {{ 'Akteur bearbeiten'|t }}
+    </a>
+  </div>
+</div>
+
+<hr/>
 
 <h2>{{ 'Events von :label'|t({':label': node.title[0].value}) }}</h2>
 
