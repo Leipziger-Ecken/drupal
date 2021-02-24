@@ -3,43 +3,49 @@
 {% set akteure = drupal_view_result('le_verwaltete_akteure', 'dashboard', user.id) %}
 {% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
 
-<h2>{{ 'Deine Akteur*innen'|t }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Deine Akteur*innen'|t }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Akteur*innen in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-{% if akteure|length %}
-{% for row in akteure %}
-  <div class="py-4 flex space-x-10">
-    <div>
-      {{ drupal_entity('node', row.node_field_data_users_field_data_nid, 'backend_teaser') }}
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if akteure|length %}
+      {% for row in akteure %}
+      <div class="{{ loop.index == 1 ? 'pb-8' : 'py-8' }} flex space-x-10">
+        <div>
+          {{ drupal_entity('node', row.node_field_data_users_field_data_nid, 'backend_teaser') }}
+        </div>
+        <div>
+          <a class="button button--default button--small mt-0"
+            href="{{ drupal_url('/node/' ~ row.node_field_data_users_field_data_nid ~ '/edit', {query: {destination: destination }}) }}">
+            {{ 'Akteur bearbeiten'|t }}
+          </a>
 
-      <a class="{{ link_button_classes }} mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents') }}">
-        {{ 'Inhalte verwalten'|t }}
-      </a>
-
-      <a class="{{ link_button_classes }} mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder') }}">
-        {{ 'Webbaukasten'|t }}
-      </a>
-    </div>
-    <div>
-      <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row.node_field_data_users_field_data_nid ~ '/edit', {query: {destination: destination }}) }}">
-        {{ 'Akteur bearbeiten'|t }}
-      </a>
+          <a class="{{ link_button_classes }} mx-2"
+            href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents') }}">
+            {{ 'Inhalte verwalten'|t }}
+          </a>
+          
+          <a class="{{ link_button_classes }} mx-2"
+            href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder') }}">
+            {{ 'Webbaukasten'|t }}
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p class="pt-4">
+        {{ 'Du hast noch keine Akteur*innen erstellt.'|t }}
+      </p>
+      {% endif %}
     </div>
   </div>
-{% endfor %}
-{% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Akteur*innen erstellt.'|t }}
-  </p>
-{% endif %}
-  <div class="py-4">
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
     <a class="button button--primary" href="{{ drupal_url('/node/akteur/add', {query: {destination: destination }}) }}">
       {{ 'Akteur*in hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>

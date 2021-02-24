@@ -7,140 +7,149 @@
 {% set sponsors = drupal_view_result('sponsors', 'dashboard', node.id) %}
 {% set blog_articles = drupal_view_result('blog', 'dashboard', node.id) %}
 
-
 <div class="py-4 flex space-x-10">
   <div>
     {{ drupal_entity('node', node.id, 'backend_teaser') }}
-
-    <a class="{{ link_button_classes }} mx-2"
-      href="{{ drupal_url('/user/akteur/' ~ node.id ~ '/webbuilder') }}">
-      {{ 'Webbaukasten'|t }}
-    </a>
   </div>
   <div>
     <a class="button button--default button--small mt-0"
       href="{{ drupal_url('/node/' ~ node.id ~ '/edit', {query: {destination: destination }}) }}">
       {{ 'Akteur bearbeiten'|t }}
     </a>
+
+    <a class="{{ link_button_classes }} mx-2" href="{{ drupal_url('/user/akteur/' ~ node.id ~ '/webbuilder') }}">
+      {{ 'Webbaukasten'|t }}
+    </a>
   </div>
 </div>
 
-<hr/>
 
-<h2>{{ 'Events von :label'|t({':label': node.title[0].value}) }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-8">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Events von :label'|t({':label': node.title[0].value}) }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Events in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-  {% if events|length %}
-  {{ drupal_view('le_akteur_has_events', 'dashboard', node.id) }}
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Events erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/le_event', {query: {le_akteur: node.id, destination: destination }}) }}">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if events|length %}
+      {{ drupal_view('le_akteur_has_events', 'dashboard', node.id) }}
+      {% else %}
+      <p>
+        {{ 'Du hast noch keine Events erstellt.'|t }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
+    <a class="button button--primary"
+      href="{{ drupal_url('/node/add/le_event', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Event hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>
 
-<hr/>
-
-<h2>{{ 'Projekte von :label'|t({':label': node.title[0].value}) }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-8">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Projekte von :label'|t({':label': node.title[0].value}) }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Projekte in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-  {% if projects|length %}
-  {{ drupal_view('projects', 'dashboard', node.id) }}
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Projekte erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/project', {query: {le_akteur: node.id, destination: destination }}) }}">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if projects|length %}
+      {{ drupal_view('projects', 'dashboard', node.id) }}
+      {% else %}
+      <p>
+        {{ 'Du hast noch keine Projekte erstellt.'|t }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
+    <a class="button button--primary"
+      href="{{ drupal_url('/node/add/project', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Projekt hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>
 
-<hr/>
-
-<h2>{{ 'Blog-Artikel von :label'|t({':label': node.title[0].value}) }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-8">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Blog-Artikel von :label'|t({':label': node.title[0].value}) }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Blog-Artikel in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-  {% if blog_articles|length %}
-  {{ drupal_view('blog', 'dashboard', node.id) }}
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Blog-Artikel erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/blog_article', {query: {le_akteur: node.id, destination: destination }}) }}">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if blog_articles|length %}
+      {{ drupal_view('blog', 'dashboard', node.id) }}
+      {% else %}
+      <p>
+        {{ 'Du hast noch keine Blog-Artikel erstellt.'|t }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
+    <a class="button button--primary"
+      href="{{ drupal_url('/node/add/blog_article', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Blog-Artikel hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>
 
-<hr/>
-
-<h2>{{ 'Partner*innen von :label'|t({':label': node.title[0].value}) }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-8">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Partner*innen von :label'|t({':label': node.title[0].value}) }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Partner*innen in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-  {% if partners|length %}
-  {{ drupal_view('partners', 'dashboard', node.id) }}
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Partner*innen erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/partner', {query: {le_akteur: node.id, destination: destination }}) }}">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if partners|length %}
+      {{ drupal_view('partners', 'dashboard', node.id) }}
+      {% else %}
+      <p>
+        {{ 'Du hast noch keine Partner*innen erstellt.'|t }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
+    <a class="button button--primary"
+      href="{{ drupal_url('/node/add/partner', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Partner*in hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>
 
-<hr/>
-
-<h2>{{ 'Unterstützer*innen von :label'|t({':label': node.title[0].value}) }}</h2>
-
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
+<section class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200 mb-8">
+  <div class="px-4 py-5 sm:px-6">
+    <h2>{{ 'Unterstützer*innen von :label'|t({':label': node.title[0].value}) }}</h2>
     <p class="text-gray-500">
       {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Unterstützer*innen in den Leipziger-Ecken haben.'|t }}
     </p>
   </div>
-  {% if sponsors|length %}
-  {{ drupal_view('sponsors', 'dashboard', node.id) }}
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keine Unterstützer*innen erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/sponsor', {query: {le_akteur: node.id, destination: destination }}) }}">
+  <div class="px-4 py-5 sm:p-6">
+    <div class="divide-y-2 divide-gray-200">
+      {% if sponsors|length %}
+      {{ drupal_view('sponsors', 'dashboard', node.id) }}
+      {% else %}
+      <p>
+        {{ 'Du hast noch keine Unterstützer*innen erstellt.'|t }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="px-4 py-4 sm:px-6 bg-gray-50">
+    <a class="button button--primary"
+      href="{{ drupal_url('/node/add/sponsor', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Unterstützer*in hinzufügen'|t }}
     </a>
   </div>
-</div>
+</section>
