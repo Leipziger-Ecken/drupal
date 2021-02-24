@@ -43,7 +43,7 @@ third_party_settings:
       children:
         - path
       parent_name: ''
-      weight: 23
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -54,6 +54,89 @@ third_party_settings:
         required_fields: true
         weight: 0
       label: Einstellungen
+    group_contact:
+      children:
+        - field_le_akteur_email
+        - field_le_akteur_phone
+        - field_le_akteur_url
+        - field_le_akteur_opening_times
+        - field_le_akteur_contactperson
+        - field_le_akteur_contactperson_fn
+      parent_name: group_basic
+      weight: 34
+      format_type: accordion_item
+      region: content
+      format_settings:
+        formatter: closed
+        required_fields: true
+        id: contact
+        classes: ''
+      label: 'Kontakt & Öffnungszeiten'
+    group_basic:
+      children:
+        - group_address
+        - group_contact
+        - group_details
+        - group_image
+      parent_name: ''
+      weight: 3
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Grunddaten
+    group_address:
+      children:
+        - field_adresse
+        - field_bezirk
+      parent_name: group_basic
+      weight: 33
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: address
+        classes: ''
+        formatter: open
+        required_fields: true
+        description: ''
+      label: Adresse
+    group_image:
+      children:
+        - field_logo
+        - field_le_akteur_image
+      parent_name: group_basic
+      weight: 36
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: image
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Bild & Logo'
+    group_details:
+      children:
+        - field_le_akteur_hat_typ
+        - field_le_akteur_kategorie_gruppe
+        - field_le_akteur_kategorie_typ
+        - field_le_akteur_description
+        - field_le_akteur_is_barrier_free
+        - field_le_akteur_kategorie_tags
+        - field_le_akteur_einrichtungsname
+      parent_name: group_basic
+      weight: 35
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: details
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: Details
 _core:
   default_config_hash: JG3NKQlqWadcEYoTKkwJzUdYwmurC0Hat_DbrbHqrfk
 id: node.le_akteur.default
@@ -63,18 +146,18 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   field_adresse:
-    weight: 18
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 17
+    weight: 10
     settings:
       autocomplete: false
       match_operator: CONTAINS
@@ -84,7 +167,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_contactperson:
-    weight: 13
+    weight: 15
     settings:
       size: 60
       placeholder: ''
@@ -92,7 +175,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_contactperson_fn:
-    weight: 14
+    weight: 16
     settings:
       size: 60
       placeholder: 'z.B. "Projektkoordination" / "Vorstand"'
@@ -100,7 +183,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_description:
-    weight: 4
+    weight: 21
     settings:
       rows: 6
       placeholder: ''
@@ -108,7 +191,7 @@ content:
     type: text_textarea
     region: content
   field_le_akteur_einrichtungsname:
-    weight: 20
+    weight: 24
     settings:
       size: 60
       placeholder: ''
@@ -116,7 +199,7 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_email:
-    weight: 8
+    weight: 11
     settings:
       size: 60
       placeholder: ''
@@ -124,13 +207,13 @@ content:
     type: email_default
     region: content
   field_le_akteur_hat_typ:
-    weight: 3
+    weight: 18
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_le_akteur_image:
-    weight: 1
+    weight: 22
     settings:
       preview_image_style: medium
       progress_indicator: throbber
@@ -138,14 +221,14 @@ content:
     type: image_image
     region: content
   field_le_akteur_is_barrier_free:
-    weight: 21
+    weight: 22
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_akteur_kategorie_gruppe:
-    weight: 16
+    weight: 19
     settings:
       width: 100%
       autocomplete: false
@@ -155,7 +238,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_kategorie_tags:
-    weight: 19
+    weight: 23
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -165,24 +248,24 @@ content:
     type: entity_reference_autocomplete_tags
     region: content
   field_le_akteur_kategorie_typ:
-    weight: 15
+    weight: 20
     settings:
       width: 100%
-      autocomplete: false
       match_operator: CONTAINS
       match_limit: 10
+      autocomplete: false
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
   field_le_akteur_lizenzhinweis:
-    weight: 22
+    weight: 5
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_akteur_opening_times:
-    weight: 11
+    weight: 14
     settings:
       size: 60
       placeholder: 'z.B. "Mo - Fr 10:00 - 18:00, Sa 10:00 - 12:00"'
@@ -190,14 +273,14 @@ content:
     type: string_textfield
     region: content
   field_le_akteur_phone:
-    weight: 10
+    weight: 12
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: telephone_default
     region: content
   field_le_akteur_url:
-    weight: 9
+    weight: 13
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -205,7 +288,7 @@ content:
     type: link_default
     region: content
   field_logo:
-    weight: 2
+    weight: 21
     settings:
       media_types: {  }
     third_party_settings: {  }
@@ -219,7 +302,7 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 12
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -227,7 +310,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 1
     region: content
     third_party_settings: {  }
   title:
@@ -240,7 +323,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 8
     settings:
       match_operator: CONTAINS
       size: 60
