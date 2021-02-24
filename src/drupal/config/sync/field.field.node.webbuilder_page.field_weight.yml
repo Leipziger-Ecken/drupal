@@ -12,7 +12,7 @@ field_name: field_weight
 entity_type: node
 bundle: webbuilder_page
 label: Sortierung
-description: ''
+description: "Gibt an in welcher Reihenfolge die Seite innerhalb der Navigation angezeigt wird.\r\nHöhere Werte lassen die Seite nach vorne rutschen, niedrigere Werte nach hinten."
 required: false
 translatable: false
 default_value:

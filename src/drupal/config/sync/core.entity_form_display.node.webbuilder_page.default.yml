@@ -32,7 +32,6 @@ third_party_settings:
         - field_webbuilder
         - og_audience
         - langcode
-        - field_weight
       parent_name: ''
       weight: 8
       format_type: details_sidebar
@@ -64,6 +63,7 @@ third_party_settings:
       children:
         - field_parent
         - field_navigation
+        - field_weight
       parent_name: group_basic
       weight: 17
       format_type: accordion_item
@@ -228,7 +228,7 @@ content:
     type: options_select
     region: content
   field_weight:
-    weight: 6
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: weight_selector
