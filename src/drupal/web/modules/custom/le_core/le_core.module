@@ -47,10 +47,10 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
 
     if (isset($data['tabs'][0]) && isset($data['tabs'][0]['entity.node.canonical'])) {
       // Change first tab title from "Ansicht" to "Beschreibung"
-      $local_task_main_view = &$data['tabs'][0]['entity.node.canonical'];
+      // $local_task_main_view = &$data['tabs'][0]['entity.node.canonical'];
 
       // TODO: this is very missleading
-      $local_task_main_view['#link']['title'] = 'Beschreibung';
+      // $local_task_main_view['#link']['title'] = 'Beschreibung';
     }
 
     /** @var \Drupal\node\Entity\Node $node */
