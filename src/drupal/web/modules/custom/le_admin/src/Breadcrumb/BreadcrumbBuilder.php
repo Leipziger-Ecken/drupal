@@ -111,7 +111,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       $breadcrumb->addLink(
         Link::createFromRoute(
           t('Akteur: :label', [':label' => $akteur->title[0]->value]),
-          'le_admin.user_akteur_contents', ['node' => $node->id() ]
+          'le_admin.user_akteur_contents', ['node' => $akteur->id() ]
         )
       );
       $breadcrumb->addLink(
