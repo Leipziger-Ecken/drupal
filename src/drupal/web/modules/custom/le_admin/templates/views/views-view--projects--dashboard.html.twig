@@ -1,4 +1,4 @@
-{% set current_url = url('<current>')['#markup'] | url_encode %}
+{% set destination = get_destination() %}
 
 {% for row in rows[0]['#rows'] %}
 <div class="py-4 flex space-x-10">
@@ -6,7 +6,7 @@
     {{ row }}
   </div>
   <div>
-    <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: current_url }}) }}">
+    <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: destination }}) }}">
       {{ 'Projekt bearbeiten'|t }}
     </a>
   </div>

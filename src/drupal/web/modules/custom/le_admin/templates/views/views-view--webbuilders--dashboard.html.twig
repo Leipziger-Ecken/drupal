@@ -1,8 +1,12 @@
-{% set current_url = url('<current>')['#markup'] | url_encode %}
+{% set destination = get_destination() %}
 
 {% for row in rows[0]['#rows'] %}
-<a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: current_url }}) }}">
+<a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: destination }}) }}">
   {{ 'Webbaukasten bearbeiten'|t }}
+</a>
+<a class="text-gray-600 hover:text-gray-700 hover:underline mx-2"
+  href="{{ drupal_url('/user/webbuilder/' ~ row['#node'].id() ~ '/pages', {query: {destination: destination }}) }}">
+  {{ 'Seiten verwalten'|t }}
 </a>
 <div class="mt-4">
   {{ row }}

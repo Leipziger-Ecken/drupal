@@ -1,5 +1,5 @@
 {{ attach_library('le_admin/tailwind') }}
-{% set current_url = url('<current>')['#markup'] | url_encode %}
+{% set destination = get_destination() %}
 {% set webbuilders = drupal_view_result('webbuilders', 'dashboard', node.id) %}
 
 <h2>{{ 'Webbaukasten von :label'|t({':label': node.title[0].value}) }}</h2>
@@ -17,7 +17,7 @@
     {{ 'Du hast noch keinen Webbaukasten erstellt.'|t }}
   </p>
   <div class="py-4">
-    <a class="button button--primary" href="{{ drupal_url('/node/add/webbuilder', {query: {le_akteur: node.id, destination: current_url }}) }}">
+    <a class="button button--primary" href="{{ drupal_url('/node/add/webbuilder', {query: {le_akteur: node.id, destination: destination }}) }}">
       {{ 'Webbaukasten für Akteur*in erstellen'|t }}
     </a>
   </div>

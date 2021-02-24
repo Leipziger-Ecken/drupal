@@ -125,6 +125,7 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
           'le_admin.user_dashboard',
           'le_admin.user_akteur_contents',
           'le_admin.user_akteur_webbuilder',
+          'le_admin.user_webbuilder_pages',
         ])
       )
     ) {

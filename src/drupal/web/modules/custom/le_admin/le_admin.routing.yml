@@ -30,3 +30,15 @@ le_admin.user_akteur_webbuilder:
     parameters:
       node:
         type: entity:node
+
+le_admin.user_webbuilder_pages:
+  path: '/user/webbuilder/{node}/pages'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderPages'
+    _title: 'Seiten'
+  requirements:
+    _permission: 'create webbuilder_page content'
+  options:
+    parameters:
+      node:
+        type: entity:node

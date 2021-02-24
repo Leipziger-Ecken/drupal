@@ -9,7 +9,7 @@ _core:
 id: gin_primary_local_tasks
 theme: gin
 region: header
-weight: -2
+weight: -3
 provider: null
 plugin: local_tasks_block
 settings:

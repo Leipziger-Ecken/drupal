@@ -97,4 +97,20 @@ class AdminController extends ControllerBase
       '#node' => $node,
     ];
   }
+
+  /**
+   * Provides the webbuilder pages page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the webbuilder pages page.
+   */
+  public function userWebbuilderPages($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_webbuilder_pages',
+      '#node' => $node,
+    ];
+  }
 }

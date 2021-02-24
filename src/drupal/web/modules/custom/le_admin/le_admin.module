@@ -3,6 +3,11 @@ use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\block\Entity\Block;
+use Drupal\Core\Url;
+
+const le_admin_link_button_classes = [
+  'py-2', 'px-4', 'mr-4', 'border', 'border-gray-300', 'hover:bg-gray-100', 'hover:border-gray-400', 'rounded-md',
+];
 
 function le_admin_theme($existing, $type, $theme, $path)
 {
@@ -16,6 +21,10 @@ function le_admin_theme($existing, $type, $theme, $path)
       'render element' => 'elements',
     ],
     'le_admin__user_akteur_webbuilder' => [
+      'variables' => ['node' => null],
+      'render element' => 'elements',
+    ],
+    'le_admin__user_webbuilder_pages' => [
       'variables' => ['node' => null],
       'render element' => 'elements',
     ],
@@ -84,7 +93,19 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     'node_le_akteur_edit_form',
     'node_le_akteur_form',
   ])) {
-    $form['#attached']['library'][] = 'le_admin/akteur_form';
+    _le_admin_akteur_form_alter($form, $form_state, $form_id);
+  }
+  if (in_array($form_id, [
+    'node_webbuilder_edit_form',
+    'node_webbuilder_form',
+  ])) {
+    _le_admin_webbuilder_form_alter($form, $form_state, $form_id);
+  }
+  if (in_array($form_id, [
+    'node_webbuilder_page_edit_form',
+    'node_webbuilder_page_form',
+  ])) {
+    _le_admin_webbuilder_page_form_alter($form, $form_state, $form_id);
   }
   if ($form_id === 'user_login_form') {
     $form['#submit'][] = 'le_admin_user_login_form_submit';
@@ -119,6 +140,102 @@ function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)
   }
 }
 
+function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['#attached']['library'][] = 'le_admin/akteur_form';
+
+  if ($form_id === 'node_le_akteur_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+
+    $form['le_admin_akteur_view'] = [
+      '#type' => 'link',
+      '#title' => t('Öffentliches Profil öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'akteur_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
+
+    $form['le_admin_user_akteur_contents'] = [
+      '#type' => 'link',
+      '#title' => t('Inhalte verwalten'),
+      '#url' => Url::fromRoute('le_admin.user_akteur_contents', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+      ],
+      '#weight' => -9,
+    ];
+
+    $form['le_admin_user_akteur_webbuilder'] = [
+      '#type' => 'link',
+      '#title' => t('Webbaukasten'),
+      '#url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+      ],
+      '#weight' => -8,
+    ];
+  }
+}
+
+function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_webbuilder_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+
+    $form['le_admin_webbuilder_view'] = [
+      '#type' => 'link',
+      '#title' => t('Webseite öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'webbuilder_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
+
+    $form['le_admin_user_webbuilder_pages'] = [
+      '#type' => 'link',
+      '#title' => t('Seiten verwalten'),
+      '#url' => Url::fromRoute('le_admin.user_webbuilder_pages', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+      ],
+      '#weight' => -9,
+    ];
+  }
+}
+
+function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_webbuilder_page_edit_form') {
+    $entity = $form_state->getFormObject()->getEntity();
+
+    $form['le_admin_webbuilder_page_view'] = [
+      '#type' => 'link',
+      '#title' => t('Seite öffnen'),
+      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+        'target' => 'webbuilder_page_' . $entity->id(),
+      ],
+      '#weight' => -10,
+    ];
+
+    $form['le_admin_user_webbuilder'] = [
+      '#type' => 'link',
+      '#title' => t('Webbaukasten verwalten'),
+      '#url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
+      '#attributes' => [
+        'class' => le_admin_link_button_classes,
+      ],
+      '#weight' => -9,
+    ];
+  }
+}
+
 function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if ($form_id === 'node_le_event_form') {
@@ -142,17 +259,16 @@ function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state
 
 function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['#attached']['library'][] = 'le_admin/tailwind';
   // add back action
-  // TODO: for some reason the link is not shown
-  $form['actions']['back'] = [
+  $destination = \Drupal::request()->query->get('destination');
+  $form['le_admin_back'] = [
     '#type' => 'link',
-    '#title' => t('Back'),
-    '#url' => 'javascript:history.back()',
-    '#access' => true,
+    '#title' => '< ' . t('Back'),
+    '#url' => $destination ? Url::fromUri('internal:' . $destination) : Url::fromRoute('le_admin.user_dashboard'),
     '#attributes' => [
-      'class' => ['button', 'button--default'],
+      'class' => le_admin_link_button_classes,
     ],
-    '#button_type' => 'default',
     '#weight' => -10,
   ];
 }

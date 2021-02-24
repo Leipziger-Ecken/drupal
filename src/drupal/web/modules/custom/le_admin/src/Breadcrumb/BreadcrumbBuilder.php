@@ -75,6 +75,27 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       );
     }
 
+    if ($route_name === 'le_admin.user_webbuilder_pages') {
+      $webbuilder = $parameters['node'];
+      $akteur = \Drupal::entityManager()->getStorage('node')->load($webbuilder->og_audience[0]->target_id);
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Akteur: :label', [':label' => $akteur->title[0]->value]),
+          'entity.node.edit_form', ['node' => $akteur->id() ]
+        )
+      );
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Webbaukasten'), 'le_admin.user_akteur_webbuilder', ['node' => $akteur->id() ]
+        )
+      );
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Seiten'), 'le_admin.user_webbuilder_pages', ['node' => $webbuilder->id() ]
+        )
+      );
+    }
+
     return $breadcrumb;
   }
 

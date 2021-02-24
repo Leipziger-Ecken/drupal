@@ -40,276 +40,284 @@ function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_
   if (in_array($form_id, [
     'node_webbuilder_page_form',
     'node_webbuilder_page_edit_form'
-    ])) {
-      _le_webbuilder_alter_webbuilder_page_form($form, $form_state, $form_id);
+  ])) {
+    _le_webbuilder_webbuilder_page_form_alter($form, $form_state, $form_id);
+  }
+
+  if (in_array($form_id, [
+    'node_webbuilder_form',
+    'node_webbuilder_edit_form',
+  ])) {
+    _le_webbuilder_webbuilder_form_alter($form, $form_state, $form_id);
+  }
+
+  if ($form_id === 'node_webbuilder_delete_form') {
+    // add custom submit handler, to clone preset
+    $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_delete_submit';
+  }
+
+  if (in_array($form_id, ['media_unsplash_image_add_form', 'media_unsplash_image_edit_form'])) {
+    _le_webbuilder_media_unsplash_image_form_alter($form, $form_state, $form_id);
+  }
+}
+
+/**
+* Provide smooth URI's for system-paths
+*/
+function le_webbuilder_path_alias()
+{
+  PathAlias::create([
+    'path' => '/node/add/webbuilder',
+    'alias' => '/webbuilders/neu',
+  ])->save();
+
+  PathAlias::create([
+    'path' => '/node/add/project',
+    'alias' => '/projects/neu',
+  ])->save();
+
+  PathAlias::create([
+    'path' => '/node/add/sponsor',
+    'alias' => '/sponsors/neu',
+  ])->save();
+
+  PathAlias::create([
+    'path' => '/node/add/partner',
+    'alias' => '/partners/neu',
+  ])->save();
+
+  PathAlias::create([
+    'path' => '/node/add/blog_article',
+    'alias' => '/blog-articles/neu',
+  ])->save();
+}
+
+function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
+  $form['field_slug']['#attributes']['class'][] = 'hidden';
+
+  if ($form_id === 'node_webbuilder_page_form') {
+    $webbuilder_id = \Drupal::request()->query->get('webbuilder');
+    if ($webbuilder_id) {
+      $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
     }
+  } else {
+    $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
+  }
 
-    if (in_array($form_id, [
-      'node_webbuilder_form',
-      'node_webbuilder_edit_form',
-      ])) {
-        _le_webbuilder_alter_webbuilder_form($form, $form_state, $form_id);
-      }
+  if (!$webbuilder_id) {
+    return;
+  }
 
-      if ($form_id === 'node_webbuilder_delete_form') {
-        // add custom submit handler, to clone preset
-        $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_delete_submit';
-      }
+  $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+  if (!$webbuilder) {
+    return;
+  }
 
-      if (in_array($form_id, ['media_unsplash_image_add_form', 'media_unsplash_image_edit_form'])) {
-        _le_webbuilder_alter_media_unsplash_image_form($form, $form_state, $form_id);
+  // $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+  $form['field_parent']['widget']['#selection_settings']['view']['arguments'][0] = $webbuilder_id;
+
+  // load the page tree
+  return;
+  $view = Views::getView('webbuilder_pages');
+  $view->setDisplay('entity_reference_page_tree');
+  $view->setArguments([$webbuilder_id]);
+  $result = $view->render();
+  foreach($result as $nid => $row) {
+    if (isset($row['#row']) && isset($row['#row']->_entity)) {
+      $title = $row['#row']->_entity->title[0]->value;
+      $_row = $row;
+
+      while($_row !== null) {
+        if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
+          $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+          $title = '- ' . $title;
+          $_row = $result[$parent_id];
+        } else {
+          $_row = null;
+        }
       }
+      $form['field_parent']['widget']['#options'][$nid] = $title;
     }
+  }
 
-    /**
-    * Provide smooth URI's for system-paths
+  if ($form_id === 'node_webbuilder_page_form') {
+    if (isset($webbuilder->og_audience[0])) {
+      $akteur_id = $webbuilder->og_audience[0]->target_id;
+      $form['og_audience']['#attributes']['class'][] = 'hidden';
+      $form['og_audience']['widget']['#default_value'] = $akteur_id;
+      $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+      $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+    }
+  }
+}
+
+function _le_webbuilder_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'node_webbuilder_form') {
+    // add custom submit handler, to clone preset
+    $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_form_submit';
+  }
+
+  if ($form_id === 'node_webbuilder_edit_form') {
+    // hide presets
+    unset($form['field_webbuilder_preset']);
+    unset($form['#fieldgroups']['group_presets']);
+
+    // add pages to existing webbuilder
+    /*
+    $node_id = $form_state->getFormObject()->getEntity()->id();
+
+    $form['group_pages']['field_page_tree'] = [
+      '#type' => 'inline_template',
+      '#template' => '<label class="form-item__label">Seitenbaum</label> {{ drupal_view(\'webbuilder_pages\', \'form_page_tree\', ' . $node_id . ')}}',
+      '#weight' => 100,
+    ];
+    $dest = \Drupal::destination()->getAsArray()['destination'];
+    $form['group_pages']['field_add_page'] = [
+      '#type' => 'markup',
+      '#markup' => '<a class="button button--default" href="/node/add/webbuilder_page?webbuilder=' . $node_id . '&destination=' . urlencode($dest) . '">+ ' . t('Add page') . '</a>',
+      '#weight' => 101,
+    ];
     */
-    function le_webbuilder_path_alias()
-    {
-      PathAlias::create([
-        'path' => '/node/add/webbuilder',
-        'alias' => '/webbuilders/neu',
-        ])->save();
+  }
+}
 
-        PathAlias::create([
-          'path' => '/node/add/project',
-          'alias' => '/projects/neu',
-          ])->save();
+function _le_webbuilder_media_unsplash_image_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['#attached']['library'][] = 'le_webbuilder/unsplash_media_form';
+  $form['search'] = [
+    '#type' => 'search',
+    '#title' => t('Search images'),
+    '#placeholder' => t('Enter search terms'),
+    '#attributes' => [
+      'data-results-target' => '#edit-field-unsplash-search-results',
+      'data-url-target' => '#edit-field-media-remote-image-0-uri',
+      'data-alt-target' => '#edit-field-media-remote-image-0-alt',
+      'data-title-target' => '#edit-name-0-value',
+      'data-attribution-target' => '#edit-field-attribution-0-value',
+      'data-api-url' => '/webbuilder/unsplash-api-proxy',
+      'oninput' => 'handleUnsplashSearchInput(this)',
+      'autocomplete' => 'off',
+    ],
+    '#weight' => -100,
+  ];
+  $form['search_results'] = [
+    '#type' => 'markup',
+    '#markup' => '<div class="unsplash-results" id="edit-field-unsplash-search-results"></div>',
+    '#weight' => -99,
+  ];
+  $form['image_preview'] = [
+    '#type' => 'markup',
+    '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview" data-url-source="#edit-field-media-remote-image-0-uri" data-alt-source="#edit-field-media-remote-image-0-alt"></figure>',
+    '#weight' => -98,
+  ];
 
-          PathAlias::create([
-            'path' => '/node/add/sponsor',
-            'alias' => '/sponsors/neu',
-            ])->save();
+  // hide attribution field, so user cannot enter values
+  $form['field_attribution']['#attributes']['class'][] = 'hidden';
+}
 
-            PathAlias::create([
-              'path' => '/node/add/partner',
-              'alias' => '/partners/neu',
-              ])->save();
+function le_webbuilder_webbuilder_form_submit(array $form, FormStateInterface $form_state)
+{
+  $webbuilder_preset_id = $form_state->getValue('field_webbuilder_preset');
+  $akteur_id = $form_state->getValue('og_audience');
 
-              PathAlias::create([
-                'path' => '/node/add/blog_article',
-                'alias' => '/blog-articles/neu',
-                ])->save();
-              }
+  if ($webbuilder_preset_id[0]) {
+    $webbuilder_preset_id = $webbuilder_preset_id[0]['target_id'];
+  } else {
+    $webbuilder_preset_id = null;
+  }
+  if ($akteur_id[0]) {
+    $akteur_id = $akteur_id[0]['target_id'];
+  } else {
+    $akteur_id = null;
+  }
 
-              function _le_webbuilder_alter_webbuilder_page_form(&$form, FormStateInterface $form_state, $form_id)
-              {
-                $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
-                $form['field_slug']['#attributes']['class'][] = 'hidden';
+  if ($webbuilder_preset_id && $akteur_id) {
+    // deep clone the webbuilder
+    $webbuilder_preset = \Drupal::entityManager()->getStorage('node')->load($webbuilder_preset_id);
+    $webbuilder = $form_state->getFormObject()->getEntity();
+    $webbuilder_id = $webbuilder->id();
 
-                if ($form_id === 'node_webbuilder_page_form') {
-                  $webbuilder_id = \Drupal::request()->query->get('webbuilder');
-                } else {
-                  $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
-                }
+    // remember the original frontpage
+    $frontpage_id = null;
+    $preset_frontpage_id = null;
 
-                if (!$webbuilder_id) {
-                  return;
-                }
-                $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
-                if (!$webbuilder) {
-                  return;
-                }
-                $form['field_parent']['widget']['#selection_settings']['view']['arguments'][0] = $webbuilder_id;
+    if ($webbuilder_preset->field_frontpage[0]) {
+      $preset_frontpage_id = $webbuilder_preset->field_frontpage[0]->target_id;
+    };
 
-                // load the page tree
-                $view = Views::getView('webbuilder_pages');
-                $view->setDisplay('entity_reference_page_tree');
-                $view->setArguments([$webbuilder_id]);
-                $result = $view->render();
-                foreach($result as $nid => $row) {
-                  if ($row['#row']->_entity) {
-                    $title = $row['#row']->_entity->title[0]->value;
-                    $_row = $row;
+    $fields_to_clone = [
+      'field_description',
+      'field_layout',
+      'field_color_primary',
+      'field_fonts',
+      'field_logo',
+    ];
 
-                    while($_row !== null) {
-                      if (isset($_row['#row']->_entity->field_parent[0])) {
-                        $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
-                        $title = '- ' . $title;
-                        $_row = $result[$parent_id];
-                      } else {
-                        $_row = null;
-                      }
-                    }
-                    $form['field_parent']['widget']['#options'][$nid] = $title;
-                  }
-                }
+    foreach($fields_to_clone as $field) {
+      $webbuilder->$field = $webbuilder_preset->$field;
+    }
 
-                if ($form_id === 'node_webbuilder_page_form') {
+    // load preset pages
+    $pages_query = \Drupal::entityQuery('node');
+    $pages_query->condition('field_webbuilder', $webbuilder_preset_id);
+    $result = $pages_query->execute();
+    $preset_pages = [];
+    foreach($result as $nid) {
+      $preset_pages[$nid] = \Drupal::entityManager()->getStorage('node')->load($nid);
+    }
 
-                  if (isset($webbuilder->og_audience[0])) {
-                    $akteur_id = $webbuilder->og_audience[0]->target_id;
-                    $form['og_audience']['#attributes']['class'][] = 'hidden';
-                    $form['og_audience']['widget']['#default_value'] = $akteur_id;
-                    $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
-                    $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
-                  }
-                }
-              }
+    // now clone the pages and the paragraphs
+    foreach($preset_pages as $nid => $page) {
+      $cloned_page = $page->createDuplicate();
+      $cloned_page->field_webbuilder->target_id = $webbuilder_id;
+      $cloned_page->og_audience->target_id = $akteur_id;
+      // TODO: set the author to the current user
 
-              function _le_webbuilder_alter_webbuilder_form(&$form, FormStateInterface $form_state, $form_id)
-              {
-                if ($form_id === 'node_webbuilder_form') {
-                  // add custom submit handler, to clone preset
-                  $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_form_submit';
-                }
+      // clone paragraphs
+      foreach($cloned_page->field_contents as $paragraph) {
+        $paragraph->entity = $paragraph->entity->createDuplicate();
+      }
 
-                // add pages to existing webbuilder
-                if ($form_id === 'node_webbuilder_edit_form') {
-                  // hide presets
-                  unset($form['field_webbuilder_preset']);
-                  unset($form['#fieldgroups']['group_presets']);
+      $cloned_page->save();
 
-                  $node_id = $form_state->getFormObject()->getEntity()->id();
+      // if the original page is the frontpage,
+      // use the ID of the cloned page and set it as the frontpage
+      // for the new webbuilder
+      // we have to do non strict equality here, as IDs can be ints or strings
+      if ($nid == $preset_frontpage_id) {
+        $frontpage_id = $cloned_page->id();
+      }
+    }
 
-                  $form['group_pages']['field_page_tree'] = [
-                    '#type' => 'inline_template',
-                    '#template' => '<label class="form-item__label">Seitenbaum</label> {{ drupal_view(\'webbuilder_pages\', \'form_page_tree\', ' . $node_id . ')}}',
-                    '#weight' => 100,
-                  ];
-                  $dest = \Drupal::destination()->getAsArray()['destination'];
-                  $form['group_pages']['field_add_page'] = [
-                    '#type' => 'markup',
-                    '#markup' => '<a class="button button--default" href="/node/add/webbuilder_page?webbuilder=' . $node_id . '&destination=' . urlencode($dest) . '">+ ' . t('Add page') . '</a>',
-                    '#weight' => 101,
-                  ];
-                }
-              }
+    // set the new frontpage id
+    if ($frontpage_id) {
+      $webbuilder->field_frontpage->target_id = $frontpage_id;
+    }
 
-              function _le_webbuilder_alter_media_unsplash_image_form(&$form, FormStateInterface $form_state, $form_id)
-              {
-                $form['#attached']['library'][] = 'le_webbuilder/unsplash_media_form';
-                $form['search'] = [
-                  '#type' => 'search',
-                  '#title' => t('Search images'),
-                  '#placeholder' => t('Enter search terms'),
-                  '#attributes' => [
-                    'data-results-target' => '#edit-field-unsplash-search-results',
-                    'data-url-target' => '#edit-field-media-remote-image-0-uri',
-                    'data-alt-target' => '#edit-field-media-remote-image-0-alt',
-                    'data-title-target' => '#edit-name-0-value',
-                    'data-attribution-target' => '#edit-field-attribution-0-value',
-                    'data-api-url' => '/webbuilder/unsplash-api-proxy',
-                    'oninput' => 'handleUnsplashSearchInput(this)',
-                    'autocomplete' => 'off',
-                  ],
-                  '#weight' => -100,
-                ];
-                $form['search_results'] = [
-                  '#type' => 'markup',
-                  '#markup' => '<div class="unsplash-results" id="edit-field-unsplash-search-results"></div>',
-                  '#weight' => -99,
-                ];
-                $form['image_preview'] = [
-                  '#type' => 'markup',
-                  '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview" data-url-source="#edit-field-media-remote-image-0-uri" data-alt-source="#edit-field-media-remote-image-0-alt"></figure>',
-                  '#weight' => -98,
-                ];
+    $webbuilder->save();
 
-                // hide attribution field, so user cannot enter values
-                $form['field_attribution']['#attributes']['class'][] = 'hidden';
-              }
+    $form_state->setRedirect('entity.node.edit_form', [
+      'node' => $webbuilder->id(),
+    ]);
+  }
+}
 
-              function le_webbuilder_webbuilder_form_submit(array $form, FormStateInterface $form_state)
-              {
-                $webbuilder_preset_id = $form_state->getValue('field_webbuilder_preset');
-                $akteur_id = $form_state->getValue('og_audience');
+function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface $form_state)
+{
+  $webbuilder = $form_state->getFormObject()->getEntity();
+  if (!$webbuilder) {
+    return;
+  }
 
-                if ($webbuilder_preset_id[0]) {
-                  $webbuilder_preset_id = $webbuilder_preset_id[0]['target_id'];
-                } else {
-                  $webbuilder_preset_id = null;
-                }
-                if ($akteur_id[0]) {
-                  $akteur_id = $akteur_id[0]['target_id'];
-                } else {
-                  $akteur_id = null;
-                }
-
-                if ($webbuilder_preset_id && $akteur_id) {
-                  // deep clone the webbuilder
-                  $webbuilder_preset = \Drupal::entityManager()->getStorage('node')->load($webbuilder_preset_id);
-                  $webbuilder = $form_state->getFormObject()->getEntity();
-                  $webbuilder_id = $webbuilder->id();
-
-                  // remember the original frontpage
-                  $frontpage_id = null;
-                  $preset_frontpage_id = null;
-
-                  if ($webbuilder_preset->field_frontpage[0]) {
-                    $preset_frontpage_id = $webbuilder_preset->field_frontpage[0]->target_id;
-                  };
-
-                  $fields_to_clone = [
-                    'field_description',
-                    'field_layout',
-                    'field_color_primary',
-                    'field_fonts',
-                    'field_logo',
-                  ];
-
-                  foreach($fields_to_clone as $field) {
-                    $webbuilder->$field = $webbuilder_preset->$field;
-                  }
-
-                  // load preset pages
-                  $pages_query = \Drupal::entityQuery('node');
-                  $pages_query->condition('field_webbuilder', $webbuilder_preset_id);
-                  $result = $pages_query->execute();
-                  $preset_pages = [];
-                  foreach($result as $nid) {
-                    $preset_pages[$nid] = \Drupal::entityManager()->getStorage('node')->load($nid);
-                  }
-
-                  // now clone the pages and the paragraphs
-                  foreach($preset_pages as $nid => $page) {
-                    $cloned_page = $page->createDuplicate();
-                    $cloned_page->field_webbuilder->target_id = $webbuilder_id;
-                    $cloned_page->og_audience->target_id = $akteur_id;
-                    // TODO: set the author to the current user
-
-                    // clone paragraphs
-                    foreach($cloned_page->field_contents as $paragraph) {
-                      $paragraph->entity = $paragraph->entity->createDuplicate();
-                    }
-
-                    $cloned_page->save();
-
-                    // if the original page is the frontpage,
-                    // use the ID of the cloned page and set it as the frontpage
-                    // for the new webbuilder
-                    // we have to do non strict equality here, as IDs can be ints or strings
-                    if ($nid == $preset_frontpage_id) {
-                      $frontpage_id = $cloned_page->id();
-                    }
-                  }
-
-                  // set the new frontpage id
-                  if ($frontpage_id) {
-                    $webbuilder->field_frontpage->target_id = $frontpage_id;
-                  }
-
-                  $webbuilder->save();
-
-                  $form_state->setRedirect('entity.node.edit_form', [
-                    'node' => $webbuilder->id(),
-                  ]);
-                }
-              }
-
-              function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface $form_state)
-              {
-                $webbuilder = $form_state->getFormObject()->getEntity();
-                if (!$webbuilder) {
-                  return;
-                }
-
-                // load pages
-                $pages_query = \Drupal::entityQuery('node');
-                $pages_query->condition('field_webbuilder', $webbuilder->id());
-                $result = $pages_query->execute();
-                foreach($result as $nid) {
-                  $page = \Drupal::entityManager()->getStorage('node')->load($nid);
-                  $page->delete();
-                }
-              }
+  // load pages
+  $pages_query = \Drupal::entityQuery('node');
+  $pages_query->condition('field_webbuilder', $webbuilder->id());
+  $result = $pages_query->execute();
+  foreach($result as $nid) {
+    $page = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $page->delete();
+  }
+}
