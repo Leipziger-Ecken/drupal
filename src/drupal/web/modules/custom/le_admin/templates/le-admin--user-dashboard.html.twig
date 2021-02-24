@@ -1,6 +1,7 @@
 {{ attach_library('le_admin/tailwind') }}
 {% set destination = get_destination() %}
 {% set akteure = drupal_view_result('le_verwaltete_akteure', 'dashboard', user.id) %}
+{% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
 
 <h2>{{ 'Deine Akteur*innen'|t }}</h2>
 
@@ -16,11 +17,11 @@
     <div>
       {{ drupal_entity('node', row.node_field_data_users_field_data_nid, 'backend_teaser') }}
 
-      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents') }}">
+      <a class="{{ link_button_classes }} mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/contents') }}">
         {{ 'Inhalte verwalten'|t }}
       </a>
 
-      <a class="text-gray-600 hover:text-gray-700 hover:underline mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder') }}">
+      <a class="{{ link_button_classes }} mx-2" href="{{ drupal_url('/user/akteur/' ~ row.node_field_data_users_field_data_nid ~ '/webbuilder') }}">
         {{ 'Webbaukasten'|t }}
       </a>
     </div>

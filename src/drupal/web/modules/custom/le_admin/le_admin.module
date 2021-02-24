@@ -13,19 +13,26 @@ function le_admin_theme($existing, $type, $theme, $path)
 {
   return [
     'le_admin__user_dashboard' => [
-      'variables' => [],
+      'variables' => [
+      ],
       'render element' => 'elements',
     ],
     'le_admin__user_akteur_contents' => [
-      'variables' => ['node' => null],
+      'variables' => [
+        'node' => null,
+      ],
       'render element' => 'elements',
     ],
     'le_admin__user_akteur_webbuilder' => [
-      'variables' => ['node' => null],
+      'variables' => [
+        'node' => null,
+      ],
       'render element' => 'elements',
     ],
     'le_admin__user_webbuilder_pages' => [
-      'variables' => ['node' => null],
+      'variables' => [
+        'node' => null,
+      ],
       'render element' => 'elements',
     ],
     'node__le_akteur__backend_teaser' => [

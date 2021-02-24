@@ -30,8 +30,8 @@
     <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
       {% if not webbuilder_is_preview %}
         {{ drupal_block('local_tasks_block', wrapper=false) }}
+        {{ drupal_block('system_menu_block:account', wrapper=false) }}
       {% endif %}
-      {{ drupal_block('system_menu_block:account', wrapper=false) }}
       <!-- TODO: enable language switch
       <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Deutsch</a>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500">
@@ -70,8 +70,8 @@
       <div class="py-6 px-5 space-x-10">
         {% if not webbuilder_is_preview %}
           {{ drupal_block('local_tasks_block', wrapper=false) }}
+          {{ drupal_block('system_menu_block:account', wrapper=false) }}
         {% endif %}
-        {{ drupal_block('system_menu_block:account', wrapper=false) }}
         
         <!-- TODO: enable language switch
         <a href="#" class="w-full flex items-center justify-start px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-gray-50">

@@ -1,10 +1,16 @@
 {% set destination = get_destination() %}
-
+{% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
 {% for row in rows[0]['#rows'] %}
 <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: destination }}) }}">
   {{ 'Webbaukasten bearbeiten'|t }}
 </a>
-<a class="text-gray-600 hover:text-gray-700 hover:underline mx-2"
+<a class="{{ link_button_classes }} mx-2"
+  href="{{ drupal_url('/node/' ~ row['#node'].id()) }}"
+  target="webbuilder_{{ row['#node'].id() }}"
+>
+  {{ 'Webseite öffnen'|t }}
+</a>
+<a class="{{ link_button_classes }} mx-2"
   href="{{ drupal_url('/user/webbuilder/' ~ row['#node'].id() ~ '/pages', {query: {destination: destination }}) }}">
   {{ 'Seiten verwalten'|t }}
 </a>
