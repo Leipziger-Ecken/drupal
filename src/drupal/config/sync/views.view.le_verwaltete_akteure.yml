@@ -647,6 +647,7 @@ display:
         sorts: false
         style: false
         row: false
+        use_ajax: false
       pager:
         type: full
         options:
@@ -867,6 +868,7 @@ display:
           inline: {  }
           separator: ''
           hide_empty: false
+      use_ajax: true
     cache_metadata:
       max-age: -1
       contexts:
