@@ -7,6 +7,16 @@
   <div>
     <h3 class="text-lg font-bold mt-0">
       {{ label }}
+
+      {% if node.status[0].value == '0' %}
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+        {{ 'nicht veröffentlicht'|t }}
+      </span>
+      {% else %}
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+        {{ 'veröffentlicht'|t }}
+      </span>
+      {% endif %}
     </h3>
     <div class="my-1 text-gray-500 text-sm">
       {{ content.field_le_event_occurrences }}

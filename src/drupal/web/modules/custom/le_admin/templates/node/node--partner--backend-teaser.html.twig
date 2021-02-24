@@ -2,8 +2,10 @@
 {% set website_url = content.field_website[0]['#context'].value %}
 {% set akteur_id = content.field_akteur[0]['#plain_text'] %}
 {% set title = label %}
+{% set status = node.status %}
 {% set description = content.field_description %}
 {% if akteur_id %}
+{% set status = drupal_field('status', 'node', akteur_id) %}
 {% set title = drupal_field('title', 'node', akteur_id) %}
 {% set image = drupal_field('field_main_image', 'node', akteur_id)[0] %}
 {% set website_url = drupal_url('node/' ~ akteur_id) %}
@@ -21,6 +23,16 @@
   <div>
     <h3 class="text-lg font-bold mt-0">
       {{ title }}
+
+      {% if status[0].value == '0' %}
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+        {{ 'nicht veröffentlicht'|t }}
+      </span>
+      {% else %}
+      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+        {{ 'veröffentlicht'|t }}
+      </span>
+      {% endif %}
     </h3>
     <div class="mt-1">
       {{ description }}

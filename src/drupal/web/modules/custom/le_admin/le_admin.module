@@ -325,21 +325,23 @@ function _le_admin_blog_article_form_alter(&$form, FormStateInterface $form_stat
 
 function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['og_audience']['#attributes']['class'][] = 'hidden';
+
   if (strpos($form_id, 'edit_form') === false) {
     $akteur_id = \Drupal::request()->query->get('le_akteur');
-    if (!$akteur_id) {
-      return;
+    if ($akteur_id) {
+      $form['og_audience']['widget']['#default_value'] = $akteur_id;
     }
-
-    $form['og_audience']['widget']['#default_value'] = $akteur_id;
   }
-
-  $form['og_audience']['#attributes']['class'][] = 'hidden';
 }
 
 function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   $form['#attached']['library'][] = 'le_admin/tailwind';
+  
+  // allow access to publish
+  $form['status']['#access'] = true;
+
   // add back action
   $destination = \Drupal::request()->query->get('destination');
   $form['le_admin_back'] = [
