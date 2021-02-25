@@ -8,33 +8,6 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Access\AccessResult;
 
-function le_webbuilder_block_access(Block $block, $operation, AccountInterface $account)
-{
-  if ($operation == 'view')
-  {
-    if($block->id() == 'mybootstrap_branding')
-    {
-      $roles = \Drupal::currentUser()->getRoles();
-      //anonymous
-      //adminstrator
-      if(in_array('editor', $roles))
-      {
-        //Hide the block for specific user roles like editor
-        return AccessResult::forbiddenIf(true)->addCacheableDependency($block);
-      }
-      //Now based on Node Pages, Hide the block
-      $node = \Drupal::routeMatch()->getParameter('node');
-      if (($node instanceof \Drupal\node\NodeInterface) && ($node->gettype() != 'technologyarticle') )
-      {
-        //Hiding the block if the node is not 'technologyarticle' type
-        return AccessResult::forbiddenIf(true)->addCacheableDependency($block);
-      }
-
-
-    }
-  }
-}
-
 function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if (in_array($form_id, [
