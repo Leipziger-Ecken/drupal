@@ -6,6 +6,7 @@ dependencies:
     - system.menu.account
   module:
     - system
+    - user
   theme:
     - leipzigerEcken
 id: benutzermenu
@@ -22,4 +23,11 @@ settings:
   level: 1
   depth: 0
   expand_all_items: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

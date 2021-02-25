@@ -6,61 +6,61 @@ definitions:
     weight: 0
     expanded: false
   user__page:
-    weight: -49
+    weight: -48
     menu_name: account
     parent: ''
     enabled: true
     expanded: false
   user__logout:
-    weight: -48
+    weight: -47
     menu_name: account
     parent: ''
     expanded: false
     enabled: true
   system__admin_content:
-    weight: 2
-    menu_name: admin
-    parent: system.admin
-    expanded: false
-    enabled: true
-  system__admin_structure:
     weight: 3
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__themes_page:
+  system__admin_structure:
     weight: 4
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__modules_list:
+  system__themes_page:
     weight: 5
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__admin_config:
+  system__modules_list:
     weight: 6
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  entity__user__collection:
+  system__admin_config:
     weight: 7
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__admin_reports:
+  entity__user__collection:
     weight: 8
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  help__main:
+  system__admin_reports:
     weight: 9
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  help__main:
+    weight: 10
     menu_name: admin
     parent: system.admin
     expanded: false
