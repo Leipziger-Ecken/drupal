@@ -1,0 +1,30 @@
+{% set akteur_id = get_args()[3] %}
+{% set destination = get_destination() %}
+{% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
+<figure class="shadow-xl bg-white">
+  <img 
+    class="w-full h-auto block"
+    src="{{ content.field_preview_image[0]['#item'] | file_uri | image_style('webbuilder_preset_thumb') }}"
+  >
+  <figcaption class="p-4">
+    <div>
+      <h3>{{ label }}</h3>
+      {{ content.field_description }}
+    </div>
+    <div>
+      <a 
+        class="{{ link_button_classes }}"
+        href="{{ url }}"
+        target="webbuilder_preset_{{ node.id }}"
+      >
+        {{ 'Vorschau öffnen'|t }}
+      </a>
+      <a
+        class="button button--default button--small"
+        href="{{ drupal_url('/webbuilder/create-from-preset/' ~ node.id, {query: {le_akteur: akteur_id, _destination: destination }}) }}"
+      >
+        {{ 'Mit dieser Vorlage loslegen'|t }}
+      </a>
+    </div>
+  </figcaption>
+</figure>

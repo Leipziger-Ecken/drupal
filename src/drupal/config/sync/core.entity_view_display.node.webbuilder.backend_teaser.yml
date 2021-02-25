@@ -1,9 +1,9 @@
-uuid: 7db39e05-75c8-4b14-b980-8df5acfb0bae
+uuid: 20fb97ba-128b-43b7-a625-04ac61c574e7
 langcode: de
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.backend_teaser
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_facebook_link
@@ -18,37 +18,15 @@ dependencies:
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
-    - media
-    - text
     - user
-id: node.webbuilder.teaser
+id: node.webbuilder.backend_teaser
 targetEntityType: node
 bundle: webbuilder
-mode: teaser
-content:
-  field_description:
-    type: text_default
-    weight: 1
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  field_preview_image:
-    type: media_thumbnail
-    weight: 2
-    region: content
-    label: hidden
-    settings:
-      image_style: ''
-      image_link: ''
-    third_party_settings: {  }
-  links:
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
+mode: backend_teaser
+content: {  }
 hidden:
   field_color_primary: true
+  field_description: true
   field_facebook_link: true
   field_fonts: true
   field_frontpage: true
@@ -56,7 +34,9 @@ hidden:
   field_is_preset: true
   field_layout: true
   field_logo: true
+  field_preview_image: true
   field_twitter_link: true
   langcode: true
+  links: true
   og_audience: true
   published_at: true

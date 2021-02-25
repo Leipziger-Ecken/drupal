@@ -63,6 +63,10 @@ function le_admin_theme($existing, $type, $theme, $path)
       'template' => 'node/node--webbuilder--backend-teaser',
       'base hook' => 'node',
     ],
+    'node__webbuilder__webbuilder_preset_teaser' => [
+      'template' => 'node/node--webbuilder--webbuilder-preset-teaser',
+      'base hook' => 'node',
+    ],
     'views_view__le_akteur_has_events__dashboard' => [
       'template' => 'views/views-view--le-akteur-has-events--dashboard',
       'base hook' => 'views_view',
@@ -87,12 +91,16 @@ function le_admin_theme($existing, $type, $theme, $path)
       'template' => 'views/views-view--webbuilders--dashboard',
       'base hook' => 'views_view',
     ],
+    'views_view__webbuilders__dashboard_presets' => [
+      'template' => 'views/views-view--webbuilders--dashboard-presets',
+      'base hook' => 'views_view',
+    ],
   ];
 }
 
 function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  if (strpos($form_id, 'node_') === 0) {
+  if (strpos($form_id, 'node_') === 0 && strpos($form_id, 'delete_form') === false) {
     _le_admin_node_form_alter($form, $form_state, $form_id);
   }
 

@@ -21,6 +21,7 @@ class TwigExtension extends \Twig_Extension
     $all_options = ['needs_environment' => TRUE, 'needs_context' => TRUE];
     return [
       new \Twig_SimpleFunction('get_destination', [$this, 'getDestination']),
+      new \Twig_SimpleFunction('get_args', [$this, 'getArgs']),
     ];
   }
 
@@ -41,5 +42,12 @@ class TwigExtension extends \Twig_Extension
   public function getDestination()
   {
     return \Drupal::destination()->getAsArray()['destination'];
+  }
+
+  public function getArgs()
+  {
+    $request = \Drupal::request();
+    $path = $request->getPathInfo();
+    return explode('/', $path);
   }
 }

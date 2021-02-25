@@ -69,6 +69,7 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
 {
   $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
 
+  // hide webbuilder and og_audience fields
   $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
   $form['og_audience']['#attributes']['class'][] = 'hidden';
 
@@ -90,7 +91,6 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
     return;
   }
 
-  // $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
   $form['field_parent']['widget']['#selection_settings']['view']['arguments'][0] = $webbuilder_id;
 
   // load the page tree
@@ -130,16 +130,19 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
 
 function _le_webbuilder_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  if ($form_id === 'node_webbuilder_form') {
-    // add custom submit handler, to clone preset
-    $form['actions']['submit']['#submit'][] = 'le_webbuilder_webbuilder_form_submit';
+  $user = \Drupal::currentUser();
+  $roles = $user->getRoles();
+  
+  // remove preset field for regular users
+  if (!in_array('le_redakteur', $roles) && !in_array('administrator', $roles)) {
+    unset($form['field_is_preset']);
+    unset($form['field_description']);
+    unset($form['field_preview_image']);
+    unset($form['fieldgroups']['group_preset']);
   }
 
   if ($form_id === 'node_webbuilder_edit_form') {
-    // hide presets
-    unset($form['field_webbuilder_preset']);
-    unset($form['#fieldgroups']['group_presets']);
-
+    // TODO: preload the page tree for the frontpage selection
     // add pages to existing webbuilder
     /*
     $node_id = $form_state->getFormObject()->getEntity()->id();
@@ -191,93 +194,6 @@ function _le_webbuilder_media_unsplash_image_form_alter(&$form, FormStateInterfa
 
   // hide attribution field, so user cannot enter values
   $form['field_attribution']['#attributes']['class'][] = 'hidden';
-}
-
-function le_webbuilder_webbuilder_form_submit(array $form, FormStateInterface $form_state)
-{
-  $webbuilder_preset_id = $form_state->getValue('field_webbuilder_preset');
-  $akteur_id = $form_state->getValue('og_audience');
-
-  if ($webbuilder_preset_id[0]) {
-    $webbuilder_preset_id = $webbuilder_preset_id[0]['target_id'];
-  } else {
-    $webbuilder_preset_id = null;
-  }
-  if ($akteur_id[0]) {
-    $akteur_id = $akteur_id[0]['target_id'];
-  } else {
-    $akteur_id = null;
-  }
-
-  if ($webbuilder_preset_id && $akteur_id) {
-    // deep clone the webbuilder
-    $webbuilder_preset = \Drupal::entityManager()->getStorage('node')->load($webbuilder_preset_id);
-    $webbuilder = $form_state->getFormObject()->getEntity();
-    $webbuilder_id = $webbuilder->id();
-
-    // remember the original frontpage
-    $frontpage_id = null;
-    $preset_frontpage_id = null;
-
-    if ($webbuilder_preset->field_frontpage[0]) {
-      $preset_frontpage_id = $webbuilder_preset->field_frontpage[0]->target_id;
-    };
-
-    $fields_to_clone = [
-      'field_description',
-      'field_layout',
-      'field_color_primary',
-      'field_fonts',
-      'field_logo',
-    ];
-
-    foreach($fields_to_clone as $field) {
-      $webbuilder->$field = $webbuilder_preset->$field;
-    }
-
-    // load preset pages
-    $pages_query = \Drupal::entityQuery('node');
-    $pages_query->condition('field_webbuilder', $webbuilder_preset_id);
-    $result = $pages_query->execute();
-    $preset_pages = [];
-    foreach($result as $nid) {
-      $preset_pages[$nid] = \Drupal::entityManager()->getStorage('node')->load($nid);
-    }
-
-    // now clone the pages and the paragraphs
-    foreach($preset_pages as $nid => $page) {
-      $cloned_page = $page->createDuplicate();
-      $cloned_page->field_webbuilder->target_id = $webbuilder_id;
-      $cloned_page->og_audience->target_id = $akteur_id;
-      // TODO: set the author to the current user
-
-      // clone paragraphs
-      foreach($cloned_page->field_contents as $paragraph) {
-        $paragraph->entity = $paragraph->entity->createDuplicate();
-      }
-
-      $cloned_page->save();
-
-      // if the original page is the frontpage,
-      // use the ID of the cloned page and set it as the frontpage
-      // for the new webbuilder
-      // we have to do non strict equality here, as IDs can be ints or strings
-      if ($nid == $preset_frontpage_id) {
-        $frontpage_id = $cloned_page->id();
-      }
-    }
-
-    // set the new frontpage id
-    if ($frontpage_id) {
-      $webbuilder->field_frontpage->target_id = $frontpage_id;
-    }
-
-    $webbuilder->save();
-
-    $form_state->setRedirect('entity.node.edit_form', [
-      'node' => $webbuilder->id(),
-    ]);
-  }
 }
 
 function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface $form_state)

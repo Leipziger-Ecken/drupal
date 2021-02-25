@@ -9,3 +9,16 @@ le_webbuilder.unsplash_api_proxy:
   methods: [GET]
   requirements:
     _permission: 'create unsplash_image media'
+
+le_webbuilder.create_from_preset:
+  path: '/webbuilder/create-from-preset/{webbuilder_preset}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::createFromPreset'
+    _title: 'Create Webbuilder from preset'
+  methods: [GET]
+  requirements:
+    _permission: 'create webbuilder content'
+  options:
+    parameters:
+      webbuilder_preset:
+        type: entity:node
