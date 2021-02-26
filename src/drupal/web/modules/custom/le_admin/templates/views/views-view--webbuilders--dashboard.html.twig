@@ -11,7 +11,7 @@
   {{ 'Webseite öffnen'|t }}
 </a>
 <a class="{{ link_button_classes }} mx-2"
-  href="{{ drupal_url('/user/webbuilder/' ~ row['#node'].id() ~ '/pages', {query: {destination: destination }}) }}">
+  href="{{ drupal_url('/user/webbuilder/' ~ row['#node'].id() ~ '/pages') }}">
   {{ 'Seiten verwalten'|t }}
 </a>
 <div class="mt-4">

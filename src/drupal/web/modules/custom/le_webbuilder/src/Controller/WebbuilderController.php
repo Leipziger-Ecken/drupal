@@ -31,7 +31,7 @@ class WebbuilderController extends ControllerBase
     // remember the original frontpage
     $frontpage_id = null;
     $preset_frontpage_id = null;
-    
+
     if ($webbuilder_preset->field_frontpage[0]) {
       $preset_frontpage_id = $webbuilder_preset->field_frontpage[0]->target_id;
     };
@@ -50,6 +50,9 @@ class WebbuilderController extends ControllerBase
     }
     
     // now clone the pages and the paragraphs
+    $pages_to_cloned_pages = [];
+    $parent_pages = [];
+
     foreach($preset_pages as $nid => $page) {
       $cloned_page = $page->createDuplicate();
       $cloned_page->field_webbuilder[0]->target_id = $webbuilder_id;
@@ -64,12 +67,29 @@ class WebbuilderController extends ControllerBase
       
       $cloned_page->save();
       
+      $parent_page_id = isset($page->field_parent[0]) ? $page->field_parent[0]->target_id : null;
+      $pages_to_cloned_pages[$page->id()] = $cloned_page;
+      
+      if ($parent_page_id) {
+        $parent_pages[$page->id()] = $parent_page_id;
+      }
+
       // if the original page is the frontpage,
       // use the ID of the cloned page and set it as the frontpage
       // for the new webbuilder
       // we have to do non strict equality here, as IDs can be ints or strings
       if ($nid == $preset_frontpage_id) {
         $frontpage_id = $cloned_page->id();
+      }
+    }
+
+    // now update the parent ids using the lookups
+    foreach($parent_pages as $page_id => $parent_page_id) {
+      if (isset($pages_to_cloned_pages[$parent_page_id]) && isset($pages_to_cloned_pages[$page_id])) {
+        $cloned_parent_page_id = $pages_to_cloned_pages[$parent_page_id]->id();
+        $cloned_page = $pages_to_cloned_pages[$page_id];
+        $cloned_page->field_parent[0]->target_id = $cloned_parent_page_id;
+        $cloned_page->save();
       }
     }
     

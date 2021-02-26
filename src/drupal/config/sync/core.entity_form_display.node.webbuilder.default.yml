@@ -154,10 +154,10 @@ content:
   field_frontpage:
     weight: 26
     settings:
-      autocomplete: false
+      width: 100%
       match_operator: CONTAINS
       match_limit: 10
-      width: 100%
+      autocomplete: false
     third_party_settings: {  }
     type: select2_entity_reference
     region: content

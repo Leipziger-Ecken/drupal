@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_webbuilder
-    - node.type.webbuilder
     - node.type.webbuilder_page
 id: node.webbuilder_page.field_webbuilder
 field_name: field_webbuilder
@@ -17,12 +16,10 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      webbuilder: webbuilder
-    sort:
-      field: _none
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: webbuilders
+      display_name: entity_reference
+      arguments: {  }
 field_type: entity_reference

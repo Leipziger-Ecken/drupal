@@ -69,61 +69,67 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
 {
   $form['#attached']['library'][] = 'le_webbuilder/webbuilder_page_form';
 
-  // hide webbuilder and og_audience fields
-  $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
-  $form['og_audience']['#attributes']['class'][] = 'hidden';
-
+  // create form
   if ($form_id === 'node_webbuilder_page_form') {
+    // hide webbuilder and og_audience fields
+    $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+    $form['og_audience']['#attributes']['class'][] = 'hidden';
+
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
+    
     if ($webbuilder_id) {
-      $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
-    }
-  } else {
-    $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
-  }
+      $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+      if ($webbuilder) {
+        $form['field_webbuilder']['widget']['#options'] = [];
+        $form['field_webbuilder']['widget']['#options'][$webbuilder_id] = $webbuilder->title[0]->value;
+        $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
 
-  if (!$webbuilder_id) {
-    return;
-  }
-
-  $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
-  if (!$webbuilder) {
-    return;
-  }
-
-  $form['field_parent']['widget']['#selection_settings']['view']['arguments'][0] = $webbuilder_id;
-
-  // load the page tree
-  return;
-  $view = Views::getView('webbuilder_pages');
-  $view->setDisplay('entity_reference_page_tree');
-  $view->setArguments([$webbuilder_id]);
-  $result = $view->render();
-  foreach($result as $nid => $row) {
-    if (isset($row['#row']) && isset($row['#row']->_entity)) {
-      $title = $row['#row']->_entity->title[0]->value;
-      $_row = $row;
-
-      while($_row !== null) {
-        if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
-          $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
-          $title = '- ' . $title;
-          $_row = $result[$parent_id];
-        } else {
-          $_row = null;
+        if (isset($webbuilder->og_audience[0])) {
+          $akteur_id = $webbuilder->og_audience[0]->target_id;
+          $form['og_audience']['widget']['#default_value'] = $akteur_id;
         }
       }
-      $form['field_parent']['widget']['#options'][$nid] = $title;
     }
-  }
+  // edit form
+  } else {
+    // remove webbuilder and og_audience fields
+    unset($form['field_webbuilder']);
+    unset($form['og_audience']);
+    
+    $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
 
-  if ($form_id === 'node_webbuilder_page_form') {
-    if (isset($webbuilder->og_audience[0])) {
-      $akteur_id = $webbuilder->og_audience[0]->target_id;
-      $form['og_audience']['#attributes']['class'][] = 'hidden';
-      $form['og_audience']['widget']['#default_value'] = $akteur_id;
-      $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
-      $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+    if (!$webbuilder_id) {
+      return;
+    }
+
+    $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+    if (!$webbuilder) {
+      return;
+    }
+    
+    // load the page tree
+    $form['field_parent']['widget']['#options'] = [];
+    $view = Views::getView('webbuilder_pages');
+    $view->setDisplay('entity_reference_page_tree');
+    $view->setArguments([$webbuilder_id]);
+    $result = $view->render();
+    
+    foreach($result as $nid => $row) {
+      if (isset($row['#row']) && isset($row['#row']->_entity)) {
+        $title = $row['#row']->_entity->title[0]->value;
+        $_row = $row;
+        
+        while($_row !== null) {
+          if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
+            $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+            $title = '- ' . $title;
+            $_row = $result[$parent_id] ?? null;
+          } else {
+            $_row = null;
+          }
+        }
+        $form['field_parent']['widget']['#options'][$nid] = $title;
+      }
     }
   }
 }
@@ -142,23 +148,37 @@ function _le_webbuilder_webbuilder_form_alter(&$form, FormStateInterface $form_s
   }
 
   if ($form_id === 'node_webbuilder_edit_form') {
-    // TODO: preload the page tree for the frontpage selection
-    // add pages to existing webbuilder
-    /*
-    $node_id = $form_state->getFormObject()->getEntity()->id();
+    $webbuilder = $form_state->getFormObject()->getEntity();
+    if (!$webbuilder) {
+      return;
+    }
+    $webbuilder_id = $webbuilder->id();
 
-    $form['group_pages']['field_page_tree'] = [
-      '#type' => 'inline_template',
-      '#template' => '<label class="form-item__label">Seitenbaum</label> {{ drupal_view(\'webbuilder_pages\', \'form_page_tree\', ' . $node_id . ')}}',
-      '#weight' => 100,
-    ];
-    $dest = \Drupal::destination()->getAsArray()['destination'];
-    $form['group_pages']['field_add_page'] = [
-      '#type' => 'markup',
-      '#markup' => '<a class="button button--default" href="/node/add/webbuilder_page?webbuilder=' . $node_id . '&destination=' . urlencode($dest) . '">+ ' . t('Add page') . '</a>',
-      '#weight' => 101,
-    ];
-    */
+    $form['field_frontpage']['widget']['#options'] = [];
+
+    // preload the page tree for the frontpage selection
+    $view = Views::getView('webbuilder_pages');
+    $view->setDisplay('entity_reference_page_tree');
+    $view->setArguments([$webbuilder_id]);
+    $result = $view->render();
+    
+    foreach($result as $nid => $row) {
+      if (isset($row['#row']) && isset($row['#row']->_entity)) {
+        $title = $row['#row']->_entity->title[0]->value;
+        $_row = $row;
+        
+        while($_row !== null) {
+          if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
+            $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+            $title = '- ' . $title;
+            $_row = $result[$parent_id] ?? null;
+          } else {
+            $_row = null;
+          }
+        }
+        $form['field_frontpage']['widget']['#options'][$nid] = $title;
+      }
+    }
   }
 }
 
