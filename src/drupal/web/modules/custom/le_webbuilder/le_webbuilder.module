@@ -96,7 +96,7 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
     unset($form['field_webbuilder']);
     unset($form['og_audience']);
     
-    $webbuilder_id = $form['field_webbuilder']['widget']['#default_value'][0];
+    $webbuilder_id = $form_state->getFormObject()->getEntity()->field_webbuilder[0]->target_id;
 
     if (!$webbuilder_id) {
       return;

@@ -20,6 +20,7 @@ dependencies:
   module:
     - options
     - user
+    - weight
 id: node.webbuilder_page.backend_teaser
 targetEntityType: node
 bundle: webbuilder_page
@@ -39,6 +40,13 @@ content:
     third_party_settings: {  }
     type: basic_string
     region: content
+  field_weight:
+    type: default_weight
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   published_at:
     type: timestamp
     weight: 2
@@ -58,7 +66,6 @@ hidden:
   field_pre_footer_heading: true
   field_slug: true
   field_webbuilder: true
-  field_weight: true
   langcode: true
   links: true
   og_audience: true

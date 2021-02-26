@@ -288,7 +288,7 @@ display:
           type: ul
           main_field: nid
           parent_field: field_parent
-          collapsible_tree: expanded
+          collapsible_tree: '0'
       row:
         type: 'entity:node'
         options:

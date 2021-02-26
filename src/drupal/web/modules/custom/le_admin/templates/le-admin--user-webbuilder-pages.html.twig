@@ -1,8 +1,9 @@
 {{ attach_library('le_admin/tailwind') }}
+{{ attach_library('le_admin/dashboard') }}
 {% set destination = get_destination() %}
 {% set webbuilder_pages = drupal_view_result('webbuilder_pages', 'dashboard', node.id) %}
 
-<h2>{{ 'Seite des Webbaukastens: :label'|t({':label': node.title[0].value}) }}</h2>
+<h2>{{ 'Seiten des Webbaukastens: :label'|t({':label': node.title[0].value}) }}</h2>
 
 <div class="divide-y-2 divide-gray-200">
   <div class="py-4">
@@ -11,7 +12,9 @@
     </p>
   </div>
   {% if webbuilder_pages|length %}
-  {{ drupal_view('webbuilder_pages', 'dashboard', node.id) }}
+  <section class="le-admin--user-webbuilder-pages">
+    {{ drupal_view('webbuilder_pages', 'dashboard', node.id) }}
+  </section>
   {% else %}
   <p class="pt-4">
     {{ 'Du hast noch keinen Seiten erstellt.'|t }}

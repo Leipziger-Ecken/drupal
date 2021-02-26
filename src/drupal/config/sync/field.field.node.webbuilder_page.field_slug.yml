@@ -10,7 +10,7 @@ field_name: field_slug
 entity_type: node
 bundle: webbuilder_page
 label: Seitenalias
-description: "Mit dem Seitenalias kannst die URL (Adresse der Seite in der Browser-Adressleiste) festlegen. Z.B. https://leipziger-ecken.de/mein-akteur/mein-seitenalias.\r\n\r\nNur Kleinbuchstaben ohne Umlaute und Sonderzeichen, Zahlen und Bindestriche \"-\" sind erlaubt."
+description: "Mit dem Seitenalias wird die URL (Adresse der Seite in der Browser-Adressleiste) festgelegt. Z.B. https://leipziger-ecken.de/mein-akteur/mein-seitenalias.\r\n\r\nNur Kleinbuchstaben ohne Umlaute und Sonderzeichen, Zahlen und Bindestriche \"-\" sind erlaubt."
 required: true
 translatable: false
 default_value: {  }

@@ -7,3 +7,8 @@ akteur_form:
   css:
     theme:
       assets/css/akteur_form.css: {}
+
+dashboard:
+  css:
+    theme:
+      assets/css/dashboard.css: {}

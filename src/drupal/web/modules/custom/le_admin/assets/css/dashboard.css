@@ -1,0 +1,15 @@
+.le-admin--user-webbuilder-pages ul {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.le-admin--user-webbuilder-pages li {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.le-admin--user-webbuilder-pages li li {
+    margin-left: 1rem;
+}
