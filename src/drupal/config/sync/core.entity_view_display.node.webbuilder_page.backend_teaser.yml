@@ -1,9 +1,9 @@
-uuid: 63a74aaa-9055-45a9-ab03-aca0e274c285
+uuid: c698ec35-00a3-4ce5-86e9-22e86ba04db9
 langcode: de
-status: false
+status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.webbuilder_form
+    - core.entity_view_mode.node.backend_teaser
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_header_image
     - field.field.node.webbuilder_page.field_navigation
@@ -18,41 +18,47 @@ dependencies:
     - field.field.node.webbuilder_page.og_audience
     - node.type.webbuilder_page
   module:
+    - options
     - user
-id: node.webbuilder_page.webbuilder_form
+id: node.webbuilder_page.backend_teaser
 targetEntityType: node
 bundle: webbuilder_page
-mode: webbuilder_form
+mode: backend_teaser
 content:
-  field_parent:
-    type: entity_reference_entity_id
-    weight: 1
-    region: content
+  field_navigation:
+    weight: 0
     label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_webbuilder:
-    type: entity_reference_entity_id
+    type: list_default
+    region: content
+  field_short_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  published_at:
+    type: timestamp
     weight: 2
     region: content
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  links:
-    weight: 0
-    region: content
-    settings: {  }
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
     third_party_settings: {  }
 hidden:
   field_contents: true
   field_header_image: true
-  field_navigation: true
+  field_parent: true
   field_pre_footer_body: true
   field_pre_footer_button: true
   field_pre_footer_heading: true
-  field_short_description: true
   field_slug: true
+  field_webbuilder: true
   field_weight: true
   langcode: true
+  links: true
   og_audience: true
-  published_at: true

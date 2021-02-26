@@ -67,6 +67,10 @@ function le_admin_theme($existing, $type, $theme, $path)
       'template' => 'node/node--webbuilder--webbuilder-preset-teaser',
       'base hook' => 'node',
     ],
+    'node__webbuilder_page__backend_teaser' => [
+      'template' => 'node/node--webbuilder-page--backend-teaser',
+      'base hook' => 'node',
+    ],
     'views_view__le_akteur_has_events__dashboard' => [
       'template' => 'views/views-view--le-akteur-has-events--dashboard',
       'base hook' => 'views_view',
