@@ -1,3 +1,4 @@
+{% set destination = get_destination() %}
 <article class="flex border-b space-x-10">
   <div class="mr-4 w-96">
     <h3 class="text-lg font-bold mt-0">
@@ -13,6 +14,9 @@
       </span>
       {% endif %}
     </h3>
+    <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}) }}">
+      {{ 'Seite bearbeiten'|t }}
+    </a>
   </div>
   <div class="text-sm mb-4 w-32">
     {{ 'Sortierung'|t }}: {{ content.field_weight[0]['#markup'] }}
