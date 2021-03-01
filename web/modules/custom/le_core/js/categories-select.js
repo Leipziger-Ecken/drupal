@@ -44,7 +44,7 @@
          * Bootstrap & render the component
          */
         attach (context, settings) {
-            if ($(context).find('.shortcut-action').length >= 1) {
+            if ($(context).find('.shortcut-action').length >= 1 || $(context).find('.block-system-main-block').length >= 1) {
                 // Form displayed in Drupal backend; skip initialization.
                 return;
             }
