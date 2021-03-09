@@ -170,6 +170,14 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'user_login_form') {
     $form['#submit'][] = 'le_admin_user_login_form_submit';
   }
+  
+  if (in_array($form_id, [
+    'user_login_form',
+    'user_register_form',
+    'use_pass',
+  ])) {
+    $form['#attached']['library'][] = 'le_admin/login';
+  }
 }
 
 function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)

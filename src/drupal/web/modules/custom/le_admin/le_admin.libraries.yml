@@ -12,3 +12,8 @@ dashboard:
   css:
     theme:
       assets/css/dashboard.css: {}
+
+login:
+  css:
+    theme:
+      assets/css/login.css: {}
