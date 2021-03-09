@@ -5,9 +5,7 @@ dependencies:
   config:
     - core.entity_form_mode.user.register
     - field.field.user.user.user_picture
-    - image.style.thumbnail
   module:
-    - svg_image
     - user
 _core:
   default_config_hash: vFiX4fM133uADOOnwarsk3OspIcetROPgJViBqqwPIY
@@ -22,24 +20,18 @@ content:
     settings: {  }
     third_party_settings: {  }
   language:
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   timezone:
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
-  user_picture:
-    type: image_image
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
   contact: true
+  google_analytics: true
   langcode: true
   path: true
+  user_picture: true
