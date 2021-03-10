@@ -9,6 +9,23 @@ const le_admin_link_button_classes = [
   'py-2', 'px-4', 'mr-4', 'border', 'border-gray-300', 'hover:bg-gray-100', 'hover:border-gray-400', 'rounded-md',
 ];
 
+/**
+ * Implements hook_page_attachments_alter
+ * 
+ */
+function le_admin_page_attachments_alter(array &$attachments)
+{
+  $user = \Drupal::currentUser();
+  $roles = $user->getRoles();
+  
+  if (in_array('authenticated', $roles)) {
+    $attachments['#attached']['library'][] = 'le_admin/dashboard';
+  }
+}
+
+/**
+ * Implements hook_theme
+ */
 function le_admin_theme($existing, $type, $theme, $path)
 {
   return [
