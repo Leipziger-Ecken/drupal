@@ -1,0 +1,37 @@
+# This migration links the newly created media entities with entity reference field on the target bundle.
+
+id: le_migrate_media_le_event_step2
+label: le_event Mapping
+migration_group: media
+source:
+  plugin: content_entity:node
+  bundle: le_event
+  include_translations: false
+
+destination:
+  plugin: entity:node
+
+process:
+  nid: nid
+
+  type:
+    plugin: default_value
+    default_value: le_event
+    
+  field_le_event_image_media:
+    plugin: file_id_lookup
+    source: field_le_event_image
+    migration: le_migrate_media_le_event_step1
+    no_stub: true
+
+
+migration_dependencies:
+  optional:
+  - le_migrate_media_le_event_step1
+
+dependencies:
+  module:
+    - le_migrate_media
+  enforced:
+    module:
+      - le_migrate_media
