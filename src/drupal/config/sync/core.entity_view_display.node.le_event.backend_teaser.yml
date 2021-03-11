@@ -19,6 +19,8 @@ dependencies:
     - field.field.node.le_event.field_le_event_occurrences
     - field.field.node.le_event.field_le_event_website
     - field.field.node.le_event.field_main_image
+    - field.field.node.le_event.field_online_event
+    - field.field.node.le_event.field_related_content
     - field.field.node.le_event.og_audience
     - image.style.medium
     - node.type.le_event
@@ -91,6 +93,8 @@ hidden:
   field_le_event_kategorie_typ: true
   field_le_event_lizenzhinweis: true
   field_le_event_website: true
+  field_online_event: true
+  field_related_content: true
   langcode: true
   links: true
   og_audience: true

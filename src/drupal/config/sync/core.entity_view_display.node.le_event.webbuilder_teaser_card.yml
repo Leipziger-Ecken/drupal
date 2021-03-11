@@ -19,6 +19,8 @@ dependencies:
     - field.field.node.le_event.field_le_event_occurrences
     - field.field.node.le_event.field_le_event_website
     - field.field.node.le_event.field_main_image
+    - field.field.node.le_event.field_online_event
+    - field.field.node.le_event.field_related_content
     - field.field.node.le_event.og_audience
     - node.type.le_event
   module:
@@ -78,6 +80,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_online_event:
+    type: boolean
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
 hidden:
   field_adresse: true
   field_bezirk: true
@@ -89,6 +101,7 @@ hidden:
   field_le_event_kategorie_typ: true
   field_le_event_lizenzhinweis: true
   field_le_event_website: true
+  field_related_content: true
   langcode: true
   links: true
   og_audience: true

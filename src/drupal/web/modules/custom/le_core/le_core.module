@@ -158,11 +158,13 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
         array_push($user_akteure, $membership->get('entity_id')->value);
       }
 
-      foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
-        if ($entity_id == '_none') continue;
+      if (isset($form['og_audience']['widget']['#options'])) {
+        foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
+          if ($entity_id == '_none') continue;
 
-        if (!in_array($entity_id, $user_akteure)) {
-          unset($form['og_audience']['widget']['#options'][$entity_id]);
+          if (!in_array($entity_id, $user_akteure)) {
+            unset($form['og_audience']['widget']['#options'][$entity_id]);
+          }
         }
       }
     }

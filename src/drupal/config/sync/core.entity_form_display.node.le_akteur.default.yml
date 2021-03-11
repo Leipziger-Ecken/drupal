@@ -32,7 +32,6 @@ dependencies:
     - link
     - media_library
     - path
-    - publication_date
     - select2
     - svg_image
     - telephone
@@ -43,7 +42,7 @@ third_party_settings:
       children:
         - path
       parent_name: ''
-      weight: 6
+      weight: 4
       format_type: details_sidebar
       region: content
       format_settings:
@@ -79,7 +78,7 @@ third_party_settings:
         - group_details
         - group_image
       parent_name: ''
-      weight: 3
+      weight: 2
       format_type: accordion
       region: content
       format_settings:
@@ -91,6 +90,7 @@ third_party_settings:
       children:
         - field_adresse
         - field_bezirk
+        - field_le_akteur_is_barrier_free
       parent_name: group_basic
       weight: 33
       format_type: accordion_item
@@ -123,7 +123,6 @@ third_party_settings:
         - field_le_akteur_kategorie_gruppe
         - field_le_akteur_kategorie_typ
         - field_le_akteur_description
-        - field_le_akteur_is_barrier_free
         - field_le_akteur_kategorie_tags
         - field_le_akteur_einrichtungsname
       parent_name: group_basic
@@ -131,12 +130,11 @@ third_party_settings:
       format_type: accordion_item
       region: content
       format_settings:
-        id: details
-        classes: ''
         formatter: closed
         required_fields: true
-        description: ''
-      label: Details
+        id: description
+        classes: ''
+      label: Beschreibung
 _core:
   default_config_hash: JG3NKQlqWadcEYoTKkwJzUdYwmurC0Hat_DbrbHqrfk
 id: node.le_akteur.default
@@ -146,7 +144,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -221,7 +219,7 @@ content:
     type: image_image
     region: content
   field_le_akteur_is_barrier_free:
-    weight: 22
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
@@ -258,7 +256,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_lizenzhinweis:
-    weight: 5
+    weight: 3
     settings:
       display_label: true
     third_party_settings: {  }
@@ -300,12 +298,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  published_at:
-    type: publication_date_timestamp
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
@@ -323,7 +315,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -337,5 +329,6 @@ hidden:
   field_le_akteur_is_private: true
   langcode: true
   promote: true
+  published_at: true
   sticky: true
   url_redirects: true

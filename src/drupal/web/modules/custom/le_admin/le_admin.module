@@ -315,6 +315,17 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
 
 function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  if ($form_id === 'node_le_event_form') {
+    // prefill address from akteur
+    $akteur_id = \Drupal::request()->query->get('le_akteur');
+    if ($akteur_id) {
+      $akteur = \Drupal::entityManager()->getStorage('node')->load($akteur_id);
+      if ($akteur) {
+        $form['field_adresse']['widget'][0]['address']['#default_value'] = $akteur->field_adresse[0]->getValue();
+        $form['field_bezirk']['widget']['#default_value'][] = $akteur->field_bezirk[0]->getValue()['target_id'];
+      }
+    }
+  }
   if ($form_id === 'node_le_event_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 

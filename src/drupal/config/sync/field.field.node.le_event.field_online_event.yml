@@ -1,0 +1,23 @@
+uuid: 5f371d1b-c5d2-4bf5-8143-d5155e6daae9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_online_event
+    - node.type.le_event
+id: node.le_event.field_online_event
+field_name: field_online_event
+entity_type: node
+bundle: le_event
+label: 'Online Event'
+description: 'Falls dieser Termin online stattfindet.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

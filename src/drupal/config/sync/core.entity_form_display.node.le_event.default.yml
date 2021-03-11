@@ -17,6 +17,8 @@ dependencies:
     - field.field.node.le_event.field_le_event_occurrences
     - field.field.node.le_event.field_le_event_website
     - field.field.node.le_event.field_main_image
+    - field.field.node.le_event.field_online_event
+    - field.field.node.le_event.field_related_content
     - field.field.node.le_event.og_audience
     - image.style.thumbnail
     - node.type.le_event
@@ -26,7 +28,6 @@ dependencies:
     - field_group
     - link
     - media_library
-    - publication_date
     - select2
     - svg_image
     - text
@@ -37,7 +38,7 @@ third_party_settings:
         - langcode
         - sticky
       parent_name: ''
-      weight: 10
+      weight: 8
       format_type: details_sidebar
       region: content
       format_settings:
@@ -50,31 +51,30 @@ third_party_settings:
       label: Einstellungen
     group_details:
       children:
+        - field_le_event_beschreibung
+        - field_online_event
         - field_le_event_website
         - field_le_event_kategorie_typ
         - field_le_event_kategorie_gruppe
         - field_le_event_kategorie_tags
-        - field_le_event_is_barrier_free
       parent_name: group_basic
       weight: 22
       format_type: accordion_item
       region: content
       format_settings:
-        id: details
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
         formatter: closed
-      label: Details
+        required_fields: true
+        id: description
+        classes: ''
+      label: Beschreibung
     group_basic:
       children:
-        - group_general
         - group_address
         - group_details
         - group_images
+        - group_related_content
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: accordion
       region: content
       format_settings:
@@ -86,6 +86,7 @@ third_party_settings:
       children:
         - field_adresse
         - field_bezirk
+        - field_le_event_is_barrier_free
       parent_name: group_basic
       weight: 21
       format_type: accordion_item
@@ -97,22 +98,6 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Adresse
-    group_general:
-      children:
-        - published_at
-        - field_le_event_beschreibung
-        - field_le_event_occurrences
-      parent_name: group_basic
-      weight: 20
-      format_type: accordion_item
-      region: content
-      format_settings:
-        id: general
-        classes: ''
-        formatter: open
-        required_fields: true
-        description: ''
-      label: Allgemein
     group_images:
       children:
         - field_le_event_image
@@ -122,12 +107,25 @@ third_party_settings:
       format_type: accordion_item
       region: content
       format_settings:
-        id: images
+        formatter: closed
+        required_fields: true
+        id: image
+        classes: ''
+      label: Bild
+    group_related_content:
+      children:
+        - field_related_content
+      parent_name: group_basic
+      weight: 24
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: related_content
         classes: ''
         formatter: closed
         required_fields: true
         description: ''
-      label: Bilder
+      label: 'Zugehörige Inhalte'
 _core:
   default_config_hash: 25O-AwsEx0saDOI8u5hH18O9GnZdbsejDBbyq2L3xOs
 id: node.le_event.default
@@ -152,7 +150,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_beschreibung:
-    weight: 10
+    weight: 14
     settings:
       rows: 6
       placeholder: ''
@@ -168,14 +166,14 @@ content:
     type: image_image
     region: content
   field_le_event_is_barrier_free:
-    weight: 14
+    weight: 11
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 12
+    weight: 18
     settings:
       autocomplete: false
       match_operator: CONTAINS
@@ -185,7 +183,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_kategorie_tags:
-    weight: 13
+    weight: 19
     settings:
       width: 100%
       autocomplete: true
@@ -195,7 +193,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_kategorie_typ:
-    weight: 11
+    weight: 17
     settings:
       width: 100%
       autocomplete: false
@@ -205,20 +203,20 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_lizenzhinweis:
-    weight: 9
+    weight: 7
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_le_event_occurrences:
-    weight: 11
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: date_recur_modular_alpha
     region: content
   field_le_event_website:
-    weight: 10
+    weight: 16
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -234,6 +232,23 @@ content:
     third_party_settings: {  }
     type: media_library_widget
     region: content
+  field_online_event:
+    weight: 15
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_related_content:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   langcode:
     type: language_select
     weight: 7
@@ -247,12 +262,6 @@ content:
     weight: 2
     third_party_settings: {  }
     region: content
-  published_at:
-    type: publication_date_timestamp
-    weight: 9
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
@@ -281,5 +290,6 @@ hidden:
   field_le_event___eid: true
   path: true
   promote: true
+  published_at: true
   uid: true
   url_redirects: true
