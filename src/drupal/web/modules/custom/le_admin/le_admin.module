@@ -19,7 +19,7 @@ function le_admin_page_attachments_alter(array &$attachments)
   $roles = $user->getRoles();
   
   if (in_array('authenticated', $roles)) {
-    $attachments['#attached']['library'][] = 'le_admin/dashboard';
+    $attachments['#attached']['library'][] = 'le_admin/admin';
   }
 }
 

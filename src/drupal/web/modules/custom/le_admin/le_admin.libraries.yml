@@ -8,10 +8,10 @@ akteur_form:
     theme:
       assets/css/akteur_form.css: {}
 
-dashboard:
+admin:
   css:
     theme:
-      assets/css/dashboard.css: {}
+      assets/css/admin.css: {}
 
 login:
   css:

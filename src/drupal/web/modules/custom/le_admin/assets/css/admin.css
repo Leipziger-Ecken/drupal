@@ -38,3 +38,27 @@
   -ms-mask-image: url("../icons/video.svg") !important;
   mask-image: url("../icons/video.svg") !important;
 }
+
+/* Fixes accordion headers looking awful */
+.ui-accordion .ui-accordion-header a {
+  padding-left: 1rem;
+  text-transform: none;
+  color: var(--colorGinText);
+}
+.ui-accordion .ui-accordion-header-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+}
+
+/* Prevents collapsibles in accordion */
+.ui-accordion .claro-details {
+  border: none;
+  padding: 0;
+}
+.ui-accordion .claro-details__summary {
+  display: none;
+}
+.ui-accordion .claro-details__wrapper {
+  margin: 0;
+}
