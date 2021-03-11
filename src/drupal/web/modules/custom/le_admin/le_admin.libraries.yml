@@ -12,6 +12,8 @@ admin:
   css:
     theme:
       assets/css/admin.css: {}
+  js:
+    assets/js/admin.js: {}
 
 login:
   css:
