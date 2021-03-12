@@ -62,3 +62,7 @@
 .ui-accordion .claro-details__wrapper {
   margin: 0;
 }
+.previewable-list__item.is-active {
+  border-color: var(--colorGinPrimary) !important;
+  background-color: var(--colorGinPrimaryLight) !important;
+}

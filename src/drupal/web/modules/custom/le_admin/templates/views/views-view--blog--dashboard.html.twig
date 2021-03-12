@@ -1,16 +1,7 @@
-{% set destination = get_destination() %}
+{{ exposed }}
 
 {% for row in rows[0]['#rows'] %}
-<div class="py-4 flex space-x-10">
-  <div>
-    {{ row }}
-  </div>
-  <div>
-    <a class="button button--default button--small mt-0" href="{{ drupal_url('/node/' ~ row['#node'].id() ~ '/edit', {query: {destination: destination }}) }}">
-      {{ 'Blog-Artikel bearbeiten'|t }}
-    </a>
-  </div>
-</div>
+{{ row }}
 {% endfor %}
 
 {{ pager }}

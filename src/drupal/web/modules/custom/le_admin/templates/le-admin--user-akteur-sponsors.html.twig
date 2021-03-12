@@ -1,0 +1,24 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set destination = get_destination() %}
+{% set sponsors = drupal_view('sponsors', 'dashboard', node.id()) %}
+
+<section>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Your sponsors and your network.'|t,
+  }) }}
+
+  {{ include('@le_admin/partials/primary_action_button.html.twig', {
+    url: drupal_url('/node/add/blog_article', {query: {destination: destination, le_atkeur: node.id() }}),
+    label: '+ ' ~ ('Add Sponsor'|t)
+  }) }}
+
+  {% if sponsors %}
+  {{ include('@le_admin/partials/previewable_item_list.html.twig', {
+    view: sponsors,
+  }) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'You have not created any sponsors yet.'|t }}
+  </p>
+  {% endif %}
+</section>

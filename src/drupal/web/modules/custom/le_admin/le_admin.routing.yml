@@ -2,18 +2,78 @@ le_admin.user_dashboard:
   path: '/user/dashboard'
   defaults:
     _controller: '\Drupal\le_admin\Controller\AdminController::userDashboard'
-    _title: 'Übersicht'
+    _title: 'Overview'
   methods: [GET]
   requirements:
     _permission: 'create le_akteur content'
 
-le_admin.user_akteur_contents:
-  path: '/user/akteur/{node}/contents'
+le_admin.user_akteur:
+  path: '/user/akteur/{node}'
   defaults:
-    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurContents'
-    _title: 'Inhalte'
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteur'
+    _title: 'Actor'
   requirements:
     _permission: 'edit own le_akteur content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_events:
+  path: '/user/akteur/{node}/le_events'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurEvents'
+    _title: 'Events'
+  requirements:
+    _permission: 'create le_event content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+      
+le_admin.user_akteur_projects:
+  path: '/user/akteur/{node}/projects'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurProjects'
+    _title: 'Projects'
+  requirements:
+    _permission: 'create project content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_blog:
+  path: '/user/akteur/{node}/blog_articles'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurBlogArticles'
+    _title: 'Blog'
+  requirements:
+    _permission: 'create blog_article content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_partners:
+  path: '/user/akteur/{node}/partners'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurPartners'
+    _title: 'Partners'
+  requirements:
+    _permission: 'create partner content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_sponsors:
+  path: '/user/akteur/{node}/sponsors'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurSponsors'
+    _title: 'Sponsors'
+  requirements:
+    _permission: 'create sponsor content'
   options:
     parameters:
       node:
@@ -23,9 +83,9 @@ le_admin.user_akteur_webbuilder:
   path: '/user/akteur/{node}/webbuilder'
   defaults:
     _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurWebbuilder'
-    _title: 'Webbaukasten'
+    _title: 'Your website'
   requirements:
-    _permission: 'edit own le_akteur content'
+    _permission: 'create webbuilder content'
   options:
     parameters:
       node:
@@ -35,7 +95,7 @@ le_admin.user_webbuilder_pages:
   path: '/user/webbuilder/{node}/pages'
   defaults:
     _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderPages'
-    _title: 'Seiten'
+    _title: 'Website pages'
   requirements:
     _permission: 'create webbuilder_page content'
   options:

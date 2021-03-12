@@ -67,18 +67,104 @@ class AdminController extends ControllerBase
   }
 
   /**
-   * Provides the akteur contents page.
+   * Provides the akteur page.
    *
    * @param \Drupal\node\Entity\Node $node
    *
    * @return array
-   *   A renderable array of the akteur contents page.
+   *   A renderable array of the akteur page.
    */
-  public function userAkteurContents($node)
+  public function userAkteur($node)
   {
     return [
-      '#theme' => 'le_admin__user_akteur_contents',
+      '#theme' => 'le_admin__user_akteur',
       '#node' => $node,
+      '#title' => $node->getTitle(),
+    ];
+  }
+
+  /**
+   * Provides the akteur events page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur events page.
+   */
+  public function userAkteurEvents($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_events',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Events'),
+    ];
+  }
+
+  /**
+   * Provides the akteur projects page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur projects page.
+   */
+  public function userAkteurProjects($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_projects',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Projects'),
+    ];
+  }
+
+  /**
+   * Provides the akteur blog_articles page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur blog_articles page.
+   */
+  public function userAkteurBlogArticles($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_blog_articles',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Blog Articles'),
+    ];
+  }
+
+  /**
+   * Provides the akteur partners page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur partners page.
+   */
+  public function userAkteurPartners($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_partners',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Partners'),
+    ];
+  }
+
+  /**
+   * Provides the akteur sponsors page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur sponsors page.
+   */
+  public function userAkteurSponsors($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_sponsors',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Sponsors'),
     ];
   }
 
@@ -95,6 +181,7 @@ class AdminController extends ControllerBase
     return [
       '#theme' => 'le_admin__user_akteur_webbuilder',
       '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Website'),
     ];
   }
 
@@ -111,6 +198,7 @@ class AdminController extends ControllerBase
     return [
       '#theme' => 'le_admin__user_webbuilder_pages',
       '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Website pages'),
     ];
   }
 }

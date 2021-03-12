@@ -1,37 +1,22 @@
 {{ attach_library('le_admin/tailwind') }}
 {% set destination = get_destination() %}
-{% set link_button_classes = 'py-2 px-4 mr-4 border border-gray-300 hover:bg-gray-100 hover:border-gray-400 rounded-md' %}
 {% set webbuilders = drupal_view_result('webbuilders', 'dashboard', node.id) %}
 
-<h2>{{ 'Webbaukasten von :label'|t({':label': node.title[0].value}) }}</h2>
+<section>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Easily create your own website featuring all your above content.'|t,
+  }) }}
 
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
-    <p class="text-gray-500">
-      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Webbaukasten in den Leipziger-Ecken haben.'|t }}
-    </p>
-  </div>
   {% if webbuilders|length %}
   {{ drupal_view('webbuilders', 'dashboard', node.id) }}
   {% else %}
-  <div class="py-4">
-    <p class="mb-8">
-      {{ 'Du hast noch keinen Webbaukasten erstellt.'|t }}
-    </p>
-    <p>
-      <span class="inline-block mr-2"><strong>{{ 'Wähle aus einer der Vorlagen'|t }}</strong> {{ 'oder'|t }}</span>
-      <a 
-        class="{{ link_button_classes }}"
-        href="{{ drupal_url('/node/add/webbuilder', {query: {le_akteur: node.id, destination: destination }}) }}"
-      >
-        {{ 'Starte mit einem leeren Webbaukasten'|t }}
-      </a>
-    </p>
-  </div>
-  <div class="py-8">
-    <h3 class="mb-8">{{ 'Webseiten Vorlagen'|t }}</h3>
+  <p class="pt-4">
+    {{ 'You have not created your website yet.'|t }}
+  </p>
+  <p class="pt-4">
+    {{ 'Please choose from a template below to start.'|t }}
+  </p>
 
-    {{ drupal_view('webbuilders', 'dashboard_presets') }}
-  </div>
+  {{ drupal_view('webbuilders', 'dashboard_presets') }}
   {% endif %}
 </div>

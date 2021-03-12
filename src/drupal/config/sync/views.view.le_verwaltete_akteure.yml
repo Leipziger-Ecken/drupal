@@ -648,6 +648,7 @@ display:
         style: false
         row: false
         use_ajax: false
+        relationships: false
       pager:
         type: none
         options:
@@ -746,6 +747,18 @@ display:
           separator: ''
           hide_empty: false
       use_ajax: false
+      relationships:
+        uid:
+          id: uid
+          table: users_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: Beiträge
+          required: false
+          entity_type: user
+          entity_field: uid
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

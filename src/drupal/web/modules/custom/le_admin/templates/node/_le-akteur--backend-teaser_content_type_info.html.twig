@@ -1,0 +1,30 @@
+<div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+  <dt class="text-sm font-medium text-gray-500">
+    {{ label|t }}
+  </dt>
+  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+    <p class="text-gray-500">
+      {{ description|t }}
+    </p>
+  </dd>
+  <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+    {% if published_count == 0 and unpublished_count == 0 %}
+    <p>
+      {{ no_results_message|t }}
+    </p>
+    {{ include('@le_admin/partials/secondary_link.html.twig', {
+      url: drupal_url('/node/add/' ~ content_type, {query: {destination: destination, le_akteur: nid }}),
+      label: create_label|t,
+    }) }}
+    {% else %}
+    <p>
+      {{ (published_count == 1 ? published_count_label.singular : published_count_label.plural) | t({':count': published_count}) }}<br />
+      {{ (unpublished_count == 1 ? unpublished_count_label.singular : unpublished_count_label.plural) | t({':count': unpublished_count}) }}
+    </p>
+    {{ include('@le_admin/partials/secondary_link.html.twig', {
+      url: drupal_url('/user/akteur/' ~ node.id() ~ '/' ~ content_type ~ 's', {query: {destination: destination }}),
+      label: manage_label|t,
+    }) }}
+    {% endif %}
+  </dd>
+</div>

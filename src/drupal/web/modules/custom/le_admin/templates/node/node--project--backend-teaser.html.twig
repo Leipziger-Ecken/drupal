@@ -1,25 +1,29 @@
-<article class="flex">
-  <div class="mr-4 flex-shrink-0">
-    <figure class="h-16 w-16 border border-gray-300 bg-white text-gray-300">
-      {{ content.field_main_image }}
-    </figure>
-  </div>
-  <div>
-    <h3 class="text-lg font-bold mt-0">
-      {{ label }}
-
-      {% if node.status[0].value == '0' %}
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-        {{ 'nicht veröffentlicht'|t }}
-      </span>
-      {% else %}
-      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-        {{ 'veröffentlicht'|t }}
-      </span>
-      {% endif %}
-    </h3>
-    <div class="mt-1">
-      {{ content.body }}
+{% set destination = get_destination() %}
+<article 
+  class="bg-white shadow border border-transparent overflow-hidden sm:rounded-lg mb-4 previewable-list__item cursor-pointer" 
+  data-role="item" 
+  data-preview-url="{{ url }}"
+  data-preview-title="{{ node.getTitle() }}"
+>
+  <div class="sm:px-6">
+    <div class="px-2 py-5 sm:px-2 sm:grid sm:grid-cols-3 sm:gap-4">
+      <div class="sm:col-span-2" <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 mt-0">
+          {{ label }}
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+          {{ include('@le_admin/partials/badge.html.twig', {
+            color: node.status[0].value == '0' ? 'gray' : 'green',
+            label: node.status[0].value == '0' ? 'unpublished'|t : 'published'|t,
+          }) }}
+        </p>
+      </div>
+      <div class="sm:col-span-1 ml-6 text-right">
+        {{ include('@le_admin/partials/primary_link.html.twig', {
+          url: drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}),
+          label: 'Edit Project'|t,
+        }) }}
+      </div>
     </div>
   </div>
 </article>

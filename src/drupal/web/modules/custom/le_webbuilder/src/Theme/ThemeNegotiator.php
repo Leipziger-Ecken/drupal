@@ -123,7 +123,12 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
         strpos($route_name, 'entity.user.') === 0 ||
         in_array($route_name, [
           'le_admin.user_dashboard',
-          'le_admin.user_akteur_contents',
+          'le_admin.user_akteur',
+          'le_admin.user_akteur_events',
+          'le_admin.user_akteur_projects',
+          'le_admin.user_akteur_blog_articles',
+          'le_admin.user_akteur_partners',
+          'le_admin.user_akteur_sponsors',
           'le_admin.user_akteur_webbuilder',
           'le_admin.user_webbuilder_pages',
         ])

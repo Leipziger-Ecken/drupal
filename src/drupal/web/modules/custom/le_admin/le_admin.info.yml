@@ -3,3 +3,6 @@ description: 'Customizes some things in the admin interface'
 type: module
 core: 8.x
 package: Leipziger Ecken
+components:
+  namespaces:
+    le_admin: templates

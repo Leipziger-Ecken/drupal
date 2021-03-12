@@ -14,7 +14,11 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
   public function applies(RouteMatchInterface $route_match) {
     $route_name = $route_match->getRouteName();
     $parameters = $route_match->getParameters()->all();
-    $node_type = isset($parameters['node']) ? $parameters['node']->getType() : null;
+    $node = isset($parameters['node']) ? $parameters['node'] : null;
+    if ($node && is_string($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    $node_type = $node ? $node->getType() : null;
     // dd($route_name);
 
     return (
@@ -43,10 +47,14 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
     $breadcrumb = new Breadcrumb();
     $parameters = $route_match->getParameters()->all();
     $route_name = $route_match->getRouteName();
-    $node_type = isset($parameters['node']) ? $parameters['node']->getType() : null;
+    $node = isset($parameters['node']) ? $parameters['node'] : null;
+    if ($node && is_string($node)) {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+    }
+    $node_type = $node ? $node->getType() : null;
     
     $breadcrumb->addLink(
-      Link::createFromRoute(t('Übersicht'), 'le_admin.user_dashboard')
+      Link::createFromRoute(t('Overview'), 'le_admin.user_dashboard')
     );
 
     if (in_array($route_name, [
@@ -56,7 +64,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
     ])) {
       $breadcrumb->addLink(
         Link::createFromRoute(
-          t('Mein Konto'),
+          t('My account'),
           'entity.user.canonical', ['user' => \Drupal::currentUser()->id()]
         )
       );
@@ -80,27 +88,69 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       );
     }
 
-    if ($route_name === 'le_admin.user_akteur_contents') {
-      $node = $parameters['node'];
+    if (strpos($route_name, 'le_admin.user_akteur') === 0) {
       $breadcrumb->addLink(
         Link::createFromRoute(
-          t('Akteur: :label', [':label' => $node->title[0]->value]),
-          'le_admin.user_akteur_contents', ['node' => $node->id() ]
+          t('Actor: :label', [':label' => $node->getTitle()]),
+          'le_admin.user_akteur', ['node' => $node->id() ]
+        )
+      );
+    }
+
+    if ($route_name === 'le_admin.user_akteur_events') {
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Events'),
+          'le_admin.user_akteur_events',
+          ['node' => $node->id()]
+        )
+      );
+    }
+
+    if ($route_name === 'le_admin.user_akteur_projects') {
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Projects'),
+          'le_admin.user_akteur_projects',
+          ['node' => $node->id()]
+        )
+      );
+    }
+
+    if ($route_name === 'le_admin.user_akteur_blog_articles') {
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Blog Articles'),
+          'le_admin.user_akteur_blog_articles',
+          ['node' => $node->id()]
+        )
+      );
+    }
+
+    if ($route_name === 'le_admin.user_akteur_partners') {
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Partners'),
+          'le_admin.user_akteur_partners',
+          ['node' => $node->id()]
+        )
+      );
+    }
+
+    if ($route_name === 'le_admin.user_akteur_sponsors') {
+      $breadcrumb->addLink(
+        Link::createFromRoute(
+          t('Sponsors'),
+          'le_admin.user_akteur_sponsors',
+          ['node' => $node->id()]
         )
       );
     }
 
     if ($route_name === 'le_admin.user_akteur_webbuilder') {
-      $node = $parameters['node'];
       $breadcrumb->addLink(
         Link::createFromRoute(
-          t('Akteur: :label', [':label' => $node->title[0]->value]),
-          'le_admin.user_akteur_contents', ['node' => $node->id() ]
-        )
-      );
-      $breadcrumb->addLink(
-        Link::createFromRoute(
-          t('Webbaukasten'), 'le_admin.user_akteur_webbuilder', ['node' => $node->id() ]
+          t('Website'), 'le_admin.user_akteur_webbuilder', ['node' => $node->id() ]
         )
       );
     }
@@ -108,20 +158,15 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
     if ($route_name === 'le_admin.user_webbuilder_pages') {
       $webbuilder = $parameters['node'];
       $akteur = \Drupal::entityManager()->getStorage('node')->load($webbuilder->og_audience[0]->target_id);
+      
       $breadcrumb->addLink(
         Link::createFromRoute(
-          t('Akteur: :label', [':label' => $akteur->title[0]->value]),
-          'le_admin.user_akteur_contents', ['node' => $akteur->id() ]
+          t('Website'), 'le_admin.user_akteur_webbuilder', ['node' => $akteur->id() ]
         )
       );
       $breadcrumb->addLink(
         Link::createFromRoute(
-          t('Webbaukasten'), 'le_admin.user_akteur_webbuilder', ['node' => $akteur->id() ]
-        )
-      );
-      $breadcrumb->addLink(
-        Link::createFromRoute(
-          t('Seiten'), 'le_admin.user_webbuilder_pages', ['node' => $webbuilder->id() ]
+          t('Pages'), 'le_admin.user_webbuilder_pages', ['node' => $webbuilder->id() ]
         )
       );
     }
