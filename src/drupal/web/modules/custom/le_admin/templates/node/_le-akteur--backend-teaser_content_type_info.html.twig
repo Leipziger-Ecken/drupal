@@ -13,7 +13,7 @@
       {{ no_results_message|t }}
     </p>
     {{ include('@le_admin/partials/secondary_link.html.twig', {
-      url: drupal_url('/node/add/' ~ content_type, {query: {destination: destination, le_akteur: nid }}),
+      url: drupal_url('/node/add/' ~ content_type, {query: {destination: '/user/akteur/' ~ node.id() ~ '/' ~ content_type ~ 's', le_akteur: nid }}),
       label: create_label|t,
     }) }}
     {% else %}
@@ -22,7 +22,7 @@
       {{ (unpublished_count == 1 ? unpublished_count_label.singular : unpublished_count_label.plural) | t({':count': unpublished_count}) }}
     </p>
     {{ include('@le_admin/partials/secondary_link.html.twig', {
-      url: drupal_url('/user/akteur/' ~ node.id() ~ '/' ~ content_type ~ 's', {query: {destination: destination }}),
+      url: drupal_url('/user/akteur/' ~ node.id() ~ '/' ~ content_type ~ 's'),
       label: manage_label|t,
     }) }}
     {% endif %}

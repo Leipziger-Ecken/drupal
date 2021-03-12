@@ -13,7 +13,7 @@
     <div>
       <a
         class="button button--primary button--small"
-        href="{{ drupal_url('/webbuilder/create-from-preset/' ~ node.id, {query: {le_akteur: akteur_id, _destination: destination }}) }}">
+        href="{{ drupal_url('/webbuilder/create-from-preset/' ~ node.id, {query: {le_akteur: akteur_id, destination: destination }}) }}">
         {{ 'Mit dieser Vorlage loslegen'|t }}
       </a>
       <a 

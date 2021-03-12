@@ -107,12 +107,12 @@
             {{ 'You have not created your website yet.'|t }}
           </p>
           {{ include('@le_admin/partials/secondary_link.html.twig', {
-            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder', {query: {destination: destination }}),
+            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder'),
             label: 'Create your website'|t,
           }) }}
           {% else %}
           {{ include('@le_admin/partials/secondary_link.html.twig', {
-            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder', {query: {destination: destination }}),
+            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder'),
             label: 'Edit your website'|t,
           }) }}
           {% endif %}

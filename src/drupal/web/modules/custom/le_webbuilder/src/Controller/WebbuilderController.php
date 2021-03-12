@@ -21,11 +21,11 @@ class WebbuilderController extends ControllerBase
     $webbuilder->uid = $user_id;
     $webbuilder->status = 0;
     $webbuilder->published_at = null;
-    $webbuilder->field_is_preset[0]->value = false;
+    $webbuilder->set('field_is_preset', false);
     
     // set the og_audience if given
     if ($akteur_id) {
-      $webbuilder->og_audience[0]->target_id = $akteur_id;
+      $webbuilder->set('og_audience', $akteur_id);
     }
 
     // remember the original frontpage
@@ -55,8 +55,8 @@ class WebbuilderController extends ControllerBase
 
     foreach($preset_pages as $nid => $page) {
       $cloned_page = $page->createDuplicate();
-      $cloned_page->field_webbuilder[0]->target_id = $webbuilder_id;
-      $cloned_page->og_audience[0]->target_id = $akteur_id;      
+      $cloned_page->set('field_webbuilder', $webbuilder_id);
+      $cloned_page->set('og_audience', $akteur_id);
       $cloned_page->uid = $user_id;
 
       // clone paragraphs
@@ -88,18 +88,18 @@ class WebbuilderController extends ControllerBase
       if (isset($pages_to_cloned_pages[$parent_page_id]) && isset($pages_to_cloned_pages[$page_id])) {
         $cloned_parent_page_id = $pages_to_cloned_pages[$parent_page_id]->id();
         $cloned_page = $pages_to_cloned_pages[$page_id];
-        $cloned_page->field_parent[0]->target_id = $cloned_parent_page_id;
+        $cloned_page->set('field_parent', $cloned_parent_page_id);
         $cloned_page->save();
       }
     }
     
     // set the new frontpage id
     if ($frontpage_id) {
-      $webbuilder->field_frontpage->target_id = $frontpage_id;
+      $webbuilder->set('field_frontpage', $frontpage_id);
       
       // save again, to store new frontpage
       $webbuilder->save();
-    }  
+    }
     
     return $this->redirect('entity.node.edit_form', [
       'node' => $webbuilder->id(),

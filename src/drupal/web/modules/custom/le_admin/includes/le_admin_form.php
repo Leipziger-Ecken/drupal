@@ -263,17 +263,24 @@ function _le_admin_blog_article_form_alter(&$form, FormStateInterface $form_stat
 
 function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $user = \Drupal::currentUser();
+  $roles = $user->getRoles();
+  
   if (strpos($form_id, 'edit_form') === false) {
-    // hide og_audience field
-    $form['og_audience']['#attributes']['class'][] = 'hidden';
+    // hide og_audience field for regular users
+    if (!in_array('administrator', $roles)) {
+      $form['og_audience']['#attributes']['class'][] = 'hidden';
+    }
 
     $akteur_id = \Drupal::request()->query->get('le_akteur');
     if ($akteur_id) {
       $form['og_audience']['widget']['#default_value'] = $akteur_id;
     }
   } else {
-    // remove og_audience field
-    unset($form['og_audience']);
+    // remove og_audience field for regular users
+    if (!in_array('administrator', $roles)) {
+      unset($form['og_audience']);
+    }
   }
 }
 
