@@ -55,7 +55,7 @@
       const query = window.location.search;
       const match = query.match(/section=([a-z_-]+)/);
       
-      if (match.length < 2) {
+      if (!match || match.length < 2) {
         return;
       }
 
@@ -125,7 +125,9 @@
         item.addEventListener('click', handleItemClick);
       });
 
-      previewItem(items[0]);
+      if (items.length) {
+        previewItem(items[0]);
+      }
     });
   }
   processForms();

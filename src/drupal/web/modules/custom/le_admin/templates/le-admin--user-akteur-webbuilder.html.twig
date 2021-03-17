@@ -14,8 +14,9 @@
       label: '+ ' ~ ('Add website'|t)
     }) }}
   {% endif %}
-  
-  {{ drupal_view('webbuilders', 'dashboard', node.id) }}
+  <div class="divide-solid divide-y-2 divide-gray-100">
+    {{ drupal_view('webbuilders', 'dashboard', node.id) }}
+  </div>
   {% else %}
   <p class="pt-4">
     {{ 'You have not created your website yet.'|t }}

@@ -1,28 +1,23 @@
 {{ attach_library('le_admin/tailwind') }}
+{{ attach_library('le_admin/webbuilder_pages') }}
 {% set destination = get_destination() %}
-{% set webbuilder_pages = drupal_view_result('webbuilder_pages', 'dashboard', node.id) %}
 
-<h2>{{ 'Seiten des Webbaukastens: :label'|t({':label': node.title[0].value}) }}</h2>
+<section 
+  data-role="webbuilder-pages" 
+  data-webbuilder="{{ node.id() }}"
+  data-destination="{{ destination }}"
+>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Manage the page structure and the contents of your website.'|t,
+  }) }}
 
-<div class="divide-y-2 divide-gray-200">
-  <div class="py-4">
-    <p class="text-gray-500">
-      {{ 'TODO: Kurzer Text, der erklärt was für eine Rolle Seiten im Webbaukasten haben.'|t }}
-    </p>
-  </div>
-  {% if webbuilder_pages|length %}
-  <section class="le-admin--user-webbuilder-pages">
-    {{ drupal_view('webbuilder_pages', 'dashboard', node.id) }}
-  </section>
-  {% else %}
-  <p class="pt-4">
-    {{ 'Du hast noch keinen Seiten erstellt.'|t }}
-  </p>
-  {% endif %}
-  <div class="py-4">
-    <a class="button button--primary"
-      href="{{ drupal_url('/node/add/webbuilder_page', {query: {webbuilder: node.id, destination: destination }}) }}">
-      {{ 'Seite erstellen'|t }}
-    </a>
-  </div>
-</div>
+  {{ include('@le_admin/partials/primary_action_button.html.twig', {
+    url: drupal_url('/node/add/webbuilder_page', {query: {destination: destination, webbuilder: node.id() }}),
+    attributes: 'data-role="webbuilder-add-page"',
+    label: '+ ' ~ ('Add Page'|t)
+  }) }}
+  
+  {{ include('@le_admin/partials/previewable_item_list.html.twig', {
+    items: '<ul data-role="webbuilder-page-tree" data-webbuilder="{{ node.id() }}"></ul>',
+  }) }}
+</section>

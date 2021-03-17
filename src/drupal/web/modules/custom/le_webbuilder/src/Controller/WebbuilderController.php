@@ -42,6 +42,7 @@ class WebbuilderController extends ControllerBase
     
     // load preset pages
     $pages_query = \Drupal::entityQuery('node');
+    $pages_query->condition('type', 'webbuilder_page');
     $pages_query->condition('field_webbuilder', $webbuilder_preset_id);
     $result = $pages_query->execute();
     $preset_pages = [];

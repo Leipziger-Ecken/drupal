@@ -14,7 +14,7 @@
 
   {% if events %}
   {{ include('@le_admin/partials/previewable_item_list.html.twig', {
-    view: events,
+    items: events,
   }) }}
   {% else %}
   <p class="pt-4">

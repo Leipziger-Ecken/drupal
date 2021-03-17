@@ -14,7 +14,7 @@
 
   {% if projects %}
   {{ include('@le_admin/partials/previewable_item_list.html.twig', {
-    view: projects,
+    items: projects,
   }) }}
   {% else %}
   <p class="pt-4">

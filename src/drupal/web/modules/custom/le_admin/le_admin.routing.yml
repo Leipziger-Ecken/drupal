@@ -126,3 +126,55 @@ le_admin.user_webbuilder_unpublish:
     parameters:
       node:
         type: entity:node
+
+le_admin.api_webbuilder_page_tree:
+  path: '/api/webbuilder/{webbuilder}/page-tree'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::listWebbuilderPageTree'
+    _title: 'Page Tree'
+  methods: [GET]
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_sort_page:
+  path: '/api/webbuilder/{webbuilder}/sort-page/{page}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::sortWebbuilderPage'
+    _title: 'Get frontpage'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_get_frontpage:
+  path: '/api/webbuilder/{webbuilder}/frontpage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::getWebbuilderFrontpage'
+    _title: 'Set frontpage'
+  methods: [GET]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_frontpage:
+  path: '/api/webbuilder/{webbuilder}/frontpage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderFrontpage'
+    _title: 'Sort page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node

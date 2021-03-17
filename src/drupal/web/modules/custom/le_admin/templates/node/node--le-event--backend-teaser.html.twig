@@ -1,8 +1,10 @@
 {% set destination = get_destination() %}
 <article
   class="bg-white shadow border border-transparent overflow-hidden sm:rounded-lg mb-4 previewable-list__item cursor-pointer"
-  data-role="item" data-preview-url="{{ url }}"
-  data-preview-title="{{ node.getTitle() }}">
+  data-role="item" 
+  data-preview-url="{{ url }}"
+  data-preview-title="{{ node.getTitle() }}"
+>
   <div class="sm:px-6">
     <div class="px-2 py-5 sm:px-2 sm:grid sm:grid-cols-3 sm:gap-4">
       <div class="sm:col-span-2" <h3 class="text-lg leading-6 font-medium text-gray-900">
