@@ -8,14 +8,28 @@
   }) }}
 
   {% if webbuilders|length %}
+  {% if 'le_role_redakteur' in user.roles or 'administrator' in user.roles %}
+    {{ include('@le_admin/partials/primary_action_button.html.twig', {
+      url: drupal_url('/node/add/webbuilder', {query: {destination: destination, le_atkeur: node.id() }}),
+      label: '+ ' ~ ('Add website'|t)
+    }) }}
+  {% endif %}
+  
   {{ drupal_view('webbuilders', 'dashboard', node.id) }}
   {% else %}
   <p class="pt-4">
     {{ 'You have not created your website yet.'|t }}
   </p>
+  {% if 'le_role_redakteur' in user.roles or 'administrator' in user.roles %}
+  <p class="pt-4">
+    {{ 'Please choose from a template below to start or '|t }}
+    <a class="button button--small" href="{{ drupal_url('/node/add/webbuilder', {query: {destination: destination, le_akteur: node.id }}) }}">{{ 'start from scratch'|t }}</a>
+  </p>
+  {% else %}
   <p class="pt-4">
     {{ 'Please choose from a template below to start.'|t }}
   </p>
+  {% endif %}
 
   {{ drupal_view('webbuilders', 'dashboard_presets') }}
   {% endif %}

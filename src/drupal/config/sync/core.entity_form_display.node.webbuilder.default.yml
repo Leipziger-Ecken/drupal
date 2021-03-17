@@ -57,21 +57,6 @@ third_party_settings:
         id: design
         classes: ''
       label: Design
-    group_pages:
-      children:
-        - field_frontpage
-      parent_name: group_basic
-      weight: 11
-      format_type: accordion_item
-      region: content
-      format_settings:
-        id: pages
-        classes: ''
-        description: ''
-        open: false
-        required_fields: true
-        formatter: closed
-      label: Seiten
     group_preset:
       children:
         - field_is_preset
@@ -106,7 +91,6 @@ third_party_settings:
       children:
         - group_style
         - group_social_media
-        - group_pages
         - group_preset
       parent_name: ''
       weight: 4
@@ -150,16 +134,6 @@ content:
       width: 100%
     third_party_settings: {  }
     type: select2
-    region: content
-  field_frontpage:
-    weight: 26
-    settings:
-      width: 100%
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-    third_party_settings: {  }
-    type: select2_entity_reference
     region: content
   field_instagram_link:
     weight: 12
@@ -239,6 +213,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_frontpage: true
   langcode: true
   promote: true
   sticky: true

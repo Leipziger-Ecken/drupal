@@ -102,3 +102,27 @@ le_admin.user_webbuilder_pages:
     parameters:
       node:
         type: entity:node
+
+le_admin.user_webbuilder_publish:
+  path: '/user/webbuilder/{node}/publish'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderPublish'
+    _title: 'Publish website'
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_webbuilder_unpublish:
+  path: '/user/webbuilder/{node}/unpublish'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderUnpublish'
+    _title: 'Unpublish website'
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    parameters:
+      node:
+        type: entity:node

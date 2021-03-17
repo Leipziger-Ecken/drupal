@@ -8,6 +8,7 @@ use Drupal\Core\Menu\MenuLinkTreeInterface;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\Core\Theme\ThemeAccessCheck;
 use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -200,5 +201,37 @@ class AdminController extends ControllerBase
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Website pages'),
     ];
+  }
+
+  /**
+   * Publishes a webbuilder
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return Redirect
+   */
+  public function userWebbuilderPublish($node)
+  {
+    $node->status = 1;
+    $node->save();
+    $destination = \Drupal::request()->get('destination');
+    drupal_set_message(t('Published the website.'), 'status', true);
+    return new RedirectResponse($destination);
+  }
+
+  /**
+   * Unpublishes a webbuilder
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return Redirect
+   */
+  public function userWebbuilderUnpublish($node)
+  {
+    $node->status = 0;
+    $node->save();
+    $destination = \Drupal::request()->get('destination');
+    drupal_set_message(t('Unpublished the website.'), 'status', true);
+    return new RedirectResponse($destination);
   }
 }

@@ -140,7 +140,7 @@ function _le_webbuilder_webbuilder_form_alter(&$form, FormStateInterface $form_s
   $roles = $user->getRoles();
   
   // remove preset field for regular users
-  if (!in_array('le_redakteur', $roles) && !in_array('administrator', $roles)) {
+  if (!in_array('le_role_redakteur', $roles) && !in_array('administrator', $roles)) {
     unset($form['field_is_preset']);
     unset($form['field_description']);
     unset($form['field_preview_image']);

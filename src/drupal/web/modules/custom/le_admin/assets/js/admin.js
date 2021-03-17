@@ -51,9 +51,36 @@
       });
     }
 
+    function jumpToSection() {
+      const query = window.location.search;
+      const match = query.match(/section=([a-z_-]+)/);
+      
+      if (match.length < 2) {
+        return;
+      }
+
+      const section = match[1];
+      const el = document.querySelector('*[data-drupal-selector="' + section + '"]');
+      
+      if (!el) {
+        return;
+      }
+      
+      const headerEl = document.getElementById(el.getAttribute('aria-labelledby'));
+
+      if (el.getAttribute('aria-hidden') == 'true') {
+        headerEl.click();
+      }
+      
+      headerEl.scrollIntoView(true);
+      // TODO: offset scroll to prevent header overlaying first field
+    }
+
     Array.from(document.querySelectorAll('.form-submit[type="submit"]')).forEach((el) => {
       el.addEventListener('click', handleFormSubmitClick);
     });
+
+    setTimeout(jumpToSection, 500);
   }
 
   function processPreviewableItemLists() {
