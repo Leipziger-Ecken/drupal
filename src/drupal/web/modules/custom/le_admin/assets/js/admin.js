@@ -93,7 +93,7 @@
         return;
       }
 
-      const items = Array.from(list.querySelectorAll('*[data-role="item"]'));
+      let items = Array.from(list.querySelectorAll('*[data-role="item"]'));
 
       function handleItemClick(event) {
         previewItem(
@@ -128,6 +128,18 @@
       if (items.length) {
         previewItem(items[0]);
       }
+
+      list.addEventListener('listupdate', () => {
+        items = Array.from(list.querySelectorAll('*[data-role="item"]'));
+        items.forEach((item) => {
+          item.removeEventListener('click', handleItemClick);
+          item.addEventListener('click', handleItemClick);
+        });
+        
+        if (items.length) {
+          previewItem(items[0]);
+        }
+      });
     });
   }
   processForms();

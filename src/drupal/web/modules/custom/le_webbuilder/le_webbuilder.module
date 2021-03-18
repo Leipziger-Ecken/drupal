@@ -225,6 +225,7 @@ function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface 
 
   // load pages
   $pages_query = \Drupal::entityQuery('node');
+  $pages_query->condition('type', 'webbuilder_page');
   $pages_query->condition('field_webbuilder', $webbuilder->id());
   $result = $pages_query->execute();
   foreach($result as $nid) {

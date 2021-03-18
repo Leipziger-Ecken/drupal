@@ -152,6 +152,8 @@ le_admin.api_webbuilder_sort_page:
     parameters:
       webbuilder:
         type: entity:node
+      page:
+        type: entity:node
 
 le_admin.api_webbuilder_get_frontpage:
   path: '/api/webbuilder/{webbuilder}/frontpage'

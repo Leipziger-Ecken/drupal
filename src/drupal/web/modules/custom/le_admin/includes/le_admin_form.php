@@ -2,6 +2,7 @@
 
 use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\le_admin\Controller\ApiController;
 
 function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
@@ -49,6 +50,11 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     'node_webbuilder_page_form',
   ])) {
     _le_admin_webbuilder_page_form_alter($form, $form_state, $form_id);
+  }
+
+  if ($form_id === 'node_webbuilder_page_delete_form') {
+    // add custom submit handler, to handle reassignment of child pages
+    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_delete_submit';
   }
 
   if (in_array($form_id, [
@@ -170,6 +176,25 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
 
 function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  // hide parent and weight fields, as these are set automaticly
+  $form['field_weight']['#attributes']['class'][] = 'hidden';
+  $form['field_parent']['#attributes']['class'][] = 'hidden';
+
+  if ($form_id === 'node_webbuilder_page_form') {
+    $parent_id = \Drupal::request()->query->get('parent_page');
+    $sibling_id = \Drupal::request()->query->get('sibling_page');
+
+    if ($parent_id) {
+      $form['field_parent']['widget']['#default_value'] = [$parent_id];
+    }
+    
+    $form['sibling_id'] = [
+      '#type' => 'hidden',
+      '#value' => $sibling_id,
+    ];
+    
+    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_submit';
+  }
   if ($form_id === 'node_webbuilder_page_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
@@ -302,4 +327,39 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
     ],
     '#weight' => -10,
   ];
+}
+
+function le_admin_webbuilder_page_submit(array $form, FormStateInterface $form_state)
+{
+  $page = $form_state->getFormObject()->getEntity();
+  $parent = $page->get('field_parent');
+  $parent_id = null;
+  $sibling_id = $form_state->getValue('sibling_id');
+  
+  if ($parent && $parent[0]) {
+    $parent_id = $parent[0]->target_id;
+  }
+
+  ApiController::sortPage($page, $parent_id, $sibling_id);
+}
+
+function le_admin_webbuilder_page_delete_submit(array $form, FormStateInterface $form_state)
+{
+  $page = $form_state->getFormObject()->getEntity();
+  if (!$page) {
+    return;
+  }
+
+  // load child pages
+  $children_query = \Drupal::entityQuery('node');
+  $children_query->condition('type', 'webbuilder_page');
+  $children_query->condition('field_parent', $page->id());
+  $result = $children_query->execute();
+
+  // and remove parent reference
+  foreach ($result as $nid) {
+    $child_page = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $child_page->set('field_parent', null);
+    $child_page->save();
+  }
 }

@@ -8,13 +8,13 @@
         {{ 'Preview'|t }}: <span data-role="preview-title"></span>
       </h3>
       {{ include('@le_admin/partials/secondary_link.html.twig', {
-      url: '',
-      attributes: 'data-role="preview-link"',
-      label: 'Open in new window'|t,
-      target: '_blank',
-      class: 'mt-2',
+        url: '',
+        attributes: 'data-role="preview-link"',
+        label: 'Open in new window'|t,
+        target: '_blank',
+        class: 'mt-2',
       }) }}
     </div>
-    <iframe data-role="preview" class="border round h-full w-full" src="about:blank"></iframe>
+    <iframe data-role="preview" class="border round h-full w-full" style="min-height:50vh;" src="about:blank"></iframe>
   </div>
 </div>

@@ -16,6 +16,9 @@ admin:
     assets/js/admin.js: {}
 
 webbuilder_pages:
+  css:
+    theme:
+      assets/css/webbuilder_pages.css: {}
   js:
     assets/js/webbuilder_pages.js: {}
 

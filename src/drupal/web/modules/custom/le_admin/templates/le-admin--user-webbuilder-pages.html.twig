@@ -3,7 +3,8 @@
 {% set destination = get_destination() %}
 
 <section 
-  data-role="webbuilder-pages" 
+  class="webbuilder-pages"
+  data-role="webbuilder-pages"
   data-webbuilder="{{ node.id() }}"
   data-destination="{{ destination }}"
 >
@@ -11,13 +12,21 @@
     body: 'Manage the page structure and the contents of your website.'|t,
   }) }}
 
+  {{ include('@le_admin/partials/secondary_link.html.twig', {
+    url: drupal_url('/user/webbuilder/' ~ node.id()),
+    label: '< ' ~ ('Back'|t)
+  }) }}
+
+  <hr/>
+
   {{ include('@le_admin/partials/primary_action_button.html.twig', {
     url: drupal_url('/node/add/webbuilder_page', {query: {destination: destination, webbuilder: node.id() }}),
     attributes: 'data-role="webbuilder-add-page"',
-    label: '+ ' ~ ('Add Page'|t)
+    class: 'webbuilder-add-page',
+    label: '<span class="webbuilder-add-page__add-label">+ ' ~ ('Add Page'|t) ~ '</span><span class="webbuilder-add-page__cancel-label">' ~ ('Cancel'|t) ~ '</span>'
   }) }}
   
   {{ include('@le_admin/partials/previewable_item_list.html.twig', {
-    items: '<ul data-role="webbuilder-page-tree" data-webbuilder="{{ node.id() }}"></ul>',
+    items: '<ul class="webbuilder-page-tree" data-role="webbuilder-page-tree" data-webbuilder="{{ node.id() }}"></ul>',
   }) }}
 </section>
