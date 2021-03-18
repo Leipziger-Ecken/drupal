@@ -127,14 +127,18 @@ class ApiController extends ControllerBase
     $page->save();
   }
 
-  public function getWebbuilderFrontpage($webbuilder)
-  {
-
-  }
-
   public function setWebbuilderFrontPage($webbuilder)
   {
-    $page_id = \Drupal::request()->get('page_id');
+    $data = json_decode(\Drupal::request()->getContent(), true);
+    $page_id = $data['page_id'] ?? null;
+
+    if (!$page_id) {
+      return new JsonResponse(['error' => 'Missing page_id'], 400);
+    }
+
+    $webbuilder->set('field_frontpage', $page_id);
+    $webbuilder->save();
+
     return new JsonResponse(['success' => true]);
   }
 }

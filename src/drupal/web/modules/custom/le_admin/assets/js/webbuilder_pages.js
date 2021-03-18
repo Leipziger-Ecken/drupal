@@ -8,6 +8,7 @@
   const webbuilderId = wrapper.getAttribute('data-webbuilder');
   const destination = wrapper.getAttribute('data-destination');
   const addPageButton = wrapper.querySelector('*[data-role="webbuilder-add-page"]');
+  const frontpageSelect = wrapper.querySelector('*[data-role="webbuilder-frontpage"]');
 
   if (!webbuilderId) {
     return;
@@ -21,6 +22,10 @@
 
   if (addPageButton) {
     addPageButton.addEventListener('click', handleAddPageClick);
+  }
+
+  if (frontpageSelect) {
+    frontpageSelect.addEventListener('change', handleFrontpageChange);
   }
 
   function apiRequest(method, path, query = null, body = null) {
@@ -49,7 +54,9 @@
   }
 
   function renderPages(pages, parentPage = null, level = 0) {
-    return pages.map((page, index) => renderPage(page, index, parentPage, level)).join('\n');
+    return pages
+    .map((page, index) => renderPage(page, index, parentPage, level))
+    .join('\n');
   }
 
   function renderPage(page, index, parentPage = null, level = 0) {
@@ -104,6 +111,21 @@
     >
       ${Drupal.t('Move page here')}
     </li>`;
+  }
+
+  function renderFrontPageOptions(pages, frontpageId, level = 0) {
+    return `<option value="" ${!frontpageId ? 'selected' : ''}> - </option>` + 
+    pages
+    .map((page, index) => renderFrontPageOption(page, index, frontpageId, level))
+    .join('\n');
+  }
+
+  function renderFrontPageOption(page, index, frontpageId, level = 0) {
+    prefix = '';
+    for(let i=0; i<level; i++) {
+      prefix+='-';
+    }
+    return `<option value="${page.nid}" ${frontpageId == page.nid ? 'selected' : ''}>${prefix}${page.title}</option>`;
   }
 
   function attachListeners() {
@@ -195,6 +217,16 @@
     return false;
   }
 
+  function handleFrontpageChange(event) {
+    const frontpageId = event.target.value;
+    apiRequest('POST', `webbuilder/${webbuilderId}/frontpage`, null, {
+      page_id: frontpageId
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
   function updatePageTree(webbuilderId) {
     loadPageTree(webbuilderId)
     .then((pageTree) => {
@@ -203,6 +235,12 @@
         bubbles: true,
         cancelable: true
       }));
+
+      if (frontpageSelect) {
+        frontpageId = frontpageSelect.getAttribute('data-frontpage');
+        frontpageSelect.innerHTML = renderFrontPageOptions(pageTree, frontpageId);
+      }
+
       removeListeners();
       attachListeners();
     }, (err) => {
