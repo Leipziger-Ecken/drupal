@@ -13,7 +13,7 @@
   }) }}
 
   {{ include('@le_admin/partials/secondary_link.html.twig', {
-    url: drupal_url('/user/webbuilder/' ~ node.id()),
+    url: drupal_url('/user/akteur/' ~ node.get('og_audience')[0].target_id ~ '/webbuilder'),
     label: '< ' ~ ('Back'|t)
   }) }}
 
