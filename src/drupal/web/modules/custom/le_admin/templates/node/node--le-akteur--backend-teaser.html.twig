@@ -15,12 +15,12 @@
     <div class="sm:col-span-1 ml-6">
       {{ include('@le_admin/partials/primary_link.html.twig', {
         url: drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}),
-        label: 'Edit Actor'|t,
+        label: 'Edit'|t,
       }) }}
       <br/>
       {{ include('@le_admin/partials/secondary_link.html.twig', {
         url: drupal_url('/node/' ~ node.id()),
-        label: 'View Actor'|t,
+        label: 'View'|t,
         target: '_blank',
       }) }}
     </div>
