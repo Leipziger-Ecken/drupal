@@ -6,10 +6,12 @@ dependencies:
     - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_partner_type
     - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - node.type.partner
   module:
+    - conditional_fields
     - field_group
     - media_library
     - select2
@@ -20,7 +22,7 @@ third_party_settings:
       children:
         - langcode
       parent_name: ''
-      weight: 6
+      weight: 8
       format_type: details_sidebar
       region: content
       format_settings:
@@ -31,86 +33,120 @@ third_party_settings:
         required_fields: true
         weight: 0
       label: Einstellungen
-    group_no_atkeur:
-      children:
-        - field_main_image
-        - field_description
-        - field_website
-      parent_name: group_basic
-      weight: 22
-      format_type: accordion_item
-      region: content
-      format_settings:
-        description: 'Tragen Sie hier die Informationen zum/zur Partner*in hein, falls es sich nicht um eine(n) Akteur*in der Leipziger-Ecken handelt.'
-        required_fields: true
-        id: no-akteur
-        classes: ''
-        open: false
-        formatter: closed
-      label: 'Andere(r) Partner*in'
-    group_basic:
-      children:
-        - group_akteur
-        - group_no_atkeur
-      parent_name: ''
-      weight: 3
-      format_type: accordion
-      region: content
-      format_settings:
-        id: basic
-        classes: ''
-        effect: none
-      label: Basic
-    group_akteur:
-      children:
-        - field_akteur
-      parent_name: group_basic
-      weight: 20
-      format_type: accordion_item
-      region: content
-      format_settings:
-        id: akteur
-        classes: ''
-        formatter: open
-        required_fields: true
-        description: ''
-      label: 'Akteur*in'
 id: node.partner.default
 targetEntityType: node
 bundle: partner
 mode: default
 content:
   field_akteur:
-    weight: 21
+    weight: 3
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b90ca1c4-21e6-498e-be67-141544a6e9e3:
+          dependee: field_partner_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: le_akteur
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: partner
     type: select2_entity_reference
     region: content
   field_description:
-    weight: 6
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        f99906ac-8d87-4c5b-8463-412517a98df0:
+          dependee: field_partner_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: partner
     type: text_textarea
     region: content
   field_main_image:
-    weight: 5
+    weight: 7
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        cbe03f27-418b-402f-9dae-8086a7b51434:
+          dependee: field_partner_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: partner
     type: media_library_widget
     region: content
+  field_partner_type:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
   field_website:
-    weight: 7
+    weight: 6
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ceebc450-fc90-4d37-83db-2a4adbca9ff8:
+          dependee: field_partner_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: partner
     type: string_textfield
     region: content
   langcode:
@@ -123,7 +159,7 @@ content:
   og_audience:
     type: options_buttons
     settings: {  }
-    weight: 2
+    weight: 0
     third_party_settings: {  }
     region: content
   status:
@@ -135,12 +171,30 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 4
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        9bf331f3-0813-4f47-b544-660e7005081c:
+          dependee: field_partner_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: partner
 hidden:
   created: true
   path: true

@@ -28,6 +28,7 @@
         "drupal/bootstrap": "^3.23",
         "drupal/coffee": "^1.0",
         "drupal/color_field": "^2.4",
+        "drupal/conditional_fields": "^1.0@alpha",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",

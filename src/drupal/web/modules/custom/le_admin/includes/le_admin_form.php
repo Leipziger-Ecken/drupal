@@ -52,6 +52,14 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     _le_admin_webbuilder_page_form_alter($form, $form_state, $form_id);
   }
 
+  if (in_array($form_id, [
+    'node_partner_edit_form',
+    'node_partner_form',
+  ])) {
+    // add custom submit handler
+    $form['actions']['submit']['#submit'][] = 'le_admin_partner_submit';
+  }
+
   if ($form_id === 'node_webbuilder_page_delete_form') {
     // add custom submit handler, to handle reassignment of child pages
     $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_delete_submit';
@@ -372,4 +380,27 @@ function _le_admin_login_form_alter(&$form, FormStateInterface $form_state, $for
     '#weight' => 1100,
   ];
   $form['#attached']['library'][] = 'le_admin/login';
+}
+
+function le_admin_partner_submit(array $form, FormStateInterface $form_state)
+{
+  $entity = $form_state->getFormObject()->getEntity();
+  $partner_type = $form_state->getValue('field_partner_type');
+  
+  if ($partner_type && isset($partner_type[0])) {
+    $partner_type = $partner_type[0]['value'];
+  }
+  if ($partner_type === 'le_akteur') {
+    $akteur_id = $form_state->getValue('field_akteur');
+    if ($akteur_id && isset($akteur_id[0])) {
+      $akteur_id = $akteur_id[0]['target_id'];
+      $akteur = \Drupal::entityManager()->getStorage('node')->load($akteur_id);
+      
+      if ($akteur) {
+        $form_state->setValue('title', $akteur->getTitle());
+        $entity->set('title', $akteur->getTitle());
+        $entity->save();
+      }
+    }   
+  }
 }

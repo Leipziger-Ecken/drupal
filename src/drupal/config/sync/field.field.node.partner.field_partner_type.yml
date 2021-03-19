@@ -1,0 +1,23 @@
+uuid: dccd7dd2-adc8-47e7-8873-8aeb077d35e0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partner_type
+    - node.type.partner
+  module:
+    - options
+id: node.partner.field_partner_type
+field_name: field_partner_type
+entity_type: node
+bundle: partner
+label: 'Art der Partner*in'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: le_akteur
+default_value_callback: ''
+settings: {  }
+field_type: list_string

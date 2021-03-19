@@ -7,10 +7,12 @@ dependencies:
     - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_partner_type
     - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - node.type.partner
   module:
+    - options
     - text
     - user
 id: node.partner.webbuilder_teaser
@@ -42,6 +44,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_partner_type:
+    type: list_key
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_website:
     type: string
     weight: 3

@@ -6,12 +6,14 @@ dependencies:
     - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_partner_type
     - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - image.style.medium
     - node.type.partner
   module:
     - media
+    - options
     - text
     - user
 id: node.partner.default
@@ -42,6 +44,13 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: media_thumbnail
+    region: content
+  field_partner_type:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
     region: content
   field_website:
     weight: 3
