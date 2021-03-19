@@ -77,13 +77,13 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'user_login_form') {
     $form['#submit'][] = 'le_admin_user_login_form_submit';
   }
-
+  
   if (in_array($form_id, [
     'user_login_form',
     'user_register_form',
-    'use_pass',
+    'user_pass',
   ])) {
-    $form['#attached']['library'][] = 'le_admin/login';
+    _le_admin_login_form_alter($form, $form_state, $form_id);
   }
 
   // adds required asteriks description to all forms
@@ -362,4 +362,14 @@ function le_admin_webbuilder_page_delete_submit(array $form, FormStateInterface 
     $child_page->set('field_parent', null);
     $child_page->save();
   }
+}
+
+function _le_admin_login_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['image_attribution'] = [
+    '#type' => 'markup',
+    '#markup' => '<p class="form-item__description">Photo by <a href="https://unsplash.com/@shinychunks?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Chris Unger</a> on <a href="/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>',
+    '#weight' => 1100,
+  ];
+  $form['#attached']['library'][] = 'le_admin/login';
 }
