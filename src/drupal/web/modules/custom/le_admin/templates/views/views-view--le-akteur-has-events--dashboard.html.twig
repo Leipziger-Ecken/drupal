@@ -1,8 +1,7 @@
 {{ exposed }}
 
 {% for row in rows[0]['#rows'] %}
-{{ dd(row) }}
-{#{ drupal_entity('node', ) }#}
+{{ drupal_entity('node', row['#row'].nid, 'backend_teaser') }}
 {% endfor %}
 
 {{ pager }}

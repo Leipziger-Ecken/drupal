@@ -1,6 +1,6 @@
 {{ attach_library('le_admin/tailwind') }}
 {% set destination = get_destination() %}
-{% set events = drupal_view('le_has_events', 'dashboard', node.id()) %}
+{% set events = drupal_view('le_akteur_has_events', 'dashboard', node.id()) %}
 
 <section>
   {{ include('@le_admin/partials/page_introduction.html.twig', {
