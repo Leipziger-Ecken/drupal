@@ -235,7 +235,7 @@ function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $for
     // prefill address from akteur
     $akteur_id = \Drupal::request()->query->get('le_akteur');
     if ($akteur_id) {
-      $akteur = \Drupal::entityManager()->getStorage('node')->load($akteur_id);
+      $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($akteur_id);
       if ($akteur) {
         $form['field_adresse']['widget'][0]['address']['#default_value'] = $akteur->field_adresse[0]->getValue();
         $form['field_bezirk']['widget']['#default_value'][] = $akteur->field_bezirk[0]->getValue()['target_id'];
@@ -366,7 +366,7 @@ function le_admin_webbuilder_page_delete_submit(array $form, FormStateInterface 
 
   // and remove parent reference
   foreach ($result as $nid) {
-    $child_page = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $child_page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     $child_page->set('field_parent', null);
     $child_page->save();
   }
@@ -394,7 +394,7 @@ function le_admin_partner_submit(array $form, FormStateInterface $form_state)
     $akteur_id = $form_state->getValue('field_akteur');
     if ($akteur_id && isset($akteur_id[0])) {
       $akteur_id = $akteur_id[0]['target_id'];
-      $akteur = \Drupal::entityManager()->getStorage('node')->load($akteur_id);
+      $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($akteur_id);
       
       if ($akteur) {
         $form_state->setValue('title', $akteur->getTitle());

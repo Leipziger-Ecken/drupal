@@ -24,7 +24,7 @@ class ApiController extends ControllerBase
     $result = $pages_query->execute();
     
     foreach ($result as $nid) {
-      $pages[$nid] = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $pages[$nid] = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     }
     
     function _collectPages($pages, $destination, $parent_id = null) {
@@ -108,7 +108,7 @@ class ApiController extends ControllerBase
     $weight = $sibling_id ? 0 : 1;
 
     foreach ($page_ids as $nid) {
-      $_page = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $_page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
       $_page->set('field_weight', $weight);
       $_page->save();

@@ -78,7 +78,7 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
     $webbuilder_id = \Drupal::request()->query->get('webbuilder');
     
     if ($webbuilder_id) {
-      $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+      $webbuilder = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder_id);
       if ($webbuilder) {
         $form['field_webbuilder']['widget']['#options'] = [];
         $form['field_webbuilder']['widget']['#options'][$webbuilder_id] = $webbuilder->title[0]->value;
@@ -102,7 +102,7 @@ function _le_webbuilder_webbuilder_page_form_alter(&$form, FormStateInterface $f
       return;
     }
 
-    $webbuilder = \Drupal::entityManager()->getStorage('node')->load($webbuilder_id);
+    $webbuilder = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder_id);
     if (!$webbuilder) {
       return;
     }
@@ -229,7 +229,7 @@ function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface 
   $pages_query->condition('field_webbuilder', $webbuilder->id());
   $result = $pages_query->execute();
   foreach($result as $nid) {
-    $page = \Drupal::entityManager()->getStorage('node')->load($nid);
+    $page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     $page->delete();
   }
 }
