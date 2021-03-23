@@ -151,6 +151,9 @@
             ]
         },
         "patches": {
+            "drupal/conditional_fields": {
+                "Fixes notice about array access": "patches/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
+            },
             "geocoder-php/mapbox-provider": {
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             },
