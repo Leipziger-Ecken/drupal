@@ -29,7 +29,6 @@ dependencies:
     - node.type.le_akteur
   module:
     - media
-    - svg_image
     - text
     - user
 _core:
@@ -40,28 +39,15 @@ bundle: le_akteur
 mode: backend_teaser
 content:
   field_le_akteur_description:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
     type: text_trimmed
     region: content
-  field_le_akteur_image:
-    weight: 0
-    label: hidden
-    settings:
-      image_style: thumbnail
-      image_link: ''
-      svg_render_as_image: true
-      svg_attributes:
-        width: null
-        height: null
-    third_party_settings: {  }
-    type: image
-    region: content
   field_logo:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       image_style: thumbnail
@@ -79,6 +65,7 @@ hidden:
   field_le_akteur_einrichtungsname: true
   field_le_akteur_email: true
   field_le_akteur_hat_typ: true
+  field_le_akteur_image: true
   field_le_akteur_is_barrier_free: true
   field_le_akteur_is_private: true
   field_le_akteur_kategorie_gruppe: true

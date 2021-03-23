@@ -24,7 +24,6 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
     - field.field.node.le_akteur.field_logo
-    - image.style.medium
     - node.type.le_akteur
   module:
     - address
@@ -33,7 +32,6 @@ dependencies:
     - media_library
     - path
     - select2
-    - svg_image
     - telephone
     - text
 third_party_settings:
@@ -102,21 +100,6 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Adresse
-    group_image:
-      children:
-        - field_logo
-        - field_le_akteur_image
-      parent_name: group_basic
-      weight: 36
-      format_type: accordion_item
-      region: content
-      format_settings:
-        id: image
-        classes: ''
-        formatter: closed
-        required_fields: true
-        description: ''
-      label: 'Bild & Logo'
     group_details:
       children:
         - field_le_akteur_hat_typ
@@ -124,6 +107,7 @@ third_party_settings:
         - field_le_akteur_kategorie_typ
         - field_le_akteur_description
         - field_le_akteur_kategorie_tags
+        - field_logo
         - field_le_akteur_einrichtungsname
       parent_name: group_basic
       weight: 35
@@ -210,14 +194,6 @@ content:
     third_party_settings: {  }
     type: options_buttons
     region: content
-  field_le_akteur_image:
-    weight: 22
-    settings:
-      preview_image_style: medium
-      progress_indicator: throbber
-    third_party_settings: {  }
-    type: image_image
-    region: content
   field_le_akteur_is_barrier_free:
     weight: 11
     settings:
@@ -236,7 +212,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_akteur_kategorie_tags:
-    weight: 23
+    weight: 22
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -286,7 +262,7 @@ content:
     type: link_default
     region: content
   field_logo:
-    weight: 21
+    weight: 23
     settings:
       media_types: {  }
     third_party_settings: {  }
@@ -326,6 +302,7 @@ content:
 hidden:
   field_geofield: true
   field_le_akteur_comments: true
+  field_le_akteur_image: true
   field_le_akteur_is_private: true
   langcode: true
   promote: true
