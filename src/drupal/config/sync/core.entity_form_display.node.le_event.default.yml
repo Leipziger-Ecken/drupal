@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.le_event.field_online_event
     - field.field.node.le_event.field_related_content
     - field.field.node.le_event.og_audience
-    - image.style.thumbnail
     - node.type.le_event
   module:
     - address
@@ -29,7 +28,6 @@ dependencies:
     - link
     - media_library
     - select2
-    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -38,7 +36,7 @@ third_party_settings:
         - langcode
         - sticky
       parent_name: ''
-      weight: 8
+      weight: 6
       format_type: details_sidebar
       region: content
       format_settings:
@@ -57,6 +55,7 @@ third_party_settings:
         - field_le_event_kategorie_typ
         - field_le_event_kategorie_gruppe
         - field_le_event_kategorie_tags
+        - field_main_image
       parent_name: group_basic
       weight: 22
       format_type: accordion_item
@@ -71,7 +70,6 @@ third_party_settings:
       children:
         - group_address
         - group_details
-        - group_images
         - group_related_content
       parent_name: ''
       weight: 4
@@ -98,20 +96,6 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Adresse
-    group_images:
-      children:
-        - field_le_event_image
-        - field_main_image
-      parent_name: group_basic
-      weight: 23
-      format_type: accordion_item
-      region: content
-      format_settings:
-        formatter: closed
-        required_fields: true
-        id: image
-        classes: ''
-      label: Bild
     group_related_content:
       children:
         - field_related_content
@@ -157,14 +141,6 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
-  field_le_event_image:
-    weight: 4
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
-    region: content
   field_le_event_is_barrier_free:
     weight: 11
     settings:
@@ -203,7 +179,7 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_lizenzhinweis:
-    weight: 7
+    weight: 5
     settings:
       display_label: true
     third_party_settings: {  }
@@ -224,7 +200,7 @@ content:
     type: link_default
     region: content
   field_main_image:
-    weight: 5
+    weight: 20
     settings:
       media_types:
         - image
@@ -288,6 +264,7 @@ hidden:
   created: true
   field_geofield: true
   field_le_event___eid: true
+  field_le_event_image: true
   path: true
   promote: true
   published_at: true

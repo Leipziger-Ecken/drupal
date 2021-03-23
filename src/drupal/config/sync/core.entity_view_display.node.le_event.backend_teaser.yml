@@ -27,7 +27,6 @@ dependencies:
   module:
     - date_recur
     - media
-    - svg_image
     - text
     - user
 _core:
@@ -38,28 +37,15 @@ bundle: le_event
 mode: backend_teaser
 content:
   field_le_event_beschreibung:
-    weight: 3
+    weight: 2
     label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
     type: text_trimmed
     region: content
-  field_le_event_image:
-    weight: 0
-    label: hidden
-    settings:
-      image_style: medium
-      image_link: ''
-      svg_render_as_image: true
-      svg_attributes:
-        width: null
-        height: null
-    third_party_settings: {  }
-    type: image
-    region: content
   field_le_event_occurrences:
-    weight: 2
+    weight: 1
     label: hidden
     settings:
       format_type: medium
@@ -74,7 +60,7 @@ content:
     type: date_recur_basic_formatter
     region: content
   field_main_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
       image_style: medium
@@ -87,6 +73,7 @@ hidden:
   field_bezirk: true
   field_geofield: true
   field_le_event___eid: true
+  field_le_event_image: true
   field_le_event_is_barrier_free: true
   field_le_event_kategorie_gruppe: true
   field_le_event_kategorie_tags: true
