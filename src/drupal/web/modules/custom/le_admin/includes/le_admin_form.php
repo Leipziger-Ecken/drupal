@@ -4,6 +4,11 @@ use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\le_admin\Controller\ApiController;
 
+function _le_admin_sidebar_link($url, $label, $target = null) 
+{
+  return '<a class="link" href="' . $url->toString() . '"' . ($target ? ' target="' . $target . '"' : '') . '>' . $label . '</a>';
+}
+
 function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if (strpos($form_id, 'node_') === 0 && strpos($form_id, 'delete_form') === false) {
@@ -120,35 +125,32 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
 
   if ($form_id === 'node_le_akteur_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
-
-    $form['le_admin_akteur_view'] = [
-      '#type' => 'link',
-      '#title' => t('Öffentliches Profil öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'akteur_' . $entity->id(),
-      ],
+    
+    $form['meta']['le_admin_akteur_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View public profile'),
+        'akteur_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
 
-    $form['le_admin_user_akteur'] = [
-      '#type' => 'link',
-      '#title' => t('Inhalte verwalten'),
-      '#url' => Url::fromRoute('le_admin.user_akteur', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-      ],
+    $form['meta']['le_admin_user_akteur'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('le_admin.user_akteur', ['node' => $entity->id()]),
+        t('Manage contents')
+      ),
       '#weight' => -9,
     ];
 
-    $form['le_admin_user_akteur_webbuilder'] = [
-      '#type' => 'link',
-      '#title' => t('Webbaukasten'),
-      '#url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-      ],
+    $form['meta']['le_admin_user_akteur_webbuilder'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
+        t('Website')
+      ),
       '#weight' => -8,
     ];
   }
@@ -159,24 +161,22 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
   if ($form_id === 'node_webbuilder_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_node_view'] = [
-      '#type' => 'link',
-      '#title' => t('Webseite öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'webbuilder_' . $entity->id(),
-      ],
+    $form['meta']['le_admin_node_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View website'),
+        'webbuilder_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
 
-    $form['le_admin_user_webbuilder_pages'] = [
+    $form['meta']['le_admin_user_webbuilder_pages'] = [
       '#type' => 'link',
-      '#title' => t('Seiten verwalten'),
-      '#url' => Url::fromRoute('le_admin.user_webbuilder_pages', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-      ],
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('le_admin.user_webbuilder_pages', ['node' => $entity->id()]),
+        t('Manage pages')
+      ),
       '#weight' => -9,
     ];
   }
@@ -206,24 +206,22 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
   if ($form_id === 'node_webbuilder_page_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_node_view'] = [
-      '#type' => 'link',
-      '#title' => t('Seite öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'webbuilder_page_' . $entity->id(),
-      ],
+    $form['meta']['le_admin_node_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View page'),
+        'webbuilder_page_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
 
-    $form['le_admin_user_webbuilder'] = [
-      '#type' => 'link',
-      '#title' => t('Webbaukasten verwalten'),
-      '#url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-      ],
+    $form['meta']['le_admin_user_webbuilder'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
+        t('Manage website')
+      ),
       '#weight' => -9,
     ];
   }
@@ -245,14 +243,13 @@ function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $for
   if ($form_id === 'node_le_event_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_node_view'] = [
-      '#type' => 'link',
-      '#title' => t('Event öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'le_event_' . $entity->id(),
-      ],
+    $form['meta']['le_admin_node_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View event'),
+        'le_event_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
   }
@@ -263,14 +260,13 @@ function _le_admin_project_form_alter(&$form, FormStateInterface $form_state, $f
   if ($form_id === 'node_project_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_node_view'] = [
-      '#type' => 'link',
-      '#title' => t('Projekt öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'le_event_' . $entity->id(),
-      ],
+    $form['meta']['le_admin_node_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View project'),
+        'le_project_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
   }
@@ -281,14 +277,13 @@ function _le_admin_blog_article_form_alter(&$form, FormStateInterface $form_stat
   if ($form_id === 'node_blog_article_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
 
-    $form['le_admin_node_view'] = [
-      '#type' => 'link',
-      '#title' => t('Blog-Artikel öffnen'),
-      '#url' => Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
-      '#attributes' => [
-        'class' => le_admin_link_button_classes,
-        'target' => 'le_event_' . $entity->id(),
-      ],
+    $form['meta']['le_admin_node_view'] = [
+      '#type' => 'item',
+      '#markup' => _le_admin_sidebar_link(
+        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        t('View blog article'),
+        'blog_article_' . $entity->id()
+      ),
       '#weight' => -10,
     ];
   }
