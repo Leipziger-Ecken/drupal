@@ -391,9 +391,9 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.og_audience'
-  akteur_events:
+  akteur_projects:
     display_plugin: page
-    id: akteur_events
+    id: akteur_projects
     display_title: 'Akteur: Projekte'
     position: 4
     display_options:
@@ -450,6 +450,7 @@ display:
         filters: false
         filter_groups: false
         title: false
+        relationships: false
       header: {  }
       pager:
         type: none
@@ -556,6 +557,16 @@ display:
         groups:
           1: AND
       title: Projekte
+      relationships:
+        og_audience:
+          id: og_audience
+          table: node__og_audience
+          field: og_audience
+          relationship: none
+          group_type: group
+          admin_label: 'og_audience: Content'
+          required: true
+          plugin_id: standard
     cache_metadata:
       max-age: -1
       contexts:

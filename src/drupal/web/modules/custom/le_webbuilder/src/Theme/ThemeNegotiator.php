@@ -116,22 +116,17 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
         strpos($route_name, 'view.le_verwaltete_akteure') === 0 ||
         strpos($route_name, 'view.le_verwaltete_events') === 0 ||
         strpos($route_name, 'view.webbuilders') === 0 ||
-        strpos($route_name, 'view.projects') === 0 ||
-        strpos($route_name, 'view.partners') === 0 ||
+        strpos($route_name, 'view.projects.dashboar') === 0 ||
+        strpos($route_name, 'view.projects.user') === 0 ||
+        strpos($route_name, 'view.partners.dashboard') === 0 ||
+        strpos($route_name, 'view.partners.user') === 0 ||
         strpos($route_name, 'view.sponsors') === 0 ||
-        strpos($route_name, 'view.blog') === 0 ||
+        strpos($route_name, 'view.sponsors.dashboard') === 0 ||
+        strpos($route_name, 'view.sponsors.user') === 0 ||
+        strpos($route_name, 'view.blog.dashboard') === 0 ||
+        strpos($route_name, 'view.blog.user') === 0 ||
         strpos($route_name, 'entity.user.') === 0 ||
-        in_array($route_name, [
-          'le_admin.user_dashboard',
-          'le_admin.user_akteur',
-          'le_admin.user_akteur_events',
-          'le_admin.user_akteur_projects',
-          'le_admin.user_akteur_blog_articles',
-          'le_admin.user_akteur_partners',
-          'le_admin.user_akteur_sponsors',
-          'le_admin.user_akteur_webbuilder',
-          'le_admin.user_webbuilder_pages',
-        ])
+        strpos($route_name, 'le_admin.') === 0
       )
     ) {
       return $this->configFactory->get('system.theme')->get('admin') ?: NULL;
