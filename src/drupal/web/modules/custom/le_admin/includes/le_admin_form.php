@@ -149,7 +149,7 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
         Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
-        t('Website')
+        t('Manage Website')
       ),
       '#weight' => -8,
     ];
