@@ -219,7 +219,7 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     $form['meta']['le_admin_user_webbuilder'] = [
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->id()]),
+        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->og_audience[0]->target_id]),
         t('Manage website')
       ),
       '#weight' => -9,
