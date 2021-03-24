@@ -58,6 +58,7 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
 
     if ($node && gettype($node) !== 'string' && $node->bundle() !== 'le_akteur') {
       // Only show "Akteur-has-events" view link on akteur nodes
+      
       $data['tabs'][0]['view.le_akteur_has_events.page_1']['#access'] = FALSE;
       $data['tabs'][0]['view.projects.akteur_projects']['#access'] = FALSE;
       $data['tabs'][0]['view.blog.akteur_blog']['#access'] = FALSE;

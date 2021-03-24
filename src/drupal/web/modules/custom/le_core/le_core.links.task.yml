@@ -8,7 +8,7 @@ view.projects.akteur_projects:
   route_name: view.projects.akteur_projects
   base_route: entity.node.canonical
   
-view.projects.akteur_blog:
+view.blog.akteur_blog:
   title: Blog
   route_name: view.blog.akteur_blog
   base_route: entity.node.canonical
