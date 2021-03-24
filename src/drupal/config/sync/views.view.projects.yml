@@ -556,7 +556,7 @@ display:
         operator: AND
         groups:
           1: AND
-      title: Projekte
+      title: Projects
       relationships:
         og_audience:
           id: og_audience
