@@ -6,11 +6,8 @@
 {% set description = content.field_description %}
 {% if partner_type == 'le_akteur' and akteur_id %}
   {% set title = drupal_field('title', 'node', akteur_id) %}
-  {% set image = drupal_field('field_main_image', 'node', akteur_id)[0] %}
+  {% set image = drupal_field('field_logo', 'node', akteur_id)[0] %}
   {% set website_url = drupal_url('node/' ~ akteur_id) %}
-  {% if not image %}
-  {% set image = drupal_field('field_le_akteur_image', 'node', akteur_id)[0] %}
-  {% endif %}
   {% set description = drupal_field('field_le_akteur_description', 'node', akteur_id) %}
 {% endif %}
 <article class="space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0">
@@ -39,7 +36,7 @@
           </a>
         </h3>
         {% if akteur_id %}
-        <p class="text-primary-600">Akteur*in</p>
+        <p class="text-primary-600">{{ 'Actor of Leipziger Ecken'|t }}</p>
         {% endif %}
       </div>
       <div class="text-lg">
