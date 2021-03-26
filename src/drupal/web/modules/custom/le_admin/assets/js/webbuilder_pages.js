@@ -69,7 +69,10 @@
         data-role="item" 
         class="webbuilder-page-tree__page mb-4 flex justify-between p-2 rounded-md border border-transparent bg-gray-200 cursor-pointer"
       >
-        <div class="mr-auto text-black font-bold">${page.title}</div>
+        <div class="mr-auto">
+          <span class="text-black font-bold mr-2">${page.title}</span>
+          <span class="text-sm ${page.status ? 'text-green-600' : 'text-gray-400'}">${Drupal.t(page.status ? 'published' : 'unpublished')}</span>
+        </div>
         <div class="ml-auto">
           <button
             class="link webbuilder-page-tree__move-page"
