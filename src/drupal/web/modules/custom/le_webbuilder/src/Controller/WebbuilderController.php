@@ -10,7 +10,7 @@ class WebbuilderController extends ControllerBase
   public function viewNode($akteur, $webbuilder, $node)
   {
     $build = [
-      '#theme' => 'node__' . $node->getType(),
+      '#theme' => 'node__' . $node->getType() . '__in_webbuilder',
       '#view_mode' => 'full',
       '#node' => $node,
       '#title' => $node->getTitle(),

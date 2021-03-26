@@ -1,0 +1,62 @@
+uuid: caf15ef7-8dae-45da-8025-663a71dec212
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.in_webbuilder
+    - field.field.node.project.body
+    - field.field.node.project.field_images
+    - field.field.node.project.field_legal_terms_accepted
+    - field.field.node.project.field_main_image
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - text
+    - user
+id: node.project.in_webbuilder
+targetEntityType: node
+bundle: project
+mode: in_webbuilder
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_images:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_main_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    label: hidden
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 2
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_legal_terms_accepted: true
+  langcode: true
+  published_at: true
