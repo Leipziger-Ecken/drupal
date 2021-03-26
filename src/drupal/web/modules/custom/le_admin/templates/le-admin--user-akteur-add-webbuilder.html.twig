@@ -1,0 +1,28 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set destination = get_destination() %}
+{% set webbuilders = drupal_view_result('webbuilders', 'dashboard', node.id) %}
+
+<section>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Easily create your own website featuring all your above content.'|t,
+  }) }}
+
+{% if webbuilders|length == 0 or ('le_role_redakteur' in user.roles or 'administrator' in user.roles) %}
+  {% if 'le_role_redakteur' in user.roles or 'administrator' in user.roles %}
+  <p class="pt-4">
+    {{ 'Please choose from a template below to start or '|t }}
+    <a class="button button--small" href="{{ drupal_url('/node/add/webbuilder', {query: {destination: destination, le_akteur: node.id }}) }}">{{ 'start from scratch'|t }}</a>
+  </p>
+  {% else %}
+  <p class="pt-4">
+    {{ 'Please choose from a template below to start.'|t }}
+  </p>
+  {% endif %}
+
+  {{ drupal_view('webbuilders', 'dashboard_presets') }}
+{% else %}
+  <p class="pt-4">
+    {{ 'You already have created your website.'|t }}
+  </p>
+{% endif %}
+</div>

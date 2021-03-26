@@ -143,6 +143,23 @@ class AdminController extends ControllerBase
   }
 
   /**
+   * Provides the akteur add webbuilder page.
+   *
+   * @param \Drupal\node\Entity\Node $node
+   *
+   * @return array
+   *   A renderable array of the akteur add webbuilder page.
+   */
+  public function userAkteurAddWebbuilder($node)
+  {
+    return [
+      '#theme' => 'le_admin__user_akteur_add_webbuilder',
+      '#node' => $node,
+      '#title' => $node->getTitle() . ': ' . t('Website'),
+    ];
+  }
+
+  /**
    * Provides the webbuilder pages page.
    *
    * @param \Drupal\node\Entity\Node $node

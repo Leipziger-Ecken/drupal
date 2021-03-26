@@ -74,6 +74,12 @@ function le_admin_theme($existing, $type, $theme, $path)
       ],
       'render element' => 'elements',
     ],
+    'le_admin__user_akteur_add_webbuilder' => [
+      'variables' => [
+        'node' => null,
+      ],
+      'render element' => 'elements',
+    ],
     'le_admin__user_webbuilder_pages' => [
       'variables' => [
         'node' => null,

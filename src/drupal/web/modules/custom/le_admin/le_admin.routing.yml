@@ -85,6 +85,18 @@ le_admin.user_akteur_webbuilder:
     _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurWebbuilder'
     _title: 'Your website'
   requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_webbuilder_add:
+  path: '/user/akteur/{node}/webbuilder/add'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurAddWebbuilder'
+    _title: 'Create your website'
+  requirements:
     _permission: 'create webbuilder content'
   options:
     parameters:
