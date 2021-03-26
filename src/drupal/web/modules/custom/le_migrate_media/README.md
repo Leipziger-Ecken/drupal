@@ -11,6 +11,11 @@ Turns image-fields of custom content-types into media-(image-)fields. Currently 
 drush en le_migrate_media
 ```
 
+2. Automaticly migrate all image fields to media fields (will keep existing images and checks for already migrated images):
+
+```bash
+drush le_migrate_media:image-to-media
+=======
 2. Migrate image fields to media fields (use --overwrite option to overwrite existing media):
 
 ```bash
