@@ -41,7 +41,7 @@ class ApiController extends ControllerBase
         $_pages[] = [
           'nid' => $nid,
           'edit_url' => Url::fromUserInput('/node/' . $nid . '/edit', ['query' => ['destination' => $destination]])->toString(),
-          'preview_url' => Url::fromUserInput('/node/' . $nid, ['query' => ['webbuilder_preview' => 1]])->toString(),
+          'preview_url' => Url::fromUserInput('/node/' . $nid, ['query' => ['preview' => 1]])->toString(),
           'title' => $page->getTitle(),
           'status' => intval($page->status[0]->value),
           'children' => _collectPages($pages, $destination, $nid),

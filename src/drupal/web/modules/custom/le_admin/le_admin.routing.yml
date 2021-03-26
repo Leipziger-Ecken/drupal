@@ -179,3 +179,28 @@ le_admin.api_webbuilder_set_frontpage:
     parameters:
       webbuilder:
         type: entity:node
+
+le_admin.unsplash_api_proxy:
+  path: '/api/unsplash/{a}/{b}/{c}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\Unsplash::proxy'
+    _title: 'Unsplash API Proxy'
+    a: ''
+    b: ''
+    c: ''
+  methods: [GET]
+  requirements:
+    _permission: 'create unsplash_image media'
+
+le_admin.create_webbuilder_from_preset:
+  path: '/user/webbuilder/create-from-preset/{webbuilder_preset}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::createWebbuilderFromPreset'
+    _title: 'Create Webbuilder from preset'
+  methods: [GET]
+  requirements:
+    _permission: 'create webbuilder content'
+  options:
+    parameters:
+      webbuilder_preset:
+        type: entity:node

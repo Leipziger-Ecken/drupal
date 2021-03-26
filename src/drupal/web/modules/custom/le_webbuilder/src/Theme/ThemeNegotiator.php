@@ -98,13 +98,13 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
 
     if (
       $node &&
-      in_array($route_name, ['entity.node.canonical', 'entity.node.preview']) &&
-      in_array(
-        $node->getType(),
-        [
-          'webbuilder', 'webbuilder_page', 'webbuilder_preset',
-          //'blog_article', 'project', 'partner', 'sponsor',
-        ]
+      strpos($route_name, 'le_webbuilder.node.') === 0 || 
+      (
+        in_array($route_name, ['entity.node.canonical', 'entity.node.preview']) &&
+        in_array(
+          $node->getType(),
+          ['webbuilder', 'webbuilder_page', 'webbuilder_preset']
+        )
       )
     ) {
       return 'leipzigerEckenWebbuilder';

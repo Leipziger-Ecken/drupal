@@ -3,6 +3,7 @@
 use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\le_admin\Controller\ApiController;
+use Drupal\views\Views;
 
 function _le_admin_sidebar_link($url, $label, $target = null) 
 {
@@ -57,6 +58,10 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     _le_admin_webbuilder_page_form_alter($form, $form_state, $form_id);
   }
 
+  if (in_array($form_id, ['media_unsplash_image_add_form', 'media_unsplash_image_edit_form'])) {
+    _le_admin_media_unsplash_image_form_alter($form, $form_state, $form_id);
+  }
+
   if (in_array($form_id, [
     'node_partner_edit_form',
     'node_partner_form',
@@ -68,6 +73,11 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'node_webbuilder_page_delete_form') {
     // add custom submit handler, to handle reassignment of child pages
     $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_delete_submit';
+  }
+
+  if ($form_id === 'node_webbuilder_delete_form') {
+    // add custom submit handler, to delete all pages
+    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_delete_submit';
   }
 
   if (in_array($form_id, [
@@ -160,15 +170,32 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
 
 function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $user = \Drupal::currentUser();
+  $roles = $user->getRoles();
+
+  // remove preset field for regular users
+  if (!in_array('le_role_redakteur', $roles) && !in_array('administrator', $roles)) {
+    unset($form['field_is_preset']);
+    unset($form['field_description']);
+    unset($form['field_preview_image']);
+    unset($form['fieldgroups']['group_preset']);
+  }
+
   if ($form_id === 'node_webbuilder_edit_form') {
-    $entity = $form_state->getFormObject()->getEntity();
+    $webbuilder = $form_state->getFormObject()->getEntity();
+    if (!$webbuilder) {
+      return;
+    }
+    $webbuilder_id = $webbuilder->id();
+
+    $form['field_frontpage']['widget']['#options'] = [];
 
     $form['meta']['le_admin_node_view'] = [
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        Url::fromRoute('entity.node.canonical', ['node' => $webbuilder->id()]),
         t('View website'),
-        'webbuilder_' . $entity->id()
+        'webbuilder_' . $webbuilder->id()
       ),
       '#weight' => -10,
     ];
@@ -176,23 +203,69 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
     $form['meta']['le_admin_user_webbuilder_pages'] = [
       '#type' => 'link',
       '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('le_admin.user_webbuilder_pages', ['node' => $entity->id()]),
+        Url::fromRoute('le_admin.user_webbuilder_pages', ['node' => $webbuilder->id()]),
         t('Manage pages')
       ),
       '#weight' => -9,
     ];
+
+    // preload the page tree for the frontpage selection
+    $view = Views::getView('webbuilder_pages');
+    $view->setDisplay('entity_reference_page_tree');
+    $view->setArguments([$webbuilder_id]);
+    $result = $view->render();
+
+    foreach ($result as $nid => $row) {
+      if (isset($row['#row']) && isset($row['#row']->_entity)) {
+        $title = $row['#row']->_entity->title[0]->value;
+        $_row = $row;
+
+        while ($_row !== null) {
+          if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
+            $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+            $title = '- ' . $title;
+            $_row = $result[$parent_id] ?? null;
+          } else {
+            $_row = null;
+          }
+        }
+        $form['field_frontpage']['widget']['#options'][$nid] = $title;
+      }
+    }
   }
 }
 
 function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['#attached']['library'][] = 'le_admin/webbuilder_page_form';
+
   // hide parent and weight fields, as these are set automaticly
   $form['field_weight']['#attributes']['class'][] = 'hidden';
   $form['field_parent']['#attributes']['class'][] = 'hidden';
 
+  // create form
   if ($form_id === 'node_webbuilder_page_form') {
     $parent_id = \Drupal::request()->query->get('parent_page');
     $sibling_id = \Drupal::request()->query->get('sibling_page');
+    $webbuilder_id = \Drupal::request()->query->get('webbuilder');
+
+    // hide webbuilder and og_audience fields
+    $form['field_webbuilder']['#attributes']['class'][] = 'hidden';
+    $form['og_audience']['#attributes']['class'][] = 'hidden';
+
+    if ($webbuilder_id) {
+      $webbuilder = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder_id);
+      if ($webbuilder) {
+        $form['field_webbuilder']['widget']['#options'] = [];
+        $form['field_webbuilder']['widget']['#options'][$webbuilder_id] = $webbuilder->title[0]->value;
+        $form['field_webbuilder']['widget']['#default_value'] = $webbuilder_id;
+
+        if (isset($webbuilder->og_audience[0])) {
+          $akteur_id = $webbuilder->og_audience[0]->target_id;
+          $form['og_audience']['widget']['#default_value'] = $akteur_id;
+        }
+      }
+    }
 
     if ($parent_id) {
       $form['field_parent']['widget']['#default_value'] = [$parent_id];
@@ -205,15 +278,21 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     
     $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_submit';
   }
+
+  // edit form
   if ($form_id === 'node_webbuilder_page_edit_form') {
-    $entity = $form_state->getFormObject()->getEntity();
+    $page = $form_state->getFormObject()->getEntity();
+
+    // remove webbuilder and og_audience fields
+    unset($form['field_webbuilder']);
+    unset($form['og_audience']);
 
     $form['meta']['le_admin_node_view'] = [
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('entity.node.canonical', ['node' => $entity->id()]),
+        Url::fromRoute('entity.node.canonical', ['node' => $page->id()]),
         t('View page'),
-        'webbuilder_page_' . $entity->id()
+        'webbuilder_page_' . $page->id()
       ),
       '#weight' => -10,
     ];
@@ -221,11 +300,47 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     $form['meta']['le_admin_user_webbuilder'] = [
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $entity->og_audience[0]->target_id]),
+        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $page->og_audience[0]->target_id]),
         t('Manage website')
       ),
       '#weight' => -9,
     ];
+
+    $webbuilder_id = $page->field_webbuilder[0]->target_id;
+
+    if (!$webbuilder_id) {
+      return;
+    }
+
+    $webbuilder = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder_id);
+    if (!$webbuilder) {
+      return;
+    }
+
+    // load the page tree
+    $form['field_parent']['widget']['#options'] = [];
+    $view = Views::getView('webbuilder_pages');
+    $view->setDisplay('entity_reference_page_tree');
+    $view->setArguments([$webbuilder_id]);
+    $result = $view->render();
+
+    foreach ($result as $nid => $row) {
+      if (isset($row['#row']) && isset($row['#row']->_entity)) {
+        $title = $row['#row']->_entity->title[0]->value;
+        $_row = $row;
+
+        while ($_row !== null) {
+          if ($_row && isset($_row['#row']->_entity->field_parent[0])) {
+            $parent_id = $_row['#row']->_entity->field_parent[0]->target_id;
+            $title = '- ' . $title;
+            $_row = $result[$parent_id] ?? null;
+          } else {
+            $_row = null;
+          }
+        }
+        $form['field_parent']['widget']['#options'][$nid] = $title;
+      }
+    }
   }
 }
 
@@ -399,5 +514,57 @@ function le_admin_partner_submit(array $form, FormStateInterface $form_state)
         $entity->save();
       }
     }   
+  }
+}
+
+function _le_admin_media_unsplash_image_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['#attached']['library'][] = 'le_admin/unsplash_media_form';
+  $form['search'] = [
+    '#type' => 'search',
+    '#title' => t('Search images'),
+    '#placeholder' => t('Enter search terms'),
+    '#attributes' => [
+      'data-results-target' => '#edit-field-unsplash-search-results',
+      'data-url-target' => '#edit-field-media-remote-image-0-uri',
+      'data-alt-target' => '#edit-field-media-remote-image-0-alt',
+      'data-title-target' => '#edit-name-0-value',
+      'data-attribution-target' => '#edit-field-attribution-0-value',
+      'data-api-url' => '/api/unsplash',
+      'oninput' => 'handleUnsplashSearchInput(this)',
+      'autocomplete' => 'off',
+    ],
+    '#weight' => -100,
+  ];
+  $form['search_results'] = [
+    '#type' => 'markup',
+    '#markup' => '<div class="unsplash-results" id="edit-field-unsplash-search-results"></div>',
+    '#weight' => -99,
+  ];
+  $form['image_preview'] = [
+    '#type' => 'markup',
+    '#markup' => '<figure class="unsplash-preview" id="edit-field-image-preview" data-url-source="#edit-field-media-remote-image-0-uri" data-alt-source="#edit-field-media-remote-image-0-alt"></figure>',
+    '#weight' => -98,
+  ];
+
+  // hide attribution field, so user cannot enter values
+  $form['field_attribution']['#attributes']['class'][] = 'hidden';
+}
+
+function le_admin_webbuilder_delete_submit(array $form, FormStateInterface $form_state)
+{
+  $webbuilder = $form_state->getFormObject()->getEntity();
+  if (!$webbuilder) {
+    return;
+  }
+
+  // load pages
+  $pages_query = \Drupal::entityQuery('node');
+  $pages_query->condition('type', 'webbuilder_page');
+  $pages_query->condition('field_webbuilder', $webbuilder->id());
+  $result = $pages_query->execute();
+  foreach ($result as $nid) {
+    $page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+    $page->delete();
   }
 }

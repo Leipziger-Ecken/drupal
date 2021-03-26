@@ -1,4 +1,4 @@
-<?php namespace Drupal\le_webbuilder\Controller;
+<?php namespace Drupal\le_admin\Controller;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Site\Settings;
@@ -43,7 +43,7 @@ class Unsplash extends ControllerBase
     if ($b) $path .= '/' . $b;
     if ($c) $path .= '/' . $c;
     $baseUrl = 'https://api.unsplash.com/';
-    $accessKey = Settings::get('le_webbuilder_unsplash_access_key');
+    $accessKey = Settings::get('le_admin_unsplash_access_key');
     $query = array_merge(['client_id' => $accessKey], \Drupal::request()->query->all());
     return $this->client->get($baseUrl . $path, [
       'query' => $query,

@@ -26,3 +26,25 @@ login:
   css:
     theme:
       assets/css/login.css: {}
+
+unsplash_media_form:
+  css:
+    theme:
+      assets/css/unsplash_media_form.css: {}
+  js:
+    /libraries/unsplash-js/dist/unsplash.min.js: {}
+    assets/js/debounce.js: {}
+    assets/js/unsplash_media_form.js: {}
+
+webbuilder_page_form:
+  js:
+    assets/js/slugify.js: {}
+    assets/js/debounce.js: {}
+    assets/js/webbuilder_page_form.js: {}
+
+webbuilder_form:
+  css:
+    theme:
+      assets/css/webbuilder_form.css: {}
+  js:
+    assets/js/webbuilder_form.js: {}

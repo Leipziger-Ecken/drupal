@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Url;
+
 const WEBBUILDER_CLASSES = [
   'container' => [
     'sm' => 'max-w-3xl mx-auto',
@@ -60,7 +62,7 @@ function leipzigerEckenWebbuilder_theme_suggestions_views_tree_alter(array &$sug
 
 function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
 {
-  $is_preview = \Drupal::request()->query->get('webbuilder_preview') === '1';
+  $is_preview = \Drupal::request()->query->get('preview') === '1';
   $variables['webbuilder_classes'] = WEBBUILDER_CLASSES;
   $variables['webbuilder_is_preview'] = $is_preview;
 
@@ -74,4 +76,23 @@ function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
       }
     }
   }
+
+  if ($hook === 'node') {
+    $node_type = $variables['node']->getType();
+    return;
+    /*
+    if (in_array($node_type, [
+      'webbuilder',
+      'webbuilder_page',
+      'le_event',
+    ])) {
+      $variables['url'] = Url::fromRoute('le_webbuilder.' . $variables['node']->getType(), [
+        'akteur' => $akteur_id,
+        'webbuilder' => $webbuilder_id,
+        'node' => $variables['node']->id(),
+      ]);
+    }
+    */
+  }
 }
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\le_webbuilder\Plugin\Field\FieldFormatter;
+namespace Drupal\le_admin\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;

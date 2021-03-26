@@ -1,24 +1,82 @@
-le_webbuilder.unsplash_api_proxy:
-  path: '/webbuilder/unsplash-api-proxy/{a}/{b}/{c}'
+le_webbuilder.node.webbuilder:
+  path: '/akteure/{akteur}/web/{webbuilder}'
   defaults:
-    _controller: '\Drupal\le_webbuilder\Controller\Unsplash::proxy'
-    _title: 'Unsplash API Proxy'
-    a: ''
-    b: ''
-    c: ''
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewWebbuilder'
+    _title: 'Website'
   methods: [GET]
   requirements:
-    _permission: 'create unsplash_image media'
-
-le_webbuilder.create_from_preset:
-  path: '/webbuilder/create-from-preset/{webbuilder_preset}'
-  defaults:
-    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::createFromPreset'
-    _title: 'Create Webbuilder from preset'
-  methods: [GET]
-  requirements:
-    _permission: 'create webbuilder content'
+    _permission: 'view published content'
   options:
     parameters:
-      webbuilder_preset:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+
+le_webbuilder.node.webbuilder_page:
+  path: '/akteure/{akteur}/web/{webbuilder}/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewWebbuilderPage'
+    _title: 'Page'
+  methods: [GET]
+  requirements:
+    _permission: 'view published content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node
+
+le_webbuilder.node.le_event:
+  path: '/akteure/{akteur}/web/{webbuilder}/events/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Event'
+  methods: [GET]
+  requirements:
+    _permission: 'view published content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node
+
+le_webbuilder.node.blog_article:
+  path: '/akteure/{akteur}/web/{webbuilder}/blog/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Blog article'
+  methods: [GET]
+  requirements:
+    _permission: 'view published content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node
+
+le_webbuilder.node.project:
+  path: '/akteure/{akteur}/web/{webbuilder}/projects/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Project'
+  methods: [GET]
+  requirements:
+    _permission: 'view published content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
         type: entity:node

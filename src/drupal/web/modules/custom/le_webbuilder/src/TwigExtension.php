@@ -113,7 +113,7 @@ class TwigExtension extends \Twig_Extension
     return \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
   }
 
-  public function webbuilderUrl($webbuilder_id, $url = '<front>')
+  public function webbuilderUrl($webbuilder_id, string $url = '<front>', array $route_parameters = [])
   {
     $webbuilder = $this->getNodeById($webbuilder_id);
     if ($url === '<front>') {
@@ -124,12 +124,18 @@ class TwigExtension extends \Twig_Extension
           return $frontpage->toUrl()->toString();
         }
       }
+    } else {
+      $akteur = $webbuilder->get('og_audience')[0]->target_id;
+      return Url::fromRoute(
+        $url, 
+        array_merge($route_parameters, ['akteur' => $akteur, 'webbuilder' => $webbuilder_id])
+      )->toString();
     }
 
     return null;
   }
 
-  public function akteurWebbuilderUrl($akteur_id, $url = '<front>')
+  public function akteurWebbuilderUrl($akteur_id, string $url = '<front>', array $route_parameters = [])
   {
     $result = \Drupal::entityQuery('node')
     ->condition('type', 'webbuilder')
@@ -143,7 +149,7 @@ class TwigExtension extends \Twig_Extension
 
     $webbuilder_id = array_values($result)[0];
 
-    return $this->webbuilderUrl($webbuilder_id, $url);
+    return $this->webbuilderUrl($webbuilder_id, $url, $route_parameters);
   }
 
   public function webbuilderAkteurId($webbuilder_id)
