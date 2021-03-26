@@ -9,13 +9,17 @@ class WebbuilderController extends ControllerBase
   **/
   public function viewNode($akteur, $webbuilder, $node)
   {
-    $node->setViewMode('webbuilder');
     $build = [
-      '#type' => 'page',
-      'node' => $node,
-      'akteur' => $akteur,
-      'webbuilder' => $webbuilder,
+      '#theme' => 'node__' . $node->getType(),
+      '#view_mode' => 'full',
+      '#node' => $node,
+      '#title' => $node->getTitle(),
+      '#variables' => [
+        'akteur' => $akteur,
+        'webbuilder' => $webbuilder,
+      ],
     ];
+
     return $build;
   }
 
@@ -25,24 +29,14 @@ class WebbuilderController extends ControllerBase
   public function viewWebbuilder($akteur, $webbuilder)
   {
     $build = [
-      '#type' => 'page',
-      'node' => $webbuilder,
-      'akteur' => $akteur,
-      'webbuilder' => $webbuilder,
-    ];
-    return $build;
-  }
-
-  /*
-   * Renders a webbuilder page
-  **/
-  public function viewWebbuilderPage($akteur, $webbuilder, $node)
-  {
-    $build = [
-      '#type' => 'page',
-      'node' => $node,
-      'akteur' => $akteur,
-      'webbuilder' => $webbuilder,
+      '#theme' => 'node__webbuilder',
+      '#view_mode' => 'full',
+      '#node' => $webbuilder,
+      '#title' => $webbuilder->getTitle(),
+      '#variables' => [
+        'akteur' => $akteur,
+        'webbuilder' => $webbuilder,
+      ],
     ];
     return $build;
   }

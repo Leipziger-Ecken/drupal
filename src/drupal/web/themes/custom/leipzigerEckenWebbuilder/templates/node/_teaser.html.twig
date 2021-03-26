@@ -1,5 +1,8 @@
 {% set node_type = node.type[0].target_id %}
 {% set image = content.field_main_image[0] %}
+{% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
+  node: node.id(),
+}) %}
 <article>
   {% if image %}
   <figure class="relative mx-auto w-full lg:max-w-md mb-8">

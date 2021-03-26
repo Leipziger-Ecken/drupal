@@ -1,22 +1,22 @@
-uuid: 3ccb9eb4-0462-4820-8cb2-0dff1282ee0a
+uuid: 4a0c39b7-57c6-433e-bca6-089defd93a6d
 langcode: de
 status: true
 dependencies:
   module:
     - node
-id: webbuilder_blog_article
-label: 'Webbuilder blog article'
+id: blog_article
+label: Blog-Artikel
 type: 'canonical_entities:node'
-pattern: '/akteure/[node:og_audience]/web/[node:nid]/blog/[node:title]'
+pattern: '/akteure/[node:og_audience]/blog/[node:title]'
 selection_criteria:
-  c5213081-7770-46c3-b14b-3ab9cc5d3f67:
+  9f340a27-c78a-4d86-a0c0-cd7728405c25:
     id: node_type
     bundles:
       blog_article: blog_article
     negate: false
     context_mapping:
       node: node
-    uuid: c5213081-7770-46c3-b14b-3ab9cc5d3f67
+    uuid: 9f340a27-c78a-4d86-a0c0-cd7728405c25
 selection_logic: and
 weight: -5
 relationships: {  }

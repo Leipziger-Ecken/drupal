@@ -25,6 +25,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('color_rgb_to_hsl', [$this, 'colorRgbToHsl']),
       new \Twig_SimpleFunction('color_hex_to_rgb', [$this, 'colorHexToRgb']),
       new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
+      new \Twig_SimpleFunction('webbuilder_id', [$this, 'webbuilderId']),
       new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
       new \Twig_SimpleFunction('webbuilder_view', [$this, 'webbuilderView']),
       new \Twig_SimpleFunction('akteur_webbuilder_url', [$this, 'akteurWebbuilderUrl']),
@@ -125,7 +126,8 @@ class TwigExtension extends \Twig_Extension
         }
       }
     } else {
-      $akteur = $webbuilder->get('og_audience')[0]->target_id;
+      
+      $akteur = $webbuilder->og_audience[0]->target_id;
       return Url::fromRoute(
         $url, 
         array_merge($route_parameters, ['akteur' => $akteur, 'webbuilder' => $webbuilder_id])
@@ -150,6 +152,18 @@ class TwigExtension extends \Twig_Extension
     $webbuilder_id = array_values($result)[0];
 
     return $this->webbuilderUrl($webbuilder_id, $url, $route_parameters);
+  }
+
+  public function webbuilderId()
+  {
+    $current_url = Url::fromRoute('<current>')->toString();
+    $parts = explode('/', trim($current_url, '/'));
+    
+    if (count($parts) < 4) {
+      return null;
+    }
+    
+    return $parts[3];
   }
 
   public function webbuilderAkteurId($webbuilder_id)

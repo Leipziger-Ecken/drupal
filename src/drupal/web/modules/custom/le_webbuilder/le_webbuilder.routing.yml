@@ -16,7 +16,7 @@ le_webbuilder.node.webbuilder:
 le_webbuilder.node.webbuilder_page:
   path: '/akteure/{akteur}/web/{webbuilder}/{node}'
   defaults:
-    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewWebbuilderPage'
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
     _title: 'Page'
   methods: [GET]
   requirements:
