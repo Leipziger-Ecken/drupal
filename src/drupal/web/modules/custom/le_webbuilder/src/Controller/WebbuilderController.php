@@ -47,7 +47,7 @@ class WebbuilderController extends ControllerBase
     $result = $pages_query->execute();
     $preset_pages = [];
     foreach($result as $nid) {
-      $preset_pages[$nid] = \Drupal::entityManager()->getStorage('node')->load($nid);
+      $preset_pages[$nid] = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     }
     
     // now clone the pages and the paragraphs

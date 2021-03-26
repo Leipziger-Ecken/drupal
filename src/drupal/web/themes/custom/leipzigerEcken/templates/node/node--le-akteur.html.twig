@@ -82,6 +82,14 @@
         {{ content.field_logo }} 
       {% endif %}
 
+      {% if webbuilders.published_count > 0 %}
+      <div class="abstand">
+        <a href="{{ akteur_webbuilder_url(node.id()) }}">
+          {{ 'View website'|t }}
+        </a>
+      </div>
+      {% endif %}
+
       {% if content.field_adresse %}
         {{ content.field_adresse }} 
       {% endif %}

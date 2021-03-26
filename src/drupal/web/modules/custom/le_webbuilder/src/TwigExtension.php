@@ -26,6 +26,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
       new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
       new \Twig_SimpleFunction('webbuilder_view', [$this, 'webbuilderView']),
+      new \Twig_SimpleFunction('akteur_webbuilder_url', [$this, 'akteurWebbuilderUrl']),
     ];
   }
 
@@ -108,10 +109,10 @@ class TwigExtension extends \Twig_Extension
 
   protected function getNodeById($node_id)
   {
-    return \Drupal::entityManager()->getStorage('node')->load($node_id);
+    return \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
   }
 
-  public function webbuilderUrl($webbuilder_id, $url)
+  public function webbuilderUrl($webbuilder_id, $url = '<front>')
   {
     $webbuilder = $this->getNodeById($webbuilder_id);
     if ($url === '<front>') {
@@ -125,6 +126,23 @@ class TwigExtension extends \Twig_Extension
     }
 
     return null;
+  }
+
+  public function akteurWebbuilderUrl($akteur_id, $url = '<front>')
+  {
+    $result = \Drupal::entityQuery('node')
+    ->condition('type', 'webbuilder')
+    ->condition('og_audience', $akteur_id)
+    ->condition('status', 1)
+    ->range(0, 1)
+    ->execute();
+    if (!count($result)) {
+      return null;
+    }
+
+    $webbuilder_id = array_values($result)[0];
+
+    return $this->webbuilderUrl($webbuilder_id, $url);
   }
 
   public function webbuilderAkteurId($webbuilder_id)
