@@ -15,16 +15,16 @@
         {{ content.field_heading }}
       </h2>
       {% endif %}
-      <div class="sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
+      <div class="sm:mt-4 lg:grid lg:grid-cols-3 lg:gap-5 lg:items-center">
         {% if content.field_body[0] %}
-        <div class="{{ webbuilder_classes.text.prose_lg }}">
+        <div class="{{ webbuilder_classes.text.prose_lg }} col-span-1">
           {{ content.field_body }}
         </div>
         {% endif %}
 
         {# exposed filters #}
         {% if has_filters %}
-        <div class="mt-6 lg:mt-0">
+        <div class="mt-6 lg:mt-0 col-span-2">
           {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
         </div>
         {% endif %}

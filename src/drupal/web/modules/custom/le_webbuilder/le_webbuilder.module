@@ -72,10 +72,11 @@ function le_webbuilder_path_alias()
 
 function _le_webbuilder_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  $form['#attributes']['class'][] = 'flex flex-col sm:flex-row lg:justify-end space-x-2 flex-wrap space-y-4 mb-4';
+  $form['#attributes']['class'][] = 'flex flex-col sm:flex-row lg:justify-end flex-wrap mb-4';
+  // $form['#attributes']['class'][] = 'grid gap-4 auto-cols-auto mb-4';
   
-  $input_classes = 'appearance-none w-full px-4 py-2 border border-gray-300 text-base rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 lg:max-w-xs';
-  $submit_classes = 'w-full px-4 py-2 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 sm:w-auto sm:inline-flex';
+  $input_classes = 'appearance-none w-full sm:w-48 px-4 py-2 border border-gray-300 text-base rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 lg:max-w-xs';
+  $submit_classes = 'mr-4 mt-6 cursor-pointer w-full px-4 py-2 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 sm:w-auto sm:inline-flex';
   $reserved_keys = [
     'actions',
     'form_build_id',
@@ -90,7 +91,7 @@ function _le_webbuilder_views_exposed_form_alter(&$form, FormStateInterface $for
       }
     }
   }
-  
+
   $form['actions']['submit']['#value'] = t('Search');
   $form['actions']['submit']['#attributes']['class'][] = $submit_classes;
 }
