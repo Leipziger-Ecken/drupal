@@ -3,6 +3,7 @@
 namespace Drupal\le_webbuilder;
 
 use Drupal\views\Views;
+use Drupal\Core\Url;
 
 /**
  * Twig extension with some useful functions and filters.
@@ -165,11 +166,11 @@ class TwigExtension extends \Twig_Extension
       'per_page' => null,
       'layout' => null,
     ], $options);
-
+    
     $arguments[] = $options['layout'];
     $arguments[] = $options['filters'];
     $arguments[] = $options['images'];
-
+    
     $view = Views::getView($view_name);
     $view->setDisplay($display_name);
 
@@ -180,6 +181,7 @@ class TwigExtension extends \Twig_Extension
       $view->pager = null;
     }
     $view->setArguments($arguments);
+    $view->override_url = Url::fromUserInput(\Drupal::service('path.current')->getPath());
 
     return $view->render();
   }

@@ -24,7 +24,7 @@
 
         {# exposed filters #}
         {% if has_filters %}
-        <div class="mt-6 flex flex-col sm:flex-row lg:mt-0 lg:justify-end">
+        <div class="mt-6 lg:mt-0">
           {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
         </div>
         {% endif %}

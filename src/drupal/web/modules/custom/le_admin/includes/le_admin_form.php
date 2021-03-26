@@ -98,13 +98,15 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   ])) {
     _le_admin_login_form_alter($form, $form_state, $form_id);
   }
-
+  
   // adds required asteriks description to all forms
-  $form['required_help'] = [
-    '#type' => 'markup',
-    '#markup' => '<p class="form-item__description">* ' . t('Required field') . '</p>',
-    '#weight' => 1000,
-  ];
+  if ($form_id !== 'views_exposed_form') {
+    $form['required_help'] = [
+      '#type' => 'markup',
+      '#markup' => '<p class="form-item__description">* ' . t('Required field') . '</p>',
+      '#weight' => 1000,
+    ];
+  }
 }
 
 function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)
