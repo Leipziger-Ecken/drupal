@@ -4,12 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.project.body
+    - field.field.node.project.field_images
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
     - node.type.project
   module:
-    - media
     - text
     - user
 id: node.project.default
@@ -20,27 +20,26 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 4
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_legal_terms_accepted:
-    weight: 5
-    label: above
+  field_images:
+    weight: 4
+    label: hidden
     settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
+      link: true
+      view_mode: default
     third_party_settings: {  }
-    type: boolean
+    type: entity_reference_entity_view
     region: content
   field_main_image:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     weight: 1
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
     region: content
   links:
@@ -50,11 +49,13 @@ content:
     third_party_settings: {  }
   og_audience:
     label: hidden
-    type: entity_reference_entity_id
-    settings: {  }
+    type: entity_reference_label
+    settings:
+      link: true
     weight: 2
     third_party_settings: {  }
     region: content
 hidden:
+  field_legal_terms_accepted: true
   langcode: true
   published_at: true

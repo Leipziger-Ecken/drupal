@@ -1,0 +1,15 @@
+uuid: 018dc752-de2f-4c91-9d9e-afef6f532640
+langcode: de
+status: true
+dependencies: {  }
+name: fullscreen
+label: Fullscreen
+effects:
+  70fcf763-ab3c-4d98-91b5-5fc0fc46058e:
+    uuid: 70fcf763-ab3c-4d98-91b5-5fc0fc46058e
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false

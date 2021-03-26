@@ -103,7 +103,7 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
         $node->getType(),
         [
           'webbuilder', 'webbuilder_page', 'webbuilder_preset',
-          'blog_article', 'project', 'partner', 'sponsor',
+          //'blog_article', 'project', 'partner', 'sponsor',
         ]
       )
     ) {

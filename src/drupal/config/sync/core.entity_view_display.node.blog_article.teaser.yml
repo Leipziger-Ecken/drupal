@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - image.style.medium
@@ -51,5 +52,6 @@ content:
       timezone: ''
     third_party_settings: {  }
 hidden:
+  field_images: true
   langcode: true
   og_audience: true

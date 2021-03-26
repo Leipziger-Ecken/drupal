@@ -67,6 +67,7 @@ module:
   le_event: 0
   le_kategorien: 0
   le_migrate: 0
+  le_migrate_media: 0
   le_region: 0
   le_remote_api_services: 0
   le_remote_content_depot_social: 0
