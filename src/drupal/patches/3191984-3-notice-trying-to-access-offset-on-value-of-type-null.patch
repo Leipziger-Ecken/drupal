@@ -1,7 +1,7 @@
-diff --git a/src/drupal/web/modules/contrib/conditional_fields/src/DependencyHelper.php b/src/drupal/web/modules/contrib/conditional_fields/src/DependencyHelper.php
+diff --git a/src/DependencyHelper.php b/src/DependencyHelper.php
 index 789f971..e99ea25 100644
---- a/src/drupal/web/modules/contrib/conditional_fields/src/DependencyHelper.php
-+++ b/src/drupal/web/modules/contrib/conditional_fields/src/DependencyHelper.php
+--- a/src/DependencyHelper.php
++++ b/src/DependencyHelper.php
 @@ -73,7 +73,7 @@ class DependencyHelper {
      if (!isset($this->dependencies[$this->entity_type][$this->bundle])) {
        $this->resolveBundleDependencies($this->getBundleDependentFields());

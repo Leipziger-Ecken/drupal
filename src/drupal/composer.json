@@ -151,6 +151,9 @@
             ]
         },
         "patches": {
+            "drupal/date_popup": {
+                "Fixes notice when no default value is set": "patches/date_popup-attribute_is_missing-3042555-16-8x1_1.patch"
+            },
             "drupal/conditional_fields": {
                 "Fixes notice about array access": "patches/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
             },
