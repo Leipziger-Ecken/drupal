@@ -2,6 +2,7 @@
 use Drupal\path_alias\Entity\PathAlias;
 use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Url;
 use Drupal\views\Views;
 use Drupal\block\Entity\Block;
 use Drupal\Core\Session\AccountInterface;
@@ -231,5 +232,26 @@ function le_webbuilder_webbuilder_delete_submit(array $form, FormStateInterface 
   foreach($result as $nid) {
     $page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     $page->delete();
+  }
+}
+
+function le_webbuilder_menu_local_tasks_alter(&$data, $route_name)
+{
+  if ($route_name === 'entity.node.canonical') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if (in_array($node->getType(), [
+      'webbuilder',
+      'webbuilder_page'
+    ])) {
+      $akteur_id = $node->get('og_audience')[0]->target_id;
+
+      $data['tabs'][0]['le_admin.user_akteur_webbuilder'] = [
+        '#theme' => 'menu_local_task',
+        '#link' => [
+          'title' => t('Edit website'),
+          'url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $akteur_id]),
+        ],
+      ];
+    }
   }
 }
