@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.project.body
+    - field.field.node.project.field_images
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
@@ -35,6 +36,7 @@ content:
       link: false
     third_party_settings: {  }
 hidden:
+  field_images: true
   field_legal_terms_accepted: true
   langcode: true
   links: true

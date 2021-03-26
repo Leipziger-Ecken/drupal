@@ -27,7 +27,7 @@ dependencies:
     - date_recur
     - leaflet
     - link
-    - svg_image
+    - media
     - text
     - user
 _core:
@@ -38,14 +38,14 @@ bundle: le_event
 mode: default
 content:
   field_adresse:
-    weight: 12
+    weight: 11
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
   field_bezirk:
-    weight: 11
+    weight: 10
     label: hidden
     settings:
       link: true
@@ -54,7 +54,7 @@ content:
     type: entity_reference_entity_view
     region: content
   field_geofield:
-    weight: 10
+    weight: 9
     label: hidden
     settings:
       multiple_map: false
@@ -124,27 +124,14 @@ content:
     type: leaflet_formatter_default
     region: content
   field_le_event_beschreibung:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
-  field_le_event_image:
-    weight: 0
-    label: hidden
-    settings:
-      image_style: ''
-      image_link: ''
-      svg_attributes:
-        width: null
-        height: null
-      svg_render_as_image: true
-    third_party_settings: {  }
-    type: image
-    region: content
   field_le_event_is_barrier_free:
-    weight: 5
+    weight: 4
     label: above
     settings:
       format: default
@@ -154,22 +141,6 @@ content:
     type: boolean
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 7
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_le_event_kategorie_tags:
-    weight: 8
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-    region: content
-  field_le_event_kategorie_typ:
     weight: 6
     label: above
     settings:
@@ -177,8 +148,24 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_le_event_kategorie_tags:
+    weight: 7
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_le_event_kategorie_typ:
+    weight: 5
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
   field_le_event_lizenzhinweis:
-    weight: 15
+    weight: 14
     label: above
     settings:
       format: default
@@ -188,7 +175,7 @@ content:
     type: boolean
     region: content
   field_le_event_occurrences:
-    weight: 4
+    weight: 3
     label: above
     settings:
       format_type: medium
@@ -203,7 +190,7 @@ content:
     type: date_recur_basic_formatter
     region: content
   field_le_event_website:
-    weight: 14
+    weight: 13
     label: above
     settings:
       trim_length: 80
@@ -215,16 +202,16 @@ content:
     type: link
     region: content
   field_main_image:
-    weight: 1
+    weight: 0
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: media_thumbnail
     region: content
   field_online_event:
-    weight: 13
+    weight: 12
     label: above
     settings:
       format: yes-no
@@ -234,7 +221,7 @@ content:
     type: boolean
     region: content
   field_related_content:
-    weight: 16
+    weight: 15
     label: above
     settings:
       link: true
@@ -242,7 +229,7 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -251,10 +238,11 @@ content:
     type: entity_reference_label
     settings:
       link: true
-    weight: 9
+    weight: 8
     third_party_settings: {  }
     region: content
 hidden:
   field_le_event___eid: true
+  field_le_event_image: true
   langcode: true
   published_at: true

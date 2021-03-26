@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - image.style.medium
@@ -21,7 +22,7 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 2
+    weight: 3
     settings:
       trim_length: 600
     third_party_settings: {  }
@@ -40,6 +41,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  published_at:
+    type: timestamp
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
 hidden:
+  field_images: true
   langcode: true
   og_audience: true

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
@@ -63,6 +64,7 @@ third_party_settings:
     group_images:
       children:
         - field_main_image
+        - field_images
       parent_name: group_basic
       weight: 21
       format_type: accordion_item
@@ -95,6 +97,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_images:
+    type: media_library_widget
+    weight: 23
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
   field_main_image:
     weight: 22
     settings:

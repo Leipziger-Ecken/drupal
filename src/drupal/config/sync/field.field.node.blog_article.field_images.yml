@@ -1,17 +1,16 @@
-uuid: ed91085e-222d-4774-b16e-795eb5cac75e
+uuid: ca3301df-f6a5-4823-b8e9-24e146370a8a
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_main_image
+    - field.storage.node.field_images
     - media.type.image
-    - media.type.unsplash_image
-    - node.type.project
-id: node.project.field_main_image
-field_name: field_main_image
+    - node.type.blog_article
+id: node.blog_article.field_images
+field_name: field_images
 entity_type: node
-bundle: project
-label: Hauptbild
+bundle: blog_article
+label: Bildergallerie
 description: ''
 required: false
 translatable: false
@@ -22,7 +21,6 @@ settings:
   handler_settings:
     target_bundles:
       image: image
-      unsplash_image: unsplash_image
     sort:
       field: _none
     auto_create: false

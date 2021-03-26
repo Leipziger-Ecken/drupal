@@ -6,5 +6,3 @@ package: Leipziger Ecken
 components:
   namespaces:
     le_admin: templates
-dependencies:
-  - core/drupal

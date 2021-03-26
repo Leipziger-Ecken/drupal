@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.webbuilder_teaser_card
     - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
@@ -44,6 +45,7 @@ content:
       timezone: ''
     third_party_settings: {  }
 hidden:
+  field_images: true
   langcode: true
   links: true
   og_audience: true

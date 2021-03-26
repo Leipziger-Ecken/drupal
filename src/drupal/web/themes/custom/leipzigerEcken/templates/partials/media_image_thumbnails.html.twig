@@ -1,0 +1,20 @@
+<div class="row">
+{% for i in range(0, 100) %}
+  {% set image = images[i] %}
+  {% if image %}
+  <div class="col-xs-6 col-md-3">
+    <a href="{{ include('@leipzigerEcken/partials/media_image_uri.html.twig', {
+        image: image,
+        image_style: 'fullscreen',
+        width: 1920,
+      }) | trim }}" class="thumbnail">
+      {{ include('@leipzigerEcken/partials/media_image.html.twig', {
+        image: image,
+        image_style: 'gallery_thumbnail',
+        width: 610,
+      }) }}
+    </a>
+  </div>
+  {% endif %}
+{% endfor %}
+</div>

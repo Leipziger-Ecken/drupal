@@ -157,7 +157,7 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
 
     if ($route_name === 'le_admin.user_webbuilder_pages') {
       $webbuilder = $parameters['node'];
-      $akteur = \Drupal::entityManager()->getStorage('node')->load($webbuilder->og_audience[0]->target_id);
+      $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder->og_audience[0]->target_id);
 
       $breadcrumb->addLink(
         Link::createFromRoute(

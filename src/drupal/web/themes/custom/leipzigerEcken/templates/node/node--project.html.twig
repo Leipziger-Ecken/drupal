@@ -65,6 +65,7 @@
  *   in different view modes.
  */
 #}
+
 {%
   set classes = [
     node.bundle|clean_class,
@@ -76,24 +77,36 @@
   ]
 %}
 
-{#
-/** hier werden die einzelnen Zeilen der Akteurs Übersicht beschrieben 
-*/
-#}
-<div class="row teaser-list">     
-    <div class="row">
-        <div class="teaser-thump col-md-3">
-            <a href="{{ url }}">
-            {{ content.field_le_akteur_image}}
-            </a>
-        </div>
-        <div class="col-md-9">
-            <a class="teaser-label" href="{{ url }}">
-                {{ label }} 
-            </a>
-            <div class="inactiveLink">
-            {{ content.field_bezirk }}
-            </div> 
-        </div>
+<div class="row abstand">
+  <div class="col-md-3">
+    {% if content.og_audience %}
+    {{ 'Actor'|t }} {{ content.og_audience }}
+    {% endif %}
+    <hr class="grey-hr" />
+  </div>
+    
+  <div class="col-md-7 beschreibung clearfix">
+    {% if content.field_main_image[0] %}
+    {{ include('@leipzigerEcken/partials/media_image.html.twig', {
+      class: 'page-header',
+      image: content.field_main_image[0],
+      width: 665,
+      image_style: 'main_image',
+    }) }}
+    {% endif %}
+    
+    {% if content.body %}
+    <div class="abstand">
+      {{ content.body }}
     </div>
-</div>
+    {% endif %}   
+    
+    {% if content.field_images[0] %}
+    <div class="abstand">
+      {{ include('@leipzigerEcken/partials/media_image_thumbnails.html.twig', {
+        images: content.field_images
+      }) }}
+    </div>
+    {% endif %}
+  </div>
+</div> 

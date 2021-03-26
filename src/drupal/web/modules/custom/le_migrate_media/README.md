@@ -15,6 +15,11 @@ drush en le_migrate_media
 
 ```bash
 drush le_migrate_media:image-to-media
+=======
+2. Migrate image fields to media fields (use --overwrite option to overwrite existing media):
+
+```bash
+drush le_migrate_media:image-to-media --overwrite
 ```
 
 Post-migration: Update display & form settings of each updated content-type; Remove "old" image-fields from node-types; replace all their references in modules & templates.

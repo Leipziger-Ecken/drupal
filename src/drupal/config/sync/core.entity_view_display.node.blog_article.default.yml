@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
   module:
-    - media
     - text
     - user
 id: node.blog_article.default
@@ -19,25 +19,50 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 2
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_main_image:
-    weight: 1
+  field_images:
+    type: entity_reference_entity_view
+    weight: 5
     label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: media_thumbnail
+    region: content
+  field_main_image:
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
     region: content
   links:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
+  og_audience:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  published_at:
+    type: timestamp
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
 hidden:
   langcode: true
-  og_audience: true
-  published_at: true

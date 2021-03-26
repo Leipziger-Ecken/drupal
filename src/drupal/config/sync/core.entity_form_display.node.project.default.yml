@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.project.body
+    - field.field.node.project.field_images
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
@@ -59,6 +60,7 @@ third_party_settings:
     group_images:
       children:
         - field_main_image
+        - field_images
       parent_name: group_basic
       weight: 21
       format_type: accordion_item
@@ -84,6 +86,13 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
+    region: content
+  field_images:
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
     region: content
   field_legal_terms_accepted:
     weight: 6

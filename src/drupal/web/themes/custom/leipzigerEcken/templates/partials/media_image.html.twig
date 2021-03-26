@@ -1,0 +1,17 @@
+{% set alt = '' %}
+{% set uri = null %}
+{% if image['#media'].field_media_remote_image %}
+  {% set alt = image['#media'].field_media_remote_image[0].alt %}
+  {% set uri = image['#media'].field_media_remote_image[0].uri | replace({'.jpg': '&w=' ~ width}) %}
+{% elseif image['#media'] %}
+  {% set alt = image.alt %}
+  {% set uri = image['#media'] | file_uri | image_style(image_style) %}
+{% else %}
+  {% set alt = image.alt %}
+  {% set uri = image['#item'] | file_uri | image_style(image_style) %}
+{% endif %}
+<img
+  class="{{ class }}"
+  src="{{ uri }}"
+  alt="{{ alt }}"
+/>

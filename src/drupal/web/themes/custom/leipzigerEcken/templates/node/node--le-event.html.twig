@@ -76,51 +76,62 @@
   ]
 %}
 
-<div class="row abstand"> 
-  <div class="col-md-3 node__sidebar">
-      {% if content.field_le_akteur_image %}
-          {{ content.field_le_akteur_image }} 
-      {% endif %}
+<div class="row abstand">
+    <div class="col-md-3 node__sidebar">
+        {% if content.field_main_image %}
+          {{ content.field_main_image }}
+        {% endif %}
 
-      {% if content.field_adresse %}
-        {{ content.field_adresse }} 
-      {% endif %}
+        {% if content.field_le_event_occurrences %}
+          {{ content.field_le_event_occurrences }}
+        {% endif %}
 
-      {% if content.field_bezirk %}
-        {{ content.field_bezirk }}  
-      {% endif %}
+        {% if content.field_adresse %}
+          {{ content.field_adresse }} 
+        {% endif %}
 
-      {% if content.field_geofield %}
-        <div class="geo-map"> 
-          {{ content.field_geofield }}
-        </div>
-      {% endif %}
+        {% if content.field_bezirk %}
+          {{ content.field_bezirk }}  
+        {% endif %}
 
-      {% if content.field_le_akteur_url %}
-        {{ content.field_le_akteur_url }}
-      {% endif %}
+        {% if content.field_geofield %}
+          <div class="geo-map">
+            {{ content.field_geofield }} 
+          </div>
+        {% endif %}        
 
-      {% if content.field_le_akteur_email %}
-        {{ content.field_le_akteur_email }}
-      {% endif %}
+        {% if content.og_audience %}
+          <div class="field--label">Veranstalter*in</div>
+          {#
+          @todo
+          {% if content.og_audience is empty %}
+          Private*r Veranstalter*in
+          {% endif %}
+          #}
+          {{ content.og_audience }}
+        {% endif %}
+      
 
-      {% if content.field_le_akteur_kategorie_typ %}
-        {{ content.field_le_akteur_kategorie_typ }}
-      {% endif %}
+        {% if content.field_le_event_is_barrier_free %}
+          {{ content.field_le_event_is_barrier_free }}
+        {% endif %}
 
-      {% if content.field_le_akteur_kategorie_gruppe %}
-        {{ content.field_le_akteur_kategorie_gruppe }}
-      {% endif %}
-  </div>
+        {% if content.field_le_event_kategorie_typ %}
+          {{ content.field_le_event_kategorie_typ }}
+        {% endif %}
 
-  <div class="col-md-7 beschreibung clearfix">
-      {% if content.field_le_akteur_kategorie_tags %}
+        {% if content.field_le_event_kategorie_gruppe %}
+          {{ content.field_le_event_kategorie_gruppe }}
+        {% endif %}
+    </div>
+    
+    <div class="col-md-7 beschreibung">
+      {% if content.field_le_event_kategorie_tags %}
         <div class="tag-area clearfix">
-          {{ content.field_le_akteur_kategorie_tags }} 
+          {{ content.field_le_event_kategorie_tags }}
         </div>
       {% endif %}
-    {{ content.field_le_akteur_description }}
-  </div>
+      {{ content.field_le_event_beschreibung }}
+    </div>
+        
 </div>
-
-
