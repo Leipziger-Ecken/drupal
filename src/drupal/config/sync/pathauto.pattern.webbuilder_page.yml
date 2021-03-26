@@ -1,0 +1,22 @@
+uuid: f9013a1c-5e09-4543-854e-625cc1b59a49
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: webbuilder_page
+label: 'Webbuilder page'
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:og_audience]/web/[node:nid]/[node:field_slug]'
+selection_criteria:
+  ca9527ea-77e1-4e25-9529-0262225fdaf5:
+    id: node_type
+    bundles:
+      webbuilder_page: webbuilder_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: ca9527ea-77e1-4e25-9529-0262225fdaf5
+selection_logic: and
+weight: -5
+relationships: {  }

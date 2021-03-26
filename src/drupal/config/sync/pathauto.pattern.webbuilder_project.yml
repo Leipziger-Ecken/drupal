@@ -1,0 +1,22 @@
+uuid: 0f00f10d-bda6-472d-b045-5c13106ea506
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: webbuilder_project
+label: 'Webbuilder project'
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:og_audience]/web/[node:nid]/projects/[node:title]'
+selection_criteria:
+  e226ad9a-9f6f-42b9-a24d-77bfdac8379a:
+    id: node_type
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      node: node
+    uuid: e226ad9a-9f6f-42b9-a24d-77bfdac8379a
+selection_logic: and
+weight: -5
+relationships: {  }
