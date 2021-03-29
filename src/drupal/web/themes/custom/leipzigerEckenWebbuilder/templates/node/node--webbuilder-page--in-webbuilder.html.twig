@@ -5,7 +5,8 @@
   {% set logo_url = logo|file_url %}
 {% endif %}
 
-{{ include('@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig', {
-  webbuilder_id: webbuilder_id,
-  logo: logo,
-}) }}
+{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+
+{% block content %}
+{{ content.field_contents }}
+{% endblock %}

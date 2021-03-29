@@ -1,8 +1,23 @@
+{% set webbuilder_id = elements['#webbuilder'].id() | default(null) %}
+{% if webbuilder_id %}
+  {% set color_primary = drupal_field('field_color_primary', 'node', webbuilder_id)[0]['#markup'] | default(color_primary) %}
+  {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+  {% set fonts = drupal_field('field_fonts', 'node', webbuilder_id)[0]['#markup'] | split('+', 2) %}
+  {% set font_heading = fonts[0] %}
+  {% set font_body = fonts[1] %}
+  {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
+  {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+  {% set logo_url = logo|file_url %}
+{% endif %}
 {% set node_type = node.getType() %}
 {% set image = content.field_main_image[0] %}
 {% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
   node: node.id(),
 }) %}
+
+{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+
+{% block content %}
 <article>
   {% if image %}
   <figure class="relative mx-auto w-full lg:max-w-md mb-8">
@@ -34,3 +49,4 @@
     {% endif %}
   </div>
 </article>
+{% endblock %}

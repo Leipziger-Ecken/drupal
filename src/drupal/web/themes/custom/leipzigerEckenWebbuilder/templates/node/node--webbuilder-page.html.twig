@@ -8,13 +8,10 @@
   {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
   {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
   {% set logo_url = logo|file_url %}
-  {{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
-  {{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
 {% endif %}
 
-<div style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: '{{ font_heading }}''; --font-body: '{{ font_body }};'">
-  {{ include('@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig', {
-    webbuilder_id: webbuilder_id,
-    logo: logo,
-  }) }}
-</div>
+{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+
+{% block content %}
+{{ content.field_contents }}
+{% endblock %}

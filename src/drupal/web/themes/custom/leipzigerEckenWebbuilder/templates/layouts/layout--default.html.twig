@@ -1,3 +1,5 @@
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
 <header>
   {{ include('@leipzigerEckenWebbuilder/partials/layout/navigation_default.html.twig') }}
   {{ include('@leipzigerEckenWebbuilder/partials/layout/header_default.html.twig') }}
@@ -8,8 +10,9 @@
     {{ drupal_block('local_actions_block') }}
   </section>
 </header>
-<main id="main">
-  {{ content.field_contents }}
+<main id="main" style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: '{{ font_heading }}''; --font-body: '{{ font_body }};'">
+  {% block content %}
+  {% endblock %}
 </main>
 
 {{ include('@leipzigerEckenWebbuilder/partials/layout/footer_default.html.twig') }}

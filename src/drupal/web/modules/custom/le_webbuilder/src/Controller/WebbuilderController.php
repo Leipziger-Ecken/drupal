@@ -11,10 +11,8 @@ class WebbuilderController extends NodeViewController
   {
     $build = parent::view($node, 'in_webbuilder');
     $build['#title'] = $webbuilder->getTitle();
-    $build['#variables'] = [
-      'akteur' => $akteur,
-      'webbuilder' => $webbuilder,
-    ];
+    $build['#aktuer'] = $akteur;
+    $build['#webbuilder'] = $webbuilder;
 
     return $build;
   }
