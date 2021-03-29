@@ -7,16 +7,16 @@ dependencies:
 id: webbuilder_page
 label: 'Webbuilder page'
 type: 'canonical_entities:node'
-pattern: '/akteure/[node:og_audience]/web/[node:nid]/[node:field_slug]'
+pattern: '/akteure/[node:og_audience:entity:title]/web/[node:field_webbuilder:entity:nid]/[node:field_slug]'
 selection_criteria:
-  ca9527ea-77e1-4e25-9529-0262225fdaf5:
+  012bd8af-1275-4f85-b7a0-defdad886950:
     id: node_type
     bundles:
       webbuilder_page: webbuilder_page
     negate: false
     context_mapping:
       node: node
-    uuid: ca9527ea-77e1-4e25-9529-0262225fdaf5
+    uuid: 012bd8af-1275-4f85-b7a0-defdad886950
 selection_logic: and
 weight: -5
 relationships: {  }

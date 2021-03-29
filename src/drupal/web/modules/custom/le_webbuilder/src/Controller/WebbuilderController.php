@@ -1,43 +1,21 @@
 <?php namespace Drupal\le_webbuilder\Controller;
 
-use Drupal\Core\Controller\ControllerBase;
+use Drupal\node\Controller\NodeViewController;
 
-class WebbuilderController extends ControllerBase
+class WebbuilderController extends NodeViewController
 {
   /*
    * Renders a node in webbuilder context
   **/
   public function viewNode($akteur, $webbuilder, $node)
   {
-    $build = [
-      '#theme' => 'node__' . $node->getType() . '__in_webbuilder',
-      '#view_mode' => 'full',
-      '#node' => $node,
-      '#title' => $node->getTitle(),
-      '#variables' => [
-        'akteur' => $akteur,
-        'webbuilder' => $webbuilder,
-      ],
+    $build = parent::view($node, 'in_webbuilder');
+    $build['#title'] = $webbuilder->getTitle();
+    $build['#variables'] = [
+      'akteur' => $akteur,
+      'webbuilder' => $webbuilder,
     ];
 
-    return $build;
-  }
-
-  /*
-   * Renders a webbuilder
-  **/
-  public function viewWebbuilder($akteur, $webbuilder)
-  {
-    $build = [
-      '#theme' => 'node__webbuilder',
-      '#view_mode' => 'full',
-      '#node' => $webbuilder,
-      '#title' => $webbuilder->getTitle(),
-      '#variables' => [
-        'akteur' => $akteur,
-        'webbuilder' => $webbuilder,
-      ],
-    ];
     return $build;
   }
 }

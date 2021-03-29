@@ -130,10 +130,10 @@ class TwigExtension extends \Twig_Extension
         return $webbuilder->toUrl()->toString();
       }
     } else {      
-      $akteur = $webbuilder->og_audience[0]->target_id;
+      $akteur_id = $webbuilder->og_audience[0]->target_id;
       return Url::fromRoute(
         $url, 
-        array_merge($route_parameters, ['akteur' => $akteur, 'webbuilder' => $webbuilder_id])
+        array_merge($route_parameters, ['akteur' => $akteur_id, 'webbuilder' => $webbuilder_id])
       )->toString();
     }
 

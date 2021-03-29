@@ -1,35 +1,3 @@
-le_webbuilder.node.webbuilder:
-  path: '/akteure/{akteur}/web/{webbuilder}'
-  defaults:
-    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewWebbuilder'
-    _title: 'Website'
-  methods: [GET]
-  requirements:
-    _permission: 'view published content'
-  options:
-    parameters:
-      akteur:
-        type: entity:node
-      webbuilder:
-        type: entity:node
-
-le_webbuilder.node.webbuilder_page:
-  path: '/akteure/{akteur}/web/{webbuilder}/{node}'
-  defaults:
-    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
-    _title: 'Page'
-  methods: [GET]
-  requirements:
-    _permission: 'view published content'
-  options:
-    parameters:
-      akteur:
-        type: entity:node
-      webbuilder:
-        type: entity:node
-      node:
-        type: entity:node
-
 le_webbuilder.node.le_event:
   path: '/akteure/{akteur}/web/{webbuilder}/events/{node}'
   defaults:

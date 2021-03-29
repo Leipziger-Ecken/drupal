@@ -7,16 +7,16 @@ dependencies:
 id: webbuilder
 label: Webbuilder
 type: 'canonical_entities:node'
-pattern: '/akteure/[node:og_audience]/web/[node:nid]'
+pattern: '/akteure/[node:og_audience:entity:title]/web/[node:nid]'
 selection_criteria:
-  f80dcb54-159e-4aa9-8a3c-3b359cb0c725:
+  d568f8d0-7888-4b2a-aab3-96f7aca878c1:
     id: node_type
     bundles:
       webbuilder: webbuilder
     negate: false
     context_mapping:
       node: node
-    uuid: f80dcb54-159e-4aa9-8a3c-3b359cb0c725
+    uuid: d568f8d0-7888-4b2a-aab3-96f7aca878c1
 selection_logic: and
 weight: -5
 relationships: {  }
