@@ -123,10 +123,13 @@ class TwigExtension extends \Twig_Extension
         $frontpage = $this->getNodeById($frontpage_id);
         if ($frontpage) {
           return $frontpage->toUrl()->toString();
+        } else {
+          return $webbuilder->toUrl()->toString();
         }
+      } else {
+        return $webbuilder->toUrl()->toString();
       }
-    } else {
-      
+    } else {      
       $akteur = $webbuilder->og_audience[0]->target_id;
       return Url::fromRoute(
         $url, 
@@ -143,12 +146,13 @@ class TwigExtension extends \Twig_Extension
     ->condition('type', 'webbuilder')
     ->condition('og_audience', $akteur_id)
     ->condition('status', 1)
+    ->sort('published_at', 'desc')
     ->range(0, 1)
     ->execute();
     if (!count($result)) {
       return null;
     }
-
+    
     $webbuilder_id = array_values($result)[0];
 
     return $this->webbuilderUrl($webbuilder_id, $url, $route_parameters);
