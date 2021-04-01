@@ -48,10 +48,9 @@ content:
     weight: 10
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      link: false
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: entity_reference_label
     region: content
   field_geofield:
     weight: 9
@@ -134,9 +133,9 @@ content:
     weight: 4
     label: hidden
     settings:
-      format: default
-      format_custom_false: ''
+      format: boolean
       format_custom_true: ''
+      format_custom_false: ''
     third_party_settings: {  }
     type: boolean
     region: content
@@ -204,7 +203,7 @@ content:
     weight: 12
     label: hidden
     settings:
-      format: yes-no
+      format: boolean
       format_custom_true: ''
       format_custom_false: ''
     third_party_settings: {  }
