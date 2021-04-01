@@ -117,6 +117,12 @@ class TwigExtension extends \Twig_Extension
   public function webbuilderUrl($webbuilder_id, string $url = '<front>', array $route_parameters = [])
   {
     $webbuilder = $this->getNodeById($webbuilder_id);
+    if (isset($route_parameters['destination'])) {
+      $destination = $route_parameters['destination'];
+      unset($route_parameters['destination']);
+    } else {
+      $destination = null;
+    }
     if ($url === '<front>') {
       if (isset($webbuilder->field_frontpage[0])) {
         $frontpage_id = $webbuilder->field_frontpage[0]->target_id;
@@ -133,7 +139,10 @@ class TwigExtension extends \Twig_Extension
       $akteur_id = $webbuilder->og_audience[0]->target_id;
       return Url::fromRoute(
         $url, 
-        array_merge($route_parameters, ['akteur' => $akteur_id, 'webbuilder' => $webbuilder_id])
+        array_merge($route_parameters, ['akteur' => $akteur_id, 'webbuilder' => $webbuilder_id]),
+        [
+          'query' => ['destination' => $destination]
+        ]
       )->toString();
     }
 

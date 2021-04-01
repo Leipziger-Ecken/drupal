@@ -2,6 +2,7 @@
 {% set image = content.field_main_image[0] %}
 {% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
   node: node.id(),
+  destination: get_destination(),
 }) %}
 <article class="flex flex-col rounded-lg shadow-lg overflow-hidden h-full">
   {% if image %}
