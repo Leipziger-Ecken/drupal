@@ -38,6 +38,9 @@ for (let w = 10; w < 100; w += 10) {
 }
 
 module.exports = {
+  corePlugins: {
+    fontFamily: false,
+  },
   purge: [
     './templates/**/*.twig',
     './assets/js/**/*.js',
