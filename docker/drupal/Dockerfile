@@ -109,6 +109,11 @@ RUN apt-get remove --purge -y \
 RUN \
 	apt-get autoremove -y && \
 	apt-get autoclean -y
+
+# Install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY update.sh /update.sh
