@@ -178,7 +178,16 @@ class TwigExtension extends \Twig_Extension
         $result = \Drupal::entityQuery('node')->condition('uuid', $uuid)->execute();
         if (count($result)) {
           $nid = array_values($result)[0];
-          return $nid;
+          $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+          
+          switch($node->getType()) {
+            case 'webbuilder':
+              return $nid;
+            case 'webbuilder_page':
+              return count($node->field_webbuilder->getValue()) ? $node->field_webbuilder->getValue()[0]['target_id'] : null;
+            default:
+              return null;
+          }
         }
       }
     } else {
