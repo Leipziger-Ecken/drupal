@@ -14,9 +14,6 @@ settings:
     -
       value: default
       label: Standard
-    -
-      value: fancy
-      label: Fancy
   allowed_values_function: ''
 module: options
 locked: false
