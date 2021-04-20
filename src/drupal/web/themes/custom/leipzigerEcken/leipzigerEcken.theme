@@ -25,6 +25,8 @@ function leipzigerEcken_theme_suggestions_views_view_alter(array &$suggestions, 
  */
 function leipzigerEcken_preprocess(&$variables)
 {
+  $is_preview = \Drupal::request()->query->get('preview') === '1';
+  $variables['is_preview'] = $is_preview;
   $variables['le_regions'] = [];
   $regions = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('le_region');
 

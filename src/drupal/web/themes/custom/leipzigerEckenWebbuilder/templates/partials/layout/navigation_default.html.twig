@@ -29,7 +29,7 @@
     </div>
 
     <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-      {% if not webbuilder_is_preview %}
+      {% if not is_preview %}
         {{ drupal_block('local_tasks_block', wrapper=false) }}
         {% if not user_is_logged_in %}
           {{ drupal_block('system_menu_block:account', wrapper=false) }}
@@ -71,7 +71,7 @@
         </div>
       </div>
       <div class="py-6 px-5 space-x-10">
-        {% if not webbuilder_is_preview %}
+        {% if not is_preview %}
           {{ drupal_block('local_tasks_block', wrapper=false) }}
           {% if not user_is_logged_in %}
             {{ drupal_block('system_menu_block:account', wrapper=false) }}
