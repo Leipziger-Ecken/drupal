@@ -171,12 +171,23 @@ class TwigExtension extends \Twig_Extension
   {
     $current_url = Url::fromRoute('<current>')->toString();
     $parts = explode('/', trim($current_url, '/'));
-    
-    if (count($parts) < 4) {
-      return null;
+
+    if (strpos($current_url, '/node/preview/') !== false) {
+      if (count($parts) >= 2) {
+        $uuid = $parts[2];
+        $result = \Drupal::entityQuery('node')->condition('uuid', $uuid)->execute();
+        if (count($result)) {
+          $nid = array_values($result)[0];
+          return $nid;
+        }
+      }
+    } else {
+      if (count($parts) >= 3) {
+        return $parts[3];
+      }
     }
-    
-    return $parts[3];
+
+    return null;
   }
 
   public function webbuilderAkteurId($webbuilder_id)
