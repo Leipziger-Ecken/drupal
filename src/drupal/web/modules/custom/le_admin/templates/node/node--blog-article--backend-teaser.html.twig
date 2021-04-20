@@ -2,7 +2,7 @@
 <article
   class="bg-white shadow border border-transparent overflow-hidden sm:rounded-lg mb-4 previewable-list__item cursor-pointer"
   data-role="item" 
-  data-preview-url="{{ url }}"
+  data-preview-url="{{ drupal_url(url, {query: {preview: 1}}) }}"
   data-preview-title="{{ node.getTitle() }}"
 >
   <div class="sm:px-6">
