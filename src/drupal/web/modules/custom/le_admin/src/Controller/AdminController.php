@@ -232,12 +232,27 @@ class AdminController extends ControllerBase
       $webbuilder->set('og_audience', $akteur_id);
     }
 
-    // remember the original frontpage
+    // remember the original index pages
     $frontpage_id = null;
     $preset_frontpage_id = null;
+    $blog_page_id = null;
+    $preset_blog_page_id = null;
+    $events_page_id = null;
+    $preset_events_page_id = null;
+    $projects_page_id = null;
+    $preset_projects_page_id = null;
 
     if ($webbuilder_preset->field_frontpage[0]) {
       $preset_frontpage_id = $webbuilder_preset->field_frontpage[0]->target_id;
+    };
+    if ($webbuilder_preset->field_blog_page[0]) {
+      $preset_blog_page_id = $webbuilder_preset->field_blog_page[0]->target_id;
+    };
+    if ($webbuilder_preset->field_events_page[0]) {
+      $preset_events_page_id = $webbuilder_preset->field_events_page[0]->target_id;
+    };
+    if ($webbuilder_preset->field_projects_page[0]) {
+      $preset_projects_page_id = $webbuilder_preset->field_projects_page[0]->target_id;
     };
 
     // now save the webbuilder
@@ -279,12 +294,21 @@ class AdminController extends ControllerBase
         $parent_pages[$page->id()] = $parent_page_id;
       }
 
-      // if the original page is the frontpage,
-      // use the ID of the cloned page and set it as the frontpage
+      // if the original page an index page,
+      // use the ID of the cloned page and set it as the index page
       // for the new webbuilder
       // we have to do non strict equality here, as IDs can be ints or strings
       if ($nid == $preset_frontpage_id) {
         $frontpage_id = $cloned_page->id();
+      }
+      if ($nid == $preset_blog_page_id) {
+        $blog_page_id = $cloned_page->id();
+      }
+      if ($nid == $preset_events_page_id) {
+        $events_page_id = $cloned_page->id();
+      }
+      if ($nid == $preset_projects_page_id) {
+        $projects_page_id = $cloned_page->id();
       }
     }
 
@@ -298,11 +322,14 @@ class AdminController extends ControllerBase
       }
     }
 
-    // set the new frontpage id
-    if ($frontpage_id) {
+    // set the new index page ids
+    if ($frontpage_id || $blog_page_id || $events_page_id || $projects_page_id) {
       $webbuilder->set('field_frontpage', $frontpage_id);
+      $webbuilder->set('field_blog_page', $blog_page_id);
+      $webbuilder->set('field_events_page', $events_page_id);
+      $webbuilder->set('field_projects_page', $projects_page_id);
 
-      // save again, to store new frontpage
+      // save again, to store new index pages
       $webbuilder->save();
     }
 
