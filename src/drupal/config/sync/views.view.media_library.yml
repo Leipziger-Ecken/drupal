@@ -10,7 +10,7 @@ dependencies:
     module:
       - media_library
   module:
-    - le_webbuilder
+    - le_admin
     - media
     - media_library
     - svg_image
@@ -474,6 +474,10 @@ display:
       display_extenders: {  }
       use_ajax: true
       css_class: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
     cache_metadata:
       max-age: 0
       contexts:

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.document.field_media_document
+    - field.field.media.document.field_og_audience
     - media.type.document
   module:
     - file
@@ -16,13 +17,15 @@ mode: default
 content:
   field_media_document:
     label: visually_hidden
-    settings: {  }
+    settings:
+      use_description_as_link_text: true
     third_party_settings: {  }
     type: file_default
-    weight: 1
+    weight: 0
     region: content
 hidden:
   created: true
+  field_og_audience: true
   langcode: true
   name: true
   thumbnail: true

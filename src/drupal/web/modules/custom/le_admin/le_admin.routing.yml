@@ -170,8 +170,47 @@ le_admin.api_webbuilder_sort_page:
 le_admin.api_webbuilder_set_frontpage:
   path: '/api/webbuilder/{webbuilder}/frontpage'
   defaults:
-    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderFrontpage'
-    _title: 'Sort page'
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderFrontPage'
+    _title: 'Set frontpage'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_blog_page:
+  path: '/api/webbuilder/{webbuilder}/blogpage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderBlogPage'
+    _title: 'Set blog page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_events_page:
+  path: '/api/webbuilder/{webbuilder}/eventspage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderEventsPage'
+    _title: 'Set events page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_projects_page:
+  path: '/api/webbuilder/{webbuilder}/projectspage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderProjectsPage'
+    _title: 'Set projects page'
   methods: [POST]
   requirements:
     _permission: 'edit own webbuilder content'

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_og_audience
     - image.style.large
     - media.type.image
   module:
@@ -20,12 +21,17 @@ content:
     settings:
       image_style: large
       image_link: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
     third_party_settings: {  }
     type: image
-    weight: 1
+    weight: 0
     region: content
 hidden:
   created: true
+  field_og_audience: true
   langcode: true
   name: true
   thumbnail: true

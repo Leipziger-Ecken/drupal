@@ -9,6 +9,9 @@
   const destination = wrapper.getAttribute('data-destination');
   const addPageButton = wrapper.querySelector('*[data-role="webbuilder-add-page"]');
   const frontpageSelect = wrapper.querySelector('*[data-role="webbuilder-frontpage"]');
+  const blogpageSelect = wrapper.querySelector('*[data-role="webbuilder-blogpage"]');
+  const eventspageSelect = wrapper.querySelector('*[data-role="webbuilder-eventspage"]');
+  const projectspageSelect = wrapper.querySelector('*[data-role="webbuilder-projectspage"]');
 
   if (!webbuilderId) {
     return;
@@ -26,6 +29,15 @@
 
   if (frontpageSelect) {
     frontpageSelect.addEventListener('change', handleFrontpageChange);
+  }
+  if (blogpageSelect) {
+    blogpageSelect.addEventListener('change', handleBlogpageChange);
+  }
+  if (eventspageSelect) {
+    eventspageSelect.addEventListener('change', handleEventspageChange);
+  }
+  if (projectspageSelect) {
+    projectspageSelect.addEventListener('change', handleProjectspageChange);
   }
 
   function apiRequest(method, path, query = null, body = null) {
@@ -116,14 +128,14 @@
     </li>`;
   }
 
-  function renderFrontPageOptions(pages, frontpageId, level = 0) {
+  function renderPageOptions(pages, frontpageId, level = 0) {
     return `<option value="" ${!frontpageId ? 'selected' : ''}> - </option>` + 
     pages
-    .map((page, index) => renderFrontPageOption(page, index, frontpageId, level))
+    .map((page, index) => renderPageOption(page, index, frontpageId, level))
     .join('\n');
   }
 
-  function renderFrontPageOption(page, index, frontpageId, level = 0) {
+  function renderPageOption(page, index, frontpageId, level = 0) {
     prefix = '';
     for(let i=0; i<level; i++) {
       prefix+='-';
@@ -221,9 +233,39 @@
   }
 
   function handleFrontpageChange(event) {
-    const frontpageId = event.target.value;
+    const pageId = event.target.value;
     apiRequest('POST', `webbuilder/${webbuilderId}/frontpage`, null, {
-      page_id: frontpageId
+      page_id: pageId
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
+  function handleBlogpageChange(event) {
+    const pageId = event.target.value;
+    apiRequest('POST', `webbuilder/${webbuilderId}/blogpage`, null, {
+      page_id: pageId
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
+  function handleEventspageChange(event) {
+    const pageId = event.target.value;
+    apiRequest('POST', `webbuilder/${webbuilderId}/eventspage`, null, {
+      page_id: pageId
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
+  function handleProjectspageChange(event) {
+    const pageId = event.target.value;
+    apiRequest('POST', `webbuilder/${webbuilderId}/projectspage`, null, {
+      page_id: pageId
     })
     .catch((err) => {
       console.error(err);
@@ -241,7 +283,22 @@
 
       if (frontpageSelect) {
         frontpageId = frontpageSelect.getAttribute('data-frontpage');
-        frontpageSelect.innerHTML = renderFrontPageOptions(pageTree, frontpageId);
+        frontpageSelect.innerHTML = renderPageOptions(pageTree, frontpageId);
+      }
+
+      if (blogpageSelect) {
+        blogpageId = blogpageSelect.getAttribute('data-blogpage');
+        blogpageSelect.innerHTML = renderPageOptions(pageTree, blogpageId);
+      }
+
+      if (eventspageSelect) {
+        eventspageId = eventspageSelect.getAttribute('data-eventspage');
+        eventspageSelect.innerHTML = renderPageOptions(pageTree, eventspageId);
+      }
+
+      if (projectspageSelect) {
+        projectspageId = projectspageSelect.getAttribute('data-projectspage');
+        projectspageSelect.innerHTML = renderPageOptions(pageTree, projectspageId);
       }
 
       removeListeners();

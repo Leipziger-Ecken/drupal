@@ -5,8 +5,11 @@ dependencies:
   config:
     - field.field.media.unsplash_image.field_attribution
     - field.field.media.unsplash_image.field_media_remote_image
+    - field.field.media.unsplash_image.field_og_audience
     - media.type.unsplash_image
   module:
+    - media_entity_remote_image
+    - select2
     - text
 id: media.unsplash_image.default
 targetEntityType: media
@@ -22,16 +25,26 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_media_remote_image:
-    weight: 1
+    weight: 2
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: remote_image_url_widget
+    region: content
+  field_og_audience:
+    weight: 0
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   name:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60

@@ -1,0 +1,28 @@
+uuid: f9f774f5-fa56-49ff-ac53-2d8a787b17ee
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_projects_page
+    - node.type.webbuilder
+    - node.type.webbuilder_page
+id: node.webbuilder.field_projects_page
+field_name: field_projects_page
+entity_type: node
+bundle: webbuilder
+label: 'Seite mit Projekten'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webbuilder_page: webbuilder_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

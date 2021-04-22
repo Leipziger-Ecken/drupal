@@ -3,8 +3,10 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
+    - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
@@ -13,6 +15,7 @@ dependencies:
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_preview_image
+    - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -27,6 +30,13 @@ targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
+  field_blog_page:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
   field_color_primary:
     weight: 1
     label: hidden
@@ -36,8 +46,15 @@ content:
     third_party_settings: {  }
     type: color_field_formatter_text
     region: content
+  field_events_page:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
   field_facebook_link:
-    weight: 6
+    weight: 9
     label: hidden
     settings:
       trim_length: 80
@@ -49,7 +66,7 @@ content:
     type: link
     region: content
   field_fonts:
-    weight: 5
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -63,7 +80,7 @@ content:
     type: entity_reference_entity_id
     region: content
   field_instagram_link:
-    weight: 7
+    weight: 10
     label: hidden
     settings:
       trim_length: 80
@@ -75,7 +92,7 @@ content:
     type: link
     region: content
   field_layout:
-    weight: 4
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -90,8 +107,15 @@ content:
       image_link: ''
     third_party_settings: {  }
     region: content
+  field_projects_page:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
   field_twitter_link:
-    weight: 8
+    weight: 11
     label: hidden
     settings:
       trim_length: 80

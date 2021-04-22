@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.media.document.field_media_document
+    - field.field.media.document.field_og_audience
     - media.type.document
   module:
     - file
     - path
+    - select2
 _core:
   default_config_hash: gtZlAQdQqZgVWvvZ6v-hfmACkfEimqn_GPDbQZqNAbw
 id: media.document.default
@@ -17,7 +19,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -26,7 +28,17 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
     type: file_generic
+    weight: 1
+    region: content
+  field_og_audience:
     weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      autocomplete: false
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
     region: content
   langcode:
     type: language_select
@@ -37,7 +49,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -45,12 +57,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 100
+    weight: 6
     region: content
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 3
     settings:
       match_operator: CONTAINS
       match_limit: 10

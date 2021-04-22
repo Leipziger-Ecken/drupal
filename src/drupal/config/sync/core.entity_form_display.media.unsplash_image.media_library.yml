@@ -6,8 +6,11 @@ dependencies:
     - core.entity_form_mode.media.media_library
     - field.field.media.unsplash_image.field_attribution
     - field.field.media.unsplash_image.field_media_remote_image
+    - field.field.media.unsplash_image.field_og_audience
     - media.type.unsplash_image
   module:
+    - media_entity_remote_image
+    - select2
     - text
 id: media.unsplash_image.media_library
 targetEntityType: media
@@ -23,19 +26,29 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_media_remote_image:
-    type: string_textfield
-    weight: 1
+    type: remote_image_url_widget
+    weight: 2
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_og_audience:
+    type: select2_entity_reference
+    weight: 0
+    region: content
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
     third_party_settings: {  }
   name:
     type: string_textfield
     settings:
       size: 60
       placeholder: ''
-    weight: 0
+    weight: 1
     third_party_settings: {  }
     region: content
 hidden:

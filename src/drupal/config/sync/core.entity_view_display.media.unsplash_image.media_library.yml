@@ -6,9 +6,10 @@ dependencies:
     - core.entity_view_mode.media.media_library
     - field.field.media.unsplash_image.field_attribution
     - field.field.media.unsplash_image.field_media_remote_image
+    - field.field.media.unsplash_image.field_og_audience
     - media.type.unsplash_image
   module:
-    - le_webbuilder
+    - le_admin
 id: media.unsplash_image.media_library
 targetEntityType: media
 bundle: unsplash_image
@@ -30,6 +31,7 @@ content:
 hidden:
   created: true
   field_attribution: true
+  field_og_audience: true
   langcode: true
   name: true
   thumbnail: true

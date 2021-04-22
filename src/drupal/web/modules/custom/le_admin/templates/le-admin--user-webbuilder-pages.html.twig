@@ -25,21 +25,48 @@
     class: 'webbuilder-add-page',
     label: '<span class="webbuilder-add-page__add-label">+ ' ~ ('Add Page'|t) ~ '</span><span class="webbuilder-add-page__cancel-label">' ~ ('Cancel'|t) ~ '</span>'
   }) }}
+  <div class="flex space-x-2">
+    <div class="form-item w-48">
+      <label 
+        class="form-item__label form-required" 
+        for="webbuilder-frontpage"
+      >
+        {{ 'Frontpage'|t }}
+      </label>
+      <select 
+        class="form-element form-element--type-select"
+        id="webbuilder-frontpage"
+        data-role="webbuilder-frontpage" 
+        data-frontpage="{{ node.get('field_frontpage')[0].target_id }}"
+      >
+      </select>
+    </div>
+    <div class="form-item w-48">
+      <label class="form-item__label form-required" for="webbuilder-blogpage">
+        {{ 'Blog Page'|t }}
+      </label>
+      <select class="form-element form-element--type-select" id="webbuilder-blogpage" data-role="webbuilder-blogpage"
+        data-blogpage="{{ node.get('field_blog_page')[0].target_id }}">
+      </select>
+    </div>
 
-  <div class="form-item">
-    <label 
-      class="form-item__label form-required" 
-      for="webbuilder-frontpage"
-    >
-      {{ 'Frontpage'|t }}
-    </label>
-    <select 
-      class="form-element form-element--type-select"
-      id="webbuilder-frontpage"
-      data-role="webbuilder-frontpage" 
-      data-frontpage="{{ node.get('field_frontpage')[0].target_id }}"
-    >
-    </select>
+    <div class="form-item w-48">
+      <label class="form-item__label form-required" for="webbuilder-eventspage">
+        {{ 'Events Page'|t }}
+      </label>
+      <select class="form-element form-element--type-select" id="webbuilder-eventspage" data-role="webbuilder-eventspage"
+        data-eventspage="{{ node.get('field_events_page')[0].target_id }}">
+      </select>
+    </div>
+
+    <div class="form-item w-48">
+      <label class="form-item__label form-required" for="webbuilder-projectspage">
+        {{ 'Projects Page'|t }}
+      </label>
+      <select class="form-element form-element--type-select" id="webbuilder-projectspage" data-role="webbuilder-projectspage"
+        data-projectspage="{{ node.get('field_projects_page')[0].target_id }}">
+      </select>
+    </div>
   </div>
   
   {{ include('@le_admin/partials/previewable_item_list.html.twig', {

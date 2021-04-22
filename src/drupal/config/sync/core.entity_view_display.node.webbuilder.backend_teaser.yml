@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.backend_teaser
+    - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
+    - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
@@ -14,6 +16,7 @@ dependencies:
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_preview_image
+    - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -25,8 +28,10 @@ bundle: webbuilder
 mode: backend_teaser
 content: {  }
 hidden:
+  field_blog_page: true
   field_color_primary: true
   field_description: true
+  field_events_page: true
   field_facebook_link: true
   field_fonts: true
   field_frontpage: true
@@ -35,6 +40,7 @@ hidden:
   field_layout: true
   field_logo: true
   field_preview_image: true
+  field_projects_page: true
   field_twitter_link: true
   langcode: true
   links: true

@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_form_mode.media.media_library
     - field.field.media.image.field_media_image
+    - field.field.media.image.field_og_audience
     - image.style.thumbnail
     - media.type.image
   module:
+    - select2
     - svg_image
 _core:
   default_config_hash: BMLrK4zKp8-FFnMseBdT_6h6YipUsKRfbDf_3WUB5HA
@@ -23,6 +25,16 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_og_audience:
+    type: select2_entity_reference
+    weight: 0
+    region: content
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
     third_party_settings: {  }
   langcode:
     type: language_select

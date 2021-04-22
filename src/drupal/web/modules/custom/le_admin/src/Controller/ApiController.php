@@ -127,7 +127,7 @@ class ApiController extends ControllerBase
     $page->save();
   }
 
-  public function setWebbuilderFrontPage($webbuilder)
+  protected function _setWebbuilderPage($field, $webbuilder)
   {
     $data = json_decode(\Drupal::request()->getContent(), true);
     $page_id = $data['page_id'] ?? null;
@@ -136,9 +136,29 @@ class ApiController extends ControllerBase
       return new JsonResponse(['error' => 'Missing page_id'], 400);
     }
 
-    $webbuilder->set('field_frontpage', $page_id);
+    $webbuilder->set($field, $page_id);
     $webbuilder->save();
 
     return new JsonResponse(['success' => true]);
+  }
+
+  public function setWebbuilderFrontPage($webbuilder)
+  {
+    return $this->_setWebbuilderPage('field_frontpage', $webbuilder);
+  }
+
+  public function setWebbuilderBlogPage($webbuilder)
+  {
+    return $this->_setWebbuilderPage('field_blog_page', $webbuilder);
+  }
+
+  public function setWebbuilderEventsPage($webbuilder)
+  {
+    return $this->_setWebbuilderPage('field_events_page', $webbuilder);
+  }
+
+  public function setWebbuilderProjectsPage($webbuilder)
+  {
+    return $this->_setWebbuilderPage('field_projects_page', $webbuilder);
   }
 }

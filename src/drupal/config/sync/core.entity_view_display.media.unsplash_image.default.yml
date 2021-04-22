@@ -5,9 +5,10 @@ dependencies:
   config:
     - field.field.media.unsplash_image.field_attribution
     - field.field.media.unsplash_image.field_media_remote_image
+    - field.field.media.unsplash_image.field_og_audience
     - media.type.unsplash_image
   module:
-    - le_webbuilder
+    - le_admin
     - text
 id: media.unsplash_image.default
 targetEntityType: media
@@ -15,7 +16,7 @@ bundle: unsplash_image
 mode: default
 content:
   field_attribution:
-    weight: 2
+    weight: 1
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -36,6 +37,7 @@ content:
     region: content
 hidden:
   created: true
+  field_og_audience: true
   langcode: true
   name: true
   thumbnail: true

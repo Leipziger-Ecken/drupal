@@ -3,8 +3,10 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
     - field.field.node.webbuilder.field_description
+    - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
@@ -13,6 +15,7 @@ dependencies:
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_preview_image
+    - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -213,7 +216,10 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_blog_page: true
+  field_events_page: true
   field_frontpage: true
+  field_projects_page: true
   langcode: true
   promote: true
   sticky: true
