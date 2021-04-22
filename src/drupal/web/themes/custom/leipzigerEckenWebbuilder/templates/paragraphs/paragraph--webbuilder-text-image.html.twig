@@ -1,7 +1,10 @@
 {% set image = content.field_image[0] %}
 {% set image_alignment = content.field_image_alignment[0]['#markup'] %}
 {% block paragraph %}
-<section class="overflow-hidden {{ webbuilder_classes.margin.b_md }}">
+<section 
+  class="overflow-hidden {{ webbuilder_classes.margin.b_md }}"
+  data-role="paragraph"
+>
   <div class="relative {{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }}">
     {% if content.field_pre_heading[0] or content.field_heading[0] %}
     <div class="mx-auto text-base max-w-prose lg:max-w-none">

@@ -1,7 +1,10 @@
 {% set layout = content.field_cta_layout[0]['#markup'] %}
 {% block paragraph %}
 {% if layout == 'md' %}
-<section class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
+<section 
+  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}"
+  data-role="paragraph"
+>
   <div class="bg-primary-100">
     <div class="max-w-2xl mx-auto text-center {{ webbuilder_classes.padding.y_md }} {{ webbuilder_classes.padding.x_md }}">
       {% if content.field_heading[0] %}
@@ -34,7 +37,10 @@
   </div>
 </section>
 {% elseif layout == 'lg' %}
-<section class="relative bg-gray-50 overflow-hidden {{ webbuilder_classes.margin.b_md }}">
+<section 
+  class="relative bg-gray-50 overflow-hidden {{ webbuilder_classes.margin.b_md }}"
+  data-role="paragraph"
+>
   <div class="relative pt-6 pb-16 sm:pb-24">
     <div class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} sm:mt-24">
       <div class="text-center">

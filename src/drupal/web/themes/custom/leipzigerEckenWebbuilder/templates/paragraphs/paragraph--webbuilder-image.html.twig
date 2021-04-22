@@ -1,22 +1,24 @@
 {% block paragraph %}
-{% set image = content.field_image[0] %}
-{% if image %}
-<figure class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
-  {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
-    image: image,
-    class:'w-full h-auto mb-2',
-    image_style: 'webbuilder_image',
-    width: 1480,
-  }) }}
+<div data-role="paragraph">
+  {% set image = content.field_image[0] %}
+  {% if image %}
+  <figure class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
+    {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+      image: image,
+      class:'w-full h-auto mb-2',
+      image_style: 'webbuilder_image',
+      width: 1480,
+    }) }}
 
-  {# Unsplash images always require attribution #}
-  {% if image['#media'].field_attribution or content.field_image_caption[0] %}
-  <figcaption class="{{ webbuilder_classes.text.figcaption }}">
-    {# TODO: find a way to correctly render attribution field #}
-    {{ image['#media'].field_attribution[0].value|raw }}
-    {{ content.field_image_caption }}
-  </figcaption>
+    {# Unsplash images always require attribution #}
+    {% if image['#media'].field_attribution or content.field_image_caption[0] %}
+    <figcaption class="{{ webbuilder_classes.text.figcaption }}">
+      {# TODO: find a way to correctly render attribution field #}
+      {{ image['#media'].field_attribution[0].value|raw }}
+      {{ content.field_image_caption }}
+    </figcaption>
+    {% endif %}
+  </figure>
   {% endif %}
-</figure>
-{% endif %}
+</div>
 {% endblock paragraph %}

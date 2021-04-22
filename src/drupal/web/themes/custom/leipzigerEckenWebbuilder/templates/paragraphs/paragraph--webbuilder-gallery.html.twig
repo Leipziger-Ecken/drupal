@@ -1,6 +1,9 @@
 {% set cols = content.field_cols[0]['#markup'] %}
 {% block paragraph %}
-<section class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
+<section 
+  class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}"
+  data-role="paragraph"
+>
   {% if content.field_heading[0] %}
   <div class="text-lg {{ webbuilder_classes.container.prose }} {{ webbuilder_classes.margin.b_sm }}">
     <h2>
