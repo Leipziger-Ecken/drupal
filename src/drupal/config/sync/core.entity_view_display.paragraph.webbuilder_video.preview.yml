@@ -1,0 +1,43 @@
+uuid: afe4ef8f-a446-4fac-8cd1-0ac6b88d4f58
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_video.field_heading
+    - field.field.paragraph.webbuilder_video.field_video
+    - field.field.paragraph.webbuilder_video.field_video_caption
+    - paragraphs.paragraphs_type.webbuilder_video
+  module:
+    - text
+id: paragraph.webbuilder_video.preview
+targetEntityType: paragraph
+bundle: webbuilder_video
+mode: preview
+content:
+  field_heading:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: media_library
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_video_caption:
+    weight: 2
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+hidden: {  }

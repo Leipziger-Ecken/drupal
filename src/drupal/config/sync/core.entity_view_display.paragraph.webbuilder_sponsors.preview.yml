@@ -1,0 +1,33 @@
+uuid: d5e7ba7c-6434-40e8-bfae-eedbe6fd1fa9
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_sponsors.field_body
+    - field.field.paragraph.webbuilder_sponsors.field_heading
+    - paragraphs.paragraphs_type.webbuilder_sponsors
+  module:
+    - text
+id: paragraph.webbuilder_sponsors.preview
+targetEntityType: paragraph
+bundle: webbuilder_sponsors
+mode: preview
+content:
+  field_body:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_heading:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }
