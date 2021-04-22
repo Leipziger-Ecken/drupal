@@ -50,3 +50,6 @@
   border-color: var(--colorGinPrimary) !important;
   background-color: var(--colorGinPrimaryLight) !important;
 }
+.js-offCanvasPreviewer .ui-dialog-content {
+  overflow: hidden !important;
+}
