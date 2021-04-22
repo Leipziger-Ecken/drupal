@@ -42,6 +42,6 @@
 {% block main %}
   {# Content #}
   {% block content %}
-    {{ page.content }}
+    {{ page.content|without('messages') }}
   {% endblock %}
 {% endblock %}
