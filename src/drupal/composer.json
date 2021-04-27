@@ -72,6 +72,7 @@
         "drupal/select2": "^1.12",
         "drupal/select2_multicheck": "^1.0",
         "drupal/simple_sitemap": "^3.8",
+        "drupal/smtp": "^1.0",
         "drupal/svg_image": "^1.14",
         "drupal/token": "^1.6",
         "drupal/tour_ui": "^1.0@beta",
