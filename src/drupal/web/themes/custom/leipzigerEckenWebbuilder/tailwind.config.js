@@ -45,6 +45,8 @@ module.exports = {
     './templates/**/*.twig',
     './assets/js/**/*.js',
     './leipzigerEckenWebbuilder.theme',
+    '../../../modules/custom/**/*.php',
+    '../../../modules/custom/**/*.module',
   ],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
