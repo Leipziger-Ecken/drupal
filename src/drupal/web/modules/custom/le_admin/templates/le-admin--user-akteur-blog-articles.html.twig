@@ -8,7 +8,7 @@
   }) }}
 
   {{ include('@le_admin/partials/primary_action_button.html.twig', {
-    url: drupal_url('/node/add/blog_article', {query: {destination: destination, le_atkeur: node.id() }}),
+    url: drupal_url('/node/add/blog_article', {query: {destination: destination, le_akteur: node.id() }}),
     label: '+ ' ~ ('Add Blog Article'|t)
   }) }}
 
