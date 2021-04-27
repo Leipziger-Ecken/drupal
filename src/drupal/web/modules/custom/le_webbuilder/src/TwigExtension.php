@@ -173,7 +173,7 @@ class TwigExtension extends \Twig_Extension
     $parts = explode('/', trim($current_url, '/'));
 
     if (strpos($current_url, '/node/preview/') !== false) {
-      if (count($parts) >= 2) {
+      if (count($parts) >= 3) {
         $uuid = $parts[2];
         $result = \Drupal::entityQuery('node')->condition('uuid', $uuid)->execute();
         if (count($result)) {
@@ -181,6 +181,22 @@ class TwigExtension extends \Twig_Extension
           $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
           
           switch($node->getType()) {
+            case 'webbuilder':
+              return $nid;
+            case 'webbuilder_page':
+              return count($node->field_webbuilder->getValue()) ? $node->field_webbuilder->getValue()[0]['target_id'] : null;
+            default:
+              return null;
+          }
+        }
+      }
+    } elseif (strpos($current_url, '/node/') !== false) {
+      if (count($parts) >= 2) {
+        $nid = $parts[1];
+        $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+        
+        if ($node) {
+          switch ($node->getType()) {
             case 'webbuilder':
               return $nid;
             case 'webbuilder_page':
