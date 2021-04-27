@@ -5,7 +5,6 @@
 {% set title = label %}
 {% set status = node.status %}
 {% if partner_type == 'le_akteur' and akteur_id %}
-{% set status = drupal_field('status', 'node', akteur_id) %}
 {% set title = drupal_field('title', 'node', akteur_id) %}
 {% set website_url = drupal_url('node/' ~ akteur_id) %}
 {% endif %}
