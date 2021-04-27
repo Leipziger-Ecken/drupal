@@ -12,20 +12,41 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: 'Archivo Black+DM Sans'
+      label: 'Archivo Black & DM Sans'
+    -
       value: 'Cormorant Garamond+Proza Libre'
       label: 'Cormorant Garamond & Proza Libre'
     -
+      value: 'Crimson Pro+DM Sans'
+      label: 'Crimson Pro & DM Sans'
+    -
+      value: 'DM Serif Display+DM Sans|'
+      label: 'DM Serif Display & DM Sans'
+    -
+      value: 'Eczar+Gentium Basic'
+      label: 'Eczar & Gentium Basic'
+    -
+      value: 'Eczar+DM Sans'
+      label: 'Eczar & DM Sans'
+    -
+      value: 'Jost+DM Sans'
+      label: 'Jost & DM Sans'
+    -
+      value: Kavoon+Rubik
+      label: 'Kavoon & Rubik'
+    -
       value: 'Libre Franklin+Libre Baskerville'
       label: 'Libre Franklin & Libre Baskerville'
+    -
+      value: 'Rubik+Space Grotesk'
+      label: 'Rubik & Space Grotesk'
     -
       value: Trirong+Rubik
       label: 'Trirong & Rubik'
     -
       value: 'Work Sans+Taviraj'
       label: 'Work Sans & Taviraj'
-    -
-      value: 'Eczar+Gentium Basic'
-      label: 'Eczar & Gentium Basic'
   allowed_values_function: ''
 module: options
 locked: false
