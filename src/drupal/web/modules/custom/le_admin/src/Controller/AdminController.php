@@ -215,8 +215,7 @@ class AdminController extends ControllerBase
   {
     $user_id = \Drupal::currentUser()->id();
     $akteur_id = \Drupal::request()->get('le_akteur') ?? $webbuilder_preset->og_audience->target_id;
-    $destination = \Drupal::request()->get('_destination');
-
+    
     // deep clone the webbuilder
     $webbuilder = $webbuilder_preset->createDuplicate();
     $webbuilder_preset_id = $webbuilder_preset->id();
@@ -335,8 +334,6 @@ class AdminController extends ControllerBase
 
     return $this->redirect('entity.node.edit_form', [
       'node' => $webbuilder->id(),
-    ], [
-      'query' => ['destination' => $destination]
     ]);
   }
 }
