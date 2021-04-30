@@ -35,9 +35,9 @@
         "drupal/geofield_map": "^2.62",
         "drupal/google_analytics": "^3.1",
         "drupal/http_client_manager": "^2.4",
-        "drupal/jsonapi_extras": "^3.16",
+        "drupal/jsonapi_extras": "^3.17",
         "drupal/jsonld": "^1.0",
-        "drupal/leaflet": "^2.1",
+        "drupal/leaflet": "^2.1.13",
         "drupal/leaflet_more_maps": "^2.1",
         "drupal/login_emailusername": "^1.2",
         "drupal/obfuscate_email": "^1.3",
@@ -45,10 +45,10 @@
         "drupal/recaptcha": "^3.0",
         "drupal/redirect": "^1.6",
         "drupal/schema_metatag": "^1.4",
-        "drupal/simple_sitemap": "^3.8",
+        "drupal/simple_sitemap": "^3.10",
         "drupal/subpathauto": "^1.1",
         "drupal/svg_image": "^1.14",
-        "drupal/token": "^1.6",
+        "drupal/token": "^1.9",
         "drupal/twig_tweak": "^2.6",
         "drupal/upgrade_status": "^2.7",
         "drush/drush": "^10.2",
@@ -114,11 +114,6 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
-        },
-        "patches": {
-            "geocoder-php/mapbox-provider": {
-                "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
-            }
         }
     }
 }
