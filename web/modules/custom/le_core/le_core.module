@@ -1,9 +1,109 @@
 <?php
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\og\Og;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Views\ViewExecutable;
+
+/**
+ * Implements template_preprocess_views_exposed_form().
+ *
+ * Adds custom date picker to event-form filter.
+ */
+function le_core_preprocess_views_exposed_form(&$variables) {
+  // sort operator: sort_by=field_le_event_occurrences_value&sort_order=DESC
+
+  if ($variables['form']['#id'] === 'views-exposed-form-le-view-events-page-1') {
+    // Transform form API element into pure HTML. Will be skipped if '#markup' is already given
+    // @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Renderer.php/function/Renderer%3A%3Arender/8.2.x
+    $start = \Drupal::service('renderer')->render($variables['form']['start']);
+    $ende = \Drupal::service('renderer')->render($variables['form']['ende']);
+
+    // Optional: Remove any noisy HTML from rendered string
+    // $start = preg_replace('/<!--(.|\s)*?-->\s*|\r|\n/', '', $start);
+
+    // Uses #type => inline_template to avoid stripped HTML from #markup
+    // @todo By default use english i18n keys, then translate into German via UI
+    $custom_date_selector = [
+        '#type' => 'inline_template',
+        '#template' => '
+        <div class="form-item form-type-select form-item-custom-date">
+          <label for="custom-date" class="control-label">'. t('Datum'). '</label>
+
+          <div class="select-wrapper">
+            <select data-drupal-selector="custom-date" name="date" class="form-select form-control" id="custom-date">
+              <option selected="selected">'. t('Ab heute') .'</option>
+            </select>
+
+            <div class="categories-select active">
+              <div class="categories-select__options" data-level="1">
+                <div class="categories-select__options__option" data-cat-id="all">
+                  <a href="#" title="'. t('Alle kommenden Events') .'">'. t('Ab heute') .'</a>
+                </div>
+                <div class="categories-select__options__option" data-cat-id="all">
+                  <a href="#" title="'. t('Alle vergangenen Events (aufsteigend)') .'">'. t('Vergangene Events') .'</a>
+                </div>
+                <div class="categories-select__options__option" data-cat-id="all">
+                  <a href="#" title="'. t('Alle Events ab Montag nächster Woche'). '">'. t('Ab nächster Woche') .'</a>
+                </div>
+                <div class="categories-select__options__option has-child" data-cat-id="727">
+                  <a href="#" title="'. t('Beliebigen Zeitraum eingeben') .'">'. t('Datum eingeben') .'</a>
+                  <div class="categories-select__options" data-level="2">
+                    <div class="categories-select__options__option">
+                      <a href="#" title="'. t('Startdatum eingeben') .'">
+                        '. $start .'
+                      </a>
+                    </div>
+                    <div class="categories-select__options__option">
+                      <a href="#" title="'. t('Enddatum eingeben') .'">
+                        '. $ende .'
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>'
+    ];
+
+    // Push custom date picker to previous start input, remove all internally computed inputs
+    $variables['form']['start'] = $custom_date_selector;
+    unset($variables['form']['sort_by']);
+    unset($variables['form']['sort_order']);
+    unset($variables['form']['ende']);
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  if ($view->id() == 'le_view_events') {
+    switch ($display_id) {
+      case 'page_1':
+        // @todo Override backend filter & sort routine for custom date selector!
+        $filter_input = $view->getExposedInput();
+
+        if (empty($filter_input)) { // @todo Check if even sub-values are empty!
+          // Show all events "starting by today (asc)"
+          $filter_input['start'] = date("Y-m-d");
+          $view->setExposedInput($filter_input);
+        }
+
+        // field_le_event_occurrences_value
+        /**
+        => ~ [
+          "title" => ""
+          "stadtteil_id" => "657"
+          "bezirk_id" => "All"
+          "start" => ""
+          "ende" => ""
+          "kategorie_id" => array:1 [▼
+            0 => "727"
+          ] **/
+        break;
+    }
+  }
+}
 
 /**
  * Called on UI-change event of $field_{le_entity_type}_kategorie_typ.
