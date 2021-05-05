@@ -3,73 +3,94 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Views\ViewExecutable;
 
+define('LE_CUSTOM_DATES', [
+  'FUTURE' => 'future', // >= today
+  'PAST' => 'past', // < today
+  'NEXT_WEEK' => 'next_week', // > monday of next week
+  'CUSTOM' => 'custom' // Take 'start'- & 'ende'-params from URI
+]);
+
+$GLOBALS['le_custom_date'] = LE_CUSTOM_DATES['FUTURE'];
+$GLOBALS['le_custom_start'] = null;
+$GLOBALS['le_custom_end'] = null;
+
 /**
  * Implements template_preprocess_views_exposed_form().
  *
  * Adds custom date picker to event-form filter.
  */
 function le_core_preprocess_views_exposed_form(&$variables) {
-  // sort operator: sort_by=field_le_event_occurrences_value&sort_order=DESC
-
   if ($variables['form']['#id'] === 'views-exposed-form-le-view-events-page-1') {
-    // Transform form API element into pure HTML. Will be skipped if '#markup' is already given
+    $custom_date = $GLOBALS['le_custom_date'];
+
+    // Transform form API element into pure HTML. Will be skipped if '#markup'/'#printed' is already given on element
     // @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Renderer.php/function/Renderer%3A%3Arender/8.2.x
-    $start = \Drupal::service('renderer')->render($variables['form']['start']);
-    $ende = \Drupal::service('renderer')->render($variables['form']['ende']);
+    $startInput = \Drupal::service('renderer')->render($variables['form']['start']);
+    $endInput = \Drupal::service('renderer')->render($variables['form']['ende']);
 
-    // Optional: Remove any noisy HTML from rendered string
-    // $start = preg_replace('/<!--(.|\s)*?-->\s*|\r|\n/', '', $start);
-
-    // Uses #type => inline_template to avoid stripped HTML from #markup
-    // @todo By default use english i18n keys, then translate into German via UI
-    $custom_date_selector = [
+    // Uses #type => inline_template to avoid stripped HTML from use of #markup
+    // @todo By default use english i18n strings, then translate into German via UI
+    $custom_date_picker = [
         '#type' => 'inline_template',
         '#template' => '
-        <div class="form-item form-type-select form-item-custom-date">
-          <label for="custom-date" class="control-label">'. t('Datum'). '</label>
+          <div class="form-item form-type-select form-item-custom-date le-date-picker">
+            <label for="le-date-picker__select" class="control-label">'. t('Datum'). '</label>
 
-          <div class="select-wrapper">
-            <select data-drupal-selector="custom-date" name="date" class="form-select form-control" id="custom-date">
-              <option selected="selected">'. t('Ab heute') .'</option>
-            </select>
+            <div class="select-wrapper">
+              <select name="date" class="form-select form-control" id="le-date-picker__select">
+                <option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected="selected"' : '') .'>'. t('Ab heute') .'</option>
+                <option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected="selected"' : '') .'>'. t('Vergangene Events') .'</option>
+                <option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected="selected"' : '') .'>'. t('Ab nächster Woche') .'</option>'.
+                ($custom_date === LE_CUSTOM_DATES['CUSTOM']
+                ? '<option selected="selected">'. 
+                    (!is_null($GLOBALS['le_custom_start']) ? $GLOBALS['le_custom_start'] . ' ' : t('Heute') . ' ') .
+                    (!is_null($GLOBALS['le_custom_end']) ? '- '. $GLOBALS['le_custom_end'] : '') .
+                  '</option>'
+                : '<option>'. t('Datum eingeben') .'</option>'
+                ).
+              '</select>
 
-            <div class="categories-select active">
-              <div class="categories-select__options" data-level="1">
-                <div class="categories-select__options__option" data-cat-id="all">
-                  <a href="#" title="'. t('Alle kommenden Events') .'">'. t('Ab heute') .'</a>
-                </div>
-                <div class="categories-select__options__option" data-cat-id="all">
-                  <a href="#" title="'. t('Alle vergangenen Events (aufsteigend)') .'">'. t('Vergangene Events') .'</a>
-                </div>
-                <div class="categories-select__options__option" data-cat-id="all">
-                  <a href="#" title="'. t('Alle Events ab Montag nächster Woche'). '">'. t('Ab nächster Woche') .'</a>
-                </div>
-                <div class="categories-select__options__option has-child" data-cat-id="727">
-                  <a href="#" title="'. t('Beliebigen Zeitraum eingeben') .'">'. t('Datum eingeben') .'</a>
-                  <div class="categories-select__options" data-level="2">
-                    <div class="categories-select__options__option">
-                      <a href="#" title="'. t('Startdatum eingeben') .'">
-                        '. $start .'
-                      </a>
-                    </div>
-                    <div class="categories-select__options__option">
-                      <a href="#" title="'. t('Enddatum eingeben') .'">
-                        '. $ende .'
-                      </a>
+              <div class="categories-select" data-id="le-date-picker">
+                <div class="categories-select__options" data-level="1">
+                  <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['FUTURE'] .'">
+                    <a href="#" title="'. t('Alle kommenden Events') .'">'. t('Ab heute') .'</a>
+                  </div>
+                  <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['PAST'] .'">
+                    <a href="#" title="'. t('Alle vergangenen Events (aufsteigend)') .'">'. t('Vergangene Events') .'</a>
+                  </div>
+                  <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['NEXT_WEEK'] .'">
+                    <a href="#" title="'. t('Alle Events ab Montag nächster Woche'). '">'. t('Ab nächster Woche') .'</a>
+                  </div>
+                  <div class="categories-select__options__option has-child'. ($custom_date === LE_CUSTOM_DATES['CUSTOM'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['CUSTOM'] .'">
+                    <a href="#" title="'. t('Beliebigen Zeitraum eingeben') .'">'. t('Datum eingeben') .'</a>
+                    <div class="categories-select__options" data-level="2">
+                      <div class="categories-select__options__option">
+                        <a href="#" title="'. t('Startdatum eingeben') .'">
+                          '. $startInput .'
+                        </a>
+                      </div>
+                      <div class="categories-select__options__option">
+                        <a href="#" title="'. t('Enddatum eingeben') .'">
+                          '. $endInput .'
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>'
+        '
     ];
 
     // Push custom date picker to previous start input, remove all internally computed inputs
-    $variables['form']['start'] = $custom_date_selector;
+    $variables['form']['start'] = $custom_date_picker;
     unset($variables['form']['sort_by']);
     unset($variables['form']['sort_order']);
     unset($variables['form']['ende']);
+
+    // Attach UI handler
+    $variables['form']['#attached']['library'][] = 'le_core/events-date-filter-picker';
   }
 }
 
@@ -77,29 +98,55 @@ function le_core_preprocess_views_exposed_form(&$variables) {
  * Implements hook_views_pre_view().
  */
 function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+ //  global $custom_date;
+
   if ($view->id() == 'le_view_events') {
     switch ($display_id) {
       case 'page_1':
-        // @todo Override backend filter & sort routine for custom date selector!
+        // Evaluate URI-params and programmatically override events-view-filter & sort.
+        // Standard setting ("future"): All upcoming events, ascending.
+        $start = null;
+        $end = null;
+        $sort_order = 'ASC';
+
         $filter_input = $view->getExposedInput();
 
-        if (empty($filter_input)) { // @todo Check if even sub-values are empty!
-          // Show all events "starting by today (asc)"
-          $filter_input['start'] = date("Y-m-d");
-          $view->setExposedInput($filter_input);
+        if (isset($filter_input['date']) && in_array($filter_input['date'], LE_CUSTOM_DATES)) {
+          $GLOBALS['le_custom_date'] = $filter_input['date'];
         }
 
-        // field_le_event_occurrences_value
-        /**
-        => ~ [
-          "title" => ""
-          "stadtteil_id" => "657"
-          "bezirk_id" => "All"
-          "start" => ""
-          "ende" => ""
-          "kategorie_id" => array:1 [▼
-            0 => "727"
-          ] **/
+        switch ($GLOBALS['le_custom_date']) {
+          default:
+          case 'future':
+            $start = date("Y-m-d");
+            break;
+          case 'past':
+            $end = date("Y-m-d");
+            $sort_order = 'DESC';
+            break;
+          case 'next_week':
+            $start = date('Y-m-d', strtotime('next monday'));
+            break;
+          case 'custom':
+            $start = $filter_input['start'];
+            $end = $filter_input['ende'];
+
+            if (empty($start)) {
+              $sort_order = 'DESC';
+            }
+            break;
+        }
+
+        $GLOBALS['le_custom_start'] = $start;
+        $GLOBALS['le_custom_end'] = $end;
+
+        $view->setExposedInput([
+          'start' => $start,
+          'ende' => $end, 
+          'sort_by' => 'field_le_event_occurrences_value',
+          'sort_order' => $sort_order
+        ]);
+
         break;
     }
   }
