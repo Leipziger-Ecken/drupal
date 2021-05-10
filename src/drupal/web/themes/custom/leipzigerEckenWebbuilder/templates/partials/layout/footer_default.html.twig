@@ -1,4 +1,7 @@
 {% set akteur_id = webbuilder_akteur_id(webbuilder_id) %}
+{% set webbuilder_blog_page = drupal_field('field_blog_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+{% set webbuilder_events_page = drupal_field('field_events_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+{% set webbuilder_projects_page = drupal_field('field_projects_page', 'node', webbuilder_id)[0]['#plain_text'] %}
 <footer class="bg-primary-800" aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -7,105 +10,39 @@
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             {{ drupal_view('blog', 'webbuilder_footer', akteur_id) }}
-            {#
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Aktuelles
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Blogeintrag 01
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Blogeintrag 02
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Blogeintrag 03
-                </a>
-              </li>
-
-              <li>
-                <a href="/blog_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
-                  Mehr&thinsp;…
-                </a>
-              </li>
-            </ul>
-            #}
+            {% if webbuilder_blog_page %}
+            <a 
+              href="{{ drupal_url('/node/' ~ webbuilder_blog_page) }}" 
+              class="block text-base text-gray-300 hover:text-white mt-4"
+            >
+              {{ 'More …'|t }}
+            </a>
+            {% endif %}
           </div>
 
           <div class="mt-12 md:mt-0">
             {{ drupal_view('le_akteur_has_events', 'webbuilder_footer', akteur_id) }}
-            {#
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Events
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Event 01
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Event 02
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Event 03
-                </a>
-              </li>
-
-              <li>
-                <a href="/events_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
-                  Mehr&thinsp;…
-                </a>
-              </li>
-            </ul>
-            #}
+            {% if webbuilder_events_page %}
+            <a 
+              href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}" 
+              class="block text-base text-gray-300 hover:text-white mt-4"
+            >
+              {{ 'More …'|t }}
+            </a>
+            {% endif %}
           </div>
         </div>
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             {{ drupal_view('projects', 'webbuilder_footer', akteur_id) }}
-            {#
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Projekte
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Schulgründung im Kiez?
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Förderverein Bülowgärten e.V.
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  BülowSTRASSENMUSIKfestival
-                </a>
-              </li>
-
-              <li>
-                <a href="/projects_index_01.html" data-turbo="false" class="text-base text-gray-300 hover:text-white">
-                  Mehr&thinsp;…
-                </a>
-              </li>
-            </ul>
-            #}
+            {% if webbuilder_projects_page %}
+            <a 
+              href="{{ drupal_url('/node/' ~ webbuilder_projects_page) }}"
+              class="block text-base text-gray-300 hover:text-white mt-4"
+            >
+              {{ 'More …'|t }}
+            </a>
+            {% endif %}
           </div>
           <div class="mt-12 md:mt-0">
             {{ drupal_view('webbuilder_pages', 'navigation_footer', webbuilder_id, 'footer') }}
