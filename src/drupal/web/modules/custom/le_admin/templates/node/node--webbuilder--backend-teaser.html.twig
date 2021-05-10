@@ -38,7 +38,14 @@
         link_url: drupal_url('/user/webbuilder/' ~ node.id ~ '/unpublish', { query: { destination: destination }}),
         link_label: 'Unpublish website'|t
       }) }}
-      {% endif %}      
+      {% endif %}
+      
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/caution.png',
+        description: 'Delete your website.'|t,
+        link_url: drupal_url('/node/' ~ node.id ~ '/delete', { query: { destination: destination }}),
+        link_label: 'Delete website'|t
+      }) }}
     </div>
     <div class="col-span-2 md:col-span-1 hidden md:block">
       <div class="flex justify-between">
