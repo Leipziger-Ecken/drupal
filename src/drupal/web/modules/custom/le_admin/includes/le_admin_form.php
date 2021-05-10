@@ -109,6 +109,10 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     _le_admin_login_form_alter($form, $form_state, $form_id);
   }
   
+  if ($form_id === 'user_pass_reset') {
+    _le_admin_user_pass_reset_form_alter($form, $form_state, $form_id);
+  }
+
   // adds required asteriks description to all forms
   if ($form_id !== 'views_exposed_form') {
     $form['required_help'] = [
@@ -492,6 +496,11 @@ function _le_admin_login_form_alter(&$form, FormStateInterface $form_state, $for
     '#weight' => 1100,
   ];
   $form['#attached']['library'][] = 'le_admin/login';
+}
+
+function _le_admin_user_pass_reset_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['actions']['submit']['#value'] = t('Reset password');
 }
 
 function le_admin_partner_submit(array $form, FormStateInterface $form_state)
