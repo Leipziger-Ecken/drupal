@@ -66,6 +66,7 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     'node_partner_edit_form',
     'node_partner_form',
   ])) {
+    $form['#attached']['library'][] = 'le_admin/partner_form';
     // add custom submit handler
     $form['actions']['submit']['#submit'][] = 'le_admin_partner_submit';
   }
