@@ -8,8 +8,8 @@ dependencies:
     - leipzigerEcken
 id: benachrichtigungen
 theme: leipzigerEcken
-region: content
-weight: 0
+region: highlighted
+weight: -3
 provider: null
 plugin: system_messages_block
 settings:
