@@ -113,6 +113,10 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     _le_admin_user_pass_reset_form_alter($form, $form_state, $form_id);
   }
 
+  if ($form_id === 'user_form' && \Drupal::request()->query->get('pass-reset-token')) {
+    $form['actions']['submit']['#submit'][] = 'le_admin_user_form_after_pass_reset_submit';
+  }
+
   // adds required asteriks description to all forms
   if ($form_id !== 'views_exposed_form') {
     $form['required_help'] = [
@@ -576,4 +580,9 @@ function le_admin_webbuilder_delete_submit(array $form, FormStateInterface $form
     $page = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
     $page->delete();
   }
+}
+
+function le_admin_user_form_after_pass_reset_submit(array $form, FormStateInterface $form_state)
+{
+  $form_state->setRedirect('le_admin.user_dashboard');
 }
