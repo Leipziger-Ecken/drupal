@@ -18,6 +18,13 @@ parts (e.g. header, footer), we extend page.html.twig.
           <div class="welcome">
             <h1 class="page-header">Eine Stadtteilplattform für Nachbarschaften und Dings*</h1>
 
+            {# Highlighted #}
+            {% if page.highlighted %}
+              {% block highlighted %}
+              <div class="highlighted">{{ page.highlighted }}</div>
+              {% endblock %}
+            {% endif %}
+
             <div class="content text-center">
               <p>*z.B. Vereine, Initiativen, Kulturschaffende, Künstler*innen, Verantstalter*innen und mehr.</p>
 
