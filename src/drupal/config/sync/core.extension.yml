@@ -46,7 +46,6 @@ module:
   gin_login: 0
   gin_permissions: 0
   gin_toolbar: 0
-  google_analytics: 0
   hal: 0
   hcaptcha: 0
   help: 0
