@@ -85,6 +85,7 @@ permissions:
   - 'edit own unsplash_image media'
   - 'edit own webbuilder content'
   - 'edit own webbuilder_page content'
+  - 'opt-in or out of matomo tracking'
   - 'post comments'
   - 'publish editable content'
   - 'search content'

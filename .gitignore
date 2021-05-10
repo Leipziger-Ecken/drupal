@@ -40,6 +40,7 @@ node_modules
 # custom settings and settings containing sensitive information
 /src/drupal/config/sync/smtp.settings.yml
 /src/drupal/config/sync/mailsystem.settings.yml
+/src/drupal/config/sync/matomo.settings.yml
 
 # adminer
 /src/drupal/web/adminer.php
