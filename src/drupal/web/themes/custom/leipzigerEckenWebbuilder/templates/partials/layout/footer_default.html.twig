@@ -5,7 +5,7 @@
 <footer class="bg-primary-800" aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+    <div class="xl:grid xl:grid-cols-2 xl:gap-8">
       <div class="grid grid-cols-2 gap-8 xl:col-span-2">
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
@@ -46,45 +46,10 @@
           </div>
           <div class="mt-12 md:mt-0">
             {{ drupal_view('webbuilder_pages', 'navigation_footer', webbuilder_id, 'footer') }}
-            {#
-            <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Sonstiges
-            </h3>
-            <ul class="mt-4 space-y-4">
-              <li>
-                <a href="/network_01.html" class="text-base text-gray-300 hover:text-white">
-                  Netzwerk
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Über Uns
-                </a>
-              </li>
-
-              <li>
-                <a href="/contact_01.html" class="text-base text-gray-300 hover:text-white">
-                  Kontakt
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Impressum
-                </a>
-              </li>
-
-              <li>
-                <a href="#" class="text-base text-gray-300 hover:text-white">
-                  Datenschutz
-                </a>
-              </li>
-            </ul>
-            #}
           </div>
         </div>
       </div>
+      {#
       <div class="mt-8 xl:mt-0">
         <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
           Melde dich zu unserem Newsletter an
@@ -102,6 +67,7 @@
           </div>
         </form>
       </div>
+      #}
     </div>
     <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
       <div class="flex space-x-6 md:order-2">
