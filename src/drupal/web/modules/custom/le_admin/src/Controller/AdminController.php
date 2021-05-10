@@ -215,7 +215,7 @@ class AdminController extends ControllerBase
   {
     $user_id = \Drupal::currentUser()->id();
     $akteur_id = \Drupal::request()->get('le_akteur') ?? $webbuilder_preset->og_audience->target_id;
-    
+    $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($akteur_id);
     // deep clone the webbuilder
     $webbuilder = $webbuilder_preset->createDuplicate();
     $webbuilder_preset_id = $webbuilder_preset->id();
@@ -225,6 +225,10 @@ class AdminController extends ControllerBase
     $webbuilder->status = 0;
     $webbuilder->published_at = null;
     $webbuilder->set('field_is_preset', false);
+
+    if ($akteur) {
+      $webbuilder->title = $akteur->title;
+    }
 
     // set the og_audience if given
     if ($akteur_id) {
