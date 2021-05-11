@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
@@ -48,7 +49,7 @@ third_party_settings:
     group_general:
       children:
         - published_at
-        - sticky
+        - field_is_featured
         - body
       parent_name: group_basic
       weight: 20
@@ -104,6 +105,13 @@ content:
       media_types: {  }
     third_party_settings: {  }
     region: content
+  field_is_featured:
+    weight: 23
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_main_image:
     weight: 22
     settings:
@@ -137,13 +145,6 @@ content:
     weight: 1
     region: content
     third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 23
-    region: content
-    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -165,4 +166,5 @@ content:
 hidden:
   path: true
   promote: true
+  sticky: true
   url_redirects: true

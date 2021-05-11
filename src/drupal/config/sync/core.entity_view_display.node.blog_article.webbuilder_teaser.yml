@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.webbuilder_teaser
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
@@ -20,11 +21,21 @@ content:
   body:
     label: hidden
     type: text_summary_or_trimmed
-    weight: 2
+    weight: 3
     settings:
       trim_length: 600
     third_party_settings: {  }
     region: content
+  field_is_featured:
+    type: boolean
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
   field_main_image:
     weight: 0
     label: hidden

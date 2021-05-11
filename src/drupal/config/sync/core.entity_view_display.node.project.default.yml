@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
@@ -56,6 +57,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_is_featured: true
   field_legal_terms_accepted: true
   langcode: true
   published_at: true

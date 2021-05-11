@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
@@ -31,6 +32,16 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
+  field_is_featured:
+    weight: 6
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
     region: content
   field_main_image:
     weight: 3

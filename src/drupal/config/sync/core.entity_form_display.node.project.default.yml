@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
     - field.field.node.project.og_audience
@@ -93,6 +94,13 @@ content:
       media_types: {  }
     third_party_settings: {  }
     type: media_library_widget
+    region: content
+  field_is_featured:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
   field_legal_terms_accepted:
     weight: 6

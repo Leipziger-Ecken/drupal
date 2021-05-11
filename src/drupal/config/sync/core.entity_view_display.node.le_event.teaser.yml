@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.le_event.field_adresse
     - field.field.node.le_event.field_bezirk
     - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_is_featured
     - field.field.node.le_event.field_le_event___eid
     - field.field.node.le_event.field_le_event_beschreibung
     - field.field.node.le_event.field_le_event_image
@@ -77,6 +78,7 @@ content:
 hidden:
   field_adresse: true
   field_geofield: true
+  field_is_featured: true
   field_le_event___eid: true
   field_le_event_image: true
   field_le_event_is_barrier_free: true

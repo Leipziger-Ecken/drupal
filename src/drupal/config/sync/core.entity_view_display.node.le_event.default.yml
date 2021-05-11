@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.le_event.field_adresse
     - field.field.node.le_event.field_bezirk
     - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_is_featured
     - field.field.node.le_event.field_le_event___eid
     - field.field.node.le_event.field_le_event_beschreibung
     - field.field.node.le_event.field_le_event_image
@@ -242,6 +243,7 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_is_featured: true
   field_le_event___eid: true
   field_le_event_image: true
   langcode: true

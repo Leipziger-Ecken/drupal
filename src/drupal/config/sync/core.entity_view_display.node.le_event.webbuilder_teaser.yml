@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.le_event.field_adresse
     - field.field.node.le_event.field_bezirk
     - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_is_featured
     - field.field.node.le_event.field_le_event___eid
     - field.field.node.le_event.field_le_event_beschreibung
     - field.field.node.le_event.field_le_event_image
@@ -34,6 +35,16 @@ targetEntityType: node
 bundle: le_event
 mode: webbuilder_teaser
 content:
+  field_is_featured:
+    type: boolean
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
   field_le_event_beschreibung:
     weight: 1
     label: hidden

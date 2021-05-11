@@ -1,0 +1,23 @@
+uuid: d4b28313-8a94-4de6-a9e4-d66794f69907
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_featured
+    - node.type.project
+id: node.project.field_is_featured
+field_name: field_is_featured
+entity_type: node
+bundle: project
+label: Hervorgehoben
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean
