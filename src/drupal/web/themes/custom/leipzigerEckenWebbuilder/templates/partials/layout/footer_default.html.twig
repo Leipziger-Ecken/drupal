@@ -74,7 +74,7 @@
         {% set facebook_uri = drupal_field('field_facebook_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if facebook_uri %}
         <a href="{{ facebook_uri }}" class="text-gray-400 hover:text-gray-300">
-          <span class="sr-only">Facebook</span>
+          <span class="sr-only">{{ 'Facebook'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-6 w-6'}) }}
         </a>
         {% endif %}
@@ -82,7 +82,7 @@
         {% set instagram_uri = drupal_field('field_instagram_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if instagram_uri %}
         <a href="{{ instagram_uri }}" class="text-gray-400 hover:text-gray-300" target="instagram">
-          <span class="sr-only">Instagram</span>
+          <span class="sr-only">{{ 'Instagram'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/instagram.html.twig', {class: 'h-6 w-6'}) }}
         </a>
         {% endif %}
@@ -90,7 +90,7 @@
         {% set twitter_uri = drupal_field('field_twitter_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if twitter_uri %}
         <a href="{{ twitter_uri }}" class="text-gray-400 hover:text-gray-300" target="twitter">
-          <span class="sr-only">Twitter</span>
+          <span class="sr-only">{{ 'Twitter'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-6 w-6'}) }}
         </a>
         {% endif %}
