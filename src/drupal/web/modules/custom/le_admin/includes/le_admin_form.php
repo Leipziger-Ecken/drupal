@@ -356,13 +356,21 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
 function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if ($form_id === 'node_le_event_form') {
-    // prefill address from akteur
+    // prefill address, categories and target groups from akteur
     $akteur_id = \Drupal::request()->query->get('le_akteur');
     if ($akteur_id) {
       $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($akteur_id);
       if ($akteur) {
         $form['field_adresse']['widget'][0]['address']['#default_value'] = $akteur->field_adresse[0]->getValue();
         $form['field_bezirk']['widget']['#default_value'][] = $akteur->field_bezirk[0]->getValue()['target_id'];
+        
+        $form['field_le_event_kategorie_typ']['widget']['#default_value'] = array_map(function ($item) {
+          return $item['target_id'];
+        }, $akteur->field_le_akteur_kategorie_typ->getValue());
+
+        $form['field_le_event_kategorie_gruppe']['widget']['#default_value'] = array_map(function ($item) {
+          return $item['target_id'];
+        }, $akteur->field_le_akteur_kategorie_gruppe->getValue());
       }
     }
   }
