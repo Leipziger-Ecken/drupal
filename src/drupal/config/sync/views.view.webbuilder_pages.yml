@@ -810,6 +810,8 @@ display:
         arguments: false
         fields: false
         access: false
+        cache: false
+        show_admin_links: false
       filter_groups:
         operator: AND
         groups:
@@ -1055,6 +1057,10 @@ display:
           inline: {  }
           separator: '-'
           hide_empty: false
+      cache:
+        type: none
+        options: {  }
+      show_admin_links: false
     cache_metadata:
       max-age: -1
       contexts:
