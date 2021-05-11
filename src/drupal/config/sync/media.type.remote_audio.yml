@@ -8,7 +8,7 @@ _core:
   default_config_hash: TMD2hvXQMerteZd2kh14nmjYac4-39cv1y_SoPrcPqg
 id: remote_audio
 label: 'Remote Audio'
-description: ''
+description: 'A remotely hosted audio from Spotify or SoundCloud.'
 source: 'oembed:audio'
 queue_thumbnail_downloads: false
 new_revision: false

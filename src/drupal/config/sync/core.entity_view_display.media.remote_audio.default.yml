@@ -19,7 +19,7 @@ content:
     label: visually_hidden
     weight: 0
     settings:
-      max_width: 0
+      max_width: 768
       max_height: 0
     third_party_settings: {  }
     region: content

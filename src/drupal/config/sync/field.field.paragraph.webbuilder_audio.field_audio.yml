@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_audio
-    - media.type.audio
+    - media.type.remote_audio
     - paragraphs.paragraphs_type.webbuilder_audio
 id: paragraph.webbuilder_audio.field_audio
 field_name: field_audio
@@ -20,7 +20,7 @@ settings:
   handler: 'default:media'
   handler_settings:
     target_bundles:
-      audio: audio
+      remote_audio: remote_audio
     sort:
       field: _none
     auto_create: false
