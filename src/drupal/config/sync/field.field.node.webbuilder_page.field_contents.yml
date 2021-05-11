@@ -27,44 +27,47 @@ settings:
     target_bundles_drag_drop:
       from_library:
         enabled: true
-        weight: -16
-      webbuilder_blog_articles:
-        weight: -20
-        enabled: false
-      webbuilder_contact_form:
-        weight: -23
-        enabled: false
-      webbuilder_cta:
-        weight: -24
-        enabled: false
-      webbuilder_events:
-        weight: -21
-        enabled: false
-      webbuilder_gallery:
-        weight: -26
-        enabled: false
-      webbuilder_image:
-        weight: -28
-        enabled: false
-      webbuilder_map:
-        weight: -22
-        enabled: false
-      webbuilder_partners:
-        weight: -18
-        enabled: false
-      webbuilder_projects:
         weight: -19
-        enabled: false
-      webbuilder_sponsors:
+      webbuilder_audio:
         weight: -17
         enabled: false
-      webbuilder_text:
-        weight: -29
+      webbuilder_blog_articles:
+        weight: -23
         enabled: false
-      webbuilder_text_image:
+      webbuilder_contact_form:
+        weight: -26
+        enabled: false
+      webbuilder_cta:
         weight: -27
         enabled: false
-      webbuilder_video:
+      webbuilder_events:
+        weight: -24
+        enabled: false
+      webbuilder_gallery:
+        weight: -28
+        enabled: false
+      webbuilder_image:
+        weight: -30
+        enabled: false
+      webbuilder_map:
         weight: -25
+        enabled: false
+      webbuilder_partners:
+        weight: -21
+        enabled: false
+      webbuilder_projects:
+        weight: -22
+        enabled: false
+      webbuilder_sponsors:
+        weight: -20
+        enabled: false
+      webbuilder_text:
+        weight: -31
+        enabled: false
+      webbuilder_text_image:
+        weight: -29
+        enabled: false
+      webbuilder_video:
+        weight: -18
         enabled: false
 field_type: entity_reference_revisions

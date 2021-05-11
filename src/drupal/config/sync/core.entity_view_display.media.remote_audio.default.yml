@@ -1,0 +1,31 @@
+uuid: ba864821-c03d-46d2-98e6-9444fa1b8299
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.media.remote_audio.field_media_oembed_audio
+    - media.type.remote_audio
+  module:
+    - media
+_core:
+  default_config_hash: xutQOAHcT8pQ9zK86II4rSxfYfLJhH53bpMeJuQ6nZw
+id: media.remote_audio.default
+targetEntityType: media
+bundle: remote_audio
+mode: default
+content:
+  field_media_oembed_audio:
+    type: oembed
+    label: visually_hidden
+    weight: 0
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

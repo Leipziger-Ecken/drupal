@@ -1,0 +1,11 @@
+uuid: 176f4594-b9cb-47d2-95e2-e5e07275391b
+langcode: de
+status: true
+dependencies:
+  config:
+    - media.type.remote_audio
+id: media.remote_audio
+target_entity_type_id: media
+target_bundle: remote_audio
+default_langcode: site_default
+language_alterable: false

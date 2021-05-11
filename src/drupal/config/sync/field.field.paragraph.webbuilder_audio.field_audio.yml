@@ -1,0 +1,28 @@
+uuid: 94b62c13-c7c5-4b85-a7f1-d19367aeeeb8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_audio
+    - media.type.audio
+    - paragraphs.paragraphs_type.webbuilder_audio
+id: paragraph.webbuilder_audio.field_audio
+field_name: field_audio
+entity_type: paragraph
+bundle: webbuilder_audio
+label: Audio
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      audio: audio
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

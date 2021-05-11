@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33e2b2e0c472cd4b8b59787c747c5549",
+    "content-hash": "718e147b726b58aed5ac099580d9a9fc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -5240,6 +5240,55 @@
             "homepage": "https://www.drupal.org/project/media_entity_remote_image",
             "support": {
                 "source": "https://git.drupalcode.org/project/media_entity_remote_image"
+            }
+        },
+        {
+            "name": "drupal/media_remote_audio",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_remote_audio.git",
+                "reference": "1.0.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_remote_audio-1.0.4.zip",
+                "reference": "1.0.4",
+                "shasum": "ff0dfd0213a8fe316daf6ac5e6a17dcbb93f19e2"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.4",
+                    "datestamp": "1614979218",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Matthews",
+                    "homepage": "https://www.drupal.org/u/chris-matthews",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Creates a Remove audio Media type for easily adding oEmbed audio from Spotify or SoundCloud.",
+            "homepage": "https://www.drupal.org/project/media_remote_audio",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_remote_audio",
+                "issues": "https://www.drupal.org/project/media_remote_audio"
             }
         },
         {
