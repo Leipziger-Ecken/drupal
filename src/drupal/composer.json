@@ -166,7 +166,8 @@
                 "Add apiKey to default map (thunderbird neighbourhood)": "patches/update_thunderforest_maps.patch"
             },
             "drupal/core": {
-                "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch"
+                "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch",
+                "fixes notice when using entity reference view": "patches/3180227-2-8.9.x.patch"
             }
         }
     }
