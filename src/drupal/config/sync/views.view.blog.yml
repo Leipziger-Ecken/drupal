@@ -1647,10 +1647,10 @@ display:
           plugin_id: numeric
       header: {  }
       sorts:
-        sticky:
-          id: sticky
-          table: node_field_data
-          field: sticky
+        field_is_featured_value:
+          id: field_is_featured_value
+          table: node__field_is_featured
+          field: field_is_featured_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1658,8 +1658,6 @@ display:
           exposed: false
           expose:
             label: ''
-          entity_type: node
-          entity_field: sticky
           plugin_id: standard
         published_at:
           id: published_at
