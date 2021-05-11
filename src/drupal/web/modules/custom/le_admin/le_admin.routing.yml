@@ -7,7 +7,7 @@ le_admin.user_dashboard:
   requirements:
     _permission: 'create le_akteur content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
 
 le_admin.user_akteur:
   path: '/user/akteur/{node}'
@@ -17,7 +17,7 @@ le_admin.user_akteur:
   requirements:
     _permission: 'edit own le_akteur content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -30,7 +30,7 @@ le_admin.user_akteur_events:
   requirements:
     _permission: 'create le_event content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -43,7 +43,7 @@ le_admin.user_akteur_projects:
   requirements:
     _permission: 'create project content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -56,7 +56,7 @@ le_admin.user_akteur_blog:
   requirements:
     _permission: 'create blog_article content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -69,7 +69,7 @@ le_admin.user_akteur_partners:
   requirements:
     _permission: 'create partner content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -82,7 +82,7 @@ le_admin.user_akteur_sponsors:
   requirements:
     _permission: 'create sponsor content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -95,7 +95,7 @@ le_admin.user_akteur_webbuilder:
   requirements:
     _permission: 'edit own webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -108,7 +108,7 @@ le_admin.user_akteur_webbuilder_add:
   requirements:
     _permission: 'create webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -121,7 +121,7 @@ le_admin.user_webbuilder_pages:
   requirements:
     _permission: 'create webbuilder_page content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -134,7 +134,7 @@ le_admin.user_webbuilder_publish:
   requirements:
     _permission: 'edit own webbuilder_page content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -147,7 +147,7 @@ le_admin.user_webbuilder_unpublish:
   requirements:
     _permission: 'edit own webbuilder_page content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       node:
         type: entity:node
@@ -161,7 +161,7 @@ le_admin.api_webbuilder_page_tree:
   requirements:
     _permission: 'edit own webbuilder_page content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -175,7 +175,7 @@ le_admin.api_webbuilder_sort_page:
   requirements:
     _permission: 'edit own webbuilder_page content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -191,7 +191,7 @@ le_admin.api_webbuilder_set_frontpage:
   requirements:
     _permission: 'edit own webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -205,7 +205,7 @@ le_admin.api_webbuilder_set_blog_page:
   requirements:
     _permission: 'edit own webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -219,7 +219,7 @@ le_admin.api_webbuilder_set_events_page:
   requirements:
     _permission: 'edit own webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -233,7 +233,7 @@ le_admin.api_webbuilder_set_projects_page:
   requirements:
     _permission: 'edit own webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder:
         type: entity:node
@@ -250,7 +250,7 @@ le_admin.unsplash_api_proxy:
   requirements:
     _permission: 'create unsplash_image media'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
 
 le_admin.create_webbuilder_from_preset:
   path: '/user/webbuilder/create-from-preset/{webbuilder_preset}'
@@ -261,7 +261,7 @@ le_admin.create_webbuilder_from_preset:
   requirements:
     _permission: 'create webbuilder content'
   options:
-    no_cache: true
+    no_cache: 'TRUE'
     parameters:
       webbuilder_preset:
         type: entity:node
