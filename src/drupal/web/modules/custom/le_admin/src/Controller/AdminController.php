@@ -20,6 +20,9 @@ class AdminController extends ControllerBase
   {
     return [
       '#theme' => 'le_admin__user_dashboard',
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -37,6 +40,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur',
       '#node' => $node,
       '#title' => $node->getTitle(),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -54,6 +60,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_events',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Events'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -71,6 +80,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_projects',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Projects'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -88,6 +100,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_blog_articles',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Blog Articles'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -105,6 +120,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_partners',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Partners'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -122,6 +140,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_sponsors',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Sponsors'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -139,6 +160,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_webbuilder',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Website'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -156,6 +180,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_akteur_add_webbuilder',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Website'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
@@ -173,6 +200,9 @@ class AdminController extends ControllerBase
       '#theme' => 'le_admin__user_webbuilder_pages',
       '#node' => $node,
       '#title' => $node->getTitle() . ': ' . t('Website pages'),
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
   }
 
