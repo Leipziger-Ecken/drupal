@@ -38,15 +38,15 @@ function le_core_preprocess_views_exposed_form(&$variables) {
 
           <div class="select-wrapper">
             <select name="date" class="form-select form-control" id="le-date-picker__select">
-              <option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected="selected"' : '') .'>'. t('Ab heute') .'</option>
-              <option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected="selected"' : '') .'>'. t('Vergangene Events') .'</option>
-              <option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected="selected"' : '') .'>'. t('Ab nächster Woche') .'</option>'.
+              <option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['FUTURE'] .'">'. t('Ab heute') .'</option>
+              <option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['PAST'] .'">'. t('Vergangene Events') .'</option>
+              <option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['NEXT_WEEK'] .'">'. t('Ab nächster Woche') .'</option>'.
               ($custom_date === LE_CUSTOM_DATES['CUSTOM']
-              ? '<option selected="selected">'.
-                  (!is_null($GLOBALS['le_custom_start']) ? $GLOBALS['le_custom_start'] . ' ' : t('Heute') . ' ') .
-                  (!is_null($GLOBALS['le_custom_end']) ? '- '. $GLOBALS['le_custom_end'] : '') .
+              ? '<option selected="selected" value="'. LE_CUSTOM_DATES['CUSTOM'] .'">'.
+                  (!is_null($GLOBALS['le_custom_start'] && !empty(trim($GLOBALS['le_custom_start']))) ? $GLOBALS['le_custom_start'] . ' ' : t('Heute') . ' ') .
+                  (!is_null($GLOBALS['le_custom_end'] && !empty(trim($GLOBALS['le_custom_end']))) ? '- '. $GLOBALS['le_custom_end'] : '') .
                 '</option>'
-              : '<option>'. t('Datum eingeben') .'</option>'
+              : '<option value="'. LE_CUSTOM_DATES['CUSTOM'] .'">'. t('Zeitraum eingeben') .'</option>'
               ).
             '</select>
 
@@ -80,6 +80,15 @@ function le_core_preprocess_views_exposed_form(&$variables) {
             </div>
           </div>
         </div>
+        <style>
+        /**
+         * Ensure date-child-container stays always visible once clicked
+         * @todo move into proejct css 
+         * **/
+        .le-date-picker .categories-select__options__option.has-child.selected .categories-select__options {
+          display: block;
+        }
+        </style>
       '
     ];
 
