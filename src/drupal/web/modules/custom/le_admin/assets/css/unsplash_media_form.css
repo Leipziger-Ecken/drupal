@@ -58,6 +58,9 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.unsplash-results__item-author-name {
+  margin-right: 0.25em;
+}
 .unsplash-results__item-author-image {
   margin-left: 10px;
   border-radius: 64px;
