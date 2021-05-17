@@ -3,14 +3,16 @@
 {% set akteure = drupal_view_result('le_verwaltete_akteure', 'dashboard', user.id) %}
 
 <section>
+  {% if user.hasPermission('create le_akteur content') %}
   {{ include('@le_admin/partials/page_introduction.html.twig', {
     body: 'TODO: Short description what actors are.'|t,
   }) }}
-
+  
   {{ include('@le_admin/partials/primary_action_button.html.twig', {
     url: drupal_url('/node/add/le_akteur', {query: {destination: destination }}),
     label: '+ ' ~ ('Add Actor'|t)
   }) }}
+  {% endif %}
 
   {% if akteure|length %}
   {% for row in akteure %}
