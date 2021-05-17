@@ -24,7 +24,6 @@ permissions:
   - 'create image media'
   - 'create le_akteur content'
   - 'create le_event content'
-  - 'create media'
   - 'create paragraph content webbuilder_audio'
   - 'create paragraph content webbuilder_blog_articles'
   - 'create paragraph content webbuilder_contact_form'
