@@ -1,0 +1,14 @@
+uuid: 31ea2de9-7339-4015-87ef-2c927899b43b
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.webbuilder
+  module:
+    - user
+id: user_remove_role_action.webbuilder
+label: 'Den ausgewählten Benutzern die Rolle Webbaukasten entziehen'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: webbuilder
