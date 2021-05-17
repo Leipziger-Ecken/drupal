@@ -1,3 +1,11 @@
+:root {
+  --colorGinPrimary: #0064ff !important;
+  --colorGinPrimaryHover: #004cbe !important;
+  --colorGinPrimaryLight: #448fff;
+  --colorGinPrimaryLightHover: #0066ff;
+  --colorGinItemHover: rgba(0, 40, 100, 0.1) !important;
+}
+
 .toolbar .toolbar-bar .toolbar-icon-le-admin-user-dashboard::before {
   -webkit-mask-image: url("../icons/home.svg") !important;
   -moz-mask-image: url("../icons/home.svg") !important;
