@@ -47,7 +47,7 @@
               </a>
               <a target="_blank" href="${result.user.links.html}" class="unsplash-results__item-author-name">
                 ${result.user.name}
-              </a>&nbsp;on Unsplash
+              </a>on Unsplash
             </div>
             <button data-role="add" class="unsplash-results__item-add button button--default">${Drupal.t('Use image')}</button>
           </figcaption>
