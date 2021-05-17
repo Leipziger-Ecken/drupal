@@ -27,6 +27,7 @@
   </div>
   <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
     <dl class="sm:divide-y sm:divide-gray-200">
+      {% if user.hasPermission('create le_event content') %}
       {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
         label: 'Events',
         description: 'Your dates and events.',
@@ -40,6 +41,9 @@
         unpublished_count: events.unpublished_count,
         nid: node.id(),
       }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create project content') %}
       {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
         label: 'Projects',
         description: 'Show your projects to the world.',
@@ -53,6 +57,9 @@
         unpublished_count: projects.unpublished_count,
         nid: node.id(),
       }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create blog_article content') %}
       {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
         label: 'Blog',
         description: 'Write your own blog.',
@@ -66,6 +73,9 @@
         unpublished_count: blog_articles.unpublished_count,
         nid: node.id(),
       }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create partner content') %}
       {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
         label: 'Partners',
         description: 'Your partners and your network.',
@@ -79,6 +89,9 @@
         unpublished_count: partners.unpublished_count,
         nid: node.id(),
       }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create sponsor content') %}
       {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
         label: 'Sponsors',
         description: 'Your sponsors and supporters.',
@@ -92,6 +105,9 @@
         unpublished_count: sponsors.unpublished_count,
         nid: node.id(),
       }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create webbuilder content') %}
       <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
         <dt class="text-sm font-medium text-gray-500">
           {{ 'Your website'|t }}
@@ -118,6 +134,7 @@
           {% endif %}
         </dd>
       </div>
+      {% endif %}
     </dl>
   </div>
 </article>
