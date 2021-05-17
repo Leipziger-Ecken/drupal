@@ -5,7 +5,7 @@ le_webbuilder.node.le_event:
     _title: 'Event'
   methods: [GET]
   requirements:
-    _permission: 'view published content'
+    _permission: 'access content'
   options:
     parameters:
       akteur:
@@ -22,7 +22,7 @@ le_webbuilder.node.blog_article:
     _title: 'Blog article'
   methods: [GET]
   requirements:
-    _permission: 'view published content'
+    _permission: 'access content'
   options:
     parameters:
       akteur:
@@ -39,7 +39,7 @@ le_webbuilder.node.project:
     _title: 'Project'
   methods: [GET]
   requirements:
-    _permission: 'view published content'
+    _permission: 'access content'
   options:
     parameters:
       akteur:
