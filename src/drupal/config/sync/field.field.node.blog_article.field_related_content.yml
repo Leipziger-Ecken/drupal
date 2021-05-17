@@ -1,0 +1,25 @@
+uuid: 5022edcc-17a7-44da-849d-a0e4f2e2bec1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content
+    - node.type.blog_article
+id: node.blog_article.field_related_content
+field_name: field_related_content
+entity_type: node
+bundle: blog_article
+label: 'Zugehörige Inhalte'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content
+      display_name: entity_reference
+      arguments: {  }
+field_type: entity_reference

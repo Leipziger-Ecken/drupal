@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
     - node.type.project
   module:
@@ -35,6 +36,7 @@ third_party_settings:
       children:
         - group_general
         - group_images
+        - group_related_content
       parent_name: ''
       weight: 4
       format_type: accordion
@@ -73,6 +75,20 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Bilder
+    group_related_content:
+      children:
+        - field_related_content
+      parent_name: group_basic
+      weight: 22
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: related_content
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Zugehörige Inhalte'
 id: node.project.default
 targetEntityType: node
 bundle: project
@@ -115,6 +131,16 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+    region: content
+  field_related_content:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   langcode:
     type: language_select

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_related_content
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
   module:
@@ -37,6 +38,7 @@ third_party_settings:
       children:
         - group_general
         - group_images
+        - group_related_content
       parent_name: ''
       weight: 3
       format_type: accordion
@@ -77,6 +79,20 @@ third_party_settings:
         required_fields: true
         description: ''
       label: Bilder
+    group_related_content:
+      children:
+        - field_related_content
+      parent_name: group_basic
+      weight: 22
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: related_content
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Zugehörige Inhalte'
 id: node.blog_article.default
 targetEntityType: node
 bundle: blog_article
@@ -94,7 +110,7 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -119,9 +135,19 @@ content:
     third_party_settings: {  }
     type: media_library_widget
     region: content
+  field_related_content:
+    weight: 24
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   langcode:
     type: language_select
-    weight: 10
+    weight: 11
     region: content
     settings:
       include_locked: true

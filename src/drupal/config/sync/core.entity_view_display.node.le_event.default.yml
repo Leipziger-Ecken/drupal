@@ -223,11 +223,12 @@ content:
     region: content
   field_related_content:
     weight: 15
-    label: above
+    label: hidden
     settings:
-      link: true
+      view_mode: teaser
+      link: false
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   links:
     weight: 2

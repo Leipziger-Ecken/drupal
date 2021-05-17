@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_related_content
     - field.field.node.blog_article.og_audience
     - image.style.medium
     - node.type.blog_article
@@ -59,6 +60,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_images: true
+  field_related_content: true
   langcode: true
   links: true
   og_audience: true

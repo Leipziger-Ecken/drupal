@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
     - node.type.project
   module:
@@ -42,6 +43,15 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+    region: content
+  field_related_content:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
     region: content
   links:
     weight: 0

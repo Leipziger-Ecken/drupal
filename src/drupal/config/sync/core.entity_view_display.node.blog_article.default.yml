@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.blog_article.field_images
     - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_related_content
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
   module:
@@ -48,6 +49,15 @@ content:
     label: hidden
     settings:
       view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_related_content:
+    weight: 7
+    label: hidden
+    settings:
+      view_mode: teaser
       link: false
     third_party_settings: {  }
     type: entity_reference_entity_view
