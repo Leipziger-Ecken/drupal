@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.webbuilder_blog_articles.field_has_pagination
     - field.field.paragraph.webbuilder_blog_articles.field_heading
     - field.field.paragraph.webbuilder_blog_articles.field_listing_layout
+    - field.field.paragraph.webbuilder_blog_articles.field_no_results_body
     - field.field.paragraph.webbuilder_blog_articles.field_per_page
     - field.field.paragraph.webbuilder_blog_articles.field_use_images
     - paragraphs.paragraphs_type.webbuilder_blog_articles
@@ -60,6 +61,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_key
+    region: content
+  field_no_results_body:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_per_page:
     weight: 4

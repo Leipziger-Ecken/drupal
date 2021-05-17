@@ -33,9 +33,8 @@
         {% endif %}
       </div>
     </div>
-
     {# results #}
-    {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images }, [akteur_id]) }}
+    {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images, no_results_body: (content.field_no_results_body[0]['#text']|default(null))}, [akteur_id]) }}
   </div>
 </section>
 {% endblock paragraph %}

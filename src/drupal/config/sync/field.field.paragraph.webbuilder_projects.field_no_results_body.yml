@@ -1,0 +1,24 @@
+uuid: 9d74a37e-4bad-42e3-937d-88a1f63e34fa
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_projects
+  module:
+    - text
+id: paragraph.webbuilder_projects.field_no_results_body
+field_name: field_no_results_body
+entity_type: paragraph
+bundle: webbuilder_projects
+label: 'Text, wenn keine Einträge vorliegen'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: "<p>Leider gibt es noch keine Projekte.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

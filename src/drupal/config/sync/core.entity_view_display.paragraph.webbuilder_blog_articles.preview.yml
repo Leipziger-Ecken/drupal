@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.webbuilder_blog_articles.field_has_pagination
     - field.field.paragraph.webbuilder_blog_articles.field_heading
     - field.field.paragraph.webbuilder_blog_articles.field_listing_layout
+    - field.field.paragraph.webbuilder_blog_articles.field_no_results_body
     - field.field.paragraph.webbuilder_blog_articles.field_per_page
     - field.field.paragraph.webbuilder_blog_articles.field_use_images
     - paragraphs.paragraphs_type.webbuilder_blog_articles
@@ -80,4 +81,5 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
-hidden: {  }
+hidden:
+  field_no_results_body: true

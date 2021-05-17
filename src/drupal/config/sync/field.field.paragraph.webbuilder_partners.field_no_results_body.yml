@@ -1,0 +1,24 @@
+uuid: 5f175027-d217-4708-a4a5-fb53a8c48497
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_partners
+  module:
+    - text
+id: paragraph.webbuilder_partners.field_no_results_body
+field_name: field_no_results_body
+entity_type: paragraph
+bundle: webbuilder_partners
+label: 'Text, wenn keine Einträge vorliegen'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: "<p>Leider gibt es noch keine Partner*innen.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

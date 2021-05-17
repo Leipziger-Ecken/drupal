@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.webbuilder_partners.field_body
     - field.field.paragraph.webbuilder_partners.field_heading
+    - field.field.paragraph.webbuilder_partners.field_no_results_body
     - paragraphs.paragraphs_type.webbuilder_partners
   module:
     - text
@@ -27,5 +28,12 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
+  field_no_results_body:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
 hidden: {  }

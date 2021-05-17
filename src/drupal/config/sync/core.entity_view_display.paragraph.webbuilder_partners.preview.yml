@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.paragraph.preview
     - field.field.paragraph.webbuilder_partners.field_body
     - field.field.paragraph.webbuilder_partners.field_heading
+    - field.field.paragraph.webbuilder_partners.field_no_results_body
     - paragraphs.paragraphs_type.webbuilder_partners
   module:
     - text
@@ -30,4 +31,5 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+hidden:
+  field_no_results_body: true

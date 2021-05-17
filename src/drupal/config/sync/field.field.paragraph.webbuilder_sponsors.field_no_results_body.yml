@@ -1,0 +1,24 @@
+uuid: 86e071e0-ebd8-4446-b50e-2bcdbbbf715f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_sponsors
+  module:
+    - text
+id: paragraph.webbuilder_sponsors.field_no_results_body
+field_name: field_no_results_body
+entity_type: paragraph
+bundle: webbuilder_sponsors
+label: 'Text, wenn keine Einträge vorliegen'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: "<p>Leider gibt es noch keine Unterstützer*innen.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

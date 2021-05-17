@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.webbuilder_blog_articles.field_has_pagination
     - field.field.paragraph.webbuilder_blog_articles.field_heading
     - field.field.paragraph.webbuilder_blog_articles.field_listing_layout
+    - field.field.paragraph.webbuilder_blog_articles.field_no_results_body
     - field.field.paragraph.webbuilder_blog_articles.field_per_page
     - field.field.paragraph.webbuilder_blog_articles.field_use_images
     - paragraphs.paragraphs_type.webbuilder_blog_articles
@@ -27,14 +28,14 @@ content:
     type: text_textarea
     region: content
   field_has_filters:
-    weight: 4
+    weight: 5
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_has_pagination:
-    weight: 5
+    weight: 6
     settings:
       display_label: true
     third_party_settings: {  }
@@ -49,19 +50,27 @@ content:
     type: string_textfield
     region: content
   field_listing_layout:
-    weight: 2
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
+  field_no_results_body:
+    weight: 2
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   field_per_page:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_use_images:
-    weight: 3
+    weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
@@ -69,7 +78,7 @@ content:
     region: content
   status:
     type: boolean_checkbox
-    weight: 7
+    weight: 8
     region: content
     settings:
       display_label: true

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.webbuilder_partners.field_body
     - field.field.paragraph.webbuilder_partners.field_heading
+    - field.field.paragraph.webbuilder_partners.field_no_results_body
     - paragraphs.paragraphs_type.webbuilder_partners
   module:
     - text
@@ -29,9 +30,17 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_no_results_body:
+    weight: 2
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   status:
     type: boolean_checkbox
-    weight: 2
+    weight: 3
     region: content
     settings:
       display_label: true

@@ -234,11 +234,13 @@ class TwigExtension extends \Twig_Extension
       'images' => false,
       'per_page' => null,
       'layout' => null,
+      'no_results_body' => null,
     ], $options);
     
     $arguments[] = $options['layout'];
     $arguments[] = $options['filters'];
     $arguments[] = $options['images'];
+    $arguments[] = $options['no_results_body'];
     
     $view = Views::getView($view_name);
     $view->setDisplay($display_name);

@@ -1,9 +1,11 @@
+uuid: null
 langcode: de
 status: true
 dependencies:
   config:
     - field.field.paragraph.webbuilder_sponsors.field_body
     - field.field.paragraph.webbuilder_sponsors.field_heading
+    - field.field.paragraph.webbuilder_sponsors.field_no_results_body
     - paragraphs.paragraphs_type.webbuilder_sponsors
   module:
     - text
@@ -28,9 +30,17 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_no_results_body:
+    weight: 2
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
   status:
     type: boolean_checkbox
-    weight: 2
+    weight: 3
     region: content
     settings:
       display_label: true

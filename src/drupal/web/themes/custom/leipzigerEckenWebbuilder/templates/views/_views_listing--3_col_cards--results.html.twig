@@ -18,8 +18,10 @@
   {% endfor %}
 </div>
 
-{% elseif empty -%}
-  {{ empty }}
+{% else %}
+<div class="prose pt-6">
+  {{ no_reults_body|raw }}
+</div>
 {% endif %}
 
 {{ pager }}
