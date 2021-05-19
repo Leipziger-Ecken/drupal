@@ -107,7 +107,6 @@ function le_core_preprocess_views_exposed_form(&$variables) {
  * Implements hook_views_pre_view().
  */
 function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
- //  global $custom_date;
 
   if ($view->id() == 'le_view_events') {
     switch ($display_id) {
@@ -149,12 +148,17 @@ function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args)
         $GLOBALS['le_custom_start'] = $start;
         $GLOBALS['le_custom_end'] = $end;
 
-        $view->setExposedInput([
-          'start' => $start,
-          'ende' => $end, 
-          'sort_by' => 'field_le_event_occurrences_value',
-          'sort_order' => $sort_order
-        ]);
+        $view->setExposedInput(
+          array_merge(
+            $view->getExposedInput(),
+            [
+              'start' => $start,
+              'ende' => $end, 
+              'sort_by' => 'field_le_event_occurrences_value',
+              'sort_order' => $sort_order
+            ]
+          )
+        );
 
         break;
     }
