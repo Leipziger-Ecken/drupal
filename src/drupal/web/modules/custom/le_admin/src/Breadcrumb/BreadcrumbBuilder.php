@@ -117,11 +117,11 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
       );
     }
 
-    if ($route_name === 'le_admin.user_akteur_blog_articles') {
+    if ($route_name === 'le_admin.user_akteur_blog') {
       $breadcrumb->addLink(
         Link::createFromRoute(
           t('Blog Articles'),
-          'le_admin.user_akteur_blog_articles',
+          'le_admin.user_akteur_blog',
           ['node' => $node->id()]
         )
       );

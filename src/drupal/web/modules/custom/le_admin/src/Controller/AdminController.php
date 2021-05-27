@@ -18,6 +18,7 @@ class AdminController extends ControllerBase
    */
   public function userDashboard()
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_dashboard',
       '#cache' => [
@@ -36,6 +37,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteur($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur',
       '#node' => $node,
@@ -56,6 +58,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurEvents($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_events',
       '#node' => $node,
@@ -76,6 +79,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurProjects($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_projects',
       '#node' => $node,
@@ -96,6 +100,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurBlogArticles($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_blog_articles',
       '#node' => $node,
@@ -116,6 +121,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurPartners($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_partners',
       '#node' => $node,
@@ -136,6 +142,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurSponsors($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_sponsors',
       '#node' => $node,
@@ -156,6 +163,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurWebbuilder($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_webbuilder',
       '#node' => $node,
@@ -176,6 +184,7 @@ class AdminController extends ControllerBase
    */
   public function userAkteurAddWebbuilder($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_akteur_add_webbuilder',
       '#node' => $node,
@@ -196,6 +205,7 @@ class AdminController extends ControllerBase
    */
   public function userWebbuilderPages($node)
   {
+    \Drupal::service('page_cache_kill_switch')->trigger();
     return [
       '#theme' => 'le_admin__user_webbuilder_pages',
       '#node' => $node,

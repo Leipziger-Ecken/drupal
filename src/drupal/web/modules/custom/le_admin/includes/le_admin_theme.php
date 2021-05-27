@@ -185,6 +185,14 @@ function le_admin_block_access(Block $block, $operation, AccountInterface $accou
   return AccessResult::forbiddenIf(true)->addCacheableDependency($block);
 }
 
+function le_admin_preprocess(&$variables)
+{
+  // disabled cache for anything backend
+  if ($variables['directory'] === 'themes/contrib/gin') {
+    $variables['#cache']['max-age'] = 0;
+  }
+}
+
 function le_admin_preprocess_page(&$variables)
 {
   // hide secondary toolbar
