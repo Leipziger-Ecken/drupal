@@ -96,9 +96,16 @@ class MigrateMediaCommands extends DrushCommands {
       'bundle' => 'image',
       'uid' => $uid, // keep same user
     ]);
+
+    if ($node->getType() === 'le_akteur') {
+      $akteur_id = $node->id();
+    } else {
+      $akteur_id = $node->og_audience->target_id;
+    }
     
     $media_entity
     ->set('field_media_image', $image_file->id())
+    ->set('field_og_audience', $akteur_id)
     ->setName($image_file->getFilename())
     ->setPublished(true)
     ->save();
