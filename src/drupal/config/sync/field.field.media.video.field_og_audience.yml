@@ -1,15 +1,15 @@
-uuid: 6b3df175-6fc4-4e26-93c1-ce304386cd4f
+uuid: 689c3e7b-3cda-45d8-91df-af0c2e250bb6
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.media.field_og_audience
-    - media.type.unsplash_image
+    - media.type.video
     - node.type.le_akteur
-id: media.unsplash_image.field_og_audience
+id: media.video.field_og_audience
 field_name: field_og_audience
 entity_type: media
-bundle: unsplash_image
+bundle: video
 label: 'Akteur*in'
 description: ''
 required: false

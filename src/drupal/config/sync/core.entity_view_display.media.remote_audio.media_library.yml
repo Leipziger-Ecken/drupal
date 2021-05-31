@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.media.media_library
     - field.field.media.remote_audio.field_media_oembed_audio
+    - field.field.media.remote_audio.field_og_audience
     - image.style.medium
     - media.type.remote_audio
   module:
@@ -28,6 +29,7 @@ content:
 hidden:
   created: true
   field_media_oembed_audio: true
+  field_og_audience: true
   langcode: true
   name: true
   uid: true

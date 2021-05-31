@@ -9,7 +9,6 @@ dependencies:
     - image.style.thumbnail
     - media.type.image
   module:
-    - select2
     - svg_image
 _core:
   default_config_hash: BMLrK4zKp8-FFnMseBdT_6h6YipUsKRfbDf_3WUB5HA
@@ -27,14 +26,10 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
   field_og_audience:
-    type: select2_entity_reference
+    type: options_select
     weight: 0
     region: content
-    settings:
-      autocomplete: false
-      match_operator: CONTAINS
-      match_limit: 10
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

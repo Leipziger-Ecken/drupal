@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.audio.field_media_audio_file
+    - field.field.media.audio.field_og_audience
     - media.type.audio
   module:
     - file
@@ -24,6 +25,14 @@ content:
       loop: false
       multiple_file_display_type: tags
     third_party_settings: {  }
+    region: content
+  field_og_audience:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
 hidden:
   created: true

@@ -117,9 +117,41 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'user_form' && \Drupal::request()->query->get('pass-reset-token')) {
     $form['actions']['submit']['#submit'][] = 'le_admin_user_form_after_pass_reset_submit';
   }
+  if ($form_id === 'media_library_add_form_upload') {
+    _le_admin_form_media_upload_alter($form, $form_state, $form_id);
+  }
+  
+  if (in_array($form_id, [
+    'media_document_add_form',
+    'media_document_edit_form',
+    'media_image_add_form',
+    'media_image_edit_form',
+    'media_remote_image_add_form',
+    'media_remote_image_edit_form',
+    'media_unsplash_image_add_form',
+    'media_unsplash_image_edit_form',
+    'media_audio_add_form',
+    'media_audio_edit_form',
+    'media_remote_audio_add_form',
+    'media_remote_audio_edit_form',
+    'media_remote_video_add_form',
+    'media_remote_video_edit_form',
+  ])) {
+    _le_admin_form_media_alter($form, $form_state, $form_id);
+  }
 
+  if ($form_id === 'views_exposed_form') {
+    if (in_array($form['#id'], [
+      'views-exposed-form-media-media-page-list',
+      'views-exposed-form-media-library-page',
+      'views-exposed-form-media-library-widget',
+      'views-exposed-form-media-library-widget-table',
+    ])) {
+      _le_admin_form_media_view_alter($form, $form_state, $form_id);
+    }
+  } 
   // adds required asteriks description to all forms
-  if ($form_id !== 'views_exposed_form') {
+  else {
     $form['required_help'] = [
       '#type' => 'markup',
       '#markup' => '<p class="form-item__description">* ' . t('Required field') . '</p>',
@@ -571,6 +603,96 @@ function _le_admin_media_unsplash_image_form_alter(&$form, FormStateInterface $f
 
   // hide attribution field, so user cannot enter values
   $form['field_attribution']['#attributes']['class'][] = 'hidden';
+}
+
+function _le_admin_form_media_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $user = \Drupal::currentUser();
+
+  // reset options
+  $form['field_og_audience']['widget']['#options'] = [];
+
+  if ($user->hasPermission('edit any le_akteur content')) {
+    $form['field_og_audience']['widget']['#options']['_none'] = t('None');
+  }
+
+  $view = Views::getView('le_verwaltete_akteure');
+  $view->setDisplay('entity_reference');
+  $result = $view->render();
+
+  foreach ($result as $nid => $row) {
+    if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
+
+      $form['field_og_audience']['widget']['#options'][$nid] = $title;
+    }
+  }
+
+  if (!$user->hasPermission('edit any le_akteur content')) {
+    $form['field_og_audience']['widget']['#default_value'] = array_keys($form['field_og_audience']['widget']['#options'])[0] . '';
+    $form['field_og_audience']['widget']['#required'] = true;
+  }
+}
+
+function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $user = \Drupal::currentUser();
+
+  // reset options
+  if (!isset($form['media'][0])) {
+    return;
+  }
+
+  $form['media'][0]['fields']['field_og_audience']['widget']['#options'] = [];
+
+  if ($user->hasPermission('edit any le_akteur content')) {
+    $form['media'][0]['fields']['field_og_audience']['widget']['#options']['_none'] = t('None');
+  }
+
+  $view = Views::getView('le_verwaltete_akteure');
+  $view->setDisplay('entity_reference');
+  $result = $view->render();
+
+  foreach ($result as $nid => $row) {
+    if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
+
+      $form['media'][0]['fields']['field_og_audience']['widget']['#options'][$nid] = $title;
+    }
+  }
+
+  if (!$user->hasPermission('edit any le_akteur content')) {
+    $form['media'][0]['fields']['field_og_audience']['widget']['#default_value'] = array_keys($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])[0] . '';
+    $form['media'][0]['fields']['field_og_audience']['widget']['#required']= true;
+  }
+}
+
+function _le_admin_form_media_view_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $user = \Drupal::currentUser();
+  $form['field_og_audience_target_id']['#type'] = 'select';
+  unset($form['field_og_audience_target_id']['#size']);
+  
+  if ($user->hasPermission('edit any le_akteur content')) {
+    $form['field_og_audience_target_id']['#options'][''] = t('Any');
+  }
+
+  $view = Views::getView('le_verwaltete_akteure');
+  $view->setDisplay('entity_reference');
+  $result = $view->render();
+  
+  foreach ($result as $nid => $row) {
+    if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
+
+      $form['field_og_audience_target_id']['#options'][$nid] = $title;
+    }
+  }
+
+  if (!$user->hasPermission('edit any le_akteur content')) {
+    $form['field_og_audience_target_id']['#default_value'] = array_keys($form['field_og_audience_target_id']['#options'])[0] . '';
+    $form['field_og_audience_target_id']['#required'] = true;
+  }
 }
 
 function le_admin_webbuilder_delete_submit(array $form, FormStateInterface $form_state)

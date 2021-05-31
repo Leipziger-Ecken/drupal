@@ -10,7 +10,6 @@ dependencies:
     - media.type.unsplash_image
   module:
     - media_entity_remote_image
-    - select2
     - text
 id: media.unsplash_image.media_library
 targetEntityType: media
@@ -34,14 +33,10 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_og_audience:
-    type: select2_entity_reference
+    type: options_select
     weight: 0
     region: content
-    settings:
-      autocomplete: false
-      match_operator: CONTAINS
-      match_limit: 10
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
   name:
     type: string_textfield

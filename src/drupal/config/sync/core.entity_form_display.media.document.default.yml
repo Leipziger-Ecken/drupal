@@ -9,7 +9,6 @@ dependencies:
   module:
     - file
     - path
-    - select2
 _core:
   default_config_hash: gtZlAQdQqZgVWvvZ6v-hfmACkfEimqn_GPDbQZqNAbw
 id: media.document.default
@@ -32,13 +31,9 @@ content:
     region: content
   field_og_audience:
     weight: 0
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
     region: content
   langcode:
     type: language_select

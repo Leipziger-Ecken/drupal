@@ -9,7 +9,6 @@ dependencies:
     - media.type.document
   module:
     - file
-    - select2
 _core:
   default_config_hash: dcpfpqyLXOSGpulacMAJW3H-G34_LeNsjdfxd1_oCfY
 id: media.document.media_library
@@ -25,14 +24,10 @@ content:
       progress_indicator: throbber
     third_party_settings: {  }
   field_og_audience:
-    type: select2_entity_reference
+    type: options_select
     weight: 0
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

@@ -9,7 +9,6 @@ dependencies:
     - media.type.unsplash_image
   module:
     - media_entity_remote_image
-    - select2
     - text
 id: media.unsplash_image.default
 targetEntityType: media
@@ -34,13 +33,9 @@ content:
     region: content
   field_og_audience:
     weight: 0
-    settings:
-      autocomplete: false
-      match_operator: CONTAINS
-      match_limit: 10
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
     region: content
   name:
     type: string_textfield
