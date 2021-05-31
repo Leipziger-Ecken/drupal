@@ -620,10 +620,11 @@ function _le_admin_form_media_alter(&$form, FormStateInterface $form_state, $for
   $view->setDisplay('entity_reference');
   $result = $view->render();
 
-  foreach ($result as $nid => $row) {
+  foreach ($result as $row) {
     if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $nid = $row['#row']->_relationship_entities['uid']->id();
       $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
-
+      
       $form['field_og_audience']['widget']['#options'][$nid] = $title;
     }
   }
@@ -653,8 +654,9 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
   $view->setDisplay('entity_reference');
   $result = $view->render();
 
-  foreach ($result as $nid => $row) {
+  foreach ($result as $row) {
     if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $nid = $row['#row']->_relationship_entities['uid']->id();
       $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
 
       $form['media'][0]['fields']['field_og_audience']['widget']['#options'][$nid] = $title;
@@ -681,10 +683,11 @@ function _le_admin_form_media_view_alter(&$form, FormStateInterface $form_state,
   $view->setDisplay('entity_reference');
   $result = $view->render();
   
-  foreach ($result as $nid => $row) {
+  foreach ($result as $row) {
     if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
+      $nid = $row['#row']->_relationship_entities['uid']->id();
       $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
-
+      
       $form['field_og_audience_target_id']['#options'][$nid] = $title;
     }
   }
