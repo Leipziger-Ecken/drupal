@@ -83,7 +83,7 @@
       >
         <div class="mr-auto">
           <span class="text-black font-bold mr-2">${page.title}</span>
-          <span class="text-sm ${page.status ? 'text-green-600' : 'text-gray-400'}">${page.status ? Drupal.t('published') : Drupa.t('unpublished')}</span>
+          <span class="text-sm ${page.status ? 'text-green-600' : 'text-gray-400'}">${page.status ? Drupal.t('published') : Drupal.t('unpublished')}</span>
         </div>
         <div class="ml-auto">
           <button

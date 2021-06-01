@@ -317,7 +317,7 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
       '#value' => $sibling_id,
     ];
     
-    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_submit';
+    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_create_submit';
   }
 
   // edit form
@@ -382,6 +382,8 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
         $form['field_parent']['widget']['#options'][$nid] = $title;
       }
     }
+
+    $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_edit_submit';
   }
 }
 
@@ -498,7 +500,7 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
   ];
 }
 
-function le_admin_webbuilder_page_submit(array $form, FormStateInterface $form_state)
+function le_admin_webbuilder_page_create_submit(array $form, FormStateInterface $form_state)
 {
   $page = $form_state->getFormObject()->getEntity();
   $parent = $page->get('field_parent');
@@ -510,6 +512,34 @@ function le_admin_webbuilder_page_submit(array $form, FormStateInterface $form_s
   }
 
   ApiController::sortPage($page, $parent_id, $sibling_id);
+  _le_admin_make_webbuilder_page_slug_unique($page);
+}
+
+function le_admin_webbuilder_page_edit_submit(array $form, FormStateInterface $form_state)
+{
+  $page = $form_state->getFormObject()->getEntity();
+  _le_admin_make_webbuilder_page_slug_unique($page);
+}
+
+function _le_admin_make_webbuilder_page_slug_unique($page)
+{
+  // make slug unique within webbuilder
+  $webbuilder_id = isset($page->field_webbuilder[0]) ? $page->field_webbuilder[0]->target_id : null;
+  $slug = isset($page->field_slug[0]) ? $page->field_slug[0]->value : null;
+
+  if ($webbuilder_id && $slug) {
+    $query = \Drupal::entityQuery('node');
+    $query->condition('field_webbuilder', $webbuilder_id);
+    $query->condition('nid', $page->id(), '!=');
+    $query->condition('field_slug', $slug);
+    $result = $query->execute();
+
+    if (count($result)) {
+      $slug = $slug . '-' . $page->id();
+      $page->set('field_slug', $slug);
+      $page->save();
+    }
+  }
 }
 
 function le_admin_webbuilder_page_delete_submit(array $form, FormStateInterface $form_state)
