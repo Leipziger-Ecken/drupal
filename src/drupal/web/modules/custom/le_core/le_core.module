@@ -1,9 +1,169 @@
 <?php
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\og\Og;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Views\ViewExecutable;
+
+define('LE_CUSTOM_DATES', [
+  'FUTURE' => 'future', // >= today
+  'PAST' => 'past', // < today
+  'NEXT_WEEK' => 'next_week', // > monday of next week
+  'CUSTOM' => 'custom' // Use 'start'- &/ 'ende'-params from URI
+]);
+
+$GLOBALS['le_custom_date'] = LE_CUSTOM_DATES['FUTURE'];
+$GLOBALS['le_custom_start'] = null;
+$GLOBALS['le_custom_end'] = null;
+
+/**
+ * Implements template_preprocess_views_exposed_form().
+ *
+ * Adds custom date picker to event-form filter.
+ */
+function le_core_preprocess_views_exposed_form(&$variables) {
+  if ($variables['form']['#id'] === 'views-exposed-form-le-view-events-page-1') {
+    $custom_date = $GLOBALS['le_custom_date'];
+
+    // Transform form API element into pure HTML. Will be skipped if '#markup'/'#printed' is already given on element
+    // @see https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Renderer.php/function/Renderer%3A%3Arender/8.2.x
+    $startInput = \Drupal::service('renderer')->render($variables['form']['start']);
+    $endInput = \Drupal::service('renderer')->render($variables['form']['ende']);
+
+    // Uses #type => inline_template to avoid stripped HTML from use of #markup
+    // @todo By default use english i18n strings, then translate into German via UI
+    $custom_date_picker = [
+      '#type' => 'inline_template',
+      '#template' => '
+        <div class="form-item form-type-select form-item-custom-date le-date-picker">
+          <label for="le-date-picker__select" class="control-label">'. t('Datum'). '</label>
+
+          <div class="select-wrapper">
+            <select name="date" class="form-select form-control" id="le-date-picker__select">
+              <option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['FUTURE'] .'">'. t('Ab heute') .'</option>
+              <option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['PAST'] .'">'. t('Vergangene Events') .'</option>
+              <option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected="selected"' : '') .' value="'. LE_CUSTOM_DATES['NEXT_WEEK'] .'">'. t('Ab nächster Woche') .'</option>'.
+              ($custom_date === LE_CUSTOM_DATES['CUSTOM']
+              ? '<option selected="selected" value="'. LE_CUSTOM_DATES['CUSTOM'] .'">'.
+                  (!is_null($GLOBALS['le_custom_start'] && !empty(trim($GLOBALS['le_custom_start']))) ? $GLOBALS['le_custom_start'] . ' ' : t('Heute') . ' ') .
+                  (!is_null($GLOBALS['le_custom_end'] && !empty(trim($GLOBALS['le_custom_end']))) ? '- '. $GLOBALS['le_custom_end'] : '') .
+                '</option>'
+              : '<option value="'. LE_CUSTOM_DATES['CUSTOM'] .'">'. t('Zeitraum eingeben') .'</option>'
+              ).
+            '</select>
+
+            <div class="categories-select" data-id="le-date-picker">
+              <div class="categories-select__options" data-level="1">
+                <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['FUTURE'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['FUTURE'] .'">
+                  <a href="#" title="'. t('Alle kommenden Events') .'">'. t('Ab heute') .'</a>
+                </div>
+                <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['PAST'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['PAST'] .'">
+                  <a href="#" title="'. t('Alle vergangenen Events (aufsteigend)') .'">'. t('Vergangene Events') .'</a>
+                </div>
+                <div class="categories-select__options__option'. ($custom_date === LE_CUSTOM_DATES['NEXT_WEEK'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['NEXT_WEEK'] .'">
+                  <a href="#" title="'. t('Alle Events ab Montag nächster Woche'). '">'. t('Ab nächster Woche') .'</a>
+                </div>
+                <div class="categories-select__options__option has-child'. ($custom_date === LE_CUSTOM_DATES['CUSTOM'] ? ' selected' : '') .'" data-val="'. LE_CUSTOM_DATES['CUSTOM'] .'">
+                  <a href="#" title="'. t('Beliebigen Zeitraum eingeben') .'">'. t('Zeitraum eingeben') .'</a>
+                  <div class="categories-select__options" data-level="2">
+                    <div class="categories-select__options__option">
+                      <a href="#" title="'. t('Startdatum eingeben') .'">
+                        '. $startInput .'
+                      </a>
+                    </div>
+                    <div class="categories-select__options__option">
+                      <a href="#" title="'. t('Enddatum eingeben') .'">
+                        '. $endInput .'
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>
+        /**
+         * Ensure date-child-container stays always visible once clicked
+         * @todo move into proejct css 
+         * **/
+        .le-date-picker .categories-select__options__option.has-child.selected .categories-select__options {
+          display: block;
+        }
+        </style>
+      '
+    ];
+
+    // Push custom date picker to previous start input, remove all internally computed inputs
+    $variables['form']['start'] = $custom_date_picker;
+    unset($variables['form']['sort_by']);
+    unset($variables['form']['sort_order']);
+    unset($variables['form']['ende']);
+
+    // Attach UI handler
+    $variables['form']['#attached']['library'][] = 'le_core/events-date-filter-picker';
+  }
+}
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+
+  if ($view->id() == 'le_view_events') {
+    switch ($display_id) {
+      case 'page_1':
+        // Evaluate URI-params and programmatically override events-view-filter & sort.
+        // Standard setting ("future"): All upcoming events, ascending.
+        $start = null;
+        $end = null;
+        $sort_order = 'ASC';
+
+        $filter_input = $view->getExposedInput();
+
+        if (isset($filter_input['date']) && in_array($filter_input['date'], LE_CUSTOM_DATES)) {
+          $GLOBALS['le_custom_date'] = $filter_input['date'];
+        }
+
+        switch ($GLOBALS['le_custom_date']) {
+          default:
+          case 'future':
+            $start = date("Y-m-d");
+            break;
+          case 'past':
+            $end = date("Y-m-d");
+            $sort_order = 'DESC';
+            break;
+          case 'next_week':
+            $start = date('Y-m-d', strtotime('next monday'));
+            break;
+          case 'custom':
+            $start = $filter_input['start'];
+            $end = $filter_input['ende'];
+
+            if (empty($start)) {
+              $sort_order = 'DESC';
+            }
+            break;
+        }
+
+        $GLOBALS['le_custom_start'] = $start;
+        $GLOBALS['le_custom_end'] = $end;
+
+        $view->setExposedInput(
+          array_merge(
+            $view->getExposedInput(),
+            [
+              'start' => $start,
+              'ende' => $end, 
+              'sort_by' => 'field_le_event_occurrences_value',
+              'sort_order' => $sort_order
+            ]
+          )
+        );
+
+        break;
+    }
+  }
+}
 
 /**
  * Called on UI-change event of $field_{le_entity_type}_kategorie_typ.
@@ -48,7 +208,7 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
     if (isset($data['tabs'][0]) && isset($data['tabs'][0]['entity.node.canonical'])) {
       // Change first tab title from "Ansicht" to "Beschreibung"
       // $local_task_main_view = &$data['tabs'][0]['entity.node.canonical'];
-
+      
       // TODO: this is very missleading
       // $local_task_main_view['#link']['title'] = 'Beschreibung';
     }
@@ -58,7 +218,7 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
 
     if ($node && gettype($node) !== 'string' && $node->bundle() !== 'le_akteur') {
       // Only show "Akteur-has-events" view link on akteur nodes
-      
+
       $data['tabs'][0]['view.le_akteur_has_events.page_1']['#access'] = FALSE;
       $data['tabs'][0]['view.projects.akteur_projects']['#access'] = FALSE;
       $data['tabs'][0]['view.blog.akteur_blog']['#access'] = FALSE;
@@ -74,15 +234,14 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
 
   if (in_array($form_id, ['node_le_akteur_form','node_le_akteur_edit_form'])) {
     // set_kategorie_form_fields($form, $form_state, 'akteur');
-    /*
     $form['#attached']['library'][] = 'le_core/categories-select';
     $form['#attached']['drupalSettings'] = [
       'le_categories_select_target' => '#edit-field-le-akteur-kategorie-typ'
     ];
-    */
     // kint($form);
 
     // Apply bootstrap grid
+    // @todo Move into leipzigerEcken-theme
     /*
     $form['title']['#attributes']['class'][] = 'col-md-6';
     $form['field_le_akteur_image']['#attributes']['class'][] = 'col-md-6';
@@ -107,13 +266,11 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
   }
 
   if (in_array($form_id, ['node_le_event_form','node_le_event_edit_form'])) {
-    /*
     $form['#attached']['library'][] = 'le_core/event-form';
     $form['#attached']['library'][] = 'le_core/categories-select';
     $form['#attached']['drupalSettings'] = [
       'le_categories_select_target' => '#edit-field-le-event-kategorie-typ'
     ];
-    */
 
     // Get groups ("memberships") of active user
     $user_id = \Drupal::currentUser()->id();
@@ -150,28 +307,31 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           ];
     }
 
-    // @todo When choosing Akteur, fill adress-values from Akteur-adress
+    // @todo When choosing Akteur, auto-fill-in address values from Akteur address, see #13
     $form['og_audience']['widget']['#type'] = 'select';
 
-    if (true || !$user_is_admin) {
-      $user_akteure = [];
+    $user_akteure = [];
 
-      foreach ($user_memberships as $membership) {
-        // Map memberships to actual akteure entity_id
-        array_push($user_akteure, $membership->get('entity_id')->value);
-      }
+    foreach ($user_memberships as $membership) {
+      // Map memberships to actual akteure entity_id
+      array_push($user_akteure, $membership->get('entity_id')->value);
+    }
 
+    if (!$user_is_admin) {
       if (isset($form['og_audience']['widget']['#options'])) {
+
+        // Limit selection to owned Akteure
         foreach ($form['og_audience']['widget']['#options'] as $entity_id => $filtered_markup) {
           if ($entity_id == '_none') continue;
 
           if (!in_array($entity_id, $user_akteure)) {
-            unset($form['og_audience']['widget']['#options'][$entity_id]);
+              unset($form['og_audience']['widget']['#options'][$entity_id]);
           }
         }
       }
     }
 
+    // Push "Private owner" at the top of og_audience select list
     $form['og_audience']['widget']['#options']['_none'] = '-- Private*r Veranstalter*in --';
     // array_unshift($form['og_audience']['widget']['#options'], '-- Private*r Veranstalter*in --');
 
@@ -194,6 +354,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     }
 
     // Apply bootstrap grid
+    // @todo Move into leipzigerEcken-theme
     /*
     $form['title']['#attributes']['class'][] = 'col-md-6';
     $form['field_le_event_image']['#attributes']['class'][] = 'col-md-6';

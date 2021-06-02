@@ -10,3 +10,7 @@ node-menu-enhancer:
   version: 1.x
   js:
     js/node-menu-enhancer.js: {}
+events-date-filter-picker:
+  version: 1.x
+  js:
+    js/events-date-filter-picker.js: {}
