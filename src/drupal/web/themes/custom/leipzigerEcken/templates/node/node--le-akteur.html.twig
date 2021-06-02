@@ -76,7 +76,7 @@
   ]
 %}
 
-<div class="row abstand"> 
+<div class="row abstand">
   <div class="col-md-3 node__sidebar">
       {% if content.field_logo %}
         {{ content.field_logo }} 
@@ -91,15 +91,15 @@
       {% endif %}
 
       {% if content.field_adresse %}
-        {{ content.field_adresse }} 
+        {{ content.field_adresse }}
       {% endif %}
 
       {% if content.field_bezirk %}
-        {{ content.field_bezirk }}  
+        {{ content.field_bezirk }}
       {% endif %}
 
       {% if content.field_geofield %}
-        <div class="geo-map"> 
+        <div class="geo-map">
           {{ content.field_geofield }}
         </div>
       {% endif %}
@@ -110,6 +110,18 @@
 
       {% if content.field_le_akteur_email %}
         {{ content.field_le_akteur_email }}
+      {% endif %}
+
+      {% if content.field_le_akteur_phone %}
+        {{ content.field_le_akteur_phone }}
+      {% endif %}
+
+      {% if content.field_le_akteur_contactperson %}
+        {{ content.field_le_akteur_contactperson }}
+      {% endif %}
+
+      {% if content.field_le_akteur_contactperson_fn %}
+        {{ content.field_le_akteur_contactperson_fn }}
       {% endif %}
 
       {% if content.field_le_akteur_kategorie_typ %}
@@ -124,7 +136,7 @@
   <div class="col-md-7 beschreibung clearfix">
       {% if content.field_le_akteur_kategorie_tags %}
         <div class="tag-area clearfix">
-          {{ content.field_le_akteur_kategorie_tags }} 
+          {{ content.field_le_akteur_kategorie_tags }}
         </div>
       {% endif %}
     {{ content.field_le_akteur_description }}

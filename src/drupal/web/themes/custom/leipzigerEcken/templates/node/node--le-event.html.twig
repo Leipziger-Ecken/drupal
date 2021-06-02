@@ -82,6 +82,11 @@
           {{ content.field_main_image }}
         {% endif %}
 
+        {# @todo Remove/Replace by field_logo? #}
+        {% if content.field_le_event_image %}
+          {{ content.field_le_event_image }}
+        {% endif %}
+
         {% if content.field_le_event_occurrences %}
           {{ content.field_le_event_occurrences }}
         {% endif %}
@@ -101,7 +106,7 @@
         {% endif %}        
 
         {% if content.og_audience %}
-          <div class="field--label">Veranstalter*in</div>
+          <div class="field--label">Veranstalter:in</div>
           {#
           @todo
           {% if content.og_audience is empty %}
@@ -110,7 +115,10 @@
           #}
           {{ content.og_audience }}
         {% endif %}
-      
+
+        {% if content.field_le_event_website %}
+          {{ content.field_le_event_website }}  
+        {% endif %}
 
         {% if content.field_le_event_is_barrier_free %}
           {{ content.field_le_event_is_barrier_free }}

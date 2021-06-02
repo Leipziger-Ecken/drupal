@@ -17,6 +17,8 @@ parts (e.g. header, footer), we extend page.html.twig.
 
           <div class="welcome">
             <h1 class="page-header">Eine Stadtteilplattform für Nachbarschaften und Dings*</h1>
+            
+            {{ drupal_block('system_messages_block') }}
 
             {# Highlighted #}
             {% if page.highlighted %}

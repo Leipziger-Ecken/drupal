@@ -49,3 +49,30 @@ a.content-type-le_remote_content_depot_social:before {
     content: "depot.social Leipzig";
     background-color: $color-depot-social;
 }
+
+// Leaflet markercluster plugin:
+.marker-cluster-large {
+    background-color: rgba(4, 102, 255, 0.5) !important;
+}
+
+.marker-cluster-large div {
+    background-color: rgba(4, 102, 255, 0.8) !important;
+    color: #fff !important;
+}
+ 
+.marker-cluster-small {
+    background-color: rgba(77, 213, 255, 0.5) !important;
+}
+
+.marker-cluster-small div {
+    background-color: rgba(77, 213, 255, 0.8) !important;
+}
+ 
+.marker-cluster-medium {
+    background-color: rgba(0, 150, 255, 0.5) !important;
+}
+
+.marker-cluster-medium div {
+    background-color: rgba(0, 150, 255, 0.8) !important;
+    color: #fff !important;
+}
