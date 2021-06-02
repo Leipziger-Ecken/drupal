@@ -1,7 +1,0 @@
-usernotification.notification_settings:
-  path: '/admin/config/people/accounts/notification-setting'
-  defaults:
-    _form: '\Drupal\usernotification\Form\NotificationSettingsForm'
-    _title: 'Notification setting'
-  requirements:
-    _permission: 'administer account settings'

@@ -1,9 +1,0 @@
-headers_to_remove:
-  - 'X-Generator'
-  - 'X-Drupal-Dynamic-Cache'
-  - 'X-Drupal-Cache'
-
-dependencies:
-  enforced:
-    module:
-    - 'remove_http_headers'

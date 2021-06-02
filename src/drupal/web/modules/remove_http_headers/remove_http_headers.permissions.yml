@@ -1,3 +1,0 @@
-remove_http_headers settings access:
-  title: 'Administer the Remove HTTP headers settings'
-  restrict access: TRUE
