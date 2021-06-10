@@ -45,3 +45,9 @@
     border-bottom-width: $hr-border-width;
     font-weight: 400;
 }
+
+// Custom date picker (on events list page):
+// Ensure date-child-container stays always visible once clicked
+.le-date-picker .categories-select__options__option.has-child.selected .categories-select__options {
+    display: block;
+}
