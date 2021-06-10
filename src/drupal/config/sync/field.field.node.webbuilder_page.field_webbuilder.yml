@@ -1,0 +1,25 @@
+uuid: f0bb242c-1d1f-4ba4-b2cc-1687e57cfeb9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_webbuilder
+    - node.type.webbuilder_page
+id: node.webbuilder_page.field_webbuilder
+field_name: field_webbuilder
+entity_type: node
+bundle: webbuilder_page
+label: Webbaukasten
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: webbuilders
+      display_name: entity_reference
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,10 @@
+uuid: 16ccf19e-1ab7-467e-886a-82eb068e7b6f
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_form
+label: 'Webbaukasten Formular'
+targetEntityType: node
+cache: true

@@ -1,0 +1,13 @@
+uuid: 292d410e-c74d-4639-a344-0a1c3ca5958e
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: sOb26JSy3fGpWkvR0WYN6_hMqj_6d1rvbvrkzp1yya0
+id: node_make_sticky_action
+label: 'Inhalt hervorheben'
+type: node
+plugin: node_make_sticky_action
+configuration: {  }

@@ -1,0 +1,13 @@
+enabled_default: 0
+default_challenge: hcaptcha/hCaptcha
+description: 'Diese Sicherheitsfrage überprüft, ob Sie ein menschlicher Besucher sind und verhindert automatisches Spamming.'
+administration_mode: false
+allow_on_admin_pages: false
+add_captcha_description: false
+default_validation: 1
+persistence: 1
+enable_stats: true
+log_wrong_responses: true
+_core:
+  default_config_hash: _UaIWu0_ZD3lUs97wlFC2Koi-o7Bex69Xr9q36nJtkY
+langcode: de

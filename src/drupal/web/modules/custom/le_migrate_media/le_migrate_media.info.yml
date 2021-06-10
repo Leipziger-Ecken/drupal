@@ -1,0 +1,6 @@
+name: Leipziger Ecken Migrate file to media
+description: 'Migrates custom content-types image fields to media fields'
+type: module
+core: 8.x
+package: Leipziger Ecken
+core_version_requirement: ^8 || ^9

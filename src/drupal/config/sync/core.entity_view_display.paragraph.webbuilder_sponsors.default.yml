@@ -1,0 +1,39 @@
+uuid: a2ec5aea-0935-4379-8676-b0884f977834
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_sponsors.field_body
+    - field.field.paragraph.webbuilder_sponsors.field_heading
+    - field.field.paragraph.webbuilder_sponsors.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_sponsors
+  module:
+    - text
+id: paragraph.webbuilder_sponsors.default
+targetEntityType: paragraph
+bundle: webbuilder_sponsors
+mode: default
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_no_results_body:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

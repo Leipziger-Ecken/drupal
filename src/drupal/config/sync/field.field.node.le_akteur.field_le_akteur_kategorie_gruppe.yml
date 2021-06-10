@@ -1,0 +1,31 @@
+uuid: df6475ee-99c6-40c9-89ba-21b0121d1b10
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_kategorie_gruppe
+    - node.type.le_akteur
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
+_core:
+  default_config_hash: q5tczhHGLHCvhCuJ4luBecDuHDhPvk_Ui6Ydk2bCLrM
+id: node.le_akteur.field_le_akteur_kategorie_gruppe
+field_name: field_le_akteur_kategorie_gruppe
+entity_type: node
+bundle: le_akteur
+label: Zielgruppe(n)
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_kategorie_zielgruppe: le_kategorie_zielgruppe
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

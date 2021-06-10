@@ -1,0 +1,22 @@
+uuid: df5d3c96-4d8c-4773-a41b-97a8ebc270ea
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: project
+label: Projekt
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:og_audience]/projects/[node:title]'
+selection_criteria:
+  345ac752-5321-4f8c-8c81-3a64781ee914:
+    id: node_type
+    bundles:
+      project: project
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 345ac752-5321-4f8c-8c81-3a64781ee914
+selection_logic: and
+weight: -5
+relationships: {  }

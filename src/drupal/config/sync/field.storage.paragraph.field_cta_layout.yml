@@ -1,0 +1,27 @@
+uuid: f22ee708-9e5d-4503-a1a6-2dd735551d52
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_cta_layout
+field_name: field_cta_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: lg
+      label: Größer
+    -
+      value: md
+      label: Normal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

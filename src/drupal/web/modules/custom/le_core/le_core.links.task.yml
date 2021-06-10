@@ -1,0 +1,14 @@
+view.le_akteur_has_events.page_1:
+  title: Events
+  route_name: view.le_akteur_has_events.page_1
+  base_route: entity.node.canonical
+
+view.projects.akteur_projects:
+  title: Projects
+  route_name: view.projects.akteur_projects
+  base_route: entity.node.canonical
+  
+view.blog.akteur_blog:
+  title: Blog
+  route_name: view.blog.akteur_blog
+  base_route: entity.node.canonical

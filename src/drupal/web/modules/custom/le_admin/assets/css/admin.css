@@ -1,0 +1,63 @@
+:root {
+  --colorGinPrimary: #0064ff !important;
+  --colorGinPrimaryHover: #004cbe !important;
+  --colorGinPrimaryLight: #448fff;
+  --colorGinPrimaryLightHover: #0066ff;
+  --colorGinItemHover: rgba(0, 40, 100, 0.1) !important;
+}
+
+.toolbar .toolbar-bar .toolbar-icon-le-admin-user-dashboard::before {
+  -webkit-mask-image: url("../icons/home.svg") !important;
+  -moz-mask-image: url("../icons/home.svg") !important;
+  -ms-mask-image: url("../icons/home.svg") !important;
+  mask-image: url("../icons/home.svg") !important;
+}
+.toolbar .toolbar-bar .toolbar-icon-le-admin-user-account::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' clip-rule='evenodd' d='M12 12.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M1.5 22v-1c0-3.5 6.096-5 10.5-5s10.5 1.5 10.5 5v1M22.5 22s-6.395.5-10.5.5S1.5 22 1.5 22' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
+  -moz-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' clip-rule='evenodd' d='M12 12.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M1.5 22v-1c0-3.5 6.096-5 10.5-5s10.5 1.5 10.5 5v1M22.5 22s-6.395.5-10.5.5S1.5 22 1.5 22' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
+  -ms-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' clip-rule='evenodd' d='M12 12.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M1.5 22v-1c0-3.5 6.096-5 10.5-5s10.5 1.5 10.5 5v1M22.5 22s-6.395.5-10.5.5S1.5 22 1.5 22' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
+  mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='none' clip-rule='evenodd' d='M12 12.5a5.5 5.5 0 100-11 5.5 5.5 0 000 11z' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3cpath fill='none' d='M1.5 22v-1c0-3.5 6.096-5 10.5-5s10.5 1.5 10.5 5v1M22.5 22s-6.395.5-10.5.5S1.5 22 1.5 22' stroke='black' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
+}
+.toolbar .toolbar-bar .toolbar-icon-le-admin-user-logout::before {
+  -webkit-mask-image: url("../icons/logout.svg") !important;
+  -moz-mask-image: url("../icons/logout.svg") !important;
+  -ms-mask-image: url("../icons/logout.svg") !important;
+  mask-image: url("../icons/logout.svg") !important;
+}
+.toolbar .toolbar-bar .toolbar-icon-le-admin-user-media::before {
+  -webkit-mask-image: url("../icons/video.svg") !important;
+  -moz-mask-image: url("../icons/video.svg") !important;
+  -ms-mask-image: url("../icons/video.svg") !important;
+  mask-image: url("../icons/video.svg") !important;
+}
+
+/* Fixes accordion headers looking awful */
+.ui-accordion .ui-accordion-header a {
+  padding-left: 1rem;
+  text-transform: none;
+  color: var(--colorGinText);
+}
+.ui-accordion .ui-accordion-header-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 1rem;
+}
+
+/* Prevents collapsibles and doubled headings in accordion */
+.ui-accordion .claro-details {
+  border: none;
+  padding: 0;
+}
+.ui-accordion .claro-details__summary {
+  display: none;
+}
+.ui-accordion .claro-details__wrapper {
+  margin: 0;
+}
+.previewable-list__item.is-active {
+  border-color: var(--colorGinPrimary) !important;
+  background-color: var(--colorGinPrimaryLight) !important;
+}
+.js-offCanvasPreviewer .ui-dialog-content {
+  overflow: hidden !important;
+}

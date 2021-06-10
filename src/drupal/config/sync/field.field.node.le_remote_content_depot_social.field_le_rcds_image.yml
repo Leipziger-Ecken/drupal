@@ -1,0 +1,21 @@
+uuid: 0592df23-4c2d-4560-ad1c-e9c958c62087
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_image
+    - node.type.le_remote_content_depot_social
+_core:
+  default_config_hash: Lk6JM29F1D1Rx7yeQjJM8fO-91ZjiAMDjYDLHatRJB0
+id: node.le_remote_content_depot_social.field_le_rcds_image
+field_name: field_le_rcds_image
+entity_type: node
+bundle: le_remote_content_depot_social
+label: Bild
+description: 'Referenz zu externer Bild-Ressource'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

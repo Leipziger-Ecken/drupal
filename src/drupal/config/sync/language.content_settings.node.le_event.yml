@@ -1,0 +1,13 @@
+uuid: 15d5ac05-1a8a-4384-af14-be32bb687df2
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_event
+_core:
+  default_config_hash: DFtyUQ666crxS6iQuliRYQt-HLGKxoSA6T_xwUc-ypE
+id: node.le_event
+target_entity_type_id: node
+target_bundle: le_event
+default_langcode: site_default
+language_alterable: false

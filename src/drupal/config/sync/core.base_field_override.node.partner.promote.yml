@@ -1,0 +1,22 @@
+uuid: bc63660b-0aea-433d-8dac-efbd1eed98c1
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.partner
+id: node.partner.promote
+field_name: promote
+entity_type: node
+bundle: partner
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

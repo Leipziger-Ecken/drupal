@@ -1,0 +1,22 @@
+uuid: 4a0c39b7-57c6-433e-bca6-089defd93a6d
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: blog_article
+label: Blog-Artikel
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:og_audience]/blog/[node:title]'
+selection_criteria:
+  9f340a27-c78a-4d86-a0c0-cd7728405c25:
+    id: node_type
+    bundles:
+      blog_article: blog_article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 9f340a27-c78a-4d86-a0c0-cd7728405c25
+selection_logic: and
+weight: -5
+relationships: {  }

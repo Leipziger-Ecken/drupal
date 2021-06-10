@@ -1,0 +1,20 @@
+uuid: 0b3167c3-e796-4fe7-b8a8-c7639b449897
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+id: paragraph.field_audio
+field_name: field_audio
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

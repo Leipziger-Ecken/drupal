@@ -1,0 +1,29 @@
+{% set destination = get_destination() %}
+{% set akteur_id = get_args()[3] %}
+<figure class="bg-white shadow border border-gray-200 sm:rounded-lg">
+  <img 
+    class="w-full h-auto block sm:rounded-t-lg"
+    src="{{ content.field_preview_image[0]['#item'] | file_uri | image_style('webbuilder_preset_thumb') }}"
+  >
+  <figcaption class="p-4">
+    <div>
+      <h3>{{ label }}</h3>
+      {{ content.field_description }}
+    </div>
+    <div>
+      <a
+        class="button button--primary button--small"
+        href="{{ drupal_url('/user/webbuilder/create-from-preset/' ~ node.id, {query: {le_akteur: akteur_id }}) }}">
+        {{ 'Get started with this preset'|t }}
+      </a>
+      <a 
+        class="button button--default button--small"
+        href="{{ url }}"
+        target="webbuilder_preset_{{ node.id }}"
+      >
+        {{ 'Open preview'|t }}
+      </a>
+      
+    </div>
+  </figcaption>
+</figure>

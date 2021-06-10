@@ -1,0 +1,19 @@
+uuid: 9d41c8b5-a099-4dc6-8689-ecfe49a9a476
+langcode: de
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_pre_footer_button
+field_name: field_pre_footer_button
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

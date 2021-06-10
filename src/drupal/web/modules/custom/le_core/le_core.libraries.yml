@@ -1,0 +1,19 @@
+event-form:
+  version: 1.x
+  js:
+    js/event-form.js: {}
+categories-select:
+  version: 1.x
+  js:
+    js/categories-select.js: {}
+  css:
+    component:
+      css/categories-select.css: {}
+node-menu-enhancer:
+  version: 1.x
+  js:
+    js/node-menu-enhancer.js: {}
+events-date-filter-picker:
+  version: 1.x
+  js:
+    js/events-date-filter-picker.js: {}

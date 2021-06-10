@@ -1,0 +1,19 @@
+uuid: 661799bf-1eb7-4afb-a9e1-443227319594
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: DP_kzdbokYNZZFfZvda9xPKpOFTx0uY7XgoxDbiYZNM
+name: Event
+type: le_event
+description: 'Öffentliche Veranstaltungen wie Workshops, Seminare, Feste oder Märkte.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

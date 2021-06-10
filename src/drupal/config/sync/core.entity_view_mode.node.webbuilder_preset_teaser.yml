@@ -1,0 +1,10 @@
+uuid: 3e61a5ac-1804-43e0-9681-7a755f7a57ac
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_preset_teaser
+label: 'Webbaukasten: Vorschau Vorlage'
+targetEntityType: node
+cache: true

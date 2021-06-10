@@ -1,0 +1,31 @@
+uuid: 6dac8b6b-df2c-4d52-8748-edcdebd4342a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bezirk
+    - node.type.le_event
+    - taxonomy.vocabulary.le_bezirk
+_core:
+  default_config_hash: PxmN2NCDS93XSCyYCL-veLtNauz3vk1a_g352EtsRcE
+id: node.le_event.field_bezirk
+field_name: field_bezirk
+entity_type: node
+bundle: le_event
+label: Stadtteil
+description: 'Für digitale oder stadtweite Veranstaltungen kann "Stadtweit" gewählt werden.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_bezirk: le_bezirk
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

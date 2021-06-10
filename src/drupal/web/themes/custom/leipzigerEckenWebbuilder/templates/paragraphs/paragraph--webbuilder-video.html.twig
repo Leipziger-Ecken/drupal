@@ -1,0 +1,30 @@
+{% block paragraph %}
+<div
+class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}"
+data-role="paragraph"
+>
+  <div class="{{ webbuilder_classes.container.sm }}">
+    {% if content.field_heading[0] %}
+    <div class="text-lg {{ webbuilder_classes.container.prose }} {{ webbuilder_classes.margin.b_sm }}">
+      <h2>
+        <span class="block text-center {{ webbuilder_classes.text.h2 }}">
+          {{ content.field_heading }}
+        </span>
+      </h2>
+    </div>
+    {% endif %}
+    {% set video = content.field_video[0] %}
+    {% if video %}
+    <figure>
+      {{ video }}
+
+      {% if content.field_video_caption[0] %}
+      <figcaption class="{{ webbuilder_classes.text.figcaption }}">
+        {{ content.field_video_caption }}
+      </figcaption>
+      {% endif %}
+    </figure>
+    {% endif %}
+  </div>
+</div>
+{% endblock paragraph %}

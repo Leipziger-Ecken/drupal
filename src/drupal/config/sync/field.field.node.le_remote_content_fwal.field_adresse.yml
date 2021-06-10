@@ -1,0 +1,50 @@
+uuid: 499f5193-c7c8-4702-929b-f076360553c9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_adresse
+    - node.type.le_remote_content_fwal
+  module:
+    - address
+_core:
+  default_config_hash: pAPD3wwVyUYdkQ40drBeRA1nYcrPutp-GO5EUDxcbBY
+id: node.le_remote_content_fwal.field_adresse
+field_name: field_adresse
+entity_type: node
+bundle: le_remote_content_fwal
+label: Adresse
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    DE: DE
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

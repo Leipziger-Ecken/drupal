@@ -1,0 +1,10 @@
+uuid: 324f44b4-8af3-4666-b2e2-b0cce19d9a80
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_text
+label: Text
+icon_uuid: null
+icon_default: null
+description: 'Ein formattierter Text.'
+behavior_plugins: {  }

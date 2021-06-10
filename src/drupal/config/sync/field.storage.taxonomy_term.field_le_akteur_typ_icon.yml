@@ -1,0 +1,32 @@
+uuid: 63eaa7fe-160e-49cc-8cc8-7a2e875bf634
+langcode: de
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - taxonomy
+_core:
+  default_config_hash: JI6wq22bqvYBQlrNYpsB5uCoRN-ia5e2JxFD6DZXCRI
+id: taxonomy_term.field_le_akteur_typ_icon
+field_name: field_le_akteur_typ_icon
+entity_type: taxonomy_term
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

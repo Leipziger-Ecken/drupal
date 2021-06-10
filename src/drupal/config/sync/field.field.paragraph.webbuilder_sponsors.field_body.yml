@@ -1,0 +1,21 @@
+uuid: 8dc0b70b-321d-4535-b0ff-201485a9e11a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_sponsors
+  module:
+    - text
+id: paragraph.webbuilder_sponsors.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_sponsors
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

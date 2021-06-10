@@ -1,0 +1,21 @@
+uuid: bd80f813-ae76-4a1b-afa1-22d481bf5bf5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_cta
+  module:
+    - text
+id: paragraph.webbuilder_cta.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_cta
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

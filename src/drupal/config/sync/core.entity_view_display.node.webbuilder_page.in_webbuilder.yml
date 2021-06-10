@@ -1,0 +1,108 @@
+uuid: b00105a2-9d03-4101-a471-c5e7bf30cffc
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.in_webbuilder
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer_body
+    - field.field.node.webbuilder_page.field_pre_footer_button
+    - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_short_description
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.field_webbuilder
+    - field.field.node.webbuilder_page.field_weight
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - entity_reference_revisions
+    - link
+    - options
+    - text
+    - user
+id: node.webbuilder_page.in_webbuilder
+targetEntityType: node
+bundle: webbuilder_page
+mode: in_webbuilder
+content:
+  field_contents:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_header_image:
+    type: entity_reference_entity_view
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+  field_navigation:
+    type: list_key
+    weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_pre_footer_body:
+    type: text_default
+    weight: 7
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_pre_footer_button:
+    type: link
+    weight: 8
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+  field_pre_footer_heading:
+    type: string
+    weight: 6
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_webbuilder:
+    type: entity_reference_entity_id
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    type: entity_reference_entity_id
+    weight: 4
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_parent: true
+  field_short_description: true
+  field_slug: true
+  field_weight: true
+  langcode: true
+  published_at: true

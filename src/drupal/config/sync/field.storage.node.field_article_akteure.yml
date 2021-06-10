@@ -1,0 +1,21 @@
+uuid: eb88ad77-24ea-4408-9294-297ccfe52a7b
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: KJOAODyPq2QbZWu_h17IJAnK5R6Cr3geq-m4OnwMg7U
+id: node.field_article_akteure
+field_name: field_article_akteure
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+uuid: e659e076-6c84-4e0c-9c00-9ec70d8b6e60
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_events
+label: Events
+icon_uuid: null
+icon_default: null
+description: 'Eine Liste der zukünftigen Events.'
+behavior_plugins: {  }

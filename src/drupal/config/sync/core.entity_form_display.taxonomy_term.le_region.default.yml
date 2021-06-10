@@ -1,0 +1,41 @@
+uuid: a4ccdc16-1d02-40eb-b772-78f317addafd
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_region
+  module:
+    - path
+    - text
+_core:
+  default_config_hash: 4dRLLpb_x1xxTQ7hMV3eNUNnIJh4v7FZlT6fjFbdsRI
+id: taxonomy_term.le_region.default
+targetEntityType: taxonomy_term
+bundle: le_region
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  status: true

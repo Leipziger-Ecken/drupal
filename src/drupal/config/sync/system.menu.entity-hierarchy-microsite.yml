@@ -1,0 +1,10 @@
+uuid: 39e4b5b3-8a33-4072-acd3-f73a276136a9
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: HP1bZBi77_R1_RMKd4qh_XoH65gWIijfL1v_grxfmUU
+id: entity-hierarchy-microsite
+label: Microsites
+description: 'Microsite menus'
+locked: true

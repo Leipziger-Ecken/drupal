@@ -1,0 +1,22 @@
+uuid: 2072d727-f7cc-496e-8fd0-c7cf020a39f8
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.webbuilder_page
+id: node.webbuilder_page.status
+field_name: status
+entity_type: node
+bundle: webbuilder_page
+label: Veröffentlicht
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

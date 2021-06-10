@@ -1,0 +1,312 @@
+uuid: 8c161bdd-a203-4bfd-8d43-91536e1abc5c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.le_akteur.field_adresse
+    - field.field.node.le_akteur.field_bezirk
+    - field.field.node.le_akteur.field_geofield
+    - field.field.node.le_akteur.field_le_akteur_comments
+    - field.field.node.le_akteur.field_le_akteur_contactperson
+    - field.field.node.le_akteur.field_le_akteur_contactperson_fn
+    - field.field.node.le_akteur.field_le_akteur_description
+    - field.field.node.le_akteur.field_le_akteur_einrichtungsname
+    - field.field.node.le_akteur.field_le_akteur_email
+    - field.field.node.le_akteur.field_le_akteur_hat_typ
+    - field.field.node.le_akteur.field_le_akteur_image
+    - field.field.node.le_akteur.field_le_akteur_is_barrier_free
+    - field.field.node.le_akteur.field_le_akteur_is_private
+    - field.field.node.le_akteur.field_le_akteur_kategorie_gruppe
+    - field.field.node.le_akteur.field_le_akteur_kategorie_tags
+    - field.field.node.le_akteur.field_le_akteur_kategorie_typ
+    - field.field.node.le_akteur.field_le_akteur_lizenzhinweis
+    - field.field.node.le_akteur.field_le_akteur_opening_times
+    - field.field.node.le_akteur.field_le_akteur_phone
+    - field.field.node.le_akteur.field_le_akteur_url
+    - field.field.node.le_akteur.field_logo
+    - node.type.le_akteur
+  module:
+    - address
+    - field_group
+    - link
+    - media_library
+    - path
+    - select2
+    - svg_image
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - path
+      parent_name: ''
+      weight: 4
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: settings
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Einstellungen
+    group_contact:
+      children:
+        - field_le_akteur_email
+        - field_le_akteur_phone
+        - field_le_akteur_url
+        - field_le_akteur_opening_times
+        - field_le_akteur_contactperson
+        - field_le_akteur_contactperson_fn
+      parent_name: group_basic
+      weight: 34
+      format_type: accordion_item
+      region: content
+      format_settings:
+        formatter: closed
+        required_fields: true
+        id: contact
+        classes: ''
+      label: 'Kontakt & Öffnungszeiten'
+    group_basic:
+      children:
+        - group_address
+        - group_contact
+        - group_details
+        - group_image
+      parent_name: ''
+      weight: 2
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Grunddaten
+    group_address:
+      children:
+        - field_adresse
+        - field_bezirk
+        - field_le_akteur_is_barrier_free
+      parent_name: group_basic
+      weight: 33
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: address
+        classes: ''
+        formatter: open
+        required_fields: true
+        description: ''
+      label: Adresse
+    group_details:
+      children:
+        - field_le_akteur_hat_typ
+        - field_le_akteur_kategorie_gruppe
+        - field_le_akteur_kategorie_typ
+        - field_le_akteur_description
+        - field_le_akteur_kategorie_tags
+        - field_logo
+        - field_le_akteur_einrichtungsname
+      parent_name: group_basic
+      weight: 35
+      format_type: accordion_item
+      region: content
+      format_settings:
+        formatter: closed
+        required_fields: true
+        id: description
+        classes: ''
+      label: Beschreibung
+_core:
+  default_config_hash: JG3NKQlqWadcEYoTKkwJzUdYwmurC0Hat_DbrbHqrfk
+id: node.le_akteur.default
+targetEntityType: node
+bundle: le_akteur
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_adresse:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+  field_bezirk:
+    weight: 10
+    settings:
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+      width: 100%
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_le_akteur_contactperson:
+    weight: 15
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_le_akteur_contactperson_fn:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: 'z.B. "Projektkoordination" / "Vorstand"'
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_le_akteur_description:
+    weight: 21
+    settings:
+      rows: 6
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_le_akteur_einrichtungsname:
+    weight: 24
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_le_akteur_email:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  field_le_akteur_hat_typ:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_le_akteur_is_barrier_free:
+    weight: 11
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_le_akteur_kategorie_gruppe:
+    weight: 19
+    settings:
+      width: 100%
+      autocomplete: false
+      match_operator: CONTAINS
+      match_limit: 10
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_le_akteur_kategorie_tags:
+    weight: 22
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'z.B. "kostenfrei, outdoor"'
+    third_party_settings: {  }
+    type: entity_reference_autocomplete_tags
+    region: content
+  field_le_akteur_kategorie_typ:
+    weight: 20
+    settings:
+      width: 100%
+      match_operator: CONTAINS
+      match_limit: 10
+      autocomplete: false
+    third_party_settings: {  }
+    type: select2_entity_reference
+    region: content
+  field_le_akteur_lizenzhinweis:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_le_akteur_opening_times:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: 'z.B. "Mo - Fr 10:00 - 18:00, Sa 10:00 - 12:00"'
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_le_akteur_phone:
+    weight: 12
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: telephone_default
+    region: content
+  field_le_akteur_url:
+    weight: 13
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_logo:
+    weight: 23
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 1
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden:
+  field_geofield: true
+  field_le_akteur_comments: true
+  field_le_akteur_image: true
+  field_le_akteur_is_private: true
+  langcode: true
+  promote: true
+  published_at: true
+  sticky: true
+  url_redirects: true

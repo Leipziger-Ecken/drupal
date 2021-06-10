@@ -1,0 +1,23 @@
+uuid: 05dbe8c2-bee1-443c-a0a2-4eb92d813043
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_description
+    - node.type.le_akteur
+  module:
+    - text
+_core:
+  default_config_hash: 1fMVcCuy9nfWZHUcsCLRuzvXhRabK-TGfxylCbpWXyA
+id: node.le_akteur.field_le_akteur_description
+field_name: field_le_akteur_description
+entity_type: node
+bundle: le_akteur
+label: Beschreibung
+description: 'Welche <b>Angebote</b> bieten wir? Welche <b>Ziele</b> verfolgen wir und an wen richten sich diese? Bestehen <b>Kooperationen</b> und wie lässt sich <b>mitmachen</b>?'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

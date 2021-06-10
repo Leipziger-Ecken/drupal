@@ -1,0 +1,10 @@
+uuid: 488931c8-a22c-41dc-ba75-3a8248199be2
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_teaser
+label: 'Webbaukasten: Teaser'
+targetEntityType: node
+cache: true

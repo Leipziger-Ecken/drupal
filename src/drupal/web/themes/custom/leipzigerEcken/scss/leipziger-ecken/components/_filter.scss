@@ -1,0 +1,53 @@
+/*  ______filter boxen______  */
+.form-inline {
+
+    &.form-group {
+        margin-bottom: 10px;
+        font-weight: 200;
+    //    border-bottom: 1px solid #0064ff;
+    }
+
+    .form-type-select,
+    .form-type-select .select-wrapper,
+    .form-type-select select,
+    .form-control {
+            width: 100%;
+    }
+
+    .form-actions {
+        width: 100%;
+
+        button.form-submit {
+            width: 100%;
+        }
+    }
+}
+
+#edit-end {
+    vertical-align: top;
+}
+
+.filter-heading {
+    font-size: 20pt;
+}
+
+/* beschriftung der boxen drüber */
+
+.control-label {
+    font-weight: 400;
+}
+
+.page-header {
+    text-align: center;
+    border-top-color: $hr-border-grey;
+    border-top-width: $hr-border-width;
+    border-bottom-color: $hr-border-grey;
+    border-bottom-width: $hr-border-width;
+    font-weight: 400;
+}
+
+// Custom date picker (on events list page):
+// Ensure date-child-container stays always visible once clicked
+.le-date-picker .categories-select__options__option.has-child.selected .categories-select__options {
+    display: block;
+}

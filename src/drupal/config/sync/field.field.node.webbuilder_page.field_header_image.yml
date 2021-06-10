@@ -1,0 +1,30 @@
+uuid: 458c53f1-f3e6-4f3c-ab14-83bb5fb8a912
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_header_image
+    - media.type.image
+    - media.type.unsplash_image
+    - node.type.webbuilder_page
+id: node.webbuilder_page.field_header_image
+field_name: field_header_image
+entity_type: node
+bundle: webbuilder_page
+label: 'Bild im Kopfbereich'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      unsplash_image: unsplash_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,47 @@
+uuid: a168c47c-015f-4c38-b6a6-2fcb2595f364
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_occurrences
+    - node.type.le_event
+  module:
+    - date_recur
+_core:
+  default_config_hash: X_B8Pzu-DI18nlNJmnSP0PmctZtPUQzpfXRcQM8G8Kk
+id: node.le_event.field_le_event_occurrences
+field_name: field_le_event_occurrences
+entity_type: node
+bundle: le_event
+label: Termine
+description: 'Falls ein Event mehrmals stattfindet, können mehrere Termine vergeben werden. Hierzu einfach auf "Weiteren Eintrag hinzufügen" klicken.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: relative
+    default_end_date: '+1 hour'
+    default_date_time_zone: Europe/Berlin
+    default_time_zone: Europe/Berlin
+    default_rrule: ''
+default_value_callback: ''
+settings:
+  precreate: P2Y
+  parts:
+    all: false
+    frequencies:
+      SECONDLY: {  }
+      MINUTELY:
+        - '*'
+      HOURLY:
+        - '*'
+      DAILY:
+        - '*'
+      WEEKLY:
+        - '*'
+      MONTHLY:
+        - '*'
+      YEARLY: {  }
+field_type: date_recur

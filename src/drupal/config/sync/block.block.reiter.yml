@@ -1,0 +1,20 @@
+uuid: bf600c78-94d3-45e5-981c-663c05017314
+langcode: de
+status: true
+dependencies:
+  theme:
+    - leipzigerEcken
+id: reiter
+theme: leipzigerEcken
+region: content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Reiter
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

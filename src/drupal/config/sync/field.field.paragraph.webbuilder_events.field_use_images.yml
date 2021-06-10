@@ -1,0 +1,23 @@
+uuid: 353dff88-737e-4740-a9df-aa3f3f669e32
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_images
+    - paragraphs.paragraphs_type.webbuilder_events
+id: paragraph.webbuilder_events.field_use_images
+field_name: field_use_images
+entity_type: paragraph
+bundle: webbuilder_events
+label: 'Bilder anzeigen'
+description: "Aktivieren, um die Bilder der Elemente anzuzeigen, soweit diese Bilder haben.\r\n\r\nACHTUNG: Die Bilder werden auf ein festes Format mittig beschnitten. Evtl. sind dann wichtige Bildinformationen nicht sichtbar."
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

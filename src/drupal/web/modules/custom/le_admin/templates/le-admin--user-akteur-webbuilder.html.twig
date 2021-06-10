@@ -1,0 +1,24 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set destination = get_destination() %}
+{% set webbuilders = drupal_view_result('webbuilders', 'dashboard', node.id) %}
+
+<section>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Easily create your own website featuring all your above content.'|t,
+  }) }}
+
+{% if webbuilders|length %}
+  {% if 'le_role_redakteur' in user.roles or 'administrator' in user.roles %}
+    {{ include('@le_admin/partials/primary_action_button.html.twig', {
+      url: drupal_url('/user/akteur/' ~ node.id ~ '/webbuilder/add', {query: {destination: destination}}),
+      label: '+ ' ~ ('Add website'|t)
+    }) }}
+  {% endif %}
+  
+  {{ drupal_view('webbuilders', 'dashboard', node.id) }}
+{% else %}
+  <p class="pt-4">
+    {{ 'You have not created your website yet.'|t }}
+  </p>
+{% endif %}
+</div>

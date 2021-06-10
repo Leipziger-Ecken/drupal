@@ -1,0 +1,22 @@
+uuid: 3131efe8-1795-4533-96cd-bef3d985e142
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+_core:
+  default_config_hash: MO5ivY5W2afR1mvn-BQDifSkADkN3FE0qgT1El1rEaI
+id: node.field_le_event_kategorie_gruppe
+field_name: field_le_event_kategorie_gruppe
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

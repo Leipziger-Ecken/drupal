@@ -1,0 +1,19 @@
+uuid: a9947a61-3565-45b4-9e0e-5b09359dc1c7
+langcode: de
+status: true
+dependencies: {  }
+name: node_webbuilder_page
+label: 'node webbuilder_page validation'
+entity_type: node
+bundle: webbuilder_page
+field_validation_rules:
+  ceecc58a-232f-482f-ae99-53cad190c670:
+    uuid: ceecc58a-232f-482f-ae99-53cad190c670
+    id: regex_field_validation_rule
+    title: Slug
+    weight: 1
+    field_name: field_slug
+    column: value
+    error_message: 'Bitte verwenden Sie nur Kleinbuchstaben (a-z), Zahlen (0-9) und "-".'
+    data:
+      setting: '/^[a-z0-9\-]+$/'

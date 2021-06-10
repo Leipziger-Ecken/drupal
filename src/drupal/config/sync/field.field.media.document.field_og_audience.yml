@@ -1,0 +1,25 @@
+uuid: c29de712-61e2-4afe-9111-3aa9834f0361
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_og_audience
+    - media.type.document
+id: media.document.field_og_audience
+field_name: field_og_audience
+entity_type: media
+bundle: document
+label: 'Akteur:in'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: le_view_akteure
+      display_name: entity_reference
+      arguments: {  }
+field_type: entity_reference

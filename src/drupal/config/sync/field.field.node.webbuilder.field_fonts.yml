@@ -1,0 +1,23 @@
+uuid: e618f2fe-7c53-4294-a47a-1514d5a81e99
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fonts
+    - node.type.webbuilder
+  module:
+    - options
+id: node.webbuilder.field_fonts
+field_name: field_fonts
+entity_type: node
+bundle: webbuilder
+label: Schriftarten
+description: 'Wähle hier die Schriftarten welche für die Überschriften und für den normalen Text verwendet werden.'
+required: true
+translatable: false
+default_value:
+  -
+    value: Trirong+Rubik
+default_value_callback: ''
+settings: {  }
+field_type: list_string

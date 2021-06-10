@@ -1,0 +1,5 @@
+geocoder_presave_disabled: false
+cache: false
+langcode: de
+_core:
+  default_config_hash: zmwNJkT6Pn0z8U6fLzyZQvsG36Qmh2bxoufsYSAPJvc

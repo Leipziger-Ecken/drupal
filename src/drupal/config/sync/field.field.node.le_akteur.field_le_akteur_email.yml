@@ -1,0 +1,21 @@
+uuid: 2be65dec-e146-416b-83e6-e3e1ede9a7c1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_email
+    - node.type.le_akteur
+_core:
+  default_config_hash: d_0QXMUm-OZD6w9ZuJZoefyLGcSN7JktDbLZ4dRTF0Q
+id: node.le_akteur.field_le_akteur_email
+field_name: field_le_akteur_email
+entity_type: node
+bundle: le_akteur
+label: E-Mail
+description: 'Öffentliche E-Mail Adresse zur Kontaktaufnahme.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,8 @@
+logo:
+  use_default: 1
+brand_image:
+  use_default: 0
+  path: modules/custom/le_admin/assets/images/chris-unger-w7ZeM4xea2c-unsplash.jpg
+_core:
+  default_config_hash: OhypfKr4_Eo8XwXg3Sios05lN-LjxOhSdSOSkEN9Ndo
+langcode: de

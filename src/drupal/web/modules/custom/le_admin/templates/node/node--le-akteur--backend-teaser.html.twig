@@ -1,0 +1,140 @@
+{% set destination = get_destination() %}
+<article class="bg-white shadow overflow-hidden sm:rounded-lg mb-4">
+  <div class="px-4 py-5 sm:px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+    <div class="sm:col-span-2">
+      <h3 class="text-lg leading-6 font-medium text-gray-900 mt-0">
+        {{ label }}
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">
+        {{ include('@le_admin/partials/badge.html.twig', {
+          color: node.status[0].value == '0' ? 'gray' : 'green',
+          label: node.status[0].value == '0' ? 'unpublished'|t : 'published'|t,
+        }) }}
+      </p>
+    </div>
+    <div class="sm:col-span-1 ml-6">
+      {{ include('@le_admin/partials/primary_link.html.twig', {
+        url: drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}),
+        label: 'Edit'|t,
+      }) }}
+      <br/>
+      {{ include('@le_admin/partials/secondary_link.html.twig', {
+        url: drupal_url('/node/' ~ node.id()),
+        label: 'View'|t,
+        target: '_blank',
+      }) }}
+    </div>
+  </div>
+  <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+    <dl class="sm:divide-y sm:divide-gray-200">
+      {% if user.hasPermission('create le_event content') %}
+      {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
+        label: 'Events',
+        description: 'Your dates and events.',
+        content_type: 'le_event',
+        no_results_message: 'You have not created any events yet.',
+        create_label: 'Create Event',
+        manage_label: 'Manage Events',
+        published_count_label: {plural: ':count published events', singular: ':count published event' },
+        unpublished_count_label: {plural: ':count unpublished events', singular: ':count unpublished event' },
+        published_count: events.published_count,
+        unpublished_count: events.unpublished_count,
+        nid: node.id(),
+      }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create project content') %}
+      {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
+        label: 'Projects',
+        description: 'Show your projects to the world.',
+        content_type: 'project',
+        no_results_message: 'You have not created any projects yet.',
+        create_label: 'Create Project',
+        manage_label: 'Manage Projects',
+        published_count_label: {plural: ':count published projects', singular: ':count published project' },
+        unpublished_count_label: {plural: ':count unpublished projects', singular: ':count unpublished project' },
+        published_count: projects.published_count,
+        unpublished_count: projects.unpublished_count,
+        nid: node.id(),
+      }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create blog_article content') %}
+      {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
+        label: 'Blog',
+        description: 'Write your own blog.',
+        content_type: 'blog_article',
+        no_results_message: 'You have not created any blog articles yet.',
+        create_label: 'Create Blog Article',
+        manage_label: 'Manage Blog Articles',
+        published_count_label: {plural: ':count published blog articles', singular: ':count published blog article' },
+        unpublished_count_label: {plural: ':count unpublished blog articles', singular: ':count unpublished blog article' },
+        published_count: blog_articles.published_count,
+        unpublished_count: blog_articles.unpublished_count,
+        nid: node.id(),
+      }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create partner content') %}
+      {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
+        label: 'Partners',
+        description: 'Your partners and your network.',
+        content_type: 'partner',
+        no_results_message: 'You have not created any partners yet.',
+        create_label: 'Create Partner',
+        manage_label: 'Manage Partners',
+        published_count_label: {plural: ':count published partners', singular: ':count published partner' },
+        unpublished_count_label: {plural: ':count unpublished partners', singular: ':count unpublished partner' },
+        published_count: partners.published_count,
+        unpublished_count: partners.unpublished_count,
+        nid: node.id(),
+      }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create sponsor content') %}
+      {{ include('@le_admin/node/_le-akteur--backend-teaser_content_type_info.html.twig', {
+        label: 'Sponsors',
+        description: 'Your sponsors and supporters.',
+        content_type: 'sponsor',
+        no_results_message: 'You have not created any sponsors yet.',
+        create_label: 'Create Sponsor',
+        manage_label: 'Manage Sponsors',
+        published_count_label: {plural: ':count published sponsors', singular: ':count published sponsor' },
+        unpublished_count_label: {plural: ':count unpublished sponsors', singular: ':count unpublished sponsor' },
+        published_count: sponsors.published_count,
+        unpublished_count: sponsors.unpublished_count,
+        nid: node.id(),
+      }) }}
+      {% endif %}
+
+      {% if user.hasPermission('create webbuilder content') %}
+      <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          {{ 'Your website'|t }}
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+          <p class="text-gray-500">
+            {{ 'Easily create your own website featuring all your above content.'|t }}
+          </p>
+        </dd>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
+          {% if webbuilders.published_count == 0 and webbuilders.unpublished_count == 0 %}
+          <p>
+            {{ 'You have not created your website yet.'|t }}
+          </p>
+          {{ include('@le_admin/partials/secondary_link.html.twig', {
+            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder/add'),
+            label: 'Create your website'|t,
+          }) }}
+          {% else %}
+          {{ include('@le_admin/partials/secondary_link.html.twig', {
+            url: drupal_url('/user/akteur/' ~ node.id() ~ '/webbuilder'),
+            label: 'Edit your website'|t,
+          }) }}
+          {% endif %}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>
+</article>

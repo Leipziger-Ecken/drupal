@@ -1,0 +1,40 @@
+uuid: dfbb4148-c7e4-4c51-b5ca-84c49e215287
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_image
+    - node.type.le_event
+  module:
+    - image
+_core:
+  default_config_hash: zl88yFHu5opuSueFu5r0JbLckuQnbLttF6SU3Oa0PxE
+id: node.le_event.field_le_event_image
+field_name: field_le_event_image
+entity_type: node
+bundle: le_event
+label: Bild
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: le
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 5MB
+  max_resolution: 1000x800
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: 'Bild des Events'
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

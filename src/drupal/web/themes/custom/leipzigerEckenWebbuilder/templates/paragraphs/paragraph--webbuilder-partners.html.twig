@@ -1,0 +1,26 @@
+{% set node_id = paragraph.parent_id[0].value %}
+{% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
+{% block paragraph %}
+<section 
+  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}"
+  data-role="paragraph"
+>
+  <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
+    <div class="space-y-5 sm:space-y-4">
+      {% if content.field_heading[0] %}
+      <h2 class="{{ webbuilder_classes.text.h2 }}">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      {% if content.field_body[0] %}
+      <div class="{{ webbuilder_classes.text.prose }}">
+        {{ content.field_body }}
+      </div>
+      {% endif %}
+    </div>
+    <div class="lg:col-span-2">
+      {{ drupal_view('partners', 'webbuilder', akteur_id) }}
+    </div>
+  </div>
+</section>
+{% endblock paragraph %}

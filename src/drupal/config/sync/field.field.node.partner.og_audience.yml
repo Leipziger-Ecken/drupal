@@ -1,0 +1,26 @@
+uuid: 13b3a858-7852-4d53-8ec3-4551662e17b8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_audience
+    - node.type.le_akteur
+    - node.type.partner
+  module:
+    - og
+id: node.partner.og_audience
+field_name: og_audience
+entity_type: node
+bundle: partner
+label: 'Akteur:in'
+description: 'Ersteller:in des/der Partner:in.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'og:default'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+field_type: og_standard_reference

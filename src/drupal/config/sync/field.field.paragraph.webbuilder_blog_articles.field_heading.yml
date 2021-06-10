@@ -1,0 +1,19 @@
+uuid: 55705600-a2be-4c2b-9da5-2f931101b43b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.webbuilder_blog_articles
+id: paragraph.webbuilder_blog_articles.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: webbuilder_blog_articles
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

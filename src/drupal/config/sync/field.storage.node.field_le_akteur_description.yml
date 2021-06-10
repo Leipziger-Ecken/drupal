@@ -1,0 +1,21 @@
+uuid: 852d8be3-2f47-444f-855b-9076be764df8
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - text
+_core:
+  default_config_hash: rM7jVL9ofhPlWfK8zQV0QvhY8wvuNNS6igAAP41iDc8
+id: node.field_le_akteur_description
+field_name: field_le_akteur_description
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

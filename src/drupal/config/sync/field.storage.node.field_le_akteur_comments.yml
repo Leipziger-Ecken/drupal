@@ -1,0 +1,22 @@
+uuid: 227240a3-5cfa-4acc-a12f-b90b55c976d7
+langcode: de
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+_core:
+  default_config_hash: skTJKl6pjtoVo6jTgy_7NCN9x2uSPhhBd8GdCt6Egbk
+id: node.field_le_akteur_comments
+field_name: field_le_akteur_comments
+entity_type: node
+type: comment
+settings:
+  comment_type: le_comment_type_gespraeche
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

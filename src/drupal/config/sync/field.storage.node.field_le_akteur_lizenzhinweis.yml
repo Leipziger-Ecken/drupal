@@ -1,0 +1,20 @@
+uuid: 6d4b0a13-c43b-4f1a-9e7c-9dfabfa33941
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: RN4PX2uRZNTR4gwHtpP2Z-9pCyA1f7lIpdyltgjEdXE
+id: node.field_le_akteur_lizenzhinweis
+field_name: field_le_akteur_lizenzhinweis
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,69 @@
+uuid: 2dfcb8d2-d374-4985-b6fd-1614c187f58b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_media_document
+    - field.field.media.document.field_og_audience
+    - media.type.document
+  module:
+    - file
+    - path
+_core:
+  default_config_hash: gtZlAQdQqZgVWvvZ6v-hfmACkfEimqn_GPDbQZqNAbw
+id: media.document.default
+targetEntityType: media
+bundle: document
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media_document:
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    weight: 1
+    region: content
+  field_og_audience:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    region: content
+    third_party_settings: {  }
+hidden:
+  name: true

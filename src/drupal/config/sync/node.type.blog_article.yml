@@ -1,0 +1,17 @@
+uuid: c6199edd-614a-4a50-85ef-0cd5f76b3118
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Blog Artikel'
+type: blog_article
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

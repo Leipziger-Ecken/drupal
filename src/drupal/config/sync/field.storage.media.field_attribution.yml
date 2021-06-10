@@ -1,0 +1,19 @@
+uuid: ad1e5217-2b29-44a1-9c1c-c8bd8dadf656
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+    - text
+id: media.field_attribution
+field_name: field_attribution
+entity_type: media
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

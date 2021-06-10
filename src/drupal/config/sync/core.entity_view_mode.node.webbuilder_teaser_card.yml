@@ -1,0 +1,10 @@
+uuid: ccd0e99e-0e56-43d7-a060-2725164ca1b1
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_teaser_card
+label: 'Webbaukasten: Card Teaser'
+targetEntityType: node
+cache: true

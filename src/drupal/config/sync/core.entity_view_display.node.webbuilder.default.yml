@@ -1,0 +1,140 @@
+uuid: b1e9c82d-9eab-4bb1-8495-833771c33ee9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.webbuilder.field_blog_page
+    - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_description
+    - field.field.node.webbuilder.field_events_page
+    - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_fonts
+    - field.field.node.webbuilder.field_frontpage
+    - field.field.node.webbuilder.field_instagram_link
+    - field.field.node.webbuilder.field_is_preset
+    - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_preview_image
+    - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.og_audience
+    - node.type.webbuilder
+  module:
+    - color_field
+    - link
+    - media
+    - options
+    - user
+id: node.webbuilder.default
+targetEntityType: node
+bundle: webbuilder
+mode: default
+content:
+  field_blog_page:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_color_primary:
+    weight: 1
+    label: hidden
+    settings:
+      opacity: true
+      format: hex
+    third_party_settings: {  }
+    type: color_field_formatter_text
+    region: content
+  field_events_page:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_facebook_link:
+    weight: 9
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_fonts:
+    weight: 8
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_frontpage:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_instagram_link:
+    weight: 10
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_layout:
+    weight: 7
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_logo:
+    type: media_thumbnail
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    region: content
+  field_projects_page:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_twitter_link:
+    weight: 11
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_description: true
+  field_is_preset: true
+  field_preview_image: true
+  langcode: true
+  og_audience: true
+  published_at: true

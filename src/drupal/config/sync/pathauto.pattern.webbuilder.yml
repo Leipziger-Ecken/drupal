@@ -1,0 +1,22 @@
+uuid: 43f10048-05f9-4906-bc87-343b2d96b310
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: webbuilder
+label: Webbuilder
+type: 'canonical_entities:node'
+pattern: '/akteure/[node:og_audience:entity:title]/web/[node:nid]'
+selection_criteria:
+  d568f8d0-7888-4b2a-aab3-96f7aca878c1:
+    id: node_type
+    bundles:
+      webbuilder: webbuilder
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d568f8d0-7888-4b2a-aab3-96f7aca878c1
+selection_logic: and
+weight: -5
+relationships: {  }

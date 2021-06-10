@@ -1,0 +1,20 @@
+uuid: a22bfaec-0774-43d0-a9c4-e0d77dd648ab
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: sV-ZDSYfYI07CuNDO0uLwjoYLdXjHwOxZHS0s_k0h3Y
+id: node.le_akteur.title
+field_name: title
+entity_type: node
+bundle: le_akteur
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

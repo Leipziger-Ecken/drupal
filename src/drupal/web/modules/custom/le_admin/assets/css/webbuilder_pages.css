@@ -1,0 +1,57 @@
+.webbuilder-page-tree,
+.webbuilder-page-tree ul {
+  list-style-type: none;
+}
+.webbuilder-page-tree {
+  margin: 0;
+  padding: 0;
+}
+.webbuilder-page-tree__page:hover,
+.webbuilder-page-tree__page:focus,
+.webbuilder-page-tree__page:active {
+  background-color: var(--colorGinPrimaryLight);
+}
+.webbuilder-page-tree__page.is-active {
+  border-color: var(--colorGinPrimary);
+  background-color: var(--colorGinPrimaryLight);
+}
+.webbuilder-page-tree__move-page {
+  display: none !important;
+  margin-right: 1rem !important;
+}
+.webbuilder-page-tree__page.is-active .webbuilder-page-tree__move-page {
+  display: inline-block !important;
+}
+.webbuilder-page-tree__add-page-placeholder,
+.webbuilder-page-tree__move-page-placeholder {
+  display: none !important;
+  color: var(--colorGinGreen);
+  border-color: var(--colorGinGreen);
+}
+.webbuilder-page-tree__add-page-placeholder:hover,
+.webbuilder-page-tree__add-page-placeholder:focus,
+.webbuilder-page-tree__add-page-placeholder:active,
+.webbuilder-page-tree__move-page-placeholder:hover,
+.webbuilder-page-tree__move-page-placeholder:focus,
+.webbuilder-page-tree__move-page-placeholder:active {
+  color: var(--colorGinText);
+  background-color: var(--colorGinGreenLight);
+}
+.webbuilder-add-page__cancel-label,
+.webbuilder-page-tree__move-page-cancel-label {
+  display: none !important;
+}
+.webbuilder-pages.is-adding-page .webbuilder-page-tree__add-page-placeholder,
+.webbuilder-pages.is-moving-page .webbuilder-page-tree__move-page-placeholder,
+.webbuilder-pages.is-adding-page .webbuilder-add-page__cancel-label,
+.webbuilder-pages.is-moving-page .webbuilder-page-tree__move-page-cancel-label {
+  display: inline-block !important;
+}
+.webbuilder-pages.is-adding-page .webbuilder-add-page__add-label,
+.webbuilder-pages.is-adding-page .webbuilder-page-tree__move-page,
+.webbuilder-pages.is-adding-page .webbuilder-page-tree__edit-page,
+.webbuilder-pages.is-moving-page .webbuilder-page-tree__move-page-move-label,
+.webbuilder-pages.is-moving-page .webbuilder-page-tree__edit-page,
+.webbuilder-pages.is-moving-page .webbuilder-add-page {
+  display: none !important;
+}

@@ -1,0 +1,31 @@
+uuid: 17b16129-8e9c-44c8-be89-225bbdba8235
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_kategorie_typ
+    - node.type.le_akteur
+    - taxonomy.vocabulary.le_kategorie_typ
+_core:
+  default_config_hash: Ub_o9mPY6G-18Lx-bsJRQlt8ENc3KSb_JHFQTT7Rb50
+id: node.le_akteur.field_le_akteur_kategorie_typ
+field_name: field_le_akteur_kategorie_typ
+entity_type: node
+bundle: le_akteur
+label: Kategorien
+description: 'Angebotskategorie(n) des Akteurs. Es kann eine Ober- und mehrere Unterkategorien gewählt werden.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_kategorie_typ: le_kategorie_typ
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

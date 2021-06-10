@@ -1,0 +1,28 @@
+uuid: a205dd07-ef1a-4d12-a667-29a07c22fae6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_events_page
+    - node.type.webbuilder
+    - node.type.webbuilder_page
+id: node.webbuilder.field_events_page
+field_name: field_events_page
+entity_type: node
+bundle: webbuilder
+label: 'Seite mit Events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webbuilder_page: webbuilder_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

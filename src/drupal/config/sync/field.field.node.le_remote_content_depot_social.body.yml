@@ -1,0 +1,25 @@
+uuid: 423cc239-7edd-4a2a-9726-1819b815bbcb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.le_remote_content_depot_social
+  module:
+    - text
+_core:
+  default_config_hash: Sqk7t8BIOwsspKfmucuq5dxKrA28EhN_dM-PCLcQbPw
+id: node.le_remote_content_depot_social.body
+field_name: body
+entity_type: node
+bundle: le_remote_content_depot_social
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

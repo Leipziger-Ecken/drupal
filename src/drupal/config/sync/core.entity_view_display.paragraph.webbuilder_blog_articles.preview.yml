@@ -1,0 +1,85 @@
+uuid: 25d1e49d-1793-4b00-b1bc-e112848c7e67
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_blog_articles.field_body
+    - field.field.paragraph.webbuilder_blog_articles.field_has_filters
+    - field.field.paragraph.webbuilder_blog_articles.field_has_pagination
+    - field.field.paragraph.webbuilder_blog_articles.field_heading
+    - field.field.paragraph.webbuilder_blog_articles.field_listing_layout
+    - field.field.paragraph.webbuilder_blog_articles.field_no_results_body
+    - field.field.paragraph.webbuilder_blog_articles.field_per_page
+    - field.field.paragraph.webbuilder_blog_articles.field_use_images
+    - paragraphs.paragraphs_type.webbuilder_blog_articles
+  module:
+    - options
+    - text
+id: paragraph.webbuilder_blog_articles.preview
+targetEntityType: paragraph
+bundle: webbuilder_blog_articles
+mode: preview
+content:
+  field_body:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_has_filters:
+    weight: 6
+    label: inline
+    settings:
+      format: yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_has_pagination:
+    weight: 5
+    label: inline
+    settings:
+      format: yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_heading:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_layout:
+    weight: 2
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_per_page:
+    weight: 4
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_use_images:
+    weight: 3
+    label: inline
+    settings:
+      format: yes-no
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+hidden:
+  field_no_results_body: true

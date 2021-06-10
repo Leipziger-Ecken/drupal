@@ -1,0 +1,7 @@
+{{ exposed }}
+
+{% for row in rows[0]['#rows'] %}
+{{ drupal_entity('node', row['#row'].nid, 'backend_teaser') }}
+{% endfor %}
+
+{{ pager }}

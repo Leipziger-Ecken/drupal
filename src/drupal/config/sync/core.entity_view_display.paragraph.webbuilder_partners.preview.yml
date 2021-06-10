@@ -1,0 +1,35 @@
+uuid: 49b630c7-27a1-4633-962c-1f4174370f4d
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_partners.field_body
+    - field.field.paragraph.webbuilder_partners.field_heading
+    - field.field.paragraph.webbuilder_partners.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_partners
+  module:
+    - text
+id: paragraph.webbuilder_partners.preview
+targetEntityType: paragraph
+bundle: webbuilder_partners
+mode: preview
+content:
+  field_body:
+    weight: 1
+    label: above
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_heading:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_no_results_body: true

@@ -1,0 +1,19 @@
+uuid: b2ee63a0-6428-4d4e-9bd1-a140f6081386
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_website
+    - node.type.partner
+id: node.partner.field_website
+field_name: field_website
+entity_type: node
+bundle: partner
+label: Webseite
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

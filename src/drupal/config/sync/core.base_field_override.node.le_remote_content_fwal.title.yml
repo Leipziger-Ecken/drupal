@@ -1,0 +1,20 @@
+uuid: eda5a627-bf53-4705-8c7f-01e0d8aa0940
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_fwal
+_core:
+  default_config_hash: kIe_yjproGvZO3G4ymp5Zyb67TUs8L9O1uxANM9FTQ8
+id: node.le_remote_content_fwal.title
+field_name: title
+entity_type: node
+bundle: le_remote_content_fwal
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

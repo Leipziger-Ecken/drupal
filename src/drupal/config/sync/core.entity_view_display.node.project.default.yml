@@ -1,0 +1,73 @@
+uuid: b75fc1d8-fc1b-40ac-a5b4-174752c67a5b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.project.body
+    - field.field.node.project.field_images
+    - field.field.node.project.field_is_featured
+    - field.field.node.project.field_legal_terms_accepted
+    - field.field.node.project.field_main_image
+    - field.field.node.project.field_related_content
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - text
+    - user
+id: node.project.default
+targetEntityType: node
+bundle: project
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_images:
+    weight: 4
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_main_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_related_content:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    label: hidden
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 2
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_is_featured: true
+  field_legal_terms_accepted: true
+  langcode: true
+  published_at: true

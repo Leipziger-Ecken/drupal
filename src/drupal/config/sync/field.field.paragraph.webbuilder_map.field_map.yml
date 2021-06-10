@@ -1,0 +1,22 @@
+uuid: 12b2a71b-4204-446f-9fc7-d74fa4cfaa85
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map
+    - paragraphs.paragraphs_type.webbuilder_map
+  module:
+    - geofield
+id: paragraph.webbuilder_map.field_map
+field_name: field_map
+entity_type: paragraph
+bundle: webbuilder_map
+label: Karte
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  backend: geofield_backend_default
+field_type: geofield

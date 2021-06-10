@@ -1,0 +1,49 @@
+uuid: 125d8fe9-b264-4b06-9543-492fd2391e16
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_image.field_heading
+    - field.field.paragraph.webbuilder_image.field_image
+    - field.field.paragraph.webbuilder_image.field_image_caption
+    - paragraphs.paragraphs_type.webbuilder_image
+  module:
+    - media_library
+    - text
+id: paragraph.webbuilder_image.default
+targetEntityType: paragraph
+bundle: webbuilder_image
+mode: default
+content:
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_image:
+    type: media_library_widget
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_image_caption:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

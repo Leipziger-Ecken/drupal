@@ -1,0 +1,13 @@
+uuid: aac6a26a-4a48-4a4c-bce5-b1d1a45c4845
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_bezirk
+_core:
+  default_config_hash: 76oXhNAKg0ezv8D_Db75KrJy5BXr2QxnmHpehGiNtIQ
+id: taxonomy_term.le_bezirk
+target_entity_type_id: taxonomy_term
+target_bundle: le_bezirk
+default_langcode: site_default
+language_alterable: false

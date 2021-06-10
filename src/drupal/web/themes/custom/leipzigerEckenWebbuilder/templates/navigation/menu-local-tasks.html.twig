@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/1.x/tags/macro.html
+#}
+<div
+  class="relative inline-block text-left"
+  data-controller="dropdown"
+>
+  <div>
+    <button
+      type="button"
+      class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-primary-500"
+      id="local-tasks-options-menu"
+      aria-haspopup="true"
+      aria-expanded="true"
+      data-dropdown-target="trigger"
+      data-action="dropdown#toggle"
+    >
+      {{ 'Actions'|t }}
+      <!-- Heroicon name: solid/chevron-down -->
+      {{ include('@leipzigerEckenWebbuilder/partials/icons/solid_chevron-down.html.twig', {
+        attributes: 'data-dropdown-target="triggericon"',
+        class: '-mr-1 ml-2 h-5 w-5 transition ease-in-out transform duration-200 rotate-0',
+      }) }}
+    </button>
+  </div>
+
+  <div
+    class="transform opacity-0 scale-95 transition ease-in-out duration-100 origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100"
+    data-dropdown-target="dropdown"
+    data-dropdown-toggle-classes="opacity-0 opacity-100 scale-95 scale-100"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="local-tasks-options-menu"
+  >
+    {% if primary %}
+    <div class="py-1" >
+      {{ primary }}
+    </div>
+    {% endif %}
+    {% if secondary %}
+    <div class="py-1" >
+      {{ secondary }}
+    </div>
+    {% endif %}
+  </div>
+</div>

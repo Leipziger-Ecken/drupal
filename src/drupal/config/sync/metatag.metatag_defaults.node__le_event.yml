@@ -1,0 +1,26 @@
+uuid: bc1bedb5-84d3-4566-ae6f-daf69a2cc299
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 4hcwIccGidveeZtPKF4bc8sYqF-PUE2AH2tFap0ldlA
+id: node__le_event
+label: 'Content: Event'
+tags:
+  content_language: de
+  canonical_url: '[current-page:url]'
+  image_src: '[node:field_le_event_image:entity:url]'
+  geo_region: DE
+  geo_position: '[node:field_le_event_geofield:latlon]'
+  title: '[node:title]'
+  schema_event_location: 'a:3:{s:5:"@type";s:5:"Place";s:7:"address";a:5:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:34:"[node:field_adresse:address_line1]";s:15:"addressLocality";s:29:"[node:field_adresse:locality]";s:10:"postalCode";s:32:"[node:field_adresse:postal_code]";s:14:"addressCountry";s:33:"[node:field_adresse:country_code]";}s:3:"geo";a:3:{s:5:"@type";s:14:"GeoCoordinates";s:8:"latitude";s:34:"[node:field_le_event_geofield:lat]";s:9:"longitude";s:34:"[node:field_le_event_geofield:lon]";}}'
+  schema_event_type: Event
+  schema_event_id: '[node:url]'
+  schema_event_is_accessible_for_free: 'True'
+  schema_event_performer: 'a:4:{s:5:"@type";s:12:"Organization";s:3:"@id";s:29:"[node:og_audience:entity:url]";s:4:"name";s:31:"[node:og_audience:entity:title]";s:3:"url";s:29:"[node:og_audience:entity:url]";}'
+  schema_event_end_date: '[node:field_le_event_occurrences:end_date:html_datetime]'
+  schema_event_image: 'a:4:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:38:"[node:field_le_event_image:entity:url]";s:5:"width";s:33:"[node:field_le_event_image:width]";s:6:"height";s:34:"[node:field_le_event_image:height]";}'
+  schema_event_url: '[node:url]'
+  schema_event_description: '[node:field_le_event_beschreibung]'
+  schema_event_start_date: '[node:field_le_event_occurrences:start_date:html_datetime]'
+  schema_event_name: '[node:title]'

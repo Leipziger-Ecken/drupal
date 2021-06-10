@@ -1,0 +1,35 @@
+uuid: 9f2d8424-bdf8-4fb8-8cf7-23ac49e9d851
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_comments
+    - node.type.le_akteur
+  module:
+    - comment
+_core:
+  default_config_hash: WwXFwMSmdCywiPvdjkxIaKgccYWRSq1OYaPbGdfAiwg
+id: node.le_akteur.field_le_akteur_comments
+field_name: field_le_akteur_comments
+entity_type: node
+bundle: le_akteur
+label: Gespräche
+description: "Einfacher, Forum-ähnlicher Austausch zwischen Gruppenmitgliedern. \r\n"
+required: false
+translatable: false
+default_value:
+  -
+    status: 2
+    cid: 0
+    last_comment_timestamp: 0
+    last_comment_name: null
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 1
+  per_page: 30
+  anonymous: 0
+  form_location: true
+  preview: 1
+field_type: comment

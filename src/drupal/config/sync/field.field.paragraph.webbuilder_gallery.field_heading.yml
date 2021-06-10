@@ -1,0 +1,19 @@
+uuid: ff1d0ab6-6b1f-4385-bb91-dcf3c491dcd1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.webbuilder_gallery
+id: paragraph.webbuilder_gallery.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: webbuilder_gallery
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

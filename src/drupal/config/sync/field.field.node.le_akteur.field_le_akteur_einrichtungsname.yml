@@ -1,0 +1,21 @@
+uuid: df9e8d0d-3dbd-4ab9-abf6-c5b0804efe69
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_einrichtungsname
+    - node.type.le_akteur
+_core:
+  default_config_hash: XYfzJRVO4CcMaFa36f4quRsshAKLjbm7UALmhGLuOWc
+id: node.le_akteur.field_le_akteur_einrichtungsname
+field_name: field_le_akteur_einrichtungsname
+entity_type: node
+bundle: le_akteur
+label: 'Einrichtungsname FwAL'
+description: 'Akteursprofil mit Konto bei der Frewilligenagentur-Leipzig verbinden: Name der Einrichtung eingeben. Die Spiegelung der Angebote erfolgt täglich.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

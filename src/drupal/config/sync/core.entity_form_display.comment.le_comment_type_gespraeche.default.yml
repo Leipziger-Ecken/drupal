@@ -1,0 +1,39 @@
+uuid: 1843bd2f-91d7-4a5d-876d-a8b9f08d2e89
+langcode: de
+status: true
+dependencies:
+  config:
+    - comment.type.le_comment_type_gespraeche
+    - field.field.comment.le_comment_type_gespraeche.comment_body
+  module:
+    - text
+_core:
+  default_config_hash: E854PtJSv27En3dyt7RI4LC742RHX0P60m_iKf2REyM
+id: comment.le_comment_type_gespraeche.default
+targetEntityType: comment
+bundle: le_comment_type_gespraeche
+mode: default
+content:
+  author:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  comment_body:
+    type: text_textarea
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  subject:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'z.B. "Vorbereitung nächstes Projekttreffen"'
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,69 @@
+{% set destination = get_destination() %}
+{% set base_path = get_base_path() %}
+<article class="py-8 mb-16">
+  <div class="block md:grid grid-cols-2 gap-8">
+    <div class="col-span-2 md:col-span-1 mt-0 md:mt-10">
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/frames.png',
+        description: 'Manage the page structure and the contents of your website.'|t,
+        link_url: drupal_url('/user/webbuilder/' ~ node.id ~ '/pages'),
+        link_label: 'Manage pages'|t
+      }) }}
+
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/brush_pencil.png',
+        description: 'Change the logo, color and fonts of your website.'|t,
+        link_url: drupal_url('/node/' ~ node.id ~ '/edit', { query: { destination: destination, section: 'design' }}),
+        link_label: 'Adjust design'|t
+      }) }}
+
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/heart.png',
+        description: 'On which social media platforms are you?'|t,
+        link_url: drupal_url('/node/' ~ node.id ~ '/edit', { query: { destination: destination, section: 'social-media' }}),
+        link_label: 'Edit social media links'|t
+      }) }}
+
+      {% if node.status[0].value == '0' %}
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/check.png',
+        description: 'Publish your website.'|t,
+        link_url: drupal_url('/user/webbuilder/' ~ node.id ~ '/publish', { query: { destination: destination }}),
+        link_label: 'Publish website'|t
+      }) }}
+      {% else %}
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/denied.png',
+        description: 'Unpublish your website.'|t,
+        link_url: drupal_url('/user/webbuilder/' ~ node.id ~ '/unpublish', { query: { destination: destination }}),
+        link_label: 'Unpublish website'|t
+      }) }}
+      {% endif %}
+      
+      {{ include('@le_admin/node/_webbuilder--backend-teaser_media-object.html.twig', {
+        img_src: base_path ~ 'modules/custom/le_admin/assets/icons/caution.png',
+        description: 'Delete your website.'|t,
+        link_url: drupal_url('/node/' ~ node.id ~ '/delete', { query: { destination: destination }}),
+        link_label: 'Delete website'|t
+      }) }}
+    </div>
+    <div class="col-span-2 md:col-span-1 hidden md:block">
+      <div class="flex justify-between">
+        <h3 class="mt-0">
+          {{ 'Website preview'|t }}
+        </h3>
+        {{ include('@le_admin/partials/secondary_link.html.twig', {
+          url: drupal_url(url),
+          label: 'Open in new window'|t,
+          target: '_blank',
+          class: 'mt-2',
+        }) }}
+      </div>
+      <iframe 
+        class="border round h-full w-full" 
+        style="min-height: 50vh;" 
+        src="{{ drupal_url(url, { query: { preview: 1, t: date().timestamp }}) }}"
+      ></iframe>
+    </div>
+  </div>
+</article>

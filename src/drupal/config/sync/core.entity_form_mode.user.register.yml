@@ -1,0 +1,12 @@
+uuid: fef96805-6f56-4f57-ba02-ca1f239e47f6
+langcode: de
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: sJWhj9Lj0t_dLGngaKLZGYrQWoLC7upZtkac6PWDfSU
+id: user.register
+label: Registrieren
+targetEntityType: user
+cache: true

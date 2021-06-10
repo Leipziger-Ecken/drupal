@@ -1,0 +1,28 @@
+uuid: 689c3e7b-3cda-45d8-91df-af0c2e250bb6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_og_audience
+    - media.type.video
+    - node.type.le_akteur
+id: media.video.field_og_audience
+field_name: field_og_audience
+entity_type: media
+bundle: video
+label: 'Akteur:in'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

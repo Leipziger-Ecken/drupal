@@ -1,0 +1,50 @@
+le_webbuilder.node.le_event:
+  path: '/akteure/{akteur}/web/{webbuilder}/events/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Event'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node
+
+le_webbuilder.node.blog_article:
+  path: '/akteure/{akteur}/web/{webbuilder}/blog/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Blog article'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node
+
+le_webbuilder.node.project:
+  path: '/akteure/{akteur}/web/{webbuilder}/projects/{node}'
+  defaults:
+    _controller: '\Drupal\le_webbuilder\Controller\WebbuilderController::viewNode'
+    _title: 'Project'
+  methods: [GET]
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      akteur:
+        type: entity:node
+      webbuilder:
+        type: entity:node
+      node:
+        type: entity:node

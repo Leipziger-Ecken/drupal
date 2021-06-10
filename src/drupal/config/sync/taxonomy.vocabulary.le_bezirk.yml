@@ -1,0 +1,10 @@
+uuid: 8cded3fa-700f-43f3-9ce7-203bcd1ea3af
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: A7Jy0Ed0iNVRpgiFSjen47U2HNajcFduOOV_7izBY18
+name: Bezirk
+vid: le_bezirk
+description: 'Liste an Bezirken'
+weight: 0

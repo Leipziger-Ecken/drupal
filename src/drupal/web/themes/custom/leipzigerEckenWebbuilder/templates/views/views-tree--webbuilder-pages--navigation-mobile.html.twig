@@ -1,0 +1,83 @@
+{#
+/**
+ * @file
+ * Default theme implementation for an item list.
+ *
+ * Available variables:
+ * - items: A list of items. Each item contains:
+ *   - attributes: HTML attributes to be applied to each list item.
+ *   - value: The content of the list element.
+ * - title: The title of the list.
+ * - list_type: The tag for list element ("ul" or "ol").
+ * - wrapper_attributes: HTML attributes to be applied to the list wrapper.
+ * - attributes: HTML attributes to be applied to the list.
+ * - empty: A message to display when there are no items. Allowed value is a
+ *   string or render array.
+ * - context: A list of contextual data associated with the list. May contain:
+ *   - list_style: The custom list style.
+ *
+ * @see template_preprocess_item_list()
+ *
+ * @ingroup themeable
+ */
+#}
+<nav class="grid grid-cols-1 gap-7">
+{%- if items.leaves -%}
+{%- for item in items -%}
+  {% set entity = item.node['#row']._entity %}
+  {% if item.leaves %}
+  <div class="relative" data-controller="collapsible">
+    <button
+      data-collapsible-target="trigger"
+      data-action="collapsible#toggle"
+      type="button"
+      class="group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+    >
+      <span>{{ entity.title[0].value }}</span>
+
+      {{ include('@leipzigerEckenWebbuilder/partials/icons/solid_chevron-down.html.twig', {
+        attributes: 'data-collapsible-target="triggericon"',
+        class: 'transform rotate-0 transition ease-in-out duration-200 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500',
+      }) }}
+    </button>
+
+    <div
+      class="opacity-0 max-h-0 transition ease-in-out duration-200 border-b border-gray-200"
+      data-collapsible-target="collapsible"
+    >
+      <div class="overflow-hidden">
+        <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+        {%- for child in item.leaves -%}
+          {% set child_entity = child.node['#row']._entity %}
+          <a
+            href="{{ drupal_url('node/' ~ child_entity.nid[0].value) }}"
+            class="-m-3 p-3 block rounded-md hover:bg-gray-50"
+          >
+            <p class="text-base font-medium text-gray-900">
+              {{ child_entity.title[0].value }}
+              <br/>
+            </p>
+            {% if child_entity.field_short_description[0] %}
+            <p class="mt-1 text-sm text-gray-500">
+              {{ child_entity.field_short_description[0].value }}
+            </p>
+            {% endif %}
+          </a>
+        {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <a
+    href="{{ drupal_url('node/' ~ entity.nid[0].value) }}"
+    class="-m-3 p-3 rounded-lg hover:bg-gray-50"
+  >
+    <div class="ml-4 text-base font-medium text-gray-900">
+      {{ entity.title[0].value }}
+    </div>
+  </a>
+  {% endif %}
+{%- endfor -%}
+{%- endif %}
+</nav>

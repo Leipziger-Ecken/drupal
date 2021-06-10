@@ -1,0 +1,21 @@
+uuid: 7eaf7d57-9e99-4789-8d2b-c98d116f3b66
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+_core:
+  default_config_hash: b0CxYVF1ifpTdzDgtSrTP5Ulqdf9PWPIB2p1eeg3Qg8
+id: node.field_le_akteur_phone
+field_name: field_le_akteur_phone
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,28 @@
+uuid: 6b3df175-6fc4-4e26-93c1-ce304386cd4f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_og_audience
+    - media.type.unsplash_image
+    - node.type.le_akteur
+id: media.unsplash_image.field_og_audience
+field_name: field_og_audience
+entity_type: media
+bundle: unsplash_image
+label: 'Akteur:in'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,89 @@
+uuid: 6faa1a17-9aeb-46ee-a72c-ad6894d43b69
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_events.field_body
+    - field.field.paragraph.webbuilder_events.field_has_filters
+    - field.field.paragraph.webbuilder_events.field_has_pagination
+    - field.field.paragraph.webbuilder_events.field_heading
+    - field.field.paragraph.webbuilder_events.field_listing_layout
+    - field.field.paragraph.webbuilder_events.field_no_results_body
+    - field.field.paragraph.webbuilder_events.field_per_page
+    - field.field.paragraph.webbuilder_events.field_use_images
+    - paragraphs.paragraphs_type.webbuilder_events
+  module:
+    - options
+    - text
+id: paragraph.webbuilder_events.default
+targetEntityType: paragraph
+bundle: webbuilder_events
+mode: default
+content:
+  field_body:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_has_filters:
+    weight: 5
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_has_pagination:
+    weight: 4
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_heading:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_layout:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_no_results_body:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_per_page:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_use_images:
+    weight: 1
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+hidden: {  }

@@ -1,0 +1,40 @@
+uuid: 273eb5cb-53b6-4ef2-bd53-66c2b716f0b9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.le_bezirk.field_le_bezirk_region
+    - taxonomy.vocabulary.le_bezirk
+  module:
+    - path
+_core:
+  default_config_hash: CEpe3r1CoZONWtkSuIAcCXXfMkIKLgPN4OKPMw9Bx_0
+id: taxonomy_term.le_bezirk.default
+targetEntityType: taxonomy_term
+bundle: le_bezirk
+mode: default
+content:
+  field_le_bezirk_region:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  status: true

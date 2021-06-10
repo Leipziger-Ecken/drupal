@@ -1,0 +1,15 @@
+diff --git a/src/drupal/core/modules/views/src/Plugin/views/display/EntityReference.php b/src/drupal/core/modules/views/src/Plugin/views/display/EntityReference.php
+index c8ab57c..4f1c778 100644
+--- a/src/drupal/core/modules/views/src/Plugin/views/display/EntityReference.php
++++ b/src/drupal/core/modules/views/src/Plugin/views/display/EntityReference.php
+@@ -193,7 +193,9 @@ public function query() {
+       $this->view->query->addWhere(0, $id_table . '.' . $id_field, $options['ids'], 'IN');
+     }
+ 
+-    $this->view->setItemsPerPage($options['limit']);
++    if (isset($options['limit'])) {
++      $this->view->setItemsPerPage($options['limit']);
++    }
+   }
+ 
+   /**

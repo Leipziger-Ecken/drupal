@@ -1,0 +1,20 @@
+uuid: 02e7616a-c517-4971-b41c-ce295be0b51b
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: wab2lZKJeTE5-P8qr4LqnJgRcI2tlABNVXPXfCiI174
+id: node.field_le_event_lizenzhinweis
+field_name: field_le_event_lizenzhinweis
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

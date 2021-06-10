@@ -1,0 +1,10 @@
+services:
+  le_admin.breadcrumb:
+    class: Drupal\le_admin\Breadcrumb\BreadcrumbBuilder
+    tags:
+      - { name: breadcrumb_builder, priority: 100 }
+
+  le_admin.twig_extension:
+    class: Drupal\le_admin\TwigExtension
+    tags:
+      - { name: twig.extension }

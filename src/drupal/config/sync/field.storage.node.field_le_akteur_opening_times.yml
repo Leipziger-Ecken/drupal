@@ -1,0 +1,23 @@
+uuid: 8890461d-3087-4203-bf14-7406372b1412
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: MHbgYko3LSfRmUFPvYsbNwLoN1iAie8B3IhV0yuP3j0
+id: node.field_le_akteur_opening_times
+field_name: field_le_akteur_opening_times
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,47 @@
+thunderforest_api_key: fe478abf78a944cc9f662fff1c8f520e
+mapbox_access_token: ''
+here_api_key: ''
+navionics_api_key: ''
+navionics_authorized_domain: ''
+leaflet_more_maps_custom_maps:
+  1:
+    map-key: 'Default (Leipziger Ecken)'
+    layer-keys:
+      'osm-neighbourhood layer': 'osm-neighbourhood layer'
+      'bing hybrid layer': 0
+      'bing satellite layer': 0
+      'bing road layer': 0
+      'esri-world_imagery layer': 0
+      'esri-natgeo_world_map layer': 0
+      'esri-world_physical_map layer': 0
+      'esri-ocean_basemap layer': 0
+      'esri-world_topo_map layer': 0
+      'esri-world_street_map layer': 0
+      'google-hybrid layer': 0
+      'google-hybrid overlay': 0
+      'google-satellite layer': 0
+      'google-roadmap layer': 0
+      'google-high-res terrain': 0
+      'google-high-res roadmap': 0
+      'mapbox-dark layer': 0
+      'mapbox-light layer': 0
+      'mapbox-satellite-streets layer': 0
+      'mapbox-streets layer': 0
+      'osm-cycle layer': 0
+      'osm-transport layer': 0
+      'osm-landscape layer': 0
+      'osm-outdoors layer': 0
+      'osm-transport-dark layer': 0
+      'osm-spinal-map layer': 0
+      'osm-pioneer layer': 0
+      'osm-mobile-atlas layer': 0
+      'wikimedia layer': 0
+      'stamen-terrain layer': 0
+      'stamen-toner-lite layer': 0
+      'stamen-toner-labels layer': 0
+      'stamen-watercolor layer': 0
+      'here-base layer': 0
+      'navionics nautical-non-transparent': 0
+      'navionics sonar': 0
+      'navionics ski': 0
+    reverse-order: 0

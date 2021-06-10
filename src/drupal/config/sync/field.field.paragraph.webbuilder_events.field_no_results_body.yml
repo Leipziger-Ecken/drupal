@@ -1,0 +1,24 @@
+uuid: 7c06a6b2-e7f0-468c-b797-3c7c1c78ac2a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_events
+  module:
+    - text
+id: paragraph.webbuilder_events.field_no_results_body
+field_name: field_no_results_body
+entity_type: paragraph
+bundle: webbuilder_events
+label: 'Text, wenn keine Einträge vorliegen'
+description: 'Dieser Text wird angezeigt, wenn es noch keine Einträge gibt.'
+required: true
+translatable: false
+default_value:
+  -
+    value: "<p>Leider gibt es gibt noch keine Veranstaltungen.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,23 @@
+uuid: 9555c905-aec1-4b41-8468-02e7d034df0d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_layout
+    - node.type.webbuilder
+  module:
+    - options
+id: node.webbuilder.field_layout
+field_name: field_layout
+entity_type: node
+bundle: webbuilder
+label: Layout
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

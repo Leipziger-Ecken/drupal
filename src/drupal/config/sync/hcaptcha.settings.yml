@@ -1,0 +1,10 @@
+site_key: ''
+secret_key: ''
+hcaptcha_src: 'https://hcaptcha.com/1/api.js'
+widget:
+  theme: ''
+  size: ''
+  tabindex: 0
+_core:
+  default_config_hash: CqlpQWBwxWgF4d1BcwQ_qKL-2mo2exqFqRHeAzyrSwo
+langcode: de

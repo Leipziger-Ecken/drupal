@@ -1,0 +1,12 @@
+uuid: 3a3abeab-29da-4b11-b5b6-3bf664770b5f
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: ruSY-BgvDPfwHykMlFG3AWZ0K1qo505M85iNpJKikmc
+id: media.entity_hierarchy_microsite
+label: 'Microsite branding'
+targetEntityType: media
+cache: true

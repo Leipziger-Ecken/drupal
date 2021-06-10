@@ -1,0 +1,25 @@
+uuid: 05d3f17a-8375-43e3-8bb6-441fff00b44d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related_content
+    - node.type.project
+id: node.project.field_related_content
+field_name: field_related_content
+entity_type: node
+bundle: project
+label: 'Zugehörige Inhalte'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: content
+      display_name: entity_reference
+      arguments: {  }
+field_type: entity_reference

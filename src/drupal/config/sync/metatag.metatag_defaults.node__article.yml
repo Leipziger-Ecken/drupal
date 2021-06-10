@@ -1,0 +1,18 @@
+uuid: d826dd26-da86-4a11-b00d-863e0a0087ec
+langcode: de
+status: true
+dependencies: {  }
+id: node__article
+label: 'Inhalt: Artikel'
+tags:
+  content_language: de
+  canonical_url: '[current-page:url]'
+  image_src: '[node:field_image:entity:url]'
+  geo_region: DE
+  title: '[node:title]'
+  og_image_secure_url: '[node:field_image:entity:url]'
+  og_image: '[node:field_image:entity:url]'
+  og_title: '[node:title]'
+  og_site_name: 'Leipziger Ecken'
+  og_type: article
+  og_description: '[node:summary]'

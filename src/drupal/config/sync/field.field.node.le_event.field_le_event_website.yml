@@ -1,0 +1,25 @@
+uuid: 74607653-be23-4ff8-8070-c2980a9f85b7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_website
+    - node.type.le_event
+  module:
+    - link
+_core:
+  default_config_hash: tMxs21N3gBbij-wnXdE-RlFm3SWS2HZe1WZXn1muQ-0
+id: node.le_event.field_le_event_website
+field_name: field_le_event_website
+entity_type: node
+bundle: le_event
+label: Website
+description: 'Link zur offiziellen Veranstaltungswebsite'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

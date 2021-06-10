@@ -1,0 +1,21 @@
+uuid: 72e244c9-899c-4d52-8357-b2406a08914d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.webbuilder
+  module:
+    - text
+id: node.webbuilder.field_description
+field_name: field_description
+entity_type: node
+bundle: webbuilder
+label: Beschreibung
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,8 +1,0 @@
-name: Leipziger Ecken
-description: 'Core-Modul für die Leipziger Ecken'
-type: module
-core: 8.x
-package: 'Leipziger Ecken'
-version: 8.x-0.1
-dependencies:
-  - le_kategorien

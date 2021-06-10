@@ -1,0 +1,68 @@
+uuid: 10cedf93-8b9c-4d71-aae0-35709df61eb2
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.backend_teaser
+    - field.field.node.partner.field_akteur
+    - field.field.node.partner.field_description
+    - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_partner_type
+    - field.field.node.partner.field_website
+    - field.field.node.partner.og_audience
+    - image.style.medium
+    - node.type.partner
+  module:
+    - media
+    - options
+    - text
+    - user
+id: node.partner.backend_teaser
+targetEntityType: node
+bundle: partner
+mode: backend_teaser
+content:
+  field_akteur:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_description:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_main_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: medium
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+  field_partner_type:
+    type: list_key
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_website:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

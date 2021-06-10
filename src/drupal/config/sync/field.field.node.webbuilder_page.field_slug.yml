@@ -1,0 +1,19 @@
+uuid: cc8777b8-6acb-4a6d-a00c-49b63e5031b3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slug
+    - node.type.webbuilder_page
+id: node.webbuilder_page.field_slug
+field_name: field_slug
+entity_type: node
+bundle: webbuilder_page
+label: Seitenalias
+description: "Mit dem Seitenalias wird die URL (Adresse der Seite in der Browser-Adressleiste) festgelegt. Z.B. https://leipziger-ecken.de/mein-akteur/mein-seitenalias.\r\n\r\nNur Kleinbuchstaben ohne Umlaute und Sonderzeichen, Zahlen und Bindestriche \"-\" sind erlaubt."
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

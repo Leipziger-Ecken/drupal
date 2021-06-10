@@ -1,0 +1,28 @@
+uuid: 052c7561-1997-4fc9-9619-a22f1cf55b38
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_og_audience
+    - media.type.remote_image
+    - node.type.le_akteur
+id: media.remote_image.field_og_audience
+field_name: field_og_audience
+entity_type: media
+bundle: remote_image
+label: 'Akteur:in'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

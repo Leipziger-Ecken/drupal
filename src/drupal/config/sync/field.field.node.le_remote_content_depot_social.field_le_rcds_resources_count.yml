@@ -1,0 +1,27 @@
+uuid: f7afd999-d1b9-4d6f-a9ae-24f776d75ef6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_resources_count
+    - node.type.le_remote_content_depot_social
+_core:
+  default_config_hash: 5amV4vUyzbKzkGZteDycba73odYreXu7jHJcOGJhD3Y
+id: node.le_remote_content_depot_social.field_le_rcds_resources_count
+field_name: field_le_rcds_resources_count
+entity_type: node
+bundle: le_remote_content_depot_social
+label: 'Anzahl Ressourcen'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

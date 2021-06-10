@@ -1,0 +1,41 @@
+/* libre-baskerville-regular - latin-ext */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-regular.svg#LibreBaskerville') format('svg'); /* Legacy iOS */
+}
+
+/* libre-baskerville-italic - latin-ext */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-italic.svg#LibreBaskerville') format('svg'); /* Legacy iOS */
+}
+
+/* libre-baskerville-700 - latin-ext */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/libre-baskerville-v9-latin-ext/libre-baskerville-v9-latin-ext-700.svg#LibreBaskerville') format('svg'); /* Legacy iOS */
+}

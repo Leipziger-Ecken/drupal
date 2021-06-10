@@ -1,0 +1,19 @@
+uuid: 789f5acd-3c5d-49c5-989d-6af6d8c933ef
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+    - media_entity_remote_image
+id: media.field_media_remote_image
+field_name: field_media_remote_image
+entity_type: media
+type: remote_image_url
+settings: {  }
+module: media_entity_remote_image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

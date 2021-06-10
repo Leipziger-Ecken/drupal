@@ -1,0 +1,49 @@
+uuid: a024698e-84f2-49c9-8b0c-68833361ff81
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_audio.field_audio
+    - field.field.paragraph.webbuilder_audio.field_audio_caption
+    - field.field.paragraph.webbuilder_audio.field_heading
+    - paragraphs.paragraphs_type.webbuilder_audio
+  module:
+    - media_library
+    - text
+id: paragraph.webbuilder_audio.default
+targetEntityType: paragraph
+bundle: webbuilder_audio
+mode: default
+content:
+  field_audio:
+    type: media_library_widget
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_audio_caption:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

@@ -1,0 +1,7 @@
+uuid: 095ce4af-6487-401b-aa1f-51704b8a7b08
+langcode: de
+status: false
+dependencies: {  }
+formId: node_le_remote_content_depot_social_form
+captchaType: default
+label: null

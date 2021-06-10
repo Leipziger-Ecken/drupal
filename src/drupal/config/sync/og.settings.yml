@@ -1,0 +1,16 @@
+group_manager_full_access: true
+groups:
+  node:
+    - le_akteur
+node_access_strict: true
+delete_orphans: false
+delete_orphans_plugin_id: simple
+deny_subscribe_without_approval: true
+group_resolvers:
+  - route_group
+  - route_group_content
+  - request_query_argument
+  - user_access
+langcode: de
+_core:
+  default_config_hash: yIFKbJp06XHnO4XH7Dj94MUimiT5NjzWHFyJNb6p4u8

@@ -1,0 +1,56 @@
+<?php
+use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+function le_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id === 'views_exposed_form') {
+    _le_webbuilder_views_exposed_form_alter($form, $form_state, $form_id);
+  }
+}
+
+function _le_webbuilder_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['#attributes']['class'][] = 'flex flex-col sm:flex-row lg:justify-end flex-wrap mb-4';
+  
+  $input_classes = 'appearance-none w-full sm:w-48 px-4 py-2 border border-gray-300 text-base rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 lg:max-w-xs';
+  $submit_classes = 'mr-4 mt-6 cursor-pointer w-full px-4 py-2 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 sm:w-auto sm:inline-flex';
+  $reserved_keys = [
+    'actions',
+    'form_build_id',
+    'form_id',
+  ];
+  foreach($form as $key => $config) {
+    if (substr($key, 0, 1) != '#' && !in_array($key, $reserved_keys)) {
+      if (isset($form[$key]['widget'])) {
+        $form[$key]['widget'][0]['#attributes']['class'][] = $input_classes;  
+      } else {
+        $form[$key]['#attributes']['class'][] = $input_classes;
+      }
+    }
+  }
+
+  $form['actions']['submit']['#value'] = t('Search');
+  $form['actions']['submit']['#attributes']['class'][] = $submit_classes;
+}
+
+function le_webbuilder_menu_local_tasks_alter(&$data, $route_name)
+{
+  if ($route_name === 'entity.node.canonical') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if (in_array($node->getType(), [
+      'webbuilder',
+      'webbuilder_page'
+    ])) {
+      $akteur_id = $node->get('og_audience')[0]->target_id;
+
+      $data['tabs'][0]['le_admin.user_akteur_webbuilder'] = [
+        '#theme' => 'menu_local_task',
+        '#link' => [
+          'title' => t('Edit website'),
+          'url' => Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $akteur_id]),
+        ],
+      ];
+    }
+  }
+}

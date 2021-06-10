@@ -1,0 +1,267 @@
+le_admin.user_dashboard:
+  path: '/user/dashboard'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userDashboard'
+    _title: 'Overview'
+  methods: [GET]
+  requirements:
+    _permission: 'create le_akteur content'
+  options:
+    no_cache: 'TRUE'
+
+le_admin.user_akteur:
+  path: '/user/akteur/{node}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteur'
+    _title: 'Actor'
+  requirements:
+    _permission: 'edit own le_akteur content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_events:
+  path: '/user/akteur/{node}/le_events'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurEvents'
+    _title: 'Events'
+  requirements:
+    _permission: 'create le_event content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+      
+le_admin.user_akteur_projects:
+  path: '/user/akteur/{node}/projects'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurProjects'
+    _title: 'Projects'
+  requirements:
+    _permission: 'create project content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_blog:
+  path: '/user/akteur/{node}/blog_articles'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurBlogArticles'
+    _title: 'Blog'
+  requirements:
+    _permission: 'create blog_article content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_partners:
+  path: '/user/akteur/{node}/partners'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurPartners'
+    _title: 'Partners'
+  requirements:
+    _permission: 'create partner content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_sponsors:
+  path: '/user/akteur/{node}/sponsors'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurSponsors'
+    _title: 'Sponsors'
+  requirements:
+    _permission: 'create sponsor content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_webbuilder:
+  path: '/user/akteur/{node}/webbuilder'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurWebbuilder'
+    _title: 'Your website'
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_akteur_webbuilder_add:
+  path: '/user/akteur/{node}/webbuilder/add'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurAddWebbuilder'
+    _title: 'Create your website'
+  requirements:
+    _permission: 'create webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_webbuilder_pages:
+  path: '/user/webbuilder/{node}/pages'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderPages'
+    _title: 'Website pages'
+  requirements:
+    _permission: 'create webbuilder_page content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_webbuilder_publish:
+  path: '/user/webbuilder/{node}/publish'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderPublish'
+    _title: 'Publish website'
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.user_webbuilder_unpublish:
+  path: '/user/webbuilder/{node}/unpublish'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userWebbuilderUnpublish'
+    _title: 'Unpublish website'
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      node:
+        type: entity:node
+
+le_admin.api_webbuilder_page_tree:
+  path: '/api/webbuilder/{webbuilder}/page-tree'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::listWebbuilderPageTree'
+    _title: 'Page Tree'
+  methods: [GET]
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_sort_page:
+  path: '/api/webbuilder/{webbuilder}/sort-page/{page}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::sortWebbuilderPage'
+    _title: 'Get frontpage'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder_page content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+      page:
+        type: entity:node
+
+le_admin.api_webbuilder_set_frontpage:
+  path: '/api/webbuilder/{webbuilder}/frontpage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderFrontPage'
+    _title: 'Set frontpage'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_blog_page:
+  path: '/api/webbuilder/{webbuilder}/blogpage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderBlogPage'
+    _title: 'Set blog page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_events_page:
+  path: '/api/webbuilder/{webbuilder}/eventspage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderEventsPage'
+    _title: 'Set events page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.api_webbuilder_set_projects_page:
+  path: '/api/webbuilder/{webbuilder}/projectspage'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\ApiController::setWebbuilderProjectsPage'
+    _title: 'Set projects page'
+  methods: [POST]
+  requirements:
+    _permission: 'edit own webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder:
+        type: entity:node
+
+le_admin.unsplash_api_proxy:
+  path: '/api/unsplash/{a}/{b}/{c}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\Unsplash::proxy'
+    _title: 'Unsplash API Proxy'
+    a: ''
+    b: ''
+    c: ''
+  methods: [GET]
+  requirements:
+    _permission: 'create unsplash_image media'
+  options:
+    no_cache: 'TRUE'
+
+le_admin.create_webbuilder_from_preset:
+  path: '/user/webbuilder/create-from-preset/{webbuilder_preset}'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::createWebbuilderFromPreset'
+    _title: 'Create Webbuilder from preset'
+  methods: [GET]
+  requirements:
+    _permission: 'create webbuilder content'
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      webbuilder_preset:
+        type: entity:node

@@ -1,0 +1,13 @@
+uuid: 8a623a13-4fce-445b-a512-e265f3c43b66
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_region
+_core:
+  default_config_hash: jQh1FqR3mkF6i9ttq38pccehQsbhZwG5mpSfqk5fowg
+id: taxonomy_term.le_region
+target_entity_type_id: taxonomy_term
+target_bundle: le_region
+default_langcode: site_default
+language_alterable: false

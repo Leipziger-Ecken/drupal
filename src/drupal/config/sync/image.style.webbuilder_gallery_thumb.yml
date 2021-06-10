@@ -1,0 +1,15 @@
+uuid: a5161a33-a187-4099-83fd-b641aca9e377
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_gallery_thumb
+label: 'Webbaukasten: Galerie Thumbnail'
+effects:
+  81faf9a4-1c49-4bcd-92b7-8aa3c5d813c4:
+    uuid: 81faf9a4-1c49-4bcd-92b7-8aa3c5d813c4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 610
+      height: 610
+      anchor: center-center

@@ -1,0 +1,21 @@
+uuid: c75e7d02-0a21-47c3-b5d4-acaa3432ccc6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_caption
+    - paragraphs.paragraphs_type.webbuilder_video
+  module:
+    - text
+id: paragraph.webbuilder_video.field_video_caption
+field_name: field_video_caption
+entity_type: paragraph
+bundle: webbuilder_video
+label: Beschreibung
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

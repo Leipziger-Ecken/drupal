@@ -1,0 +1,11 @@
+uuid: cfea93cc-0dc5-4480-aa1d-6e4dd36e479b
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.webbuilder
+id: node.webbuilder
+target_entity_type_id: node
+target_bundle: webbuilder
+default_langcode: site_default
+language_alterable: false

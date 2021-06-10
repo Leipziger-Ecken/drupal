@@ -1,0 +1,4 @@
+local_images: 'public://remote_image_thumbnails'
+_core:
+  default_config_hash: gD537RwrlFz8PY6yYjYsENG6ip4ojgIWcwxcbjfD8jE
+langcode: de

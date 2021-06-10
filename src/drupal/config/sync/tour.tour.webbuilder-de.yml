@@ -1,0 +1,21 @@
+uuid: 13a665a9-b9ad-4332-8092-cdfcc3727b17
+langcode: de
+status: true
+dependencies:
+  module:
+    - tour_ui
+id: webbuilder-de
+label: Webbaukasten
+module: tour_ui
+routes:
+  -
+    route_name: node/add/webbuilder
+tips:
+  welcome:
+    id: welcome
+    plugin: text
+    label: Willkommen
+    weight: -100
+    attributes: {  }
+    body: "<h3>Willkommen beim Webbaukasten<h3>\r\n\r\n<p>\r\nHier können Sie Ihre eigene Webseite ganz einfach selbst erstellen.\r\n</p>"
+    location: top

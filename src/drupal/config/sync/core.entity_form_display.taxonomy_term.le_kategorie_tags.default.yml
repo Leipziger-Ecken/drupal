@@ -1,0 +1,39 @@
+uuid: 46bb88ac-fc80-4304-9b64-3b1e32aee4f3
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_tags
+  module:
+    - path
+_core:
+  default_config_hash: A4OuuKnipbn_-nvTJhDkcO8ggejvc9eF3dPTJjk3FCI
+id: taxonomy_term.le_kategorie_tags.default
+targetEntityType: taxonomy_term
+bundle: le_kategorie_tags
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  status: true

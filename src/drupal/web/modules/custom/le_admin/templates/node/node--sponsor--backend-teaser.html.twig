@@ -1,0 +1,33 @@
+{% set destination = get_destination() %}
+<article
+  class="bg-white shadow border border-transparent overflow-hidden sm:rounded-lg mb-4 previewable-list__item cursor-pointer"
+  data-role="item" 
+  data-preview-url="{{ drupal_url(url, {query: {preview: 1}}) }}"
+  data-preview-title="{{ node.getTitle() }}"
+>
+  <div class="sm:px-6">
+    <div class="px-2 py-5 sm:px-2 sm:grid sm:grid-cols-3 sm:gap-4">
+      <div class="sm:col-span-2" <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 mt-0">
+          {{ label }}
+        </h3>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">
+          {{ include('@le_admin/partials/badge.html.twig', {
+            color: node.status[0].value == '0' ? 'gray' : 'green',
+            label: node.status[0].value == '0' ? 'unpublished'|t : 'published'|t,
+          }) }}<br/>
+          {% if content.field_website[0] %}
+          <a href="{{ content.field_website[0]['#context'].value }}" class="link" target="_blank">{{
+            content.field_website[0]['#context'].value }}</a>
+          {% endif %}
+        </p>
+      </div>
+      <div class="sm:col-span-1 ml-6 text-right">
+        {{ include('@le_admin/partials/primary_link.html.twig', {
+          url: drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}),
+          label: 'Edit'|t,
+        }) }}
+      </div>
+    </div>
+  </div>
+</article>

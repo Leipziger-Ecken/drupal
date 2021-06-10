@@ -1,0 +1,10 @@
+uuid: fa658ede-580c-4c39-a968-80a020139b72
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_blog_articles
+label: Blog-Artikel
+icon_uuid: null
+icon_default: null
+description: 'Liste der neuesten Blog-Artikel.'
+behavior_plugins: {  }

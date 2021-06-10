@@ -1,0 +1,10 @@
+uuid: 0885122b-3db1-4bd0-b876-adc3c3e0e849
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_video
+label: Video
+icon_uuid: null
+icon_default: null
+description: 'Ein YouTube oder Vimeo Video.'
+behavior_plugins: {  }

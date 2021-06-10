@@ -1,0 +1,31 @@
+uuid: 50c02be1-3c41-4582-ba39-c7c76220dcbf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_hat_typ
+    - node.type.le_akteur
+  content:
+    - 'taxonomy_term:le_akteur_typ:2dc7af24-a852-4bc1-8cd3-9211929abf42'
+_core:
+  default_config_hash: vGOTZZcEookiWPp1Fqh8WYHOk9kWdAjWkiED_1jj9K4
+id: node.le_akteur.field_le_akteur_hat_typ
+field_name: field_le_akteur_hat_typ
+entity_type: node
+bundle: le_akteur
+label: Akteurstyp
+description: 'Welchem Organisationstyp lässt sich die/der Akteur:in zuordnen?'
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 2dc7af24-a852-4bc1-8cd3-9211929abf42
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: le_view_reference_le_akteur_typ
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,30 @@
+uuid: a44caa36-d4ea-4a03-b109-f662a25e899b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image
+    - media.type.image
+    - media.type.unsplash_image
+    - node.type.blog_article
+id: node.blog_article.field_main_image
+field_name: field_main_image
+entity_type: node
+bundle: blog_article
+label: Hauptbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      unsplash_image: unsplash_image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

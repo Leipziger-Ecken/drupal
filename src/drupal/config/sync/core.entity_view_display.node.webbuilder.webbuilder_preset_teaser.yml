@@ -1,0 +1,65 @@
+uuid: 7c67e231-ac2a-4565-b586-ec7a958ba6bd
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_preset_teaser
+    - field.field.node.webbuilder.field_blog_page
+    - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_description
+    - field.field.node.webbuilder.field_events_page
+    - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_fonts
+    - field.field.node.webbuilder.field_frontpage
+    - field.field.node.webbuilder.field_instagram_link
+    - field.field.node.webbuilder.field_is_preset
+    - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_preview_image
+    - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.og_audience
+    - image.style.webbuilder_preset_thumb
+    - node.type.webbuilder
+  module:
+    - media
+    - text
+    - user
+id: node.webbuilder.webbuilder_preset_teaser
+targetEntityType: node
+bundle: webbuilder
+mode: webbuilder_preset_teaser
+content:
+  field_description:
+    type: text_default
+    weight: 1
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_preview_image:
+    type: media_thumbnail
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: webbuilder_preset_thumb
+      image_link: ''
+    third_party_settings: {  }
+hidden:
+  field_blog_page: true
+  field_color_primary: true
+  field_events_page: true
+  field_facebook_link: true
+  field_fonts: true
+  field_frontpage: true
+  field_instagram_link: true
+  field_is_preset: true
+  field_layout: true
+  field_logo: true
+  field_projects_page: true
+  field_twitter_link: true
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

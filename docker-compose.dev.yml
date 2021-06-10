@@ -1,0 +1,9 @@
+version: '3'
+services:
+  drupal:
+    ports:
+      - "${PORT:-80}:80"
+      - "${SSL_PORT:-443}:443"
+  db:
+    ports:
+      - "${DB_PORT:-3306}:3306"

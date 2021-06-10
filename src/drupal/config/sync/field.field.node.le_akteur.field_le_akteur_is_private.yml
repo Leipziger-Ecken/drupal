@@ -1,0 +1,25 @@
+uuid: 0ecd1931-f89f-4409-acb8-f80ef14a4d8e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_is_private
+    - node.type.le_akteur
+_core:
+  default_config_hash: ngmXcJaBd7q3ZcI7W2FfhVQgtV69GjL0Kj4y1BwaI2o
+id: node.le_akteur.field_le_akteur_is_private
+field_name: field_le_akteur_is_private
+entity_type: node
+bundle: le_akteur
+label: 'Privat?'
+description: 'Mitglieder und Inhalte von privaten Gruppen sind nur für Mitglieder ersichtlich.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

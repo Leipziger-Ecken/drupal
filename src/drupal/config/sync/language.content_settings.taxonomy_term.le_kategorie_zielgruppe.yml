@@ -1,0 +1,13 @@
+uuid: 6a490fa9-64ec-4547-b729-78f072960eb2
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
+_core:
+  default_config_hash: nUGLsvIMYaD_-ZohcRBLkowHcX8dincnq4uzF3b7N_I
+id: taxonomy_term.le_kategorie_zielgruppe
+target_entity_type_id: taxonomy_term
+target_bundle: le_kategorie_zielgruppe
+default_langcode: site_default
+language_alterable: false

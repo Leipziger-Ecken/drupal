@@ -1,0 +1,18 @@
+{% set frontpage_id = content.field_frontpage[0]['#plain_text'] | default(null) %}
+{% set color_primary = content.field_color_primary[0]['#markup'] %}
+{% set fonts = content.field_fonts[0]['#markup'] | split('+', 2) %}
+{% set logo = content.field_logo[0]['#item'] %}
+{% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+{% set font_heading = fonts[0] %}
+{% set font_body = fonts[1] %}
+{% set logo_url = logo|file_url %}
+
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
+
+{# Display first page #}
+{% if frontpage_id %}
+<div class="root" style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: '{{ font_heading }}'; --font-body: '{{ font_body }}';">
+  {{ drupal_entity('node', frontpage_id, 'in_webbuilder') }}
+</div>
+{% endif %}

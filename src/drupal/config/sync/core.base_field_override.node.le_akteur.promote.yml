@@ -1,0 +1,24 @@
+uuid: 52e7fcf0-98d7-401d-8a38-6243f55a5907
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_akteur
+_core:
+  default_config_hash: AUUhNVscvYPQOxAxbBmaCyNQSxEi4hEEHZZlcIv6J_w
+id: node.le_akteur.promote
+field_name: promote
+entity_type: node
+bundle: le_akteur
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

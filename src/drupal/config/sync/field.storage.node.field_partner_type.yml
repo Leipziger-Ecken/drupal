@@ -1,0 +1,27 @@
+uuid: b07dc113-e28a-4acc-bcfc-5d2f6662bc31
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_partner_type
+field_name: field_partner_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: le_akteur
+      label: 'Akteur:in der Leipziger Ecken'
+    -
+      value: custom
+      label: 'Andere Partner:in'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

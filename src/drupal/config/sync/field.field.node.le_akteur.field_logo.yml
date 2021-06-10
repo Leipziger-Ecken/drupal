@@ -1,0 +1,28 @@
+uuid: 3772a515-cba9-4755-8fa9-812721d55942
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logo
+    - media.type.image
+    - node.type.le_akteur
+id: node.le_akteur.field_logo
+field_name: field_logo
+entity_type: node
+bundle: le_akteur
+label: Logo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

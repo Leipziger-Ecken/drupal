@@ -1,0 +1,20 @@
+uuid: 3bc92e45-4f47-4f46-84e9-e2c634866873
+langcode: de
+status: false
+dependencies:
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_reiter
+theme: leipzigerEckenWebbuilder
+region: content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Reiter
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

@@ -1,0 +1,20 @@
+<div class="block md:grid grid-cols-2 gap-8" data-role="previewable-item-list">
+  <div class="col-span-2 md:col-span-1 mt-0 md:mt-10">
+    {{ items|raw }}
+  </div>
+  <div class="col-span-2 md:col-span-1 hidden md:block">
+    <div class="flex justify-between">
+      <h3 class="mt-0">
+        {{ 'Preview'|t }}: <span data-role="preview-title"></span>
+      </h3>
+      {{ include('@le_admin/partials/secondary_link.html.twig', {
+        url: '',
+        attributes: 'data-role="preview-link"',
+        label: 'Open in new window'|t,
+        target: '_blank',
+        class: 'mt-2',
+      }) }}
+    </div>
+    <iframe data-role="preview" class="border round h-full w-full" style="min-height:50vh;" src="about:blank"></iframe>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+uuid: 8f2624a2-f3d3-4566-9546-3ced3f3c85c8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.webbuilder_page
+  module:
+    - weight
+id: node.webbuilder_page.field_weight
+field_name: field_weight
+entity_type: node
+bundle: webbuilder_page
+label: Sortierung
+description: "Gibt an in welcher Reihenfolge die Seite innerhalb der Navigation angezeigt wird.\r\nHöhere Werte lassen die Seite nach vorne rutschen, niedrigere Werte nach hinten."
+required: false
+translatable: false
+default_value:
+  -
+    value: '0'
+default_value_callback: ''
+settings:
+  range: '20'
+field_type: weight

@@ -1,0 +1,71 @@
+uuid: c698ec35-00a3-4ce5-86e9-22e86ba04db9
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.backend_teaser
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer_body
+    - field.field.node.webbuilder_page.field_pre_footer_button
+    - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_short_description
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.field_webbuilder
+    - field.field.node.webbuilder_page.field_weight
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - options
+    - user
+    - weight
+id: node.webbuilder_page.backend_teaser
+targetEntityType: node
+bundle: webbuilder_page
+mode: backend_teaser
+content:
+  field_navigation:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_short_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_weight:
+    type: default_weight
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  published_at:
+    type: timestamp
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+hidden:
+  field_contents: true
+  field_header_image: true
+  field_parent: true
+  field_pre_footer_body: true
+  field_pre_footer_button: true
+  field_pre_footer_heading: true
+  field_slug: true
+  field_webbuilder: true
+  langcode: true
+  links: true
+  og_audience: true

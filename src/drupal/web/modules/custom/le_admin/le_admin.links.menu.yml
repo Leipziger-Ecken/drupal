@@ -1,0 +1,32 @@
+le_admin.user_dashboard:
+  title: 'Übersicht'
+  description: 'Übersicht deiner Akteur*innen'
+  parent: system.admin
+  route_name: le_admin.user_dashboard
+  weight: -10
+  enabled: true
+  menu_name: admin
+le_admin.user_media:
+  title: 'Medien'
+  description: 'Deine Medien'
+  parent: system.admin
+  url: 'internal:/admin/content/media'
+  weight: -9
+  enabled: true
+  menu_name: admin
+le_admin.user_account:
+  title: 'Mein Konto'
+  description: 'Dein Konto verwalten'
+  parent: system.admin
+  url: 'internal:/user'
+  weight: 100
+  enabled: true
+  menu_name: admin
+le_admin.user_logout:
+  title: 'Abmelden'
+  description: 'Abmelden'
+  parent: system.admin
+  url: 'internal:/user/logout'
+  weight: 101
+  enabled: true
+  menu_name: admin

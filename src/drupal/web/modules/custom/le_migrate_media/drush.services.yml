@@ -1,0 +1,5 @@
+services:
+  le_migrate_media.commands:
+    class: \Drupal\le_migrate_media\Commands\MigrateMediaCommands
+    tags:
+      - { name: drush.command }

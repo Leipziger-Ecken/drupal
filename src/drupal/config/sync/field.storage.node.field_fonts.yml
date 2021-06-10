@@ -1,0 +1,57 @@
+uuid: f05571d2-fb0d-4428-91c2-f88af05fee19
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_fonts
+field_name: field_fonts
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Archivo Black+DM Sans'
+      label: 'Archivo Black & DM Sans'
+    -
+      value: 'Cormorant Garamond+Proza Libre'
+      label: 'Cormorant Garamond & Proza Libre'
+    -
+      value: 'Crimson Pro+DM Sans'
+      label: 'Crimson Pro & DM Sans'
+    -
+      value: 'DM Serif Display+DM Sans|'
+      label: 'DM Serif Display & DM Sans'
+    -
+      value: 'Eczar+Gentium Basic'
+      label: 'Eczar & Gentium Basic'
+    -
+      value: 'Eczar+DM Sans'
+      label: 'Eczar & DM Sans'
+    -
+      value: 'Jost+DM Sans'
+      label: 'Jost & DM Sans'
+    -
+      value: Kavoon+Rubik
+      label: 'Kavoon & Rubik'
+    -
+      value: 'Libre Franklin+Libre Baskerville'
+      label: 'Libre Franklin & Libre Baskerville'
+    -
+      value: 'Rubik+Space Grotesk'
+      label: 'Rubik & Space Grotesk'
+    -
+      value: Trirong+Rubik
+      label: 'Trirong & Rubik'
+    -
+      value: 'Work Sans+Taviraj'
+      label: 'Work Sans & Taviraj'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

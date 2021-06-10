@@ -1,0 +1,20 @@
+{% set tag = tag|default('a') %}
+{% set type = type|default('default') %}
+{% set size = size|default('md') %}
+{% set typeClasses = {
+  default: 'text-white bg-gray-800 hover:bg-gray-900',
+  primary: 'text-white bg-primary-600 hover:bg-primary-700',
+  secondary: 'text-primary-600 bg-white hover:bg-gray-50',
+} %}
+{% set sizeClasses = {
+  'md': 'px-5 py-3',
+  'lg': 'px-8 py-3 md:py-4 md:text-lg md:px-10',
+} %}
+<{{ tag }}
+  class="inline-flex items-center justify-center border border-transparent text-base font-medium whitespace-nowrap rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 {{ typeClasses[type] }} {{ sizeClasses[size] }} {{ class }}"
+  {% if href %}href="{{ href }}"{% endif %}
+  {% if onclick %}onclick="{{ onclick }}"{% endif %}
+  {{ attributes|raw }}
+>
+  {{ label|raw }}
+</{{ tag }}>

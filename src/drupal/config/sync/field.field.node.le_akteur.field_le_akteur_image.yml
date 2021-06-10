@@ -1,0 +1,40 @@
+uuid: de9d40e7-a8d7-4fb1-a64a-d465299f8e94
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_akteur_image
+    - node.type.le_akteur
+  module:
+    - image
+_core:
+  default_config_hash: uUIRAVPuf8lBPZCbYn_xxC4WrNERmC8c9KGjizk5KfY
+id: node.le_akteur.field_le_akteur_image
+field_name: field_le_akteur_image
+entity_type: node
+bundle: le_akteur
+label: Bild
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: le
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 5MB
+  max_resolution: 800x1000
+  min_resolution: ''
+  alt_field: false
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: 5f7caf41-8bec-4863-97f9-c19fbd33dafe
+    alt: 'Profilbild des/der Akteur:in'
+    title: ''
+    width: 249
+    height: 148
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

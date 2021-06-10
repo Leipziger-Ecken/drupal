@@ -1,0 +1,18 @@
+uuid: 087394b2-d229-4083-9be3-a447900bc127
+langcode: de
+status: false
+dependencies:
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_seitentitel
+theme: leipzigerEckenWebbuilder
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: Seitentitel
+  provider: core
+  label_display: '0'
+visibility: {  }

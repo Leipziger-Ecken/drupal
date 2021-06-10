@@ -1,0 +1,46 @@
+uuid: 53a10b2a-1f72-44eb-930f-52b4ef91ee6a
+langcode: de
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.webbuilder_page.field_contents
+    - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer_body
+    - field.field.node.webbuilder_page.field_pre_footer_button
+    - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_short_description
+    - field.field.node.webbuilder_page.field_slug
+    - field.field.node.webbuilder_page.field_webbuilder
+    - field.field.node.webbuilder_page.field_weight
+    - field.field.node.webbuilder_page.og_audience
+    - node.type.webbuilder_page
+  module:
+    - user
+id: node.webbuilder_page.teaser
+targetEntityType: node
+bundle: webbuilder_page
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_contents: true
+  field_header_image: true
+  field_navigation: true
+  field_parent: true
+  field_pre_footer_body: true
+  field_pre_footer_button: true
+  field_pre_footer_heading: true
+  field_short_description: true
+  field_slug: true
+  field_webbuilder: true
+  field_weight: true
+  langcode: true
+  og_audience: true
+  published_at: true

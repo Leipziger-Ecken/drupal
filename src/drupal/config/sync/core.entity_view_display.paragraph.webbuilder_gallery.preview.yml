@@ -1,0 +1,51 @@
+uuid: 4b0f850d-5a53-418a-acbe-de0dab8a3655
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_gallery.field_body
+    - field.field.paragraph.webbuilder_gallery.field_cols
+    - field.field.paragraph.webbuilder_gallery.field_heading
+    - field.field.paragraph.webbuilder_gallery.field_images
+    - paragraphs.paragraphs_type.webbuilder_gallery
+  module:
+    - options
+    - text
+id: paragraph.webbuilder_gallery.preview
+targetEntityType: paragraph
+bundle: webbuilder_gallery
+mode: preview
+content:
+  field_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_cols:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_heading:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_images:
+    type: entity_reference_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden: {  }

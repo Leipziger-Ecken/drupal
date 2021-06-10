@@ -1,0 +1,25 @@
+uuid: 9160d664-7366-439d-b758-e3b7de8f66b6
+langcode: de
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_benutzermenu
+theme: leipzigerEckenWebbuilder
+region: content
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: Benutzermenü
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

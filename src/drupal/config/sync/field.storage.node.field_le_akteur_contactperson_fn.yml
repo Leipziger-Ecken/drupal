@@ -1,0 +1,23 @@
+uuid: 5b0d89fe-4a81-40ff-9403-916b5ad72d20
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: _CwRE3dSRBXT7rqDwhA4_mcCP6Kxi5Egi982V19tutY
+id: node.field_le_akteur_contactperson_fn
+field_name: field_le_akteur_contactperson_fn
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

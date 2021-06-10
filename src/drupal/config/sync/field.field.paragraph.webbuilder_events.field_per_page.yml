@@ -1,0 +1,23 @@
+uuid: 6892a01f-812b-4c0b-9bca-45c8aa29f377
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_per_page
+    - paragraphs.paragraphs_type.webbuilder_events
+  module:
+    - options
+id: paragraph.webbuilder_events.field_per_page
+field_name: field_per_page
+entity_type: paragraph
+bundle: webbuilder_events
+label: 'Anzuzeigende Elemente / Elemente pro Seite'
+description: 'Anzahl der Anzuzeigenden Elemente. Falls die Seitennavigation verwendet wird, die Anzahl der Elemente pro Seite.'
+required: true
+translatable: false
+default_value:
+  -
+    value: '6'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

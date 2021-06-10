@@ -1,0 +1,15 @@
+uuid: 33762889-ae83-4b10-b345-7e70b8422a3b
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_image
+label: 'Webbaukasten:  Bild'
+effects:
+  b1fe13ce-f849-49e5-ae70-82c9ad758f99:
+    uuid: b1fe13ce-f849-49e5-ae70-82c9ad758f99
+    id: image_scale
+    weight: 1
+    data:
+      width: 1480
+      height: null
+      upscale: false

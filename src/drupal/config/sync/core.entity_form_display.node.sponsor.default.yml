@@ -1,0 +1,85 @@
+uuid: 6650d5ed-f2f8-46b3-8fcb-a871013d7dda
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_website
+    - field.field.node.sponsor.og_audience
+    - node.type.sponsor
+  module:
+    - field_group
+    - media_library
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - langcode
+      parent_name: ''
+      weight: 5
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: settings
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Einstellungen
+id: node.sponsor.default
+targetEntityType: node
+bundle: sponsor
+mode: default
+content:
+  field_logo:
+    weight: 4
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_website:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  langcode:
+    type: language_select
+    weight: 3
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  og_audience:
+    type: options_buttons
+    settings: {  }
+    weight: 1
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 2
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  published_at: true
+  sticky: true
+  uid: true
+  url_redirects: true

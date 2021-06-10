@@ -1,0 +1,21 @@
+uuid: 2f219ed4-42b5-4c79-80ba-47fa6e4e3481
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_map
+  module:
+    - text
+id: paragraph.webbuilder_map.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_map
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,23 @@
+uuid: ba013cf0-159d-45b0-b177-9e7abed6dea9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_preset
+    - node.type.webbuilder
+id: node.webbuilder.field_is_preset
+field_name: field_is_preset
+entity_type: node
+bundle: webbuilder
+label: 'ist Vorlage'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

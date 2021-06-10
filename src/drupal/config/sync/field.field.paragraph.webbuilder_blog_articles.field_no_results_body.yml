@@ -1,0 +1,24 @@
+uuid: 1a4f68e8-f963-4551-aeed-f2856f3123cf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_no_results_body
+    - paragraphs.paragraphs_type.webbuilder_blog_articles
+  module:
+    - text
+id: paragraph.webbuilder_blog_articles.field_no_results_body
+field_name: field_no_results_body
+entity_type: paragraph
+bundle: webbuilder_blog_articles
+label: 'Text, wenn keine Einträge vorliegen'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: "<p>Leider gibt es noch keine Blog-Artikel.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,17 @@
+uuid: 84c34bd5-643f-409d-b94a-ae5f6ef240ef
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Unterstützer*in'
+type: sponsor
+description: 'Unterstützer*innen und Institutionen, Sponsoren, von denen Förderung oder Unterstützung erhalten wurde.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

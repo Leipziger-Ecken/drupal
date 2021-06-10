@@ -1,0 +1,10 @@
+uuid: cd683057-a7e7-4802-93ab-181a0ac4f029
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.in_webbuilder
+label: 'in Webbaukasten'
+targetEntityType: node
+cache: true

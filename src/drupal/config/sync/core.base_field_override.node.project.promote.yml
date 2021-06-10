@@ -1,0 +1,22 @@
+uuid: b6d28f4a-9376-471a-9799-5e4b5b9f94ad
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.project
+id: node.project.promote
+field_name: promote
+entity_type: node
+bundle: project
+label: 'Auf der Startseite anzeigen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

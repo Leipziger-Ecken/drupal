@@ -1,0 +1,19 @@
+uuid: 28e8f199-641f-4289-81e2-bf349cbd1158
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pre_heading
+    - paragraphs.paragraphs_type.webbuilder_text_image
+id: paragraph.webbuilder_text_image.field_pre_heading
+field_name: field_pre_heading
+entity_type: paragraph
+bundle: webbuilder_text_image
+label: 'kleine Überschrift'
+description: 'Erscheint über der Überschrift.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,10 @@
+uuid: 7ade7b6c-a292-473c-a5f0-5987948d9b4f
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_image
+label: Bild
+icon_uuid: null
+icon_default: null
+description: 'Ein einzelnes Bild.'
+behavior_plugins: {  }

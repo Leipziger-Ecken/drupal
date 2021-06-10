@@ -1,0 +1,39 @@
+uuid: e8969743-13f1-4f93-bfbb-cd49f98642a6
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_teaser
+    - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_website
+    - field.field.node.sponsor.og_audience
+    - node.type.sponsor
+  module:
+    - user
+id: node.sponsor.webbuilder_teaser
+targetEntityType: node
+bundle: sponsor
+mode: webbuilder_teaser
+content:
+  field_logo:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_website:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

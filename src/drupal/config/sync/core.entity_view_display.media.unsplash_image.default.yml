@@ -1,0 +1,51 @@
+uuid: f7e0a173-ff42-4d99-9f91-fdd793e8e3dd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.media.unsplash_image.field_attribution
+    - field.field.media.unsplash_image.field_media_remote_image
+    - field.field.media.unsplash_image.field_og_audience
+    - media.type.unsplash_image
+  module:
+    - le_admin
+    - text
+id: media.unsplash_image.default
+targetEntityType: media
+bundle: unsplash_image
+mode: default
+content:
+  field_attribution:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media_remote_image:
+    label: hidden
+    weight: 0
+    settings:
+      trim_length: '80'
+      width: '1920'
+      url_only: ''
+      url_plain: ''
+      rel: 0
+      target: 0
+    third_party_settings: {  }
+    type: remote_image_url_thumbnail_formatter
+    region: content
+  field_og_audience:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

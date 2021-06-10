@@ -1,0 +1,10 @@
+uuid: 1f816112-5e2b-4665-acac-ab295978be0c
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_map
+label: Karte
+icon_uuid: null
+icon_default: null
+description: 'Eine Karte mit einer Ortsmarkierung.'
+behavior_plugins: {  }

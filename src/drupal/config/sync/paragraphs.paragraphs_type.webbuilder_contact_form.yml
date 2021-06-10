@@ -1,0 +1,10 @@
+uuid: 848a120a-8b0c-4b51-b1cd-8fa40d1f6224
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_contact_form
+label: Kontaktformular
+icon_uuid: null
+icon_default: null
+description: 'Ein Kontaktformular.'
+behavior_plugins: {  }

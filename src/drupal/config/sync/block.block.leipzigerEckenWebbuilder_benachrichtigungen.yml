@@ -1,0 +1,20 @@
+uuid: 0bd38ed2-41a8-40f8-8391-7156af807a4b
+langcode: de
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_benachrichtigungen
+theme: leipzigerEckenWebbuilder
+region: content
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Benachrichtigungen
+  provider: system
+  label_display: '0'
+visibility: {  }

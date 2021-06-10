@@ -1,0 +1,21 @@
+uuid: 9e84a1e1-feb3-4ee4-9e4f-01c9bbc9aefd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_form_required
+    - paragraphs.paragraphs_type.webbuilder_contact_form
+  module:
+    - options
+id: paragraph.webbuilder_contact_form.field_contact_form_required
+field_name: field_contact_form_required
+entity_type: paragraph
+bundle: webbuilder_contact_form
+label: Pflichtfelder
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

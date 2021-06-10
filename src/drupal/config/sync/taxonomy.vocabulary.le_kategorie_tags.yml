@@ -1,0 +1,10 @@
+uuid: 92549d9e-deca-471b-b1e5-4834b3592ec4
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-sHlXAGudz7cMTZ2Q0QlsT-i-xIHhzpjHV8_DKrFCT8'
+name: 'Kategorie: Tags'
+vid: le_kategorie_tags
+description: 'Allgemeine / Übergeordnete Schlagwörter'
+weight: 0

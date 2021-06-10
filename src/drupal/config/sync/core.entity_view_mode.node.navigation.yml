@@ -1,0 +1,10 @@
+uuid: 9c6c0703-ff48-40f6-b979-858e18239fba
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.navigation
+label: Navigation
+targetEntityType: node
+cache: true

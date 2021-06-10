@@ -1,0 +1,22 @@
+uuid: c2dfcae2-4fcd-4733-96bb-8b53cc418ed1
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - og
+_core:
+  default_config_hash: TbkaBVkkLk2kc-fE9hwRbs5CpvBDpFozn2Lys6SDEOE
+id: node.og_audience
+field_name: og_audience
+entity_type: node
+type: og_standard_reference
+settings:
+  target_type: node
+module: og
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

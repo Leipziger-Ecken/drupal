@@ -1,0 +1,31 @@
+uuid: 5f5fbf01-69ca-4131-bc86-bddd1c9e267f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_kategorie_gruppe
+    - node.type.le_event
+    - taxonomy.vocabulary.le_kategorie_zielgruppe
+_core:
+  default_config_hash: kv3Egq6VNKzncP156r3yVjckfVObPxYbjhs6iKZiHc4
+id: node.le_event.field_le_event_kategorie_gruppe
+field_name: field_le_event_kategorie_gruppe
+entity_type: node
+bundle: le_event
+label: Zielgruppe(n)
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_kategorie_zielgruppe: le_kategorie_zielgruppe
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

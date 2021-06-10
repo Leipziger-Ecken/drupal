@@ -1,0 +1,93 @@
+webbuilder:
+  css:
+    theme:
+      assets/css/webbuilder.css: {}
+  js:
+    assets/stimulus/stimulus.umd.js: {}
+    # assets/turbo/dist/turbo.es2017-umd.js: {}
+    assets/js/webbuilder.js: {}
+
+Archivo Black:
+  css:
+    theme:
+      assets/css/Archivo Black.css: {}
+
+Cormorant Garamond:
+  css:
+    theme:
+      assets/css/Cormorant Garamond.css: {}
+
+Crimson Pro:
+  css:
+    theme:
+      assets/css/Crimson Pro.css: {}
+
+Dm Sans:
+  css:
+    theme:
+      assets/css/Dm Sans.css: {}
+
+DM Serif Display:
+  css:
+    theme:
+      assets/css/DM Serif Display.css: {}
+
+Eczar:
+  css:
+    theme:
+      assets/css/Eczar.css: {}
+
+Gentium Basic:
+  css:
+    theme:
+      assets/css/Gentium Basic.css: {}
+
+Jost:
+  css:
+    theme:
+      assets/css/Jost.css: {}
+
+Kavoon:
+  css:
+    theme:
+      assets/css/Kavoon.css: {}
+
+Libre Baskerville:
+  css:
+    theme:
+      assets/css/Libre Baskerville.css: {}
+
+Libre Franklin:
+  css:
+    theme:
+      assets/css/Libre Franklin.css: {}
+
+Proza Libre:
+  css:
+    theme:
+      assets/css/Proza Libre.css: {}
+
+Rubik:
+  css:
+    theme:
+      assets/css/Rubik.css: {}
+
+Space Grotesk:
+  css:
+    theme:
+      assets/css/Space Grotesk.css: {}
+
+Taviraj:
+  css:
+    theme:
+      assets/css/Taviraj.css: {}
+
+Trirong:
+  css:
+    theme:
+      assets/css/Trirong.css: {}
+
+Work Sans:
+  css:
+    theme:
+      assets/css/Work Sans.css: {}

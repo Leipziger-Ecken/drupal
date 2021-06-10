@@ -1,0 +1,49 @@
+uuid: f0d20ec4-5408-4f36-85ec-c59fe8195bf8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_video.field_heading
+    - field.field.paragraph.webbuilder_video.field_video
+    - field.field.paragraph.webbuilder_video.field_video_caption
+    - paragraphs.paragraphs_type.webbuilder_video
+  module:
+    - media_library
+    - text
+id: paragraph.webbuilder_video.default
+targetEntityType: paragraph
+bundle: webbuilder_video
+mode: default
+content:
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_video:
+    type: media_library_widget
+    weight: 1
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_video_caption:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

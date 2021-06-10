@@ -1,0 +1,24 @@
+uuid: bfe51855-6308-48ef-8047-fba3ab8f6688
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: Jw-S5UY0ck90Y-4r2zK3b44ZZ-Dlt6Z3s-C5tXuF1Wk
+id: journal_pfad
+label: 'Journal Pfad'
+type: 'canonical_entities:node'
+pattern: 'journal/[node:title]'
+selection_criteria:
+  80ccd342-67d2-497c-be0d-ea945e645871:
+    id: node_type
+    bundles:
+      article: article
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 80ccd342-67d2-497c-be0d-ea945e645871
+selection_logic: and
+weight: -8
+relationships: {  }

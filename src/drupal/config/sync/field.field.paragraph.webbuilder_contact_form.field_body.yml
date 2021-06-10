@@ -1,0 +1,21 @@
+uuid: d2ca0da5-7aff-4af9-a952-24bb6d72f659
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_contact_form
+  module:
+    - text
+id: paragraph.webbuilder_contact_form.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_contact_form
+label: Text
+description: 'Text, welcher neben dem Kontaktformular erscheint. Kann z.B. die Postadresse, Tel.-Nummern oder E-Mail enthalten damit Menschen auch auf anderem Wege Kontakt aufnehmen können.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

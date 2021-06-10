@@ -1,0 +1,22 @@
+uuid: c7c17135-e634-449e-b71b-a479a939d269
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: PjgnUlSnQGVO7CNzyZALXf7xGMGky-GwEVvyaUv4WLs
+id: node.field_le_rcds_offers_count
+field_name: field_le_rcds_offers_count
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

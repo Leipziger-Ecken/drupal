@@ -1,0 +1,180 @@
+uuid: 10db953d-9769-4a69-9e0b-071cd76cf28e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.project.body
+    - field.field.node.project.field_images
+    - field.field.node.project.field_is_featured
+    - field.field.node.project.field_legal_terms_accepted
+    - field.field.node.project.field_main_image
+    - field.field.node.project.field_related_content
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - field_group
+    - media_library
+    - text
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - langcode
+      parent_name: ''
+      weight: 5
+      format_type: details_sidebar
+      region: content
+      format_settings:
+        id: settings
+        classes: ''
+        description: ''
+        open: false
+        required_fields: true
+        weight: 0
+      label: Einstellungen
+    group_basic:
+      children:
+        - group_general
+        - group_images
+        - group_related_content
+      parent_name: ''
+      weight: 4
+      format_type: accordion
+      region: content
+      format_settings:
+        id: basic
+        classes: ''
+        effect: none
+      label: Basic
+    group_general:
+      children:
+        - body
+      parent_name: group_basic
+      weight: 20
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: general
+        classes: ''
+        formatter: open
+        required_fields: true
+        description: ''
+      label: Allgemein
+    group_images:
+      children:
+        - field_main_image
+        - field_images
+      parent_name: group_basic
+      weight: 21
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: images
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: Bilder
+    group_related_content:
+      children:
+        - field_related_content
+      parent_name: group_basic
+      weight: 22
+      format_type: accordion_item
+      region: content
+      format_settings:
+        id: related_content
+        classes: ''
+        formatter: closed
+        required_fields: true
+        description: ''
+      label: 'Zugehörige Inhalte'
+id: node.project.default
+targetEntityType: node
+bundle: project
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  field_images:
+    weight: 6
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_is_featured:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_legal_terms_accepted:
+    weight: 6
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_main_image:
+    type: media_library_widget
+    weight: 5
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_related_content:
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 10
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  og_audience:
+    type: options_buttons
+    settings: {  }
+    weight: 2
+    third_party_settings: {  }
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 1
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  published_at: true
+  sticky: true
+  uid: true
+  url_redirects: true

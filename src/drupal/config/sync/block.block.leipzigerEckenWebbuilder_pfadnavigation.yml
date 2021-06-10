@@ -1,0 +1,20 @@
+uuid: 05cb36a3-1cd6-4cd3-9b30-6f6df896585f
+langcode: de
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - leipzigerEckenWebbuilder
+id: leipzigerEckenWebbuilder_pfadnavigation
+theme: leipzigerEckenWebbuilder
+region: content
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Pfadnavigation
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,32 @@
+{% set destination = get_destination() %}
+<article class="flex space-x-10">
+  <div class="mr-4 w-32 md:w-96">
+    <h3 class="text-sm md:text-lg font-bold mt-0">
+      {{ label }}
+      <br/>
+      {{ include('@le_admin/partials/badge.html.twig', {
+        color: node.status[0].value == '0' ? 'gray' : 'green',
+        label: node.status[0].value == '0' ? 'unpublished'|t : 'published'|t,
+      }) }}
+    </h3>
+  </div>
+  <div class="sm:flex sm:space-x-10">
+    <div>
+      <a class="button button--default button--small my-0 whitespace-nowrap"
+        href="{{ drupal_url('/node/' ~ node.id() ~ '/edit', {query: {destination: destination }}) }}">
+        {{ 'Seite bearbeiten'|t }}
+      </a>
+    </div>
+    <div class="text-sm my-4 hidden sm:block">
+      {{ 'Sortierung'|t }}: {{ content.field_weight[0]['#markup'] }}
+    </div>
+    {% if content.field_navigation[0] %}
+    <div class="text-sm my-2 hidden sm:block pr-2">
+      {{ 'Erscheint in Navigation'|t }}:
+      <div class="text-gray-500">
+        {{ content.field_navigation }}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</article>

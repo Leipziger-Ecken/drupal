@@ -1,0 +1,25 @@
+uuid: 3cc2bbd0-d829-4a15-8060-aec993ebf4d7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_is_barrier_free
+    - node.type.le_event
+_core:
+  default_config_hash: xQiT4GV0xbrp0iBDS6v3k7md0y_amwJPPZKesJ6utl0
+id: node.le_event.field_le_event_is_barrier_free
+field_name: field_le_event_is_barrier_free
+entity_type: node
+bundle: le_event
+label: 'Barrierefrei?'
+description: 'Besteht ein barrierefreier Zugang zu den Räumlichkeiten?'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

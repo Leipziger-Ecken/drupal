@@ -1,0 +1,25 @@
+uuid: 65661a37-2ad7-48cb-87ae-5f0243b31ff3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_link
+    - node.type.le_remote_content_depot_social
+  module:
+    - link
+_core:
+  default_config_hash: 4rp9-7wyzL0rwvWMZ8FeHCMDTFsnmIG5Gc7y0sUNk_w
+id: node.le_remote_content_depot_social.field_le_rcds_link
+field_name: field_le_rcds_link
+entity_type: node
+bundle: le_remote_content_depot_social
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

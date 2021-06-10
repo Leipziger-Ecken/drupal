@@ -1,0 +1,28 @@
+uuid: 8590be9b-51a4-4857-87cb-ca6049e9c6fd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blog_page
+    - node.type.webbuilder
+    - node.type.webbuilder_page
+id: node.webbuilder.field_blog_page
+field_name: field_blog_page
+entity_type: node
+bundle: webbuilder
+label: 'Seite mit Blog-Artikeln'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      webbuilder_page: webbuilder_page
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

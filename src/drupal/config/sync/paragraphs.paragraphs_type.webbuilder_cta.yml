@@ -1,0 +1,10 @@
+uuid: 74ca6831-488d-41c5-b68c-9c4f7985f356
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_cta
+label: 'Call to action'
+icon_uuid: null
+icon_default: null
+description: 'Ein Block, der Webseitenbesucher*innen zum klicken eines Buttons auffordert.'
+behavior_plugins: {  }

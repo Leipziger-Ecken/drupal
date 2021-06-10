@@ -1,0 +1,24 @@
+{{ attach_library('le_admin/tailwind') }}
+{% set destination = get_destination() %}
+{% set events = drupal_view('le_akteur_has_events', 'dashboard', node.id()) %}
+
+<section>
+  {{ include('@le_admin/partials/page_introduction.html.twig', {
+    body: 'Your events and dates.'|t,
+  }) }}
+
+  {{ include('@le_admin/partials/primary_action_button.html.twig', {
+    url: drupal_url('/node/add/le_event', {query: {destination: destination, le_akteur: node.id() }}),
+    label: '+ ' ~ ('Add Event'|t)
+  }) }}
+
+  {% if events %}
+  {{ include('@le_admin/partials/previewable_item_list.html.twig', {
+    items: events,
+  }) }}
+  {% else %}
+  <p class="pt-4">
+    {{ 'You have not created any events yet.'|t }}
+  </p>
+  {% endif %}
+</section>

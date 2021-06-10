@@ -1,0 +1,20 @@
+uuid: ab72bbc1-218b-4765-9a67-d8fa040eebf6
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_event
+_core:
+  default_config_hash: mUg_rMaLduxXvbZOMcFAK-GifzZBbzTpuAd-A8-a63A
+id: node.le_event.title
+field_name: title
+entity_type: node
+bundle: le_event
+label: Veranstaltungsname
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

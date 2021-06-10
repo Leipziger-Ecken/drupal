@@ -1,0 +1,44 @@
+uuid: 1e3ce890-82d6-4a05-8a20-063596b8b361
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.document.field_media_document
+    - field.field.media.document.field_og_audience
+    - media.type.document
+  module:
+    - file
+_core:
+  default_config_hash: dcpfpqyLXOSGpulacMAJW3H-G34_LeNsjdfxd1_oCfY
+id: media.document.media_library
+targetEntityType: media
+bundle: document
+mode: media_library
+content:
+  field_media_document:
+    type: file_generic
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_og_audience:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  name: true
+  path: true
+  status: true
+  uid: true

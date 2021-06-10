@@ -1,0 +1,5 @@
+<?php
+
+include_once(__DIR__  .'/includes/le_admin_theme.php');
+include_once(__DIR__  .'/includes/le_admin_form.php');
+include_once(__DIR__  .'/includes/le_admin_path.php');

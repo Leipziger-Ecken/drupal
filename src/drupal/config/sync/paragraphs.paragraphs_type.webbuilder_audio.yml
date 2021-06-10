@@ -1,0 +1,10 @@
+uuid: 292e4abc-dcc7-4f22-813b-b6a3b1b494d8
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_audio
+label: Audio
+icon_uuid: null
+icon_default: null
+description: 'Eine Audio-Datei'
+behavior_plugins: {  }

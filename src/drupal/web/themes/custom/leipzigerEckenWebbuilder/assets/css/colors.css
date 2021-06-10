@@ -1,0 +1,15 @@
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+:root {
+  --color-primary-h: 240;
+  --color-primary-s: 100%;
+  --color-primary-l: 50%;
+  --color-secondary-h: 120;
+  --color-secondary-s: 100%;
+  --color-secondary-l: 50%;
+  --color-tertiary-h: 0;
+  --color-tertiary-s: 100%;
+  --color-tertiary-l: 50%;
+}

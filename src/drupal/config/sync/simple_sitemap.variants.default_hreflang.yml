@@ -1,0 +1,7 @@
+variants:
+  default:
+    label: Default
+    weight: 0
+langcode: de
+_core:
+  default_config_hash: eF6qe2ycq0GRMcZOoyO1FRJwwCAglG5w4a5oIvMSeOc

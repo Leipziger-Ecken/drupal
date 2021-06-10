@@ -1,0 +1,10 @@
+uuid: 855bfbb7-b25c-43d8-85cd-877d5eb7af84
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: nJunc-7OW7M8Mja3h-ei50VY2YpaNi5jMrSqPkL3ksM
+name: Akteurstyp
+vid: le_akteur_typ
+description: 'z.B. "Regulär / Inititative / Festival"'
+weight: 0

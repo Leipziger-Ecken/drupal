@@ -1,0 +1,86 @@
+uuid: 135b75de-3d28-4ba1-9298-66015a12e73b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_map.field_body
+    - field.field.paragraph.webbuilder_map.field_heading
+    - field.field.paragraph.webbuilder_map.field_map
+    - paragraphs.paragraphs_type.webbuilder_map
+  module:
+    - geofield_map
+    - text
+id: paragraph.webbuilder_map.default
+targetEntityType: paragraph
+bundle: webbuilder_map
+mode: default
+content:
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_map:
+    weight: 2
+    settings:
+      map_geocoder:
+        control: 1
+        settings:
+          providers:
+            mapbox:
+              checked: true
+              weight: 0
+          min_terms: 4
+          delay: 800
+          options: ''
+      map_google_places:
+        places_additional_options: ''
+        places_control: false
+      map_library: leaflet
+      map_type_google: roadmap
+      map_type_leaflet: OpenStreetMap_Mapnik
+      map_dimensions:
+        width: 100%
+        height: 450px
+      zoom:
+        start: 14
+        focus: 14
+        min: 1
+        max: 18
+      click_to_find_marker: true
+      click_to_place_marker: true
+      geoaddress_field:
+        field: '0'
+        disabled: true
+        hidden: false
+      html5_geolocation: true
+      default_value:
+        lat: !!float 0
+        lon: !!float 0
+      map_type_selector: false
+      hide_coordinates: false
+      map_google_api_key: ''
+      zoom_level: 5
+    third_party_settings: {  }
+    type: geofield_map
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

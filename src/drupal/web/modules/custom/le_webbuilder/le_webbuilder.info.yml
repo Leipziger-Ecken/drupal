@@ -1,0 +1,5 @@
+name: Leipziger Ecken Webbaukasten
+description: 'Erlaubt die Erstellung von Webseiten innerhalb der Leipziger Ecken Plattform.'
+type: module
+core: 8.x
+package: Leipziger Ecken

@@ -1,0 +1,33 @@
+uuid: ad7483ec-0cde-40e1-9c9e-930eee848032
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_audience
+    - node.type.le_akteur
+    - node.type.le_event
+  module:
+    - og
+_core:
+  default_config_hash: 4FQb_1lCElTPz52HghbCclC77DdPZiAfV54RCXHHUFE
+id: node.le_event.og_audience
+field_name: og_audience
+entity_type: node
+bundle: le_event
+label: 'Akteur:in'
+description: 'Ersteller:in des Events.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+    sort:
+      field: title
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: og_standard_reference

@@ -1,0 +1,66 @@
+uuid: f1044f3d-e8ee-4fd2-b850-1dff9ed8889e
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.backend_teaser
+    - field.field.node.project.body
+    - field.field.node.project.field_images
+    - field.field.node.project.field_is_featured
+    - field.field.node.project.field_legal_terms_accepted
+    - field.field.node.project.field_main_image
+    - field.field.node.project.field_related_content
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - text
+    - user
+id: node.project.backend_teaser
+targetEntityType: node
+bundle: project
+mode: backend_teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 1
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_is_featured:
+    type: boolean
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+  field_main_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  published_at:
+    type: timestamp
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+hidden:
+  field_images: true
+  field_legal_terms_accepted: true
+  field_related_content: true
+  langcode: true
+  links: true
+  og_audience: true

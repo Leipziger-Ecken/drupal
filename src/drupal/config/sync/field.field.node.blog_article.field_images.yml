@@ -1,0 +1,28 @@
+uuid: ca3301df-f6a5-4823-b8e9-24e146370a8a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_images
+    - media.type.image
+    - node.type.blog_article
+id: node.blog_article.field_images
+field_name: field_images
+entity_type: node
+bundle: blog_article
+label: Bildergallerie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

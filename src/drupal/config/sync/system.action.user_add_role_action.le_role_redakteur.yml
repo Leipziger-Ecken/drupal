@@ -1,0 +1,14 @@
+uuid: 8861aac7-4cbe-490a-b210-ffca471f01ed
+langcode: de
+status: true
+dependencies:
+  config:
+    - user.role.le_role_redakteur
+  module:
+    - user
+id: user_add_role_action.le_role_redakteur
+label: 'Add the Redakteur role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: le_role_redakteur

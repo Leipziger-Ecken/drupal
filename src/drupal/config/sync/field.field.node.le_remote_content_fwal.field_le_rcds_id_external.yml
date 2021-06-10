@@ -1,0 +1,25 @@
+uuid: 8e6dc538-75d5-42a5-bdc9-3e7c0a4ec1e9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_rcds_id_external
+    - node.type.le_remote_content_fwal
+_core:
+  default_config_hash: llCsAunlIRMWdfY0MbJYCXCTBX7dNi0TJwkTRzI85JI
+id: node.le_remote_content_fwal.field_le_rcds_id_external
+field_name: field_le_rcds_id_external
+entity_type: node
+bundle: le_remote_content_fwal
+label: 'ID (extern)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

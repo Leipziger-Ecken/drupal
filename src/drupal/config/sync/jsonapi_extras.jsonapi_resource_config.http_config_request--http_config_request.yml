@@ -1,0 +1,35 @@
+uuid: d58da7c8-7ec5-4b8a-958e-f374f2342afb
+langcode: de
+status: true
+dependencies:
+  module:
+    - http_client_manager
+id: http_config_request--http_config_request
+disabled: true
+path: http_config_request/http_config_request
+resourceType: http_config_request--http_config_request
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  type:
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  _core:
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+    disabled: false

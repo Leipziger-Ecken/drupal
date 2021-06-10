@@ -1,0 +1,31 @@
+uuid: 3c11022d-864a-4be1-8faf-e11a4de72e15
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_le_event_kategorie_typ
+    - node.type.le_event
+    - taxonomy.vocabulary.le_kategorie_typ
+_core:
+  default_config_hash: 99HwLhOWyBiUBCtFlL6dB5v-8uwVj66DGBGQmZC5NA8
+id: node.le_event.field_le_event_kategorie_typ
+field_name: field_le_event_kategorie_typ
+entity_type: node
+bundle: le_event
+label: Kategorien
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      le_kategorie_typ: le_kategorie_typ
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

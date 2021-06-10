@@ -1,0 +1,64 @@
+uuid: b91ac1bb-d925-4d3e-a78d-324a73fc9f5c
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_featured_teaser
+    - field.field.node.blog_article.body
+    - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_is_featured
+    - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_related_content
+    - field.field.node.blog_article.og_audience
+    - node.type.blog_article
+  module:
+    - text
+    - user
+id: node.blog_article.webbuilder_featured_teaser
+targetEntityType: node
+bundle: blog_article
+mode: webbuilder_featured_teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 3
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_is_featured:
+    type: boolean
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+  field_main_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  published_at:
+    type: timestamp
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+hidden:
+  field_images: true
+  field_related_content: true
+  langcode: true
+  links: true
+  og_audience: true

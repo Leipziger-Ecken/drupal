@@ -1,0 +1,26 @@
+uuid: dab8eba3-70d7-4d57-ac69-c4df41b8f022
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_audience
+    - node.type.blog_article
+    - node.type.le_akteur
+  module:
+    - og
+id: node.blog_article.og_audience
+field_name: og_audience
+entity_type: node
+bundle: blog_article
+label: 'Akteur:in'
+description: 'Ersteller:in des Blog-Artikels.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'og:default'
+  handler_settings:
+    target_bundles:
+      le_akteur: le_akteur
+field_type: og_standard_reference

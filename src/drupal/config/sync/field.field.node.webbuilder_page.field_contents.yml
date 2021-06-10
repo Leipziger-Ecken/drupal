@@ -1,0 +1,73 @@
+uuid: 9076ad40-ae46-4036-907d-28b6f7306807
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contents
+    - node.type.webbuilder_page
+    - paragraphs.paragraphs_type.from_library
+  module:
+    - entity_reference_revisions
+id: node.webbuilder_page.field_contents
+field_name: field_contents
+entity_type: node
+bundle: webbuilder_page
+label: Seitenabschnitte
+description: "Platziere Seitenabschnitte, um deine Seite mit Inhalt und Leben zu füllen.\r\nEs steht dir eine Auswahl unterschiedlicher Module wie z.B. Text, Bild oder Video zur Verfügung."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      from_library: from_library
+    target_bundles_drag_drop:
+      from_library:
+        enabled: true
+        weight: -19
+      webbuilder_audio:
+        weight: -17
+        enabled: false
+      webbuilder_blog_articles:
+        weight: -23
+        enabled: false
+      webbuilder_contact_form:
+        weight: -26
+        enabled: false
+      webbuilder_cta:
+        weight: -27
+        enabled: false
+      webbuilder_events:
+        weight: -24
+        enabled: false
+      webbuilder_gallery:
+        weight: -28
+        enabled: false
+      webbuilder_image:
+        weight: -30
+        enabled: false
+      webbuilder_map:
+        weight: -25
+        enabled: false
+      webbuilder_partners:
+        weight: -21
+        enabled: false
+      webbuilder_projects:
+        weight: -22
+        enabled: false
+      webbuilder_sponsors:
+        weight: -20
+        enabled: false
+      webbuilder_text:
+        weight: -31
+        enabled: false
+      webbuilder_text_image:
+        weight: -29
+        enabled: false
+      webbuilder_video:
+        weight: -18
+        enabled: false
+field_type: entity_reference_revisions

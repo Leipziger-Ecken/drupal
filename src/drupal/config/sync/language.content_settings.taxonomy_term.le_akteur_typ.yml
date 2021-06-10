@@ -1,0 +1,13 @@
+uuid: d4a24566-ee0a-45d0-aa9e-8638c4f5ba7e
+langcode: de
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.le_akteur_typ
+_core:
+  default_config_hash: 13LY5Kmx_w_GeKsqKfXu3dOh7k56Axw0nKwa1syQmBA
+id: taxonomy_term.le_akteur_typ
+target_entity_type_id: taxonomy_term
+target_bundle: le_akteur_typ
+default_langcode: site_default
+language_alterable: false

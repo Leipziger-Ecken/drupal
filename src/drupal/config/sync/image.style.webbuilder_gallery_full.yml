@@ -1,0 +1,15 @@
+uuid: 2dc16eec-2491-4809-b208-45851454e6b3
+langcode: de
+status: true
+dependencies: {  }
+name: webbuilder_gallery_full
+label: 'Webbaukasten: Galerie Voll'
+effects:
+  b1eaa580-c697-4679-b4c9-874cf8051c53:
+    uuid: b1eaa580-c697-4679-b4c9-874cf8051c53
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false

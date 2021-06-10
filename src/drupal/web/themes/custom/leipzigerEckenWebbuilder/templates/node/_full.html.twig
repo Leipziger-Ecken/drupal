@@ -1,0 +1,124 @@
+{% set webbuilder_id = elements['#webbuilder'].id() | default(null) %}
+{% if webbuilder_id %}
+  {% set color_primary = drupal_field('field_color_primary', 'node', webbuilder_id)[0]['#markup'] | default(color_primary) %}
+  {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+  {% set fonts = drupal_field('field_fonts', 'node', webbuilder_id)[0]['#markup'] | split('+', 2) %}
+  {% set font_heading = fonts[0] %}
+  {% set font_body = fonts[1] %}
+  {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
+  {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+  {% set logo_url = logo|file_url %}
+{% endif %}
+{% set node_type = node.getType() %}
+{% set image = content.field_main_image[0] %}
+{% set header_image = image %}
+{% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
+  node: node.id()
+}) %}
+
+{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+
+{% block content %}
+<article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="relative py-16 bg-white overflow-hidden">
+      <div class="relative px-4 sm:px-6 lg:px-8">
+        <div class="text-lg max-w-prose mx-auto">
+          <div class="mb-12">
+            {{ include('@leipzigerEckenWebbuilder/partials/components/badge.html.twig', {
+              type: 'primary',
+              label: node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at),
+            }) }}
+          </div>
+          <h1>
+            <span class="mt-2 block text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              {{ label }}
+            </span>
+          </h1>
+          {#<p class="mt-8 text-xl text-gray-500 leading-8">Nur etwa drei Kilometer östlich vom Leipziger Stadtzentrum
+            befindet sich das gründerzeitliche Bülowviertel. Mit seiner kompakten Ausdehnung von etwa sechs Hektar
+            markiert es die nordöstliche Flanke des Stadtteils Volkmarsdorf. Eingebettet zwischen der Torgauer Straße,
+            der Eisenbahnstraße und der Bahntrasse Leipzig-Dresden umschließt das Quartier ein abgeschlossenes, räumlich
+            klar definiertes Gebiet.</p>#}
+        </div>
+        <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+          {% if node_type == 'le_event' %}
+          {{ content.field_le_event_beschreibung }}
+          {% if content.field_adresse %}
+          <h3>{{ 'Address'|t }}</h3>
+          {{ content.field_adresse }}
+          {% endif %}
+          
+          {% if content.field_bezirk %}
+          {{ content.field_bezirk }}
+          {% endif %}
+
+          {% if content.field_le_event_is_barrier_free[0]['#markup'] == 1 %}
+          <p>
+            {{ 'barrier-free'|t }}
+          </p>
+          {% endif %}
+          
+          {% if content.field_online_event[0]['#markup'] == 1 %}
+          <p>
+            {{ 'Online Event'|t }}
+          </p>
+          {% endif %}
+          
+          {% if content.field_geofield %}
+          <div class="mt-8">
+            {{ content.field_geofield }}
+          </div>
+          {% endif %}
+          
+          {% if content.og_audience %}
+          <h3>{{ 'Organizer'|t }}</h3>
+          {#
+          @todo
+          {% if content.og_audience is empty %}
+          Private*r Veranstalter*in
+          {% endif %}
+          #}
+          <p>
+            {{ content.og_audience }}
+          </p>
+          {% endif %}
+          
+          {% if content.field_le_event_kategorie_typ %}
+          <h3>{{ 'Categories'|t }}</h3>
+          <p>
+            {{ content.field_le_event_kategorie_typ }}
+          </p>
+          {% endif %}
+          
+          {% if content.field_le_event_kategorie_gruppe %}
+          <h3>{{ 'Target groups'|t }}</h3>
+          <p>
+            {{ content.field_le_event_kategorie_gruppe }}
+          </p>
+          {% endif %}
+          {% else %}
+          {{ content.field_body | default(content.field_description) | default(content.body) }}
+          {% endif %}
+        </div>
+
+        {{ include('@leipzigerEckenWebbuilder/node/_related-content.html.twig') }}
+
+        <!-- back link -->
+        <div class="mt-16 mx-auto px-4 sm:px-6 lg:px-8">
+          <a class="inline-flex items-center font-medium text-gray-500 hover:text-gray-700"
+            href="{{ get_destination() }}">
+            <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
+                clip-rule="evenodd" />
+            </svg>
+            {{ 'Back to overview'|t }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock %}
