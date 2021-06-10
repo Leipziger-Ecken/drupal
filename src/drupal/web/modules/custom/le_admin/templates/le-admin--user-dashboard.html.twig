@@ -7,7 +7,7 @@
   {{ include('@le_admin/partials/page_introduction.html.twig', {
     body: 'TODO: Short description what actors are.'|t,
   }) }}
-  
+
   {{ include('@le_admin/partials/primary_action_button.html.twig', {
     url: drupal_url('/node/add/le_akteur', {query: {destination: destination }}),
     label: '+ ' ~ ('Add Actor'|t)

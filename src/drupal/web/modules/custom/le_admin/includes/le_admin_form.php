@@ -5,7 +5,7 @@ use Drupal\Core\Url;
 use Drupal\le_admin\Controller\ApiController;
 use Drupal\views\Views;
 
-function _le_admin_sidebar_link($url, $label, $target = null) 
+function _le_admin_sidebar_link($url, $label, $target = null)
 {
   return '<a class="link" href="' . $url->toString() . '"' . ($target ? ' target="' . $target . '"' : '') . '>' . $label . '</a>';
 }
@@ -101,7 +101,7 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'user_login_form') {
     $form['#submit'][] = 'le_admin_user_login_form_submit';
   }
-  
+
   if (in_array($form_id, [
     'user_login_form',
     'user_register_form',
@@ -109,7 +109,7 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   ])) {
     _le_admin_login_form_alter($form, $form_state, $form_id);
   }
-  
+
   if ($form_id === 'user_pass_reset') {
     _le_admin_user_pass_reset_form_alter($form, $form_state, $form_id);
   }
@@ -120,7 +120,7 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
   if ($form_id === 'media_library_add_form_upload') {
     _le_admin_form_media_upload_alter($form, $form_state, $form_id);
   }
-  
+
   if (in_array($form_id, [
     'media_document_add_form',
     'media_document_edit_form',
@@ -149,7 +149,7 @@ function le_admin_form_alter(&$form, FormStateInterface $form_state, $form_id)
     ])) {
       _le_admin_form_media_view_alter($form, $form_state, $form_id);
     }
-  } 
+  }
   // adds required asteriks description to all forms
   else {
     $form['required_help'] = [
@@ -178,7 +178,7 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
 
   if ($form_id === 'node_le_akteur_edit_form') {
     $entity = $form_state->getFormObject()->getEntity();
-    
+
     $form['meta']['le_admin_akteur_view'] = [
       '#type' => 'item',
       '#markup' => _le_admin_sidebar_link(
@@ -311,12 +311,12 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     if ($parent_id) {
       $form['field_parent']['widget']['#default_value'] = [$parent_id];
     }
-    
+
     $form['sibling_id'] = [
       '#type' => 'hidden',
       '#value' => $sibling_id,
     ];
-    
+
     $form['actions']['submit']['#submit'][] = 'le_admin_webbuilder_page_create_submit';
   }
 
@@ -397,7 +397,7 @@ function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $for
       if ($akteur) {
         $form['field_adresse']['widget'][0]['address']['#default_value'] = $akteur->field_adresse[0]->getValue();
         $form['field_bezirk']['widget']['#default_value'][] = $akteur->field_bezirk[0]->getValue()['target_id'];
-        
+
         $form['field_le_event_kategorie_typ']['widget']['#default_value'] = array_map(function ($item) {
           return $item['target_id'];
         }, $akteur->field_le_akteur_kategorie_typ->getValue());
@@ -461,7 +461,7 @@ function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state
 {
   $user = \Drupal::currentUser();
   $roles = $user->getRoles();
-  
+
   if (strpos($form_id, 'edit_form') === false) {
     // hide og_audience field for regular users
     if (!in_array('administrator', $roles)) {
@@ -506,7 +506,7 @@ function le_admin_webbuilder_page_create_submit(array $form, FormStateInterface 
   $parent = $page->get('field_parent');
   $parent_id = null;
   $sibling_id = $form_state->getValue('sibling_id');
-  
+
   if ($parent && $parent[0]) {
     $parent_id = $parent[0]->target_id;
   }
@@ -582,7 +582,7 @@ function le_admin_partner_submit(array $form, FormStateInterface $form_state)
 {
   $entity = $form_state->getFormObject()->getEntity();
   $partner_type = $form_state->getValue('field_partner_type');
-  
+
   if ($partner_type && isset($partner_type[0])) {
     $partner_type = $partner_type[0]['value'];
   }
@@ -591,13 +591,13 @@ function le_admin_partner_submit(array $form, FormStateInterface $form_state)
     if ($akteur_id && isset($akteur_id[0])) {
       $akteur_id = $akteur_id[0]['target_id'];
       $akteur = \Drupal::entityTypeManager()->getStorage('node')->load($akteur_id);
-      
+
       if ($akteur) {
         $form_state->setValue('title', $akteur->getTitle());
         $entity->set('title', $akteur->getTitle());
         $entity->save();
       }
-    }   
+    }
   }
 }
 
@@ -654,7 +654,7 @@ function _le_admin_form_media_alter(&$form, FormStateInterface $form_state, $for
     if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
       $nid = $row['#row']->_relationship_entities['uid']->id();
       $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
-      
+
       $form['field_og_audience']['widget']['#options'][$nid] = $title;
     }
   }
@@ -694,8 +694,13 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
   }
 
   if (!$user->hasPermission('edit any le_akteur content')) {
-    $form['media'][0]['fields']['field_og_audience']['widget']['#default_value'] = array_keys($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])[0] . '';
-    $form['media'][0]['fields']['field_og_audience']['widget']['#required']= true;
+    if (isset($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])) {
+      $form['media'][0]['fields']['field_og_audience']['widget']['#default_value'] = array_keys($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])[0] . '';
+      $form['media'][0]['fields']['field_og_audience']['widget']['#required'] = true;
+    } else {
+      // @todo User has not added any Akteur:in yet -> Add file temporary in scope of user, reference with added Akteur:in on parent form after save
+      unset($form['media'][0]['fields']['field_og_audience']['widget']);
+    }
   }
 }
 
@@ -704,7 +709,7 @@ function _le_admin_form_media_view_alter(&$form, FormStateInterface $form_state,
   $user = \Drupal::currentUser();
   $form['field_og_audience_target_id']['#type'] = 'select';
   unset($form['field_og_audience_target_id']['#size']);
-  
+
   if ($user->hasPermission('edit any le_akteur content')) {
     $form['field_og_audience_target_id']['#options'][''] = t('Any');
   }
@@ -712,19 +717,24 @@ function _le_admin_form_media_view_alter(&$form, FormStateInterface $form_state,
   $view = Views::getView('le_verwaltete_akteure');
   $view->setDisplay('entity_reference');
   $result = $view->render();
-  
+
   foreach ($result as $row) {
     if (isset($row['#row']) && isset($row['#row']->_relationship_entities) && isset($row['#row']->_relationship_entities['uid'])) {
       $nid = $row['#row']->_relationship_entities['uid']->id();
       $title = $row['#row']->_relationship_entities['uid']->title[0]->value;
-      
+
       $form['field_og_audience_target_id']['#options'][$nid] = $title;
     }
   }
 
   if (!$user->hasPermission('edit any le_akteur content')) {
-    $form['field_og_audience_target_id']['#default_value'] = array_keys($form['field_og_audience_target_id']['#options'])[0] . '';
-    $form['field_og_audience_target_id']['#required'] = true;
+    if (isset($form['field_og_audience_target_id']['#options'])) {
+      $form['field_og_audience_target_id']['#default_value'] = array_keys($form['field_og_audience_target_id']['#options'])[0] . '';
+      $form['field_og_audience_target_id']['#required'] = true;
+    } else {
+      // @todo User has not added any Akteur:in yet -> Add file temporary in scope of user, reference with added Akteur:in on parent form after save
+      unset($form['field_og_audience_target_id']);
+    }
   }
 }
 
