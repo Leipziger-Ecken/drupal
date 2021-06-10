@@ -12,8 +12,8 @@ id: node.blog_article.og_audience
 field_name: og_audience
 entity_type: node
 bundle: blog_article
-label: 'Akteur*in'
-description: 'Ersteller*in des Blog-Artikels.'
+label: 'Akteur:in'
+description: 'Ersteller:in des Blog-Artikels.'
 required: false
 translatable: true
 default_value: {  }

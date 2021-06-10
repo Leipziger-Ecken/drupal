@@ -580,10 +580,11 @@ display:
   attachment_1:
     display_plugin: attachment
     id: attachment_1
-    display_title: Attachment
+    display_title: Map
     position: 3
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        simple_sitemap_display_extender: {  }
       displays:
         page_1: page_1
       fields:
@@ -847,16 +848,18 @@ display:
           map_position:
             force: false
             center:
-              lat: !!float 0
-              lon: !!float 0
+              lat: 0
+              lon: 0
             zoom: 12
             minZoom: 1
             maxZoom: 18
             zoomFiner: 0
+          weight: ''
           icon:
             iconType: marker
             iconUrl: themes/custom/swinger/icons/marker_le_akteur.svg
             shadowUrl: ''
+            className: ''
             html: '<div></div>'
             html_class: leaflet-map-divicon
             circle_marker_options: '{"radius":100,"color":"red","fillColor":"#f03","fillOpacity":0.5}'
@@ -876,8 +879,8 @@ display:
               x: ''
               'y': ''
           leaflet_markercluster:
-            control: false
-            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":true,"removeOutsideVisibleBounds":false}'
+            control: true
+            options: '{"spiderfyOnMaxZoom":true,"showCoverageOnHover":false,"removeOutsideVisibleBounds":false}'
           path: '{"color":"#3388ff","opacity":"1.0","stroke":true,"weight":3,"fill":"depends","fillColor":"*","fillOpacity":"0.2"}'
           geocoder:
             control: false

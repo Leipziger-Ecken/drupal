@@ -428,7 +428,7 @@ display:
           exposed: true
           expose:
             operator_id: field_og_audience_target_id_op
-            label: 'Akteur*in'
+            label: 'Akteur:in'
             description: ''
             use_operator: false
             operator: field_og_audience_target_id_op
@@ -843,7 +843,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Akteur*in'
+          label: 'Akteur:in'
           exclude: false
           alter:
             alter_text: false
@@ -1190,7 +1190,7 @@ display:
           exposed: true
           expose:
             operator_id: field_og_audience_target_id_op
-            label: 'Akteur*in'
+            label: 'Akteur:in'
             description: ''
             use_operator: false
             operator: field_og_audience_target_id_op
@@ -1667,7 +1667,7 @@ display:
           exposed: true
           expose:
             operator_id: field_og_audience_target_id_op
-            label: 'Akteur*in'
+            label: 'Akteur:in'
             description: ''
             use_operator: false
             operator: field_og_audience_target_id_op

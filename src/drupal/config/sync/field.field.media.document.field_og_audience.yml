@@ -9,7 +9,7 @@ id: media.document.field_og_audience
 field_name: field_og_audience
 entity_type: media
 bundle: document
-label: 'Akteur*in'
+label: 'Akteur:in'
 description: ''
 required: false
 translatable: true

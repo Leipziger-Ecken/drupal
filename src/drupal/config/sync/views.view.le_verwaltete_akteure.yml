@@ -560,7 +560,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: '<a class="button button--default btn-add-entity" href="/akteure/neu">Akteur erstellen</a>'
+          content: '<a class="button button--default btn-add-entity" href="/akteure/neu">Akteur:in erstellen</a>'
           plugin_id: text_custom
       footer: {  }
       empty: {  }

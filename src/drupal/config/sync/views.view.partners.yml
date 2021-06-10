@@ -11,7 +11,7 @@ dependencies:
     - node
     - user
 id: partners
-label: 'Parnter*innen'
+label: 'Parnter:innen'
 module: views
 description: ''
 tag: ''
@@ -171,7 +171,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Akteur*in'
+          label: 'Akteur:in'
           exclude: false
           alter:
             alter_text: false
@@ -362,7 +362,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Meine Parnter*innen'
+      title: 'Meine Parnter:innen'
       header:
         area_text_custom:
           id: area_text_custom
@@ -373,7 +373,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: '<a class="button button--default btn-entity-add" href="/partners/neu">Partner*in erstellen</a>'
+          content: '<a class="button button--default btn-entity-add" href="/partners/neu">Partner:in erstellen</a>'
           plugin_id: text_custom
       footer: {  }
       empty: {  }
@@ -511,7 +511,7 @@ display:
   user_table:
     display_plugin: page
     id: user_table
-    display_title: 'Meine Partner*innen'
+    display_title: 'Meine Partner:innen'
     position: 1
     display_options:
       display_extenders:
@@ -520,8 +520,8 @@ display:
       path: user/%user/partners
       menu:
         type: tab
-        title: 'Parnter*innen'
-        description: 'Deine Partner*innen'
+        title: 'Parnter:innen'
+        description: 'Deine Partner:innen'
         expanded: false
         parent: ''
         weight: -6

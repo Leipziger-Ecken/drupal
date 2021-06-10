@@ -13,10 +13,10 @@ settings:
   allowed_values:
     -
       value: le_akteur
-      label: 'Akteur*in der Leipziger Ecken'
+      label: 'Akteur:in der Leipziger Ecken'
     -
       value: custom
-      label: 'Andere Partner*in'
+      label: 'Andere Partner:in'
   allowed_values_function: ''
 module: options
 locked: false

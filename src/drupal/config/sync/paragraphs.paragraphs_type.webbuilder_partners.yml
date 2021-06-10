@@ -3,8 +3,8 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_partners
-label: 'Partner*innen'
+label: 'Partner:innen'
 icon_uuid: null
 icon_default: null
-description: 'Eine Liste der Partner*innen.'
+description: 'Eine Liste der Partner:innen.'
 behavior_plugins: {  }

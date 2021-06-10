@@ -12,8 +12,8 @@ id: node.partner.og_audience
 field_name: og_audience
 entity_type: node
 bundle: partner
-label: 'Akteur*in'
-description: 'Ersteller*in des/der Partner*in.'
+label: 'Akteur:in'
+description: 'Ersteller:in des/der Partner:in.'
 required: false
 translatable: true
 default_value: {  }

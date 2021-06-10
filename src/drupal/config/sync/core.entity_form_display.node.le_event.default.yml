@@ -28,7 +28,9 @@ dependencies:
     - field_group
     - link
     - media_library
+    - path
     - select2
+    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -172,6 +174,8 @@ content:
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
+      size: 60
+      placeholder: 'z.B. "kostenfrei, outdoor"'
     third_party_settings: {  }
     type: select2_entity_reference
     region: content

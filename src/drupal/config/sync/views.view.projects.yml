@@ -173,7 +173,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Akteur*in'
+          label: 'Akteur:in'
           exclude: false
           alter:
             alter_text: false
@@ -396,7 +396,7 @@ display:
   akteur_projects:
     display_plugin: page
     id: akteur_projects
-    display_title: 'Akteur: Projekte'
+    display_title: 'Akteur:in: Projekte'
     position: 4
     display_options:
       display_extenders:
@@ -499,7 +499,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDieser Akteur hat noch keine Projekte erstellt.\r\n</blockquote>"
+          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDiese/r Akteur:in hat noch keine Projekte erstellt.\r\n</blockquote>"
           plugin_id: text_custom
       filters:
         type:

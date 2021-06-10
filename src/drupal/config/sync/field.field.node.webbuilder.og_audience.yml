@@ -12,8 +12,8 @@ id: node.webbuilder.og_audience
 field_name: og_audience
 entity_type: node
 bundle: webbuilder
-label: 'Akteur*in'
-description: 'Ersteller*in des Webbaukastens.'
+label: 'Akteur:in'
+description: 'Ersteller:in des Webbaukastens.'
 required: false
 translatable: true
 default_value: {  }

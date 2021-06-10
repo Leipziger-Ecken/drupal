@@ -14,7 +14,7 @@ field_name: field_le_akteur_hat_typ
 entity_type: node
 bundle: le_akteur
 label: Akteurstyp
-description: 'Welchem Organisationstyp lässt sich der Akteur zuordnen?'
+description: 'Welchem Organisationstyp lässt sich die/der Akteur:in zuordnen?'
 required: true
 translatable: false
 default_value:

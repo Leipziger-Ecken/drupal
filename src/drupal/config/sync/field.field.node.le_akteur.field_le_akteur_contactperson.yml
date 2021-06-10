@@ -11,8 +11,8 @@ id: node.le_akteur.field_le_akteur_contactperson
 field_name: field_le_akteur_contactperson
 entity_type: node
 bundle: le_akteur
-label: 'Ansprechpartner*in'
-description: 'Öffentlicher Ansprechpartner*in'
+label: 'Ansprechpartner:in'
+description: 'Öffentlicher Ansprechpartner:in'
 required: false
 translatable: false
 default_value: {  }

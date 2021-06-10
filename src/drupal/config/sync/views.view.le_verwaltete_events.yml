@@ -342,7 +342,7 @@ display:
           relationship: uid
           group_type: group
           admin_label: ''
-          label: Akteur
+          label: 'Akteur:in'
           exclude: false
           alter:
             alter_text: false

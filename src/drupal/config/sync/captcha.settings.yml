@@ -6,7 +6,7 @@ allow_on_admin_pages: false
 add_captcha_description: false
 default_validation: 1
 persistence: 1
-enable_stats: false
+enable_stats: true
 log_wrong_responses: true
 _core:
   default_config_hash: _UaIWu0_ZD3lUs97wlFC2Koi-o7Bex69Xr9q36nJtkY

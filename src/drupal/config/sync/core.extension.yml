@@ -28,8 +28,6 @@ module:
   entity_clone: 0
   entity_reference_revisions: 0
   entity_type_clone: 0
-  features: 0
-  features_ui: 0
   field: 0
   field_group: 0
   field_ui: 0
@@ -50,7 +48,6 @@ module:
   hcaptcha: 0
   help: 0
   history: 0
-  htmlmail: 0
   http_client_manager: 0
   image: 0
   jsonapi: 0
@@ -58,22 +55,14 @@ module:
   jsonld: 0
   language: 0
   le_admin: 0
-  le_akteure: 0
-  le_api: 0
-  le_article: 0
-  le_bezirk: 0
   le_core: 0
-  le_event: 0
-  le_kategorien: 0
   le_migrate: 0
   le_migrate_media: 0
   le_region: 0
   le_remote_api_services: 0
-  le_remote_content_depot_social: 0
-  le_rollen: 0
   le_webbuilder: 0
-  le_website: 0
   leaflet: 0
+  leaflet_markercluster: 0
   leaflet_more_maps: 0
   leaflet_views: 0
   link: 0
@@ -90,10 +79,6 @@ module:
   metatag: 0
   metatag_dc: 0
   metatag_open_graph: 0
-  migrate: 0
-  migrate_drupal: 0
-  migrate_plus: 0
-  migrate_tools: 0
   node: 0
   obfuscate_email: 0
   og: 0
@@ -104,6 +89,7 @@ module:
   path: 0
   path_alias: 0
   previewer: 0
+  quickedit: 0
   rdf: 0
   redirect: 0
   remove_http_headers: 0
@@ -137,7 +123,7 @@ module:
   typed_data: 0
   update: 0
   user: 0
-  usernotification: 0
+  views_fieldsets: 0
   views_tree: 0
   views_ui: 0
   weight: 0

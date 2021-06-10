@@ -12,8 +12,8 @@ id: node.sponsor.og_audience
 field_name: og_audience
 entity_type: node
 bundle: sponsor
-label: 'Akteur*in'
-description: 'Ersteller*in des/der Förderer*in.'
+label: 'Akteur:in'
+description: 'Ersteller:in des/der Förderer:in.'
 required: false
 translatable: true
 default_value: {  }

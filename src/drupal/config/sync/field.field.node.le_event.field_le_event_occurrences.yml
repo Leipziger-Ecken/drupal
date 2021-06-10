@@ -33,8 +33,10 @@ settings:
     all: false
     frequencies:
       SECONDLY: {  }
-      MINUTELY: {  }
-      HOURLY: {  }
+      MINUTELY:
+        - '*'
+      HOURLY:
+        - '*'
       DAILY:
         - '*'
       WEEKLY:

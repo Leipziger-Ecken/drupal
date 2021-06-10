@@ -10,8 +10,8 @@ id: node.partner.field_akteur
 field_name: field_akteur
 entity_type: node
 bundle: partner
-label: 'Akteur*in der Leipziger Ecken'
-description: 'Falls Ihre Partner*in bereits als Akteur*in bei den Leipziger Ecken registriert ist, wählen Sie sie hier aus.'
+label: 'Akteur:in der Leipziger Ecken'
+description: 'Falls Ihre Partner:in bereits als Akteur:in bei den Leipziger Ecken registriert ist, wählen Sie sie hier aus.'
 required: false
 translatable: false
 default_value: {  }

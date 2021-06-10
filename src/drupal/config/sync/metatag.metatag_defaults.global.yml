@@ -11,12 +11,12 @@ tags:
   content_language: de
   canonical_url: '[current-page:url]'
   image_src: /sites/default/files/200924_LE-Logo_0-150-255_0.png
-  generator: 'Leipziger Ecken V2'
+  generator: 'Leipziger Ecken'
   description: 'Digitale Litfaßsäule für sozio-kulturelle Akteure und Events aus den Bezirken des Leipziger Norden und Osten. Offen. Lokal. Vernetzt.'
   keywords: 'stadt, leipzig, nachbarschaft, kreativ, kultur, verein, initiative, bezirk, stadtteil'
   title: '[current-page:title] | [site:name]'
-  og_image_secure_url: 'https://leipziger-ecken.de/sites/default/files/200924_LE-Logo_0-150-255_0.png'
-  og_image: /sites/default/files/200924_LE-Logo_0-150-255_0.png
+  og_image_secure_url: 'https://leipziger-ecken.de/themes/custom/leipzigerEcken/logo_leipziger_ecken_og.png'
+  og_image: /themes/custom/leipzigerEcken/logo_leipziger_ecken_og.png
   og_title: '[site:title]'
   og_site_name: 'Leipziger Ecken'
   og_url: '[site:url]'

@@ -32,6 +32,7 @@ dependencies:
     - media_library
     - path
     - select2
+    - svg_image
     - telephone
     - text
 third_party_settings:

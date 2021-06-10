@@ -8,4 +8,14 @@ id: le_role_redakteur
 label: Redakteur
 weight: 3
 is_admin: null
-permissions: {  }
+permissions:
+  - 'access content overview'
+  - 'access toolbar'
+  - 'administer nodes'
+  - 'create article content'
+  - 'delete own article content'
+  - 'edit own article content'
+  - 'revert article revisions'
+  - 'view article revisions'
+  - 'view own unpublished content'
+  - 'view the administration theme'

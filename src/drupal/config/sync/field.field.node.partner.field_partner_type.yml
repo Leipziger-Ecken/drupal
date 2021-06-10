@@ -11,7 +11,7 @@ id: node.partner.field_partner_type
 field_name: field_partner_type
 entity_type: node
 bundle: partner
-label: 'Art der Partner*in'
+label: 'Art der Partner:in'
 description: ''
 required: true
 translatable: false

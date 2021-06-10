@@ -31,7 +31,6 @@ content:
     third_party_settings: {  }
 hidden:
   contact: true
-  google_analytics: true
   langcode: true
   path: true
   user_picture: true

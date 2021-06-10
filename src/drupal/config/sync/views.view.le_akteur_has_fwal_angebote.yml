@@ -12,7 +12,7 @@ _core:
 id: le_akteur_has_fwal_angebote
 label: 'Akteur Angebote'
 module: views
-description: 'Events eines Akteurs'
+description: 'Events eines/r Akteur:in'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -208,7 +208,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDieser Akteur hat noch keine Angebote bei der Freiwilligenagentur Leipzig angelegt oder verknüpft.\r\n</blockquote>"
+          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDiese/r Akteur:in hat noch keine Angebote bei der Freiwilligenagentur Leipzig angelegt oder verknüpft.\r\n</blockquote>"
           plugin_id: text_custom
       relationships:
         og_audience:

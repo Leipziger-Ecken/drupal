@@ -8,9 +8,9 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'Partner*in'
+name: 'Partner:in'
 type: partner
-description: 'Netzwerk von Helfer*innen, Partner*innen, Mitarbeiter*innen etc.'
+description: 'Netzwerk von Helfer:innen, Partner:innen, Mitarbeiter:innen etc.'
 help: ''
 new_revision: false
 preview_mode: 1

@@ -19,11 +19,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  google_analytics:
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   path:
     type: path
     weight: 2

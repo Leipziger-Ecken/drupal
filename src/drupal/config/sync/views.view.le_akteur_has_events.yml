@@ -19,9 +19,9 @@ dependencies:
 _core:
   default_config_hash: j4N7y_SYIcFZ0fEBg-HpZxwwQL-2g7c_Mx0JzeFLDAM
 id: le_akteur_has_events
-label: 'Akteur Events'
+label: 'Akteur:in Events'
 module: views
-description: 'Events eines Akteurs'
+description: 'Events einer/eines Akteur:in'
 tag: ''
 base_table: node_field_data
 base_field: nid
@@ -176,7 +176,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDieser Akteur hat noch keine Veranstaltungen erstellt.\r\n</blockquote>"
+          content: "<br />\r\n<blockquote class=\"text-center\">\r\nDiese/r Akteur:in hat noch keine Veranstaltungen erstellt.\r\n</blockquote>"
           plugin_id: text_custom
       relationships:
         og_audience:
@@ -494,7 +494,7 @@ display:
           empty: true
           tokenize: false
           content:
-            value: '<a href="[view:url].rss">Veranstaltungen dieses Akteurs als RSS-Feed abonnieren</a>'
+            value: '<a href="[view:url].rss">Veranstaltungen dieses/r Akteur:in als RSS-Feed abonnieren</a>'
             format: basic_html
           plugin_id: text
       defaults:

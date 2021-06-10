@@ -31,7 +31,7 @@ settings:
   title_field_required: false
   default_image:
     uuid: 5f7caf41-8bec-4863-97f9-c19fbd33dafe
-    alt: 'Profilbild des Akteurs'
+    alt: 'Profilbild des/der Akteur:in'
     title: ''
     width: 249
     height: 148

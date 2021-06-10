@@ -173,7 +173,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Akteur*in'
+          label: 'Akteur:in'
           exclude: false
           alter:
             alter_text: false
@@ -462,7 +462,7 @@ display:
   akteur_blog:
     display_plugin: page
     id: akteur_blog
-    display_title: 'Akteur: Blog'
+    display_title: 'Akteur:in: Blog'
     position: 4
     display_options:
       display_extenders:
@@ -531,7 +531,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: '<a href="[view:url].rss">Blog dieses Akteurs als RSS-Feed abonnieren</a>'
+          content: '<a href="[view:url].rss">Blog dieses/dieser Akteur:in als RSS-Feed abonnieren</a>'
           plugin_id: text_custom
       pager:
         type: full
