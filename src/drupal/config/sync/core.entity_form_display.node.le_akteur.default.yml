@@ -224,13 +224,9 @@ content:
     region: content
   field_le_akteur_kategorie_typ:
     weight: 20
-    settings:
-      width: 100%
-      match_operator: CONTAINS
-      match_limit: 10
-      autocomplete: false
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
     region: content
   field_le_akteur_lizenzhinweis:
     weight: 3

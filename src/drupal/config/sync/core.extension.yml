@@ -12,7 +12,6 @@ module:
   comment: 0
   conditional_fields: 0
   config: 0
-  config_update: 0
   contact: 0
   contextual: 0
   ctools: 0

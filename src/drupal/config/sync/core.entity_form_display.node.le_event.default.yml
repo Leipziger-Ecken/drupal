@@ -181,13 +181,9 @@ content:
     region: content
   field_le_event_kategorie_typ:
     weight: 17
-    settings:
-      width: 100%
-      autocomplete: false
-      match_operator: CONTAINS
-      match_limit: 10
+    settings: {  }
     third_party_settings: {  }
-    type: select2_entity_reference
+    type: options_select
     region: content
   field_le_event_lizenzhinweis:
     weight: 6
