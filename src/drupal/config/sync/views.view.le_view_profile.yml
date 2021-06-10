@@ -61,7 +61,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Hi,'
+          label: 'Hi, '
           exclude: false
           alter:
             alter_text: false
@@ -332,7 +332,7 @@ display:
             operator_list: {  }
           group: 1
       sorts: {  }
-      title: 'Nutzer*innenprofil'
+      title: 'Nutzer:innenprofil'
       header: {  }
       footer: {  }
       empty: {  }
@@ -351,7 +351,7 @@ display:
             title_enable: false
             title: All
           title_enable: true
-          title: 'Nutzer*innenprofil von {{ name_1 }}'
+          title: 'Nutzer:innenprofil von {{ name_1 }}'
           default_argument_type: fixed
           default_argument_options:
             argument: ''

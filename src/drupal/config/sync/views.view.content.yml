@@ -258,7 +258,7 @@ display:
           group_type: group
           admin_label: ''
           label: 'Akteur:in'
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
