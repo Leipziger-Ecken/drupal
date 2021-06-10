@@ -1,4 +1,4 @@
-# Leipziger Ecken
+# Installing/Running Leipziger Ecken with docker
 
 ## Preparations
 

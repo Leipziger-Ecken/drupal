@@ -33,7 +33,6 @@ Leipziger Ecken can either be run on a regular [LAMP](https://www.digitalocean.c
 API
 ---------------------
 
-A very basic, read-only [JSON:API](https://jsonapi.org/) for all custom content-types and taxonomies is provided. As of December 2020, public API-access has to be [requested](https://leipziger-ecken.de/kontakt) from the project-maintainers.
+A very basic, read-only [JSON:API](https://jsonapi.org/) for all custom content-types and taxonomies is provided. As of now, public API-access has to be [requested](https://leipziger-ecken.de/kontakt) from the project-maintainers.
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/10395067/SzmY92H6)
 
