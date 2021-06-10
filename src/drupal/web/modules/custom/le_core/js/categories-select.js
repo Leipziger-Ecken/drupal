@@ -44,10 +44,10 @@
          * Bootstrap & render the component
          */
         attach (context, settings) {
-            if ($(context).find('.shortcut-action').length >= 1 || $(context).find('.block-system-main-block').length >= 1) {
-                // Form displayed in Drupal backend; skip initialization.
-                return;
-            }
+            // if ($(context).find('.shortcut-action').length >= 1 || $(context).find('.block-system-main-block').length >= 1) {
+            //     // Form displayed in Drupal backend; skip initialization.
+            //     return;
+            // }
 
             this.$selectField = $(context).find('#edit-kategorie-id');
             var settingsSelectTarget = settings.le_categories_select_target;

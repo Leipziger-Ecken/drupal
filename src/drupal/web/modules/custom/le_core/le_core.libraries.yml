@@ -6,6 +6,9 @@ categories-select:
   version: 1.x
   js:
     js/categories-select.js: {}
+  css:
+    component:
+      css/categories-select.css: {}
 node-menu-enhancer:
   version: 1.x
   js:
