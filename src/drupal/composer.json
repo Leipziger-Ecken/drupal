@@ -41,7 +41,6 @@
         "drupal/draggableviews": "^2.0",
         "drupal/entity_clone": "^1.0@beta",
         "drupal/entity_type_clone": "^1.3",
-        "drupal/features": "^3.11",
         "drupal/field_group": "^3.1",
         "drupal/field_permissions": "^1.1",
         "drupal/field_validation": "^1.0@beta",
@@ -51,8 +50,8 @@
         "drupal/gin": "^3.0",
         "drupal/gin_login": "^1.0@RC",
         "drupal/gin_permissions": "1.0.x-dev",
-        "drupal/google_analytics": "^3.1",
         "drupal/hcaptcha": "^1.1",
+        "drupal/htmlmail": "^3.0@alpha",
         "drupal/http_client_manager": "^2.4",
         "drupal/jsonapi_extras": "^3.17",
         "drupal/jsonld": "^1.0",
@@ -63,7 +62,6 @@
         "drupal/matomo": "^1.11",
         "drupal/media_entity_remote_image": "^1.0@alpha",
         "drupal/media_remote_audio": "^1.0",
-        "drupal/migrate_file_to_media": "^2.0",
         "drupal/obfuscate_email": "^1.3",
         "drupal/og": "^1.0@alpha",
         "drupal/paragraphs": "^1.12",
@@ -74,7 +72,6 @@
         "drupal/publication_date": "^2.0@beta",
         "drupal/redirect": "^1.6",
         "drupal/remove_http_headers": "^1.0",
-        "drupal/rules": "^3.0@alpha",
         "drupal/schema_metatag": "^1.4",
         "drupal/select2": "^1.12",
         "drupal/select2_multicheck": "^1.0",
@@ -166,9 +163,6 @@
             },
             "drupal/conditional_fields": {
                 "Fixes notice about array access": "patches/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
-            },
-            "geocoder-php/mapbox-provider": {
-                "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             },
             "drupal/core": {
                 "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch",
