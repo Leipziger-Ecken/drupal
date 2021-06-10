@@ -80,16 +80,9 @@ dependencies:
   - date_recur
   - date_recur_modular
   - avatar_field_formatter
-  - le_rollen
-  - le_region
-  - le_bezirk
-  - le_kategorien
-  - le_akteure
-  - le_event
-  - le_article
-  - le_remote_content_depot_social
-  - le_website
   - le_core
+  - le_admin
+  - le_webbuilder
 
 # List any themes that should be installed as part of the profile installation.
 # Note that this will not set any theme as the default theme.

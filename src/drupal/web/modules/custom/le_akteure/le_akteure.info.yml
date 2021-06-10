@@ -17,9 +17,6 @@ dependencies:
   - jsonapi_extras
   - jsonld
   - language
-  - le_bezirk
-  - le_kategorien
-  - le_region
   - leaflet
   - leaflet_views
   - link
