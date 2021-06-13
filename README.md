@@ -16,7 +16,7 @@
 INTRODUCTION
 ---------------------
 
-This project ships a custom installation profile, modules and themes. All dependencies (+ patches) are managed via Composer. To synchronize core & custom configurations (e.g. content-types, permissions, etc.) we adapt Drupal [Configuration Manager](https://www.drupal.org/docs/configuration-management/managing-your-sites-configuration) to smoothly im- and export system configurations. All configuration files are stored unter *src/drupal/config*. It is highly recommended to install [drush](https://docs.drush.org/en/8.x/install/) for a quick developer experience.
+This project ships a custom installation profile, modules and themes. All dependencies (+ patches) are managed via Composer. To synchronize core & custom configurations (e.g. content-types, permissions, etc.) we adapt Drupal [Configuration Manager](https://www.drupal.org/docs/configuration-management/managing-your-sites-configuration) to smoothly im- and export system configurations. All configuration files are stored unter *src/drupal/config*. It is highly recommended to install [drush](https://docs.drush.org/en/8.x/install/) for a straightforward developer experience.
 
 Drupal 9 support coming soon. Meanwhile, check support by enabling (and running) the shipped "upgrade_status" module.
 
