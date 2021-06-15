@@ -10,7 +10,7 @@ id: node.blog_article.field_images
 field_name: field_images
 entity_type: node
 bundle: blog_article
-label: Bildergallerie
+label: Bildergalerie
 description: ''
 required: false
 translatable: false
