@@ -10,7 +10,7 @@ field_name: field_is_featured
 entity_type: node
 bundle: project
 label: Hervorgehoben
-description: ''
+description: 'Platziert das Projekt oben in Listen und hebt es hervor.'
 required: false
 translatable: true
 default_value:

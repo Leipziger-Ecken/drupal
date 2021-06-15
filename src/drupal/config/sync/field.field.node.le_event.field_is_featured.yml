@@ -10,7 +10,7 @@ field_name: field_is_featured
 entity_type: node
 bundle: le_event
 label: Hervorgehoben
-description: ''
+description: 'Platziert den Event oben in Listen und hebt ihn hervor.'
 required: false
 translatable: true
 default_value:
