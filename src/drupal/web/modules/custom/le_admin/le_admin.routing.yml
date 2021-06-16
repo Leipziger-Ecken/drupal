@@ -22,6 +22,16 @@ le_admin.user_akteur:
       node:
         type: entity:node
 
+le_admin.user_akteur_create:
+  path: '/user/akteur/create'
+  defaults:
+    _controller: '\Drupal\le_admin\Controller\AdminController::userAkteurCreate'
+    _title: 'Create Actor'
+  requirements:
+    _permission: 'create le_akteur content'
+  options:
+    no_cache: 'TRUE'
+    
 le_admin.user_akteur_events:
   path: '/user/akteur/{node}/le_events'
   defaults:
