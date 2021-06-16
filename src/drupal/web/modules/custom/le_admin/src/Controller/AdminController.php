@@ -60,6 +60,7 @@ class AdminController extends ControllerBase
     $node = \Drupal::entityTypeManager()->getStorage('node')->create([
       'type' => 'le_akteur',
       'title' => t('new Actor'),
+      'status' => 0,
     ]);
     $node->save();
     
