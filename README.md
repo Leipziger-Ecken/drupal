@@ -1,4 +1,4 @@
-## Leipziger Ecken V2
+## Leipziger Ecken
 
 **Eine Stadtteilplattform für Leipzig.**
 
@@ -10,7 +10,7 @@
 
  * Introduction
  * Installation
- * API
+ * [JSON:API](docu/API.md)
  * [Handbuch (German only)](docu/Handbuch.md)
 
 INTRODUCTION
@@ -30,9 +30,7 @@ Leipziger Ecken can either be run on a regular [LAMP](https://www.digitalocean.c
 * [Installation via Apache/Nginx](docu/Installation_apache.md)
 * [Installation via Docker](docu/Installation_docker.md)
 
-API
+SUPPORT
 ---------------------
 
-A very basic, read-only [JSON:API](https://jsonapi.org/) for all custom content-types and taxonomies is provided. As of now, public API-access has to be [requested](https://leipziger-ecken.de/kontakt) from the project-maintainers.
-
-
+We are thankful for any kind of support! If you would like to contribute, feel free to [get in contact](https://leipziger-ecken.de/kontakt).
