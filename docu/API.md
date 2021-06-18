@@ -1,10 +1,10 @@
 # Leipziger Ecken JSON:API
 
-*Last update: 18.0.2021*
+*Last update: 19.06.2021*
 
 ## Introduction
 
-Based on the [JSON:API project]([https://www.drupal.org/project/jsonapi](https://www.drupal.org/project/jsonapi)) (that is now part of Drupal core) and [JSON:API Extras project]([https://www.drupal.org/project/jsonapi_extras](https://www.drupal.org/project/jsonapi_extras)) we provide a public readonly(!) Leipziger Ecken API with full support for sorting, filtering, limiting, extending and paginating Akteure, events, categories, etc. entities through an unified endpoint.  
+Based on the [JSON:API project](https://www.drupal.org/project/jsonapi) (that is now part of Drupal core) and [JSON:API Extras project](https://www.drupal.org/project/jsonapi_extras) we provide a public **readonly** Leipziger Ecken API with full support for sorting, filtering, limiting, extending and paginating Akteure, events, categories, etc. entities through an unified endpoint.  
 
 Full documentation for the JSON:API 1.0 format can be found under [https://jsonapi.org/format/](https://jsonapi.org/format/). In general, the idea behind JSON:API is to return all entities **as flat as possible** in contrast to a deeply nested data structure which contains all resolved relationships. Therefore, you will have to resolve any relationships between entities on the client (these are linked by their uuid).
 
@@ -31,4 +31,4 @@ A list of all currently available endpoints can be found in the API root under [
 * One requested page contains up to 50 *"data"* items. In order to jump between pages, pagination information is provided under *"links"*.
 * To get any linked relationships between entities, use the *include*-parameter. The referenced relationships will be available under *"included"*. Example request containing all image-, category-, and district-data of an Akteur: ```https://leipziger-ecken.de/jsonapi/akteure?include=categories,district,image```
 * Support for all CRUD-operations can be [requested](https://leipziger-ecken.de/kontakt) from the project maintainers.
-* **Note that [our license](https://creativecommons.org/licenses/by/4.0/) forbids any abusive or incorrect use of the Leipziger Ecken API.** For use in real-world projects, please [inform](https://leipziger-ecken.de/kontakt) the project maintainers and give credits to the original source.
+* **Note that [our license](https://creativecommons.org/licenses/by/4.0/) forbids any abusive or incorrect use of the Leipziger Ecken API.** For use of the data in real-world projects, please [inform](https://leipziger-ecken.de/kontakt) the project maintainers and give credits to the original source.
