@@ -36,10 +36,13 @@ class MigrateMediaCommands extends DrushCommands {
     }
   }
 
-  protected function migrateContentType($content_type, array $field_mapping, $skip_existing = true) 
+  public function migrateContentType($content_type, array $field_mapping, $skip_existing = true, int $nid = null) 
   {
     $query = \Drupal::entityQuery('node');
     $query->condition('type', $content_type);
+    if ($nid) {
+      $query->condition('nid', $nid);
+    }
     $result = $query->execute();
     $node_storage = \Drupal::entityTypeManager()->getStorage('node');
 
@@ -77,7 +80,7 @@ class MigrateMediaCommands extends DrushCommands {
       if ($skip_existing) {
         return;
       } else {
-        $media_id =  $media_id[0]->target_id;
+        $media_id = $media_id[0]->target_id;
       }
     } else {
       $media_id = null;

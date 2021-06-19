@@ -21,14 +21,13 @@ dependencies:
     - field.field.node.le_event.field_online_event
     - field.field.node.le_event.field_related_content
     - field.field.node.le_event.og_audience
+    - image.style.thumbnail
     - node.type.le_event
   module:
     - address
     - date_recur_modular
     - field_group
     - link
-    - media_library
-    - path
     - select2
     - svg_image
     - text
@@ -54,10 +53,10 @@ third_party_settings:
         - field_le_event_beschreibung
         - field_online_event
         - field_le_event_website
+        - field_le_event_image
         - field_le_event_kategorie_typ
         - field_le_event_kategorie_gruppe
         - field_le_event_kategorie_tags
-        - field_main_image
       parent_name: group_basic
       weight: 22
       format_type: accordion_item
@@ -150,6 +149,14 @@ content:
     third_party_settings: {  }
     type: text_textarea
     region: content
+  field_le_event_image:
+    type: image_image
+    weight: 17
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   field_le_event_is_barrier_free:
     weight: 11
     settings:
@@ -158,7 +165,7 @@ content:
     type: boolean_checkbox
     region: content
   field_le_event_kategorie_gruppe:
-    weight: 18
+    weight: 20
     settings:
       autocomplete: false
       match_operator: CONTAINS
@@ -168,19 +175,17 @@ content:
     type: select2_entity_reference
     region: content
   field_le_event_kategorie_tags:
-    weight: 19
+    weight: 21
     settings:
       width: 100%
       autocomplete: true
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: 'z.B. "kostenfrei, outdoor"'
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
   field_le_event_kategorie_typ:
-    weight: 17
+    weight: 19
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -205,15 +210,6 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-    region: content
-  field_main_image:
-    weight: 20
-    settings:
-      media_types:
-        - image
-        - unsplash_image
-    third_party_settings: {  }
-    type: media_library_widget
     region: content
   field_online_event:
     weight: 15
@@ -264,7 +260,7 @@ hidden:
   created: true
   field_geofield: true
   field_le_event___eid: true
-  field_le_event_image: true
+  field_main_image: true
   path: true
   promote: true
   published_at: true

@@ -3,6 +3,7 @@
 use \Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\le_admin\Controller\ApiController;
+use Drupal\le_migrate_media\Commands\MigrateMediaCommands;
 use Drupal\views\Views;
 
 function _le_admin_sidebar_link($url, $label, $target = null)
@@ -174,6 +175,7 @@ function le_admin_user_login_form_submit(&$form, FormStateInterface $form_state)
 
 function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['actions']['submit']['#submit'][] = 'le_admin_akteur_form_submit';
   $form['#attached']['library'][] = 'le_admin/akteur_form';
 
   if ($form_id === 'node_le_akteur_edit_form') {
@@ -389,6 +391,8 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
 
 function _le_admin_event_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['actions']['submit']['#submit'][] = 'le_admin_event_form_submit';
+
   if ($form_id === 'node_le_event_form') {
     // prefill address, categories and target groups from akteur
     $akteur_id = \Drupal::request()->query->get('le_akteur');
@@ -759,4 +763,58 @@ function le_admin_webbuilder_delete_submit(array $form, FormStateInterface $form
 function le_admin_user_form_after_pass_reset_submit(array $form, FormStateInterface $form_state)
 {
   $form_state->setRedirect('le_admin.user_dashboard');
+}
+
+function le_admin_akteur_form_submit($form, FormStateInterface $form_state)
+{
+  // Default media libary widget of le_akteur.field_logo leads to over-complicated
+  // upload process. Temporary solution: Use native image upload field, then turn into media.
+  if ($form_state->isValidationComplete()) {
+    // @todo When PHP 8.0: Use optional chaining
+    $fid = @$form_state->getValue('field_le_akteur_image')[0]['fids'][0];
+    $nid = $form_state->getValue('nid');
+
+    if (!isset($fid) || empty($fid)) {
+      // Unset media item
+      $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+      $node = $node_storage->load($nid);
+      $node->set('field_logo', null);
+      $node->save();
+    } else {
+      // Add / Update media item
+      $mapping = [
+        'field_le_akteur_image' => 'field_logo'
+      ];
+
+      $migrateMediaService = new MigrateMediaCommands();
+      $migrateMediaService->migrateContentType('le_akteur', $mapping, false, $nid);
+    }
+  }
+}
+
+function le_admin_event_form_submit($form, FormStateInterface $form_state)
+{
+  // Default media libary widget of le_event.field_main_image leads to over-complicated
+  // upload process. Temporary solution: Use native image upload field, then turn into media.
+  if ($form_state->isValidationComplete()) {
+    // @todo When PHP 8.0: Use optional chaining
+    $fid = @$form_state->getValue('field_le_event_image')[0]['fids'][0];
+    $nid = $form_state->getValue('nid');
+
+    if (!isset($fid) || empty($fid)) {
+      // Unset media item
+      $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+      $node = $node_storage->load($nid);
+      $node->set('field_main_image', null);
+      $node->save();
+    } else {
+      // Add / Update media item
+      $mapping = [
+        'field_le_event_image' => 'field_main_image'
+      ];
+
+      $migrateMediaService = new MigrateMediaCommands();
+      $migrateMediaService->migrateContentType('le_event', $mapping, false, $nid);
+    }
+  }
 }

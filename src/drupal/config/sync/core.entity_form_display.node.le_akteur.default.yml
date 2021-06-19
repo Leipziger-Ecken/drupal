@@ -24,12 +24,12 @@ dependencies:
     - field.field.node.le_akteur.field_le_akteur_phone
     - field.field.node.le_akteur.field_le_akteur_url
     - field.field.node.le_akteur.field_logo
+    - image.style.thumbnail
     - node.type.le_akteur
   module:
     - address
     - field_group
     - link
-    - media_library
     - path
     - select2
     - svg_image
@@ -75,7 +75,6 @@ third_party_settings:
         - group_address
         - group_contact
         - group_details
-        - group_image
       parent_name: ''
       weight: 2
       format_type: accordion
@@ -108,7 +107,7 @@ third_party_settings:
         - field_le_akteur_kategorie_typ
         - field_le_akteur_description
         - field_le_akteur_kategorie_tags
-        - field_logo
+        - field_le_akteur_image
         - field_le_akteur_einrichtungsname
       parent_name: group_basic
       weight: 35
@@ -174,7 +173,7 @@ content:
     type: text_textarea
     region: content
   field_le_akteur_einrichtungsname:
-    weight: 24
+    weight: 25
     settings:
       size: 60
       placeholder: ''
@@ -195,6 +194,14 @@ content:
     third_party_settings: {  }
     type: options_buttons
     region: content
+  field_le_akteur_image:
+    type: image_image
+    weight: 23
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
   field_le_akteur_is_barrier_free:
     weight: 11
     settings:
@@ -258,13 +265,6 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
-  field_logo:
-    weight: 23
-    settings:
-      media_types: {  }
-    third_party_settings: {  }
-    type: media_library_widget
-    region: content
   path:
     type: path
     weight: 6
@@ -299,8 +299,8 @@ content:
 hidden:
   field_geofield: true
   field_le_akteur_comments: true
-  field_le_akteur_image: true
   field_le_akteur_is_private: true
+  field_logo: true
   langcode: true
   promote: true
   published_at: true
