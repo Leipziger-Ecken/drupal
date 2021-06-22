@@ -677,7 +677,7 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
   if (!isset($form['media'][0])) {
     return;
   }
-
+  
   $form['media'][0]['fields']['field_og_audience']['widget']['#options'] = [];
 
   if ($user->hasPermission('edit any le_akteur content')) {
@@ -701,7 +701,7 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
     if (isset($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])) {
       $form['media'][0]['fields']['field_og_audience']['widget']['#default_value'] = array_keys($form['media'][0]['fields']['field_og_audience']['widget']['#options']['#options'])[0] . '';
       $form['media'][0]['fields']['field_og_audience']['widget']['#required'] = true;
-    } else {
+    } elseif (!count($form['media'][0]['fields']['field_og_audience']['widget']['#options'])) {
       // @todo User has not added any Akteur:in yet -> Add file temporary in scope of user, reference with added Akteur:in on parent form after save
       unset($form['media'][0]['fields']['field_og_audience']['widget']);
     }

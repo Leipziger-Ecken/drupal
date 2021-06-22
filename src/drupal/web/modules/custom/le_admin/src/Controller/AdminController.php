@@ -2,6 +2,7 @@
 
 namespace Drupal\le_admin\Controller;
 
+use Drupal\Core\Url;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -46,6 +47,26 @@ class AdminController extends ControllerBase
         'max-age' => 0,
       ],
     ];
+  }
+
+  /**
+   * Creates an akteur and redirects to the edit form.
+   *
+   * @return RedirectResponse
+   *   A redirect response
+   */
+  public function userAkteurCreate()
+  {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->create([
+      'type' => 'le_akteur',
+      'title' => t('new Actor'),
+      'status' => 0,
+    ]);
+    $node->save();
+    
+    $destination = \Drupal::request()->get('_destination');;
+    $url = Url::fromUserInput('/node/' . $node->id() . '/edit', ['query' => ['destination' => $destination]])->toString();
+    return new RedirectResponse($url);
   }
 
   /**

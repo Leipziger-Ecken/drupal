@@ -12,6 +12,13 @@ class BreadcrumbBuilder implements BreadcrumbBuilderInterface{
   * {@inheritdoc}
   */
   public function applies(RouteMatchInterface $route_match) {
+    $theme = \Drupal::service('theme.manager')->getActiveTheme();
+    
+    // only apply for GIN theme
+    if ($theme->getName() !== 'gin') {
+      return false;
+    }
+
     $route_name = $route_match->getRouteName();
     $parameters = $route_match->getParameters()->all();
     $node = isset($parameters['node']) ? $parameters['node'] : null;

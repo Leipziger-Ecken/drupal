@@ -10,7 +10,7 @@ id: node.project.field_images
 field_name: field_images
 entity_type: node
 bundle: project
-label: Bildergallerie
+label: Bildergalerie
 description: ''
 required: false
 translatable: true

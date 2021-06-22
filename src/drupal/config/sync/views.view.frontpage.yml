@@ -260,8 +260,8 @@ display:
           map_position:
             force: false
             center:
-              lat: 51
-              lon: 12
+              lat: !!float 51
+              lon: !!float 12
             zoom: 14
             minZoom: 8
             maxZoom: 18
