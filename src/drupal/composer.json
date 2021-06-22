@@ -167,6 +167,9 @@
             "drupal/core": {
                 "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch",
                 "fixes notice when using entity reference view": "patches/3180227-2-8.9.x.patch"
+            },
+            "geocoder-php/mapbox-provider": {
+                "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             }
         }
     }
