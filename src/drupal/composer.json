@@ -84,6 +84,7 @@
         "drupal/twig_tweak": "^2.9",
         "drupal/typed_data": "^1.0@dev",
         "drupal/upgrade_status": "^2.7",
+        "drupal/user_registrationpassword": "^1.0@alpha",
         "drupal/views_fieldsets": "^3.3",
         "drupal/views_tree": "^2.0@alpha",
         "drupal/weight": "^3.2",
