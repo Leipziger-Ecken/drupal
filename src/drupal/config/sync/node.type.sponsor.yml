@@ -8,9 +8,9 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: 'Unterstützer*in'
+name: 'Unterstützer:in'
 type: sponsor
-description: 'Unterstützer*innen und Institutionen, Sponsoren, von denen Förderung oder Unterstützung erhalten wurde.'
+description: 'Unterstützer:innen und Institutionen, Sponsoren, von denen Förderung oder Unterstützung erhalten wurde.'
 help: ''
 new_revision: false
 preview_mode: 1

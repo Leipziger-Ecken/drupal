@@ -3,8 +3,8 @@ langcode: de
 status: true
 dependencies: {  }
 id: webbuilder_sponsors
-label: 'Unterstützer*innen'
+label: 'Unterstützer:innen'
 icon_uuid: null
 icon_default: null
-description: 'Eine Liste der Unterstützer*innen und Förderer*innen.'
+description: 'Eine Liste der Unterstützer:innen und Förderer:innen.'
 behavior_plugins: {  }
