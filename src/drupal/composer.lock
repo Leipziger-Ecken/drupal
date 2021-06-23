@@ -4179,7 +4179,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.0-alpha35",
-                    "datestamp": "1622412154",
+                    "datestamp": "1622635855",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -6425,7 +6425,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/typed_data.git",
-                "reference": "27555f47b522730d04f3b33c9a46c0acbcb3146e"
+                "reference": "d6550fd64428642da9ace9281670e70f7018f0b1"
             },
             "require": {
                 "drupal/core": "^8.8.2 || ^9"
@@ -6436,8 +6436,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha5+21-dev",
-                    "datestamp": "1600719315",
+                    "version": "8.x-1.0-alpha5+24-dev",
+                    "datestamp": "1623702620",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -6469,7 +6469,7 @@
                 "source": "https://git.drupalcode.org/project/typed_data",
                 "issues": "https://www.drupal.org/project/issues/typed_data"
             },
-            "time": "2020-10-30T06:56:14+00:00"
+            "time": "2021-06-14T20:31:09+00:00"
         },
         {
             "name": "drupal/upgrade_status",
@@ -9914,16 +9914,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.4.1",
+            "version": "v6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "9256f12d8fb0cd0500f93b19e18c356906cbed3d"
+                "reference": "a5b5c43e50b7fba655f793ad27303cd74c57363c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/9256f12d8fb0cd0500f93b19e18c356906cbed3d",
-                "reference": "9256f12d8fb0cd0500f93b19e18c356906cbed3d",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a5b5c43e50b7fba655f793ad27303cd74c57363c",
+                "reference": "a5b5c43e50b7fba655f793ad27303cd74c57363c",
                 "shasum": ""
             },
             "require": {
@@ -9982,7 +9982,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-29T12:25:04+00:00"
+            "time": "2021-06-16T14:33:43+00:00"
         },
         {
             "name": "phpstan/phpstan",
