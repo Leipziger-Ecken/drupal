@@ -29,7 +29,7 @@
         "drupal/captcha": "^1.1",
         "drupal/coffee": "^1.0",
         "drupal/color_field": "^2.4",
-        "drupal/conditional_fields": "^1.0@alpha",
+        "drupal/conditional_fields": "^4.0@alpha",
         "drupal/console": "~1.0",
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core-project-message": "^8.9",
@@ -161,9 +161,6 @@
         "patches": {
             "drupal/date_popup": {
                 "Fixes notice when no default value is set": "patches/date_popup-attribute_is_missing-3042555-16-8x1_1.patch"
-            },
-            "drupal/conditional_fields": {
-                "Fixes notice about array access": "patches/3191984-3-notice-trying-to-access-offset-on-value-of-type-null.patch"
             },
             "drupal/core": {
                 "fixes error: call to a member function getitemdefinition() on null in media_requirements()": "patches/media-install-requirements-3106659.patch",
