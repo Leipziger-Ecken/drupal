@@ -41,6 +41,7 @@ node_modules
 /src/drupal/config/sync/smtp.settings.yml
 /src/drupal/config/sync/mailsystem.settings.yml
 /src/drupal/config/sync/matomo.settings.yml
+/src/drupal/config/sync/hcaptcha.settings.yml
 
 # adminer
 /src/drupal/web/adminer.php
