@@ -1,4 +1,5 @@
 (() => {
+  let hasPageTreeItems = false;
   const wrapper = document.querySelector('*[data-role="webbuilder-pages"]');
 
   if (!wrapper) {
@@ -137,7 +138,7 @@
 
   function renderPageOption(page, index, frontpageId, level = 0) {
     prefix = '';
-    for(let i=0; i<level; i++) {
+    for (let i=0; i<level; i++) {
       prefix+='-';
     }
     return `<option value="${page.nid}" ${frontpageId == page.nid ? 'selected' : ''}>${prefix}${page.title}</option>`;
@@ -178,6 +179,10 @@
   }
 
   function handleAddPageClick(event) {
+    if (!hasPageTreeItems) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
 
@@ -275,6 +280,9 @@
   function updatePageTree(webbuilderId) {
     loadPageTree(webbuilderId)
     .then((pageTree) => {
+
+      hasPageTreeItems = pageTree.length >= 1;
+
       pageTreeWrapper.innerHTML = renderPages(pageTree);
       pageTreeWrapper.dispatchEvent(new Event('listupdate', {
         bubbles: true,
