@@ -136,7 +136,10 @@
                 "type:drupal-custom-theme"
             ]
         },
-        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "drupal-core-project-message": {
             "include-keys": [
                 "homepage",
@@ -168,6 +171,9 @@
             },
             "geocoder-php/mapbox-provider": {
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
+            },
+            "drupal/gin": {
+                "Fixes live preview button not working in edit forms": "patches/3220780-gin-event-bindings.patch"
             }
         }
     }
