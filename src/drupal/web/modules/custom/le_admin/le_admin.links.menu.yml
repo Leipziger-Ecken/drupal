@@ -1,6 +1,6 @@
 le_admin.user_dashboard:
   title: 'Übersicht'
-  description: 'Übersicht deiner Akteur*innen'
+  description: 'Übersicht deiner Akteure'
   parent: system.admin
   route_name: le_admin.user_dashboard
   weight: -10

@@ -9,7 +9,7 @@ id: paragraph.webbuilder_text_image.field_pre_heading
 field_name: field_pre_heading
 entity_type: paragraph
 bundle: webbuilder_text_image
-label: 'kleine Überschrift'
+label: 'Kleine Überschrift'
 description: 'Erscheint über der Überschrift.'
 required: false
 translatable: true
