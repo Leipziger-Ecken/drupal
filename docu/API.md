@@ -26,6 +26,11 @@ A list of all currently available endpoints can be found in the API root under [
 |Zielgruppen/Target groups|https://leipziger-ecken.de/jsonapi/target_groups|
 
  An extensive list of available JSON:API client-implementations for all major script/programming languages can be found [on the official JSON:API website](https://jsonapi.org/implementations/).
+ 
+## Public projects implementing this API
+
+* [Leipzig Data](https://github.com/LeipzigData) provides a PHP-based mapping script generating RDF-/Turtle-files. [Source code](https://github.com/LeipzigData/Tools/tree/master/Transform).
+* [CodeForLeipzig](https://github.com/CodeforLeipzig) provides a Kotlin-based mapping script generating JSON-files for use in third-party applications (e.g. Graphana). [Source code](https://github.com/CodeforLeipzig/kieznotiz).
 
 ## Misc
   
@@ -33,4 +38,4 @@ A list of all currently available endpoints can be found in the API root under [
 * One requested page contains up to 50 *"data"* items. In order to jump between pages, pagination information is provided under *"links"*.
 * To get any linked relationships between entities, use the *include*-parameter. The referenced relationships will be available under *"included"*. Example request containing all image-, category-, and district-data of an Akteur: ```https://leipziger-ecken.de/jsonapi/akteure?include=categories,district,image```
 * Support for all CRUD-operations can be [requested](https://leipziger-ecken.de/kontakt) from the project maintainers.
-* **Note that [our license](https://creativecommons.org/licenses/by/4.0/) forbids any abusive or incorrect use of the Leipziger Ecken API.** For use of the data in real-world projects, please [inform](https://leipziger-ecken.de/kontakt) the project maintainers and give credits to the original source.
+* **Note that [our license](https://creativecommons.org/licenses/by/4.0/) forbids any abusive or incorrect use of the Leipziger Ecken API.** For use of the data in commercial or semi-commercial projects, please [inform](https://leipziger-ecken.de/kontakt) the project maintainers and provide credits to the original source.
