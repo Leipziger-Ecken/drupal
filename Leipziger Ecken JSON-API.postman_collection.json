@@ -1,0 +1,562 @@
+{
+	"info": {
+		"_postman_id": "1a011eda-0265-4a2d-ba87-723029692783",
+		"name": "Leipziger Ecken JSON:API",
+		"description": "**Public (readonly) JSON:API of Leipziger Ecken project.** [ Read more on github.](https://github.com/Leipziger-Ecken/drupal/blob/master/docu/API.md)\n\n**Note that [our license](https://creativecommons.org/licenses/by/4.0/) forbids any abusive or incorrect use of the Leipziger Ecken API.** For use of the data in commercial or semi-commerical projects, please [inform](https://leipziger-ecken.de/kontakt) the project maintainers and give credits to the original source.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET index",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"//pm.test(\"Response time is less than 400ms\", () => {",
+							"//    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"//});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains no data\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.data).to.be.empty;",
+							"});",
+							"pm.test(\"Response body contains links to content-types endpoints\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links.akteur.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/akteure`);",
+							"    pm.expect(links.akteur_typ.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/akteur_types`);",
+							"    pm.expect(links.bezirk.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/districts`);",
+							"    pm.expect(links.category.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/categories`);",
+							"    pm.expect(links.event.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/events`);",
+							"    pm.expect(links.file.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/file`);",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi`);",
+							"    pm.expect(links.tag.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/tags`);",
+							"    pm.expect(links.target_group.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/target_groups`);",
+							"    pm.expect(links.non_existing_link).not.to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi"
+					]
+				},
+				"description": "Overview of all available API endpoints"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /akteure",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/akteure`);",
+							"    pm.expect(links.next.href).to.exist;",
+							"});",
+							"pm.test(\"Response body contains Akteure data\", () => {",
+							"    var data = pm.response.json();",
+							"    var akteure = data.data;",
+							"    pm.expect(akteure).to.be.a('array');",
+							"    pm.expect(akteure).not.to.be.empty;",
+							"    Array.from(akteure).forEach((akteur) => {",
+							"        // Iterate over akteure list and test for",
+							"        // a) mandatory fields being present and not empty",
+							"        // b) System field names being mapped to their normalized english equivalent",
+							"        pm.expect(akteur).not.to.be.empty;",
+							"        pm.expect(akteur.type).to.eq('akteur');",
+							"        pm.expect(akteur.id).to.be.a('string');",
+							"        pm.expect(akteur.links.self.href).to.be.a('string');",
+							"        pm.expect(akteur.attributes).not.to.be.empty;",
+							"        pm.expect(akteur.attributes.drupal_internal__nid).to.be.a('number');",
+							"        pm.expect(akteur.attributes.active).to.be.a('boolean');",
+							"        pm.expect(akteur.attributes.title).to.be.a('string');",
+							"        pm.expect(akteur.attributes.created).to.be.a('string');",
+							"        pm.expect(akteur.attributes.changed).to.be.a('string');",
+							"        pm.expect(akteur.attributes.path).not.to.be.empty;",
+							"        // Address",
+							"        pm.expect(akteur.attributes.address).not.to.be.empty;",
+							"        pm.expect(akteur.attributes.address.country_code).to.be.a('string');",
+							"        pm.expect(akteur.attributes.address.postal_code).to.be.a('string');",
+							"        pm.expect(akteur.attributes.address.locality).to.be.a('string');",
+							"        pm.expect(akteur.attributes.address.address_line1).to.be.a('string');",
+							"        // (All other address fields are optional)",
+							"        // ./Address",
+							"        // Geodata",
+							"        pm.expect(akteur.attributes.geodata).not.to.be.empty;",
+							"        pm.expect(akteur.attributes.geodata.value).to.be.a('string');",
+							"        pm.expect(akteur.attributes.geodata.geo_type).to.eq('Point');",
+							"        pm.expect(akteur.attributes.geodata.lat).to.be.a('number');",
+							"        pm.expect(akteur.attributes.geodata.lon).to.be.a('number');",
+							"        // ./Geodata",
+							"        pm.expect(typeof akteur.attributes.description).not.to.eq('undefined');",
+							"        pm.expect(akteur.attributes.barrier_free_location).to.be.a('boolean');",
+							"        pm.expect(typeof akteur.attributes.contact_person).not.to.eq('undefined');",
+							"        pm.expect(typeof akteur.attributes.contact_person_function).not.to.eq('undefined');",
+							"        pm.expect(typeof akteur.attributes.contact_email).not.to.eq('undefined');",
+							"        pm.expect(typeof akteur.attributes.contact_phone).not.to.eq('undefined');",
+							"        pm.expect(typeof akteur.attributes.opening_times).not.to.eq('undefined');",
+							"        pm.expect(typeof akteur.attributes.external_url).not.to.eq('undefined');",
+							"        pm.expect(akteur.relationships).not.to.be.empty;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/akteure",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"akteure"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /events",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/events`);",
+							"    pm.expect(links.next.href).to.exist;",
+							"});",
+							"pm.test(\"Response body contains Events data\", () => {",
+							"    var data = pm.response.json();",
+							"    var events = data.data;",
+							"    pm.expect(events).to.be.a('array');",
+							"    pm.expect(events).not.to.be.empty;",
+							"    Array.from(events).forEach((event) => {",
+							"        // Iterate over events list and test for",
+							"        // a) mandatory fields being present and not empty",
+							"        // b) System field names being mapped to their normalized english equivalent",
+							"        pm.expect(event).not.to.be.empty;",
+							"        pm.expect(event.type).to.eq('event');",
+							"        pm.expect(event.id).to.be.a('string');",
+							"        pm.expect(event.links.self.href).to.be.a('string');",
+							"        pm.expect(event.attributes).not.to.be.empty;",
+							"        pm.expect(event.attributes.drupal_internal__nid).to.be.a('number');",
+							"        pm.expect(event.attributes.active).to.be.a('boolean');",
+							"        pm.expect(event.attributes.title).to.be.a('string');",
+							"        pm.expect(event.attributes.created).to.be.a('string');",
+							"        pm.expect(event.attributes.changed).to.be.a('string');",
+							"        pm.expect(event.attributes.path).not.to.be.empty;",
+							"        // Address",
+							"        pm.expect(event.attributes.address).not.to.be.empty;",
+							"        pm.expect(event.attributes.address.country_code).to.be.a('string');",
+							"        pm.expect(event.attributes.address.postal_code).to.be.a('string');",
+							"        pm.expect(event.attributes.address.locality).to.be.a('string');",
+							"        pm.expect(event.attributes.address.address_line1).to.be.a('string');",
+							"        // (All other address fields are optional)",
+							"        // ./Address",
+							"        // Geodata",
+							"        pm.expect(event.attributes.geodata).not.to.be.empty;",
+							"        pm.expect(event.attributes.geodata.value).to.be.a('string');",
+							"        pm.expect(event.attributes.geodata.geo_type).to.eq('Point');",
+							"        pm.expect(event.attributes.geodata.lat).to.be.a('number');",
+							"        pm.expect(event.attributes.geodata.lon).to.be.a('number');",
+							"        // ./Geodata",
+							"        // Occurrences aka dates",
+							"        // @todo COULD actually be empty :/",
+							"        pm.expect(event.attributes.occurrences).to.be.a('array');",
+							"        Array.from(event.attributes.occurrences).forEach((occurrence) => {",
+							"            pm.expect(occurrence.value).to.be.a('string');",
+							"            pm.expect(occurrence.end_value).to.be.a('string');",
+							"            pm.expect(occurrence.timezone).to.be.a('string');",
+							"            pm.expect(occurrence.infinite).to.be.a('boolean');",
+							"        });",
+							"        // ./Occurrences",
+							"        pm.expect(typeof event.attributes.description).not.to.eq('undefined');",
+							"        pm.expect(event.attributes.barrier_free_location).to.be.a('boolean');",
+							"        pm.expect(typeof event.attributes.external_website).not.to.eq('undefined');",
+							"        pm.expect(event.relationships).not.to.be.empty;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/events",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /districts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/districts`);",
+							"    pm.expect(links.next.href).to.exist;",
+							"});",
+							"pm.test(\"Response body contains Bezirke data\", () => {",
+							"    var data = pm.response.json();",
+							"    var bezirke = data.data;",
+							"    pm.expect(bezirke).to.be.a('array');",
+							"    pm.expect(bezirke).not.to.be.empty;",
+							"    Array.from(bezirke).forEach((bezirk) => {",
+							"        pm.expect(bezirk.type).to.eq('bezirk');",
+							"        pm.expect(bezirk.id).to.be.a('string');",
+							"        pm.expect(bezirk.links.self.href).to.be.a('string');",
+							"        pm.expect(bezirk.attributes.name).to.be.a('string');",
+							"        pm.expect(bezirk.relationships).not.be.be.empty;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/districts",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"districts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /akteur_types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// This endpoint is actually not really interesting...",
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/akteur_types`);",
+							"});",
+							"pm.test(\"Response body contains Akteurtypen data\", () => {",
+							"    var data = pm.response.json();",
+							"    var akteur_types = data.data;",
+							"    pm.expect(akteur_types).to.be.a('array');",
+							"    pm.expect(akteur_types).not.to.be.empty;",
+							"    Array.from(akteur_types).forEach((akteur_type) => {",
+							"        pm.expect(akteur_type.type).to.eq('akteur_typ');",
+							"        pm.expect(akteur_type.id).to.be.a('string');",
+							"        pm.expect(akteur_type.links).to.be.not.empty,",
+							"        pm.expect(akteur_type.attributes.name).to.be.a('string');",
+							"        pm.expect(akteur_type.attributes.description).not.to.be.empty;",
+							"        pm.expect(akteur_type.relationships.icon).not.to.be.empty;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/akteur_types",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"akteur_types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// This endpoint is actually not really interesting...",
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/categories`);",
+							"});",
+							"pm.test(\"Response body contains Kategorien data\", () => {",
+							"    var data = pm.response.json();",
+							"    var categories = data.data;",
+							"    pm.expect(categories).to.be.a('array');",
+							"    pm.expect(categories).not.to.be.empty;",
+							"    Array.from(categories).forEach((category) => {",
+							"        pm.expect(category.type).to.eq('category');",
+							"        pm.expect(category.id).to.be.a('string');",
+							"        pm.expect(category.links).to.be.not.empty,",
+							"        pm.expect(category.attributes.name).to.be.a('string');",
+							"        pm.expect(category.relationships).not.to.be.empty;",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/categories",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /tags",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// This endpoint is actually not really interesting...",
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/tags`);",
+							"});",
+							"pm.test(\"Response body contains Schlagwörter data\", () => {",
+							"    var data = pm.response.json();",
+							"    var tags = data.data;",
+							"    pm.expect(tags).to.be.a('array');",
+							"    pm.expect(tags).not.to.be.empty;",
+							"    Array.from(tags).forEach((tag) => {",
+							"        pm.expect(tag.type).to.eq('tag');",
+							"        pm.expect(tag.id).to.be.a('string');",
+							"        pm.expect(tag.links).to.be.not.empty,",
+							"        pm.expect(tag.attributes.name).to.be.a('string');",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/tags",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"tags"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /target_groups",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// This endpoint is actually not really interesting...",
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response Content-Type header is application/vnd.api+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/vnd.api+json');",
+							"});",
+							"pm.test(\"Response body contains jsonapi 1.0 metadata\", () => {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.jsonapi).to.exist;",
+							"    pm.expect(data.jsonapi.version).to.eq('1.0');",
+							"    pm.expect(data.jsonapi.meta.links.self.href).to.eq('http://jsonapi.org/format/1.0/');",
+							"});",
+							"pm.test(\"Response body contains links\", () => {",
+							"    var data = pm.response.json();",
+							"    var links = data.links;",
+							"    pm.expect(links).to.exist;",
+							"    pm.expect(links.self.href).to.eq(`${pm.variables.get(\"URL\").trim()}/jsonapi/target_groups`);",
+							"});",
+							"pm.test(\"Response body contains Zielgruppen data\", () => {",
+							"    var data = pm.response.json();",
+							"    var target_groups = data.data;",
+							"    pm.expect(target_groups).to.be.a('array');",
+							"    pm.expect(target_groups).not.to.be.empty;",
+							"    Array.from(target_groups).forEach((target_group) => {",
+							"        pm.expect(target_group.type).to.eq('target_group');",
+							"        pm.expect(target_group.id).to.be.a('string');",
+							"        pm.expect(target_group.links).to.be.not.empty;",
+							"        pm.expect(target_group.attributes.drupal_internal__tid).to.be.a('number');",
+							"        pm.expect(target_group.attributes.name).to.be.a('string');",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/jsonapi/target_groups",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"jsonapi",
+						"target_groups"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
