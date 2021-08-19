@@ -12,6 +12,8 @@ Full documentation for the JSON:API 1.0 format can be found under [https://jsona
 
 ## Endpoints
 
+A collection of all available endpoints for import in [Postman](https://www.postman.com/) can be downloaded [here](https://github.com/Leipziger-Ecken/drupal/blob/master/Leipziger%20Ecken%20JSON-API.postman_collection.json). It also contains tests for each of these endpoints which are monitored hourly.
+
 A list of all currently available endpoints can be found in the API root under [https://leipziger-ecken.de/jsonapi/](https://leipziger-ecken.de/jsonapi/). At the time of writing, these contain:
 
 |Entity type|URL|
