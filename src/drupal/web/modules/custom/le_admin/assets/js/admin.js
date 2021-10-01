@@ -81,6 +81,15 @@
     });
 
     setTimeout(jumpToSection, 500);
+
+    // move gin actions back into sidebar, to make previewer work
+    // this has to be done after a timeout, as gin js already clones these actions
+    const ginActions = document.getElementById('edit-gin-actions');
+    const ginSidebar = document.getElementById('edit-gin-sidebar');
+
+    if (ginActions && ginSidebar) {
+      ginActions.classList.remove('gin-sticky');
+    }
   }
 
   function processPreviewableItemLists() {
