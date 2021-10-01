@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -20,6 +21,7 @@ dependencies:
     - entity_reference_revisions
     - link
     - options
+    - svg_image
     - text
     - user
 id: node.webbuilder_page.default
@@ -36,14 +38,18 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_header_image:
-    type: entity_reference_entity_view
+  field_header_image_legacy:
     weight: 6
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
+    type: image
     region: content
   field_navigation:
     weight: 5
@@ -113,6 +119,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_header_image: true
   field_slug: true
   field_weight: true
   langcode: true

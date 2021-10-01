@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.backend_teaser
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -60,6 +61,7 @@ content:
 hidden:
   field_contents: true
   field_header_image: true
+  field_header_image_legacy: true
   field_parent: true
   field_pre_footer_body: true
   field_pre_footer_button: true

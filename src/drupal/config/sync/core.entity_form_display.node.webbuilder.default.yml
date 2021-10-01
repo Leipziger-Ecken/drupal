@@ -14,10 +14,12 @@ dependencies:
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
+    - image.style.thumbnail
     - node.type.webbuilder
   module:
     - color_field
@@ -26,6 +28,7 @@ dependencies:
     - media_library
     - path
     - publication_date
+    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -48,7 +51,7 @@ third_party_settings:
         - field_layout
         - field_color_primary
         - field_fonts
-        - field_logo
+        - field_logo_legacy
       parent_name: group_basic
       weight: 9
       format_type: accordion_item
@@ -157,12 +160,13 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_logo:
-    type: media_library_widget
-    weight: 13
+  field_logo_legacy:
+    weight: 14
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
+    type: image_image
     region: content
   field_preview_image:
     weight: 9
@@ -217,6 +221,7 @@ hidden:
   field_blog_page: true
   field_events_page: true
   field_frontpage: true
+  field_logo: true
   field_projects_page: true
   langcode: true
   promote: true

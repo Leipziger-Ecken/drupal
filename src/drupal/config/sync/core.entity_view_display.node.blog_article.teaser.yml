@@ -6,14 +6,16 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_images_legacy
     - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_main_image_legacy
     - field.field.node.blog_article.field_related_content
     - field.field.node.blog_article.og_audience
     - image.style.medium
     - node.type.blog_article
   module:
-    - media
+    - svg_image
     - text
     - user
 id: node.blog_article.teaser
@@ -39,14 +41,18 @@ content:
       format_custom_true: ''
       format_custom_false: ''
     third_party_settings: {  }
-  field_main_image:
-    type: media_thumbnail
+  field_main_image_legacy:
+    type: image
     weight: 1
     region: content
     label: hidden
     settings:
       image_style: medium
       image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
     third_party_settings: {  }
   links:
     weight: 0
@@ -65,6 +71,8 @@ content:
     third_party_settings: {  }
 hidden:
   field_images: true
+  field_images_legacy: true
+  field_main_image: true
   field_related_content: true
   langcode: true
   og_audience: true

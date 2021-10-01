@@ -5,15 +5,18 @@ dependencies:
   config:
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_images_legacy
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_main_image_legacy
     - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
+    - image.style.thumbnail
     - node.type.project
   module:
     - field_group
-    - media_library
+    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -62,8 +65,8 @@ third_party_settings:
       label: Allgemein
     group_images:
       children:
-        - field_main_image
-        - field_images
+        - field_main_image_legacy
+        - field_images_legacy
       parent_name: group_basic
       weight: 21
       format_type: accordion_item
@@ -104,12 +107,13 @@ content:
       show_summary: false
     third_party_settings: {  }
     region: content
-  field_images:
-    weight: 6
+  field_images_legacy:
+    weight: 8
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: media_library_widget
+    type: image_image
     region: content
   field_is_featured:
     weight: 3
@@ -125,12 +129,13 @@ content:
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  field_main_image:
-    type: media_library_widget
-    weight: 5
+  field_main_image_legacy:
+    weight: 6
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
+    type: image_image
     region: content
   field_related_content:
     weight: 5
@@ -172,6 +177,8 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_images: true
+  field_main_image: true
   path: true
   promote: true
   published_at: true

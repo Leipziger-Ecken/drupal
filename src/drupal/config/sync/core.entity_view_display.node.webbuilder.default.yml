@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
@@ -22,8 +23,8 @@ dependencies:
   module:
     - color_field
     - link
-    - media
     - options
+    - svg_image
     - user
 id: node.webbuilder.default
 targetEntityType: node
@@ -98,14 +99,18 @@ content:
     third_party_settings: {  }
     type: list_key
     region: content
-  field_logo:
-    type: media_thumbnail
+  field_logo_legacy:
     weight: 2
     label: hidden
     settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
       image_style: ''
       image_link: ''
     third_party_settings: {  }
+    type: image
     region: content
   field_projects_page:
     weight: 6
@@ -134,6 +139,7 @@ content:
 hidden:
   field_description: true
   field_is_preset: true
+  field_logo: true
   field_preview_image: true
   langcode: true
   og_audience: true

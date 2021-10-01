@@ -4,26 +4,31 @@ status: true
 dependencies:
   config:
     - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_logo_legacy
     - field.field.node.sponsor.field_website
     - field.field.node.sponsor.og_audience
     - image.style.medium
     - node.type.sponsor
   module:
-    - media
+    - svg_image
     - user
 id: node.sponsor.default
 targetEntityType: node
 bundle: sponsor
 mode: default
 content:
-  field_logo:
+  field_logo_legacy:
     weight: 1
     label: hidden
     settings:
       image_style: medium
       image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
     third_party_settings: {  }
-    type: media_thumbnail
+    type: image
     region: content
   field_website:
     weight: 2
@@ -39,6 +44,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_logo: true
   langcode: true
   og_audience: true
   published_at: true

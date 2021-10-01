@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -15,14 +16,15 @@ dependencies:
     - field.field.node.webbuilder_page.field_webbuilder
     - field.field.node.webbuilder_page.field_weight
     - field.field.node.webbuilder_page.og_audience
+    - image.style.thumbnail
     - node.type.webbuilder_page
   module:
     - field_group
     - link
-    - media_library
     - paragraphs
     - publication_date
     - select2
+    - svg_image
     - text
     - weight
 third_party_settings:
@@ -76,7 +78,7 @@ third_party_settings:
       label: Navigation
     group_header:
       children:
-        - field_header_image
+        - field_header_image_legacy
       parent_name: group_basic
       weight: 18
       format_type: accordion_item
@@ -156,12 +158,13 @@ content:
         duplicate: duplicate
     third_party_settings: {  }
     region: content
-  field_header_image:
-    type: media_library_widget
-    weight: 3
+  field_header_image_legacy:
+    weight: 4
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
+    type: image_image
     region: content
   field_navigation:
     weight: 3
@@ -271,6 +274,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_header_image: true
   path: true
   promote: true
   sticky: true

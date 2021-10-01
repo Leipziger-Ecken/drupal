@@ -1,5 +1,5 @@
 {% set node_type = node.getType() %}
-{% set image = content.field_main_image[0] %}
+{% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
 {% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
   node: node.id(),
   destination: get_destination(),

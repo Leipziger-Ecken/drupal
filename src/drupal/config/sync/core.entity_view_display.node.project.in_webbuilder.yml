@@ -6,13 +6,16 @@ dependencies:
     - core.entity_view_mode.node.in_webbuilder
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_images_legacy
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_main_image_legacy
     - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
     - node.type.project
   module:
+    - svg_image
     - text
     - user
 id: node.project.in_webbuilder
@@ -27,15 +30,19 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_images:
+  field_images_legacy:
+    type: image
     weight: 4
+    region: content
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_is_featured:
     type: boolean
     weight: 5
@@ -46,15 +53,19 @@ content:
       format_custom_true: ''
       format_custom_false: ''
     third_party_settings: {  }
-  field_main_image:
-    type: entity_reference_entity_view
+  field_main_image_legacy:
+    type: image
     weight: 1
+    region: content
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    region: content
   field_related_content:
     type: entity_reference_entity_view
     weight: 6
@@ -78,6 +89,8 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_images: true
   field_legal_terms_accepted: true
+  field_main_image: true
   langcode: true
   published_at: true

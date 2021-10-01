@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_twitter_link
@@ -61,6 +62,7 @@ hidden:
   field_is_preset: true
   field_layout: true
   field_logo: true
+  field_logo_legacy: true
   field_projects_page: true
   field_twitter_link: true
   langcode: true
