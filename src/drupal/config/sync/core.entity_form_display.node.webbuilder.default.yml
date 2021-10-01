@@ -26,7 +26,6 @@ dependencies:
     - media_library
     - path
     - publication_date
-    - select2
     - text
 third_party_settings:
   field_group:
@@ -133,10 +132,9 @@ content:
     region: content
   field_fonts:
     weight: 12
-    settings:
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
-    type: select2
+    type: options_buttons
     region: content
   field_instagram_link:
     weight: 12

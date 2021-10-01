@@ -213,6 +213,26 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
 
 function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['#attached']['library'][] = 'le_admin/webbuilder_form';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Archivo Black';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Cormorant Garamond';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Crimson Pro';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Dm Sans';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/DM Serif Display';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Eczar';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Gentium Basic';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Jost';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Kavoon';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Libre Baskerville';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Libre Franklin';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Proza Libre';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Rubik';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Rubik';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Space Grotesk';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Space Grotesk';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Taviraj';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Trirong';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Work Sans';
   $user = \Drupal::currentUser();
   $roles = $user->getRoles();
 
