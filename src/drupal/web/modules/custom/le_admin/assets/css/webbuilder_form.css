@@ -1,4 +1,5 @@
-#edit-field-fonts {
+#edit-field-fonts,
+div.form-radios[id*='edit-field-fonts'] /* Workaround odd id-value after re-render  */ {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2rem;
@@ -22,13 +23,13 @@
 }
 
 .webbuilder-heading-font-preview {
-  line-height: 1; 
-  font-size: 2rem; 
+  line-height: 1;
+  font-size: 2rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
 }
 .webbuilder-body-font-preview {
-  line-height: 1; 
-  font-size: 1.25rem; 
+  line-height: 1;
+  font-size: 1.25rem;
   font-weight: 500;
 }
