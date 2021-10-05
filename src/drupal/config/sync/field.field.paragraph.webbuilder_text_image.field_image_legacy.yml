@@ -1,0 +1,38 @@
+uuid: 4937ec39-030d-4170-8c83-2bf9608e97c2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_legacy
+    - paragraphs.paragraphs_type.webbuilder_text_image
+  module:
+    - image
+id: paragraph.webbuilder_text_image.field_image_legacy
+field_name: field_image_legacy
+entity_type: paragraph
+bundle: webbuilder_text_image
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: le
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 5MB
+  max_resolution: 1000x800
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

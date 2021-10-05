@@ -1,6 +1,6 @@
 {% block paragraph %}
 <div data-role="paragraph">
-  {% set image = content.field_image[0] %}
+  {% set image = content.field_image_legacy[0]|default(content.field_image[0]) %}
   {% if image %}
   <figure class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}">
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {

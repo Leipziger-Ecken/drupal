@@ -9,10 +9,13 @@ dependencies:
     - field.field.paragraph.webbuilder_text_image.field_image
     - field.field.paragraph.webbuilder_text_image.field_image_alignment
     - field.field.paragraph.webbuilder_text_image.field_image_caption
+    - field.field.paragraph.webbuilder_text_image.field_image_legacy
     - field.field.paragraph.webbuilder_text_image.field_pre_heading
+    - image.style.media_library
     - paragraphs.paragraphs_type.webbuilder_text_image
   module:
     - options
+    - svg_image
     - text
 id: paragraph.webbuilder_text_image.preview
 targetEntityType: paragraph
@@ -35,15 +38,6 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_image:
-    weight: 3
-    label: above
-    settings:
-      view_mode: media_library
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_image_alignment:
     weight: 4
     label: inline
@@ -59,6 +53,19 @@ content:
     third_party_settings: {  }
     type: text_trimmed
     region: content
+  field_image_legacy:
+    type: image
+    weight: 3
+    region: content
+    label: above
+    settings:
+      image_style: media_library
+      image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
+    third_party_settings: {  }
   field_pre_heading:
     weight: 0
     label: inline
@@ -67,4 +74,5 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+hidden:
+  field_image: true

@@ -1,4 +1,4 @@
-{% set image = content.field_image[0] %}
+{% set image = content.field_image_legacy[0]|default(content.field_image[0]) %}
 {% set image_alignment = content.field_image_alignment[0]['#markup'] %}
 {% block paragraph %}
 <section 

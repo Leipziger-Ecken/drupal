@@ -20,10 +20,11 @@
     {{ content.field_body }}
   </div>
   {% endif %}
-  {% if content.field_images[0] %}
+  {% set images = content.field_images_legacy|default(content.field_images) %}
+  {% if images[0] %}
   <div class="grid grid-cols-1 sm:grid-cols-2 {% if cols >= 3 %}md:grid-cols-3{% endif %} {% if cols >= 4 %}lg:grid-cols-4{% endif %} auto-rows-auto gap-4 items-stretch">
   {% for i in range(0, 100) %}
-    {% set image = content.field_images[i] %}
+    {% set image = images[i] %}
     {% if image %}
     <a
       href="{{ include('@leipzigerEckenWebbuilder/partials/components/media_image_uri.html.twig', {
