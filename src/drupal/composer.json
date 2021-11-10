@@ -173,7 +173,6 @@
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             },
             "drupal/gin": {
-                "moves actions back into sidebar": "patches/gin_editform_actions.patch",
                 "prevents deletion of actions after preview closes": "patches/gin_editform_theme_actions.patch"
             }
         }
