@@ -144,7 +144,7 @@ function le_core_views_pre_view(ViewExecutable $view, $display_id, array &$args)
             $view->getExposedInput(),
             [
               'start' => $start,
-              'ende' => $end, 
+              'ende' => $end,
               'sort_by' => 'field_le_event_occurrences_value',
               'sort_order' => $sort_order
             ]
@@ -199,7 +199,7 @@ function le_core_menu_local_tasks_alter(&$data, $route_name)
     if (isset($data['tabs'][0]) && isset($data['tabs'][0]['entity.node.canonical'])) {
       // Change first tab title from "Ansicht" to "Beschreibung"
       // $local_task_main_view = &$data['tabs'][0]['entity.node.canonical'];
-      
+
       // TODO: this is very missleading
       // $local_task_main_view['#link']['title'] = 'Beschreibung';
     }
@@ -279,7 +279,7 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
     //     return;
     // }
 
-    // As long as recurrencies widget UI is not completed: Hide fields "mode" and "timezone"
+    // Edit recurrencies widget UI: Hide field "timezone"
     $field_occurrences_widget = &$form['field_le_event_occurrences']['widget'];
 
     foreach ($field_occurrences_widget as $key => $field_occurrence) {
@@ -287,15 +287,8 @@ function le_core_form_node_form_alter(&$form, FormStateInterface $form_state, $f
           continue;
         }
 
-        $field_occurrences_widget[$key]['mode']['#attributes']['class'][] = 'hidden'; // #access = false would break JS behaviour :/
+        // $field_occurrences_widget[$key]['mode']['#attributes']['class'][] = 'hidden'; // #access = false would break JS behaviour :/
         $field_occurrences_widget[$key]['time_zone']['#access'] = false;
-        $field_occurrences_widget[$key]['blakeks'] = [
-            '#type' => 'checkbox',
-            '#title' => 'blakeks',//$this->t('Whether to enable occurrences button'),
-            '#default_value' => 1,
-            '#description' => 'efw',
-            '#weight' => -1,
-          ];
     }
 
     // @todo When choosing Akteur, auto-fill-in address values from Akteur address, see #13
