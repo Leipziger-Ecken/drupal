@@ -86,9 +86,15 @@
     // this has to be done after a timeout, as gin js already clones these actions
     const ginActions = document.getElementById('edit-gin-actions');
     const ginSidebar = document.getElementById('edit-gin-sidebar');
+    const ginActionsSidebar = ginSidebar.querySelector('.form-actions');
+    const statusToggle = document.getElementById('edit-status-wrapper');
 
     if (ginActions && ginSidebar) {
       ginActions.classList.remove('gin-sticky');
+
+      if (statusToggle && ginActionsSidebar) {
+        ginActionsSidebar.prepend(statusToggle);
+      }
     }
   }
 

@@ -61,3 +61,13 @@
 .js-offCanvasPreviewer .ui-dialog-content {
   overflow: hidden !important;
 }
+
+#edit-status-wrapper {
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .layout-node-form__actions {
+    display: none !important;
+  }
+}
