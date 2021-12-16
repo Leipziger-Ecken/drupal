@@ -516,7 +516,7 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
   // hide revision checkbox for regular users
   if (in_array('webbuilder', $user->getRoles())) {
     unset($form['revision']);
-  }  
+  }
   
   // add back action
   $destination = \Drupal::request()->query->get('destination');
