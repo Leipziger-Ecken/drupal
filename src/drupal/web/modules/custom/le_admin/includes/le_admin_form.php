@@ -506,11 +506,18 @@ function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state
 
 function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $user = \Drupal::currentUser();
+
   $form['#attached']['library'][] = 'le_admin/tailwind';
 
   // allow access to publish
   $form['status']['#access'] = true;
-
+  
+  // hide revision checkbox for regular users
+  if (in_array('webbuilder', $user->getRoles())) {
+    unset($form['revision']);
+  }  
+  
   // add back action
   $destination = \Drupal::request()->query->get('destination');
   $form['le_admin_back'] = [
