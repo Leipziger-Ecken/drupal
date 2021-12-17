@@ -86,6 +86,11 @@
     // this has to be done after a timeout, as gin js already clones these actions
     const ginActions = document.getElementById('edit-gin-actions');
     const ginSidebar = document.getElementById('edit-gin-sidebar');
+    
+    if (!ginActions || !ginSidebar) {
+        return;
+    }
+
     const ginActionsSidebar = ginSidebar.querySelector('.form-actions');
     const statusToggle = document.getElementById('edit-status-wrapper');
 
