@@ -7306,25 +7306,25 @@
         },
         {
             "name": "enshrined/svg-sanitize",
-            "version": "0.14.0",
+            "version": "0.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/darylldoyle/svg-sanitizer.git",
-                "reference": "beff89576a72540ee99476aeb9cfe98222e76fb8"
+                "reference": "454682a67b335bb918952b93c4e699a36012c568"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/darylldoyle/svg-sanitizer/zipball/beff89576a72540ee99476aeb9cfe98222e76fb8",
-                "reference": "beff89576a72540ee99476aeb9cfe98222e76fb8",
+                "url": "https://api.github.com/repos/darylldoyle/svg-sanitizer/zipball/454682a67b335bb918952b93c4e699a36012c568",
+                "reference": "454682a67b335bb918952b93c4e699a36012c568",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
-                "ext-libxml": "*"
+                "ext-libxml": "*",
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": "^0.1.2",
-                "phpunit/phpunit": "^6"
+                "phpunit/phpunit": "^6.5 || ^8.5"
             },
             "type": "library",
             "autoload": {
@@ -7345,9 +7345,9 @@
             "description": "An SVG sanitizer for PHP",
             "support": {
                 "issues": "https://github.com/darylldoyle/svg-sanitizer/issues",
-                "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.14.0"
+                "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.2"
             },
-            "time": "2021-01-21T10:13:20+00:00"
+            "time": "2022-02-14T00:53:22+00:00"
         },
         {
             "name": "geocoder-php/common-http",
@@ -13759,5 +13759,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
