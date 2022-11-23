@@ -1,0 +1,14 @@
+{
+  "name": "leipzigerecken-ui",
+  "version": "1.0.0",
+  "description": "Official Leipziger Ecken v2 theme based on [Bootstrap theme](https://www.drupal.org/project/bootstrap).",
+  "main": "",
+  "scripts": {
+    "build": "sass scss/style.scss css/style.css --style=compressed --no-source-map"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.56.1"
+  }
+}

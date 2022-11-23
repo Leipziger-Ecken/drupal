@@ -2,15 +2,14 @@
 
 Official Leipziger Ecken v2 theme based on [Bootstrap theme](https://www.drupal.org/project/bootstrap). See *web/themes/contrib/bootstrap/README.md* for more information and supported modules.
 
-### Usage
+### Installation
 
-To compile SCSS-files into CSS [install SASS](https://sass-lang.com/install) (e.g. via *npm install -g sass*). Then run ```sass scss/style.scss css/style.css```.
+Requires node.js 16 or later. Run once:
+`npm install` 
 
-Or, for categories-select only: ```sass scss/categories-select.scss css/categories-select.css```.
+### Building for production
 
-#### Building for production
-
-```sass scss/style.scss css/style.css --style=compressed --no-source-map```
+`npm run build`
 
 ### Icons
 
