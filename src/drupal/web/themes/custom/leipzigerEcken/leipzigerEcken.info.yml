@@ -24,5 +24,3 @@ regions:
 libraries-extend:
   bootstrap/framework:
     - leipzigerEcken/framework
-    - leipzigerEcken/lora
-    - leipzigerEcken/publicsans
