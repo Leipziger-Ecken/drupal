@@ -1,3 +1,29 @@
+/** Lora **/
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Lora-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/Lora-Medium.woff') format('woff');
+}
+
+/** Public Sans **/
+@font-face {
+    font-family: 'Public Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/PublicSans-SemiBold.woff') format('woff');
+}
+
 /** LEIcons font **/
 @font-face {
     font-family: 'LEIcons';
@@ -9,6 +35,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 [class*='i-']:before{
     display: inline-block;
     font-family: 'LEIcons';
@@ -18,6 +45,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
+
 .i-akteur:before{content:'\0041';}
 .i-event:before{content:'\0042';}
 .i-journal:before{content:'\0043';}
