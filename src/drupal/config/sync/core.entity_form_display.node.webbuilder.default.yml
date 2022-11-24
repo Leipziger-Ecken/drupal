@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - image.style.thumbnail
@@ -82,6 +83,7 @@ third_party_settings:
         - field_facebook_link
         - field_instagram_link
         - field_twitter_link
+        - field_tiktok_link
       parent_name: group_basic
       weight: 10
       format_type: accordion_item
@@ -174,6 +176,14 @@ content:
       media_types: {  }
     third_party_settings: {  }
     type: media_library_widget
+    region: content
+  field_tiktok_link:
+    weight: 14
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_twitter_link:
     weight: 13

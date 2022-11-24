@@ -11,8 +11,8 @@
           <div>
             {{ drupal_view('blog', 'webbuilder_footer', akteur_id) }}
             {% if webbuilder_blog_page %}
-            <a 
-              href="{{ drupal_url('/node/' ~ webbuilder_blog_page) }}" 
+            <a
+              href="{{ drupal_url('/node/' ~ webbuilder_blog_page) }}"
               class="block text-base text-gray-300 hover:text-white mt-4"
             >
               {{ 'More …'|t }}
@@ -23,8 +23,8 @@
           <div class="mt-12 md:mt-0">
             {{ drupal_view('le_akteur_has_events', 'webbuilder_footer', akteur_id) }}
             {% if webbuilder_events_page %}
-            <a 
-              href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}" 
+            <a
+              href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}"
               class="block text-base text-gray-300 hover:text-white mt-4"
             >
               {{ 'More …'|t }}
@@ -36,7 +36,7 @@
           <div>
             {{ drupal_view('projects', 'webbuilder_footer', akteur_id) }}
             {% if webbuilder_projects_page %}
-            <a 
+            <a
               href="{{ drupal_url('/node/' ~ webbuilder_projects_page) }}"
               class="block text-base text-gray-300 hover:text-white mt-4"
             >
@@ -71,6 +71,14 @@
     </div>
     <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
       <div class="flex space-x-6 md:order-2">
+        {% set tiktok_uri = drupal_field('field_tiktok_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if tiktok_uri %}
+        <a href="{{ tiktok_uri }}" class="text-gray-400 hover:text-gray-300">
+          <span class="sr-only">{{ 'TikTok'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/tiktok.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
+
         {% set facebook_uri = drupal_field('field_facebook_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if facebook_uri %}
         <a href="{{ facebook_uri }}" class="text-gray-400 hover:text-gray-300">

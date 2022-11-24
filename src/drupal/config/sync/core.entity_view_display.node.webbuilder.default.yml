@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
@@ -118,6 +119,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
+    region: content
+  field_tiktok_link:
+    weight: 12
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_twitter_link:
     weight: 11

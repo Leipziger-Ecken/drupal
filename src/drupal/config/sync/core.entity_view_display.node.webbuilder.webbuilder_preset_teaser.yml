@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
     - field.field.node.webbuilder.og_audience
     - image.style.webbuilder_preset_thumb
@@ -60,6 +61,7 @@ hidden:
   field_logo: true
   field_logo_legacy: true
   field_projects_page: true
+  field_tiktok_link: true
   field_twitter_link: true
   langcode: true
   links: true
