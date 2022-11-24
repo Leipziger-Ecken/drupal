@@ -295,6 +295,9 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
         $form['field_frontpage']['widget']['#options'][$nid] = $title;
       }
     }
+
+    // show logo field label
+    $form['field_logo_legacy']['#prefix'] = '<h4>Logo</h4>';
   }
 }
 
@@ -512,12 +515,12 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
 
   // allow access to publish
   $form['status']['#access'] = true;
-  
+
   // hide revision checkbox for regular users
   if (in_array('webbuilder', $user->getRoles())) {
     unset($form['revision']);
   }
-  
+
   // add back action
   $destination = \Drupal::request()->query->get('destination');
   $form['le_admin_back'] = [
@@ -704,7 +707,7 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
   if (!isset($form['media'][0])) {
     return;
   }
-  
+
   $form['media'][0]['fields']['field_og_audience']['widget']['#options'] = [];
 
   if ($user->hasPermission('edit any le_akteur content')) {
