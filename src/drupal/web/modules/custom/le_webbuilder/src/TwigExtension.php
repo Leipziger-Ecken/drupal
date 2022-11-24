@@ -135,10 +135,10 @@ class TwigExtension extends \Twig_Extension
       } else {
         return $webbuilder->toUrl()->toString();
       }
-    } else {      
+    } else {
       $akteur_id = $webbuilder->og_audience[0]->target_id;
       return Url::fromRoute(
-        $url, 
+        $url,
         array_merge($route_parameters, ['akteur' => $akteur_id, 'webbuilder' => $webbuilder_id]),
         [
           'query' => ['destination' => $destination]
@@ -161,7 +161,7 @@ class TwigExtension extends \Twig_Extension
     if (!count($result)) {
       return null;
     }
-    
+
     $webbuilder_id = array_values($result)[0];
 
     return $this->webbuilderUrl($webbuilder_id, $url, $route_parameters);
@@ -179,7 +179,7 @@ class TwigExtension extends \Twig_Extension
         if (count($result)) {
           $nid = array_values($result)[0];
           $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-          
+
           switch($node->getType()) {
             case 'webbuilder':
               return $nid;
@@ -194,7 +194,7 @@ class TwigExtension extends \Twig_Extension
       if (count($parts) >= 2) {
         $nid = $parts[1];
         $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-        
+
         if ($node) {
           switch ($node->getType()) {
             case 'webbuilder':
@@ -236,24 +236,29 @@ class TwigExtension extends \Twig_Extension
       'layout' => null,
       'no_results_body' => null,
     ], $options);
-    
+
     $arguments[] = $options['layout'];
     $arguments[] = $options['filters'];
     $arguments[] = $options['images'];
     $arguments[] = $options['no_results_body'];
-    
+
     $view = Views::getView($view_name);
     $view->setDisplay($display_name);
 
     if ($options['per_page']) {
       $view->setItemsPerPage(intval($options['per_page']));
     }
+
     if (!$options['pagination']) {
       $view->pager = null;
     }
     $view->setArguments($arguments);
     $view->override_url = Url::fromUserInput(\Drupal::service('path.current')->getPath());
+    $renderedView = $view->render();
 
-    return $view->render();
+    if (!$options['pagination']) {
+      $renderedView['#view']->pager = null;
+    }
+    return $renderedView;
   }
 }
