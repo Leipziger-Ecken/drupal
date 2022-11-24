@@ -2,8 +2,14 @@
 {% if image['#media'].field_media_remote_image %}
   {% set uri = image['#media'].field_media_remote_image[0].uri | replace({'.jpg': '&w=' ~ width}) %}
 {% elseif image['#media'] %}
-  {% set uri = image['#media'] | file_uri | image_style(image_style) %}
+  {% set uri = image['#media'] | file_uri %}
+  {% if uri %}
+    {% set uri = uri | image_style(image_style) %}
+  {% endif %}
 {% else %}
-  {% set uri = image['#item'] | file_uri | image_style(image_style) %}
+  {% set uri = image['#item'] | file_uri %}
+  {% if uri %}
+    {% set uri = uri | image_style(image_style) %}
+  {% endif %}
 {% endif %}
 {{ uri }}
