@@ -6,8 +6,8 @@
   {% set font_heading = fonts[0] %}
   {% set font_body = fonts[1] %}
   {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
-  {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
-  {% set logo_url = logo|file_url %}
+  {% set logo = drupal_field('field_logo_legacy', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+  {% set logo_url = logo | file_url %}
 {% endif %}
 {% set node_type = node.getType() %}
 {% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
@@ -48,7 +48,7 @@
           <h3>{{ 'Address'|t }}</h3>
           {{ content.field_adresse }}
           {% endif %}
-          
+
           {% if content.field_bezirk %}
           {{ content.field_bezirk }}
           {% endif %}
@@ -58,19 +58,19 @@
             {{ 'barrier-free'|t }}
           </p>
           {% endif %}
-          
+
           {% if content.field_online_event[0]['#markup'] == 1 %}
           <p>
             {{ 'Online Event'|t }}
           </p>
           {% endif %}
-          
+
           {% if content.field_geofield %}
           <div class="mt-8">
             {{ content.field_geofield }}
           </div>
           {% endif %}
-          
+
           {% if content.og_audience %}
           <h3>{{ 'Organizer'|t }}</h3>
           {#
@@ -83,14 +83,14 @@
             {{ content.og_audience }}
           </p>
           {% endif %}
-          
+
           {% if content.field_le_event_kategorie_typ %}
           <h3>{{ 'Categories'|t }}</h3>
           <p>
             {{ content.field_le_event_kategorie_typ }}
           </p>
           {% endif %}
-          
+
           {% if content.field_le_event_kategorie_gruppe %}
           <h3>{{ 'Target groups'|t }}</h3>
           <p>

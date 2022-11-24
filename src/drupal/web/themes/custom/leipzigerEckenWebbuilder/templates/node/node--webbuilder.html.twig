@@ -5,7 +5,7 @@
 {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
 {% set font_heading = fonts[0] %}
 {% set font_body = fonts[1] %}
-{% set logo_url = logo|file_url %}
+{% set logo_url = logo | file_url %}
 
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}

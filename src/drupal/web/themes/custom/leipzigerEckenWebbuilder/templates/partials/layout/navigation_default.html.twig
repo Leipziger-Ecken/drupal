@@ -9,7 +9,7 @@
     <div class="flex justify-start lg:w-0 lg:flex-1">
       <a href="{{ webbuilder_url(webbuilder_id) }}">
         <span class="sr-only">{{ webbuilder_title }}</span>
-        <img src="{{ logo|file_url }}" alt="{{ webbuilder_title }}" class="h-8 w-auto sm:h-10"/>
+        <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-8 w-auto sm:h-10"/>
       </a>
     </div>
     <div class="-mr-2 -my-2 md:hidden">
@@ -53,7 +53,7 @@
       <div class="pt-5 pb-6 px-5">
         <div class="flex items-center justify-between">
           <div>
-            <img src="{{ logo|file_url }}" alt="{{ webbuilder_title }}" class="h-8 w-auto"/>
+            <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-8 w-auto"/>
           </div>
           <div class="-mr-2">
             <button
@@ -77,7 +77,7 @@
             {{ drupal_block('system_menu_block:account', wrapper=false) }}
           {% endif %}
         {% endif %}
-        
+
         <!-- TODO: enable language switch
         <a href="#" class="w-full flex items-center justify-start px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-gray-50">
           <div>Deutsch</div>

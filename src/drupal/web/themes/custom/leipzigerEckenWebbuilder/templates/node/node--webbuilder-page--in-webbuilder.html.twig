@@ -2,8 +2,8 @@
 {% set webbuilder_id = content.field_webbuilder[0]['#plain_text'] | default(null) %}
 {% if webbuilder_id %}
   {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
-  {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
-  {% set logo_url = logo|file_url %}
+  {% set logo = drupal_field('field_logo_legacy', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+  {% set logo_url = logo | file_url %}
 {% endif %}
 
 {% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}

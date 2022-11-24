@@ -6,7 +6,7 @@
 {% set description = content.field_description %}
 {% if partner_type == 'le_akteur' and akteur_id %}
   {% set title = drupal_field('title', 'node', akteur_id) %}
-  {% set image = drupal_field('field_logo', 'node', akteur_id)[0] %}
+  {% set image = drupal_field('field_logo_legacy', 'node', akteur_id)[0] %}
   {% set website_url = drupal_url('node/' ~ akteur_id) %}
   {% set description = drupal_field('field_le_akteur_description', 'node', akteur_id) %}
 {% endif %}
