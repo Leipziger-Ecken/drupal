@@ -6,8 +6,7 @@
 {% set has_filters = content.field_has_filters[0]['#markup'] == 1 %}
 {% set node_id = paragraph.parent_id[0].value %}
 {% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
-{% block paragraph %}
-<section 
+<section
   class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}"
   data-role="paragraph"
 >
@@ -18,6 +17,7 @@
         {{ content.field_heading }}
       </h2>
       {% endif %}
+      {% if content.field_body[0] or has_filters %}
       <div class="sm:mt-4 lg:grid lg:grid-cols-3 lg:gap-5 lg:items-center">
         {% if content.field_body[0] %}
         <div class="{{ webbuilder_classes.text.prose_lg }} col-span-1">
@@ -32,9 +32,9 @@
         </div>
         {% endif %}
       </div>
+      {% endif %}
     </div>
     {# results #}
     {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images, no_results_body: (content.field_no_results_body[0]['#text']|default(null))}, [akteur_id]) }}
   </div>
 </section>
-{% endblock paragraph %}

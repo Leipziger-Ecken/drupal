@@ -16,7 +16,7 @@
   node: node.id()
 }) %}
 
-{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+{% extends '@leipzigerEckenWebbuilder/layouts/' ~ layout ~'/index.html.twig' %}
 
 {% block content %}
 <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,7 +102,7 @@
           {% endif %}
         </div>
 
-        {{ include('@leipzigerEckenWebbuilder/node/_related-content.html.twig') }}
+        {{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/_related-content.html.twig') }}
 
         <!-- back link -->
         <div class="mt-16 mx-auto px-4 sm:px-6 lg:px-8">

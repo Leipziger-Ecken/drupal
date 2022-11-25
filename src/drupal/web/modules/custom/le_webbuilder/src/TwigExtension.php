@@ -13,6 +13,8 @@ use Drupal\Core\Url;
 class TwigExtension extends \Twig_Extension
 {
 
+  protected static $webbuilderCache = [];
+
   /**
    * {@inheritdoc}
    */
@@ -27,6 +29,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('webbuilder_url', [$this, 'webbuilderUrl']),
       new \Twig_SimpleFunction('webbuilder_id', [$this, 'webbuilderId']),
       new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
+      new \Twig_SimpleFunction('webbuilder_layout', [$this, 'webbuilderLayout']),
       new \Twig_SimpleFunction('webbuilder_view', [$this, 'webbuilderView']),
       new \Twig_SimpleFunction('akteur_webbuilder_url', [$this, 'akteurWebbuilderUrl']),
     ];
@@ -35,7 +38,7 @@ class TwigExtension extends \Twig_Extension
   public function getFilters()
   {
     return [
-
+      new \Twig_SimpleFilter('json_decode', [$this, 'jsonDecode']),
     ];
   }
 
@@ -44,6 +47,19 @@ class TwigExtension extends \Twig_Extension
    */
   public function getName() {
     return 'le_webbuilder';
+  }
+
+  public function jsonDecode($value)
+  {
+    if (!is_string($value)) {
+      return null;
+    }
+
+    try {
+      return json_decode($value);
+    } catch (\Exception $e) {
+      return $e . '';
+    }
   }
 
   public function colorHexToRgb($hex)
@@ -114,9 +130,19 @@ class TwigExtension extends \Twig_Extension
     return \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
   }
 
+  protected function getWebbuilderById($webbuilder_id)
+  {
+    if (!isset(self::$webbuilderCache[$webbuilder_id])) {
+      $webbuilder = $this->getNodeById($webbuilder_id);
+      self::$webbuilderCache[$webbuilder_id] = $webbuilder;
+    }
+
+    return self::$webbuilderCache[$webbuilder_id];
+  }
+
   public function webbuilderUrl($webbuilder_id, string $url = '<front>', array $route_parameters = [])
   {
-    $webbuilder = $this->getNodeById($webbuilder_id);
+    $webbuilder = $this->getWebbuilderById($webbuilder_id);
     if (isset($route_parameters['destination'])) {
       $destination = $route_parameters['destination'];
       unset($route_parameters['destination']);
@@ -217,13 +243,28 @@ class TwigExtension extends \Twig_Extension
 
   public function webbuilderAkteurId($webbuilder_id)
   {
-    $webbuilder = $this->getNodeById($webbuilder_id);
+    $webbuilder = $this->getWebbuilderById($webbuilder_id);
 
     if (isset($webbuilder->og_audience[0])) {
       return $webbuilder->og_audience[0]->target_id;
     }
 
     return null;
+  }
+
+  public function webbuilderLayout($webbuilder_id = null)
+  {
+    if (!$webbuilder_id) {
+      $webbuilder_id = $this->webbuilderId();
+    }
+
+    $webbuilder = $this->getWebbuilderById($webbuilder_id);
+
+    if (isset($webbuilder->field_layout[0])) {
+      return $webbuilder->field_layout[0]->value;
+    }
+
+    return 'default';
   }
 
   public function webbuilderView($view_name, $display_name, array $options = [], array $arguments = [])
@@ -237,10 +278,7 @@ class TwigExtension extends \Twig_Extension
       'no_results_body' => null,
     ], $options);
 
-    $arguments[] = $options['layout'];
-    $arguments[] = $options['filters'];
-    $arguments[] = $options['images'];
-    $arguments[] = $options['no_results_body'];
+    $arguments[] = json_encode($options);
 
     $view = Views::getView($view_name);
     $view->setDisplay($display_name);

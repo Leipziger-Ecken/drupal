@@ -2,11 +2,4 @@
 {{ title }}
 {{ title_suffix }}
 
-{# regular articles #}
-<ul class="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0">
-{% for index,row in rows[0]['#rows'] %}
-  <li class="sm:py-8">
-  {{ include('@leipzigerEckenWebbuilder/views/_views_listing--teaser.html.twig', {content: row['#node'], index: index}) }}
-  </li>
-{% endfor %}
-</ul>
+{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/partners.html.twig') }}
