@@ -65,4 +65,14 @@
       }, 200);
     };
   });
+
+  app.register('slider', class extends Stimulus.Controller {
+    static targets = [
+      'slider',
+    ]
+    connect() {
+      this.splide = new Splide(this.sliderTarget);
+      this.splide.mount();
+    }
+  });
 })();

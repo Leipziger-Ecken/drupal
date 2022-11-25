@@ -1,7 +1,7 @@
 webbuilder:
   css:
     theme:
-      assets/vendor/splide/css/splide.min.css: {}
+      assets/vendor/splide/dist/css/splide.min.css: {}
       assets/css/webbuilder.css: {}
   js:
     assets/vendor/stimulus/stimulus.umd.js: {}

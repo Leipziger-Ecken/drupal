@@ -8,15 +8,22 @@
 {% endif %}
 {% endfor %}
 
-<div class="mt-12 pt-10 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-  {# regular articles #}
-  {% for index,row in rows[0]['#rows'] %}
-  {% set row = row['#row'] %}
-  {% if not row._entity.field_is_featured[0] or row._entity.field_is_featured[0].value == '0' %}
-    {{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/items/teaser-slider.html.twig', {content: row._entity, index: index}) }}
-  {% endif %}
-  {% endfor %}
-
+<div class="mt-12 pt-10" data-controller="slider">
+  <div class="splide" data-slider-target="slider">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {# regular articles #}
+        {% for index,row in rows[0]['#rows'] %}
+        {% set row = row['#row'] %}
+        {% if not row._entity.field_is_featured[0] or row._entity.field_is_featured[0].value == '0' %}
+        <li class="splide__slide">
+          {{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/items/teaser-slider.html.twig', {content: row._entity, index: index}) }}
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 
 {% else %}
