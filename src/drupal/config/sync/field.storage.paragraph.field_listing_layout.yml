@@ -20,6 +20,12 @@ settings:
     -
       value: 2_col_teasers
       label: 2-Spaltig
+    -
+      value: 1_col_teasers
+      label: 1-Spaltig
+    -
+      value: slider
+      label: Slider
   allowed_values_function: ''
 module: options
 locked: false

@@ -1,0 +1,10 @@
+uuid: 464bb6b9-fb45-4a7d-99b4-331bcf434d0c
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_teaser_2_col
+label: 'Webbaukasten: Teaser 2-Spaltig'
+targetEntityType: node
+cache: true
