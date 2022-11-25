@@ -38,17 +38,17 @@ for (let w = 10; w < 100; w += 10) {
 }
 
 module.exports = {
+  mode: 'jit',
   corePlugins: {
     fontFamily: false,
   },
-  purge: [
+  content: [
     './templates/**/*.twig',
     './assets/js/**/*.js',
     './leipzigerEckenWebbuilder.theme',
     '../../../modules/custom/**/*.php',
     '../../../modules/custom/**/*.module',
   ],
-  darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
       colors: colors,
@@ -65,9 +65,6 @@ module.exports = {
         },
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),
