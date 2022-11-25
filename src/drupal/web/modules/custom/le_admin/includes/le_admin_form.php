@@ -221,6 +221,7 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/DM Serif Display';
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Eczar';
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Gentium Basic';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Inter';
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Jost';
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Kavoon';
   $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Libre Baskerville';

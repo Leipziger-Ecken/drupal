@@ -42,6 +42,11 @@ Gentium Basic:
     theme:
       assets/css/Gentium Basic.css: {}
 
+Inter:
+  css:
+    theme:
+      assets/css/Inter.css: {}
+
 Jost:
   css:
     theme:
