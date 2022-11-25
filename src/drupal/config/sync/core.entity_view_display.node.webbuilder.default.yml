@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_favicon_legacy
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_instagram_link
@@ -68,6 +69,19 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_favicon_legacy:
+    weight: 13
+    label: above
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
     region: content
   field_fonts:
     weight: 8

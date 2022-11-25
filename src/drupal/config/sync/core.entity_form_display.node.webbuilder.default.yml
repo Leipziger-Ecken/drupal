@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_favicon_legacy
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_instagram_link
@@ -55,6 +56,7 @@ third_party_settings:
         - group_colors
         - field_fonts
         - field_logo_legacy
+        - field_favicon_legacy
       parent_name: group_basic
       weight: 9
       format_type: accordion_item
@@ -165,8 +167,16 @@ content:
     third_party_settings: {  }
     type: link_default
     region: content
+  field_favicon_legacy:
+    weight: 14
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+    region: content
   field_fonts:
-    weight: 15
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -193,7 +203,7 @@ content:
     type: options_select
     region: content
   field_logo_legacy:
-    weight: 16
+    weight: 13
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail

@@ -296,8 +296,9 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
       }
     }
 
-    // show logo field label
-    $form['field_logo_legacy']['#prefix'] = '<h4>Logo</h4>';
+    // show logo and favicon field label
+    $form['field_logo_legacy']['#prefix'] = '<h4>' . t('Logo') . '</h4>';
+    $form['field_favicon_legacy']['#prefix'] = '<h4>' . t('Favicon') . '</h4>';
   }
 }
 

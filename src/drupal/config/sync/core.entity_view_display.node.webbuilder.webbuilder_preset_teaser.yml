@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_favicon_legacy
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_instagram_link
@@ -57,6 +58,7 @@ hidden:
   field_color_tertiary: true
   field_events_page: true
   field_facebook_link: true
+  field_favicon_legacy: true
   field_fonts: true
   field_frontpage: true
   field_instagram_link: true
