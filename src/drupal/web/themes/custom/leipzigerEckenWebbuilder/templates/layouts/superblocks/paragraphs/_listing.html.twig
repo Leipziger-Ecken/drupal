@@ -1,0 +1,40 @@
+{% set view_display = view_display|default('webbuilder') %}
+{% set layout = content.field_listing_layout[0]['#markup'] %}
+{% set per_page = content.field_per_page[0]['#markup'] %}
+{% set use_images = content.field_use_images[0]['#markup'] == 1 %}
+{% set has_pagination = content.field_has_pagination[0]['#markup'] == 1 %}
+{% set has_filters = content.field_has_filters[0]['#markup'] == 1 %}
+{% set node_id = paragraph.parent_id[0].value %}
+{% set akteur_id = drupal_field('og_audience', 'node', node_id)[0]['#plain_text'] %}
+<section
+  class="{{ webbuilder_classes.container.lg }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}"
+  data-role="paragraph"
+>
+  <div class="relative {{ webbuilder_classes.container.md }} {{ webbuilder_classes.divide.md }}">
+    <div>
+      {% if content.field_heading[0] %}
+      <h2 class="mb-3 {{ webbuilder_classes.text.h2 }}">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      {% if content.field_body[0] or has_filters %}
+      <div class="sm:mt-4 lg:grid lg:grid-cols-3 lg:gap-5 lg:items-center">
+        {% if content.field_body[0] %}
+        <div class="{{ webbuilder_classes.text.prose_lg }} col-span-1">
+          {{ content.field_body }}
+        </div>
+        {% endif %}
+
+        {# exposed filters #}
+        {% if has_filters %}
+        <div class="mt-6 lg:mt-0 col-span-2">
+          {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {# results #}
+    {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: false, images: use_images, no_results_body: (content.field_no_results_body[0]['#text']|default(null))}, [akteur_id]) }}
+  </div>
+</section>
