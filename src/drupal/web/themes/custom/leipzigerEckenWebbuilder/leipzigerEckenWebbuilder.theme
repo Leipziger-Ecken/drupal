@@ -65,15 +65,29 @@ function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
   $is_preview = \Drupal::request()->query->get('preview') === '1';
   $variables['webbuilder_classes'] = WEBBUILDER_CLASSES;
   $variables['is_preview'] = $is_preview;
-  
-  // hide toolbar in preview mode
-  if ($hook === 'html' && $is_preview) {
-    unset($variables['page_top']['toolbar']);
-    
-    foreach($variables['attributes']['class'] as $i => $class) {
-      if (strpos($class, 'toolbar') !== false) {
-        unset($variables['attributes']['class'][$i]);
+
+  if ($hook === 'html') {
+    // hide toolbar in preview mode
+    if ($is_preview) {
+      unset($variables['page_top']['toolbar']);
+
+      foreach($variables['attributes']['class'] as $i => $class) {
+        if (strpos($class, 'toolbar') !== false) {
+          unset($variables['attributes']['class'][$i]);
+        }
       }
+    }
+
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $webbuilder = \Drupal::routeMatch()->getParameter('webbuilder');
+
+    if (!$webbuilder && $node->getType() === 'webbuilder') {
+      $webbuilder = $node;
+    }
+
+    // change favicon
+    if (isset($webbuilder->field_favicon_legacy[0])) {
+      $variables['page']['#attached']['html_head_link'][0][0]['href'] = $webbuilder->field_favicon_legacy[0]->entity->url();
     }
   }
 }
