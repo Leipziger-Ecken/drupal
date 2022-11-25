@@ -1,0 +1,73 @@
+uuid: 0b69c5c5-c0e8-4dcf-a90d-be413899912c
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_teaser_slider
+    - field.field.node.partner.field_akteur
+    - field.field.node.partner.field_description
+    - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_main_image_legacy
+    - field.field.node.partner.field_partner_type
+    - field.field.node.partner.field_website
+    - field.field.node.partner.og_audience
+    - node.type.partner
+  module:
+    - options
+    - svg_image
+    - text
+    - user
+id: node.partner.webbuilder_teaser_slider
+targetEntityType: node
+bundle: partner
+mode: webbuilder_teaser_slider
+content:
+  field_akteur:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: entity_reference_entity_id
+    region: content
+  field_description:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_main_image_legacy:
+    weight: 0
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_partner_type:
+    weight: 4
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
+  field_website:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_main_image: true
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true
