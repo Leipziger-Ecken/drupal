@@ -1,11 +1,1 @@
-{% if content.field_related_content[0] %}
-<h2 class="mt-12 text-gray-900 block text-2xl tracking-tight font-extrabold sm:text-3xl xl:text-4xl">
-  {{ 'Zugehörige Inhalte'|t }}
-</h2>
-
-<div class="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
-  {% for index in range(0, content.field_related_content['#items']|length) %}
-  {{ content.field_related_content[index] }}
-  {% endfor %}
-</div>
-{% endif %}
+{{ include('@leipzigerEckenWebbuilder/layouts/default/nodes/_related-content.html.twig') }}
