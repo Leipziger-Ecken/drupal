@@ -81,8 +81,12 @@ function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
     $node = \Drupal::routeMatch()->getParameter('node');
     $webbuilder = \Drupal::routeMatch()->getParameter('webbuilder');
 
-    if (!$webbuilder && $node->getType() === 'webbuilder') {
+    if (!$webbuilder && $node && $node->getType() === 'webbuilder') {
       $webbuilder = $node;
+    }
+
+    if (!$webbuilder) {
+      return;
     }
 
     // change favicon
