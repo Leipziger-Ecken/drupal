@@ -33,3 +33,18 @@ div.form-radios[id*='edit-field-fonts'] /* Workaround odd id-value after re-rend
   font-size: 1.25rem;
   font-weight: 500;
 }
+#edit-group-colors .fieldset__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media screen and (max-width: 640px) {
+  #edit-group-colors .fieldset__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 400px) {
+  #edit-group-colors .fieldset__wrapper {
+    display: block;
+  }
+}

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_color_secondary
+    - field.field.node.webbuilder.field_color_tertiary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
@@ -150,6 +152,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_color_secondary: true
+  field_color_tertiary: true
   field_description: true
   field_is_preset: true
   field_logo: true

@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_color_secondary
+    - field.field.node.webbuilder.field_color_tertiary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
@@ -50,7 +52,7 @@ third_party_settings:
     group_style:
       children:
         - field_layout
-        - field_color_primary
+        - group_colors
         - field_fonts
         - field_logo_legacy
       parent_name: group_basic
@@ -108,17 +110,45 @@ third_party_settings:
         classes: ''
         effect: none
       label: Basic
+    group_colors:
+      children:
+        - field_color_primary
+        - field_color_secondary
+        - field_color_tertiary
+      parent_name: group_style
+      weight: 11
+      format_type: fieldset
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Farben
 id: node.webbuilder.default
 targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
   field_color_primary:
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: color_field_widget_html5
     region: content
+  field_color_secondary:
+    type: color_field_widget_html5
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_color_tertiary:
+    type: color_field_widget_html5
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_description:
     weight: 8
     settings:
@@ -136,7 +166,7 @@ content:
     type: link_default
     region: content
   field_fonts:
-    weight: 12
+    weight: 15
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -163,7 +193,7 @@ content:
     type: options_select
     region: content
   field_logo_legacy:
-    weight: 14
+    weight: 16
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail

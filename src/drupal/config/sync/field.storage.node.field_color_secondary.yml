@@ -1,0 +1,20 @@
+uuid: f6142e28-68bc-4864-837a-75384e5a398a
+langcode: de
+status: true
+dependencies:
+  module:
+    - color_field
+    - node
+id: node.field_color_secondary
+field_name: field_color_secondary
+entity_type: node
+type: color_field_type
+settings:
+  format: '#HEXHEX'
+module: color_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

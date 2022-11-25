@@ -6,6 +6,8 @@ dependencies:
     - core.entity_view_mode.node.backend_teaser
     - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_color_secondary
+    - field.field.node.webbuilder.field_color_tertiary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
@@ -32,6 +34,8 @@ content: {  }
 hidden:
   field_blog_page: true
   field_color_primary: true
+  field_color_secondary: true
+  field_color_tertiary: true
   field_description: true
   field_events_page: true
   field_facebook_link: true
