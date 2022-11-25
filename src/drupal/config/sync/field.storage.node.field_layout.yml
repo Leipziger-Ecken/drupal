@@ -14,6 +14,9 @@ settings:
     -
       value: default
       label: Standard
+    -
+      value: superblocks
+      label: Superblocks
   allowed_values_function: ''
 module: options
 locked: false
