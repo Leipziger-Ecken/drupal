@@ -1,1 +1,4 @@
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/navigations/main.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/navigations/main.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/navigations/main.html.twig',
+  ]) }}

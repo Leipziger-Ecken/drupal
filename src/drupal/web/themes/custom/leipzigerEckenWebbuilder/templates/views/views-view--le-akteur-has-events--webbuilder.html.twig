@@ -2,4 +2,7 @@
 {{ title }}
 {{ title_suffix }}
 
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/events.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/events.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/listings/events.html.twig',
+]) }}

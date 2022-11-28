@@ -1,3 +1,6 @@
 {% set image = content.field_logo[0] %}
 {% set website_url = content.field_website[0]['#context'].value %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/sponsor-teaser-slider.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/sponsor-teaser-slider.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/nodes/sponsor-teaser-slider.html.twig',
+]) }}

@@ -1,3 +1,6 @@
 {% block paragraph %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/image.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/image.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/image.html.twig',
+]) }}
 {% endblock paragraph %}

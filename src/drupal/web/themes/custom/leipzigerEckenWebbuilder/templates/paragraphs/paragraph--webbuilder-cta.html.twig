@@ -1,4 +1,7 @@
 {% set layout = content.field_cta_layout[0]['#markup'] %}
 {% block paragraph %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/cta.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/cta.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/cta.html.twig',
+]) }}
 {% endblock paragraph %}

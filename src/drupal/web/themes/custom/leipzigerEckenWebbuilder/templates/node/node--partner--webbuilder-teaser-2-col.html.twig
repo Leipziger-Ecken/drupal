@@ -10,4 +10,7 @@
   {% set website_url = drupal_url('node/' ~ akteur_id) %}
   {% set description = drupal_field('field_le_akteur_description', 'node', akteur_id) %}
 {% endif %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/partner-teaser-2-col.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/partner-teaser-2-col.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/nodes/partner-teaser-2-col.html.twig',
+]) }}

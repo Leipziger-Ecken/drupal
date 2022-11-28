@@ -7,5 +7,8 @@
 {% set required_fields = required_fields|merge([content.field_contact_form_required[index]['#markup']]) %}
 {% endfor %}
 {% block paragraph %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/contact-form.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/contact-form.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/contact-form.html.twig',
+]) }}
 {% endblock paragraph %}

@@ -2,5 +2,8 @@
 {% if options.filters %}
 {{ exposed }}
 {% else %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/results/' ~ options.layout ~ '.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/results/' ~ options.layout ~ '.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/listings/results/' ~ options.layout ~ '.html.twig',
+]) }}
 {% endif %}

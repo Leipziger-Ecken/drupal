@@ -1,3 +1,6 @@
 {% block paragraph %}
-{{ include('@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/audio.html.twig') }}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/audio.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/audio.html.twig',
+]) }}
 {% endblock paragraph %}
