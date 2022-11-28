@@ -50,6 +50,11 @@ function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
       $webbuilder = $node;
     }
 
+    if (!$webbuilder && $node->getType() === 'webbuilder_page') {
+      $webbuilder_id = $node->field_webbuilder->getValue()[0]['target_id'];
+      $webbuilder = \Drupal::entityTypeManager()->getStorage('node')->load($webbuilder_id);
+    }
+
     if (!$webbuilder) {
       return;
     }
