@@ -1,12 +1,12 @@
 <div
-  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}"
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_md }}"
   data-role="paragraph"
 >
-  <div class="{{ webbuilder_classes.container.sm }}">
+  <div class="{{ webbuilder_layout_styles().container.sm }}">
     {% if content.field_heading[0] %}
-    <div class="text-lg {{ webbuilder_classes.container.prose }} {{ webbuilder_classes.margin.b_sm }}">
+    <div class="text-lg {{ webbuilder_layout_styles().container.prose }} {{ webbuilder_layout_styles().margin.b_sm }}">
       <h2>
-        <span class="block text-center {{ webbuilder_classes.text.h2 }}">
+        <span class="block text-center {{ webbuilder_layout_styles().text.h2 }}">
           {{ content.field_heading }}
         </span>
       </h2>
@@ -18,7 +18,7 @@
       {{ video }}
 
       {% if content.field_video_caption[0] %}
-      <figcaption class="{{ webbuilder_classes.text.figcaption }}">
+      <figcaption class="{{ webbuilder_layout_styles().text.figcaption }}">
         {{ content.field_video_caption }}
       </figcaption>
       {% endif %}

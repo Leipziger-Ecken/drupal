@@ -1,16 +1,16 @@
 <section
-  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}"
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_lg }}"
   data-role="paragraph"
 >
   <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
     <div class="space-y-5 sm:space-y-4">
       {% if content.field_heading[0] %}
-      <h2 class="{{ webbuilder_classes.text.h2 }}">
+      <h2 class="{{ webbuilder_layout_styles().text.h2 }}">
         {{ content.field_heading }}
       </h2>
       {% endif %}
       {% if content.field_body[0] %}
-      <div class="{{ webbuilder_classes.text.prose }}">
+      <div class="{{ webbuilder_layout_styles().text.prose }}">
         {{ content.field_body }}
       </div>
       {% endif %}

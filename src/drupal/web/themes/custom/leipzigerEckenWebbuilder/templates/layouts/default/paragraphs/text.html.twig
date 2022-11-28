@@ -1,26 +1,26 @@
 <section
-  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_md }}"
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_md }}"
   data-role="paragraph"
 >
   <!-- We've used 3xl here, but feel free to try other max-widths based on your needs -->
-  <div class="{{ webbuilder_classes.container.sm }}">
-    <div class="relative {{ webbuilder_classes.padding.y_md }} overflow-hidden">
+  <div class="{{ webbuilder_layout_styles().container.sm }}">
+    <div class="relative {{ webbuilder_layout_styles().padding.y_md }} overflow-hidden">
       <div class="relative px-4 sm:px-6 lg:px-8">
         {% if content.field_pre_heading[0] or content.field_heading[0] %}
-        <div class="text-lg {{ webbuilder_classes.container.prose }} {{ webbuilder_classes.margin.b_sm }}">
+        <div class="text-lg {{ webbuilder_layout_styles().container.prose }} {{ webbuilder_layout_styles().margin.b_sm }}">
           <h2>
             {% if content.field_pre_heading[0] %}
-            <span class="mb-2 block text-center {{ webbuilder_classes.text.pre_heading }}">{{ content.field_pre_heading }}</span>
+            <span class="mb-2 block text-center {{ webbuilder_layout_styles().text.pre_heading }}">{{ content.field_pre_heading }}</span>
             {% endif %}
             {% if content.field_heading[0] %}
-            <span class="block text-center {{ webbuilder_classes.text.h2 }}">
+            <span class="block text-center {{ webbuilder_layout_styles().text.h2 }}">
               {{ content.field_heading }}
             </span>
             {% endif %}
           </h2>
         </div>
         {% endif %}
-        <div class="{{ webbuilder_classes.text.prose }} mx-auto">
+        <div class="{{ webbuilder_layout_styles().text.prose }} mx-auto">
           {{ content.field_body }}
         </div>
       </div>

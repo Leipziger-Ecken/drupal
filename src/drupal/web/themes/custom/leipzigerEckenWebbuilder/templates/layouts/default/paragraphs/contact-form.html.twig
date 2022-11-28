@@ -1,19 +1,19 @@
 <section
-  class="relative bg-white {{ webbuilder_classes.margin.b_md }}"
+  class="relative bg-white {{ webbuilder_layout_styles().margin.b_md }}"
   data-role="paragraph"
 >
   <div class="absolute inset-0">
     <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50"></div>
   </div>
-  <div class="relative {{ webbuilder_classes.container.md }} lg:grid lg:grid-cols-5">
-    <div class="bg-gray-50 py-16 lg:col-span-2 lg:py-24 xl:pr-12 {{ webbuilder_classes.padding.x_md }}">
+  <div class="relative {{ webbuilder_layout_styles().container.md }} lg:grid lg:grid-cols-5">
+    <div class="bg-gray-50 py-16 lg:col-span-2 lg:py-24 xl:pr-12 {{ webbuilder_layout_styles().padding.x_md }}">
       <div class="max-w-lg mx-auto">
         {% if content.field_heading[0] %}
-        <h2 class="mb-3 {{ webbuilder_classes.text.h3 }}">
+        <h2 class="mb-3 {{ webbuilder_layout_styles().text.h3 }}">
           {{ content.field_heading }}
         </h2>
         {% endif %}
-        <div class="{{ webbuilder_classes.text.prose }}">
+        <div class="{{ webbuilder_layout_styles().text.prose }}">
           {{ content.field_body }}
         </div>
       </div>
@@ -29,7 +29,7 @@
               name="full_name"
               id="full_name"
               autocomplete="name"
-              class="block w-full {{ webbuilder_classes.form.input }}"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
               placeholder="{{ 'Full name'|t }}"
               {% if 'full_name' in required_fields %}required="true"{% endif %}
             >
@@ -43,7 +43,7 @@
               name="email"
               type="email"
               autocomplete="email"
-              class="block w-full {{ webbuilder_classes.form.input }}"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
               placeholder="{{ 'Email'|t }}"
               {% if 'email' in required_fields %}required="true"{% endif %}
             >
@@ -57,7 +57,7 @@
               name="phone"
               id="phone"
               autocomplete="tel"
-              class="block w-full {{ webbuilder_classes.form.input }}"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
               placeholder="{{ 'Phone'|t }}"
               {% if 'phone' in required_fields %}required="true"{% endif %}
             >
@@ -69,7 +69,7 @@
               id="message"
               name="message"
               rows="4"
-              class="block w-full {{ webbuilder_classes.form.input }}"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
               placeholder="{{ 'Message'|t }}"
               required="true"
             >

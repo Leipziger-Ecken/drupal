@@ -1,14 +1,14 @@
 <section
-  class="{{ webbuilder_classes.container.md }} {{ webbuilder_classes.padding.x_md }} {{ webbuilder_classes.margin.b_lg }}"
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_lg }}"
   data-role="paragraph"
 >
   {% if content.field_heading[0] %}
-  <h2 class="text-center {{ webbuilder_classes.text.h2 }}">
+  <h2 class="text-center {{ webbuilder_layout_styles().text.h2 }}">
     {{ content.field_heading }}
   </h2>
   {% endif %}
   {% if content.field_body[0] %}
-  <div class="mx-auto text-center {{ webbuilder_classes.text.prose_strong }}">
+  <div class="mx-auto text-center {{ webbuilder_layout_styles().text.prose_strong }}">
     {{ content.field_body }}
   </div>
   {% endif %}

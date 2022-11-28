@@ -14,6 +14,7 @@ class TwigExtension extends \Twig_Extension
 {
 
   protected static $webbuilderCache = [];
+  protected static $webbuilderStylesCache = [];
 
   /**
    * {@inheritdoc}
@@ -31,6 +32,7 @@ class TwigExtension extends \Twig_Extension
       new \Twig_SimpleFunction('webbuilder_akteur_id', [$this, 'webbuilderAkteurId']),
       new \Twig_SimpleFunction('webbuilder_layout', [$this, 'webbuilderLayout']),
       new \Twig_SimpleFunction('webbuilder_view', [$this, 'webbuilderView']),
+      new \Twig_SimpleFunction('webbuilder_layout_styles', [$this, 'webbuilderLayoutStyles']),
       new \Twig_SimpleFunction('akteur_webbuilder_url', [$this, 'akteurWebbuilderUrl']),
     ];
   }
@@ -298,5 +300,43 @@ class TwigExtension extends \Twig_Extension
       $renderedView['#view']->pager = null;
     }
     return $renderedView;
+  }
+
+  public function webbuilderLayoutStyles($layout = null)
+  {
+    if (!$layout) {
+      $layout = $this->webbuilderLayout($this->webbuilderId());
+    }
+
+    if (isset(self::$webbuilderStylesCache[$layout])) {
+      return self::$webbuilderStylesCache[$layout];
+    }
+
+    if ($layout !== 'default') {
+      $defaulStyles = $this->webbuilderLayoutStyles('default');
+    }
+
+    $styles = [];
+    $stylesPath = __DIR__ . '/../../../../themes/custom/leipzigerEckenWebbuilder/templates/layouts/' . $layout . '/styles.json';
+
+    if (file_exists($stylesPath)) {
+      try {
+        $layoutStyles = json_decode(trim(file_get_contents($stylesPath)), true);
+
+        if ($layout === 'default') {
+          $styles = $layoutStyles !== null ? $layoutStyles : [];
+        } else {
+          $styles = $layoutStyles !== null ? array_merge_recursive($defaulStyles, $layoutStyles) : $defaulStyles;
+        }
+      } catch (\Exception $e) {
+        $styles = $defaulStyles;
+      }
+    } else {
+      $styles = $defaulStyles;
+    }
+
+    self::$webbuilderStylesCache[$layout] = $styles;
+
+    return self::$webbuilderStylesCache[$layout];
   }
 }

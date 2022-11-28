@@ -2,40 +2,6 @@
 
 use Drupal\Core\Url;
 
-const WEBBUILDER_CLASSES = [
-  'container' => [
-    'sm' => 'max-w-3xl mx-auto',
-    'md' => 'max-w-7xl mx-auto',
-    'lg' => 'container mx-auto',
-    'prose' => 'max-w-prose mx-auto',
-  ],
-  'divide' => [
-    'md' => 'divide-y-2 divide-gray-200',
-  ],
-  'margin' => [
-    'b_sm' => 'mb-6',
-    'b_md' => 'mb-16',
-    'b_lg' => 'mb-36',
-  ],
-  'padding' => [
-    'x_md' => 'px-4 sm:px-6 lg:px-8',
-    'y_md' => 'py-16',
-  ],
-  'text' => [
-    'pre_heading' => 'text-sm text-gray-600 font-semibold tracking-wider uppercase',
-    'h1' => 'text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl',
-    'h2' => 'text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl',
-    'h3' => 'text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl',
-    'prose' => 'prose prose-primary prose-lg text-gray-500',
-    'prose_lg' => 'text-xl text-gray-500 prose',
-    'prose_strong' => 'prose text-lg leading-6',
-    'figcaption' => 'prose prose-primary text-gray-500',
-  ],
-  'form' => [
-    'input' => 'shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md',
-  ],
-];
-
 /**
  * @param array $suggestions
  * @param array $variables
@@ -63,7 +29,6 @@ function leipzigerEckenWebbuilder_theme_suggestions_views_tree_alter(array &$sug
 function leipzigerEckenWebbuilder_preprocess(&$variables, $hook)
 {
   $is_preview = \Drupal::request()->query->get('preview') === '1';
-  $variables['webbuilder_classes'] = WEBBUILDER_CLASSES;
   $variables['is_preview'] = $is_preview;
 
   if ($hook === 'html') {
