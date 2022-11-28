@@ -1,0 +1,21 @@
+uuid: 61adca14-adc4-4b06-91ff-827e2ed01514
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_slider_item
+  module:
+    - text
+id: paragraph.webbuilder_slider_item.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_slider_item
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

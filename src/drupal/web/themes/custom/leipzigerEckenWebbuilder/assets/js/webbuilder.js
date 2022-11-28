@@ -71,7 +71,12 @@
       'slider',
     ]
     connect() {
-      this.splide = new Splide(this.sliderTarget);
+      this.splide = new Splide(this.sliderTarget, {
+        classes: {
+          prev: 'splide__arrow--prev bg-primary-500 shadow-md',
+          next: 'splide__arrow--next bg-primary-500 shadow-md',
+        },
+      });
       this.splide.mount();
     }
   });

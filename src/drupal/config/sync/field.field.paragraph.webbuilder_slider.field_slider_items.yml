@@ -1,20 +1,19 @@
-uuid: 9076ad40-ae46-4036-907d-28b6f7306807
+uuid: 0c1d036b-64d5-4d05-8845-6e6e40319fd7
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.node.field_contents
-    - node.type.webbuilder_page
-    - paragraphs.paragraphs_type.from_library
+    - field.storage.paragraph.field_slider_items
+    - paragraphs.paragraphs_type.webbuilder_slider
     - paragraphs.paragraphs_type.webbuilder_slider_item
   module:
     - entity_reference_revisions
-id: node.webbuilder_page.field_contents
-field_name: field_contents
-entity_type: node
-bundle: webbuilder_page
-label: Seitenabschnitte
-description: "Platziere Seitenabschnitte, um deine Seite mit Inhalt und Leben zu füllen.\r\nEs steht dir eine Auswahl unterschiedlicher Module wie z.B. Text, Bild oder Video zur Verfügung."
+id: paragraph.webbuilder_slider.field_slider_items
+field_name: field_slider_items
+entity_type: paragraph
+bundle: webbuilder_slider
+label: Elemente
+description: ''
 required: false
 translatable: false
 default_value: {  }
@@ -22,43 +21,42 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 1
+    negate: 0
     target_bundles:
-      from_library: from_library
       webbuilder_slider_item: webbuilder_slider_item
     target_bundles_drag_drop:
       from_library:
-        enabled: true
-        weight: -19
+        weight: 19
+        enabled: false
       webbuilder_audio:
-        weight: -17
+        weight: 20
         enabled: false
       webbuilder_blog_articles:
-        weight: -23
+        weight: 21
         enabled: false
       webbuilder_contact_form:
-        weight: -26
+        weight: 22
         enabled: false
       webbuilder_cta:
-        weight: -27
+        weight: 23
         enabled: false
       webbuilder_events:
-        weight: -24
+        weight: 24
         enabled: false
       webbuilder_gallery:
-        weight: -28
+        weight: 25
         enabled: false
       webbuilder_image:
-        weight: -30
+        weight: 26
         enabled: false
       webbuilder_map:
-        weight: -25
+        weight: 27
         enabled: false
       webbuilder_partners:
-        weight: -21
+        weight: 28
         enabled: false
       webbuilder_projects:
-        weight: -22
+        weight: 29
         enabled: false
       webbuilder_slider:
         weight: 30
@@ -67,15 +65,15 @@ settings:
         enabled: true
         weight: 18
       webbuilder_sponsors:
-        weight: -20
+        weight: 31
         enabled: false
       webbuilder_text:
-        weight: -31
+        weight: 32
         enabled: false
       webbuilder_text_image:
-        weight: -29
+        weight: 33
         enabled: false
       webbuilder_video:
-        weight: -18
+        weight: 34
         enabled: false
 field_type: entity_reference_revisions

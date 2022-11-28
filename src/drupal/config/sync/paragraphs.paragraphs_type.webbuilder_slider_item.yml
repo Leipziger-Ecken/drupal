@@ -1,0 +1,10 @@
+uuid: f46281e0-f40b-4cc2-9ff8-b940d10898ce
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_slider_item
+label: Slider-Element
+icon_uuid: null
+icon_default: null
+description: 'Ein Slider-Element mit Hintergrundbild, Text und Button.'
+behavior_plugins: {  }
