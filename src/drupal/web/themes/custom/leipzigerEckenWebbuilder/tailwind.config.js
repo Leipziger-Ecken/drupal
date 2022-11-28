@@ -14,7 +14,7 @@ function colorVariant(colorName, s = 1, l = 1) {
 
 const colors = {};
 
-['primary'].forEach((colorName) => {
+['primary', 'secondary', 'tertiary'].forEach((colorName) => {
   colors[colorName] = colorVariant(colorName);
   colors[colorName + '-900'] = colorVariant(colorName, 1, 0.2);
   colors[colorName + '-800'] = colorVariant(colorName, 1, 0.3);
