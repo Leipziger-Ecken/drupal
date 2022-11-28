@@ -26,6 +26,8 @@ permissions:
   - 'view paragraph content webbuilder_map'
   - 'view paragraph content webbuilder_partners'
   - 'view paragraph content webbuilder_projects'
+  - 'view paragraph content webbuilder_slider'
+  - 'view paragraph content webbuilder_slider_item'
   - 'view paragraph content webbuilder_sponsors'
   - 'view paragraph content webbuilder_text'
   - 'view paragraph content webbuilder_text_image'
