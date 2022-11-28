@@ -44,6 +44,7 @@ module.exports = {
   },
   content: [
     './templates/**/*.twig',
+    './templates/**/styles.json',
     './assets/js/**/*.js',
     './leipzigerEckenWebbuilder.theme',
     '../../../modules/custom/**/*.php',
