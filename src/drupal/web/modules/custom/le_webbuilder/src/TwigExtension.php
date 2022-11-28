@@ -262,7 +262,7 @@ class TwigExtension extends \Twig_Extension
 
     $webbuilder = $this->getWebbuilderById($webbuilder_id);
 
-    if (isset($webbuilder->field_layout[0])) {
+    if (isset($webbuilder->field_layout) && isset($webbuilder->field_layout[0])) {
       return $webbuilder->field_layout[0]->value;
     }
 
