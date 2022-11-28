@@ -3,7 +3,12 @@
   data-role="paragraph"
 >
   <div data-controller="slider" class="w-full">
-    <div class="splide" data-slider-target="slider">
+    <div
+      class="splide"
+      data-slider-target="slider"
+      data-prev-class="bg-primary-500 shadow-md"
+      data-next-class="bg-primary-500 shadow-md"
+    >
       <div class="splide__track">
         <ul class="splide__list">
           {% for index,item in content.field_slider_items['#items'] %}

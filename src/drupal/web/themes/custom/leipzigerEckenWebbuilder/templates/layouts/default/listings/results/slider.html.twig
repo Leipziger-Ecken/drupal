@@ -1,6 +1,11 @@
 {% if rows -%}
 <div class="mt-12 pt-10 w-full" data-controller="slider">
-  <div class="splide" data-slider-target="slider">
+  <div
+    class="splide"
+    data-slider-target="slider"
+    data-prev-class="bg-primary-500 shadow-md"
+    data-next-class="bg-primary-500 shadow-md"
+  >
     <div class="splide__track">
       <ul class="splide__list">
         {# regular articles #}
