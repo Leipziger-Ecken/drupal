@@ -1,15 +1,18 @@
+{% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
 <article class="space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0">
   <a
     href="{{ website_url }}"
     target="_blank"
     class="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4"
   >
+  {% if image %}
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
       class: 'object-cover shadow-lg rounded-lg',
       image: image,
       width: 610,
       image_style: 'webbuilder_teaser',
     }) }}
+  {% endif %}
   </a>
   <div class="sm:col-span-2">
     <div class="space-y-4">

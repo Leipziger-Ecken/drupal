@@ -7,7 +7,6 @@
 {% set color_tertiary_hsl = color_hex_to_hsl(color_tertiary) %}
 {% set fonts = content.field_fonts[0]['#markup'] | split('+', 2) %}
 {% set logo = content.field_logo[0]['#item'] %}
-{% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
 {% set font_heading = fonts[0] %}
 {% set font_body = fonts[1] %}
 {% set logo_url = logo | file_url %}
