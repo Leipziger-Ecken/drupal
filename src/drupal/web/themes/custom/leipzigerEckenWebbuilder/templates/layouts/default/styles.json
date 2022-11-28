@@ -28,6 +28,6 @@
     "figcaption": "prose prose-primary text-gray-500"
   },
   "form": {
-    "input": "shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+    "input": "shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md",
   }
 }
