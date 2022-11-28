@@ -36,7 +36,7 @@ bundle: webbuilder
 mode: default
 content:
   field_blog_page:
-    weight: 4
+    weight: 6
     label: hidden
     settings: {  }
     third_party_settings: {  }
@@ -51,15 +51,33 @@ content:
     third_party_settings: {  }
     type: color_field_formatter_text
     region: content
+  field_color_secondary:
+    type: color_field_formatter_text
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
+  field_color_tertiary:
+    type: color_field_formatter_text
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      format: hex
+      opacity: true
+    third_party_settings: {  }
   field_events_page:
-    weight: 5
+    weight: 7
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
     region: content
   field_facebook_link:
-    weight: 9
+    weight: 11
     label: hidden
     settings:
       trim_length: 80
@@ -71,7 +89,7 @@ content:
     type: link
     region: content
   field_favicon_legacy:
-    weight: 13
+    weight: 15
     label: above
     settings:
       svg_attributes:
@@ -84,21 +102,21 @@ content:
     type: image
     region: content
   field_fonts:
-    weight: 8
+    weight: 10
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
   field_frontpage:
-    weight: 3
+    weight: 5
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
     region: content
   field_instagram_link:
-    weight: 10
+    weight: 12
     label: hidden
     settings:
       trim_length: 80
@@ -110,14 +128,14 @@ content:
     type: link
     region: content
   field_layout:
-    weight: 7
+    weight: 9
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
   field_logo_legacy:
-    weight: 2
+    weight: 4
     label: hidden
     settings:
       svg_attributes:
@@ -130,14 +148,14 @@ content:
     type: image
     region: content
   field_projects_page:
-    weight: 6
+    weight: 8
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: entity_reference_entity_id
     region: content
   field_tiktok_link:
-    weight: 12
+    weight: 14
     label: hidden
     settings:
       trim_length: 80
@@ -149,7 +167,7 @@ content:
     type: link
     region: content
   field_twitter_link:
-    weight: 11
+    weight: 13
     label: hidden
     settings:
       trim_length: 80
@@ -166,8 +184,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_color_secondary: true
-  field_color_tertiary: true
   field_description: true
   field_is_preset: true
   field_logo: true

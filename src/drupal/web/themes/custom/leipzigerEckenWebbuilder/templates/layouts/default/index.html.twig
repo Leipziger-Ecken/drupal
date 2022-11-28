@@ -1,7 +1,14 @@
 {% if not layout_is_in_webbuilder %}
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
-<div class="root" style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: '{{ font_heading }}'; --font-body: '{{ font_body }};'">
+{% set color_styles = [
+  '--color-primary-h:' ~ color_primary_hsl[0] ~ '; --color-primary-s:' ~ color_primary_hsl[1] ~ '%; --color-primary-l: 50%;',
+  '--color-secondary-h:' ~ color_secondary_hsl[0] ~ '; --color-secondary-s:' ~ color_secondary_hsl[1] ~ '%; --color-secondary-l: 50%;',
+  '--color-tertiary-h:' ~ color_tertiary_hsl[0] ~ '; --color-tertiary-s:' ~ color_tertiary_hsl[1] ~ '%; --color-tertiary-l: 50%;',
+] | join(' ')
+%}
+{% set font_styles = '--font-heading: ' ~ font_heading ~ '; --font-body: ' ~ font_body ~ ';' %}
+<div class="root" style="{{ color_styles | raw }}{{ font_styles | raw }}">
 {% endif %}
   <header>
     {{ include([

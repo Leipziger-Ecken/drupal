@@ -2,6 +2,10 @@
 {% if webbuilder_id %}
   {% set color_primary = drupal_field('field_color_primary', 'node', webbuilder_id)[0]['#markup'] | default(color_primary) %}
   {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+  {% set color_secondary = drupal_field('field_color_secondary', 'node', webbuilder_id)[0]['#markup'] | default(color_secondary) %}
+  {% set color_secondary_hsl = color_hex_to_hsl(color_secondary) %}
+  {% set color_tertiary = drupal_field('field_color_tertiary', 'node', webbuilder_id)[0]['#markup'] | default(color_tertiary) %}
+  {% set color_tertiary_hsl = color_hex_to_hsl(color_tertiary) %}
   {% set fonts = drupal_field('field_fonts', 'node', webbuilder_id)[0]['#markup'] | split('+', 2) %}
   {% set font_heading = fonts[0] %}
   {% set font_body = fonts[1] %}
