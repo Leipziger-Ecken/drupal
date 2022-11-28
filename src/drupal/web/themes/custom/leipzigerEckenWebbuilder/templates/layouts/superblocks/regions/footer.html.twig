@@ -1,8 +1,9 @@
 {% set akteur_id = webbuilder_akteur_id(webbuilder_id) %}
+{% set webbuilder_logo = drupal_field('field_logo_legacy', 'node', webbuilder_id)[0] %}
 {% set webbuilder_blog_page = drupal_field('field_blog_page', 'node', webbuilder_id)[0]['#plain_text'] %}
 {% set webbuilder_events_page = drupal_field('field_events_page', 'node', webbuilder_id)[0]['#plain_text'] %}
 {% set webbuilder_projects_page = drupal_field('field_projects_page', 'node', webbuilder_id)[0]['#plain_text'] %}
-<footer class="bg-primary-800" aria-labelledby="footerHeading">
+<footer class="bg-white" aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <div class="xl:grid xl:grid-cols-2 xl:gap-8">
