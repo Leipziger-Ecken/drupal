@@ -326,7 +326,8 @@ class TwigExtension extends \Twig_Extension
         if ($layout === 'default') {
           $styles = $layoutStyles !== null ? $layoutStyles : [];
         } else {
-          $styles = $layoutStyles !== null ? array_merge_recursive($defaulStyles, $layoutStyles) : $defaulStyles;
+          // FIXME: merge recursive but do not append values if keys match
+          $styles = $layoutStyles !== null ? array_merge($defaulStyles, $layoutStyles) : $defaulStyles;
         }
       } catch (\Exception $e) {
         $styles = $defaulStyles;
