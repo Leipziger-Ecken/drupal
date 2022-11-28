@@ -3,6 +3,7 @@
     href="{{ website_url }}"
     target="_blank"
     class="w-full h-full flex items-center justify-center"
+    title="{{ label[0]['#context']['value'] }}"
   >
   {% if image %}
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
