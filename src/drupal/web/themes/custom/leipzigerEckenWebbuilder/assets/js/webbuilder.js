@@ -57,6 +57,7 @@
       this.mobileMenuTarget.classList.toggle('scale-95');
       this.mobileMenuTarget.classList.toggle('opacity-100');
       this.mobileMenuTarget.classList.toggle('scale-100');
+      this.mobileMenuTarget.classList.toggle('pointer-events-none');
       setTimeout(() => {
         this.mobileMenuTarget.classList.toggle('duration-200');
         this.mobileMenuTarget.classList.toggle('duration-100');
