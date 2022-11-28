@@ -4,6 +4,7 @@
   class="fixed t-0 l-0 r-0 w-full z-10 bg-white"
   data-controller="main-menu"
   data-main-menu-target="header"
+  data-toggle-class="shadow"
 >
   <div class="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
     <div class="flex justify-start shrink-0 grow">
@@ -48,6 +49,8 @@
 
   <div
     data-main-menu-target="mobileMenu"
+    data-toggle-class="opacity-0 scale-95 opacity-100 scale-100 pointer-events-none"
+    data-toggle-class-lazy="duration-200 duration-100 ease-in-out ease-in"
     class="absolute top-0 inset-x-0 p-2 transition origin-top-right md:hidden opacity-0 scale-95 duration-200 ease-out pointer-events-none"
   >
     <div class="rounded-lg shadow-lg ring-1 ring-black ring/5 bg-white divide-y-2 divide-gray-50">
