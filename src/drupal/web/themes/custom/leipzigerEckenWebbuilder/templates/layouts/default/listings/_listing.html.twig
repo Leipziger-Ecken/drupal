@@ -1,9 +1,0 @@
-{% set options = view.args[1] | json_decode %}
-{% if options.filters %}
-{{ exposed }}
-{% else %}
-{{ include([
-  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/listings/results/' ~ options.layout ~ '.html.twig',
-  '@leipzigerEckenWebbuilder/layouts/default/listings/results/' ~ options.layout ~ '.html.twig',
-]) }}
-{% endif %}

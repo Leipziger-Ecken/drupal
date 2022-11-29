@@ -1,0 +1,8 @@
+{# regular articles #}
+<ul class="space-y-12 sm:divide-y sm:divide-gray-200 sm:space-y-0 sm:-mt-8 lg:gap-x-8 lg:space-y-0">
+{% for index,row in rows[0]['#rows'] %}
+  <li class="sm:py-8">
+    {{ drupal_entity('node', row['#node'].nid[0].value, 'webbuilder_teaser') }}
+  </li>
+{% endfor %}
+</ul>
