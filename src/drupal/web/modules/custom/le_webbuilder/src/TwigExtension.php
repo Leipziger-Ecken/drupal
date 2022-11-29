@@ -66,6 +66,9 @@ class TwigExtension extends \Twig_Extension
 
   public function colorHexToRgb($hex)
   {
+    if (!$hex || !is_string($hex)) {
+      return [0,0,0];
+    }
     return sscanf($hex, '#%02x%02x%02x');
   }
 
