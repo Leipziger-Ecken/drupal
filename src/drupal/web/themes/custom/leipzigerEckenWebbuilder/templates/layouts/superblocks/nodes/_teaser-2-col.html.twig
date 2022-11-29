@@ -20,22 +20,21 @@
   <div class="col-span-1"></div>
   {% endif %}
   <div class="col-span-1 {{ webbuilder_layout_styles().text.prose }} py-8">
-      {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
-      <h2 class="mt-4">
-        <a href="{{ url }}" class="text-black no-underline">
-          {{ label }}
-        </a>
-      </h2>
-
-      {% if node_type == 'le_event' %}
-      {{ content.field_le_event_beschreibung }}
-      {% else %}
-      {{ content.field_body | default(content.field_description) | default(content.body) }}
-      {% endif %}
-
-      <a href="{{ url }}" class="text-sm text-blue-600 hover:underline">
-        {{ 'Read more'|t }}&thinsp;…
+    {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+    <h2 class="mt-4">
+      <a href="{{ url }}" class="text-black no-underline">
+        {{ label }}
       </a>
-    </div>
+    </h2>
+
+    {% if node_type == 'le_event' %}
+    {{ content.field_le_event_beschreibung }}
+    {% else %}
+    {{ content.field_body | default(content.field_description) | default(content.body) }}
+    {% endif %}
+
+    <a href="{{ url }}" class="text-sm text-blue-600 hover:underline">
+      {{ 'Read more'|t }}&thinsp;…
+    </a>
   </div>
 </article>
