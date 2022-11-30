@@ -296,10 +296,6 @@ function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state,
         $form['field_frontpage']['widget']['#options'][$nid] = $title;
       }
     }
-
-    // show logo and favicon field label
-    $form['field_logo_legacy']['#prefix'] = '<h4>' . t('Logo') . '</h4>';
-    $form['field_favicon_legacy']['#prefix'] = '<h4>' . t('Favicon') . '</h4>';
   }
 }
 
@@ -534,6 +530,19 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
     ],
     '#weight' => -10,
   ];
+
+  // add missing labels to managed_file fields
+  foreach($form as $key => &$element) {
+    if (
+      is_array($element) &&
+      isset($element['#type']) &&
+      $element['#type'] === 'container' && isset($element['widget']) &&
+      isset($element['widget'][0]['#type']) &&
+      $element['widget'][0]['#type'] === 'managed_file'
+    ) {
+      $element['#prefix'] = '<strong>' . $element['widget'][0]['#title'] . '</strong>';
+    }
+  }
 }
 
 function le_admin_webbuilder_page_create_submit(array $form, FormStateInterface $form_state)
