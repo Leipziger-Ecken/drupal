@@ -1,0 +1,82 @@
+{% if layout == 'md' %}
+<section
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_md }}"
+  data-role="paragraph"
+>
+  <div class="bg-primary-100">
+    <div class="max-w-2xl mx-auto text-center {{ webbuilder_layout_styles().padding.y_md }} {{ webbuilder_layout_styles().padding.x_md }}">
+      {% if content.field_heading[0] %}
+      <h2 class="{{ webbuilder_layout_styles().text.h2 }} mb-4">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      <div class="{{ webbuilder_layout_styles().text.prose_strong }}">
+        {{ content.field_body }}
+      </div>
+      <div class="mt-5 max-w-md mx-auto items-end sm:flex sm:justify-center md:mt-8">
+        {% if content.field_primary_button[0] %}
+        {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+          href: content.field_primary_button[0]['#url'],
+          class: 'mt-8 w-full sm:w-auto',
+          label: content.field_primary_button[0]['#title'],
+        }) }}
+        {% endif %}
+
+        {% if content.field_secondary_button[0] %}
+        {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+          type: 'secondary',
+          href: content.field_secondary_button[0]['#url'],
+          class: 'mt-3 w-full sm:w-auto sm:mt-0 sm:ml-3',
+          label: content.field_secondary_button[0]['#title'],
+        }) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% elseif layout == 'lg' %}
+<section
+  class="relative bg-primary-100 overflow-hidden {{ webbuilder_layout_styles().margin.b_md }}"
+  data-role="paragraph"
+>
+  <div class="relative pt-6 pb-16 sm:pb-24">
+    <div class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} sm:mt-24">
+      <div class="text-center">
+        {% if content.field_heading[0] %}
+        <h1 class="{{ webbuilder_layout_styles().text.h1 }} mb-3">
+          {{ content.field_heading }}
+        </h1>
+        {% endif %}
+        {% if content.field_body[0] %}
+        <div class="max-w-md mx-auto text-base text-black sm:text-lg md:mt-5 md:text-xl md:max-w-3xl prose">
+          {{ content.field_body }}
+        </div>
+        {% endif %}
+        {% if content.field_primary_button[0] or content.field_secondary_button[0] %}
+        <div class="mt-5 max-w-md mx-auto items-end sm:flex sm:justify-center md:mt-8">
+          {% if content.field_primary_button[0] %}
+          {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+            type: 'primary_light',
+            size: 'lg',
+            href: content.field_primary_button[0]['#url'],
+            class: 'mt-8 w-full sm:w-auto shadow',
+            label: content.field_primary_button[0]['#title'],
+          }) }}
+          {% endif %}
+
+          {% if content.field_secondary_button[0] %}
+          {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+            type: 'secondary',
+            size: 'lg',
+            href: content.field_primary_button[0]['#url'],
+            class: 'mt-3 w-full sm:w-auto shadow sm:mt-0 sm:ml-3',
+            label: content.field_secondary_button[0]['#title'],
+          }) }}
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
