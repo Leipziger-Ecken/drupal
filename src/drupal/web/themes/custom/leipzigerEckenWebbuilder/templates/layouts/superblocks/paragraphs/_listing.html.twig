@@ -17,20 +17,19 @@
         {{ content.field_heading }}
       </h2>
       {% endif %}
-      {% if content.field_body[0] or has_filters %}
-      <div class="sm:mt-4 lg:grid lg:grid-cols-3 lg:gap-5 lg:items-center">
-        {% if content.field_body[0] %}
-        <div class="{{ webbuilder_layout_styles().text.prose_lg }} col-span-1">
-          {{ content.field_body }}
-        </div>
-        {% endif %}
 
-        {# exposed filters #}
-        {% if has_filters %}
-        <div class="mt-6 lg:mt-0 col-span-2">
+      {% if content.field_body[0] %}
+      <div class="{{ webbuilder_layout_styles().text.prose }} mx-auto">
+        {{ content.field_body }}
+      </div>
+      {% endif %}
+
+      {# exposed filters #}
+      {% if has_filters %}
+      <div class="mt-12 flex">
+        <div class="mx-auto">
           {{ webbuilder_view(view_name, view_display, {per_page: per_page, pagination: has_pagination, layout: layout, filters: true}, [akteur_id]) }}
         </div>
-        {% endif %}
       </div>
       {% endif %}
     </div>

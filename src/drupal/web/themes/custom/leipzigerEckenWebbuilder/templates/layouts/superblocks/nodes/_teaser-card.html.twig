@@ -4,69 +4,35 @@
   node: node.id(),
   destination: get_destination(),
 }) %}
-<article class="flex flex-col rounded-lg shadow-lg overflow-hidden h-full">
+<article class="flex flex-col shadow-lg overflow-hidden h-full bg-primary-100">
   {% if image %}
-  <figure class="shrink-0">
-    {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
-      class: 'h-48 w-full object-cover',
-      image: image,
-      width: 610,
-      image_style: 'webbuilder_teaser',
-    }) }}
+  <figure class="relative w-full">
+    <a href="{{ url }}" class="relative block w-full bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+      {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+        class: 'w-full aspect-square object-cover',
+        image: image,
+        width: 1280,
+        image_style: 'webbuilder_teaser',
+      }) }}
+    </a>
   </figure>
   {% endif %}
-  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-    <div class="flex-1">
-      <div class="text-sm font-medium text-primary-600">
-        {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
-      </div>
-      <a href="{{ url }}" class="block mt-2">
-        <h3 class="text-xl font-semibold text-gray-900">
-          {{ label }}
-        </h3>
-        <div class="mt-3 text-base text-gray-500">
-          {% if node_type == 'le_event' %}
-          {{ content.field_le_event_beschreibung }}
-          {% else %}
-          {{ content.field_body | default(content.field_description) | default(content.body) }}
-          {% endif %}
-        </div>
+  <div class="p-4 md:p-8 {{ webbuilder_layout_styles().text.prose }}">
+    {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+    <h2 class="mt-4">
+      <a href="{{ url }}" class="text-black no-underline">
+        {{ label }}
       </a>
-    </div>
-
-    <div class="mt-6">
-      <a href="{{ url }}" class="text-sm text-gray-500 hover:underline">
+    </h2>
+    {% if node_type == 'le_event' %}
+    {{ content.field_le_event_beschreibung }}
+    {% else %}
+    {{ content.field_body | default(content.field_description) | default(content.body) }}
+    {% endif %}
+    <p>
+      <a href="{{ url }}" class="text-sm text-blue-600 hover:underline">
         {{ 'Read more'|t }}&thinsp;…
       </a>
-    </div>
-
-    {#
-    <div class="mt-6 flex items-center">
-      <div class="shrink-0">
-        <a href="#">
-          <span class="sr-only">Roel Aufderehar</span>
-          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-        </a>
-      </div>
-      <div class="ml-3">
-        <p class="text-sm font-medium text-gray-900">
-          <a href="#" class="hover:underline">
-            Roel Aufderehar
-          </a>
-        </p>
-        <div class="flex space-x-1 text-sm text-gray-500">
-          <time datetime="2020-03-16">
-            Mar 16, 2020
-          </time>
-          <span aria-hidden="true">
-            &middot;
-          </span>
-          <span>
-            6 min read
-          </span>
-        </div>
-      </div>
-    </div>
-    #}
+    </p>
   </div>
 </article>
