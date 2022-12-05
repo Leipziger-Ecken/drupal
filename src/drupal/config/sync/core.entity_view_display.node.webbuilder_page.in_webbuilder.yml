@@ -9,9 +9,11 @@ dependencies:
     - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
     - field.field.node.webbuilder_page.field_pre_footer_button
     - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_pre_footer_image_legacy
     - field.field.node.webbuilder_page.field_short_description
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
@@ -22,6 +24,7 @@ dependencies:
     - entity_reference_revisions
     - link
     - options
+    - svg_image
     - text
     - user
 id: node.webbuilder_page.in_webbuilder
@@ -47,9 +50,29 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+  field_header_image_legacy:
+    type: image
+    weight: 11
+    region: content
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
   field_navigation:
     type: list_key
     weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_pre_footer:
+    type: list_default
+    weight: 9
     region: content
     label: hidden
     settings: {  }
@@ -81,6 +104,19 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_pre_footer_image_legacy:
+    type: image
+    weight: 10
+    region: content
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
   field_webbuilder:
     type: entity_reference_entity_id
     weight: 2
@@ -101,7 +137,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_header_image_legacy: true
   field_parent: true
   field_short_description: true
   field_slug: true

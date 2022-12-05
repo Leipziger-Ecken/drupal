@@ -1,0 +1,30 @@
+uuid: bd714c1c-7b18-4264-87a9-ca45b6104887
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_pre_footer
+field_name: field_pre_footer
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: 'keinen Seitenabschluss verwenden'
+    -
+      value: global
+      label: 'Seitenabschluss aus Webbaukasteneinstellungen verwenden.'
+    -
+      value: custom
+      label: 'Eigenen Seitenabschluss für diese Seite verwenden.'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

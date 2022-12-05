@@ -19,6 +19,10 @@ dependencies:
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_logo_legacy
+    - field.field.node.webbuilder.field_pre_footer_body
+    - field.field.node.webbuilder.field_pre_footer_button
+    - field.field.node.webbuilder.field_pre_footer_heading
+    - field.field.node.webbuilder.field_pre_footer_image_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_tiktok_link
@@ -70,6 +74,10 @@ hidden:
   field_layout: true
   field_logo: true
   field_logo_legacy: true
+  field_pre_footer_body: true
+  field_pre_footer_button: true
+  field_pre_footer_heading: true
+  field_pre_footer_image_legacy: true
   field_projects_page: true
   field_tiktok_link: true
   field_twitter_link: true

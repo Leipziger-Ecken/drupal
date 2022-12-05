@@ -8,9 +8,11 @@ dependencies:
     - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
     - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
     - field.field.node.webbuilder_page.field_pre_footer_button
     - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_pre_footer_image_legacy
     - field.field.node.webbuilder_page.field_short_description
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
@@ -19,6 +21,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.webbuilder_page
   module:
+    - conditional_fields
     - field_group
     - link
     - paragraphs
@@ -46,9 +49,11 @@ third_party_settings:
       label: Einstellungen
     group_pre_footer:
       children:
+        - field_pre_footer
         - field_pre_footer_heading
         - field_pre_footer_body
         - field_pre_footer_button
+        - field_pre_footer_image_legacy
       parent_name: group_basic
       weight: 20
       format_type: accordion_item
@@ -182,29 +187,115 @@ content:
     third_party_settings: {  }
     type: select2_entity_reference
     region: content
+  field_pre_footer:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_pre_footer_body:
-    weight: 11
+    weight: 28
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b0689f42-3496-4b92-b634-074716c24e35:
+          dependee: field_pre_footer
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: webbuilder_page
     type: text_textarea
     region: content
   field_pre_footer_button:
-    weight: 12
+    weight: 29
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        aed4443b-c2cd-4832-b2d5-ba9414a249c4:
+          dependee: field_pre_footer
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: webbuilder_page
     type: link_default
     region: content
   field_pre_footer_heading:
-    weight: 10
+    weight: 27
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        5f7bcc66-0876-405e-a3c7-f87ab77b41a7:
+          dependee: field_pre_footer
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: webbuilder_page
     type: string_textfield
+    region: content
+  field_pre_footer_image_legacy:
+    weight: 30
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings:
+      conditional_fields:
+        4cb12e73-5dd5-486d-a507-c520cf1d4d50:
+          dependee: field_pre_footer
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: custom
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: webbuilder_page
+    type: image_image
     region: content
   field_short_description:
     weight: 5

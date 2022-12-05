@@ -1,0 +1,21 @@
+uuid: 1e490373-1e00-41f1-9ecb-69a27355e36d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_footer_body
+    - node.type.webbuilder
+  module:
+    - text
+id: node.webbuilder.field_pre_footer_body
+field_name: field_pre_footer_body
+entity_type: node
+bundle: webbuilder
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -18,6 +18,10 @@ dependencies:
     - field.field.node.webbuilder.field_layout
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_logo_legacy
+    - field.field.node.webbuilder.field_pre_footer_body
+    - field.field.node.webbuilder.field_pre_footer_button
+    - field.field.node.webbuilder.field_pre_footer_heading
+    - field.field.node.webbuilder.field_pre_footer_image_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_tiktok_link
@@ -29,6 +33,7 @@ dependencies:
     - link
     - options
     - svg_image
+    - text
     - user
 id: node.webbuilder.default
 targetEntityType: node
@@ -90,7 +95,7 @@ content:
     region: content
   field_favicon_legacy:
     weight: 15
-    label: above
+    label: hidden
     settings:
       svg_attributes:
         width: null
@@ -136,6 +141,46 @@ content:
     region: content
   field_logo_legacy:
     weight: 4
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_pre_footer_body:
+    weight: 17
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_pre_footer_button:
+    weight: 18
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_pre_footer_heading:
+    weight: 16
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_pre_footer_image_legacy:
+    weight: 19
     label: hidden
     settings:
       svg_attributes:

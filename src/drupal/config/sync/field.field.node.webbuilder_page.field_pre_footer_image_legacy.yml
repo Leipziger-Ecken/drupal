@@ -1,0 +1,38 @@
+uuid: 774af51d-f345-4a8c-9a5a-ba19f03d4423
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_footer_image_legacy
+    - node.type.webbuilder_page
+  module:
+    - image
+id: node.webbuilder_page.field_pre_footer_image_legacy
+field_name: field_pre_footer_image_legacy
+entity_type: node
+bundle: webbuilder_page
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: le
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 6MB
+  max_resolution: 2000x2000
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

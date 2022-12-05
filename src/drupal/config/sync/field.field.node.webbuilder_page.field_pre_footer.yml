@@ -1,0 +1,23 @@
+uuid: 530ea8d3-0fcf-463b-89e7-ca812348a73a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_footer
+    - node.type.webbuilder_page
+  module:
+    - options
+id: node.webbuilder_page.field_pre_footer
+field_name: field_pre_footer
+entity_type: node
+bundle: webbuilder_page
+label: Seitenabschluss
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string
