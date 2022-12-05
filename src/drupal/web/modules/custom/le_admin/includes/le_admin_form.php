@@ -351,26 +351,30 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     unset($form['field_webbuilder']);
     unset($form['og_audience']);
 
-    $form['meta']['le_admin_node_view'] = [
-      '#type' => 'item',
-      '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('entity.node.canonical', ['node' => $page->id()]),
-        t('View page'),
-        'webbuilder_page_' . $page->id()
-      ),
-      '#weight' => -10,
-    ];
+    $webbuilder_id = null;
 
-    $form['meta']['le_admin_user_webbuilder'] = [
-      '#type' => 'item',
-      '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $page->og_audience[0]->target_id]),
-        t('Manage website')
-      ),
-      '#weight' => -9,
-    ];
+    if ($page->id()) {
+      $form['meta']['le_admin_node_view'] = [
+        '#type' => 'item',
+        '#markup' => _le_admin_sidebar_link(
+          Url::fromRoute('entity.node.canonical', ['node' => $page->id()]),
+          t('View page'),
+          'webbuilder_page_' . $page->id()
+        ),
+        '#weight' => -10,
+      ];
 
-    $webbuilder_id = $page->field_webbuilder[0]->target_id;
+      $form['meta']['le_admin_user_webbuilder'] = [
+        '#type' => 'item',
+        '#markup' => _le_admin_sidebar_link(
+          Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $page->og_audience[0]->target_id]),
+          t('Manage website')
+        ),
+        '#weight' => -9,
+      ];
+
+      $webbuilder_id = $page->field_webbuilder[0]->target_id;
+    }
 
     if (!$webbuilder_id) {
       return;
