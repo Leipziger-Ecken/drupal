@@ -8,6 +8,26 @@
 ] | join(' ')
 %}
 {% set font_styles = '--font-heading: ' ~ font_heading ~ '; --font-body: ' ~ font_body ~ ';' %}
+{% set pre_footer_mode = content.field_pre_footer[0]['#markup'] %}
+  {% set pre_footer_heading = null %}
+  {% set pre_footer_body = null %}
+  {% set pre_footer_button = null %}
+  {% set pre_footer_image = null %}
+  {% if pre_footer_mode == 'global' %}
+    {% set pre_footer_heading = drupal_field('field_pre_footer_heading', 'node', webbuilder_id)[0]['#context']['value'] %}
+    {% set pre_footer_body = drupal_field('field_pre_footer_body', 'node', webbuilder_id)[0]['#text'] %}
+    {% set pre_footer_button = drupal_field('field_pre_footer_button', 'node', webbuilder_id)[0] %}
+    {% set pre_footer_button_label = pre_footer_button['#title'] %}
+    {% set pre_footer_button_url = pre_footer_button['#url'] %}
+    {% set pre_footer_image = drupal_field('field_pre_footer_image_legacy', 'node', webbuilder_id)[0] %}
+  {% elseif pre_footer_mode == 'custom' %}
+    {% set pre_footer_heading = content.field_pre_footer_heading[0] %}
+    {% set pre_footer_body = content.field_pre_footer_body[0] %}
+    {% set pre_footer_button = content.field_pre_footer_button[0] %}
+    {% set pre_footer_button_label = pre_footer_button['#title'] %}
+    {% set pre_footer_button_url = pre_footer_button['#url'] %}
+    {% set pre_footer_image = content.field_pre_footer_image[0] %}
+  {% endif %}
 <div class="root" style="{{ color_styles | raw }}{{ font_styles | raw }}">
 {% endif %}
   <header>
@@ -30,6 +50,13 @@
     {% block content %}
     {{ content.field_contents }}
     {% endblock %}
+
+    {% if pre_footer_mode and pre_footer_mode != 'none' %}
+    {{ include([
+      '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/regions/pre_footer.html.twig',
+      '@leipzigerEckenWebbuilder/layouts/default/regions/pre_footer.html.twig'
+    ]) }}
+    {% endif %}
   </main>
 
   {{ include([
