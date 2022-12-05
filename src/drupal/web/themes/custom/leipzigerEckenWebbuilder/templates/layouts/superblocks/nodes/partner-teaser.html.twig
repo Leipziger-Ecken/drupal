@@ -1,17 +1,23 @@
-<article class="h-full">
-  <a
-    href="{{ website_url }}"
-    target="_blank"
-    class="w-full h-full flex items-center justify-center"
-    title="{{ label[0]['#context']['value'] }}"
-  >
+<article class="bg-primary-100 p-8 mb-8 grid grid-cols-1 md:grid-cols-4 gap-16">
   {% if image %}
+  <figure class="col-span-4 sm:col-span-2 md:col-span-1 rounded-full border-4 border-secondary-600 overflow-hidden aspect-square w-20 md:w-32">
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
-      class: 'max-w-full h-auto object-contain',
+      class: 'w-full h-auto object-cover',
       image: image,
-      width: 610,
-      image_style: 'webbuilder_teaser',
+      width: 320,
+      image_style: 'webbuilder_gallery_thumb',
     }) }}
+  </figure>
   {% endif %}
-  </a>
+  <div class="col-span-4 sm:col-span-2 md:col-span-3 {{ webbuilder_layout_styles().text.prose }}">
+    <h3 class="mt-0">
+      {{ title }}
+    </h3>
+    {% if akteur_id %}
+    <p class="text-primary-600">{{ 'Actor of Leipziger Ecken'|t }}</p>
+    {% endif %}
+    {{ description }}
+
+    <a href="{{ website_url }}" class="text-blue-600 no-underline hover:underline focus:underline" target="_blank">{{ 'Read more...'|t }} </a>
+  </div>
 </article>
