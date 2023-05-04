@@ -1,0 +1,42 @@
+{% set node_type = node.getType() %}
+{% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
+{% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
+  node: node.id(),
+  destination: get_destination(),
+}) %}
+<article class="relative w-full h-[90vh] flex items-center px-8 md:px-16 lg:px-32 py-8">
+  {% if image %}
+  <figure class="absolute inset-0 overflow-hidden">
+    {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+      class: 'w-full h-full object-cover',
+      image: image,
+      width: 610,
+      image_style: 'webbuilder_teaser',
+    }) }}
+  </figure>
+  {% endif %}
+  <div class="relative mx-auto max-w-3xl flex flex-col items-center text-center">
+    <a href="{{ url }}" class="block mb-4">
+      <h2 class="text-4xl tracking-tight sm:text-5xl md:text-6xl font-extrabold text-white text-shadow hover:underline focus:underline">
+        {{ label }}
+      </h2>
+    </a>
+    <div class="text-shadow text-white text-2xl">
+      {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+    </div>
+    <div class="prose-2xl text-white text-shadow">
+      {% if node_type == 'le_event' %}
+      {{ content.field_le_event_beschreibung }}
+      {% else %}
+      {{ content.field_body | default(content.field_description) | default(content.body) }}
+      {% endif %}
+    </div>
+    <div>
+      {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+        href: url,
+        label: ('Read more'|t) ~ '&thinsp;…',
+        type: 'primary_light',
+      }) }}
+    </div>
+  </div>
+</article>

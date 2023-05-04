@@ -4,7 +4,7 @@
   node: node.id(),
   destination: get_destination(),
 }) %}
-<article class="bg-primary-100">
+<article>
   {% if image %}
   <figure class="relative w-full">
     <a href="{{ url }}" class="relative block w-full bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
@@ -17,22 +17,17 @@
     </a>
   </figure>
   {% endif %}
-  <div class="p-4 md:p-8 {{ webbuilder_layout_styles().text.prose }}">
-    {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
-    <h2 class="mt-4">
-      <a href="{{ url }}" class="text-black no-underline">
+  <div class="py-4 {{ webbuilder_layout_styles().text.prose }}">
+    <h2 class="mb-0">
+      <a href="{{ url }}" class="text-black no-underline hover:underline focus:underline">
         {{ label }}
       </a>
     </h2>
+    {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
     {% if node_type == 'le_event' %}
     {{ content.field_le_event_beschreibung }}
     {% else %}
     {{ content.field_body | default(content.field_description) | default(content.body) }}
     {% endif %}
-    <p>
-      <a href="{{ url }}" class="text-sm text-blue-600 hover:underline">
-        {{ 'Read more'|t }}&thinsp;…
-      </a>
-    </p>
   </div>
 </article>

@@ -6,6 +6,9 @@
 @tailwind utilities;
 
 @layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  }
   .text-shadow-outline {
     text-shadow:
       -1px -1px #000, /* top left */
@@ -18,4 +21,8 @@
       -1px 0 #000 /* left */
     ;
   }
+}
+
+.splide__pagination__page {
+  background-color: #fff;
 }

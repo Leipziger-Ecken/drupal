@@ -36,7 +36,7 @@
 {{ title_suffix }}
 
 {% if header %}
-  <h3 class="text-sm font-bold text-black tracking-wider uppercase">
+  <h3 class="text-md font-bold text-black tracking-wider">
     {{ header }}
   </h3>
 {% endif %}
@@ -45,7 +45,7 @@
 {% if rows -%}
 {% for index,row in rows[0]['#rows'] %}
   <li>
-    <a href="{{ drupal_url('node/' ~ row['#row'].nid) }}" class="text-base text-gray-500 hover:text-black">
+    <a href="{{ drupal_url('node/' ~ row['#row'].nid) }}" class="text-base text-black hover:underline">
       {{ row['#row']._entity.title[0].value }}
     </a>
   </li>

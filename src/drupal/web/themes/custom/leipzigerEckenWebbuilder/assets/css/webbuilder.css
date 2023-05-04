@@ -1838,6 +1838,14 @@ select {
   margin-bottom: 9rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -1870,10 +1878,6 @@ select {
   margin-top: 3rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .mt-16 {
   margin-top: 4rem;
 }
@@ -1890,20 +1894,16 @@ select {
   margin-top: 0px;
 }
 
-.ml-auto {
-  margin-left: auto;
-}
-
-.mt-9 {
-  margin-top: 2.25rem;
-}
-
 .mt-10 {
   margin-top: 2.5rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .block {
@@ -1982,20 +1982,12 @@ select {
   height: 50vh;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .h-\[90vh\] {
   height: 90vh;
 }
 
-.h-\[80vh\] {
-  height: 80vh;
-}
-
-.h-\[85vh\] {
-  height: 85vh;
+.h-12 {
+  height: 3rem;
 }
 
 .max-h-0 {
@@ -2253,9 +2245,13 @@ select {
   row-gap: 2.5rem;
 }
 
-.gap-x-12 {
-  -moz-column-gap: 3rem;
-       column-gap: 3rem;
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+}
+
+.gap-y-8 {
+  row-gap: 2rem;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -2365,16 +2361,16 @@ select {
   border-width: 4px;
 }
 
+.border-t-2 {
+  border-top-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
 
 .border-t {
   border-top-width: 1px;
-}
-
-.border-t-2 {
-  border-top-width: 2px;
 }
 
 .border-gray-300 {
@@ -2463,6 +2459,11 @@ select {
   );
 }
 
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -2484,11 +2485,6 @@ select {
     calc(var(--color-secondary-s) * 1),
     calc(var(--color-secondary-l) * 0.5)
   );
-}
-
-.border-gray-500 {
-  --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
 .bg-white {
@@ -2681,6 +2677,11 @@ select {
   padding-bottom: 4rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -2694,11 +2695,6 @@ select {
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
-}
-
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
 }
 
 .px-2 {
@@ -2859,6 +2855,10 @@ select {
 
 .font-bold {
   font-weight: 700;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .uppercase {
@@ -3135,6 +3135,10 @@ select {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.text-shadow {
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
 .text-shadow-outline {
   text-shadow:
       -1px -1px #000, /* top left */
@@ -3146,6 +3150,10 @@ select {
       -1px 1px #000, /* bottom left */
       -1px 0 #000 /* left */
     ;
+}
+
+.splide__pagination__page {
+  background-color: #fff;
 }
 
 .hover\:border-gray-400:hover {
@@ -3409,14 +3417,6 @@ select {
     gap: 1.5rem;
   }
 
-  .sm\:gap-4 {
-    gap: 1rem;
-  }
-
-  .sm\:gap-2 {
-    gap: 0.5rem;
-  }
-
   .sm\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
@@ -3442,10 +3442,6 @@ select {
 
   .sm\:p-8 {
     padding: 2rem;
-  }
-
-  .sm\:p-2 {
-    padding: 0.5rem;
   }
 
   .sm\:px-6 {
@@ -3489,11 +3485,6 @@ select {
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .sm\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .sm\:text-xl {
@@ -3613,10 +3604,6 @@ select {
     margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:p-8 {
-    padding: 2rem;
-  }
-
   .md\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -3662,9 +3649,9 @@ select {
     line-height: 2.5rem;
   }
 
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
@@ -3788,9 +3775,13 @@ select {
          column-gap: 2rem;
   }
 
-  .lg\:gap-x-12 {
-    -moz-column-gap: 3rem;
-         column-gap: 3rem;
+  .lg\:gap-x-6 {
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+  }
+
+  .lg\:gap-y-10 {
+    row-gap: 2.5rem;
   }
 
   .lg\:space-y-0 > :not([hidden]) ~ :not([hidden]) {

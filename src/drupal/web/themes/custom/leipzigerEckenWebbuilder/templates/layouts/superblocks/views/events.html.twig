@@ -6,12 +6,12 @@
   '@leipzigerEckenWebbuilder/layouts/default/views/_listing.html.twig',
 ]) }}
 {% if webbuilder_events_page and not options.filters %}
-<div class="ml-auto text-right {{ webbuilder_layout_styles().text.prose }} mt-16 {{ webbuilder_layout_styles().margin.b_sm }}">
+<div class="ml-auto text-right {{ webbuilder_layout_styles().text.prose }} mt-4 {{ webbuilder_layout_styles().margin.b_sm }}">
   <a
     href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}"
-    class="text-blue-600"
+    class="text-black hover:underline focus:underline font-normal {{ webbuilder_layout_styles().text.h4 }}"
   >
-    {{ 'Alle Veranstaltungen anzeigen'|t }}
+    {{ 'alle Veranstaltungen'|t }}
   </a>
 </div>
 {% endif %}

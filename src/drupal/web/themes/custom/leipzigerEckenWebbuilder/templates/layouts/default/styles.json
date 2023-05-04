@@ -30,5 +30,14 @@
   },
   "form": {
     "input": "shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-primary-500 focus:border-primary-500 border-gray-300 rounded-md"
+  },
+  "button": {
+    "base": "inline-flex items-center justify-center border border-transparent text-base font-medium whitespace-nowrap rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500",
+    "default": "text-white bg-gray-800 hover:bg-gray-900",
+    "primary": "text-white bg-primary-600 hover:bg-primary-700",
+    "primary_light": "text-black bg-primary-500 hover:bg-primary-400",
+    "secondary": "text-primary-600 bg-white hover:bg-gray-50",
+    "md": "px-5 py-3",
+    "lg": "px-8 py-3 md:py-4 md:text-lg md:px-10"
   }
 }

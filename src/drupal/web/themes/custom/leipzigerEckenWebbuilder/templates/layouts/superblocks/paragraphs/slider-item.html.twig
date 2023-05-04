@@ -10,17 +10,17 @@
     }) }}
   </figure>
   {% endif %}
-  <div class="relative">
-    <h2 class="text-4xl font-semibold text-white text-shadow-outline">
+  <div class="relative mx-auto max-w-3xl flex flex-col items-center text-center">
+    <h2 class="text-4xl tracking-tight sm:text-5xl md:text-6xl font-extrabold text-white text-shadow">
       {{ content.field_heading }}
     </h2>
     {% if content.field_body %}
-    <div class="prose-2xl text-white text-shadow-outline mt-6">
+    <div class="prose-2xl text-white text-shadow">
       {{ content.field_body }}
     </div>
     {% endif %}
     {% if content.field_primary_button[0] %}
-    <div class="mt-6">
+    <div>
       {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
         href: content.field_primary_button[0]['#url'],
         label: content.field_primary_button[0]['#title'],
