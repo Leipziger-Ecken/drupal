@@ -31,7 +31,7 @@
         data-dropdown-target="trigger"
         data-action="dropdown#toggle"
         type="button"
-        class="group bg-white rounded-md text-black inline-flex items-center text-base font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+        class="group bg-white rounded-md text-black inline-flex items-center text-base font-bold hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
       >
         <span>{{ entity.title[0].value }}</span>
 
@@ -42,16 +42,16 @@
       </button>
 
       <div
-        class="absolute z-10 left-1-2 -translate-x-1-2 mt-3 px-2 w-screen max-w-xs sm:px-0 opacity-0 translate-y-1 transition ease-in-out duration-200"
+        class="absolute z-10 left-1-2 -translate-x-1-2 mt-10 px-2 w-screen max-w-xs sm:px-0 opacity-0 translate-y-1 transition ease-in-out duration-200"
         data-dropdown-target="dropdown"
       >
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring/5 overflow-hidden">
-          <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+        <div class="shadow-lg border-t border-gray-200 overflow-hidden">
+          <div class="relative grid gap-2 bg-white p-2">
           {%- for child in item.leaves -%}
             {% set child_entity = child.node['#row']._entity %}
             <a
               href="{{ drupal_url('node/' ~ child_entity.nid[0].value) }}"
-              class="-m-3 p-3 block rounded-md hover:bg-gray-50"
+              class="-m-3 p-3 block hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
               <p class="text-base font-medium text-black">
                 {{ child_entity.title[0].value }}
@@ -71,7 +71,7 @@
     {% else %}
     <a
       href="{{ drupal_url('node/' ~ entity.nid[0].value) }}"
-      class="text-base font-medium text-black hover:underline"
+      class="text-base font-bold text-black hover:underline"
     >
       {{ entity.title[0].value }}
     </a>

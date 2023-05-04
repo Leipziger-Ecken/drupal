@@ -6,11 +6,11 @@
   data-main-menu-target="header"
   data-toggle-class="shadow"
 >
-  <div class="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
+  <div class="flex justify-between items-center px-4 py-3 sm:px-6 md:justify-start md:space-x-10">
     <div class="flex justify-start shrink-0 grow">
       <a href="{{ webbuilder_url(webbuilder_id) }}">
         <span class="sr-only">{{ webbuilder_title }}</span>
-        <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-28"/>
+        <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-20"/>
       </a>
     </div>
     <div class="-mr-2 -my-2 md:hidden">
@@ -29,7 +29,7 @@
       {{ drupal_view('webbuilder_pages', 'navigation_main', webbuilder_id) }}
     </div>
 
-    <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
+    <div class="hidden md:flex items-center justify-end shrink-0 space-x-10">
       {% if not is_preview %}
         {% if user_is_logged_in %}
           {{ drupal_block('local_tasks_block', wrapper=false) }}
