@@ -3,6 +3,7 @@
     "sm": "max-w-3xl mx-auto",
     "md": "max-w-7xl mx-auto",
     "lg": "container mx-auto",
+    "full": "w-full",
     "prose": "max-w-prose mx-auto"
   },
   "divide": {

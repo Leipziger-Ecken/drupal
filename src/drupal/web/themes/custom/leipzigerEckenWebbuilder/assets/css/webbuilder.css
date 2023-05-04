@@ -1902,6 +1902,10 @@ select {
   margin-top: 2.5rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1980,6 +1984,18 @@ select {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-\[90vh\] {
+  height: 90vh;
+}
+
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+.h-\[85vh\] {
+  height: 85vh;
 }
 
 .max-h-0 {
