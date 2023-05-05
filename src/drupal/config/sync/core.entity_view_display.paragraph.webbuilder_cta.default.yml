@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_cta.field_bg
     - field.field.paragraph.webbuilder_cta.field_body
     - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
@@ -18,6 +19,13 @@ targetEntityType: paragraph
 bundle: webbuilder_cta
 mode: default
 content:
+  field_bg:
+    weight: 5
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
   field_body:
     weight: 1
     label: hidden

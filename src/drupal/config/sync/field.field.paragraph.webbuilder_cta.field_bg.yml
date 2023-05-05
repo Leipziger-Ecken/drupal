@@ -1,0 +1,23 @@
+uuid: 4cc4a0db-e5fe-4b06-abb4-42cefe9d20ab
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bg
+    - paragraphs.paragraphs_type.webbuilder_cta
+  module:
+    - options
+id: paragraph.webbuilder_cta.field_bg
+field_name: field_bg
+entity_type: paragraph
+bundle: webbuilder_cta
+label: Hintergrund
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: primary
+default_value_callback: ''
+settings: {  }
+field_type: list_string

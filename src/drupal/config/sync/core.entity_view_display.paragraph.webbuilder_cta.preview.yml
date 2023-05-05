@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_cta.field_bg
     - field.field.paragraph.webbuilder_cta.field_body
     - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
@@ -19,6 +20,13 @@ targetEntityType: paragraph
 bundle: webbuilder_cta
 mode: preview
 content:
+  field_bg:
+    type: list_default
+    weight: 5
+    region: content
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
   field_body:
     weight: 1
     label: above

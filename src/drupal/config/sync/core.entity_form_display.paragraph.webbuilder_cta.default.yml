@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_cta.field_bg
     - field.field.paragraph.webbuilder_cta.field_body
     - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
@@ -17,6 +18,12 @@ targetEntityType: paragraph
 bundle: webbuilder_cta
 mode: default
 content:
+  field_bg:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_body:
     weight: 1
     settings:
@@ -57,7 +64,7 @@ content:
     region: content
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: true

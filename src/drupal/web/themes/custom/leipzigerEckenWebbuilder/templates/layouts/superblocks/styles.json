@@ -8,15 +8,15 @@
     "t_sm": "pt-4"
   },
   "text": {
-    "h1": "text-4xl tracking-tight text-black sm:text-5xl md:text-6xl",
-    "h2": "text-3xl leading-8 tracking-tight text-black sm:text-4xl md:text-5xl",
-    "h3": "text-2xl tracking-tight text-black sm:text-3xl md:text-4xl",
-    "h4": "text-lg tracking-tight text-black sm:text-xl md:text-2xl",
-    "prose": "prose prose-primary text-black",
+    "h1": "text-4xl tracking-tight sm:text-5xl md:text-6xl text-current",
+    "h2": "text-3xl leading-8 tracking-tight sm:text-4xl md:text-5xl text-current",
+    "h3": "text-2xl tracking-tight sm:text-3xl md:text-4xl text-current",
+    "h4": "text-lg tracking-tight sm:text-xl md:text-2xl text-current",
+    "prose": "prose prose-primary text-current",
     "prose_white": "prose prose-primary text-white",
-    "prose_lg": "text-xl text-black prose",
+    "prose_lg": "text-xl prose text-current",
     "prose_strong": "prose text-lg leading-6",
-    "figcaption": "prose prose-primary text-black"
+    "figcaption": "prose prose-primary text-current"
   },
   "border": {
     "top": "border-t-2 border-black"
@@ -24,6 +24,7 @@
   "button": {
     "base": "inline-flex items-center justify-center border border-transparent text-base font-bold whitespace-nowrap rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500",
     "main_navigation": "inline-flex items-center justify-center py-1 px-2 font-bold border-2 border-secondary-600 text-secondary-600 bg-white transition-bg hover:bg-secondary-100 hover:bg-secondary-100",
-    "md": "px-4 py-1"
+    "md": "px-4 py-1",
+    "lg": "px-6 py-3"
   }
 }
