@@ -22,7 +22,20 @@
       </h2>
     </a>
     <div class="text-shadow text-white text-2xl">
-      {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+      <div class="flex items-start">
+        {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/calendar.html.twig', {
+          class: 'w-6 h-6 block mr-2',
+        }) }}
+        {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+      </div>
+      {% if content.field_adresse and content.field_adresse.0 %}
+      <div class="flex items-start">
+        {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/map-pin.html.twig', {
+          class: 'w-6 h-6 block mr-2',
+        }) }}
+        {{ render_var(content.field_adresse) | striptags }}
+      </div>
+      {% endif %}
     </div>
     <div class="prose-2xl text-white text-shadow">
       {% if node_type == 'le_event' %}

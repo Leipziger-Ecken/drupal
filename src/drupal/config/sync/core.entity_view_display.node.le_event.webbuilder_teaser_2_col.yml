@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.le_event.og_audience
     - node.type.le_event
   module:
+    - address
     - date_recur
     - text
     - user
@@ -35,6 +36,13 @@ targetEntityType: node
 bundle: le_event
 mode: webbuilder_teaser_2_col
 content:
+  field_adresse:
+    type: address_plain
+    weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_is_featured:
     type: boolean
     weight: 0
@@ -87,7 +95,6 @@ content:
       format_custom_false: ''
     third_party_settings: {  }
 hidden:
-  field_adresse: true
   field_bezirk: true
   field_geofield: true
   field_le_event___eid: true

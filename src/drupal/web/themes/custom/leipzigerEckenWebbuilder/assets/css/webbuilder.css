@@ -1902,6 +1902,10 @@ select {
   margin-bottom: 0px;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .ml-auto {
   margin-left: auto;
 }
@@ -2170,6 +2174,10 @@ select {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-end {
