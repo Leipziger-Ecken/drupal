@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.webbuilder.field_instagram_link
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_linkedin_link
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_pre_footer_body
@@ -26,6 +27,7 @@ dependencies:
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.field_youtube_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
@@ -94,7 +96,7 @@ content:
     type: link
     region: content
   field_favicon_legacy:
-    weight: 15
+    weight: 17
     label: hidden
     settings:
       svg_attributes:
@@ -139,6 +141,18 @@ content:
     third_party_settings: {  }
     type: list_key
     region: content
+  field_linkedin_link:
+    weight: 15
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
   field_logo_legacy:
     weight: 4
     label: hidden
@@ -153,14 +167,14 @@ content:
     type: image
     region: content
   field_pre_footer_body:
-    weight: 17
+    weight: 19
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_pre_footer_button:
-    weight: 18
+    weight: 20
     label: hidden
     settings:
       trim_length: 80
@@ -172,7 +186,7 @@ content:
     type: link
     region: content
   field_pre_footer_heading:
-    weight: 16
+    weight: 18
     label: hidden
     settings:
       link_to_entity: false
@@ -180,7 +194,7 @@ content:
     type: string
     region: content
   field_pre_footer_image_legacy:
-    weight: 19
+    weight: 21
     label: hidden
     settings:
       svg_attributes:
@@ -213,6 +227,18 @@ content:
     region: content
   field_twitter_link:
     weight: 13
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_youtube_link:
+    weight: 16
     label: hidden
     settings:
       trim_length: 80

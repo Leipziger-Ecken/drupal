@@ -8,12 +8,12 @@
 <footer aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-    <div class="grid grid-cols-12 gap-8">
+    <div class="grid grid-cols-12 gap-8 {{ webbuilder_layout_styles().border.top }} {{ webbuilder_layout_styles().padding.t_md }}">
       <div class="col-span-12 md:col-span-2 xl:col-span-4">
         {% if logo_url %}
         <a href="{{ webbuilder_url(webbuilder_id) }}">
           <span class="sr-only">{{ webbuilder_title }}</span>
-          <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-28"/>
+          <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-20"/>
         </a>
         {% endif %}
       </div>
@@ -57,14 +57,20 @@
         {{ drupal_view('webbuilder_pages', 'navigation_footer', webbuilder_id, 'footer') }}
       </div>
     </div>
-    <div class="mt-8 pt-8 md:flex md:items-start md:justify-between">
+    <div class="mt-8 md:flex md:items-start md:justify-between border-t border-slate-400 {{ webbuilder_layout_styles().padding.t_sm }}">
       <div class="text-black flex space-x-6 md:order-2">
-        <div class="mr-4">{{ 'Follow us'|t }}:</div>
+        {% set linkedin_uri = drupal_field('field_linkedin_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if linkedin_uri %}
+        <a href="{{ linkedin_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'LinkedIn'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/linkedin.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
         {% set tiktok_uri = drupal_field('field_tiktok_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if tiktok_uri %}
         <a href="{{ tiktok_uri }}" class="text-slate-400 hover:text-slate-500">
           <span class="sr-only">{{ 'TikTok'|t }}</span>
-          {{ include('@leipzigerEckenWebbuilder/partials/icons/tiktok.html.twig', {class: 'h-6 w-6'}) }}
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/tiktok.html.twig', {class: 'h-7 w-7'}) }}
         </a>
         {% endif %}
 
@@ -72,7 +78,7 @@
         {% if facebook_uri %}
         <a href="{{ facebook_uri }}" class="text-slate-400 hover:text-slate-500">
           <span class="sr-only">{{ 'Facebook'|t }}</span>
-          {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-6 w-6'}) }}
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-8 w-8'}) }}
         </a>
         {% endif %}
 
@@ -80,7 +86,7 @@
         {% if instagram_uri %}
         <a href="{{ instagram_uri }}" class="text-slate-400 hover:text-slate-500" target="instagram">
           <span class="sr-only">{{ 'Instagram'|t }}</span>
-          {{ include('@leipzigerEckenWebbuilder/partials/icons/instagram.html.twig', {class: 'h-6 w-6'}) }}
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/instagram.html.twig', {class: 'h-8 w-8'}) }}
         </a>
         {% endif %}
 
@@ -88,14 +94,21 @@
         {% if twitter_uri %}
         <a href="{{ twitter_uri }}" class="text-slate-400 hover:text-slate-500" target="twitter">
           <span class="sr-only">{{ 'Twitter'|t }}</span>
-          {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-6 w-6'}) }}
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+        {% set youtube_uri = drupal_field('field_youtube_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if youtube_uri %}
+        <a href="{{ youtube_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'YouTube'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/youtube.html.twig', {class: 'h-8 w-8'}) }}
         </a>
         {% endif %}
       </div>
-      <div class="mt-8 text-base text-black md:mt-0 md:order-1">
+      <div class="mt-8 text-base text-slate-400 md:mt-0 md:order-1">
         <p>
           &copy; Superblocks {{ 'now' | date('Y') }}<br/>
-          Wir freuen uns riesig!
+          alle Rechte vorbehalten
         </p>
         <p class="mt-4 text-base text-slate-400">
         Powered by <a class="text-slate-400 hover:text-slate-500" href="https://leipziger-ecken.de" target="leipziger-ecken">

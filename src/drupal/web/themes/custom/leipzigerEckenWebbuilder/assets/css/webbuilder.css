@@ -1994,6 +1994,10 @@ select {
   height: 3rem;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -2036,6 +2040,14 @@ select {
 
 .w-auto {
   width: auto;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .min-w-0 {
@@ -2493,6 +2505,11 @@ select {
 .border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+
+.border-slate-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
 .bg-white {
@@ -3064,6 +3081,11 @@ select {
 
 .text-current {
   color: currentColor;
+}
+
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .no-underline {

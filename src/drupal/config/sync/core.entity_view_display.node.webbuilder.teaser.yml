@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.webbuilder.field_instagram_link
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_linkedin_link
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_pre_footer_body
@@ -27,6 +28,7 @@ dependencies:
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.field_youtube_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
@@ -72,6 +74,7 @@ hidden:
   field_instagram_link: true
   field_is_preset: true
   field_layout: true
+  field_linkedin_link: true
   field_logo: true
   field_logo_legacy: true
   field_pre_footer_body: true
@@ -81,6 +84,7 @@ hidden:
   field_projects_page: true
   field_tiktok_link: true
   field_twitter_link: true
+  field_youtube_link: true
   langcode: true
   og_audience: true
   published_at: true

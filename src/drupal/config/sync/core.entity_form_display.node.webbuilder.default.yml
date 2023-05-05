@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.webbuilder.field_instagram_link
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_linkedin_link
     - field.field.node.webbuilder.field_logo
     - field.field.node.webbuilder.field_logo_legacy
     - field.field.node.webbuilder.field_pre_footer_body
@@ -26,6 +27,7 @@ dependencies:
     - field.field.node.webbuilder.field_projects_page
     - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.field_youtube_link
     - field.field.node.webbuilder.og_audience
     - image.style.thumbnail
     - node.type.webbuilder
@@ -88,10 +90,12 @@ third_party_settings:
       label: Vorlage
     group_social_media:
       children:
+        - field_linkedin_link
         - field_facebook_link
         - field_instagram_link
         - field_twitter_link
         - field_tiktok_link
+        - field_youtube_link
       parent_name: group_basic
       weight: 10
       format_type: accordion_item
@@ -182,7 +186,7 @@ content:
     type: text_textarea
     region: content
   field_facebook_link:
-    weight: 11
+    weight: 27
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -204,7 +208,7 @@ content:
     type: options_buttons
     region: content
   field_instagram_link:
-    weight: 12
+    weight: 28
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -223,6 +227,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
+  field_linkedin_link:
+    weight: 26
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_logo_legacy:
     weight: 13
@@ -272,7 +284,7 @@ content:
     type: media_library_widget
     region: content
   field_tiktok_link:
-    weight: 14
+    weight: 30
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -280,7 +292,15 @@ content:
     type: link_default
     region: content
   field_twitter_link:
-    weight: 13
+    weight: 29
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_youtube_link:
+    weight: 31
     settings:
       placeholder_url: ''
       placeholder_title: ''

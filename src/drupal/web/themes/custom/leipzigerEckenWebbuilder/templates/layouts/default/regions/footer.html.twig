@@ -71,9 +71,16 @@
     </div>
     <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
       <div class="flex space-x-6 md:order-2">
+        {% set linkedin_uri = drupal_field('field_linkedin_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if linkedin_uri %}
+        <a href="{{ linkedin_uri }}" class="text-gray-400 hover:text-gray-300" target="linkedin">
+          <span class="sr-only">{{ 'LinkedIn'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/linkedin.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
         {% set tiktok_uri = drupal_field('field_tiktok_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if tiktok_uri %}
-        <a href="{{ tiktok_uri }}" class="text-gray-400 hover:text-gray-300">
+        <a href="{{ tiktok_uri }}" class="text-gray-400 hover:text-gray-300" target="tiktok">
           <span class="sr-only">{{ 'TikTok'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/tiktok.html.twig', {class: 'h-6 w-6'}) }}
         </a>
@@ -81,7 +88,7 @@
 
         {% set facebook_uri = drupal_field('field_facebook_link', 'node', webbuilder_id)[0]['#url'] %}
         {% if facebook_uri %}
-        <a href="{{ facebook_uri }}" class="text-gray-400 hover:text-gray-300">
+        <a href="{{ facebook_uri }}" class="text-gray-400 hover:text-gray-300" target="facebook">
           <span class="sr-only">{{ 'Facebook'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-6 w-6'}) }}
         </a>
@@ -100,6 +107,12 @@
         <a href="{{ twitter_uri }}" class="text-gray-400 hover:text-gray-300" target="twitter">
           <span class="sr-only">{{ 'Twitter'|t }}</span>
           {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-6 w-6'}) }}
+        </a>
+        {% endif %}
+        {% if youtube_uri %}
+        <a href="{{ youtube_uri }}" class="text-gray-400 hover:text-gray-300" target="youtube">
+          <span class="sr-only">{{ 'YouTube'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/youtube.html.twig', {class: 'h-8 w-6'}) }}
         </a>
         {% endif %}
       </div>

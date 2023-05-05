@@ -5,7 +5,8 @@
     "b_lg": "mb-24"
   },
   "padding": {
-    "t_sm": "pt-4"
+    "t_sm": "pt-4",
+    "t_md": "pt-8"
   },
   "text": {
     "h1": "text-4xl tracking-tight sm:text-5xl md:text-6xl text-current",
