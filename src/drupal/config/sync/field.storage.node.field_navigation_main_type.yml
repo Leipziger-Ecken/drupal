@@ -1,0 +1,27 @@
+uuid: 5e506d7b-f8fa-4334-aac1-76814ae3f135
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_navigation_main_type
+field_name: field_navigation_main_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: link
+      label: Link
+    -
+      value: button
+      label: Button
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

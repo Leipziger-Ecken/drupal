@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.webbuilder_page.field_header_image
     - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_navigation_main_type
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -41,7 +42,7 @@ content:
     third_party_settings: {  }
     region: content
   field_header_image_legacy:
-    weight: 6
+    weight: 7
     label: hidden
     settings:
       svg_attributes:
@@ -60,6 +61,13 @@ content:
     third_party_settings: {  }
     type: list_key
     region: content
+  field_navigation_main_type:
+    weight: 6
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_key
+    region: content
   field_parent:
     weight: 1
     label: hidden
@@ -68,21 +76,21 @@ content:
     type: entity_reference_entity_id
     region: content
   field_pre_footer:
-    weight: 12
+    weight: 13
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: list_key
     region: content
   field_pre_footer_body:
-    weight: 8
+    weight: 9
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_pre_footer_button:
-    weight: 9
+    weight: 10
     label: hidden
     settings:
       trim_length: 80
@@ -94,7 +102,7 @@ content:
     type: link
     region: content
   field_pre_footer_heading:
-    weight: 7
+    weight: 8
     label: hidden
     settings:
       link_to_entity: false
@@ -102,7 +110,7 @@ content:
     type: string
     region: content
   field_pre_footer_image_legacy:
-    weight: 11
+    weight: 12
     label: hidden
     settings:
       svg_attributes:
@@ -115,7 +123,7 @@ content:
     type: image
     region: content
   field_short_description:
-    weight: 10
+    weight: 11
     label: hidden
     settings: {  }
     third_party_settings: {  }

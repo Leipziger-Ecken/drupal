@@ -21,7 +21,7 @@
  * @ingroup themeable
  */
 #}
-<nav class="hidden md:flex space-x-10">
+<nav class="hidden md:flex space-x-10 items-center">
   {%- if items.leaves -%}
   {%- for item in items -%}
     {% set entity = item.node['#row']._entity %}
@@ -53,8 +53,15 @@
               href="{{ drupal_url('node/' ~ child_entity.nid[0].value) }}"
               class="-m-3 p-3 block hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
+              {% set link_type = child_entity.field_navigation_main_type[0].value | default('link') %}
               <p class="text-base font-medium text-black">
+                {% if link_type == 'button' %}
+                <div class="{{ webbuilder_layout_styles().button.main_navigation }}">
+                  {{ child_entity.title[0].value }}
+                </div>
+                {% else %}
                 {{ child_entity.title[0].value }}
+                {% endif %}
                 <br/>
               </p>
               {% if child_entity.field_short_description[0] %}
@@ -69,9 +76,10 @@
       </div>
     </div>
     {% else %}
+    {% set link_type = entity.field_navigation_main_type[0].value | default('link') %}
     <a
       href="{{ drupal_url('node/' ~ entity.nid[0].value) }}"
-      class="text-base font-bold text-black hover:underline"
+      class="{{ link_type == 'button' ? webbuilder_layout_styles().button.main_navigation : 'text-base font-bold text-black hover:underline' }}"
     >
       {{ entity.title[0].value }}
     </a>

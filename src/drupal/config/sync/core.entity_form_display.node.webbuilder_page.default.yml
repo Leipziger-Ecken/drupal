@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.webbuilder_page.field_header_image
     - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_navigation_main_type
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -68,6 +69,7 @@ third_party_settings:
       children:
         - field_parent
         - field_navigation
+        - field_navigation_main_type
         - field_weight
       parent_name: group_basic
       weight: 17
@@ -176,6 +178,30 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+    region: content
+  field_navigation_main_type:
+    weight: 4
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        fd305868-44b2-46d9-8b74-2ff797cb5178:
+          dependee: field_navigation
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: main
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: webbuilder_page
+    type: options_select
     region: content
   field_parent:
     weight: 2
@@ -324,7 +350,7 @@ content:
     type: select2_entity_reference
     region: content
   field_weight:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: weight_selector

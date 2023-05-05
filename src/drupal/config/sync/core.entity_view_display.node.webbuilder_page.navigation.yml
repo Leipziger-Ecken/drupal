@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.webbuilder_page.field_header_image
     - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_navigation_main_type
     - field.field.node.webbuilder_page.field_parent
     - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
@@ -21,12 +22,20 @@ dependencies:
     - field.field.node.webbuilder_page.og_audience
     - node.type.webbuilder_page
   module:
+    - options
     - user
 id: node.webbuilder_page.navigation
 targetEntityType: node
 bundle: webbuilder_page
 mode: navigation
 content:
+  field_navigation_main_type:
+    type: list_key
+    weight: 3
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_parent:
     type: entity_reference_entity_id
     weight: 2

@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: AeW1SEDgb1OTQACAWGhzvMknMYAJlcZu0jljfeU3oso
-name: Journal Artikel
+name: 'Journal Artikel'
 type: article
 description: 'Neuigkeiten aus dem Akteursgeschehen.'
 help: ''
