@@ -23,18 +23,22 @@
         {{ label }}
       </a>
     </h2>
+    {% set date = node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) %}
+    {% if date %}
     <div class="flex items-start">
       {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/calendar.html.twig', {
         class: 'w-6 h-6 block mr-2',
       }) }}
-      {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+      {{ date }}
     </div>
-    {% if content.field_adresse and content.field_adresse.0 %}
+    {% endif %}
+    {% set address = render_var(content.field_adresse) | striptags | trim %}
+    {% if address %}
     <div class="flex items-start">
       {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/map-pin.html.twig', {
         class: 'w-6 h-6 block mr-2',
       }) }}
-      {{ render_var(content.field_adresse) | striptags }}
+      {{ address }}
     </div>
     {% endif %}
     {% if node_type == 'le_event' %}

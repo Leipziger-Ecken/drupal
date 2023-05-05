@@ -4,9 +4,9 @@
   node: node.id(),
   destination: get_destination(),
 }) %}
-<article class="grid gap-4 grid-cols-1 sm:grid-cols-2">
+<article class="grid gap-y-6 gap-x-6 md:gap-y-8 md:gap-x-12 grid-cols-12">
   {% if image %}
-  <figure class="relative col-span-1">
+  <figure class="relative col-span-12 sm:col-span-6 md:col-span-4">
     <a href="{{ url }}" class="relative block w-full bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
       {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
         class: 'w-full aspect-square object-cover',
@@ -17,26 +17,30 @@
     </a>
   </figure>
   {% else %}
-  <div class="col-span-1"></div>
+  <div class="col-span-12 sm:col-span-6 md:col-span-4"></div>
   {% endif %}
-  <div class="col-span-1 {{ webbuilder_layout_styles().text.prose }}">
+  <div class="col-span-12 sm:col-span-6 md:col-span-8 {{ webbuilder_layout_styles().text.prose }}">
     <h2 class="mb-0">
       <a href="{{ url }}" class="text-black no-underline hover:underline focus:underline">
         {{ label }}
       </a>
     </h2>
+    {% set date = node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) %}
+    {% if date %}
     <div class="flex items-start">
       {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/calendar.html.twig', {
         class: 'w-6 h-6 block mr-2',
       }) }}
-      {{ node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) }}
+      {{ date }}
     </div>
-    {% if content.field_adresse and content.field_adresse.0 %}
+    {% endif %}
+    {% set address = render_var(content.field_adresse) | striptags | trim %}
+    {% if address %}
     <div class="flex items-start">
       {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/map-pin.html.twig', {
         class: 'w-6 h-6 block mr-2',
       }) }}
-      {{ render_var(content.field_adresse) | striptags }}
+      {{ address }}
     </div>
     {% endif %}
 
