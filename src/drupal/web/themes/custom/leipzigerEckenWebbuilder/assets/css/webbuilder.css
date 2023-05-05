@@ -1910,6 +1910,10 @@ select {
   margin-left: auto;
 }
 
+.mt-0\.5 {
+  margin-top: 0.125rem;
+}
+
 .block {
   display: block;
 }
@@ -3799,6 +3803,10 @@ select {
 
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .lg\:items-center {

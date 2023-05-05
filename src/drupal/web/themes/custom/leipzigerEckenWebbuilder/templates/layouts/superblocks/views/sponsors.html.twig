@@ -1,4 +1,4 @@
-<ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
+<ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-16">
 {% for index,row in rows[0]['#rows'] %}
   <li class="col-span-1">
     {{ drupal_entity('node', row['#node'].nid[0].value, 'webbuilder_teaser') }}

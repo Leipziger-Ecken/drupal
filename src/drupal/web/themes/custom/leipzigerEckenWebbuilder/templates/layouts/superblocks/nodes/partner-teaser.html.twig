@@ -1,23 +1,25 @@
-<article class="bg-primary-100 p-8 mb-8 grid grid-cols-1 md:grid-cols-4 gap-16">
+<article class="grid gap-y-6 gap-x-6 md:gap-y-8 md:gap-x-12 grid-cols-12">
   {% if image %}
-  <figure class="col-span-4 sm:col-span-2 md:col-span-1 rounded-full border-4 border-secondary-600 overflow-hidden aspect-square w-20 md:w-32">
+  <figure class="relative col-span-12 sm:col-span-6 md:col-span-4">
     {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
-      class: 'w-full h-auto object-cover',
+      class: 'w-full aspect-square object-cover',
       image: image,
-      width: 320,
-      image_style: 'webbuilder_gallery_thumb',
+      width: 1280,
+      image_style: 'webbuilder_teaser',
     }) }}
   </figure>
+  {% else %}
+  <div class="col-span-12 sm:col-span-6 md:col-span-4"></div>
   {% endif %}
-  <div class="col-span-4 sm:col-span-2 md:col-span-3 {{ webbuilder_layout_styles().text.prose }}">
-    <h3 class="mt-0">
+  <div class="col-span-12 sm:col-span-6 md:col-span-8 {{ webbuilder_layout_styles().text.prose }}">
+    <h2 class="mb-0">
       {{ title }}
-    </h3>
+    </h2>
     {% if akteur_id %}
     <p class="text-primary-600">{{ 'Actor of Leipziger Ecken'|t }}</p>
     {% endif %}
     {{ description }}
 
-    <a href="{{ website_url }}" class="text-blue-600 no-underline hover:underline focus:underline" target="_blank">{{ 'Read more...'|t }} </a>
+    <a href="{{ website_url }}" class="text-primary-600 no-underline hover:underline focus:underline" target="_blank">{{ akteur_id ? 'Read more...' | t : website_url }} </a>
   </div>
 </article>
