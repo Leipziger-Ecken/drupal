@@ -1,0 +1,7 @@
+le_afeefa_api_service.get_feed:
+  path: '/le-afeefa-api-service-get-feed'
+  defaults:
+    _controller: '\Drupal\le_afeefa_api_service\Controller\LeAfeefaApiServiceController::makeUpdate'
+    _title: 'Get Feed'
+  requirements:
+    _permission: 'access content'

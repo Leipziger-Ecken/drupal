@@ -1,0 +1,7 @@
+name: 'Leipziger Ecken afeefa API Services'
+type: module
+description: 'Syncing / creating afeefa.de informations'
+core: 8.x
+package: Leipziger Ecken
+dependencies:
+  - http_client_manager:http_client_manager
