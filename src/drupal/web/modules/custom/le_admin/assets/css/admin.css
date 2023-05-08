@@ -71,3 +71,8 @@
     display: none !important;
   }
 }
+
+/* fixes to narrow table cells for gallery images */
+.paragraph-type--webbuilder-gallery .table-file-multiple-widget .tabledrag-cell {
+  width: 100%;
+}
