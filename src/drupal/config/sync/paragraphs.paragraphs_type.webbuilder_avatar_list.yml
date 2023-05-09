@@ -1,0 +1,10 @@
+uuid: 3c3a1917-b943-40fd-9575-f2f83d0eeb56
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_avatar_list
+label: Avatarliste
+icon_uuid: null
+icon_default: null
+description: "Eine Liste mit Avataren und einer kurzen Beschreibung.\r\nZ.b. für Teamauflistungen."
+behavior_plugins: {  }

@@ -22,21 +22,21 @@ mode: preview
 content:
   field_body:
     weight: 1
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_cols:
     weight: 2
-    label: hidden
+    label: inline
     settings: {  }
     third_party_settings: {  }
-    type: list_key
+    type: list_default
     region: content
   field_heading:
     weight: 0
-    label: hidden
+    label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -46,7 +46,7 @@ content:
     type: image
     weight: 3
     region: content
-    label: hidden
+    label: above
     settings:
       image_style: thumbnail
       image_link: ''

@@ -8,6 +8,8 @@ weight: 4
 is_admin: null
 permissions:
   - 'create paragraph content webbuilder_audio'
+  - 'create paragraph content webbuilder_avatar_list'
+  - 'create paragraph content webbuilder_avatar_list_item'
   - 'create paragraph content webbuilder_blog_articles'
   - 'create paragraph content webbuilder_contact_form'
   - 'create paragraph content webbuilder_cta'
@@ -28,6 +30,8 @@ permissions:
   - 'delete own webbuilder content'
   - 'delete own webbuilder_page content'
   - 'delete paragraph content webbuilder_audio'
+  - 'delete paragraph content webbuilder_avatar_list'
+  - 'delete paragraph content webbuilder_avatar_list_item'
   - 'delete paragraph content webbuilder_blog_articles'
   - 'delete paragraph content webbuilder_contact_form'
   - 'delete paragraph content webbuilder_cta'
@@ -49,6 +53,8 @@ permissions:
   - 'set webbuilder_page published on date'
   - 'update paragraph content from_library'
   - 'update paragraph content webbuilder_audio'
+  - 'update paragraph content webbuilder_avatar_list'
+  - 'update paragraph content webbuilder_avatar_list_item'
   - 'update paragraph content webbuilder_blog_articles'
   - 'update paragraph content webbuilder_contact_form'
   - 'update paragraph content webbuilder_cta'

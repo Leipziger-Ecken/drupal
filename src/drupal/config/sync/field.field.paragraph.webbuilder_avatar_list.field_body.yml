@@ -1,0 +1,21 @@
+uuid: 29b4db36-e7ed-4273-bbef-8093e79b0a20
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.webbuilder_avatar_list
+  module:
+    - text
+id: paragraph.webbuilder_avatar_list.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: webbuilder_avatar_list
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

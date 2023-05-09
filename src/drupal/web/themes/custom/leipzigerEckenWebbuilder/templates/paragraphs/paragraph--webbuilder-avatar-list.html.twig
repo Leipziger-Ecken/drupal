@@ -1,0 +1,6 @@
+{% block paragraph %}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/avatar-list.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/avatar-list.html.twig',
+]) }}
+{% endblock paragraph %}
