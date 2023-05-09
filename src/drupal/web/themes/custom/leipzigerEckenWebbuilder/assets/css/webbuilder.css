@@ -2248,6 +2248,10 @@ select {
   gap: 0.125rem;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-y-6 {
   row-gap: 1.5rem;
 }
@@ -3812,6 +3816,14 @@ select {
 
   .lg\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .lg\:gap-16 {
+    gap: 4rem;
+  }
+
+  .lg\:gap-12 {
+    gap: 3rem;
   }
 
   .lg\:gap-x-5 {

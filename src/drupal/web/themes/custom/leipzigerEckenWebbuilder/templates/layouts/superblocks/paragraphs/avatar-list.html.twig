@@ -24,7 +24,7 @@
     {{ content.field_body }}
   </div>
   {% endif %}
-  <div class="mt-12 pt-10 grid {{ cols_class[cols] }} gap-12 lg:gap-16">
+  <div class="mt-12 pt-10 grid {{ cols_class[cols] }} gap-8 lg:gap-12">
     {% for index,item in content.field_avatar_list_items['#items'] %}
     {% set item = content.field_avatar_list_items[index] %}
     <div class="col-span-1">

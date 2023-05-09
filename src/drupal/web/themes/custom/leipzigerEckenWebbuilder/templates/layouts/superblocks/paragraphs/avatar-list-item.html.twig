@@ -1,8 +1,8 @@
 {% set image = content.field_image_legacy[0] | default(content.field_image[0]) %}
 <div>
   {% if image %}
-  <figure class="relative w-full lg:max-w-md mb-8">
-    <div class="relative block w-full rounded-lg shadow-lg bg-white overflow-hidden">
+  <figure class="relative w-full lg:max-w-md mb-4">
+    <div class="relative block w-full bg-white overflow-hidden">
       {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
         class: 'w-full h-auto aspect-square object-cover',
         image: image,
@@ -13,7 +13,7 @@
     </div>
   </figure>
   {% endif %}
-  <div class="mt-3 text-base text-gray-500 prose">
+  <div class="text-base text-black prose">
     {{ content.field_image_caption }}
   </div>
 </div>
