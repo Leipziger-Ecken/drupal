@@ -6,7 +6,9 @@ dependencies:
     - field.field.paragraph.webbuilder_slider_item.field_body
     - field.field.paragraph.webbuilder_slider_item.field_heading
     - field.field.paragraph.webbuilder_slider_item.field_image_legacy
+    - field.field.paragraph.webbuilder_slider_item.field_pre_header_button
     - field.field.paragraph.webbuilder_slider_item.field_primary_button
+    - field.field.paragraph.webbuilder_slider_item.field_secondary_button
     - image.style.thumbnail
     - paragraphs.paragraphs_type.webbuilder_slider_item
   module:
@@ -19,7 +21,7 @@ bundle: webbuilder_slider_item
 mode: default
 content:
   field_body:
-    weight: 2
+    weight: 3
     settings:
       rows: 3
       placeholder: ''
@@ -27,7 +29,7 @@ content:
     type: text_textarea
     region: content
   field_heading:
-    weight: 1
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -42,8 +44,24 @@ content:
     third_party_settings: {  }
     type: image_image
     region: content
+  field_pre_header_button:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_primary_button:
-    weight: 3
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_secondary_button:
+    weight: 5
     settings:
       placeholder_url: ''
       placeholder_title: ''

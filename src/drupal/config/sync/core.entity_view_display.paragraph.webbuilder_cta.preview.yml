@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.webbuilder_cta.field_body
     - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
+    - field.field.paragraph.webbuilder_cta.field_pre_header_button
     - field.field.paragraph.webbuilder_cta.field_primary_button
     - field.field.paragraph.webbuilder_cta.field_secondary_button
     - paragraphs.paragraphs_type.webbuilder_cta
@@ -22,13 +23,13 @@ mode: preview
 content:
   field_bg:
     type: list_default
-    weight: 5
+    weight: 6
     region: content
     label: inline
     settings: {  }
     third_party_settings: {  }
   field_body:
-    weight: 1
+    weight: 2
     label: above
     settings:
       trim_length: 600
@@ -36,22 +37,34 @@ content:
     type: text_trimmed
     region: content
   field_cta_layout:
-    weight: 4
+    weight: 5
     label: inline
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: content
   field_heading:
-    weight: 0
+    weight: 1
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
+  field_pre_header_button:
+    type: link
+    weight: 0
+    region: content
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
   field_primary_button:
-    weight: 2
+    weight: 3
     label: inline
     settings:
       trim_length: 80
@@ -63,7 +76,7 @@ content:
     type: link
     region: content
   field_secondary_button:
-    weight: 3
+    weight: 4
     label: inline
     settings:
       trim_length: 80

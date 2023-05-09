@@ -1,18 +1,8 @@
 {% set tag = tag|default('a') %}
 {% set type = type|default('default') %}
 {% set size = size|default('md') %}
-{% set typeClasses = {
-  default: webbuilder_layout_styles().button.default,
-  primary: webbuilder_layout_styles().button.primary,
-  primary_light: webbuilder_layout_styles().button.primary_light,
-  secondary: webbuilder_layout_styles().button.secondary,
-} %}
-{% set sizeClasses = {
-  'md': webbuilder_layout_styles().button.md,
-  'lg': webbuilder_layout_styles().button.lg,
-} %}
 <{{ tag }}
-  class="{{ webbuilder_layout_styles().button.base }} {{ typeClasses[type] }} {{ sizeClasses[size] }} {{ class }}"
+  class="{{ webbuilder_layout_styles().button.base }} {{ webbuilder_layout_styles().button[type] }} {{ webbuilder_layout_styles().button[size] }} {{ class }}"
   {% if href %}href="{{ href }}"{% endif %}
   {% if onclick %}onclick="{{ onclick }}"{% endif %}
   {{ attributes|raw }}

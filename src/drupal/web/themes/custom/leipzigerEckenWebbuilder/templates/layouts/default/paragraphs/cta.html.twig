@@ -9,6 +9,16 @@
 >
   <div class="{{ bg_classes[bg_color] }}">
     <div class="max-w-2xl mx-auto text-center {{ webbuilder_layout_styles().padding.y_md }} {{ webbuilder_layout_styles().padding.x_md }}">
+      {% if content.field_pre_header_button[0] %}
+      <div class="mb-8 flex justify-center items-center">
+        {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+          href: content.field_pre_header_button[0]['#url'],
+          label: content.field_pre_header_button[0]['#title'],
+          type: 'link',
+          class: '',
+        }) }}
+      </div>
+      {% endif %}
       {% if content.field_heading[0] %}
       <h2 class="{{ webbuilder_layout_styles().text.h2 }} mb-4">
         {{ content.field_heading }}

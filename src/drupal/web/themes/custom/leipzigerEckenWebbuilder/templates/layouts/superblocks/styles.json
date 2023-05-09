@@ -25,6 +25,8 @@
   "button": {
     "base": "inline-flex items-center justify-center border border-transparent text-base font-bold whitespace-nowrap rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500",
     "secondary": "text-black bg-white hover:bg-gray-50",
+    "secondary_transparent": "border border-black bg-transparent bg-opacity-0 hover:bg-black focus:bg-white hover:bg-opacity-30 focus:bg-opacity-30",
+    "secondary_transparent_white": "border border-white bg-transparent bg-opacity-0 hover:bg-white focus:bg-white hover:bg-opacity-30 focus:bg-opacity-30",
     "main_navigation": "inline-flex items-center justify-center py-1 px-2 font-bold border-2 border-secondary-600 text-secondary-600 bg-white transition-bg hover:bg-secondary-100 hover:bg-secondary-100",
     "md": "px-4 py-1",
     "lg": "px-6 py-3"

@@ -11,6 +11,16 @@
   </figure>
   {% endif %}
   <div class="relative mx-auto max-w-3xl flex flex-col items-center text-center">
+    {% if content.field_pre_header_button[0] %}
+    <div class="mb-8 flex justify-center items-center">
+      {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+        href: content.field_pre_header_button[0]['#url'],
+        label: content.field_pre_header_button[0]['#title'],
+        type: 'secondary_transparent_white',
+        class: 'text-white border-white text-shadow shadow-md',
+      }) }}
+    </div>
+    {% endif %}
     <h2 class="text-4xl tracking-tight sm:text-5xl md:text-6xl font-extrabold text-white text-shadow">
       {{ content.field_heading }}
     </h2>
@@ -19,14 +29,24 @@
       {{ content.field_body }}
     </div>
     {% endif %}
-    {% if content.field_primary_button[0] %}
-    <div>
+    {% if content.field_primary_button[0] or content.field_secondary_button[0] %}
+    <div class="flex flex-wrap gap-4">
+      {% if content.field_primary_button[0] %}
       {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
         href: content.field_primary_button[0]['#url'],
         label: content.field_primary_button[0]['#title'],
         type: 'primary_light',
         class: 'shadow-md',
       }) }}
+      {% endif %}
+      {% if content.field_secondary_button[0] %}
+      {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+        href: content.field_secondary_button[0]['#url'],
+        label: content.field_secondary_button[0]['#title'],
+        type: 'link',
+        class: 'text-white text-shadow',
+      }) }}
+      {% endif %}
     </div>
     {% endif %}
   </div>

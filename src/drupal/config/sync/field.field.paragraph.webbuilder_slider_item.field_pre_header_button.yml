@@ -1,20 +1,20 @@
-uuid: 0f865537-ec08-4d27-ab3a-f0fa091446fc
+uuid: 587287bb-8419-4e1f-b7f2-49a5018a5cbf
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_primary_button
+    - field.storage.paragraph.field_pre_header_button
     - paragraphs.paragraphs_type.webbuilder_slider_item
   module:
     - link
-id: paragraph.webbuilder_slider_item.field_primary_button
-field_name: field_primary_button
+id: paragraph.webbuilder_slider_item.field_pre_header_button
+field_name: field_pre_header_button
 entity_type: paragraph
 bundle: webbuilder_slider_item
-label: 'Primärer Button'
+label: 'Pre Header Button'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:

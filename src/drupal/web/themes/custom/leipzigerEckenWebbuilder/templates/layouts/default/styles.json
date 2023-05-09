@@ -37,6 +37,7 @@
     "primary": "text-white bg-primary-600 hover:bg-primary-700",
     "primary_light": "text-black bg-primary-500 hover:bg-primary-400",
     "secondary": "text-primary-600 bg-white hover:bg-gray-50",
+    "link": "hover:underline focus:underline",
     "md": "px-5 py-3",
     "lg": "px-8 py-3 md:py-4 md:text-lg md:px-10"
   }
