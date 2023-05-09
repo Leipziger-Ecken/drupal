@@ -6,11 +6,15 @@ dependencies:
     - core.entity_view_mode.node.in_webbuilder
     - field.field.node.webbuilder_page.field_contents
     - field.field.node.webbuilder_page.field_header_image
+    - field.field.node.webbuilder_page.field_header_image_legacy
     - field.field.node.webbuilder_page.field_navigation
+    - field.field.node.webbuilder_page.field_navigation_main_type
     - field.field.node.webbuilder_page.field_parent
+    - field.field.node.webbuilder_page.field_pre_footer
     - field.field.node.webbuilder_page.field_pre_footer_body
     - field.field.node.webbuilder_page.field_pre_footer_button
     - field.field.node.webbuilder_page.field_pre_footer_heading
+    - field.field.node.webbuilder_page.field_pre_footer_image_legacy
     - field.field.node.webbuilder_page.field_short_description
     - field.field.node.webbuilder_page.field_slug
     - field.field.node.webbuilder_page.field_webbuilder
@@ -21,6 +25,7 @@ dependencies:
     - entity_reference_revisions
     - link
     - options
+    - svg_image
     - text
     - user
 id: node.webbuilder_page.in_webbuilder
@@ -46,6 +51,19 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
+  field_header_image_legacy:
+    type: image
+    weight: 12
+    region: content
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
   field_navigation:
     type: list_key
     weight: 5
@@ -53,16 +71,30 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
+  field_navigation_main_type:
+    type: list_key
+    weight: 6
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_pre_footer:
+    type: list_default
+    weight: 10
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
   field_pre_footer_body:
     type: text_default
-    weight: 7
+    weight: 8
     region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
   field_pre_footer_button:
     type: link
-    weight: 8
+    weight: 9
     region: content
     label: hidden
     settings:
@@ -74,11 +106,24 @@ content:
     third_party_settings: {  }
   field_pre_footer_heading:
     type: string
-    weight: 6
+    weight: 7
     region: content
     label: hidden
     settings:
       link_to_entity: false
+    third_party_settings: {  }
+  field_pre_footer_image_legacy:
+    type: image
+    weight: 11
+    region: content
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
   field_webbuilder:
     type: entity_reference_entity_id

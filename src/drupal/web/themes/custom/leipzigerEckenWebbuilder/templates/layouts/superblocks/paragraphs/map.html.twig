@@ -1,0 +1,24 @@
+<section
+  data-role="paragraph"
+>
+  <div class="{{ webbuilder_layout_styles().container.md }} py-24">
+    {% if content.field_heading[0] or content.field_body[0] %}
+    <div class="max-w-lg mx-auto mb-16 text-center">
+      {% if content.field_heading[0] %}
+      <h2 class="mb-3 {{ webbuilder_layout_styles().text.h2 }}">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      {% if content.field_body[0] %}
+      <div class="{{ webbuilder_layout_styles().text.prose }}">
+        {{ content.field_body }}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="w-full h-screen m-auto border-gray-200 border-1">
+      {{ content.field_map }}
+    </div>
+  </div>
+</section>

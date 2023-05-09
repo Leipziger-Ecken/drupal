@@ -5,27 +5,32 @@ dependencies:
   config:
     - core.entity_view_mode.node.backend_teaser
     - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_logo_legacy
     - field.field.node.sponsor.field_website
     - field.field.node.sponsor.og_audience
     - image.style.medium
     - node.type.sponsor
   module:
-    - media
+    - svg_image
     - user
 id: node.sponsor.backend_teaser
 targetEntityType: node
 bundle: sponsor
 mode: backend_teaser
 content:
-  field_logo:
+  field_logo_legacy:
+    type: image
     weight: 0
+    region: content
     label: hidden
     settings:
       image_style: medium
       image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
     third_party_settings: {  }
-    type: media_thumbnail
-    region: content
   field_website:
     weight: 1
     label: hidden
@@ -35,6 +40,7 @@ content:
     type: string
     region: content
 hidden:
+  field_logo: true
   langcode: true
   links: true
   og_audience: true

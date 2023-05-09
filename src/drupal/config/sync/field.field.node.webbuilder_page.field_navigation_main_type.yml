@@ -1,0 +1,23 @@
+uuid: 6e13cc62-4c7c-404a-a097-f028e3c6593a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_navigation_main_type
+    - node.type.webbuilder_page
+  module:
+    - options
+id: node.webbuilder_page.field_navigation_main_type
+field_name: field_navigation_main_type
+entity_type: node
+bundle: webbuilder_page
+label: 'Anzeige in Hauptnavigation als'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: link
+default_value_callback: ''
+settings: {  }
+field_type: list_string

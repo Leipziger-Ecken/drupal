@@ -1,0 +1,25 @@
+uuid: 64843f88-55e6-4f18-b999-813d36f4abc0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color_tertiary
+    - node.type.webbuilder
+  module:
+    - color_field
+id: node.webbuilder.field_color_tertiary
+field_name: field_color_tertiary
+entity_type: node
+bundle: webbuilder
+label: Tertiärfarbe
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    color: '#e5a50a'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

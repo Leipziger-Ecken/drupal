@@ -21,5 +21,5 @@
   slugInput.addEventListener('input', handleSlugInput);
 
   // if slug was not set yet, update it
-  if (!slugManuallyUpdated) updateSlug();
+  if (!slugManuallyUpdated) handleTitleInput();
 })();

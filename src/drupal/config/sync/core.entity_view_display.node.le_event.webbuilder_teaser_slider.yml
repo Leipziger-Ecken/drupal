@@ -1,0 +1,113 @@
+uuid: 0dd5014a-b3e8-4fa8-907d-62558d7ef216
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.date_format.medium
+    - core.entity_view_mode.node.webbuilder_teaser_slider
+    - field.field.node.le_event.field_adresse
+    - field.field.node.le_event.field_bezirk
+    - field.field.node.le_event.field_geofield
+    - field.field.node.le_event.field_is_featured
+    - field.field.node.le_event.field_le_event___eid
+    - field.field.node.le_event.field_le_event_beschreibung
+    - field.field.node.le_event.field_le_event_image
+    - field.field.node.le_event.field_le_event_is_barrier_free
+    - field.field.node.le_event.field_le_event_kategorie_gruppe
+    - field.field.node.le_event.field_le_event_kategorie_tags
+    - field.field.node.le_event.field_le_event_kategorie_typ
+    - field.field.node.le_event.field_le_event_lizenzhinweis
+    - field.field.node.le_event.field_le_event_occurrences
+    - field.field.node.le_event.field_le_event_website
+    - field.field.node.le_event.field_main_image
+    - field.field.node.le_event.field_online_event
+    - field.field.node.le_event.field_related_content
+    - field.field.node.le_event.og_audience
+    - node.type.le_event
+  module:
+    - address
+    - date_recur
+    - text
+    - user
+_core:
+  default_config_hash: SranR5Ezhhmx-F7EeReEqZU2MDf3q1HfccOPfqVIgDI
+id: node.le_event.webbuilder_teaser_slider
+targetEntityType: node
+bundle: le_event
+mode: webbuilder_teaser_slider
+content:
+  field_adresse:
+    type: address_plain
+    weight: 5
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_is_featured:
+    type: boolean
+    weight: 4
+    region: content
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+  field_le_event_beschreibung:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_le_event_occurrences:
+    weight: 2
+    label: hidden
+    settings:
+      format_type: medium
+      occurrence_format_type: medium
+      same_end_date_format_type: medium
+      separator: '-'
+      timezone_override: Europe/Berlin
+      interpreter: ''
+      show_next: 8
+      count_per_item: true
+    third_party_settings: {  }
+    type: date_recur_basic_formatter
+    region: content
+  field_main_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_online_event:
+    weight: 3
+    label: hidden
+    settings:
+      format: boolean
+      format_custom_true: ''
+      format_custom_false: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+hidden:
+  field_bezirk: true
+  field_geofield: true
+  field_le_event___eid: true
+  field_le_event_image: true
+  field_le_event_is_barrier_free: true
+  field_le_event_kategorie_gruppe: true
+  field_le_event_kategorie_tags: true
+  field_le_event_kategorie_typ: true
+  field_le_event_lizenzhinweis: true
+  field_le_event_website: true
+  field_related_content: true
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

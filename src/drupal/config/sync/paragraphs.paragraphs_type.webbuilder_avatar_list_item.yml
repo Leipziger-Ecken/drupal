@@ -1,0 +1,10 @@
+uuid: 87e5fce2-10ed-4360-9966-d3bc03b64eb5
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_avatar_list_item
+label: Avatar
+icon_uuid: null
+icon_default: null
+description: 'Ein Avatar mit einer kurzen Beschreibung.'
+behavior_plugins: {  }

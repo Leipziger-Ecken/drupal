@@ -1,0 +1,38 @@
+uuid: 41cf237c-af1e-4f89-8dea-e4974378f0c0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logo_legacy
+    - node.type.sponsor
+  module:
+    - image
+id: node.sponsor.field_logo_legacy
+field_name: field_logo_legacy
+entity_type: node
+bundle: sponsor
+label: Logo
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: le
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: 5MB
+  max_resolution: 1000x800
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

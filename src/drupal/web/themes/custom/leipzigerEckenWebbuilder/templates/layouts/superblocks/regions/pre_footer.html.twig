@@ -1,0 +1,33 @@
+<section class="grid grid-cols-1 md:grid-cols-2 gap-0">
+  <div class="col-span-1 bg-secondary-600 py-16 px-20 {{ webbuilder_layout_styles().text.prose_white }}">
+    {% if pre_footer_heading %}
+    <h3 class="mt-0 text-white">
+      {{ pre_footer_heading }}
+    </h3>
+    {% endif %}
+
+    {{ pre_footer_body | raw }}
+  </div>
+  <div class="col-span-1 relative flex items-center justify-center">
+    {% if pre_footer_image %}
+    <figure class="absolute inset-0 overflow-hidden">
+      {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+        class: 'w-full h-full object-cover',
+        image: pre_footer_image,
+        width: 610,
+        image_style: 'webbuilder_teaser',
+      }) }}
+    </figure>
+    {% endif %}
+    {% if pre_footer_button %}
+    {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+      tag: 'a',
+      type: 'primary_light',
+      class: 'shadow-sm relative z-10',
+      href: pre_footer_button_url,
+      label: pre_footer_button_label,
+    }) }}
+    {% endif %}
+  </div>
+
+</section>

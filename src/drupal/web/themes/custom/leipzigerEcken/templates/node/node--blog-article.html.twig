@@ -94,10 +94,11 @@
   </div>
     
   <div class="col-md-7 beschreibung clearfix">
-    {% if content.field_main_image[0] %}
+    {% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
+    {% if image %}
     {{ include('@leipzigerEcken/partials/media_image.html.twig', {
       class: 'page-header',
-      image: content.field_main_image[0],
+      image: image,
       width: 665,
       image_style: 'main_image',
     }) }}
@@ -109,10 +110,11 @@
     </div>
     {% endif %}   
     
-    {% if content.field_images[0] %}
+    {% set images = content.field_images_legacy | default(content.field_image) %}
+    {% if images[0] %}
     <div class="abstand">
       {{ include('@leipzigerEcken/partials/media_image_thumbnails.html.twig', {
-        images: content.field_images
+        images: images
       }) }}
     </div>
     {% endif %}

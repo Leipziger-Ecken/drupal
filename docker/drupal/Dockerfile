@@ -117,5 +117,9 @@ RUN sudo apt-get install -y nodejs
 COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY vhost.conf /etc/apache2/sites-enabled/000-default.conf
 COPY update.sh /update.sh
+COPY watch.sh /watch.sh
+RUN \
+	chmod u+x /update.sh && \
+	chmod +x /watch.sh
 RUN chown -R :www-data /var/www && chmod -R g+rw /var/www
 WORKDIR /var/www/html

@@ -6,15 +6,17 @@ dependencies:
     - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_main_image_legacy
     - field.field.node.partner.field_partner_type
     - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
+    - image.style.thumbnail
     - node.type.partner
   module:
     - conditional_fields
     - field_group
-    - media_library
     - select2
+    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -92,30 +94,13 @@ content:
           bundle: partner
     type: text_textarea
     region: content
-  field_main_image:
+  field_main_image_legacy:
     weight: 7
     settings:
-      media_types: {  }
-    third_party_settings:
-      conditional_fields:
-        cbe03f27-418b-402f-9dae-8086a7b51434:
-          dependee: field_partner_type
-          settings:
-            state: visible
-            condition: value
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                value: custom
-            effect: show
-            effect_options: {  }
-            selector: ''
-          entity_type: node
-          bundle: partner
-    type: media_library_widget
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_partner_type:
     weight: 2
@@ -197,6 +182,7 @@ content:
           bundle: partner
 hidden:
   created: true
+  field_main_image: true
   path: true
   promote: true
   published_at: true

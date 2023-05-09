@@ -1,0 +1,27 @@
+{% if rows -%}
+
+{# Featured articles #}
+{% for index,row in rows[0]['#rows'] %}
+{% set row = row['#row'] %}
+{% if row._entity.field_is_featured[0].value == '1' %}
+  {{ drupal_entity('node', row._entity.nid[0].value, 'webbuilder_featured_teaser') }}
+{% endif %}
+{% endfor %}
+
+<div class="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+  {# regular articles #}
+  {% for index,row in rows[0]['#rows'] %}
+  {% set row = row['#row'] %}
+  {% if not row._entity.field_is_featured[0] or row._entity.field_is_featured[0].value == '0' %}
+    {{ drupal_entity('node', row._entity.nid[0].value, 'webbuilder_teaser') }}
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% else %}
+<div class="prose pt-6">
+  {{ options.no_results_body|raw }}
+</div>
+{% endif %}
+
+{{ pager }}

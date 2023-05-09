@@ -1,18 +1,28 @@
 {% set frontpage_id = content.field_frontpage[0]['#plain_text'] | default(null) %}
 {% set color_primary = content.field_color_primary[0]['#markup'] %}
+{% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+{% set color_secondary = content.field_color_secondary[0]['#markup'] %}
+{% set color_secondary_hsl = color_hex_to_hsl(color_secondary) %}
+{% set color_tertiary = content.field_color_tertiary[0]['#markup'] %}
+{% set color_tertiary_hsl = color_hex_to_hsl(color_tertiary) %}
 {% set fonts = content.field_fonts[0]['#markup'] | split('+', 2) %}
 {% set logo = content.field_logo[0]['#item'] %}
-{% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
 {% set font_heading = fonts[0] %}
 {% set font_body = fonts[1] %}
-{% set logo_url = logo|file_url %}
-
+{% set logo_url = logo | file_url %}
+{% set color_styles = [
+  '--color-primary-h:' ~ color_primary_hsl[0] ~ '; --color-primary-s:' ~ color_primary_hsl[1] ~ '%; --color-primary-l: 50%;',
+  '--color-secondary-h:' ~ color_secondary_hsl[0] ~ '; --color-secondary-s:' ~ color_secondary_hsl[1] ~ '%; --color-secondary-l: 50%;',
+  '--color-tertiary-h:' ~ color_tertiary_hsl[0] ~ '; --color-tertiary-s:' ~ color_tertiary_hsl[1] ~ '%; --color-tertiary-l: 50%;',
+] | join(' ')
+%}
+{% set font_styles = '--font-heading: ' ~ font_heading ~ '; --font-body: ' ~ font_body ~ ';' %}
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
 {{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
 
 {# Display first page #}
 {% if frontpage_id %}
-<div class="root" style="--color-primary-h: {{ color_primary_hsl[0] }}; --color-primary-s: {{ color_primary_hsl[1] }}%; --color-primary-l: 50%; --font-heading: '{{ font_heading }}'; --font-body: '{{ font_body }}';">
+<div class="root" style="{{ color_styles | raw }}{{ font_styles | raw }}">
   {{ drupal_entity('node', frontpage_id, 'in_webbuilder') }}
 </div>
 {% else %}
@@ -30,7 +40,7 @@
 
         <div class="mt-5 max-w-md mx-auto items-end sm:flex sm:justify-center md:mt-8">
             <a class="inline-flex items-center justify-center border border-transparent text-base font-medium whitespace-nowrap rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 text-white bg-primary-600 hover:bg-primary-700 px-8 py-3 md:py-4 md:text-lg md:px-10 mt-8 w-full sm:w-auto shadow" href="{{ drupal_url('/user/webbuilder/'~ node.id() ~'/pages') }}">
-              Seiten verwalten
+              Jetzt Seite anlegen
             </a>
         </div>
       </div>

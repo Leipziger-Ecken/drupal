@@ -1,0 +1,50 @@
+{% set node_type = node.getType() %}
+{% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
+{% set url = webbuilder_url(webbuilder_id(), 'le_webbuilder.node.' ~ node_type, {
+  node: node.id(),
+  destination: get_destination(),
+}) %}
+<article class="flex flex-col shadow-lg overflow-hidden h-full bg-white">
+  {% if image %}
+  <figure class="relative w-full">
+    <a href="{{ url }}" class="relative block w-full bg-white overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+      {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
+        class: 'w-full aspect-square object-cover',
+        image: image,
+        width: 1280,
+        image_style: 'webbuilder_teaser',
+      }) }}
+    </a>
+  </figure>
+  {% endif %}
+  <div class="p-4 {{ webbuilder_layout_styles().text.prose }}">
+    <h2 class="mb-0">
+      <a href="{{ url }}" class="text-black no-underline hover:underline focus:underline">
+        {{ label }}
+      </a>
+    </h2>
+    {% set date = node_type == 'le_event' ? content.field_le_event_occurrences : content.published_at|default(node.created_at) %}
+    {% if date %}
+    <div class="flex items-start">
+      {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/calendar.html.twig', {
+        class: 'w-6 h-6 block mr-2',
+      }) }}
+      {{ date }}
+    </div>
+    {% endif %}
+    {% set address = render_var(content.field_adresse) | striptags | trim %}
+    {% if address %}
+    <div class="flex items-start">
+      {{ include('@leipzigerEckenWebbuilder/layouts/superblocks/partials/icons/map-pin.html.twig', {
+        class: 'w-6 h-6 block mr-2',
+      }) }}
+      {{ address }}
+    </div>
+    {% endif %}
+    {% if node_type == 'le_event' %}
+    {{ content.field_le_event_beschreibung }}
+    {% else %}
+    {{ content.field_body | default(content.field_description) | default(content.body) }}
+    {% endif %}
+  </div>
+</article>

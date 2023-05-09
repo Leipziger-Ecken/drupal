@@ -1,12 +1,25 @@
 {% set layout_is_in_webbuilder = true %}
 {% set webbuilder_id = content.field_webbuilder[0]['#plain_text'] | default(null) %}
 {% if webbuilder_id %}
+  {% set color_primary = drupal_field('field_color_primary', 'node', webbuilder_id)[0]['#markup'] | default(color_primary) %}
+  {% set color_primary_hsl = color_hex_to_hsl(color_primary) %}
+  {% set color_secondary = drupal_field('field_color_secondary', 'node', webbuilder_id)[0]['#markup'] | default(color_secondary) %}
+  {% set color_secondary_hsl = color_hex_to_hsl(color_secondary) %}
+  {% set color_tertiary = drupal_field('field_color_tertiary', 'node', webbuilder_id)[0]['#markup'] | default(color_tertiary) %}
+  {% set color_tertiary_hsl = color_hex_to_hsl(color_tertiary) %}
   {% set layout = drupal_field('field_layout', 'node', webbuilder_id)[0]['#markup'] | default('default') %}
-  {% set logo = drupal_field('field_logo', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
-  {% set logo_url = logo|file_url %}
+  {% set logo = drupal_field('field_logo_legacy', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+  {% set logo_url = logo | file_url %}
+  {% set color_styles = [
+    '--color-primary-h:' ~ color_primary_hsl[0] ~ '; --color-primary-s:' ~ color_primary_hsl[1] ~ '%; --color-primary-l: 50%;',
+    '--color-secondary-h:' ~ color_secondary_hsl[0] ~ '; --color-secondary-s:' ~ color_secondary_hsl[1] ~ '%; --color-secondary-l: 50%;',
+    '--color-tertiary-h:' ~ color_tertiary_hsl[0] ~ '; --color-tertiary-s:' ~ color_tertiary_hsl[1] ~ '%; --color-tertiary-l: 50%;',
+  ] | join(' ')
+  %}
+  {% set font_styles = '--font-heading: ' ~ font_heading ~ '; --font-body: ' ~ font_body ~ ';' %}
 {% endif %}
 
-{% extends '@leipzigerEckenWebbuilder/layouts/layout--' ~ layout ~'.html.twig' %}
+{% extends '@leipzigerEckenWebbuilder/layouts/' ~ layout ~'/index.html.twig' %}
 
 {% block content %}
 {{ content.field_contents }}

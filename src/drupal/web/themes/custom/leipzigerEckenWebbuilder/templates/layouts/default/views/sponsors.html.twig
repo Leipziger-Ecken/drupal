@@ -1,0 +1,5 @@
+<div class="mt-6 mx-auto grid grid-cols-2 {{ rows[0]['#rows']|length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2' }} gap-0.5 lg:mt-8">
+  {% for index,row in rows[0]['#rows'] %}
+    {{ drupal_entity('node', row['#node'].nid[0].value, 'webbuilder_teaser') }}
+  {% endfor %}
+</div>

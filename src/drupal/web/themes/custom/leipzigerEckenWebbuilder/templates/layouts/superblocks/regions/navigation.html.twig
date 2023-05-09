@@ -1,0 +1,97 @@
+{% set user_is_logged_in = 'anonymous' not in user.account.roles %}
+{% set webbuilder_title = drupal_field('title', 'node', webbuilder_id)[0]['#context'].value %}
+<div
+  class="fixed t-0 l-0 r-0 w-full z-10 bg-white"
+  data-controller="main-menu"
+  data-main-menu-target="header"
+  data-toggle-class="shadow"
+>
+  <div class="flex justify-between items-center px-4 py-3 sm:px-6 md:justify-start md:space-x-10">
+    <div class="flex justify-start shrink-0 grow">
+      <a href="{{ webbuilder_url(webbuilder_id) }}">
+        <span class="sr-only">{{ webbuilder_title }}</span>
+        <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-20"/>
+      </a>
+    </div>
+    <div class="-mr-2 -my-2 md:hidden">
+      <button
+        data-action="main-menu#toggleMobileMenu"
+        type="button"
+        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+      >
+        <span class="sr-only">{{ 'Open Menu'|t }}</span><!-- Heroicon name: outline/menu -->
+        {{ include('@leipzigerEckenWebbuilder/partials/icons/outline_menu.html.twig', {
+          class: 'h-6 w-6'
+        }) }}
+      </button>
+    </div>
+    <div class="hidden md:block">
+      {{ drupal_view('webbuilder_pages', 'navigation_main', webbuilder_id) }}
+    </div>
+
+    <div class="hidden md:flex items-center justify-end shrink-0 space-x-10">
+      {% if not is_preview %}
+        {% if user_is_logged_in %}
+          {{ drupal_block('local_tasks_block', wrapper=false) }}
+        {% else %}
+          {{ drupal_block('system_menu_block:account', wrapper=false) }}
+        {% endif %}
+      {% endif %}
+      <!-- TODO: enable language switch
+      <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">Deutsch</a>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+        </path>
+      </svg>
+    -->
+    </div>
+  </div>
+
+  <div
+    data-main-menu-target="mobileMenu"
+    data-toggle-class="opacity-0 scale-95 opacity-100 scale-100 pointer-events-none"
+    data-toggle-class-lazy="duration-200 duration-100 ease-in-out ease-in"
+    class="absolute top-0 inset-x-0 p-2 transition origin-top-right md:hidden opacity-0 scale-95 duration-200 ease-out pointer-events-none"
+  >
+    <div class="rounded-lg shadow-lg ring-1 ring-black ring/5 bg-white divide-y-2 divide-gray-50">
+      <div class="pt-5 pb-6 px-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto"/>
+          </div>
+          <div class="-mr-2">
+            <button
+              data-action="main-menu#toggleMobileMenu"
+              type="button"
+              class="bg-white rounded-md p-2 inline-flex items-center justify-center text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+            >
+              <span class="sr-only">{{ 'Close Menu'|t }}</span><!-- Heroicon name: outline/x -->
+              {{ include('@leipzigerEckenWebbuilder/partials/icons/outline_x.html.twig', {class:'h-6 w-6'}) }}
+            </button>
+          </div>
+        </div>
+        <div class="mt-6">
+          {{ drupal_view('webbuilder_pages', 'navigation_mobile', webbuilder_id) }}
+        </div>
+      </div>
+      <div class="py-6 px-5 space-x-10">
+        {% if not is_preview %}
+          {{ drupal_block('local_tasks_block', wrapper=false) }}
+          {% if not user_is_logged_in %}
+            {{ drupal_block('system_menu_block:account', wrapper=false) }}
+          {% endif %}
+        {% endif %}
+
+        <!-- TODO: enable language switch
+        <a href="#" class="w-full flex items-center justify-start px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-gray-50">
+          <div>Deutsch</div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd">
+            </path>
+          </svg>
+        </a>
+      -->
+      </div>
+    </div>
+  </div>
+</div>

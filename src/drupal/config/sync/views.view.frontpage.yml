@@ -1089,6 +1089,13 @@ display:
         options:
           items_per_page: 5
           offset: 0
+      cache:
+        type: time
+        options:
+          results_lifespan: 21600
+          results_lifespan_custom: 0
+          output_lifespan: 21600
+          output_lifespan_custom: 0
     display_plugin: page
     display_title: Page
     id: page_1
@@ -1270,6 +1277,51 @@ display:
           entity_type: node
           entity_field: type
           plugin_id: bundle
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: today
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          plugin_id: datetime
       filter_groups:
         operator: AND
         groups:
@@ -1732,6 +1784,23 @@ display:
           required: false
           entity_type: node
           plugin_id: standard
+      sorts:
+        field_le_event_occurrences_value:
+          id: field_le_event_occurrences_value
+          table: date_recur__node__field_le_event_occurrences
+          field: field_le_event_occurrences_value
+          relationship: field_le_event_occurrences_occurrences
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          granularity: minute
+          plugin_id: datetime
+      cache:
+        type: tag
+        options: {  }
     display_plugin: page
     display_title: event-overview
     id: page_2
@@ -1777,46 +1846,6 @@ display:
         options:
           view_mode: teaser
       filters:
-        promote:
-          admin_label: ''
-          expose:
-            description: ''
-            identifier: ''
-            label: ''
-            multiple: false
-            operator: ''
-            operator_id: ''
-            remember: false
-            remember_roles:
-              authenticated: authenticated
-            required: false
-            use_operator: false
-            operator_limit_selection: false
-            operator_list: {  }
-          exposed: false
-          field: promote
-          group: 1
-          group_info:
-            default_group: All
-            default_group_multiple: {  }
-            description: ''
-            group_items: {  }
-            identifier: ''
-            label: ''
-            multiple: false
-            optional: true
-            remember: false
-            widget: select
-          group_type: group
-          id: promote
-          is_grouped: false
-          operator: '='
-          relationship: none
-          table: node_field_data
-          value: '1'
-          plugin_id: boolean
-          entity_type: node
-          entity_field: promote
         status:
           expose:
             operator: ''
@@ -1921,7 +1950,7 @@ display:
       pager:
         type: some
         options:
-          items_per_page: 5
+          items_per_page: 4
           offset: 0
       arguments:
         name:

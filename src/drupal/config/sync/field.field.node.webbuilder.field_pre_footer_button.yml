@@ -1,0 +1,23 @@
+uuid: 334fc0e9-1165-4685-a34c-3b688bd6c15d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pre_footer_button
+    - node.type.webbuilder
+  module:
+    - link
+id: node.webbuilder.field_pre_footer_button
+field_name: field_pre_footer_button
+entity_type: node
+bundle: webbuilder
+label: Button
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

@@ -1,0 +1,21 @@
+uuid: 4ef1d634-b6a2-42e0-83e1-6973255615be
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_caption
+    - paragraphs.paragraphs_type.webbuilder_avatar_list_item
+  module:
+    - text
+id: paragraph.webbuilder_avatar_list_item.field_image_caption
+field_name: field_image_caption
+entity_type: paragraph
+bundle: webbuilder_avatar_list_item
+label: Bildbeschreibung
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

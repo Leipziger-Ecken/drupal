@@ -6,13 +6,16 @@ dependencies:
     - core.entity_view_mode.node.backend_teaser
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_images_legacy
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_main_image_legacy
     - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
     - node.type.project
   module:
+    - svg_image
     - text
     - user
 id: node.project.backend_teaser
@@ -38,15 +41,19 @@ content:
       format_custom_true: ''
       format_custom_false: ''
     third_party_settings: {  }
-  field_main_image:
-    type: entity_reference_entity_view
+  field_main_image_legacy:
+    type: image
     weight: 0
+    region: content
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    region: content
   published_at:
     type: timestamp
     weight: 2
@@ -59,7 +66,9 @@ content:
     third_party_settings: {  }
 hidden:
   field_images: true
+  field_images_legacy: true
   field_legal_terms_accepted: true
+  field_main_image: true
   field_related_content: true
   langcode: true
   links: true

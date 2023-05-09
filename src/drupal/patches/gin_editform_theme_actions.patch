@@ -1,0 +1,12 @@
+--- gin.orig.theme	2021-10-01 14:09:44.644000000 +0200
++++ gin.theme	2021-10-01 14:11:26.710824269 +0200
+@@ -257,9 +257,6 @@
+       $form['gin_sidebar']['footer'] = ($form['footer']) ?? [];
+       // Copy actions over.
+       $form['gin_sidebar']['actions'] = ($form['actions']) ?? [];
+-      // Unset previous added preview & submit.
+-      unset($form['gin_sidebar']['actions']['preview']);
+-      unset($form['gin_sidebar']['actions']['submit']);
+     }
+ 
+     // Attach library.

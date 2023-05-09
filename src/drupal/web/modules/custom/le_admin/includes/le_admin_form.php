@@ -213,6 +213,27 @@ function _le_admin_akteur_form_alter(&$form, FormStateInterface $form_state, $fo
 
 function _le_admin_webbuilder_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $form['#attached']['library'][] = 'le_admin/webbuilder_form';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Archivo Black';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Cormorant Garamond';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Crimson Pro';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Dm Sans';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/DM Serif Display';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Eczar';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Gentium Basic';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Inter';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Jost';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Kavoon';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Libre Baskerville';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Libre Franklin';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Proza Libre';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Rubik';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Rubik';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Space Grotesk';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Space Grotesk';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Taviraj';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Trirong';
+  $form['#attached']['library'][] = 'leipzigerEckenWebbuilder/Work Sans';
   $user = \Drupal::currentUser();
   $roles = $user->getRoles();
 
@@ -330,26 +351,30 @@ function _le_admin_webbuilder_page_form_alter(&$form, FormStateInterface $form_s
     unset($form['field_webbuilder']);
     unset($form['og_audience']);
 
-    $form['meta']['le_admin_node_view'] = [
-      '#type' => 'item',
-      '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('entity.node.canonical', ['node' => $page->id()]),
-        t('View page'),
-        'webbuilder_page_' . $page->id()
-      ),
-      '#weight' => -10,
-    ];
+    $webbuilder_id = null;
 
-    $form['meta']['le_admin_user_webbuilder'] = [
-      '#type' => 'item',
-      '#markup' => _le_admin_sidebar_link(
-        Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $page->og_audience[0]->target_id]),
-        t('Manage website')
-      ),
-      '#weight' => -9,
-    ];
+    if ($page->id()) {
+      $form['meta']['le_admin_node_view'] = [
+        '#type' => 'item',
+        '#markup' => _le_admin_sidebar_link(
+          Url::fromRoute('entity.node.canonical', ['node' => $page->id()]),
+          t('View page'),
+          'webbuilder_page_' . $page->id()
+        ),
+        '#weight' => -10,
+      ];
 
-    $webbuilder_id = $page->field_webbuilder[0]->target_id;
+      $form['meta']['le_admin_user_webbuilder'] = [
+        '#type' => 'item',
+        '#markup' => _le_admin_sidebar_link(
+          Url::fromRoute('le_admin.user_akteur_webbuilder', ['node' => $page->og_audience[0]->target_id]),
+          t('Manage website')
+        ),
+        '#weight' => -9,
+      ];
+
+      $webbuilder_id = $page->field_webbuilder[0]->target_id;
+    }
 
     if (!$webbuilder_id) {
       return;
@@ -486,10 +511,17 @@ function _le_admin_og_audience_form_alter(&$form, FormStateInterface $form_state
 
 function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
+  $user = \Drupal::currentUser();
+
   $form['#attached']['library'][] = 'le_admin/tailwind';
 
   // allow access to publish
   $form['status']['#access'] = true;
+
+  // hide revision checkbox for regular users
+  if (in_array('webbuilder', $user->getRoles())) {
+    unset($form['revision']);
+  }
 
   // add back action
   $destination = \Drupal::request()->query->get('destination');
@@ -502,6 +534,19 @@ function _le_admin_node_form_alter(&$form, FormStateInterface $form_state, $form
     ],
     '#weight' => -10,
   ];
+
+  // add missing labels to managed_file fields
+  foreach($form as $key => &$element) {
+    if (
+      is_array($element) &&
+      isset($element['#type']) &&
+      $element['#type'] === 'container' && isset($element['widget']) &&
+      isset($element['widget'][0]['#type']) &&
+      $element['widget'][0]['#type'] === 'managed_file'
+    ) {
+      $element['#prefix'] = '<strong>' . $element['widget'][0]['#title'] . '</strong>';
+    }
+  }
 }
 
 function le_admin_webbuilder_page_create_submit(array $form, FormStateInterface $form_state)
@@ -677,7 +722,7 @@ function _le_admin_form_media_upload_alter(&$form, FormStateInterface $form_stat
   if (!isset($form['media'][0])) {
     return;
   }
-  
+
   $form['media'][0]['fields']['field_og_audience']['widget']['#options'] = [];
 
   if ($user->hasPermission('edit any le_akteur content')) {

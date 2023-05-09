@@ -1,0 +1,91 @@
+<section
+  class="relative bg-white {{ webbuilder_layout_styles().margin.b_md }}"
+  data-role="paragraph"
+>
+  <div class="absolute inset-0">
+    <div class="absolute inset-y-0 left-0 w-1/2"></div>
+  </div>
+  <div class="relative {{ webbuilder_layout_styles().container.md }} lg:grid lg:grid-cols-5">
+    <div class="py-16 lg:col-span-2 lg:py-24 xl:pr-12 {{ webbuilder_layout_styles().padding.x_md }}">
+      <div class="max-w-lg mx-auto">
+        {% if content.field_heading[0] %}
+        <h2 class="mb-3 {{ webbuilder_layout_styles().text.h3 }}">
+          {{ content.field_heading }}
+        </h2>
+        {% endif %}
+        <div class="{{ webbuilder_layout_styles().text.prose }}">
+          {{ content.field_body }}
+        </div>
+      </div>
+    </div>
+    <div class="bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
+      <div class="max-w-lg mx-auto lg:max-w-none">
+        <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+          {% if 'full_name' in fields %}
+          <div>
+            <label for="full_name" class="sr-only">{{ 'Full name'|t }}</label>
+            <input
+              type="text"
+              name="full_name"
+              id="full_name"
+              autocomplete="name"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
+              placeholder="{{ 'Full name'|t }}"
+              {% if 'full_name' in required_fields %}required="true"{% endif %}
+            >
+          </div>
+          {% endif %}
+          {% if 'email' in fields %}
+          <div>
+            <label for="email" class="sr-only">{{ 'Email'|t }}</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
+              placeholder="{{ 'Email'|t }}"
+              {% if 'email' in required_fields %}required="true"{% endif %}
+            >
+          </div>
+          {% endif %}
+          {% if 'phone' in fields %}
+          <div>
+            <label for="phone" class="sr-only">{{ 'Phone'|t }}</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              autocomplete="tel"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
+              placeholder="{{ 'Phone'|t }}"
+              {% if 'phone' in required_fields %}required="true"{% endif %}
+            >
+          </div>
+          {% endif %}
+          <div>
+            <label for="message" class="sr-only">{{ 'Message'|t }}</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="block w-full {{ webbuilder_layout_styles().form.input }}"
+              placeholder="{{ 'Message'|t }}"
+              required="true"
+            >
+            </textarea>
+          </div>
+          <div>
+            {{ include('@leipzigerEckenWebbuilder/partials/components/button.html.twig', {
+              tag: 'button',
+              type: 'primary_light',
+              attributes:'type="submit"',
+              class: 'shadow-sm',
+              label: 'Submit'|t,
+            }) }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

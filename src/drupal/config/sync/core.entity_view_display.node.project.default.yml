@@ -5,13 +5,16 @@ dependencies:
   config:
     - field.field.node.project.body
     - field.field.node.project.field_images
+    - field.field.node.project.field_images_legacy
     - field.field.node.project.field_is_featured
     - field.field.node.project.field_legal_terms_accepted
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_main_image_legacy
     - field.field.node.project.field_related_content
     - field.field.node.project.og_audience
     - node.type.project
   module:
+    - svg_image
     - text
     - user
 id: node.project.default
@@ -26,23 +29,31 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_images:
+  field_images_legacy:
     weight: 4
     label: hidden
     settings:
-      link: true
-      view_mode: default
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: image
     region: content
-  field_main_image:
-    type: entity_reference_entity_view
+  field_main_image_legacy:
     weight: 1
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
+    type: image
     region: content
   field_related_content:
     weight: 5
@@ -67,7 +78,9 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_images: true
   field_is_featured: true
   field_legal_terms_accepted: true
+  field_main_image: true
   langcode: true
   published_at: true

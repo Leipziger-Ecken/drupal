@@ -1,0 +1,68 @@
+uuid: 92a6dab2-2f03-418d-8c5d-d8eb0bf7b676
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_avatar_list.field_avatar_list_items
+    - field.field.paragraph.webbuilder_avatar_list.field_body
+    - field.field.paragraph.webbuilder_avatar_list.field_cols
+    - field.field.paragraph.webbuilder_avatar_list.field_heading
+    - paragraphs.paragraphs_type.webbuilder_avatar_list
+  module:
+    - paragraphs
+    - text
+id: paragraph.webbuilder_avatar_list.default
+targetEntityType: paragraph
+bundle: webbuilder_avatar_list
+mode: default
+content:
+  field_avatar_list_items:
+    type: paragraphs
+    weight: 2
+    settings:
+      title: Avatare
+      title_plural: Avatare
+      edit_mode: closed
+      closed_mode: preview
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: webbuilder_avatar_list_item
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  field_body:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_cols:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_heading:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true

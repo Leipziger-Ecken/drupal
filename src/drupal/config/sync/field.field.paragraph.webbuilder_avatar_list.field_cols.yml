@@ -1,0 +1,23 @@
+uuid: d26ee92a-7dee-4f41-be8f-7c4dc8a80a2e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cols
+    - paragraphs.paragraphs_type.webbuilder_avatar_list
+  module:
+    - options
+id: paragraph.webbuilder_avatar_list.field_cols
+field_name: field_cols
+entity_type: paragraph
+bundle: webbuilder_avatar_list
+label: 'Anzahl Spalten'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: '3'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

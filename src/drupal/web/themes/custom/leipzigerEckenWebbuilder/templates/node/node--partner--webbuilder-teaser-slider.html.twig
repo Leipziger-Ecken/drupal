@@ -1,0 +1,16 @@
+{% set image = content.field_main_image_legacy[0] | default(content.field_main_image[0]) %}
+{% set website_url = content.field_website[0]['#context'].value %}
+{% set akteur_id = content.field_akteur[0]['#plain_text'] %}
+{% set partner_type = content.field_partner_type[0]['#markup'] %}
+{% set title = label %}
+{% set description = content.field_description %}
+{% if partner_type == 'le_akteur' and akteur_id %}
+  {% set title = drupal_field('title', 'node', akteur_id) %}
+  {% set image = drupal_field('field_logo_legacy', 'node', akteur_id)[0] | default(image) %}
+  {% set website_url = drupal_url('node/' ~ akteur_id) %}
+  {% set description = drupal_field('field_le_akteur_description', 'node', akteur_id) %}
+{% endif %}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/partner-teaser-slider.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/nodes/partner-teaser-slider.html.twig',
+]) }}

@@ -1,0 +1,68 @@
+{% if not layout_is_in_webbuilder %}
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_heading) }}
+{{ attach_library('leipzigerEckenWebbuilder/' ~ font_body) }}
+{% set color_styles = [
+  '--color-primary-h:' ~ color_primary_hsl[0] ~ '; --color-primary-s:' ~ color_primary_hsl[1] ~ '%; --color-primary-l: 50%;',
+  '--color-secondary-h:' ~ color_secondary_hsl[0] ~ '; --color-secondary-s:' ~ color_secondary_hsl[1] ~ '%; --color-secondary-l: 50%;',
+  '--color-tertiary-h:' ~ color_tertiary_hsl[0] ~ '; --color-tertiary-s:' ~ color_tertiary_hsl[1] ~ '%; --color-tertiary-l: 50%;',
+] | join(' ')
+%}
+{% set font_styles = '--font-heading: ' ~ font_heading ~ '; --font-body: ' ~ font_body ~ ';' %}
+{% set pre_footer_mode = content.field_pre_footer[0]['#markup'] %}
+  {% set pre_footer_heading = null %}
+  {% set pre_footer_body = null %}
+  {% set pre_footer_button = null %}
+  {% set pre_footer_image = null %}
+  {% if pre_footer_mode == 'global' %}
+    {% set pre_footer_heading = drupal_field('field_pre_footer_heading', 'node', webbuilder_id)[0]['#context']['value'] %}
+    {% set pre_footer_body = drupal_field('field_pre_footer_body', 'node', webbuilder_id)[0]['#text'] %}
+    {% set pre_footer_button = drupal_field('field_pre_footer_button', 'node', webbuilder_id)[0] %}
+    {% set pre_footer_button_label = pre_footer_button['#title'] %}
+    {% set pre_footer_button_url = pre_footer_button['#url'] %}
+    {% set pre_footer_image = drupal_field('field_pre_footer_image_legacy', 'node', webbuilder_id)[0] %}
+  {% elseif pre_footer_mode == 'custom' %}
+    {% set pre_footer_heading = content.field_pre_footer_heading[0] %}
+    {% set pre_footer_body = content.field_pre_footer_body[0] %}
+    {% set pre_footer_button = content.field_pre_footer_button[0] %}
+    {% set pre_footer_button_label = pre_footer_button['#title'] %}
+    {% set pre_footer_button_url = pre_footer_button['#url'] %}
+    {% set pre_footer_image = content.field_pre_footer_image[0] %}
+  {% endif %}
+<div class="root" style="{{ color_styles | raw }}{{ font_styles | raw }}">
+{% endif %}
+  <header>
+    {{ include([
+      '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/regions/navigation.html.twig',
+      '@leipzigerEckenWebbuilder/layouts/default/regions/navigation.html.twig',
+    ]) }}
+    {{ include([
+      '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/regions/header.html.twig',
+      '@leipzigerEckenWebbuilder/layouts/default/regions/header.html.twig',
+    ]) }}
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8">
+      {{ drupal_block('system_messages_block') }}
+    </section>
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-end space-x-10">
+      {{ drupal_block('local_actions_block') }}
+    </section>
+  </header>
+  <main id="main">
+    {% block content %}
+    {{ content.field_contents }}
+    {% endblock %}
+
+    {% if pre_footer_mode and pre_footer_mode != 'none' %}
+    {{ include([
+      '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/regions/pre_footer.html.twig',
+      '@leipzigerEckenWebbuilder/layouts/default/regions/pre_footer.html.twig'
+    ]) }}
+    {% endif %}
+  </main>
+
+  {{ include([
+    '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/regions/footer.html.twig',
+    '@leipzigerEckenWebbuilder/layouts/default/regions/footer.html.twig'
+  ]) }}
+{% if not layout_is_in_webbuilder %}
+</div>
+{% endif %}

@@ -1,0 +1,19 @@
+uuid: 923c8d33-a7f2-4cfa-8a4a-03c3543590ff
+langcode: de
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_pre_header_button
+field_name: field_pre_header_button
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

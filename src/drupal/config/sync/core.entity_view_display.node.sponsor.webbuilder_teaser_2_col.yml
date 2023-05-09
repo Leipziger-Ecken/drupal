@@ -1,0 +1,46 @@
+uuid: 75d883f5-e9d6-4ca0-856b-fba634ae0984
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_teaser_2_col
+    - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_logo_legacy
+    - field.field.node.sponsor.field_website
+    - field.field.node.sponsor.og_audience
+    - node.type.sponsor
+  module:
+    - svg_image
+    - user
+id: node.sponsor.webbuilder_teaser_2_col
+targetEntityType: node
+bundle: sponsor
+mode: webbuilder_teaser_2_col
+content:
+  field_logo_legacy:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_website:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_logo: true
+  langcode: true
+  links: true
+  og_audience: true
+  published_at: true

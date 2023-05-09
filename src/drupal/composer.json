@@ -100,7 +100,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/console-extend-plugin": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "oomphinc/composer-installers-extender": true
+        }
     },
     "extra": {
         "drupal-scaffold": {
@@ -173,7 +181,7 @@
                 "Force adding locality/bezirk string to output": "patches/mapbox-provider-locality.patch"
             },
             "drupal/gin": {
-                "Fixes live preview button not working in edit forms": "patches/3220780-gin-event-bindings.patch"
+                "prevents deletion of actions after preview closes": "patches/gin_editform_theme_actions.patch"
             }
         }
     }

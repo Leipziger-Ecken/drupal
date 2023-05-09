@@ -1,0 +1,120 @@
+{% set akteur_id = webbuilder_akteur_id(webbuilder_id) %}
+{% set logo = drupal_field('field_logo_legacy', 'node', webbuilder_id)[0]['#item'] | default(logo) %}
+{% set logo_url = logo | file_url %}
+{% set webbuilder_title = drupal_field('title', 'node', webbuilder_id)[0]['#context'].value %}
+{% set webbuilder_blog_page = drupal_field('field_blog_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+{% set webbuilder_events_page = drupal_field('field_events_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+{% set webbuilder_projects_page = drupal_field('field_projects_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+<footer aria-labelledby="footerHeading">
+  <h2 id="footerHeading" class="sr-only">{{ 'Footer'|t }}</h2>
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+    <div class="grid grid-cols-12 gap-8 {{ webbuilder_layout_styles().border.top }} {{ webbuilder_layout_styles().padding.t_md }}">
+      <div class="col-span-12 md:col-span-2 xl:col-span-4">
+        {% if logo_url %}
+        <a href="{{ webbuilder_url(webbuilder_id) }}">
+          <span class="sr-only">{{ webbuilder_title }}</span>
+          <img src="{{ logo_url }}" alt="{{ webbuilder_title }}" class="h-12 w-auto sm:h-20 lg:h-20"/>
+        </a>
+        {% endif %}
+      </div>
+      <div class="col-span-12 md:col-span-10 xl:col-span-8 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          {{ drupal_view('blog', 'webbuilder_footer', akteur_id) }}
+          {% if webbuilder_blog_page %}
+          <a
+            href="{{ drupal_url('/node/' ~ webbuilder_blog_page) }}"
+            class="block text-base text-black hover:underline mt-4"
+          >
+            {{ 'More …'|t }}
+          </a>
+          {% endif %}
+        </div>
+
+        <div>
+          {{ drupal_view('le_akteur_has_events', 'webbuilder_footer', akteur_id) }}
+          {% if webbuilder_events_page %}
+          <a
+            href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}"
+            class="block text-base text-black hover:underline mt-4"
+          >
+            {{ 'More …'|t }}
+          </a>
+          {% endif %}
+        </div>
+
+        <div>
+          {{ drupal_view('projects', 'webbuilder_footer', akteur_id) }}
+          {% if webbuilder_projects_page %}
+          <a
+            href="{{ drupal_url('/node/' ~ webbuilder_projects_page) }}"
+            class="block text-base text-black hover:underline mt-4"
+          >
+            {{ 'More …'|t }}
+          </a>
+          {% endif %}
+        </div>
+
+        {{ drupal_view('webbuilder_pages', 'navigation_footer', webbuilder_id, 'footer') }}
+      </div>
+    </div>
+    <div class="mt-8 md:flex md:items-start md:justify-between border-t border-slate-400 {{ webbuilder_layout_styles().padding.t_sm }}">
+      <div class="text-black flex space-x-6 md:order-2">
+        {% set linkedin_uri = drupal_field('field_linkedin_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if linkedin_uri %}
+        <a href="{{ linkedin_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'LinkedIn'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/linkedin.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+        {% set tiktok_uri = drupal_field('field_tiktok_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if tiktok_uri %}
+        <a href="{{ tiktok_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'TikTok'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/tiktok.html.twig', {class: 'h-7 w-7'}) }}
+        </a>
+        {% endif %}
+
+        {% set facebook_uri = drupal_field('field_facebook_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if facebook_uri %}
+        <a href="{{ facebook_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'Facebook'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/facebook.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+
+        {% set instagram_uri = drupal_field('field_instagram_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if instagram_uri %}
+        <a href="{{ instagram_uri }}" class="text-slate-400 hover:text-slate-500" target="instagram">
+          <span class="sr-only">{{ 'Instagram'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/instagram.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+
+        {% set twitter_uri = drupal_field('field_twitter_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if twitter_uri %}
+        <a href="{{ twitter_uri }}" class="text-slate-400 hover:text-slate-500" target="twitter">
+          <span class="sr-only">{{ 'Twitter'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/twitter.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+        {% set youtube_uri = drupal_field('field_youtube_link', 'node', webbuilder_id)[0]['#url'] %}
+        {% if youtube_uri %}
+        <a href="{{ youtube_uri }}" class="text-slate-400 hover:text-slate-500">
+          <span class="sr-only">{{ 'YouTube'|t }}</span>
+          {{ include('@leipzigerEckenWebbuilder/partials/icons/youtube.html.twig', {class: 'h-8 w-8'}) }}
+        </a>
+        {% endif %}
+      </div>
+      <div class="mt-8 text-base text-slate-400 md:mt-0 md:order-1">
+        <p>
+          &copy; Superblocks {{ 'now' | date('Y') }}<br/>
+          alle Rechte vorbehalten
+        </p>
+        <p class="mt-4 text-base text-slate-400">
+        Powered by <a class="text-slate-400 hover:text-slate-500" href="https://leipziger-ecken.de" target="leipziger-ecken">
+          Leipziger-Ecken <img class="inline-block ml-2 h-8 w-auto align-middle" src="/{{ directory ~ '/assets/images/leipziger-ecken_logo.png' }}">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

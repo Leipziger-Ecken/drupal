@@ -1,3 +1,6 @@
-{{ include('@leipzigerEckenWebbuilder/paragraphs/_paragraph_listing.html.twig', {
-  view_name: 'projects',
-}) }}
+{% block paragraph %}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/paragraphs/projects.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/paragraphs/projects.html.twig',
+]) }}
+{% endblock %}

@@ -24,6 +24,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  matomo:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   timezone:
     weight: 2
     region: content

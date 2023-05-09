@@ -7,14 +7,15 @@ dependencies:
     - field.field.node.partner.field_akteur
     - field.field.node.partner.field_description
     - field.field.node.partner.field_main_image
+    - field.field.node.partner.field_main_image_legacy
     - field.field.node.partner.field_partner_type
     - field.field.node.partner.field_website
     - field.field.node.partner.og_audience
     - image.style.medium
     - node.type.partner
   module:
-    - media
     - options
+    - svg_image
     - text
     - user
 id: node.partner.backend_teaser
@@ -37,15 +38,19 @@ content:
     third_party_settings: {  }
     type: text_trimmed
     region: content
-  field_main_image:
+  field_main_image_legacy:
+    type: image
     weight: 1
+    region: content
     label: hidden
     settings:
       image_style: medium
       image_link: ''
+      svg_render_as_image: true
+      svg_attributes:
+        width: null
+        height: null
     third_party_settings: {  }
-    type: media_thumbnail
-    region: content
   field_partner_type:
     type: list_key
     weight: 0
@@ -62,6 +67,7 @@ content:
     type: string
     region: content
 hidden:
+  field_main_image: true
   langcode: true
   links: true
   og_audience: true

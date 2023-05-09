@@ -4,12 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_logo_legacy
     - field.field.node.sponsor.field_website
     - field.field.node.sponsor.og_audience
+    - image.style.thumbnail
     - node.type.sponsor
   module:
     - field_group
-    - media_library
+    - svg_image
 third_party_settings:
   field_group:
     group_settings:
@@ -32,12 +34,13 @@ targetEntityType: node
 bundle: sponsor
 mode: default
 content:
-  field_logo:
+  field_logo_legacy:
     weight: 4
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
-    type: media_library_widget
+    type: image_image
     region: content
   field_website:
     weight: 3
@@ -77,6 +80,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_logo: true
   path: true
   promote: true
   published_at: true

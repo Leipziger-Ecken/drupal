@@ -1,0 +1,17 @@
+{% set options = view.args[1] | json_decode %}
+{% set webbuilder_id = webbuilder_id() %}
+{% set webbuilder_events_page = drupal_field('field_events_page', 'node', webbuilder_id)[0]['#plain_text'] %}
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/views/_listing.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/views/_listing.html.twig',
+]) }}
+{% if webbuilder_events_page and not options.filters %}
+<div class="ml-auto text-right {{ webbuilder_layout_styles().text.prose }} mt-4 {{ webbuilder_layout_styles().margin.b_sm }}">
+  <a
+    href="{{ drupal_url('/node/' ~ webbuilder_events_page) }}"
+    class="text-black hover:underline focus:underline font-normal {{ webbuilder_layout_styles().text.h4 }}"
+  >
+    {{ 'alle Veranstaltungen'|t }}
+  </a>
+</div>
+{% endif %}

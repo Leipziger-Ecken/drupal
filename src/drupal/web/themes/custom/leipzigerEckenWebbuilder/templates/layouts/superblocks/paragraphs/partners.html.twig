@@ -1,0 +1,20 @@
+<section
+  class="{{ webbuilder_layout_styles().container.lg }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_sm }}"
+  data-role="paragraph"
+>
+  <div class="relative {{ webbuilder_layout_styles().container.md }}">
+    <div class="{{ webbuilder_layout_styles().border.top }} {{ webbuilder_layout_styles().padding.t_sm }}">
+      {% if content.field_heading[0] %}
+      <h2 class="mb-4 {{ webbuilder_layout_styles().text.h4 }}">
+        {{ content.field_heading }}
+      </h2>
+      {% endif %}
+      {% if content.field_body[0] %}
+      <div class="{{ webbuilder_layout_styles().text.prose }}">
+        {{ content.field_body }}
+      </div>
+      {% endif %}
+    </div>
+    {{ drupal_view('partners', 'webbuilder', akteur_id) }}
+  </div>
+</section>

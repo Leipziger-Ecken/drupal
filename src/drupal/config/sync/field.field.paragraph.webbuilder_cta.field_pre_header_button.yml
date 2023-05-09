@@ -1,0 +1,23 @@
+uuid: 9650a978-b31a-4116-bbbc-f60b5ab40f53
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pre_header_button
+    - paragraphs.paragraphs_type.webbuilder_cta
+  module:
+    - link
+id: paragraph.webbuilder_cta.field_pre_header_button
+field_name: field_pre_header_button
+entity_type: paragraph
+bundle: webbuilder_cta
+label: 'Pre Header Button'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

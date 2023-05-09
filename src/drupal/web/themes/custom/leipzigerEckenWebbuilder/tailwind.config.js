@@ -14,7 +14,7 @@ function colorVariant(colorName, s = 1, l = 1) {
 
 const colors = {};
 
-['primary'].forEach((colorName) => {
+['primary', 'secondary', 'tertiary'].forEach((colorName) => {
   colors[colorName] = colorVariant(colorName);
   colors[colorName + '-900'] = colorVariant(colorName, 1, 0.2);
   colors[colorName + '-800'] = colorVariant(colorName, 1, 0.3);
@@ -38,17 +38,18 @@ for (let w = 10; w < 100; w += 10) {
 }
 
 module.exports = {
+  mode: 'jit',
   corePlugins: {
     fontFamily: false,
   },
-  purge: [
+  content: [
     './templates/**/*.twig',
+    './templates/**/styles.json',
     './assets/js/**/*.js',
     './leipzigerEckenWebbuilder.theme',
     '../../../modules/custom/**/*.php',
     '../../../modules/custom/**/*.module',
   ],
-  darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
       colors: colors,
@@ -65,9 +66,6 @@ module.exports = {
         },
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),

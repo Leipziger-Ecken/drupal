@@ -7,9 +7,11 @@ dependencies:
     - field.field.paragraph.webbuilder_gallery.field_cols
     - field.field.paragraph.webbuilder_gallery.field_heading
     - field.field.paragraph.webbuilder_gallery.field_images
+    - field.field.paragraph.webbuilder_gallery.field_images_legacy
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.webbuilder_gallery
   module:
-    - media_library
+    - svg_image
     - text
 id: paragraph.webbuilder_gallery.default
 targetEntityType: paragraph
@@ -38,12 +40,13 @@ content:
     third_party_settings: {  }
     type: string_textfield
     region: content
-  field_images:
-    type: media_library_widget
+  field_images_legacy:
     weight: 2
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
+    type: image_image
     region: content
   status:
     type: boolean_checkbox
@@ -54,3 +57,4 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_images: true

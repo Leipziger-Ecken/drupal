@@ -11,9 +11,9 @@ third_party_settings:
     parent: 'main:'
 _core:
   default_config_hash: AeW1SEDgb1OTQACAWGhzvMknMYAJlcZu0jljfeU3oso
-name: Artikel
+name: 'Journal Artikel'
 type: article
-description: 'Benutzen Sie <em>Artikel</em> für zeitkritische Inhalte wie Nachrichten, Pressemeldungen oder Blogeinträge.'
+description: 'Neuigkeiten aus dem Akteursgeschehen.'
 help: ''
 new_revision: true
 preview_mode: 1

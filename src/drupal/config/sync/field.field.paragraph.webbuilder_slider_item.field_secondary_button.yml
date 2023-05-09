@@ -1,0 +1,23 @@
+uuid: 95fe441d-4fd7-41f5-b54e-6c1ae09133e7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_secondary_button
+    - paragraphs.paragraphs_type.webbuilder_slider_item
+  module:
+    - link
+id: paragraph.webbuilder_slider_item.field_secondary_button
+field_name: field_secondary_button
+entity_type: paragraph
+bundle: webbuilder_slider_item
+label: 'Sekundärer Button'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

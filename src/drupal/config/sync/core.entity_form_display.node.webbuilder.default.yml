@@ -5,19 +5,31 @@ dependencies:
   config:
     - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_color_secondary
+    - field.field.node.webbuilder.field_color_tertiary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_favicon_legacy
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_instagram_link
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_linkedin_link
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_logo_legacy
+    - field.field.node.webbuilder.field_pre_footer_body
+    - field.field.node.webbuilder.field_pre_footer_button
+    - field.field.node.webbuilder.field_pre_footer_heading
+    - field.field.node.webbuilder.field_pre_footer_image_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.field_youtube_link
     - field.field.node.webbuilder.og_audience
+    - image.style.thumbnail
     - node.type.webbuilder
   module:
     - color_field
@@ -26,7 +38,7 @@ dependencies:
     - media_library
     - path
     - publication_date
-    - select2
+    - svg_image
     - text
 third_party_settings:
   field_group:
@@ -47,9 +59,10 @@ third_party_settings:
     group_style:
       children:
         - field_layout
-        - field_color_primary
+        - group_colors
         - field_fonts
-        - field_logo
+        - field_logo_legacy
+        - field_favicon_legacy
       parent_name: group_basic
       weight: 9
       format_type: accordion_item
@@ -77,9 +90,12 @@ third_party_settings:
       label: Vorlage
     group_social_media:
       children:
+        - field_linkedin_link
         - field_facebook_link
         - field_instagram_link
         - field_twitter_link
+        - field_tiktok_link
+        - field_youtube_link
       parent_name: group_basic
       weight: 10
       format_type: accordion_item
@@ -104,17 +120,63 @@ third_party_settings:
         classes: ''
         effect: none
       label: Basic
+    group_colors:
+      children:
+        - field_color_primary
+        - field_color_secondary
+        - field_color_tertiary
+      parent_name: group_style
+      weight: 11
+      format_type: fieldset
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Farben
+    group_pre_footer:
+      children:
+        - field_pre_footer_heading
+        - field_pre_footer_body
+        - field_pre_footer_button
+        - field_pre_footer_image_legacy
+      parent_name: ''
+      weight: 11
+      format_type: details
+      region: content
+      format_settings:
+        description: "Hier können Sie den Inhalt für den Abschluss aller Seiten einrichten.\r\nSie können diesen Seitenabschluss auf den einzelnen Seiten aktivieren oder deaktivieren oder auch anderen Inhalt für bestimmte Seiten verwenden."
+        required_fields: true
+        id: ''
+        classes: ''
+        show_empty_fields: false
+        open: false
+      label: Seitenabschluss
 id: node.webbuilder.default
 targetEntityType: node
 bundle: webbuilder
 mode: default
 content:
   field_color_primary:
-    weight: 11
+    weight: 12
     settings: {  }
     third_party_settings: {  }
     type: color_field_widget_html5
     region: content
+  field_color_secondary:
+    type: color_field_widget_html5
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_color_tertiary:
+    type: color_field_widget_html5
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_description:
     weight: 8
     settings:
@@ -124,22 +186,29 @@ content:
     type: text_textarea
     region: content
   field_facebook_link:
-    weight: 11
+    weight: 27
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
+  field_favicon_legacy:
+    weight: 14
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+    region: content
   field_fonts:
     weight: 12
-    settings:
-      width: 100%
+    settings: {  }
     third_party_settings: {  }
-    type: select2
+    type: options_buttons
     region: content
   field_instagram_link:
-    weight: 12
+    weight: 28
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -159,12 +228,53 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_logo:
-    type: media_library_widget
+  field_linkedin_link:
+    weight: 26
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_logo_legacy:
     weight: 13
     settings:
-      media_types: {  }
+      progress_indicator: throbber
+      preview_image_style: thumbnail
     third_party_settings: {  }
+    type: image_image
+    region: content
+  field_pre_footer_body:
+    weight: 8
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_pre_footer_button:
+    weight: 9
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_pre_footer_heading:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_pre_footer_image_legacy:
+    weight: 10
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
     region: content
   field_preview_image:
     weight: 9
@@ -173,8 +283,24 @@ content:
     third_party_settings: {  }
     type: media_library_widget
     region: content
+  field_tiktok_link:
+    weight: 30
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_twitter_link:
-    weight: 13
+    weight: 29
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_youtube_link:
+    weight: 31
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -219,6 +345,7 @@ hidden:
   field_blog_page: true
   field_events_page: true
   field_frontpage: true
+  field_logo: true
   field_projects_page: true
   langcode: true
   promote: true

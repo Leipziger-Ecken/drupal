@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_contents
     - node.type.webbuilder_page
     - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.webbuilder_avatar_list_item
+    - paragraphs.paragraphs_type.webbuilder_slider_item
   module:
     - entity_reference_revisions
 id: node.webbuilder_page.field_contents
@@ -24,6 +26,8 @@ settings:
     negate: 1
     target_bundles:
       from_library: from_library
+      webbuilder_slider_item: webbuilder_slider_item
+      webbuilder_avatar_list_item: webbuilder_avatar_list_item
     target_bundles_drag_drop:
       from_library:
         enabled: true
@@ -31,6 +35,12 @@ settings:
       webbuilder_audio:
         weight: -17
         enabled: false
+      webbuilder_avatar_list:
+        weight: 23
+        enabled: false
+      webbuilder_avatar_list_item:
+        enabled: true
+        weight: 20
       webbuilder_blog_articles:
         weight: -23
         enabled: false
@@ -58,6 +68,12 @@ settings:
       webbuilder_projects:
         weight: -22
         enabled: false
+      webbuilder_slider:
+        weight: 30
+        enabled: false
+      webbuilder_slider_item:
+        enabled: true
+        weight: 18
       webbuilder_sponsors:
         weight: -20
         enabled: false

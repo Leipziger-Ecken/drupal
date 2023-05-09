@@ -6,18 +6,29 @@ dependencies:
     - core.entity_view_mode.node.backend_teaser
     - field.field.node.webbuilder.field_blog_page
     - field.field.node.webbuilder.field_color_primary
+    - field.field.node.webbuilder.field_color_secondary
+    - field.field.node.webbuilder.field_color_tertiary
     - field.field.node.webbuilder.field_description
     - field.field.node.webbuilder.field_events_page
     - field.field.node.webbuilder.field_facebook_link
+    - field.field.node.webbuilder.field_favicon_legacy
     - field.field.node.webbuilder.field_fonts
     - field.field.node.webbuilder.field_frontpage
     - field.field.node.webbuilder.field_instagram_link
     - field.field.node.webbuilder.field_is_preset
     - field.field.node.webbuilder.field_layout
+    - field.field.node.webbuilder.field_linkedin_link
     - field.field.node.webbuilder.field_logo
+    - field.field.node.webbuilder.field_logo_legacy
+    - field.field.node.webbuilder.field_pre_footer_body
+    - field.field.node.webbuilder.field_pre_footer_button
+    - field.field.node.webbuilder.field_pre_footer_heading
+    - field.field.node.webbuilder.field_pre_footer_image_legacy
     - field.field.node.webbuilder.field_preview_image
     - field.field.node.webbuilder.field_projects_page
+    - field.field.node.webbuilder.field_tiktok_link
     - field.field.node.webbuilder.field_twitter_link
+    - field.field.node.webbuilder.field_youtube_link
     - field.field.node.webbuilder.og_audience
     - node.type.webbuilder
   module:
@@ -30,18 +41,29 @@ content: {  }
 hidden:
   field_blog_page: true
   field_color_primary: true
+  field_color_secondary: true
+  field_color_tertiary: true
   field_description: true
   field_events_page: true
   field_facebook_link: true
+  field_favicon_legacy: true
   field_fonts: true
   field_frontpage: true
   field_instagram_link: true
   field_is_preset: true
   field_layout: true
+  field_linkedin_link: true
   field_logo: true
+  field_logo_legacy: true
+  field_pre_footer_body: true
+  field_pre_footer_button: true
+  field_pre_footer_heading: true
+  field_pre_footer_image_legacy: true
   field_preview_image: true
   field_projects_page: true
+  field_tiktok_link: true
   field_twitter_link: true
+  field_youtube_link: true
   langcode: true
   links: true
   og_audience: true

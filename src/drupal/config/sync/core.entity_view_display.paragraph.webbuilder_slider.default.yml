@@ -1,0 +1,24 @@
+uuid: 9001dc7d-8cf3-4d15-b4f9-6f8fdd0f7f2d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_slider.field_slider_items
+    - paragraphs.paragraphs_type.webbuilder_slider
+  module:
+    - entity_reference_revisions
+id: paragraph.webbuilder_slider.default
+targetEntityType: paragraph
+bundle: webbuilder_slider
+mode: default
+content:
+  field_slider_items:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

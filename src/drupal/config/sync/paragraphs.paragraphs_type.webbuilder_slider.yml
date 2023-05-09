@@ -1,0 +1,10 @@
+uuid: feb6ead5-c933-4904-86a2-0a1361531d0a
+langcode: de
+status: true
+dependencies: {  }
+id: webbuilder_slider
+label: Slider
+icon_uuid: null
+icon_default: null
+description: 'Ein horizontaler Slider mit Hintergrundbild, Text und Button.'
+behavior_plugins: {  }

@@ -4,3 +4,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  }
+  .text-shadow-outline {
+    text-shadow:
+      -1px -1px #000, /* top left */
+      0 -1px #000, /* top */
+      1px -1px #000, /* top right */
+      1px 0 #000, /* right */
+      1px 1px #000, /* bottom right */
+      0 1px #000, /* bottom */
+      -1px 1px #000, /* bottom left */
+      -1px 0 #000 /* left */
+    ;
+  }
+}
+
+.splide__pagination__page {
+  background-color: #fff;
+}

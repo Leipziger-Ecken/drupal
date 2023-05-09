@@ -1,0 +1,87 @@
+uuid: 2291f6c5-1203-4591-92bb-4b40843adb9e
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.webbuilder_teaser_2_col
+    - field.field.node.project.body
+    - field.field.node.project.field_images
+    - field.field.node.project.field_images_legacy
+    - field.field.node.project.field_is_featured
+    - field.field.node.project.field_legal_terms_accepted
+    - field.field.node.project.field_main_image
+    - field.field.node.project.field_main_image_legacy
+    - field.field.node.project.field_related_content
+    - field.field.node.project.og_audience
+    - node.type.project
+  module:
+    - svg_image
+    - text
+    - user
+id: node.project.webbuilder_teaser_2_col
+targetEntityType: node
+bundle: project
+mode: webbuilder_teaser_2_col
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_images_legacy:
+    weight: 4
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_main_image_legacy:
+    weight: 1
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_related_content:
+    weight: 5
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  og_audience:
+    label: hidden
+    type: entity_reference_label
+    settings:
+      link: true
+    weight: 2
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_images: true
+  field_is_featured: true
+  field_legal_terms_accepted: true
+  field_main_image: true
+  langcode: true
+  published_at: true

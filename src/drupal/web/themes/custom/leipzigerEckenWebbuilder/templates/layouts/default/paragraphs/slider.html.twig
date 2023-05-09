@@ -1,0 +1,24 @@
+<section
+  class="{{ webbuilder_layout_styles().container.lg }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_md }}"
+  data-role="paragraph"
+>
+  <div data-controller="slider" class="w-full">
+    <div
+      class="splide"
+      data-slider-target="slider"
+      data-prev-class="bg-primary-500 shadow-md"
+      data-next-class="bg-primary-500 shadow-md"
+    >
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for index,item in content.field_slider_items['#items'] %}
+          {% set item = content.field_slider_items[index] %}
+          <li class="splide__slide">
+            {{ item }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+uuid: dd9fa5e2-d191-48dd-b0de-b4ce4895b9a1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_color_secondary
+    - node.type.webbuilder
+  module:
+    - color_field
+id: node.webbuilder.field_color_secondary
+field_name: field_color_secondary
+entity_type: node
+bundle: webbuilder
+label: Sekundärfarbe
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    color: '#26a269'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

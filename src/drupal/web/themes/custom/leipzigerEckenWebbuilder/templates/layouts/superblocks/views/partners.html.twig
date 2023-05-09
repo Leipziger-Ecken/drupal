@@ -1,0 +1,7 @@
+<ul>
+{% for index,row in rows[0]['#rows'] %}
+  <li class="col-span-1">
+    {{ drupal_entity('node', row['#node'].nid[0].value, 'webbuilder_teaser') }}
+  </li>
+{% endfor %}
+</ul>

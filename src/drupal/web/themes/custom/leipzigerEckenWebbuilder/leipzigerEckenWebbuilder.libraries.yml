@@ -1,10 +1,12 @@
 webbuilder:
   css:
     theme:
+      assets/vendor/splide/dist/css/splide.min.css: {}
       assets/css/webbuilder.css: {}
   js:
-    assets/stimulus/stimulus.umd.js: {}
-    # assets/turbo/dist/turbo.es2017-umd.js: {}
+    assets/vendor/stimulus/stimulus.umd.js: {}
+    # assets/vendor/turbo/dist/turbo.es2017-umd.js: {}
+    assets/vendor/splide/dist/js/splide.min.js: {}
     assets/js/webbuilder.js: {}
 
 Archivo Black:
@@ -41,6 +43,11 @@ Gentium Basic:
   css:
     theme:
       assets/css/Gentium Basic.css: {}
+
+Inter:
+  css:
+    theme:
+      assets/css/Inter.css: {}
 
 Jost:
   css:

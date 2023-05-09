@@ -9,7 +9,7 @@
     ];
     toggle(event) {
       const classes = (
-        this.dropdownTarget.getAttribute('data-dropdown-toggle-classes') || 'opacity-0 opacity-100 translate-y-1 translate-y-0'
+        this.dropdownTarget.getAttribute('data-dropdown-toggle-class') || 'opacity-0 opacity-100 translate-y-1 translate-y-0'
       ).split(' ');
       classes.forEach((className) => {
         this.dropdownTarget.classList.toggle(className);
@@ -46,23 +46,53 @@
       window.addEventListener('scroll', () => this.handleScroll() );
     };
     handleScroll() {
+      const toggleClassNames = (this.headerTarget.getAttribute('data-toggle-class') || '').split(' ');
+
+      if (!toggleClassNames.length) {
+        return;
+      }
+
       if (window.scrollY > 30) {
-        this.headerTarget.classList.add('shadow');
+        toggleClassNames.forEach((className) => {
+          this.headerTarget.classList.add(className);
+        });
       } else {
-        this.headerTarget.classList.remove('shadow');
+        toggleClassNames.forEach((className) => {
+          this.headerTarget.classList.remove(className);
+        });
       }
     };
     toggleMobileMenu() {
-      this.mobileMenuTarget.classList.toggle('opacity-0');
-      this.mobileMenuTarget.classList.toggle('scale-95');
-      this.mobileMenuTarget.classList.toggle('opacity-100');
-      this.mobileMenuTarget.classList.toggle('scale-100');
+      (this.mobileMenuTarget.getAttribute('data-toggle-class') || '')
+      .split(' ')
+      .forEach((className) => {
+        this.mobileMenuTarget.classList.toggle(className);
+      });
+
       setTimeout(() => {
-        this.mobileMenuTarget.classList.toggle('duration-200');
-        this.mobileMenuTarget.classList.toggle('duration-100');
-        this.mobileMenuTarget.classList.toggle('ease-out');
-        this.mobileMenuTarget.classList.toggle('ease-in');
+        (this.mobileMenuTarget.getAttribute('data-toggle-class-lazy') || '')
+        .split(' ')
+        .forEach((className) => {
+          this.mobileMenuTarget.classList.toggle(className);
+        });
       }, 200);
     };
+  });
+
+  app.register('slider', class extends Stimulus.Controller {
+    static targets = [
+      'slider',
+    ]
+    connect() {
+      const prevClassNames = this.sliderTarget.getAttribute('data-prev-class') || '';
+      const nextClassNames = this.sliderTarget.getAttribute('data-next-class') || '';
+      this.splide = new Splide(this.sliderTarget, {
+        classes: {
+          prev: 'splide__arrow--prev ' + prevClassNames,
+          next: 'splide__arrow--next ' + nextClassNames,
+        },
+      });
+      this.splide.mount();
+    }
   });
 })();

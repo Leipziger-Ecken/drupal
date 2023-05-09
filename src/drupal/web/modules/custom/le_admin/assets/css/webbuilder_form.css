@@ -1,0 +1,50 @@
+#edit-field-fonts,
+div.form-radios[id*='edit-field-fonts'] /* Workaround odd id-value after re-render  */ {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.form-item--field-fonts {
+  display: flex;
+  justify-items: start;
+  width: 22rem;
+  padding: 0.5rem;
+  margin: 0 1rem 1rem 0 !important;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.form-item--field-fonts > input {
+  left: 0 !important;
+  top: 0.5rem !important;
+  float: none !important;
+  margin-left: 0 !important;
+  transform: none !important;
+  margin-right: 1rem;
+}
+
+.webbuilder-heading-font-preview {
+  line-height: 1;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.webbuilder-body-font-preview {
+  line-height: 1;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+#edit-group-colors .fieldset__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media screen and (max-width: 640px) {
+  #edit-group-colors .fieldset__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 400px) {
+  #edit-group-colors .fieldset__wrapper {
+    display: block;
+  }
+}

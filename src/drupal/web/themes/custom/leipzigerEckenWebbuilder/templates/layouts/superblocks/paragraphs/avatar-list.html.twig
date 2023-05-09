@@ -1,0 +1,35 @@
+{% set cols = content.field_cols[0]['#markup'] | default('3') %}
+{% set cols_class = {
+  2: 'grid-cols-1 md:grid-cols-2',
+  3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+  4: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+} %}
+<section
+  class="{{ webbuilder_layout_styles().container.md }} {{ webbuilder_layout_styles().padding.x_md }} {{ webbuilder_layout_styles().margin.b_md }}"
+  data-role="paragraph"
+>
+  {% if content.field_heading[0] %}
+  <div class="text-lg {{ webbuilder_layout_styles().container.prose }} {{ webbuilder_layout_styles().margin.b_sm }}">
+    <h2>
+      {% if content.field_heading[0] %}
+      <span class="block text-center {{ webbuilder_layout_styles().text.h2 }}">
+        {{ content.field_heading }}
+      </span>
+      {% endif %}
+    </h2>
+  </div>
+  {% endif %}
+  {% if content.field_body[0] %}
+  <div class="{{ webbuilder_layout_styles().text.prose }} mb-4 mx-auto">
+    {{ content.field_body }}
+  </div>
+  {% endif %}
+  <div class="mt-12 pt-10 grid {{ cols_class[cols] }} gap-8 lg:gap-12">
+    {% for index,item in content.field_avatar_list_items['#items'] %}
+    {% set item = content.field_avatar_list_items[index] %}
+    <div class="col-span-1">
+      {{ item }}
+    </div>
+    {% endfor %}
+  </div>
+</section>

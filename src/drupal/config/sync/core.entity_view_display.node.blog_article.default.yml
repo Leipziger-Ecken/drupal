@@ -5,12 +5,15 @@ dependencies:
   config:
     - field.field.node.blog_article.body
     - field.field.node.blog_article.field_images
+    - field.field.node.blog_article.field_images_legacy
     - field.field.node.blog_article.field_is_featured
     - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_main_image_legacy
     - field.field.node.blog_article.field_related_content
     - field.field.node.blog_article.og_audience
     - node.type.blog_article
   module:
+    - svg_image
     - text
     - user
 id: node.blog_article.default
@@ -25,14 +28,18 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_images:
-    type: entity_reference_entity_view
+  field_images_legacy:
     weight: 5
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
+    type: image
     region: content
   field_is_featured:
     weight: 6
@@ -44,14 +51,18 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
-  field_main_image:
+  field_main_image_legacy:
     weight: 3
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: image
     region: content
   field_related_content:
     weight: 7
@@ -86,4 +97,6 @@ content:
       timezone: ''
     third_party_settings: {  }
 hidden:
+  field_images: true
+  field_main_image: true
   langcode: true

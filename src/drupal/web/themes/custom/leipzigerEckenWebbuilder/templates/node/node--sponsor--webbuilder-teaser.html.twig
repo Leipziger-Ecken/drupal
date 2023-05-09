@@ -1,15 +1,6 @@
-{% set image = content.field_logo[0] %}
+{% set image = content.field_logo_legacy[0] | default(content.field_logo[0]) %}
 {% set website_url = content.field_website[0]['#context'].value %}
-<a
-  href="{{ website_url }}"
-  target="_blank"
-  title="{{ label[0]['#context'].value }}"
-  class="col-span-1 flex justify-center py-8 px-8 transition bg-gray-50 hover:bg-gray-100"
->
-  {{ include('@leipzigerEckenWebbuilder/partials/components/media_image.html.twig', {
-    class: 'max-h-12',
-    image: image,
-    width: 610,
-    image_style: 'webbuilder_teaser',
-  }) }}
-</a>
+{{ include([
+  '@leipzigerEckenWebbuilder/layouts/' ~ webbuilder_layout() ~ '/nodes/sponsor-teaser.html.twig',
+  '@leipzigerEckenWebbuilder/layouts/default/nodes/sponsor-teaser.html.twig',
+]) }}

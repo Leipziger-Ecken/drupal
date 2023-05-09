@@ -3,9 +3,11 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.paragraph.webbuilder_cta.field_bg
     - field.field.paragraph.webbuilder_cta.field_body
     - field.field.paragraph.webbuilder_cta.field_cta_layout
     - field.field.paragraph.webbuilder_cta.field_heading
+    - field.field.paragraph.webbuilder_cta.field_pre_header_button
     - field.field.paragraph.webbuilder_cta.field_primary_button
     - field.field.paragraph.webbuilder_cta.field_secondary_button
     - paragraphs.paragraphs_type.webbuilder_cta
@@ -17,8 +19,14 @@ targetEntityType: paragraph
 bundle: webbuilder_cta
 mode: default
 content:
+  field_bg:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
   field_body:
-    weight: 1
+    weight: 2
     settings:
       rows: 5
       placeholder: ''
@@ -26,21 +34,29 @@ content:
     type: text_textarea
     region: content
   field_cta_layout:
-    weight: 4
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   field_heading:
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
     region: content
+  field_pre_header_button:
+    weight: 0
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_primary_button:
-    weight: 2
+    weight: 3
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -48,7 +64,7 @@ content:
     type: link_default
     region: content
   field_secondary_button:
-    weight: 3
+    weight: 4
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -57,7 +73,7 @@ content:
     region: content
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 7
     region: content
     settings:
       display_label: true

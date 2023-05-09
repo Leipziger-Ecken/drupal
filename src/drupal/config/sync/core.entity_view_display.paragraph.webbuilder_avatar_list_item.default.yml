@@ -1,0 +1,37 @@
+uuid: e5109dd5-c176-4d11-a851-2a95a2134c2d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.webbuilder_avatar_list_item.field_image_caption
+    - field.field.paragraph.webbuilder_avatar_list_item.field_image_legacy
+    - paragraphs.paragraphs_type.webbuilder_avatar_list_item
+  module:
+    - svg_image
+    - text
+id: paragraph.webbuilder_avatar_list_item.default
+targetEntityType: paragraph
+bundle: webbuilder_avatar_list_item
+mode: default
+content:
+  field_image_caption:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_image_legacy:
+    weight: 0
+    label: hidden
+    settings:
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden: {  }

@@ -5,25 +5,31 @@ dependencies:
   config:
     - core.entity_view_mode.node.webbuilder_teaser
     - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_logo_legacy
     - field.field.node.sponsor.field_website
     - field.field.node.sponsor.og_audience
     - node.type.sponsor
   module:
+    - svg_image
     - user
 id: node.sponsor.webbuilder_teaser
 targetEntityType: node
 bundle: sponsor
 mode: webbuilder_teaser
 content:
-  field_logo:
+  field_logo_legacy:
+    type: image
     weight: 0
+    region: content
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
-    region: content
   field_website:
     weight: 1
     label: hidden
@@ -33,6 +39,7 @@ content:
     type: string
     region: content
 hidden:
+  field_logo: true
   langcode: true
   links: true
   og_audience: true

@@ -33,6 +33,9 @@ settings:
       value: 'Jost+DM Sans'
       label: 'Jost & DM Sans'
     -
+      value: Inter+Inter
+      label: 'Inter & Inter'
+    -
       value: Kavoon+Rubik
       label: 'Kavoon & Rubik'
     -

@@ -1,0 +1,85 @@
+uuid: c5e1b0bb-ed06-42c6-be43-8d982d03b6f4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_avatar_list_items
+    - paragraphs.paragraphs_type.webbuilder_avatar_list
+    - paragraphs.paragraphs_type.webbuilder_avatar_list_item
+  module:
+    - entity_reference_revisions
+id: paragraph.webbuilder_avatar_list.field_avatar_list_items
+field_name: field_avatar_list_items
+entity_type: paragraph
+bundle: webbuilder_avatar_list
+label: Avatare
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      webbuilder_avatar_list_item: webbuilder_avatar_list_item
+    target_bundles_drag_drop:
+      from_library:
+        weight: 21
+        enabled: false
+      webbuilder_audio:
+        weight: 22
+        enabled: false
+      webbuilder_avatar_list:
+        weight: 23
+        enabled: false
+      webbuilder_avatar_list_item:
+        enabled: true
+        weight: 20
+      webbuilder_blog_articles:
+        weight: 24
+        enabled: false
+      webbuilder_contact_form:
+        weight: 25
+        enabled: false
+      webbuilder_cta:
+        weight: 26
+        enabled: false
+      webbuilder_events:
+        weight: 27
+        enabled: false
+      webbuilder_gallery:
+        weight: 28
+        enabled: false
+      webbuilder_image:
+        weight: 29
+        enabled: false
+      webbuilder_map:
+        weight: 30
+        enabled: false
+      webbuilder_partners:
+        weight: 31
+        enabled: false
+      webbuilder_projects:
+        weight: 32
+        enabled: false
+      webbuilder_slider:
+        weight: 33
+        enabled: false
+      webbuilder_slider_item:
+        weight: 34
+        enabled: false
+      webbuilder_sponsors:
+        weight: 35
+        enabled: false
+      webbuilder_text:
+        weight: 36
+        enabled: false
+      webbuilder_text_image:
+        weight: 37
+        enabled: false
+      webbuilder_video:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,19 @@
+uuid: a565d276-c96e-45af-8bbf-2984fde5e176
+langcode: de
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_tiktok_link
+field_name: field_tiktok_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

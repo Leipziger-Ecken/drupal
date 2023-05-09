@@ -1,0 +1,10 @@
+uuid: 3e712ee7-bc84-486f-825e-2aadea295e6d
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.webbuilder_teaser_slider
+label: 'Webbaukasten: Teaser im Slider'
+targetEntityType: node
+cache: true

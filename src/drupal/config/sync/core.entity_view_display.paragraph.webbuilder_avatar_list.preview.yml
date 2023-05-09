@@ -1,0 +1,52 @@
+uuid: a195eed6-7da8-4d09-b2ab-cb1952bce26f
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.webbuilder_avatar_list.field_avatar_list_items
+    - field.field.paragraph.webbuilder_avatar_list.field_body
+    - field.field.paragraph.webbuilder_avatar_list.field_cols
+    - field.field.paragraph.webbuilder_avatar_list.field_heading
+    - paragraphs.paragraphs_type.webbuilder_avatar_list
+  module:
+    - entity_reference_revisions
+    - options
+    - text
+id: paragraph.webbuilder_avatar_list.preview
+targetEntityType: paragraph
+bundle: webbuilder_avatar_list
+mode: preview
+content:
+  field_avatar_list_items:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: above
+    settings:
+      view_mode: preview
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_body:
+    type: text_default
+    weight: 1
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  field_cols:
+    weight: 2
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_heading:
+    type: string
+    weight: 0
+    region: content
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden: {  }
