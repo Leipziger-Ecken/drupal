@@ -1,0 +1,11 @@
+uuid: 96648c40-dba2-4628-ba5b-67b5d7763814
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_afeefa
+id: node.le_remote_content_afeefa
+target_entity_type_id: node
+target_bundle: le_remote_content_afeefa
+default_langcode: site_default
+language_alterable: false

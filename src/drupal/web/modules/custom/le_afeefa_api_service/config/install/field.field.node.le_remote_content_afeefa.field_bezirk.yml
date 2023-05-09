@@ -1,3 +1,4 @@
+uuid: 0f8617fd-ec20-4ccf-b2ac-9753a7ea3c0c
 langcode: de
 status: true
 dependencies:
@@ -12,7 +13,7 @@ bundle: le_remote_content_afeefa
 label: Bezirk
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

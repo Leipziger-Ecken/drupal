@@ -1,0 +1,17 @@
+uuid: db7b9bf8-070f-4273-aef2-c074e1139b31
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Remote Content (afeefa)'
+type: le_remote_content_afeefa
+description: 'Via "remote API" gespiegelte Angebotsdaten aus der AFEEFA-Schnittstelle. Read-only.'
+help: 'Dieser Inhaltstyp ist als "Read-only" gekennzeichnet. Das manuelle Anlegen oder Ändern von Inhalten ist nicht empfohlen, da diese jederzeit wieder überschrieben werden könnten.'
+new_revision: false
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,20 @@
+uuid: 412644a5-c2a9-4777-a1a3-03947b3452ca
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_afeefa_offer_id
+field_name: field_afeefa_offer_id
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

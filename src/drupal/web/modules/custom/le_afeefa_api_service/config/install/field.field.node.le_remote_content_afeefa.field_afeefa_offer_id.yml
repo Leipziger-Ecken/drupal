@@ -1,0 +1,23 @@
+uuid: 5539f564-9af1-432c-ad4b-0d23063e0ded
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_afeefa_offer_id
+    - node.type.le_remote_content_afeefa
+id: node.le_remote_content_afeefa.field_afeefa_offer_id
+field_name: field_afeefa_offer_id
+entity_type: node
+bundle: le_remote_content_afeefa
+label: 'afeefa offer id'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

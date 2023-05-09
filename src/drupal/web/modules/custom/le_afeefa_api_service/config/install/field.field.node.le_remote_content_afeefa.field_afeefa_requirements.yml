@@ -1,0 +1,19 @@
+uuid: fc5df34a-03c4-4bec-8523-673285048c07
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_afeefa_requirements
+    - node.type.le_remote_content_afeefa
+id: node.le_remote_content_afeefa.field_afeefa_requirements
+field_name: field_afeefa_requirements
+entity_type: node
+bundle: le_remote_content_afeefa
+label: Anforderungen
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

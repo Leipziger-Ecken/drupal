@@ -1,17 +1,21 @@
+uuid: 86f2053c-8d16-40c0-8810-6e8340bc4543
 langcode: de
 status: true
 dependencies:
   config:
+    - field.storage.node.field_geofield
     - node.type.le_remote_content_afeefa
-id: node.le_remote_content_afeefa.title
-field_name: title
+  module:
+    - geofield
+id: node.le_remote_content_afeefa.field_geofield
+field_name: field_geofield
 entity_type: node
 bundle: le_remote_content_afeefa
-label: Name
+label: Geofield
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: geofield

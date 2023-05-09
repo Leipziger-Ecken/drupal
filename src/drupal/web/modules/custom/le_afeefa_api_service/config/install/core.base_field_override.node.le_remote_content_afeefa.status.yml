@@ -1,0 +1,22 @@
+uuid: d557dca6-7d31-45e4-b951-fbf39e10f806
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.le_remote_content_afeefa
+id: node.le_remote_content_afeefa.status
+field_name: status
+entity_type: node
+bundle: le_remote_content_afeefa
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: An
+  off_label: Aus
+field_type: boolean

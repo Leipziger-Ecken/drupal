@@ -61,8 +61,8 @@ class LeAfeefaApiServiceController extends ControllerBase
 
       $this->providers = $entity_type_manager->getStorage('geocoder_provider')->loadMultiple(['mapbox']);
       $this->bezirke = $entity_type_manager->getStorage('taxonomy_term')->loadTree('le_bezirk');
-
   }
+
 
   /**
    * {@inheritdoc}
@@ -75,6 +75,7 @@ class LeAfeefaApiServiceController extends ControllerBase
       $container->get('entity_type.manager')
     );
   }
+
 
   /**
    * Resolve adress from geodata, match that address against local bezirke-taxonomy and return
@@ -117,6 +118,7 @@ class LeAfeefaApiServiceController extends ControllerBase
 
     return null;
   }
+
 
   /**
    * get resource and return object array
@@ -239,7 +241,6 @@ class LeAfeefaApiServiceController extends ControllerBase
       $node->setUnpublished();
       $node->save();
     }
-
   }
 
 
@@ -250,7 +251,6 @@ class LeAfeefaApiServiceController extends ControllerBase
   {
     // set all afeefa nodes to unpublished
     $this->unpublishNodes();
-
 
     // get data
     $resource = $this->getFeed();

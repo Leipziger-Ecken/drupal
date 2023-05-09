@@ -1,20 +1,20 @@
+uuid: 316185ce-cb55-457c-8c3b-275bce351d7b
 langcode: de
 status: true
 dependencies:
   config:
     - field.field.node.le_remote_content_afeefa.body
+    - field.field.node.le_remote_content_afeefa.field_afeefa_offer_id
+    - field.field.node.le_remote_content_afeefa.field_afeefa_requirements
     - field.field.node.le_remote_content_afeefa.field_bezirk
     - field.field.node.le_remote_content_afeefa.field_geofield
-    - field.field.node.le_remote_content_afeefa.field_le_rcds_id_external
-#    - field.field.node.le_remote_content_depot_social.field_le_rcds_image
     - field.field.node.le_remote_content_afeefa.field_le_rcds_link
-#    - field.field.node.le_remote_content_depot_social.field_le_rcds_resources_count
-    - field.field.node.le_remote_content_depot_social.field_le_rcds_zip_code
     - node.type.le_remote_content_afeefa
   module:
     - geofield
     - link
     - path
+    - publication_date
     - text
 id: node.le_remote_content_afeefa.default
 targetEntityType: node
@@ -37,8 +37,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_afeefa_offer_id:
+    weight: 122
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_afeefa_requirements:
+    weight: 124
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_bezirk:
-    weight: 130
+    weight: 128
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -54,43 +69,13 @@ content:
     third_party_settings: {  }
     type: geofield_latlon
     region: content
-  field_le_rcds_id_external:
-    weight: 128
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-    type: number
-    region: content
-#  field_le_rcds_image:
-#    weight: 122
-#    settings:
-#      size: 60
-#      placeholder: ''
-#    third_party_settings: {  }
-#    type: string_textfield
-#    region: content
   field_le_rcds_link:
-    weight: 126
+    weight: 130
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-    region: content
-#  field_le_rcds_resources_count:
-#    weight: 125
-#    settings:
-#      placeholder: ''
-#    third_party_settings: {  }
-#    type: number
-#    region: content
-  field_le_rcds_zip_code:
-    weight: 124
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
     region: content
   langcode:
     type: language_select
@@ -111,6 +96,12 @@ content:
       display_label: true
     weight: 15
     region: content
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -144,4 +135,9 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    settings: {  }
+    third_party_settings: {  }
+    region: content
 hidden: {  }

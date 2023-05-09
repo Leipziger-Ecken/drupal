@@ -1,0 +1,42 @@
+uuid: 65b421e8-2d52-411e-89ca-3d179898c814
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.le_remote_content_afeefa.body
+    - field.field.node.le_remote_content_afeefa.field_afeefa_offer_id
+    - field.field.node.le_remote_content_afeefa.field_afeefa_requirements
+    - field.field.node.le_remote_content_afeefa.field_bezirk
+    - field.field.node.le_remote_content_afeefa.field_geofield
+    - field.field.node.le_remote_content_afeefa.field_le_rcds_link
+    - node.type.le_remote_content_afeefa
+  module:
+    - text
+    - user
+id: node.le_remote_content_afeefa.teaser
+targetEntityType: node
+bundle: le_remote_content_afeefa
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_afeefa_offer_id: true
+  field_afeefa_requirements: true
+  field_bezirk: true
+  field_geofield: true
+  field_le_rcds_link: true
+  langcode: true
+  published_at: true
